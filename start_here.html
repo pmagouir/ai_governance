@@ -1045,8 +1045,8 @@
         <h3 style="font-family: 'Noto Serif SemiCondensed', Georgia, serif; font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: #FCB017; margin-bottom: 1rem;">Three Steps Before Your First Claude Session <span style="font-size: clamp(0.7rem, 1.2vw, 0.85rem); opacity: 0.7; font-weight: 400;">Complete during onboarding week (April 6–10). Schedule office hours with Angela or Preston at your convenience.</span></h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
             <div style="background: rgba(255,255,255,0.08); border-left: 4px solid #FCB017; padding: 1rem; border-radius: 4px;">
-                <div style="font-family: 'Noto Serif SemiCondensed', Georgia, serif; font-weight: 700; color: #FCB017; margin-bottom: 0.5rem;">1. Complete the Course</div>
-                <p style="font-size: clamp(0.8rem, 1.3vw, 0.95rem); line-height: 1.5; margin: 0;">Finish Anthropic's free <a href="https://anthropic.skilljar.com/ai-fluency-for-nonprofits" style="color: #87B7D5; text-decoration: underline;">AI Fluency for Nonprofits</a> course. Built with GivingTuesday for nonprofit teams. Uses the same 4D framework. Earns a certificate.</p>
+                <div style="font-family: 'Noto Serif SemiCondensed', Georgia, serif; font-weight: 700; color: #FCB017; margin-bottom: 0.5rem;">1. Complete Two Courses</div>
+                <p style="font-size: clamp(0.8rem, 1.3vw, 0.95rem); line-height: 1.5; margin: 0;">Finish two free Anthropic Academy courses: <a href="https://anthropic.skilljar.com/claude-101" style="color: #87B7D5; text-decoration: underline;">Claude 101</a> (basics of working with Claude) and <a href="https://anthropic.skilljar.com/ai-fluency-for-nonprofits" style="color: #87B7D5; text-decoration: underline;">AI Fluency for Nonprofits</a> (4D framework for mission-driven work). Both earn certificates.</p>
             </div>
             <div style="background: rgba(255,255,255,0.08); border-left: 4px solid #8352FF; padding: 1rem; border-radius: 4px;">
                 <div style="font-family: 'Noto Serif SemiCondensed', Georgia, serif; font-weight: 700; color: #8352FF; margin-bottom: 0.5rem;">2. Take the Pre-Launch Survey</div>
@@ -1067,6 +1067,7 @@
             <button class="tab-button" data-tab="files" data-accent="gold">File Management Rules</button>
             <button class="tab-button" data-tab="skills" data-accent="blue">DC CAP Skills</button>
             <button class="tab-button" data-tab="governance" data-accent="navy">Governance Ownership</button>
+            <button class="tab-button" data-tab="glossary" data-accent="blue">Key Terms</button>
             <button class="tab-button" data-tab="principles" data-accent="purple">Responsible Use Principles</button>
         </div>
     </nav>
@@ -1525,6 +1526,53 @@
 
             <div class="escalation-box">
                 <strong>Escalation path:</strong> If you encounter a situation where you're unsure whether Claude use is appropriate — a data classification question, an output you're not confident about, a use case that feels like it's in a gray area — escalate to the Innovation Hub (<strong>Preston Magouirk</strong>). The pilot is designed to surface these edge cases. Flagging them is expected.
+            </div>
+        </section>
+
+        <section id="glossary" class="tab-content">
+            <div class="section-title">
+                <div class="accent-bar blue"></div>
+                Key Terms
+            </div>
+
+            <article class="principle">
+                <div class="principle-num">1</div>
+                <h3>Hallucination</h3>
+                <p>When Claude confidently states something that isn't true. Like when a person misremembers a fact. Always verify Claude's factual claims, especially names, dates, statistics, and specific details. This is why the review step matters.</p>
+            </article>
+
+            <article class="principle">
+                <div class="principle-num">2</div>
+                <h3>Context Window</h3>
+                <p>How much information Claude can hold in one conversation. Think of it as how many pages Claude can read at once. DC CAP's Claude instances have a large context window, so you can include substantial documents without worrying about length.</p>
+            </article>
+
+            <article class="principle">
+                <div class="principle-num">3</div>
+                <h3>Prompt</h3>
+                <p>Your question or instruction to Claude. Clearer, more specific prompts produce better outputs. "Summarize this document" is weaker than "Summarize this document focusing on key findings for a funder audience." Details matter.</p>
+            </article>
+
+            <article class="principle">
+                <div class="principle-num">4</div>
+                <h3>Iteration</h3>
+                <p>Revising your request based on what Claude gives you. "Make this shorter." "Add an example." "Rewrite this in a more conversational tone." This is how you get good results. Iteration is where fluency develops.</p>
+            </article>
+
+            <article class="principle">
+                <div class="principle-num">5</div>
+                <h3>Skills</h3>
+                <p>Pre-built instructions that encode DC CAP's organizational knowledge. They activate automatically when you describe your task. Example: our "funder-framing" skill knows DC CAP's voice, evidence standards, and target audiences. You write what you need; the skill shapes how Claude responds.</p>
+            </article>
+
+            <article class="principle">
+                <div class="principle-num">6</div>
+                <h3>Token</h3>
+                <p>A small unit of text Claude processes. You don't need to worry about this—Claude handles it automatically. Tokens are how we count language processing, but from your perspective, just think about the length and complexity of what you're asking.</p>
+            </article>
+
+            <div class="footer-callout">
+                These terms appear throughout DC CAP's AI training materials. Knowing them helps you understand how to work effectively with Claude and troubleshoot when something isn't working the way you expected.
             </div>
         </section>
 

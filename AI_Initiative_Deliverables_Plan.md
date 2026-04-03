@@ -58,7 +58,7 @@ Ship deadline: **April 3, 2026.** Five working days from today.
 
 - **Slide 1 — Title:** "We Built Something. Now We Use It." DC CAP wordmark. Pilot dates (April 6 – June 5). Cohort size (9 staff, 3 units). Minimal. Confident.
 - **Slide 2 — The Frame:** "Over the next 60 days, you are co-investigators." You log what you observe, surface what breaks, teach what you learn. One sentence. Full-bleed typography.
-- **Slide 3 — What's Already Built:** Visual inventory — 7 skills, governance framework, user guide, 24 seats, $600K KPMG grant. This is infrastructure waiting to be used. Icon-based layout, no paragraph text.
+- **Slide 3 — What's Already Built:** Visual inventory — 24 skills, governance framework, user guide, 24 seats, $600K KPMG grant. This is infrastructure waiting to be used. Icon-based layout, no paragraph text.
 
 **Context Block (Slides 4–5) — 5 min**
 
@@ -122,7 +122,7 @@ Each pair selects a real work task from their current to-do list. Write a weak p
 *Embedded in: First supervised use sessions (April 20–21)*
 *4D Focus: Delegation | Modality: Automation + Augmentation*
 
-Each participant attempts to trigger all seven skills using natural language — without looking at trigger descriptions. Note which triggers worked immediately, which required iteration, and which they couldn't crack. Group debrief at end of April 21: what made some triggers obvious and others opaque?
+Each participant attempts to trigger DC CAP skills using natural language — without looking at trigger descriptions. Note which triggers worked immediately, which required iteration, and which they couldn't crack. Group debrief at end of April 21: what made some triggers obvious and others opaque?
 
 *Who leads:* Self-directed, then group debrief. Results shared in a team Slack thread.
 *Output:* Crowd-sourced trigger phrase library. Preston uses this to refine skill descriptions before Phase 2.
@@ -185,7 +185,7 @@ Starting Week 3 and continuing at every weekly check-in, Preston opens with a 60
 
 - **Facilitator Orientation (5 slides):** How to run a kickoff. What questions to expect. How to handle "I don't see why I need this." How to create safety for people worried about job implications.
 - **The 4Ds in Your Own Words (activity):** Each trainer explains one D without using the word itself. Forces genuine internalization.
-- **Skill Demo Script:** Step-by-step live demonstration for all seven skills. What to type, what Claude should produce, what to highlight.
+- **Skill Demo Script:** Step-by-step live demonstration for DC CAP skills. What to type, what Claude should produce, what to highlight.
 - **Governance Q&A Bank:** 15 common questions with approved answers. Including: "Can Claude see my emails?", "What if I upload something I shouldn't?", "Does this replace any jobs?"
 - **Feedback Collection Protocol:** How to gather, log, and surface feedback from new cohorts.
 
