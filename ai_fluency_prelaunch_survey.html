@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DC CAP AI Fluency Assessment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy: #101A4C;
+            --purple: #8352FF;
+            --blue: #87B7D5;
+            --gold: #FCB017;
+            --tan: #FFF4ED;
+            --white: #FFFFFF;
+            --dark-gray: #333333;
+            --font-display: 'Akkordeon Ten', 'Noto Serif SemiCondensed', Georgia, serif;
+            --font-body: 'Noto Serif', Georgia, serif;
+            --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            background-color: var(--tan);
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            background-color: var(--white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--purple) 0%, var(--blue) 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.5rem, 4vw, 1.8rem);
+            color: var(--navy);
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        h3 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            color: var(--purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            color: var(--blue);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .section-description {
+            font-size: clamp(0.95rem, 1.8vw, 1rem);
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .intro-text {
+            background-color: var(--tan);
+            padding: 1.5rem;
+            border-left: 4px solid var(--purple);
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            font-size: clamp(0.95rem, 1.8vw, 1rem);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+            font-size: clamp(0.95rem, 1.8vw, 1rem);
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: clamp(0.95rem, 1.8vw, 1rem);
+            transition: border-color 0.2s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--purple);
+            box-shadow: 0 0 0 3px rgba(131, 82, 255, 0.1);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+            font-family: var(--font-body);
+        }
+
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .radio-option,
+        .checkbox-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-top: 0.3rem;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .radio-option label,
+        .checkbox-option label {
+            margin-bottom: 0;
+            font-weight: 400;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .likert-scale {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+        }
+
+        .likert-option {
+            flex: 1;
+            text-align: center;
+        }
+
+        .likert-option input[type="radio"] {
+            display: block;
+            margin: 0 auto 0.25rem;
+        }
+
+        .likert-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: clamp(0.75rem, 1.3vw, 0.85rem);
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .likert-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .likert-item:last-child {
+            border-bottom: none;
+        }
+
+        .likert-item-text {
+            font-size: clamp(0.95rem, 1.8vw, 1rem);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .mc-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 0.75rem;
+        }
+
+        .mc-option:hover {
+            background-color: var(--tan);
+            border-color: var(--gold);
+        }
+
+        .mc-option input[type="radio"] {
+            margin-top: 0.3rem;
+        }
+
+        .mc-option label {
+            margin-bottom: 0;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .code-box {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: clamp(0.9rem, 1.6vw, 0.95rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            color: var(--navy);
+        }
+
+        .evaluation-box {
+            background-color: #fafafa;
+            border: 2px solid var(--gold);
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .evaluation-header {
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-size: clamp(0.95rem, 1.8vw, 1rem);
+        }
+
+        .evaluation-content {
+            font-size: clamp(0.9rem, 1.6vw, 0.95rem);
+            line-height: 1.8;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .required-indicator {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: clamp(0.85rem, 1.5vw, 0.9rem);
+            margin-top: 0.25rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 2px solid #eee;
+        }
+
+        button {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: clamp(0.95rem, 1.8vw, 1rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: var(--font-body);
+        }
+
+        .btn-primary {
+            background-color: var(--purple);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #6b3bd4;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(131, 82, 255, 0.2);
+        }
+
+        .btn-primary:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background-color: var(--blue);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: #6da0bf;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(135, 183, 213, 0.2);
+        }
+
+        .btn-secondary:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-tertiary {
+            background-color: var(--tan);
+            color: var(--navy);
+            border: 2px solid var(--navy);
+        }
+
+        .btn-tertiary:hover {
+            background-color: var(--white);
+            border-color: var(--purple);
+            color: var(--purple);
+        }
+
+        /* Results Page Styles */
+        .results-container {
+            display: none;
+        }
+
+        .results-container.active {
+            display: block;
+        }
+
+        .participant-card {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--purple) 100%);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .participant-card h3 {
+            color: var(--gold);
+            margin-top: 0;
+        }
+
+        .card-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .card-item {
+            font-size: clamp(0.9rem, 1.6vw, 0.95rem);
+        }
+
+        .card-label {
+            opacity: 0.9;
+            font-size: clamp(0.8rem, 1.4vw, 0.85rem);
+        }
+
+        .card-value {
+            font-weight: 700;
+            font-size: clamp(1rem, 1.8vw, 1.1rem);
+            margin-top: 0.25rem;
+        }
+
+        .radar-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            background-color: var(--tan);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .radar-canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .score-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: clamp(0.9rem, 1.6vw, 0.95rem);
+        }
+
+        .score-table thead {
+            background-color: var(--navy);
+            color: var(--white);
+        }
+
+        .score-table th,
+        .score-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .score-table th {
+            font-weight: 700;
+        }
+
+        .score-table tbody tr:hover {
+            background-color: var(--tan);
+        }
+
+        .construct-card {
+            background-color: var(--tan);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--purple);
+        }
+
+        .construct-card h4 {
+            font-family: var(--font-subhead);
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+            font-size: clamp(1rem, 1.8vw, 1.1rem);
+        }
+
+        .construct-score {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: clamp(0.9rem, 1.6vw, 0.95rem);
+        }
+
+        .construct-score-value {
+            font-weight: 700;
+            font-size: clamp(1.2rem, 2vw, 1.4rem);
+            color: var(--purple);
+        }
+
+        .construct-items {
+            font-size: clamp(0.85rem, 1.5vw, 0.9rem);
+            line-height: 1.8;
+            color: var(--dark-gray);
+        }
+
+        .construct-item {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+        }
+
+        .export-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+
+        .btn-export {
+            background-color: var(--gold);
+            color: var(--navy);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-export:hover {
+            background-color: #f0a300;
+            border-color: #f0a300;
+        }
+
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: none;
+            font-size: clamp(0.9rem, 1.6vw, 0.95rem);
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Validation Highlight */
+        .form-group.invalid input,
+        .form-group.invalid select,
+        .form-group.invalid textarea,
+        .likert-item.invalid,
+        .mc-question.invalid {
+            border-color: var(--gold) !important;
+            box-shadow: 0 0 0 3px rgba(252, 176, 23, 0.2) !important;
+        }
+
+        .invalid-prompt {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: clamp(0.85rem, 1.5vw, 0.9rem);
+            display: none;
+        }
+
+        .invalid-prompt.show {
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: var(--white);
+            }
+
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+                padding: 0;
+            }
+
+            .progress-bar,
+            .nav-buttons {
+                display: none !important;
+            }
+
+            .page {
+                display: block !important;
+                page-break-after: always;
+                padding-bottom: 2rem;
+            }
+
+            .results-container {
+                display: block !important;
+            }
+
+            h1, h2, h3 {
+                page-break-after: avoid;
+            }
+
+            .construct-card {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .card-row {
+                grid-template-columns: 1fr;
+            }
+
+            .score-table {
+                font-size: 0.85rem;
+            }
+
+            .score-table th,
+            .score-table td {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+
+        <!-- Page 1: Welcome & Participant Info -->
+        <div class="page active" data-page="1">
+            <h1>DC CAP AI Fluency Assessment</h1>
+            <p class="subtitle">Enterprise AI Leadership Pilot — Pre-Launch Baseline</p>
+
+            <div class="intro-text">
+                <p>This assessment measures your current orientation toward AI, learning preferences, existing knowledge, and applied skills. It takes approximately 12-15 minutes. Your responses will help shape the pilot experience and measure growth over the 60-day program.</p>
+            </div>
+
+            <form id="pageForm1">
+                <fieldset>
+                    <legend style="display: none;">Participant Information</legend>
+
+                    <div class="form-group">
+                        <label for="participantName">Name <span class="required-indicator">*</span></label>
+                        <input type="text" id="participantName" name="participantName" required>
+                        <div class="error-message" style="display: none;">Please enter your name</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="participantUnit">Unit/Team <span class="required-indicator">*</span></label>
+                        <select id="participantUnit" name="participantUnit" required>
+                            <option value="">-- Select --</option>
+                            <option value="Innovation Hub">Innovation Hub</option>
+                            <option value="Program Strategy & Student Success">Program Strategy & Student Success</option>
+                            <option value="Data & Technology">Data & Technology</option>
+                        </select>
+                        <div class="error-message" style="display: none;">Please select a unit/team</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="participantDate">Date <span class="required-indicator">*</span></label>
+                        <input type="date" id="participantDate" name="participantDate" required>
+                        <div class="error-message" style="display: none;">Please select a date</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Survey Mode <span class="required-indicator">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="modePreLaunch" name="surveyMode" value="Pre-Launch" checked>
+                                <label for="modePreLaunch">Pre-Launch Baseline</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="modePostPilot" name="surveyMode" value="Post-Pilot">
+                                <label for="modePostPilot">Post-Pilot Assessment</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+            <div class="nav-buttons">
+                <button class="btn-secondary" onclick="previousPage()" style="visibility: hidden;">Back</button>
+                <button class="btn-primary" onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+        <!-- Page 2: AI Orientation -->
+        <div class="page" data-page="2">
+            <h2>Your Orientation Toward AI</h2>
+            <p class="section-description">Rate your agreement with each statement.</p>
+
+            <form id="pageForm2">
+                <fieldset>
+                    <legend style="display: none;">AI Orientation</legend>
+
+                    <div class="likert-labels">
+                        <span>Strongly Disagree</span>
+                        <span>Strongly Agree</span>
+                    </div>
+
+                    <div class="likert-item" data-item="1" data-reverse="false">
+                        <div class="likert-item-text">I believe AI tools can meaningfully improve the quality of my work.</div>
+                        <div class="likert-scale">
+                            <div class="likert-option"><input type="radio" name="orient_1" value="1"><div>1</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_1" value="2"><div>2</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_1" value="3"><div>3</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_1" value="4"><div>4</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_1" value="5"><div>5</div></div>
+                        </div>
+                    </div>
+
+                    <div class="likert-item" data-item="2" data-reverse="false">
+                        <div class="likert-item-text">I feel confident in my ability to learn and use new AI tools.</div>
+                        <div class="likert-scale">
+                            <div class="likert-option"><input type="radio" name="orient_2" value="1"><div>1</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_2" value="2"><div>2</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_2" value="3"><div>3</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_2" value="4"><div>4</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_2" value="5"><div>5</div></div>
+                        </div>
+                    </div>
+
+                    <div class="likert-item" data-item="3" data-reverse="true">
+                        <div class="likert-item-text">I am concerned that AI could produce errors that affect our students or programs.</div>
+                        <div class="likert-scale">
+                            <div class="likert-option"><input type="radio" name="orient_3" value="1"><div>1</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_3" value="2"><div>2</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_3" value="3"><div>3</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_3" value="4"><div>4</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_3" value="5"><div>5</div></div>
+                        </div>
+                    </div>
+
+                    <div class="likert-item" data-item="4" data-reverse="false">
+                        <div class="likert-item-text">I see AI as directly relevant to my specific role at DC CAP.</div>
+                        <div class="likert-scale">
+                            <div class="likert-option"><input type="radio" name="orient_4" value="1"><div>1</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_4" value="2"><div>2</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_4" value="3"><div>3</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_4" value="4"><div>4</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_4" value="5"><div>5</div></div>
+                        </div>
+                    </div>
+
+                    <div class="likert-item" data-item="5" data-reverse="false">
+                        <div class="likert-item-text">I am excited about the opportunity to integrate AI into my daily work.</div>
+                        <div class="likert-scale">
+                            <div class="likert-option"><input type="radio" name="orient_5" value="1"><div>1</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_5" value="2"><div>2</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_5" value="3"><div>3</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_5" value="4"><div>4</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_5" value="5"><div>5</div></div>
+                        </div>
+                    </div>
+
+                    <div class="likert-item" data-item="6" data-reverse="true">
+                        <div class="likert-item-text">I worry that AI adoption will create more work rather than save time.</div>
+                        <div class="likert-scale">
+                            <div class="likert-option"><input type="radio" name="orient_6" value="1"><div>1</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_6" value="2"><div>2</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_6" value="3"><div>3</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_6" value="4"><div>4</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_6" value="5"><div>5</div></div>
+                        </div>
+                    </div>
+
+                    <div class="likert-item" data-item="7" data-reverse="false">
+                        <div class="likert-item-text">DC CAP should be a leader in AI adoption among nonprofit organizations.</div>
+                        <div class="likert-scale">
+                            <div class="likert-option"><input type="radio" name="orient_7" value="1"><div>1</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_7" value="2"><div>2</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_7" value="3"><div>3</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_7" value="4"><div>4</div></div>
+                            <div class="likert-option"><input type="radio" name="orient_7" value="5"><div>5</div></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+            <div class="nav-buttons">
+                <button class="btn-secondary" onclick="previousPage()">Back</button>
+                <button class="btn-primary" onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+        <!-- Page 3: Learning Orientation -->
+        <div class="page" data-page="3">
+            <h2>How You Learn</h2>
+            <p class="section-description">Rate your agreement with each statement about how you approach learning new tools and technologies.</p>
+
+            <form id="pageForm3">
+                <fieldset>
+                    <legend style="display: none;">Learning Orientation</legend>
+
+                    <div class="likert-labels">
+                        <span>Strongly Disagree</span>
+                        <span>Strongly Agree</span>
+                    </div>
+
+                    <div class="likert-item" data-item="1" data-reverse="false">
+                        <div class="likert-item-text">When I encounter a tool I don't understand, I enjoy figuring it out.</div>
+                        <div class="likert-scale">
+                            <div class="likert-option"><input type="radio" name="learn_1" value="1"><div>1</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_1" value="2"><div>2</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_1" value="3"><div>3</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_1" value="4"><div>4</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_1" value="5"><div>5</div></div>
+                        </div>
+                    </div>
+
+                    <div class="likert-item" data-item="2" data-reverse="false">
+                        <div class="likert-item-text">I learn best by trying things and iterating, even if my first attempt fails.</div>
+                        <div class="likert-scale">
+                            <div class="likert-option"><input type="radio" name="learn_2" value="1"><div>1</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_2" value="2"><div>2</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_2" value="3"><div>3</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_2" value="4"><div>4</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_2" value="5"><div>5</div></div>
+                        </div>
+                    </div>
+
+                    <div class="likert-item" data-item="3" data-reverse="false">
+                        <div class="likert-item-text">I am comfortable asking colleagues for help when learning something new.</div>
+                        <div class="likert-scale">
+                            <div class="likert-option"><input type="radio" name="learn_3" value="1"><div>1</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_3" value="2"><div>2</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_3" value="3"><div>3</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_3" value="4"><div>4</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_3" value="5"><div>5</div></div>
+                        </div>
+                    </div>
+
+                    <div class="likert-item" data-item="4" data-reverse="true">
+                        <div class="likert-item-text">I prefer to wait for clear instructions rather than experiment on my own.</div>
+                        <div class="likert-scale">
+                            <div class="likert-option"><input type="radio" name="learn_4" value="1"><div>1</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_4" value="2"><div>2</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_4" value="3"><div>3</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_4" value="4"><div>4</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_4" value="5"><div>5</div></div>
+                        </div>
+                    </div>
+
+                    <div class="likert-item" data-item="5" data-reverse="false">
+                        <div class="likert-item-text">Making mistakes is a valuable part of learning new technology.</div>
+                        <div class="likert-scale">
+                            <div class="likert-option"><input type="radio" name="learn_5" value="1"><div>1</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_5" value="2"><div>2</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_5" value="3"><div>3</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_5" value="4"><div>4</div></div>
+                            <div class="likert-option"><input type="radio" name="learn_5" value="5"><div>5</div></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+            <div class="nav-buttons">
+                <button class="btn-secondary" onclick="previousPage()">Back</button>
+                <button class="btn-primary" onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+        <!-- Page 4: Current AI Use -->
+        <div class="page" data-page="4">
+            <h2>Your Current AI Use</h2>
+            <p class="section-description">How often do you currently use AI tools (Claude, ChatGPT, Copilot, or any other AI) for each of the following?</p>
+
+            <form id="pageForm4">
+                <fieldset>
+                    <legend style="display: none;">Current AI Use</legend>
+
+                    <div class="likert-labels">
+                        <span>Never</span>
+                        <span>Daily</span>
+                    </div>
+
+                    <div class="likert-item" data-item="1">
+                        <div class="likert-item-text">Draft or edit written communications (emails, memos, messages)</div>
+                        <div class="likert-scale">
+                            <div class="likert-option"><input type="radio" name="use_1" value="1"><div>Never</div></div>
+                            <div class="likert-option"><input type="radio" name="use_1" value="2"><div>Rarely</div></div>
+                            <div class="likert-option"><input type="radio" name="use_1" value="3"><div>Sometimes</div></div>
+                            <div class="likert-option"><input type="radio" name="use_1" value="4"><div>Often</div></div>
+                            <div class="likert-option"><input type="radio" name="use_1" value="5"><div>Daily</div></div>
+                        </div>
+                    </div>
+
+                    <div class="likert-item" data-item="2">
+                        <div class="likert-item-text">Analyze, summarize, or synthesize information</div>
+                        <div class="likert-scale">
+                            <div class="likert-option"><input type="radio" name="use_2" value="1"><div>Never</div></div>
+                            <div class="likert-option"><input type="radio" name="use_2" value="2"><div>Rarely</div></div>
+                            <div class="likert-option"><input type="radio" name="use_2" value="3"><div>Sometimes</div></div>
+                            <div class="likert-option"><input type="radio" name="use_2" value="4"><div>Often</div></div>
+                            <div class="likert-option"><input type="radio" name="use_2" value="5"><div>Daily</div></div>
+                        </div>
+                    </div>
+
+                    <div class="likert-item" data-item="3">
+                        <div class="likert-item-text">Brainstorm ideas or develop strategies</div>
+                        <div class="likert-scale">
+                            <div class="likert-option"><input type="radio" name="use_3" value="1"><div>Never</div></div>
+                            <div class="likert-option"><input type="radio" name="use_3" value="2"><div>Rarely</div></div>
+                            <div class="likert-option"><input type="radio" name="use_3" value="3"><div>Sometimes</div></div>
+                            <div class="likert-option"><input type="radio" name="use_3" value="4"><div>Often</div></div>
+                            <div class="likert-option"><input type="radio" name="use_3" value="5"><div>Daily</div></div>
+                        </div>
+                    </div>
+
+                    <div class="likert-item" data-item="4">
+                        <div class="likert-item-text">Create or format documents, presentations, or reports</div>
+                        <div class="likert-scale">
+                            <div class="likert-option"><input type="radio" name="use_4" value="1"><div>Never</div></div>
+                            <div class="likert-option"><input type="radio" name="use_4" value="2"><div>Rarely</div></div>
+                            <div class="likert-option"><input type="radio" name="use_4" value="3"><div>Sometimes</div></div>
+                            <div class="likert-option"><input type="radio" name="use_4" value="4"><div>Often</div></div>
+                            <div class="likert-option"><input type="radio" name="use_4" value="5"><div>Daily</div></div>
+                        </div>
+                    </div>
+
+                    <div class="likert-item" data-item="5">
+                        <div class="likert-item-text">Look up information or research topics</div>
+                        <div class="likert-scale">
+                            <div class="likert-option"><input type="radio" name="use_5" value="1"><div>Never</div></div>
+                            <div class="likert-option"><input type="radio" name="use_5" value="2"><div>Rarely</div></div>
+                            <div class="likert-option"><input type="radio" name="use_5" value="3"><div>Sometimes</div></div>
+                            <div class="likert-option"><input type="radio" name="use_5" value="4"><div>Often</div></div>
+                            <div class="likert-option"><input type="radio" name="use_5" value="5"><div>Daily</div></div>
+                        </div>
+                    </div>
+
+                    <div class="likert-item" data-item="6">
+                        <div class="likert-item-text">Review and refine AI-generated output before using it</div>
+                        <div class="likert-scale">
+                            <div class="likert-option"><input type="radio" name="use_6" value="1"><div>Never</div></div>
+                            <div class="likert-option"><input type="radio" name="use_6" value="2"><div>Rarely</div></div>
+                            <div class="likert-option"><input type="radio" name="use_6" value="3"><div>Sometimes</div></div>
+                            <div class="likert-option"><input type="radio" name="use_6" value="4"><div>Often</div></div>
+                            <div class="likert-option"><input type="radio" name="use_6" value="5"><div>Daily</div></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+            <div class="nav-buttons">
+                <button class="btn-secondary" onclick="previousPage()">Back</button>
+                <button class="btn-primary" onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+        <!-- Page 5: AI Knowledge -->
+        <div class="page" data-page="5">
+            <h2>AI Concepts & Frameworks</h2>
+            <p class="section-description">Select the best answer for each question. These assess your current understanding of AI concepts and the frameworks we'll use during the pilot.</p>
+
+            <form id="pageForm5">
+                <fieldset>
+                    <legend style="display: none;">AI Knowledge</legend>
+
+                    <div class="mc-question" data-item="1">
+                        <h3>In AI, a "hallucination" refers to:</h3>
+                        <div class="mc-option">
+                            <input type="radio" id="q1_a" name="knowledge_1" value="a">
+                            <label for="q1_a">When the AI refuses to answer a question</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q1_b" name="knowledge_1" value="b">
+                            <label for="q1_b">When the AI confidently generates plausible but incorrect information</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q1_c" name="knowledge_1" value="c">
+                            <label for="q1_c">When the AI produces garbled or unreadable text</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q1_d" name="knowledge_1" value="d">
+                            <label for="q1_d">When the AI copies text directly from its training data</label>
+                        </div>
+                    </div>
+
+                    <div class="mc-question" data-item="2">
+                        <h3>The "context window" of an AI model is:</h3>
+                        <div class="mc-option">
+                            <input type="radio" id="q2_a" name="knowledge_2" value="a">
+                            <label for="q2_a">The time period during which the AI was trained</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q2_b" name="knowledge_2" value="b">
+                            <label for="q2_b">The total amount of information the AI can consider at one time</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q2_c" name="knowledge_2" value="c">
+                            <label for="q2_c">The physical screen where you interact with the AI</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q2_d" name="knowledge_2" value="d">
+                            <label for="q2_d">The AI's memory of previous conversations from different sessions</label>
+                        </div>
+                    </div>
+
+                    <div class="mc-question" data-item="3">
+                        <h3>You ask Claude to summarize a 30-page PDF into three bullet points. This is an example of:</h3>
+                        <div class="mc-option">
+                            <input type="radio" id="q3_a" name="knowledge_3" value="a">
+                            <label for="q3_a">Automation</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q3_b" name="knowledge_3" value="b">
+                            <label for="q3_b">Augmentation</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q3_c" name="knowledge_3" value="c">
+                            <label for="q3_c">Agency</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q3_d" name="knowledge_3" value="d">
+                            <label for="q3_d">None of the above</label>
+                        </div>
+                    </div>
+
+                    <div class="mc-question" data-item="4">
+                        <h3>You and Claude spend 20 minutes iteratively refining a grant narrative together. This is an example of:</h3>
+                        <div class="mc-option">
+                            <input type="radio" id="q4_a" name="knowledge_4" value="a">
+                            <label for="q4_a">Automation</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q4_b" name="knowledge_4" value="b">
+                            <label for="q4_b">Augmentation</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q4_c" name="knowledge_4" value="c">
+                            <label for="q4_c">Agency</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q4_d" name="knowledge_4" value="d">
+                            <label for="q4_d">None of the above</label>
+                        </div>
+                    </div>
+
+                    <div class="mc-question" data-item="5">
+                        <h3>You write Project Instructions so any team member who opens a Claude project gets consistent, on-brand outputs. This is an example of:</h3>
+                        <div class="mc-option">
+                            <input type="radio" id="q5_a" name="knowledge_5" value="a">
+                            <label for="q5_a">Automation</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q5_b" name="knowledge_5" value="b">
+                            <label for="q5_b">Augmentation</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q5_c" name="knowledge_5" value="c">
+                            <label for="q5_c">Agency</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q5_d" name="knowledge_5" value="d">
+                            <label for="q5_d">None of the above</label>
+                        </div>
+                    </div>
+
+                    <div class="mc-question" data-item="6">
+                        <h3>A spreadsheet containing scholar names and GPAs should be classified as:</h3>
+                        <div class="mc-option">
+                            <input type="radio" id="q6_a" name="knowledge_6" value="a">
+                            <label for="q6_a">Tier 4 — Public</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q6_b" name="knowledge_6" value="b">
+                            <label for="q6_b">Tier 3 — Internal</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q6_c" name="knowledge_6" value="c">
+                            <label for="q6_c">Tier 2 — Sensitive</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q6_d" name="knowledge_6" value="d">
+                            <label for="q6_d">Tier 1 — Restricted</label>
+                        </div>
+                    </div>
+
+                    <div class="mc-question" data-item="7">
+                        <h3>Which 4D competency is most relevant when deciding whether a task is suitable for AI?</h3>
+                        <div class="mc-option">
+                            <input type="radio" id="q7_a" name="knowledge_7" value="a">
+                            <label for="q7_a">Delegation</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q7_b" name="knowledge_7" value="b">
+                            <label for="q7_b">Description</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q7_c" name="knowledge_7" value="c">
+                            <label for="q7_c">Discernment</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q7_d" name="knowledge_7" value="d">
+                            <label for="q7_d">Diligence</label>
+                        </div>
+                    </div>
+
+                    <div class="mc-question" data-item="8">
+                        <h3>"Claude drafted it. You own it." This principle best reflects which competency?</h3>
+                        <div class="mc-option">
+                            <input type="radio" id="q8_a" name="knowledge_8" value="a">
+                            <label for="q8_a">Delegation</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q8_b" name="knowledge_8" value="b">
+                            <label for="q8_b">Description</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q8_c" name="knowledge_8" value="c">
+                            <label for="q8_c">Discernment</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q8_d" name="knowledge_8" value="d">
+                            <label for="q8_d">Diligence</label>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+            <div class="nav-buttons">
+                <button class="btn-secondary" onclick="previousPage()">Back</button>
+                <button class="btn-primary" onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+        <!-- Page 6: Skills Task A -->
+        <div class="page" data-page="6">
+            <h2>Applied Skill: Prompt Writing</h2>
+            <p class="section-description">Below is a weak prompt. Rewrite it as a strong, effective prompt that would produce a useful output from Claude. There's no single right answer — we're looking for specificity, context, and clarity.</p>
+
+            <form id="pageForm6">
+                <fieldset>
+                    <legend style="display: none;">Prompt Improvement Task</legend>
+
+                    <div class="code-box">Write an email about the scholarship deadline.</div>
+
+                    <div class="form-group">
+                        <label for="taskAPrompt">Your Improved Prompt <span class="required-indicator">*</span></label>
+                        <textarea id="taskAPrompt" name="taskAPrompt" required placeholder="Write your improved prompt here..."></textarea>
+                        <div class="error-message" style="display: none;">Please write an improved prompt</div>
+                    </div>
+
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Self-Assessment</h3>
+                    <p class="section-description">Check each element you included in your improved prompt:</p>
+
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="taskA_1" name="taskA_audience">
+                            <label for="taskA_1">My improved prompt specifies who the email is for (the audience)</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="taskA_2" name="taskA_deadline">
+                            <label for="taskA_2">My improved prompt provides context about which deadline or program</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="taskA_3" name="taskA_tone">
+                            <label for="taskA_3">My improved prompt defines the desired tone or communication style</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="taskA_4" name="taskA_format">
+                            <label for="taskA_4">My improved prompt includes format specifications or constraints (length, structure, etc.)</label>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+            <div class="nav-buttons">
+                <button class="btn-secondary" onclick="previousPage()">Back</button>
+                <button class="btn-primary" onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+        <!-- Page 7: Skills Task B -->
+        <div class="page" data-page="7">
+            <h2>Applied Skill: Output Evaluation</h2>
+            <p class="section-description">Below is a Claude-generated email. Read it carefully and identify any issues. This output looks polished, but contains problems. Your job is to find them.</p>
+
+            <form id="pageForm7">
+                <fieldset>
+                    <legend style="display: none;">Output Evaluation Task</legend>
+
+                    <div class="evaluation-box">
+                        <div class="evaluation-header">Claude Output: Student Renewal Reminder Email</div>
+                        <div class="evaluation-content">Subject: URGENT: Scholarship Renewal Requirements — Immediate Action Required
+
+Dear Scholar,
+
+We are writing to inform you that your DC CAP scholarship renewal period is now open. To maintain your scholarship for the upcoming academic year, you must meet the following requirements:
+
+1. Maintain a minimum cumulative GPA of 2.0 at your institution
+2. Submit your FAFSA renewal by March 1
+3. Provide an updated DCTAG eligibility letter from OSSE
+4. Complete the DC CAP renewal form by the posted deadline
+
+Please be advised that failure to submit all required documentation by the deadline will result in immediate and permanent forfeiture of your scholarship award.
+
+Rest assured that all information you share with DC CAP is completely confidential and will never be shared with any third party.
+
+If you have questions, do not hesitate to reach out.
+
+Regards,
+DC CAP Scholarship Team</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taskBAnalysis">What issues do you see in this email? <span class="required-indicator">*</span></label>
+                        <p class="section-description" style="margin-top: -0.5rem;">List each problem and briefly explain why it matters.</p>
+                        <textarea id="taskBAnalysis" name="taskBAnalysis" required placeholder="Identify and explain the issues you found..."></textarea>
+                        <div class="error-message" style="display: none;">Please analyze the email and identify issues</div>
+                    </div>
+
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Issues Identified</h3>
+                    <p class="section-description">Check each problem you identified:</p>
+
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="taskB_1" name="taskB_gpa">
+                            <label for="taskB_1">The GPA requirement stated may not be accurate (requirements vary by university partner)</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="taskB_2" name="taskB_tone">
+                            <label for="taskB_2">The tone is too formal, impersonal, or intimidating for a student audience</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="taskB_3" name="taskB_confidentiality">
+                            <label for="taskB_3">The claim about complete confidentiality is an overpromise that may not be accurate</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="taskB_4" name="taskB_anxiety">
+                            <label for="taskB_4">The "URGENT" subject line and "immediate and permanent forfeiture" language creates unnecessary anxiety</label>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+            <!-- Governance Acknowledgment -->
+            <div style="margin-top: 2rem; padding: 1.5rem; background: #FFF4ED; border: 2px solid #101A4C; border-radius: 8px;">
+                <h3 style="color: #101A4C; font-family: 'Noto Serif SemiCondensed', Georgia, serif; margin-bottom: 0.75rem;">Governance Acknowledgment</h3>
+                <p style="font-size: 0.95em; line-height: 1.6; margin-bottom: 1rem;">By checking the box below, I certify that I have read and understand the DC CAP AI Governance Policy Framework. I acknowledge my personal responsibility for maintaining best practices within my functional area as they relate to:</p>
+                <ul style="list-style: none; padding: 0; margin: 0 0 1rem 0;">
+                    <li style="padding: 0.4em 0; padding-left: 1.5rem; position: relative; font-size: 0.95em;"><span style="position: absolute; left: 0; color: #8352FF; font-weight: bold;">→</span><strong style="color: #101A4C;">Data Security & Diligence</strong> — classifying data before upload, following the four-tier framework, and protecting student and organizational information</li>
+                    <li style="padding: 0.4em 0; padding-left: 1.5rem; position: relative; font-size: 0.95em;"><span style="position: absolute; left: 0; color: #8352FF; font-weight: bold;">→</span><strong style="color: #101A4C;">Responsible Delegation</strong> — making informed decisions about which tasks to assign to AI and maintaining human judgment on sensitive matters</li>
+                    <li style="padding: 0.4em 0; padding-left: 1.5rem; position: relative; font-size: 0.95em;"><span style="position: absolute; left: 0; color: #8352FF; font-weight: bold;">→</span><strong style="color: #101A4C;">Discernment in Review</strong> — critically evaluating all AI-generated outputs for accuracy, tone, and policy compliance before any external use</li>
+                </ul>
+                <div class="checkbox-option" style="background: white; padding: 1rem; border-radius: 6px; border: 2px solid #ddd;" id="govAckContainer">
+                    <input type="checkbox" id="governanceAck" name="governanceAck">
+                    <label for="governanceAck" style="font-weight: 600; color: #101A4C;">I have read the AI Governance Policy Framework, and I accept responsibility for upholding these standards in my use of AI tools at DC CAP.</label>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn-secondary" onclick="previousPage()">Back</button>
+                <button class="btn-primary" onclick="nextPage()">Submit Assessment</button>
+            </div>
+        </div>
+
+        <!-- Page 8: Results Dashboard -->
+        <div class="results-container" id="resultsContainer">
+            <h1>Your Results</h1>
+            <p class="subtitle">DC CAP AI Fluency Assessment Summary</p>
+
+            <div class="success-message" id="successMessage"></div>
+
+            <!-- Participant Card -->
+            <div class="participant-card">
+                <h3>Assessment Summary</h3>
+                <div class="card-row">
+                    <div class="card-item">
+                        <div class="card-label">Name</div>
+                        <div class="card-value" id="resultName">—</div>
+                    </div>
+                    <div class="card-item">
+                        <div class="card-label">Unit/Team</div>
+                        <div class="card-value" id="resultUnit">—</div>
+                    </div>
+                    <div class="card-item">
+                        <div class="card-label">Date</div>
+                        <div class="card-value" id="resultDate">—</div>
+                    </div>
+                    <div class="card-item">
+                        <div class="card-label">Survey Mode</div>
+                        <div class="card-value" id="resultMode">—</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Radar Chart -->
+            <div class="radar-container">
+                <canvas id="radarChart" class="radar-canvas" width="500" height="500"></canvas>
+            </div>
+
+            <!-- Score Breakdown Table -->
+            <h2>Score Breakdown</h2>
+            <table class="score-table">
+                <thead>
+                    <tr>
+                        <th>Construct</th>
+                        <th>Score</th>
+                        <th>Max Possible</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody id="scoreTableBody">
+                </tbody>
+            </table>
+
+            <!-- Construct Detail Cards -->
+            <h2>Detailed Results</h2>
+
+            <div class="construct-card">
+                <h4>AI Orientation</h4>
+                <div class="construct-score">
+                    <span>Total Score</span>
+                    <span class="construct-score-value" id="score_orientation">—</span>
+                </div>
+                <div class="construct-items" id="items_orientation"></div>
+            </div>
+
+            <div class="construct-card">
+                <h4>Learning Orientation</h4>
+                <div class="construct-score">
+                    <span>Total Score</span>
+                    <span class="construct-score-value" id="score_learning">—</span>
+                </div>
+                <div class="construct-items" id="items_learning"></div>
+            </div>
+
+            <div class="construct-card">
+                <h4>Current AI Use</h4>
+                <div class="construct-score">
+                    <span>Total Score</span>
+                    <span class="construct-score-value" id="score_use">—</span>
+                </div>
+                <div class="construct-items" id="items_use"></div>
+            </div>
+
+            <div class="construct-card">
+                <h4>AI Knowledge</h4>
+                <div class="construct-score">
+                    <span>Total Score</span>
+                    <span class="construct-score-value" id="score_knowledge">—</span>
+                </div>
+                <div class="construct-items" id="items_knowledge"></div>
+            </div>
+
+            <div class="construct-card">
+                <h4>Applied Skills</h4>
+                <div class="construct-score">
+                    <span>Total Score</span>
+                    <span class="construct-score-value" id="score_skills">—</span>
+                </div>
+                <div class="construct-items" id="items_skills"></div>
+            </div>
+
+            <!-- Export Buttons -->
+            <div class="export-buttons">
+                <button class="btn-export" onclick="copyResultsAsJSON()">Copy Results as JSON</button>
+                <button class="btn-export" onclick="window.print()">Print Results</button>
+            </div>
+
+            <!-- Navigation -->
+            <div class="nav-buttons">
+                <button class="btn-secondary" onclick="startOver()">Start Over</button>
+                <button class="btn-tertiary" style="visibility: hidden;">Complete</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== GLOBAL STATE ====================
+        const state = {
+            currentPage: 1,
+            responses: {},
+            scores: {}
+        };
+
+        // Initialize today's date
+        window.addEventListener('load', function() {
+            const dateInput = document.getElementById('participantDate');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.value = today;
+            }
+        });
+
+        // ==================== NAVIGATION ====================
+        function nextPage() {
+            if (!validateCurrentPage()) {
+                return;
+            }
+            saveCurrentPageResponses();
+            state.currentPage++;
+            if (state.currentPage > 7) {
+                showResults();
+            } else {
+                goToPage(state.currentPage);
+            }
+        }
+
+        function previousPage() {
+            if (state.currentPage > 1) {
+                saveCurrentPageResponses();
+                state.currentPage--;
+                goToPage(state.currentPage);
+            }
+        }
+
+        function goToPage(pageNum) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show current page
+            document.querySelector(`[data-page="${pageNum}"]`).classList.add('active');
+
+            // Update progress bar
+            const progress = (pageNum / 7) * 100;
+            document.querySelector('.progress-fill').style.width = progress + '%';
+
+            // Update back button visibility
+            const backBtn = document.querySelector('.nav-buttons .btn-secondary');
+            if (backBtn) {
+                backBtn.style.visibility = pageNum === 1 ? 'hidden' : 'visible';
+            }
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // ==================== VALIDATION ====================
+        function validateCurrentPage() {
+            const form = document.getElementById(`pageForm${state.currentPage}`);
+            if (!form) return true;
+
+            let isValid = true;
+            let firstInvalidElement = null;
+
+            // Check text/date inputs
+            form.querySelectorAll('input[type="text"], input[type="date"], select, textarea').forEach(input => {
+                if (input.hasAttribute('required') && !input.value.trim()) {
+                    const group = input.closest('.form-group');
+                    if (group) {
+                        group.classList.add('invalid');
+                        const error = group.querySelector('.error-message');
+                        if (error) error.style.display = 'block';
+                    }
+                    isValid = false;
+                    if (!firstInvalidElement) firstInvalidElement = input;
+                } else {
+                    const group = input.closest('.form-group');
+                    if (group) {
+                        group.classList.remove('invalid');
+                        const error = group.querySelector('.error-message');
+                        if (error) error.style.display = 'none';
+                    }
+                }
+            });
+
+            // Check radio buttons (for Likert scales)
+            if (state.currentPage >= 2 && state.currentPage <= 5) {
+                const likertItems = form.querySelectorAll('.likert-item');
+                likertItems.forEach(item => {
+                    const checked = item.querySelector('input[type="radio"]:checked');
+                    if (!checked) {
+                        item.classList.add('invalid');
+                        isValid = false;
+                        if (!firstInvalidElement) firstInvalidElement = item;
+                    } else {
+                        item.classList.remove('invalid');
+                    }
+                });
+            }
+
+            // Check MC questions (Page 5)
+            if (state.currentPage === 5) {
+                const mcQuestions = form.querySelectorAll('.mc-question');
+                mcQuestions.forEach(question => {
+                    const checked = question.querySelector('input[type="radio"]:checked');
+                    if (!checked) {
+                        question.classList.add('invalid');
+                        isValid = false;
+                        if (!firstInvalidElement) firstInvalidElement = question;
+                    } else {
+                        question.classList.remove('invalid');
+                    }
+                });
+            }
+
+            // Check governance acknowledgment (Page 7)
+            if (state.currentPage === 7) {
+                const govAck = document.getElementById('governanceAck');
+                const govContainer = document.getElementById('govAckContainer');
+                if (govAck && !govAck.checked) {
+                    govContainer.style.borderColor = '#FCB017';
+                    govContainer.style.boxShadow = '0 0 0 3px rgba(252, 176, 23, 0.3)';
+                    isValid = false;
+                    if (!firstInvalidElement) firstInvalidElement = govAck;
+                } else if (govContainer) {
+                    govContainer.style.borderColor = '#ddd';
+                    govContainer.style.boxShadow = 'none';
+                }
+            }
+
+            if (!isValid && firstInvalidElement) {
+                firstInvalidElement.focus();
+                firstInvalidElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            return isValid;
+        }
+
+        // ==================== SAVE RESPONSES ====================
+        function saveCurrentPageResponses() {
+            const form = document.getElementById(`pageForm${state.currentPage}`);
+            if (!form) return;
+
+            if (state.currentPage === 1) {
+                state.responses.participantName = document.getElementById('participantName').value;
+                state.responses.participantUnit = document.getElementById('participantUnit').value;
+                state.responses.participantDate = document.getElementById('participantDate').value;
+                state.responses.surveyMode = document.querySelector('input[name="surveyMode"]:checked').value;
+            } else if (state.currentPage === 2) {
+                state.responses.orientation = {};
+                for (let i = 1; i <= 7; i++) {
+                    const checked = form.querySelector(`input[name="orient_${i}"]:checked`);
+                    if (checked) {
+                        state.responses.orientation[i] = parseInt(checked.value);
+                    }
+                }
+            } else if (state.currentPage === 3) {
+                state.responses.learning = {};
+                for (let i = 1; i <= 5; i++) {
+                    const checked = form.querySelector(`input[name="learn_${i}"]:checked`);
+                    if (checked) {
+                        state.responses.learning[i] = parseInt(checked.value);
+                    }
+                }
+            } else if (state.currentPage === 4) {
+                state.responses.use = {};
+                for (let i = 1; i <= 6; i++) {
+                    const checked = form.querySelector(`input[name="use_${i}"]:checked`);
+                    if (checked) {
+                        state.responses.use[i] = parseInt(checked.value);
+                    }
+                }
+            } else if (state.currentPage === 5) {
+                state.responses.knowledge = {};
+                for (let i = 1; i <= 8; i++) {
+                    const checked = form.querySelector(`input[name="knowledge_${i}"]:checked`);
+                    if (checked) {
+                        state.responses.knowledge[i] = checked.value;
+                    }
+                }
+            } else if (state.currentPage === 6) {
+                state.responses.taskA = {
+                    prompt: document.getElementById('taskAPrompt').value,
+                    audience: document.getElementById('taskA_1').checked,
+                    deadline: document.getElementById('taskA_2').checked,
+                    tone: document.getElementById('taskA_3').checked,
+                    format: document.getElementById('taskA_4').checked
+                };
+            } else if (state.currentPage === 7) {
+                state.responses.taskB = {
+                    analysis: document.getElementById('taskBAnalysis').value,
+                    gpa: document.getElementById('taskB_1').checked,
+                    tone: document.getElementById('taskB_2').checked,
+                    confidentiality: document.getElementById('taskB_3').checked,
+                    anxiety: document.getElementById('taskB_4').checked
+                };
+                state.responses.governanceAcknowledged = document.getElementById('governanceAck').checked;
+            }
+        }
+
+        // ==================== SCORING ====================
+        function calculateScores() {
+            state.scores = {};
+
+            // AI Orientation (7 items, 5-point Likert)
+            // Items 3 & 6 are reverse-scored
+            let orientationTotal = 0;
+            for (let i = 1; i <= 7; i++) {
+                let score = state.responses.orientation[i] || 0;
+                if (i === 3 || i === 6) {
+                    score = 6 - score;
+                }
+                orientationTotal += score;
+            }
+            state.scores.orientation = {
+                raw: orientationTotal,
+                max: 35,
+                percentage: (orientationTotal / 35) * 100,
+                items: state.responses.orientation
+            };
+
+            // Learning Orientation (5 items, 5-point Likert)
+            // Item 4 is reverse-scored
+            let learningTotal = 0;
+            for (let i = 1; i <= 5; i++) {
+                let score = state.responses.learning[i] || 0;
+                if (i === 4) {
+                    score = 6 - score;
+                }
+                learningTotal += score;
+            }
+            state.scores.learning = {
+                raw: learningTotal,
+                max: 25,
+                percentage: (learningTotal / 25) * 100,
+                items: state.responses.learning
+            };
+
+            // Current AI Use (6 items, 5-point frequency)
+            let useTotal = 0;
+            for (let i = 1; i <= 6; i++) {
+                useTotal += (state.responses.use[i] || 0);
+            }
+            state.scores.use = {
+                raw: useTotal,
+                max: 30,
+                percentage: (useTotal / 30) * 100,
+                items: state.responses.use
+            };
+
+            // AI Knowledge (8 MC items, 1 point each = 8 max, scale to 0-100)
+            const correctAnswers = {
+                1: 'b',
+                2: 'b',
+                3: 'a',
+                4: 'b',
+                5: 'c',
+                6: 'd',
+                7: 'a',
+                8: 'd'
+            };
+            let knowledgeTotal = 0;
+            for (let i = 1; i <= 8; i++) {
+                if (state.responses.knowledge[i] === correctAnswers[i]) {
+                    knowledgeTotal += 1;
+                }
+            }
+            state.scores.knowledge = {
+                raw: knowledgeTotal,
+                max: 8,
+                percentage: (knowledgeTotal / 8) * 100,
+                items: state.responses.knowledge,
+                correct: correctAnswers
+            };
+
+            // Applied Skills (Task A: 0-4 pts, Task B: 0-4 pts, total 0-8)
+            // Task A: count self-assessment checkboxes
+            let taskAScore = 0;
+            if (state.responses.taskA.audience) taskAScore++;
+            if (state.responses.taskA.deadline) taskAScore++;
+            if (state.responses.taskA.tone) taskAScore++;
+            if (state.responses.taskA.format) taskAScore++;
+
+            // Task B: count identified issues
+            let taskBScore = 0;
+            if (state.responses.taskB.gpa) taskBScore++;
+            if (state.responses.taskB.tone) taskBScore++;
+            if (state.responses.taskB.confidentiality) taskBScore++;
+            if (state.responses.taskB.anxiety) taskBScore++;
+
+            const skillsTotal = taskAScore + taskBScore;
+            state.scores.skills = {
+                raw: skillsTotal,
+                max: 8,
+                percentage: (skillsTotal / 8) * 100,
+                taskA: taskAScore,
+                taskB: taskBScore,
+                taskAResponse: state.responses.taskA.prompt,
+                taskBResponse: state.responses.taskB.analysis
+            };
+        }
+
+        // ==================== RESULTS DISPLAY ====================
+        function showResults() {
+            saveCurrentPageResponses();
+            calculateScores();
+
+            // Hide pages, show results
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.querySelector('.nav-buttons').style.display = 'none';
+            document.querySelector('.progress-bar').style.display = 'none';
+            document.getElementById('resultsContainer').classList.add('active');
+
+            // Populate participant info
+            document.getElementById('resultName').textContent = state.responses.participantName || '—';
+            document.getElementById('resultUnit').textContent = state.responses.participantUnit || '—';
+            document.getElementById('resultDate').textContent = state.responses.participantDate || '—';
+            document.getElementById('resultMode').textContent = state.responses.surveyMode || '—';
+
+            // Draw radar chart
+            drawRadarChart();
+
+            // Populate score table
+            populateScoreTable();
+
+            // Populate construct details
+            populateConstructDetails();
+
+            window.scrollTo(0, 0);
+        }
+
+        function drawRadarChart() {
+            const canvas = document.getElementById('radarChart');
+            const ctx = canvas.getContext('2d');
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const maxRadius = 150;
+
+            const axes = [
+                { label: 'AI Orientation', value: state.scores.orientation.percentage },
+                { label: 'Learning Orientation', value: state.scores.learning.percentage },
+                { label: 'Current AI Use', value: state.scores.use.percentage },
+                { label: 'AI Knowledge', value: state.scores.knowledge.percentage },
+                { label: 'Applied Skills', value: state.scores.skills.percentage }
+            ];
+
+            const numAxes = axes.length;
+            const angleSlice = (Math.PI * 2) / numAxes;
+
+            // Draw concentric circles
+            ctx.strokeStyle = '#ddd';
+            ctx.lineWidth = 1;
+            for (let i = 20; i <= 100; i += 20) {
+                const radius = (i / 100) * maxRadius;
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+
+            // Draw axes and labels
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 1.5;
+            ctx.fillStyle = '#666';
+            ctx.font = 'bold 12px var(--font-body)';
+            ctx.textAlign = 'center';
+
+            const points = [];
+            for (let i = 0; i < numAxes; i++) {
+                const angle = angleSlice * i - Math.PI / 2;
+                const x = centerX + maxRadius * Math.cos(angle);
+                const y = centerY + maxRadius * Math.sin(angle);
+
+                // Draw axis line
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+
+                // Draw label
+                const labelRadius = maxRadius + 30;
+                const labelX = centerX + labelRadius * Math.cos(angle);
+                const labelY = centerY + labelRadius * Math.sin(angle);
+                ctx.fillText(axes[i].label, labelX, labelY);
+
+                // Calculate data point
+                const dataAngle = angleSlice * i - Math.PI / 2;
+                const dataRadius = (axes[i].value / 100) * maxRadius;
+                const dataX = centerX + dataRadius * Math.cos(dataAngle);
+                const dataY = centerY + dataRadius * Math.sin(dataAngle);
+                points.push({ x: dataX, y: dataY, value: axes[i].value });
+            }
+
+            // Draw filled polygon
+            ctx.fillStyle = 'rgba(131, 82, 255, 0.3)';
+            ctx.strokeStyle = 'var(--purple)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            for (let i = 0; i < points.length; i++) {
+                if (i === 0) {
+                    ctx.moveTo(points[i].x, points[i].y);
+                } else {
+                    ctx.lineTo(points[i].x, points[i].y);
+                }
+            }
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+
+            // Draw data points
+            ctx.fillStyle = 'var(--purple)';
+            for (let point of points) {
+                ctx.beginPath();
+                ctx.arc(point.x, point.y, 6, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Draw percentage
+                ctx.fillStyle = '#333';
+                ctx.font = 'bold 14px var(--font-body)';
+                ctx.textAlign = 'center';
+                const displayAngle = Math.atan2(point.y - centerY, point.x - centerX);
+                const offsetRadius = 30;
+                const offsetX = point.x + offsetRadius * Math.cos(displayAngle);
+                const offsetY = point.y + offsetRadius * Math.sin(displayAngle);
+                ctx.fillText(Math.round(point.value) + '%', offsetX, offsetY);
+                ctx.fillStyle = 'var(--purple)';
+            }
+        }
+
+        function populateScoreTable() {
+            const tbody = document.getElementById('scoreTableBody');
+            tbody.innerHTML = '';
+
+            const constructs = [
+                { name: 'AI Orientation', key: 'orientation' },
+                { name: 'Learning Orientation', key: 'learning' },
+                { name: 'Current AI Use', key: 'use' },
+                { name: 'AI Knowledge', key: 'knowledge' },
+                { name: 'Applied Skills', key: 'skills' }
+            ];
+
+            constructs.forEach(construct => {
+                const score = state.scores[construct.key];
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${construct.name}</td>
+                    <td>${score.raw}/${score.max}</td>
+                    <td>${score.max}</td>
+                    <td><strong>${Math.round(score.percentage)}%</strong></td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function populateConstructDetails() {
+            // AI Orientation
+            let orientText = '';
+            const orientItems = ['I believe AI tools can meaningfully improve the quality of my work.',
+                'I feel confident in my ability to learn and use new AI tools.',
+                'I am concerned that AI could produce errors that affect our students or programs. (reverse scored)',
+                'I see AI as directly relevant to my specific role at DC CAP.',
+                'I am excited about the opportunity to integrate AI into my daily work.',
+                'I worry that AI adoption will create more work rather than save time. (reverse scored)',
+                'DC CAP should be a leader in AI adoption among nonprofit organizations.'];
+
+            for (let i = 1; i <= 7; i++) {
+                let score = state.responses.orientation[i] || 0;
+                if (i === 3 || i === 6) score = 6 - score;
+                orientText += `<div class="construct-item">Q${i}: ${orientItems[i-1]}<br>Response: ${state.responses.orientation[i]}/5 (Scored: ${score})</div>`;
+            }
+            document.getElementById('items_orientation').innerHTML = orientText;
+            document.getElementById('score_orientation').textContent = state.scores.orientation.raw + '/35';
+
+            // Learning Orientation
+            let learnText = '';
+            const learnItems = ['When I encounter a tool I don\'t understand, I enjoy figuring it out.',
+                'I learn best by trying things and iterating, even if my first attempt fails.',
+                'I am comfortable asking colleagues for help when learning something new.',
+                'I prefer to wait for clear instructions rather than experiment on my own. (reverse scored)',
+                'Making mistakes is a valuable part of learning new technology.'];
+
+            for (let i = 1; i <= 5; i++) {
+                let score = state.responses.learning[i] || 0;
+                if (i === 4) score = 6 - score;
+                learnText += `<div class="construct-item">Q${i}: ${learnItems[i-1]}<br>Response: ${state.responses.learning[i]}/5 (Scored: ${score})</div>`;
+            }
+            document.getElementById('items_learning').innerHTML = learnText;
+            document.getElementById('score_learning').textContent = state.scores.learning.raw + '/25';
+
+            // Current AI Use
+            let useText = '';
+            const useItems = ['Draft or edit written communications (emails, memos, messages)',
+                'Analyze, summarize, or synthesize information',
+                'Brainstorm ideas or develop strategies',
+                'Create or format documents, presentations, or reports',
+                'Look up information or research topics',
+                'Review and refine AI-generated output before using it'];
+
+            const useLabels = { 1: 'Never', 2: 'Rarely', 3: 'Sometimes', 4: 'Often', 5: 'Daily' };
+            for (let i = 1; i <= 6; i++) {
+                useText += `<div class="construct-item">Q${i}: ${useItems[i-1]}<br>Response: ${useLabels[state.responses.use[i]] || '—'}</div>`;
+            }
+            document.getElementById('items_use').innerHTML = useText;
+            document.getElementById('score_use').textContent = state.scores.use.raw + '/30';
+
+            // AI Knowledge
+            let knowText = '';
+            const knowItems = [
+                'In AI, a "hallucination" refers to: Selected: ' + (state.responses.knowledge[1] || '—') + ' (Correct: b)',
+                'The "context window" of an AI model is: Selected: ' + (state.responses.knowledge[2] || '—') + ' (Correct: b)',
+                'You ask Claude to summarize a 30-page PDF into three bullet points. This is an example of: Selected: ' + (state.responses.knowledge[3] || '—') + ' (Correct: a)',
+                'You and Claude spend 20 minutes iteratively refining a grant narrative together. This is an example of: Selected: ' + (state.responses.knowledge[4] || '—') + ' (Correct: b)',
+                'You write Project Instructions so any team member who opens a Claude project gets consistent, on-brand outputs. This is an example of: Selected: ' + (state.responses.knowledge[5] || '—') + ' (Correct: c)',
+                'A spreadsheet containing scholar names and GPAs should be classified as: Selected: ' + (state.responses.knowledge[6] || '—') + ' (Correct: d)',
+                'Which 4D competency is most relevant when deciding whether a task is suitable for AI?: Selected: ' + (state.responses.knowledge[7] || '—') + ' (Correct: a)',
+                '"Claude drafted it. You own it." This principle best reflects which competency?: Selected: ' + (state.responses.knowledge[8] || '—') + ' (Correct: d)'
+            ];
+
+            knowItems.forEach((item, idx) => {
+                knowText += `<div class="construct-item">Q${idx+1}: ${item}</div>`;
+            });
+            document.getElementById('items_knowledge').innerHTML = knowText;
+            document.getElementById('score_knowledge').textContent = state.scores.knowledge.raw + '/8';
+
+            // Applied Skills
+            let skillsText = '<strong>Prompt Writing Task (Task A):</strong><br>';
+            skillsText += `<div class="construct-item" style="margin-bottom: 1rem;">Score: ${state.scores.skills.taskA}/4 points<br>`;
+            skillsText += `Audience specified: ${state.responses.taskA.audience ? 'Yes' : 'No'}<br>`;
+            skillsText += `Context provided: ${state.responses.taskA.deadline ? 'Yes' : 'No'}<br>`;
+            skillsText += `Tone defined: ${state.responses.taskA.tone ? 'Yes' : 'No'}<br>`;
+            skillsText += `Format constraints: ${state.responses.taskA.format ? 'Yes' : 'No'}</div>`;
+            skillsText += '<strong>Output Evaluation Task (Task B):</strong><br>';
+            skillsText += `<div class="construct-item">Score: ${state.scores.skills.taskB}/4 points<br>`;
+            skillsText += `GPA concern identified: ${state.responses.taskB.gpa ? 'Yes' : 'No'}<br>`;
+            skillsText += `Tone issue identified: ${state.responses.taskB.tone ? 'Yes' : 'No'}<br>`;
+            skillsText += `Confidentiality issue identified: ${state.responses.taskB.confidentiality ? 'Yes' : 'No'}<br>`;
+            skillsText += `Anxiety language identified: ${state.responses.taskB.anxiety ? 'Yes' : 'No'}</div>`;
+            document.getElementById('items_skills').innerHTML = skillsText;
+            document.getElementById('score_skills').textContent = state.scores.skills.raw + '/8';
+        }
+
+        // ==================== EXPORT ====================
+        function copyResultsAsJSON() {
+            const timestamp = new Date().toISOString();
+
+            const jsonData = {
+                schemaVersion: '1.0',
+                timestamp: timestamp,
+                participant: {
+                    name: state.responses.participantName,
+                    unit: state.responses.participantUnit,
+                    date: state.responses.participantDate,
+                    surveyMode: state.responses.surveyMode,
+                    governanceAcknowledged: state.responses.governanceAcknowledged || false
+                },
+                responses: {
+                    aiOrientation: state.responses.orientation || {},
+                    learningOrientation: state.responses.learning || {},
+                    currentAIUse: state.responses.use || {},
+                    aiKnowledge: state.responses.knowledge || {},
+                    appliedSkillsTaskA: {
+                        prompt: state.responses.taskA?.prompt || '',
+                        selfAssessment: {
+                            audience: state.responses.taskA?.audience || false,
+                            context: state.responses.taskA?.deadline || false,
+                            tone: state.responses.taskA?.tone || false,
+                            format: state.responses.taskA?.format || false
+                        }
+                    },
+                    appliedSkillsTaskB: {
+                        analysis: state.responses.taskB?.analysis || '',
+                        issuesIdentified: {
+                            gpa: state.responses.taskB?.gpa || false,
+                            tone: state.responses.taskB?.tone || false,
+                            confidentiality: state.responses.taskB?.confidentiality || false,
+                            anxiety: state.responses.taskB?.anxiety || false
+                        }
+                    }
+                },
+                scores: {
+                    aiOrientation: {
+                        raw: state.scores.orientation.raw,
+                        max: state.scores.orientation.max,
+                        percentage: Math.round(state.scores.orientation.percentage)
+                    },
+                    learningOrientation: {
+                        raw: state.scores.learning.raw,
+                        max: state.scores.learning.max,
+                        percentage: Math.round(state.scores.learning.percentage)
+                    },
+                    currentAIUse: {
+                        raw: state.scores.use.raw,
+                        max: state.scores.use.max,
+                        percentage: Math.round(state.scores.use.percentage)
+                    },
+                    aiKnowledge: {
+                        raw: state.scores.knowledge.raw,
+                        max: state.scores.knowledge.max,
+                        percentage: Math.round(state.scores.knowledge.percentage)
+                    },
+                    appliedSkills: {
+                        raw: state.scores.skills.raw,
+                        max: state.scores.skills.max,
+                        percentage: Math.round(state.scores.skills.percentage),
+                        taskA: state.scores.skills.taskA,
+                        taskB: state.scores.skills.taskB
+                    }
+                }
+            };
+
+            const jsonString = JSON.stringify(jsonData, null, 2);
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(jsonString).then(() => {
+                const message = document.getElementById('successMessage');
+                message.textContent = 'Results copied to clipboard as JSON';
+                message.classList.add('show');
+                setTimeout(() => {
+                    message.classList.remove('show');
+                }, 3000);
+            }).catch(err => {
+                alert('Failed to copy: ' + err);
+            });
+        }
+
+        function startOver() {
+            // Reset state
+            state.currentPage = 1;
+            state.responses = {};
+            state.scores = {};
+
+            // Reset all forms
+            for (let i = 1; i <= 7; i++) {
+                const form = document.getElementById(`pageForm${i}`);
+                if (form) form.reset();
+            }
+
+            // Reset date
+            const dateInput = document.getElementById('participantDate');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.value = today;
+            }
+
+            // Show first page
+            document.querySelector('.nav-buttons').style.display = 'flex';
+            document.querySelector('.progress-bar').style.display = 'block';
+            document.getElementById('resultsContainer').classList.remove('active');
+            goToPage(1);
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', function() {
+            goToPage(1);
+        });
+    </script>
+</body>
+</html>

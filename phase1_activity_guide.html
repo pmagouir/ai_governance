@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DC CAP Phase 1: Foundation — Activity Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* === CSS CUSTOM PROPERTIES === */
+        :root {
+            --navy: #101A4C;
+            --purple: #8352FF;
+            --blue: #87B7D5;
+            --gold: #FCB017;
+            --tan: #FFF4ED;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --dark-gray: #333333;
+            --red: #E63946;
+            /* DC CAP Brand Typography: Akkordeon (headlines, with serif fallback if not installed),
+               Noto Serif SemiCondensed (subheads), Noto Serif (body) */
+            --font-display: 'Akkordeon Ten', 'Noto Serif SemiCondensed', Georgia, serif;
+            --font-body: 'Noto Serif', Georgia, serif;
+            --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --duration-normal: 0.6s;
+
+            /* Competency Colors */
+            --delegation: var(--navy);
+            --description: var(--purple);
+            --discernment: var(--blue);
+            --diligence: var(--gold);
+
+            /* Responsive sizing */
+            --title-size: clamp(1.5rem, 5vw, 3.5rem);
+            --h2-size: clamp(1.25rem, 3.5vw, 2.25rem);
+            --h3-size: clamp(1rem, 2.5vw, 1.5rem);
+            --body-size: clamp(0.8rem, 1.5vw, 1.05rem);
+            --small-size: clamp(0.7rem, 1vw, 0.875rem);
+            --slide-padding: clamp(1rem, 4vw, 3rem);
+            --content-gap: clamp(0.5rem, 2vw, 1.5rem);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            :root {
+                --duration-normal: 0.01s;
+            }
+            * {
+                animation-duration: 0.01s !important;
+                transition-duration: 0.01s !important;
+            }
+        }
+
+        /* === GLOBAL STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: var(--body-size);
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: var(--title-size);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            margin-bottom: var(--content-gap);
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: var(--h2-size);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            margin-bottom: var(--content-gap);
+        }
+
+        h3 {
+            font-family: var(--font-subhead);
+            font-size: var(--h3-size);
+            font-weight: 300;
+            line-height: 1.4;
+            margin-bottom: calc(var(--content-gap) * 0.75);
+        }
+
+        p {
+            margin-bottom: var(--content-gap);
+        }
+
+        /* === REVEAL ANIMATION === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === HEADER SECTION === */
+        header {
+            background: linear-gradient(135deg, var(--navy) 0%, #0d0f2d 100%);
+            color: var(--white);
+            padding: var(--slide-padding);
+            text-align: center;
+        }
+
+        header h1 {
+            color: var(--white);
+            margin-bottom: calc(var(--content-gap) * 0.5);
+        }
+
+        .header-subtitle {
+            font-size: var(--h3-size);
+            font-weight: 600;
+            margin-bottom: var(--content-gap);
+            color: var(--tan);
+        }
+
+        .header-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--content-gap);
+            flex-wrap: wrap;
+            font-size: var(--small-size);
+            margin-bottom: var(--content-gap);
+        }
+
+        .header-meta span {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--content-gap) * 0.5);
+        }
+
+        /* 4Ds Quadrant Badge */
+        .quadrant-badge {
+            display: inline-grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px;
+            width: clamp(60px, 8vw, 100px);
+            height: clamp(60px, 8vw, 100px);
+        }
+
+        .quadrant-badge div {
+            border-radius: 4px;
+        }
+
+        .quad-navy { background-color: var(--navy); }
+        .quad-purple { background-color: var(--purple); }
+        .quad-blue { background-color: var(--blue); }
+        .quad-gold { background-color: var(--gold); }
+
+        /* === TAB NAVIGATION === */
+        .tab-navigation {
+            display: flex;
+            gap: clamp(0.5rem, 2vw, 1rem);
+            padding: var(--slide-padding);
+            background: var(--light-gray);
+            overflow-x: auto;
+            border-bottom: 2px solid #e0e0e0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: calc(var(--content-gap) * 0.75) var(--content-gap);
+            border: 2px solid transparent;
+            background: var(--white);
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: var(--body-size);
+            transition: all var(--duration-normal) var(--ease-out-expo);
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .tab-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-button.active {
+            color: var(--white);
+            border-color: transparent;
+        }
+
+        .tab-button.tab-1.active {
+            background: var(--gold);
+            color: var(--dark-gray);
+        }
+
+        .tab-button.tab-2.active {
+            background: var(--purple);
+        }
+
+        .tab-button.tab-3.active {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .tab-button.tab-4.active {
+            background: var(--blue);
+            color: var(--dark-gray);
+        }
+
+        .tab-button:not(.active) {
+            border-color: #ccc;
+        }
+
+        /* === TAB PANELS === */
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* === ACTIVITY HEADER === */
+        .activity-header {
+            padding: var(--slide-padding);
+            color: var(--white);
+        }
+
+        .activity-1 .activity-header {
+            background: var(--gold);
+            color: var(--dark-gray);
+        }
+
+        .activity-2 .activity-header {
+            background: var(--purple);
+            color: var(--white);
+        }
+
+        .activity-3 .activity-header {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .activity-4 .activity-header {
+            background: var(--blue);
+            color: var(--dark-gray);
+        }
+
+        .activity-header h2 {
+            color: inherit;
+        }
+
+        /* Metadata Row */
+        .metadata-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--content-gap);
+            margin-bottom: var(--content-gap);
+        }
+
+        .metadata-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .metadata-item-label {
+            font-size: var(--small-size);
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .metadata-item-value {
+            font-size: var(--body-size);
+            font-weight: 400;
+        }
+
+        /* Badge inline */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: var(--small-size);
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .badge-navy {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .badge-purple {
+            background: var(--purple);
+            color: var(--white);
+        }
+
+        .badge-blue {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        .badge-gold {
+            background: var(--gold);
+            color: var(--dark-gray);
+        }
+
+        /* === ACTIVITY CONTENT === */
+        .activity-content {
+            padding: var(--slide-padding);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .instructions {
+            background: var(--light-gray);
+            padding: var(--slide-padding);
+            border-radius: 8px;
+            margin-bottom: calc(var(--slide-padding) * 1.5);
+            border-left: 4px solid;
+        }
+
+        .activity-1 .instructions {
+            border-left-color: var(--gold);
+        }
+
+        .activity-2 .instructions {
+            border-left-color: var(--purple);
+        }
+
+        .activity-3 .instructions {
+            border-left-color: var(--navy);
+        }
+
+        .activity-4 .instructions {
+            border-left-color: var(--blue);
+        }
+
+        .instructions h3 {
+            margin-top: 0;
+        }
+
+        /* === SCENARIO CARDS (Activity 1) === */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--slide-padding);
+            margin-bottom: calc(var(--slide-padding) * 1.5);
+        }
+
+        .scenario-card {
+            background: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: var(--slide-padding);
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .scenario-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-color: #999;
+        }
+
+        .scenario-number {
+            display: inline-flex;
+            background: var(--navy);
+            color: var(--white);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: calc(var(--content-gap) * 0.5);
+            font-size: var(--small-size);
+        }
+
+        .scenario-text {
+            font-size: var(--body-size);
+            line-height: 1.6;
+            font-style: italic;
+            color: var(--dark-gray);
+            margin-bottom: var(--content-gap);
+        }
+
+        .scenario-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .scenario-card.revealed .scenario-content {
+            max-height: 200px;
+        }
+
+        .tier-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: var(--small-size);
+            margin-bottom: calc(var(--content-gap) * 0.5);
+        }
+
+        .tier-1 { background: var(--red); color: var(--white); }
+        .tier-2 { background: var(--gold); color: var(--dark-gray); }
+        .tier-3 { background: var(--purple); color: var(--white); }
+        .tier-4 { background: var(--navy); color: var(--white); }
+
+        .tier-explanation {
+            font-size: var(--small-size);
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .reveal-all-btn {
+            padding: calc(var(--content-gap) * 0.75) var(--content-gap);
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: var(--body-size);
+            transition: all var(--duration-normal) var(--ease-out-expo);
+            margin-bottom: calc(var(--slide-padding) * 1.5);
+        }
+
+        .reveal-all-btn:hover {
+            background: #0d0f2d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* === OUTPUT NOTE === */
+        .output-note {
+            background: #f9f9f9;
+            border-left: 4px solid var(--purple);
+            padding: var(--content-gap);
+            margin-top: calc(var(--slide-padding) * 1.5);
+            border-radius: 4px;
+            font-style: italic;
+            color: #666;
+        }
+
+        .output-note strong {
+            color: var(--dark-gray);
+        }
+
+        /* === BEFORE/AFTER PANEL (Activity 2) === */
+        .comparison-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--slide-padding);
+            margin-bottom: calc(var(--slide-padding) * 1.5);
+        }
+
+        @media (max-width: 768px) {
+            .comparison-panel {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .comparison-side {
+            padding: var(--slide-padding);
+            border-radius: 8px;
+        }
+
+        .comparison-side.before {
+            background: rgba(230, 57, 70, 0.1);
+            border: 2px solid var(--red);
+        }
+
+        .comparison-side.after {
+            background: rgba(131, 82, 255, 0.1);
+            border: 2px solid var(--purple);
+        }
+
+        .comparison-label {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: var(--h3-size);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: var(--content-gap);
+        }
+
+        .comparison-side.before .comparison-label {
+            color: var(--red);
+        }
+
+        .comparison-side.after .comparison-label {
+            color: var(--purple);
+        }
+
+        .comparison-subsection {
+            margin-bottom: var(--content-gap);
+        }
+
+        .comparison-subsection-label {
+            font-weight: 600;
+            font-size: var(--small-size);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #888;
+            margin-bottom: 4px;
+        }
+
+        .comparison-text {
+            background: var(--white);
+            padding: calc(var(--content-gap) * 0.75);
+            border-radius: 4px;
+            font-size: var(--body-size);
+            line-height: 1.6;
+        }
+
+        /* === TEMPLATE CARD (Activity 2) === */
+        .template-card {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--content-gap);
+            padding: var(--slide-padding);
+            background: var(--tan);
+            border-radius: 8px;
+            margin-bottom: calc(var(--slide-padding) * 1.5);
+            border: 2px solid var(--purple);
+        }
+
+        .template-section {
+            padding: var(--content-gap);
+            background: var(--white);
+            border-radius: 6px;
+            border-left: 4px solid var(--purple);
+        }
+
+        .template-section-title {
+            font-weight: 700;
+            color: var(--purple);
+            font-size: var(--body-size);
+            margin-bottom: 6px;
+        }
+
+        .template-section-text {
+            font-size: var(--small-size);
+            line-height: 1.5;
+            color: #555;
+        }
+
+        /* === SKILL CARDS (Activity 3) === */
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--slide-padding);
+            margin-bottom: calc(var(--slide-padding) * 1.5);
+        }
+
+        .skill-card {
+            background: var(--white);
+            border: 2px solid var(--navy);
+            border-radius: 8px;
+            padding: var(--slide-padding);
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-name {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: var(--h3-size);
+            color: var(--navy);
+            margin-bottom: var(--content-gap);
+        }
+
+        .skill-icon {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            font-weight: 800;
+            width: clamp(36px, 5vw, 48px);
+            height: clamp(36px, 5vw, 48px);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 8px;
+            margin-bottom: 6px;
+        }
+
+        .skill-usecase {
+            font-size: var(--small-size);
+            color: #666;
+            font-style: italic;
+            margin-top: calc(var(--content-gap) * 0.25);
+        }
+
+        .skill-triggers {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .skill-card.revealed .skill-triggers {
+            max-height: 300px;
+        }
+
+        .trigger-phrase {
+            display: block;
+            margin-bottom: 8px;
+            padding: 8px;
+            background: var(--light-gray);
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: var(--small-size);
+            color: #333;
+        }
+
+        .show-all-btn {
+            padding: calc(var(--content-gap) * 0.75) var(--content-gap);
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: var(--body-size);
+            transition: all var(--duration-normal) var(--ease-out-expo);
+            margin-bottom: calc(var(--slide-padding) * 1.5);
+        }
+
+        .show-all-btn:hover {
+            background: #0d0f2d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* === TRACKING GRID (Activity 3) === */
+        .tracking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--content-gap);
+            padding: var(--slide-padding);
+            background: var(--light-gray);
+            border-radius: 8px;
+            margin-bottom: calc(var(--slide-padding) * 1.5);
+        }
+
+        .tracking-column {
+            text-align: center;
+            padding: var(--content-gap);
+        }
+
+        .tracking-column-title {
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: calc(var(--content-gap) * 0.5);
+            font-size: var(--small-size);
+            text-transform: uppercase;
+        }
+
+        .tracking-description {
+            font-size: var(--small-size);
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* === CHECKLIST (Activity 4) === */
+        .checklist {
+            display: flex;
+            flex-direction: column;
+            gap: var(--content-gap);
+            margin-bottom: calc(var(--slide-padding) * 1.5);
+        }
+
+        .checklist-item {
+            background: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .checklist-item.expanded {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .checklist-header {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--content-gap);
+            padding: var(--content-gap);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checklist-checkbox {
+            width: 24px;
+            height: 24px;
+            margin-top: 2px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .checklist-text {
+            flex: 1;
+            font-weight: 600;
+            font-size: var(--body-size);
+            color: var(--dark-gray);
+        }
+
+        .checklist-item.checked .checklist-text {
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .checklist-guidance {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--duration-normal) var(--ease-out-expo);
+            background: var(--light-gray);
+            border-top: 1px solid #ddd;
+        }
+
+        .checklist-item.expanded .checklist-guidance {
+            max-height: 300px;
+        }
+
+        .checklist-guidance-content {
+            padding: var(--content-gap);
+            font-size: var(--body-size);
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: var(--light-gray);
+            padding: var(--slide-padding);
+            text-align: center;
+            font-size: var(--small-size);
+            color: #666;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--content-gap);
+            flex-wrap: wrap;
+        }
+
+        .print-button {
+            padding: calc(var(--content-gap) * 0.5) var(--content-gap);
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: var(--small-size);
+            transition: all var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .print-button:hover {
+            background: #0d0f2d;
+            transform: translateY(-1px);
+        }
+
+        /* === PRINT STYLES === */
+        @media print {
+            .tab-navigation,
+            .print-button {
+                display: none;
+            }
+
+            .tab-panel {
+                display: block !important;
+                page-break-after: always;
+            }
+
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .scenario-card .scenario-content,
+            .skill-card .skill-triggers,
+            .checklist-guidance {
+                display: block !important;
+                max-height: none !important;
+                overflow: visible !important;
+            }
+
+            header {
+                page-break-after: avoid;
+            }
+
+            body {
+                font-size: 11pt;
+            }
+        }
+    
+        /* === GRADIENT MESH HERO === */
+        .hero-mesh {
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(131, 82, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(135, 183, 213, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(252, 176, 23, 0.08) 0%, transparent 40%),
+                linear-gradient(135deg, #101A4C 0%, #1a2f6a 50%, #101A4C 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-mesh::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="4"/></filter><rect width="100" height="100" fill="%23000" filter="url(%23n)"/></svg>');
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 0;
+            mix-blend-mode: overlay;
+        }
+
+        header {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* === FROSTED GLASS NAV === */
+        .tab-navigation {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.92) !important;
+        }
+
+        /* === REVEAL ANIMATION CLASSES === */
+        .reveal, .reveal-scale, .reveal-left, .reveal-blur {
+            opacity: 0;
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo),
+                        filter var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .reveal {
+            transform: translateY(30px);
+        }
+
+        .reveal-scale {
+            transform: scale(0.92);
+        }
+
+        .reveal-left {
+            transform: translateX(-40px);
+        }
+
+        .reveal-blur {
+            filter: blur(8px);
+        }
+
+        .visible .reveal,
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .visible .reveal-scale,
+        .reveal-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .visible .reveal-left,
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .visible .reveal-blur,
+        .reveal-blur.visible {
+            opacity: 1;
+            filter: blur(0);
+        }
+
+        /* Stagger delays for children */
+        .visible > .reveal:nth-child(1) { transition-delay: 0s; }
+        .visible > .reveal:nth-child(2) { transition-delay: 0.08s; }
+        .visible > .reveal:nth-child(3) { transition-delay: 0.15s; }
+        .visible > .reveal:nth-child(4) { transition-delay: 0.22s; }
+        .visible > .reveal:nth-child(5) { transition-delay: 0.28s; }
+        .visible > .reveal:nth-child(6) { transition-delay: 0.34s; }
+
+        .visible > .reveal-scale:nth-child(1) { transition-delay: 0s; }
+        .visible > .reveal-scale:nth-child(2) { transition-delay: 0.08s; }
+        .visible > .reveal-scale:nth-child(3) { transition-delay: 0.15s; }
+        .visible > .reveal-scale:nth-child(4) { transition-delay: 0.22s; }
+        .visible > .reveal-scale:nth-child(5) { transition-delay: 0.28s; }
+        .visible > .reveal-scale:nth-child(6) { transition-delay: 0.34s; }
+
+        /* Spring easing for scale */
+        .reveal-scale {
+            --spring-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .reveal-scale.visible {
+            animation: scaleSpring var(--duration-normal) var(--spring-ease);
+        }
+
+        @keyframes scaleSpring {
+            from { transform: scale(0.92); }
+            to { transform: scale(1); }
+        }
+
+        /* === UPGRADED CARD STYLES === */
+        .scenario-card, .skill-card, .checklist-item {
+            border-radius: clamp(8px, 1.5vw, 16px);
+            box-shadow: 0 1px 3px rgba(16, 26, 76, 0.06), 0 4px 12px rgba(16, 26, 76, 0.03);
+            transition: all var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .scenario-card:hover, .skill-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(16, 26, 76, 0.12), 0 8px 24px rgba(16, 26, 76, 0.08);
+        }
+
+        /* === POLISHED OUTPUT TRAP STYLING === */
+        details {
+            border: 2px solid var(--gold);
+            border-radius: clamp(8px, 1.5vw, 16px);
+            padding: var(--slide-padding);
+            background: rgba(252, 176, 23, 0.02);
+            transition: all var(--duration-normal) var(--ease-out-expo);
+        }
+
+        details[open] {
+            box-shadow: 0 4px 16px rgba(252, 176, 23, 0.15);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--navy);
+            padding: 0.5em 0;
+            transition: color var(--duration-normal) var(--ease-out-expo);
+        }
+
+        summary:hover {
+            color: var(--gold);
+        }
+
+        details > div {
+            margin-top: var(--content-gap);
+            animation: detailsReveal 0.4s var(--ease-out-expo);
+        }
+
+        @keyframes detailsReveal {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* === ACTIVITY SECTION REVEALS === */
+        .activity-header {
+            position: relative;
+        }
+
+        .activity-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .activity-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === REDUCED MOTION === */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+            html {
+                scroll-behavior: auto !important;
+            }
+            .reveal, .reveal-scale, .reveal-left, .reveal-blur,
+            .reveal.visible, .reveal-scale.visible, .reveal-left.visible, .reveal-blur.visible {
+                opacity: 1 !important;
+                transform: none !important;
+                filter: none !important;
+            }
+        }
+</style>
+</head>
+<body>
+    <!-- === HEADER SECTION === -->
+    <header class="hero-mesh">
+        <div class="reveal" style="text-align:center;margin-bottom:clamp(0.75rem,1.5vw,1.5rem);"><img src="data:image/png;base64,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" alt="DC CAP Scholars" style="height:clamp(40px,6vw,70px);filter:drop-shadow(0 2px 12px rgba(0,0,0,0.3));"></div>
+        <h1 class="reveal-blur">PHASE 1: FOUNDATION</h1>
+        <div class="header-subtitle">DC CAP Enterprise AI Pilot — Activity Guide</div>
+        <div class="header-meta">
+            <span>April 7–22, 2026</span>
+            <div class="quadrant-badge">
+                <div class="quad-navy"></div>
+                <div class="quad-purple"></div>
+                <div class="quad-blue"></div>
+                <div class="quad-gold"></div>
+            </div>
+        </div>
+        <p style="font-size: var(--small-size); opacity: 0.8; max-width: 600px; margin: var(--content-gap) auto 0;">We start with Diligence because responsible use comes before efficient use. The activities follow the pilot calendar, building from governance to capability.</p>
+    </header>
+
+    <!-- === TAB NAVIGATION === -->
+    <div class="tab-navigation" role="tablist">
+        <button class="tab-button tab-1 active" role="tab" aria-selected="true" aria-controls="activity-1-panel" data-tab="1">
+            Activity 1: The Governance Walk
+        </button>
+        <button class="tab-button tab-2" role="tab" aria-selected="false" aria-controls="activity-2-panel" data-tab="2">
+            Activity 2: The Prompt Lab
+        </button>
+        <button class="tab-button tab-3" role="tab" aria-selected="false" aria-controls="activity-3-panel" data-tab="3">
+            Activity 3: The Skill Trigger Challenge
+        </button>
+        <button class="tab-button tab-4" role="tab" aria-selected="false" aria-controls="activity-4-panel" data-tab="4">
+            Activity 4: The Output Audit
+        </button>
+    </div>
+
+    <!-- === ACTIVITY 1: THE GOVERNANCE WALK === -->
+    <div id="activity-1-panel" class="tab-panel active activity-1" role="tabpanel">
+        <div class="activity-header">
+            <h2 class="reveal">Activity 1: The Governance Walk</h2>
+            <div class="metadata-row">
+                <div class="metadata-item">
+                    <div class="metadata-item-label">4D Focus</div>
+                    <div class="metadata-item-value"><span class="badge badge-gold">Diligence</span></div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-item-label">Modality</div>
+                    <div class="metadata-item-value">Automation</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-item-label">Time</div>
+                    <div class="metadata-item-value">25 minutes</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-item-label">When</div>
+                    <div class="metadata-item-value">Orientation sessions (April 8-9)</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-item-label">Who leads</div>
+                    <div class="metadata-item-value">Preston facilitates</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity-content">
+            <div class="instructions">
+                <h3>Instructions</h3>
+                <p>Each pair receives 10 data scenarios. Classify each using the four-tier framework — without looking at the governance doc. Then check your answers against the framework. Debrief: where did people disagree, and why?</p>
+            </div>
+
+            <button class="reveal-all-btn" onclick="revealAllScenarios()">Reveal All Answers</button>
+
+            <div class="scenario-grid">
+                <div class="scenario-card reveal" onclick="toggleScenario(this)">
+                    <div class="scenario-number">1</div>
+                    <div class="scenario-text">A spreadsheet with scholar names and GPAs</div>
+                    <div class="scenario-content">
+                        <div class="tier-badge tier-1">Tier 1: Restricted</div>
+                        <div class="tier-explanation">Personally identifiable academic records. Names linked to performance data require maximum protection under FERPA.</div>
+                    </div>
+                </div>
+
+                <div class="scenario-card reveal" onclick="toggleScenario(this)">
+                    <div class="scenario-number">2</div>
+                    <div class="scenario-text">A budget summary with line items but no names</div>
+                    <div class="scenario-content">
+                        <div class="tier-badge tier-3">Tier 3: Internal</div>
+                        <div class="tier-explanation">Financial data without personal identifiers. Internal teams need access.</div>
+                    </div>
+                </div>
+
+                <div class="scenario-card reveal" onclick="toggleScenario(this)">
+                    <div class="scenario-number">3</div>
+                    <div class="scenario-text">Our published annual report</div>
+                    <div class="scenario-content">
+                        <div class="tier-badge tier-4">Tier 4: Public</div>
+                        <div class="tier-explanation">Intentionally shared publicly. No restrictions.</div>
+                    </div>
+                </div>
+
+                <div class="scenario-card reveal" onclick="toggleScenario(this)">
+                    <div class="scenario-number">4</div>
+                    <div class="scenario-text">Email thread discussing a scholar's family hardship</div>
+                    <div class="scenario-content">
+                        <div class="tier-badge tier-1">Tier 1: Restricted</div>
+                        <div class="tier-explanation">Highly sensitive personal information. Highest confidentiality.</div>
+                    </div>
+                </div>
+
+                <div class="scenario-card reveal" onclick="toggleScenario(this)">
+                    <div class="scenario-number">5</div>
+                    <div class="scenario-text">Draft board presentation with projected outcomes</div>
+                    <div class="scenario-content">
+                        <div class="tier-badge tier-3">Tier 3: Internal</div>
+                        <div class="tier-explanation">Pre-publication strategic content. Limited circulation pending approval.</div>
+                    </div>
+                </div>
+
+                <div class="scenario-card reveal" onclick="toggleScenario(this)">
+                    <div class="scenario-number">6</div>
+                    <div class="scenario-text">Scholar's DCTAG eligibility documentation</div>
+                    <div class="scenario-content">
+                        <div class="tier-badge tier-1">Tier 1: Restricted</div>
+                        <div class="tier-explanation">Compliance and legal documentation tied to individual. Maximum protection.</div>
+                    </div>
+                </div>
+
+                <div class="scenario-card reveal" onclick="toggleScenario(this)">
+                    <div class="scenario-number">7</div>
+                    <div class="scenario-text">Meeting notes from a team retrospective</div>
+                    <div class="scenario-content">
+                        <div class="tier-badge tier-3">Tier 3: Internal</div>
+                        <div class="tier-explanation">Internal process documentation. Shared within team or department.</div>
+                    </div>
+                </div>
+
+                <div class="scenario-card reveal" onclick="toggleScenario(this)">
+                    <div class="scenario-number">8</div>
+                    <div class="scenario-text">Social media content for the DC CAP website</div>
+                    <div class="scenario-content">
+                        <div class="tier-badge tier-4">Tier 4: Public</div>
+                        <div class="tier-explanation">Published and approved for public audience. Note: draft social content before approval would be Tier 3.</div>
+                    </div>
+                </div>
+
+                <div class="scenario-card reveal" onclick="toggleScenario(this)">
+                    <div class="scenario-number">9</div>
+                    <div class="scenario-text">A list of scholarship amounts by university partner</div>
+                    <div class="scenario-content">
+                        <div class="tier-badge tier-2">Tier 2: Sensitive</div>
+                        <div class="tier-explanation">Negotiated financial terms tied to named institutional partners. Disclosure could affect partnership dynamics and future negotiations.</div>
+                    </div>
+                </div>
+
+                <div class="scenario-card reveal" onclick="toggleScenario(this)">
+                    <div class="scenario-number">10</div>
+                    <div class="scenario-text">Internal analysis of scholar persistence rates by ward</div>
+                    <div class="scenario-content">
+                        <div class="tier-badge tier-2">Tier 2: Sensitive</div>
+                        <div class="tier-explanation">Demographic analysis with equity implications. Controlled distribution.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="output-note">
+                <strong>Output note:</strong> Classification sheets become evidence for the governance framework review in May.
+            </div>
+        </div>
+    </div>
+
+    <!-- === ACTIVITY 2: THE PROMPT LAB === -->
+    <div id="activity-2-panel" class="tab-panel activity-2" role="tabpanel">
+        <div class="activity-header">
+            <h2 class="reveal">Activity 2: The Prompt Lab</h2>
+            <div class="metadata-row">
+                <div class="metadata-item">
+                    <div class="metadata-item-label">4D Focus</div>
+                    <div class="metadata-item-value"><span class="badge badge-purple">Description</span></div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-item-label">Modality</div>
+                    <div class="metadata-item-value">Augmentation</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-item-label">Time</div>
+                    <div class="metadata-item-value">30 minutes</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-item-label">When</div>
+                    <div class="metadata-item-value">After governance sign-off (April 10–12)</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-item-label">Who leads</div>
+                    <div class="metadata-item-value">Self-directed pairs</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity-content">
+            <div class="instructions">
+                <h3>Instructions</h3>
+                <p>Select a real work task from your current to-do list. Write a weak prompt (under 20 words, no context). Run it. Then write a strong prompt using the four-part template. Run it. Compare outputs and document what changed.</p>
+            </div>
+
+            <h3>Before & After Comparison</h3>
+            <div class="comparison-panel">
+                <div class="comparison-side before">
+                    <div class="comparison-label">BEFORE</div>
+                    <div class="comparison-subsection">
+                        <div class="comparison-subsection-label">Prompt</div>
+                        <div class="comparison-text">Write an email about the scholarship</div>
+                    </div>
+                    <div class="comparison-subsection">
+                        <div class="comparison-subsection-label">Result</div>
+                        <div class="comparison-text">Generic, missing key details, wrong tone, could apply to any scholarship program</div>
+                    </div>
+                </div>
+                <div class="comparison-side after">
+                    <div class="comparison-label">AFTER</div>
+                    <div class="comparison-subsection">
+                        <div class="comparison-subsection-label">Prompt</div>
+                        <div class="comparison-text">Draft a 200-word email to incoming scholars confirming their DC CAP award. Tone: warm, professional. Include: award amount, next steps for DCTAG, orientation date. Audience: first-generation college students.</div>
+                    </div>
+                    <div class="comparison-subsection">
+                        <div class="comparison-subsection-label">Result</div>
+                        <div class="comparison-text">Specific, on-brand, includes all required elements, appropriate tone for audience, ready to send with minimal edits</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>The Four-Part Template <span style="font-weight: 400; font-size: var(--small-size); color: var(--purple);">— This is Description: giving Claude the specificity it needs to produce useful output.</span></h3>
+            <div class="template-card reveal-scale">
+                <div class="template-section">
+                    <div class="template-section-title">CONTEXT</div>
+                    <div class="template-section-text">Who you are and what you're working on. Example: "I'm coordinating communications for the DC CAP Phase 1 pilot."</div>
+                </div>
+                <div class="template-section">
+                    <div class="template-section-title">TASK</div>
+                    <div class="template-section-text">What you need Claude to produce. Example: "Draft a 200-word confirmation email."</div>
+                </div>
+                <div class="template-section">
+                    <div class="template-section-title">CONTENT</div>
+                    <div class="template-section-text">The specific information Claude needs. Example: "Award amount, DCTAG next steps, orientation date."</div>
+                </div>
+                <div class="template-section">
+                    <div class="template-section-title">CONSTRAINTS</div>
+                    <div class="template-section-text">Tone, length, format, audience. Example: "Warm but professional. For first-generation students."</div>
+                </div>
+            </div>
+
+            <div class="output-note">
+                <strong>Output note:</strong> Logged comparison entry in the Phase 1 use case tracker. Becomes the team's prompt quality benchmark.
+            </div>
+        </div>
+    </div>
+
+    <!-- === ACTIVITY 3: THE SKILL TRIGGER CHALLENGE === -->
+    <div id="activity-3-panel" class="tab-panel activity-3" role="tabpanel">
+        <div class="activity-header">
+            <h2 class="reveal">Activity 3: The Skill Trigger Challenge</h2>
+            <div class="metadata-row">
+                <div class="metadata-item">
+                    <div class="metadata-item-label">4D Focus</div>
+                    <div class="metadata-item-value"><span class="badge badge-navy">Delegation</span></div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-item-label">Modality</div>
+                    <div class="metadata-item-value">Automation + Augmentation</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-item-label">Time</div>
+                    <div class="metadata-item-value">25 minutes</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-item-label">When</div>
+                    <div class="metadata-item-value">First supervised use sessions (April 20-21)</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-item-label">Who leads</div>
+                    <div class="metadata-item-value">Self-directed, then group debrief</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity-content">
+            <div class="instructions">
+                <h3>Instructions</h3>
+                <p>Attempt to trigger all seven DC CAP skills using natural language — without looking at trigger descriptions. Note which triggers worked immediately, which required iteration, and which you couldn't crack.</p>
+            </div>
+
+            <button class="show-all-btn" onclick="revealAllSkills()">Show All Triggers</button>
+
+            <div class="skill-grid">
+                <div class="skill-card reveal" onclick="toggleSkill(this)">
+                    <div class="skill-icon">FAQ</div>
+                    <div class="skill-name">DC CAP FAQ</div>
+                    <div class="skill-usecase">When a parent calls and you need the policy answer in 30 seconds.</div>
+                    <div class="skill-triggers">
+                        <span class="trigger-phrase">"How does renewal work?"</span>
+                        <span class="trigger-phrase">"What's the GPA requirement?"</span>
+                        <span class="trigger-phrase">"Can they transfer their scholarship?"</span>
+                        <span class="trigger-phrase">"What counts as full-time enrollment?"</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal" onclick="toggleSkill(this)">
+                    <div class="skill-icon">SO</div>
+                    <div class="skill-name">Student Outreach</div>
+                    <div class="skill-usecase">When 200 scholars need the same email and it has to feel personal.</div>
+                    <div class="skill-triggers">
+                        <span class="trigger-phrase">"Draft an email to students about the deadline"</span>
+                        <span class="trigger-phrase">"Write the award notification"</span>
+                        <span class="trigger-phrase">"Email about orientation"</span>
+                        <span class="trigger-phrase">"Scholarship renewal reminder"</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal" onclick="toggleSkill(this)">
+                    <div class="skill-icon">PO</div>
+                    <div class="skill-name">Partner Outreach</div>
+                    <div class="skill-usecase">When you need to email 14 university admissions teams with consistent updates.</div>
+                    <div class="skill-triggers">
+                        <span class="trigger-phrase">"Write to university partners about matching"</span>
+                        <span class="trigger-phrase">"Draft the preference deadline reminder"</span>
+                        <span class="trigger-phrase">"Partner engagement email"</span>
+                        <span class="trigger-phrase">"Coordination message to universities"</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal" onclick="toggleSkill(this)">
+                    <div class="skill-icon">CO</div>
+                    <div class="skill-name">Counselor Outreach</div>
+                    <div class="skill-usecase">When counselors need advance notice before decisions hit their students.</div>
+                    <div class="skill-triggers">
+                        <span class="trigger-phrase">"Email counselors about decisions"</span>
+                        <span class="trigger-phrase">"Draft the spring cycle preview"</span>
+                        <span class="trigger-phrase">"Update counselors on timeline"</span>
+                        <span class="trigger-phrase">"Professional development announcement"</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal" onclick="toggleSkill(this)">
+                    <div class="skill-icon">SE</div>
+                    <div class="skill-name">Situational Email</div>
+                    <div class="skill-usecase">When a family emails about a denial and you need to respond accurately in 10 minutes.</div>
+                    <div class="skill-triggers">
+                        <span class="trigger-phrase">"A parent is pushing back on the decision"</span>
+                        <span class="trigger-phrase">"Student wants to transfer their award"</span>
+                        <span class="trigger-phrase">"Scholar asks for an exception"</span>
+                        <span class="trigger-phrase">"Someone contests the eligibility"</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal" onclick="toggleSkill(this)">
+                    <div class="skill-icon">EP</div>
+                    <div class="skill-name">Escalation Protocol</div>
+                    <div class="skill-usecase">When the call comes from a council member's office and you need the right routing.</div>
+                    <div class="skill-triggers">
+                        <span class="trigger-phrase">"A council member is reaching out"</span>
+                        <span class="trigger-phrase">"Family won't accept our decision"</span>
+                        <span class="trigger-phrase">"Media inquiry about the program"</span>
+                        <span class="trigger-phrase">"Legal question about compliance"</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal" onclick="toggleSkill(this)">
+                    <div class="skill-icon">DA</div>
+                    <div class="skill-name">Data Analysis (sf-demo-data)</div>
+                    <div class="skill-usecase">When you need a scholar demographic breakdown for a board report by end of day.</div>
+                    <div class="skill-triggers">
+                        <span class="trigger-phrase">"Analyze scholar demographics"</span>
+                        <span class="trigger-phrase">"Show me award data by ward"</span>
+                        <span class="trigger-phrase">"What's our persistence rate?"</span>
+                        <span class="trigger-phrase">"Breakdown by university partner"</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Tracking Grid</h3>
+            <div class="tracking-grid">
+                <div class="tracking-column">
+                    <div class="tracking-column-title">Triggered Immediately</div>
+                    <div class="tracking-description">Natural language phrase worked on first try</div>
+                </div>
+                <div class="tracking-column">
+                    <div class="tracking-column-title">Needed Iteration</div>
+                    <div class="tracking-description">Required rephrasing or adding context</div>
+                </div>
+                <div class="tracking-column">
+                    <div class="tracking-column-title">Couldn't Crack</div>
+                    <div class="tracking-description">Tried multiple phrasings without success</div>
+                </div>
+            </div>
+
+            <div class="output-note">
+                <strong>Output note:</strong> Crowd-sourced trigger phrase library. Your phrases feed directly into skill refinements by April 23, making the tools more responsive to how the team actually talks.
+            </div>
+        </div>
+    </div>
+
+    <!-- === ACTIVITY 4: THE OUTPUT AUDIT === -->
+    <div id="activity-4-panel" class="tab-panel activity-4" role="tabpanel">
+        <div class="activity-header">
+            <h2 class="reveal">Activity 4: The Output Audit</h2>
+            <div class="metadata-row">
+                <div class="metadata-item">
+                    <div class="metadata-item-label">4D Focus</div>
+                    <div class="metadata-item-value"><span class="badge badge-blue">Discernment</span></div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-item-label">Modality</div>
+                    <div class="metadata-item-value">Augmentation</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-item-label">Time</div>
+                    <div class="metadata-item-value">25 minutes</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-item-label">When</div>
+                    <div class="metadata-item-value">Baseline capture sessions (April 22)</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-item-label">Who leads</div>
+                    <div class="metadata-item-value">Pairs, then rotating team member facilitates debrief</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity-content">
+            <div class="instructions">
+                <h3>Instructions</h3>
+                <p>This activity has two parts. First, everyone audits the same pre-built scenario below. Then, take two of your own Claude outputs from Activities 2–3 and run them through the audit checklist. Pairs cross-audit each other's work.</p>
+            </div>
+
+            <h3 style="color: var(--blue);">Part 1: The Polished Output Trap</h3>
+            <p style="margin-bottom: var(--content-gap);">The email below was generated by Claude. It looks professional and well-formatted. Read it carefully, then answer the three questions that follow.</p>
+
+            <div style="background: var(--white); border: 2px solid var(--blue); border-radius: 8px; padding: var(--slide-padding); margin-bottom: calc(var(--slide-padding) * 1.5); font-family: var(--font-body);">
+                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: var(--h3-size); color: var(--blue); margin-bottom: var(--content-gap);">Claude Output: Student Scholarship Renewal Reminder</div>
+                <p style="margin-bottom: 0.5em;"><strong>Subject:</strong> URGENT: Scholarship Renewal Requirements — Immediate Action Required</p>
+                <hr style="border: none; border-top: 1px solid #ddd; margin: 1em 0;">
+                <p>Dear Scholar,</p>
+                <p>We are writing to inform you that your DC CAP scholarship renewal period is now open. To maintain your scholarship for the upcoming academic year, you must meet the following requirements:</p>
+                <ol style="margin: 1em 0 1em 1.5em;">
+                    <li>Maintain a minimum cumulative GPA of 2.0 at your institution</li>
+                    <li>Submit your FAFSA renewal by March 1</li>
+                    <li>Provide an updated DCTAG eligibility letter from OSSE</li>
+                    <li>Complete the DC CAP renewal form by the posted deadline</li>
+                </ol>
+                <p>Please be advised that failure to submit all required documentation by the deadline will result in immediate and permanent forfeiture of your scholarship award.</p>
+                <p>Rest assured that all information you share with DC CAP is completely confidential and will never be shared with any third party.</p>
+                <p>If you have questions, do not hesitate to reach out.</p>
+                <p>Regards,<br>DC CAP Scholarship Team</p>
+            </div>
+
+            <div style="background: rgba(135, 183, 213, 0.1); border-left: 4px solid var(--blue); padding: var(--slide-padding); border-radius: 4px; margin-bottom: calc(var(--slide-padding) * 1.5);">
+                <h3 style="color: var(--blue); margin-bottom: var(--content-gap);">Find the Issues</h3>
+                <p style="margin-bottom: var(--content-gap);">This email contains at least <strong>four problems</strong>. Some are subtle. Discuss with your partner and document what you find before scrolling to the answer key.</p>
+                <details style="margin-top: var(--content-gap);">
+                    <summary style="cursor: pointer; font-weight: 600; color: var(--navy); padding: 0.5em 0;">Reveal Answer Key</summary>
+                    <div style="margin-top: var(--content-gap);">
+                        <p style="margin-bottom: 0.75em;"><strong style="color: var(--blue);">Issue 1 — Inaccurate GPA requirement:</strong> The email states a flat 2.0 GPA minimum, but renewal GPA requirements vary by university partner. Stating a single number is factually misleading and could cause a scholar at a partner with a higher threshold to assume they're in good standing when they aren't.</p>
+                        <p style="margin-bottom: 0.75em;"><strong style="color: var(--blue);">Issue 2 — Wrong tone for the audience:</strong> "We are writing to inform you," "Please be advised," and "do not hesitate to reach out" read like a corporate compliance letter. DC CAP's student communications should feel warm, encouraging, and direct. This tone creates distance where the relationship should feel supportive.</p>
+                        <p style="margin-bottom: 0.75em;"><strong style="color: var(--blue);">Issue 3 — Confidentiality overpromise:</strong> "All information you share with DC CAP is completely confidential and will never be shared with any third party" is a claim DC CAP cannot make. Scholarship data may be shared with university partners, OSSE, or auditors under specific circumstances. Overpromising on data privacy exposes the organization to liability.</p>
+                        <p><strong style="color: var(--blue);">Issue 4 — Anxiety-inducing language:</strong> "URGENT" in the subject line and "immediate and permanent forfeiture" in the body create unnecessary panic. Effective student communications motivate action through clarity and support, not fear. This language is especially harmful for first-generation college students who may already feel uncertain about navigating institutional processes.</p>
+                    </div>
+                </details>
+                <p style="margin-top: var(--content-gap); font-style: italic; color: #666;"><strong>The lesson:</strong> The most dangerous AI outputs are the ones that look polished. Clean formatting and confident language can mask factual errors, tone mismatches, and policy inaccuracies. Discernment is most important when the output looks ready to send.</p>
+            </div>
+
+            <h3 style="color: var(--blue);">Part 2: Audit Your Own Outputs</h3>
+            <p style="margin-bottom: var(--content-gap);">Now take two Claude outputs from Activities 2–3 and run each through the checklist below. Pairs cross-audit each other's work.</p>
+
+            <h3>Audit Checklist</h3>
+            <div class="checklist">
+                <div class="checklist-item reveal">
+                    <div class="checklist-header" onclick="toggleChecklist(this)">
+                        <input type="checkbox" class="checklist-checkbox" onclick="event.stopPropagation(); toggleCheckbox(this)">
+                        <div class="checklist-text">Is the factual content accurate?</div>
+                    </div>
+                    <div class="checklist-guidance">
+                        <div class="checklist-guidance-content">
+                            Check names, dates, numbers, policy references against source documents. Verify that citations match actual policies and that any data cited is current.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checklist-item reveal">
+                    <div class="checklist-header" onclick="toggleChecklist(this)">
+                        <input type="checkbox" class="checklist-checkbox" onclick="event.stopPropagation(); toggleCheckbox(this)">
+                        <div class="checklist-text">Does the tone match the audience?</div>
+                    </div>
+                    <div class="checklist-guidance">
+                        <div class="checklist-guidance-content">
+                            A scholar-facing email should feel warm and encouraging. A board memo should feel precise and confident. Internal comms can be more casual. Does the voice fit the recipient?
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checklist-item reveal">
+                    <div class="checklist-header" onclick="toggleChecklist(this)">
+                        <input type="checkbox" class="checklist-checkbox" onclick="event.stopPropagation(); toggleCheckbox(this)">
+                        <div class="checklist-text">Is the data framing correct?</div>
+                    </div>
+                    <div class="checklist-guidance">
+                        <div class="checklist-guidance-content">
+                            Are percentages calculated correctly? Are comparisons fair? Is context provided for numbers that could be misleading? Look for statements that are technically true but presented in a way that distorts meaning.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checklist-item reveal">
+                    <div class="checklist-header" onclick="toggleChecklist(this)">
+                        <input type="checkbox" class="checklist-checkbox" onclick="event.stopPropagation(); toggleCheckbox(this)">
+                        <div class="checklist-text">Would you send this as-is?</div>
+                    </div>
+                    <div class="checklist-guidance">
+                        <div class="checklist-guidance-content">
+                            If the answer is no, identify exactly what you'd change and why. Is it missing information? Wrong tone? Unclear structure? This is your quality checkpoint before publication.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checklist-item reveal">
+                    <div class="checklist-header" onclick="toggleChecklist(this)">
+                        <input type="checkbox" class="checklist-checkbox" onclick="event.stopPropagation(); toggleCheckbox(this)">
+                        <div class="checklist-text">What would you change?</div>
+                    </div>
+                    <div class="checklist-guidance">
+                        <div class="checklist-guidance-content">
+                            Document your edits. This becomes your personal quality benchmark. Over time, you'll see patterns in what Claude gets right and what needs human judgment.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checklist-item reveal">
+                    <div class="checklist-header" onclick="toggleChecklist(this)">
+                        <input type="checkbox" class="checklist-checkbox" onclick="event.stopPropagation(); toggleCheckbox(this)">
+                        <div class="checklist-text">Is there anything Claude got wrong that a reader might not catch?</div>
+                    </div>
+                    <div class="checklist-guidance">
+                        <div class="checklist-guidance-content">
+                            The most dangerous errors are the plausible ones. Look for confident-sounding claims that aren't sourced. Catch the subtle stuff before it goes out.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="output-note">
+                <strong>Output note:</strong> Annotated audit sheets. Three patterns surfaced per pair. Feeds the April 27 check-in agenda.
+            </div>
+        </div>
+    </div>
+
+    <!-- === WEEKLY ITERATION TRACKER === -->
+    <div style="max-width: 1200px; margin: 0 auto; padding: var(--slide-padding); background: var(--tan); border-top: 4px solid var(--purple);">
+        <h2 class="reveal" style="color: var(--navy); font-size: var(--h2-size);">Weekly Iteration Check-In</h2>
+        <p style="margin-bottom: var(--content-gap);">Starting Week 3, Preston opens every weekly check-in with two quick questions. These take 60 seconds and track the leading indicator of AI fluency development: whether you are iterating.</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--slide-padding); margin-bottom: var(--content-gap);">
+            <div style="background: var(--white); border-left: 4px solid var(--purple); padding: var(--content-gap); border-radius: 4px;">
+                <h3 style="color: var(--purple); margin-bottom: 0.5em;">Recall Check</h3>
+                <p style="font-style: italic;">"Name the 4Ds. Which modality were you in most this week?"</p>
+                <p style="font-size: var(--small-size); color: #666; margin-top: 0.5em;">If the cohort can't answer fluently by Week 4, the kickoff framing needs reinforcement.</p>
+            </div>
+            <div style="background: var(--white); border-left: 4px solid var(--blue); padding: var(--content-gap); border-radius: 4px;">
+                <h3 style="color: var(--blue); margin-bottom: 0.5em;">Iteration Tracker</h3>
+                <p style="font-style: italic;">"How many times this week did you revise a prompt or push back on a Claude output?"</p>
+                <p style="font-size: var(--small-size); color: #666; margin-top: 0.5em;">Scale: Never · Once · A few times · Most sessions · Every session</p>
+            </div>
+        </div>
+        <p style="font-size: var(--small-size); color: #666;"><strong>Why iteration matters:</strong> Anthropic's AI Fluency Index (February 2026) found that conversations with iteration averaged 2.67 additional fluency behaviors compared to 1.33 in non-iterative interactions. Iteration is the single strongest predictor of fluency development.</p>
+    </div>
+
+    <!-- === FOOTER === -->
+    <footer>
+        <div style="text-align:center;margin-bottom:clamp(0.3rem,0.5vw,0.5rem);"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAA6CAYAAADC4Bv9AAAD4klEQVR42u2YS4gdVRCG/7p3ZjQZfEXEJwiCICQ4LhR1owsRdSEKIiP4SEQSYxZqEOMDjboQEY1g3Cjixp2IggtRGPIQNC40RNS4EEVc6UZ0ER8zdt/PRepAcej76u57Bb0FTfc9p/uc71bVqTp1pJnMZCYDxZoOAHSafG5m/H81CHQlndVgnF/M7M9BL8zVNauZ9SSdI+kLSQuSGAO0lNSVtEXSO8CcmRWtAQbpSdowSQvWAjSzHmCSfpJ0l6TzXCs2BtiqpJWg0cmsYjf5/Lh/dpjvtRlmupIOS9roJh817Fwu6chxVuu1auIMTpJOqzFWaWa4q/SVTgO4jpmVZlZK2uvNhWuREa6RpG6YmTOzAtgq6Vcz2wMgaU9YLK34dy04v+/guPSAW73tAW8rvH2QLLWQKvvC7fRJ/gZKB7rN++7zvnIIZHuAgAW4RzMtJZAecKe/s3UEyHYAM7jdfUyYQAG2+Lt3D4FsDuhwXX9+Npi1asIIuc2/uT1ot2wVMIN7YQhcFeR2/3Y5fFe2AuhwHX/eG+BGkZ67AMD9PsYtwFoG2Qgwwb06JlxZAbnTx7oR+Cv01wMMZk2aW6WeRMhdPuYNwB/etqkuYNLeTa65YX5X+jsFcNQBirB6E+RjPu61wO/AZU1M3M0yw2qAGCTXOWQ/Te72ca8BLkr+3jRrvFExYbx/CRwEVkIgPwTsy3wu+fHTbaU182seeA54BXg3TJiuz4BL/JsFvy/6AlvLFk6CfBFYaDUPB/CP+2STpfDOoUzLSdb8/i1wUlJCK6kOOMGfN7lPpoVQAj8A64F7gTM9sJdZeErPnwMbGvnfCH75TBaC3gfe9ufvgZey1Z/gPgVOdvOe3jpkSn+uzW+y4Ey2ynO4g67l9f58Zev7wSwEXZWlrqJi95J87kPX2inAJ962cSKAmalfH5AKE9x7rvkzgMPhzyxNFNAn3dwHMP1+y98/F/g66xsJsDa9H5vNV3QVXoy9aWbLwAWSDnjdXIxbqDVVL33gXjOzzZ7O9ku6sA5cm4AEgJfNbLtnl/2SzvdStFaJ2xSwCKdcc5KeN7MHgSv8YOjscNT2r9TGd4Qw85S3XQ38VhEXJ18XVwDe45M95L+vB46NWLxPFLAbNrVpt3xz2F6V2S5muoAVwMshvkW4HwfUxpMHDLn5u2DWBPoRcCrwRJ+Sdaoa/MonT7ubfcBi6H+yAnKqgEeDWVeAdclXw4J6vE6qawvwiE/6AXBiVh3Gs51Hgk9ePE3An4EDoSbpDAhND09Vg8A63+IvDpswQO4CLp0WYCeu6jEOBiZv2rxErfOnZjKTmfzX5R+C6tS3uqqRyAAAAABJRU5ErkJggg==" alt="DC CAP" style="height:24px;opacity:0.85;"></div>
+        <span>DC CAP Enterprise AI Initiative · Phase 1: Foundation · April 2026</span>
+        <button class="print-button" onclick="window.print()">Print Guide</button>
+    </footer>
+
+    <script>
+        /* === INTERSECTION OBSERVER FOR REVEAL ANIMATIONS === */
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        revealElements.forEach(el => observer.observe(el));
+
+        /* === TAB NAVIGATION === */
+        function switchTab(tabNum) {
+            document.querySelectorAll('.tab-panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
+
+            document.getElementById('activity-' + tabNum + '-panel').classList.add('active');
+
+            const activeBtn = document.querySelector('[data-tab="' + tabNum + '"]');
+            activeBtn.classList.add('active');
+            activeBtn.setAttribute('aria-selected', 'true');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.querySelectorAll('.tab-button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                switchTab(btn.getAttribute('data-tab'));
+            });
+        });
+
+        /* === SCENARIO CARDS (Activity 1) === */
+        function toggleScenario(card) {
+            card.classList.toggle('revealed');
+        }
+
+        function revealAllScenarios() {
+            document.querySelectorAll('#activity-1-panel .scenario-card').forEach(card => {
+                card.classList.add('revealed');
+            });
+        }
+
+        /* === SKILL CARDS (Activity 3) === */
+        function toggleSkill(card) {
+            card.classList.toggle('revealed');
+        }
+
+        function revealAllSkills() {
+            document.querySelectorAll('#activity-3-panel .skill-card').forEach(card => {
+                card.classList.add('revealed');
+            });
+        }
+
+        /* === CHECKLIST (Activity 4) === */
+        function toggleCheckbox(checkbox) {
+            const item = checkbox.closest('.checklist-item');
+            item.classList.toggle('checked');
+        }
+
+        function toggleChecklist(header) {
+            const item = header.closest('.checklist-item');
+            item.classList.toggle('expanded');
+        }
+
+        /* === KEYBOARD NAVIGATION === */
+        document.querySelectorAll('.tab-button').forEach((btn, index) => {
+            btn.addEventListener('keydown', (e) => {
+                let targetBtn = null;
+                if (e.key === 'ArrowRight') {
+                    targetBtn = document.querySelectorAll('.tab-button')[index + 1];
+                } else if (e.key === 'ArrowLeft') {
+                    targetBtn = document.querySelectorAll('.tab-button')[index - 1];
+                }
+                if (targetBtn) {
+                    e.preventDefault();
+                    targetBtn.focus();
+                    targetBtn.click();
+                }
+            });
+        });
+    
+        // === INTERSECTION OBSERVER FOR REVEAL ANIMATIONS ===
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        // Observe all potential reveal elements
+        document.querySelectorAll('section, .activity-section, .card-grid, .activity-card, .callout, .tip-box, .activity-content').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Observe individual reveal elements
+        document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-blur').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Hero triggers immediately
+        const hero = document.querySelector('header.hero-mesh, .hero, #hero, [class*="hero"]');
+        if (hero) {
+            setTimeout(() => hero.classList.add('visible'), 100);
+        }
+
+    </script>
+</body>
+</html>
