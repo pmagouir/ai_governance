@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DC CAP AI Pilot — Test Data Loader</title>
+    <style>
+        :root { --navy: #101A4C; --purple: #8352FF; --gold: #FCB017; --green: #27ae60; --red: #e74c3c; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Serif', Georgia, serif; background: var(--navy); color: white; padding: 2rem; min-height: 100vh; }
+        h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .subtitle { color: var(--gold); margin-bottom: 2rem; }
+        .controls { margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+        button { padding: 0.75rem 1.5rem; border: none; border-radius: 8px; font-family: inherit; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        button:hover { transform: translateY(-2px); }
+        .btn-primary { background: var(--purple); color: white; }
+        .btn-milestone { background: var(--gold); color: var(--navy); }
+        .btn-danger { background: var(--red); color: white; font-size: 0.85rem; padding: 0.5rem 1rem; }
+        .log { background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1.5rem; max-height: 60vh; overflow-y: auto; }
+        .log-entry { padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
+        .log-entry.success { color: var(--green); }
+        .log-entry.error { color: var(--red); }
+        .log-entry.info { color: var(--gold); }
+        .log-entry.milestone { color: #87B7D5; }
+        .progress { margin-bottom: 1rem; }
+        .progress-bar { height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--purple), var(--gold)); transition: width 0.3s; width: 0%; }
+        .progress-text { font-size: 0.85rem; margin-top: 0.3rem; color: rgba(255,255,255,0.6); }
+        .summary { margin-top: 1.5rem; padding: 1rem; background: rgba(131,82,255,0.15); border-radius: 8px; display: none; }
+        .summary h3 { color: var(--gold); margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+    <h1>Test Data Loader</h1>
+    <p class="subtitle">Simulates 15 pilot participants with realistic score variation + full milestone lifecycle</p>
+
+    <div class="controls">
+        <button class="btn-primary" onclick="runSurveys()">1. Load 15 Survey Responses</button>
+        <button class="btn-milestone" onclick="runMilestones()">2. Load Milestone Data</button>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-text" id="progressText">Ready</div>
+    </div>
+
+    <div class="log" id="log"></div>
+
+    <div class="summary" id="summary"></div>
+
+<script>
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
+
+const participants = [
+    { name: "[TEST] Maria Santos", unit: "Student Success", role: "Program Manager" },
+    { name: "[TEST] James Chen", unit: "Student Success", role: "Senior Counselor" },
+    { name: "[TEST] Aisha Johnson", unit: "Data & Technology", role: "Data Analyst" },
+    { name: "[TEST] David Kim", unit: "Innovation Hub", role: "Project Coordinator" },
+    { name: "[TEST] Keisha Williams", unit: "Student Success", role: "Outreach Specialist" },
+    { name: "[TEST] Robert Taylor", unit: "Data & Technology", role: "Research Associate" },
+    { name: "[TEST] Fatima Al-Hassan", unit: "Innovation Hub", role: "Strategy Analyst" },
+    { name: "[TEST] Marcus Brown", unit: "Student Success", role: "Counselor" },
+    { name: "[TEST] Sarah Mitchell", unit: "Data & Technology", role: "Systems Administrator" },
+    { name: "[TEST] Carlos Rivera", unit: "Innovation Hub", role: "Program Analyst" },
+    { name: "[TEST] Tanya Washington", unit: "Student Success", role: "Lead Counselor" },
+    { name: "[TEST] Michael Okonkwo", unit: "Data & Technology", role: "Data Engineer" },
+    { name: "[TEST] Lisa Park", unit: "Student Success", role: "Family Engagement Specialist" },
+    { name: "[TEST] Andre Jackson", unit: "Innovation Hub", role: "Operations Coordinator" },
+    { name: "[TEST] Nina Patel", unit: "Data & Technology", role: "Reporting Analyst" }
+];
+
+// Realistic score profiles: [orientation%, learning%, use%, knowledge%, skills%]
+const profiles = [
+    [72, 85, 45, 55, 50],   // Maria: eager learner, moderate use
+    [60, 70, 30, 40, 35],   // James: cautious, low current use
+    [88, 90, 75, 80, 72],   // Aisha: data person, high across board
+    [78, 82, 60, 65, 58],   // David: solid middle, innovation-minded
+    [55, 75, 25, 35, 30],   // Keisha: willing but limited exposure
+    [82, 78, 70, 75, 68],   // Robert: technical, strong knowledge
+    [90, 92, 80, 85, 78],   // Fatima: highest performer, strategy background
+    [48, 65, 20, 30, 25],   // Marcus: most skeptical, lowest use
+    [85, 80, 68, 72, 65],   // Sarah: systems thinker, good baseline
+    [75, 88, 55, 60, 52],   // Carlos: high learning orientation
+    [65, 72, 40, 50, 42],   // Tanya: experienced but AI-cautious
+    [92, 88, 85, 88, 82],   // Michael: engineer, strongest technical
+    [58, 80, 30, 38, 32],   // Lisa: low use but very willing to learn
+    [70, 76, 50, 55, 48],   // Andre: middle of pack
+    [80, 85, 65, 70, 62]    // Nina: analytics background, solid
+];
+
+// Full pilot milestone definitions
+const milestoneTemplates = [
+    { milestone: "Pre-launch survey completed", phase: "Pre-Launch", source: "ai_fluency_prelaunch_survey.html", dayOffset: 0 },
+    { milestone: "Start Here guide reviewed", phase: "Onboarding", source: "start_here.html", dayOffset: 1 },
+    { milestone: "Kickoff deck viewed", phase: "Onboarding", source: "kickoff_deck.html", dayOffset: 2 },
+    { milestone: "Activity 1: Governance Foundations completed", phase: "Phase 1: Foundation", source: "phase1_activity_guide.html", dayOffset: 5 },
+    { milestone: "Activity 2: The Delegation Map completed", phase: "Phase 1: Foundation", source: "phase1_activity_guide.html", dayOffset: 9 },
+    { milestone: "Activity 3: Description Lab completed", phase: "Phase 1: Foundation", source: "phase1_activity_guide.html", dayOffset: 13 },
+    { milestone: "Activity 4: Discernment Checkpoint completed", phase: "Phase 1: Foundation", source: "phase1_activity_guide.html", dayOffset: 17 }
+];
+
+// How far each participant has progressed (realistic: some ahead, some behind)
+const progressLevels = [5, 3, 6, 5, 4, 6, 7, 2, 5, 4, 4, 7, 3, 5, 6];
+
+function pctToRaw(pct, max) {
+    let raw = Math.round(pct / 100 * max);
+    raw = Math.max(0, Math.min(max, raw + Math.floor(Math.random() * 3) - 1));
+    return raw;
+}
+
+function log(msg, cls = '') {
+    const el = document.getElementById('log');
+    const entry = document.createElement('div');
+    entry.className = 'log-entry ' + cls;
+    entry.textContent = msg;
+    el.appendChild(entry);
+    el.scrollTop = el.scrollHeight;
+}
+
+function updateProgress(current, total, label) {
+    document.getElementById('progressFill').style.width = (current / total * 100) + '%';
+    document.getElementById('progressText').textContent = `${label}: ${current}/${total}`;
+}
+
+async function postData(payload) {
+    try {
+        const resp = await fetch(ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+            redirect: 'follow'
+        });
+        return await resp.json();
+    } catch (e) {
+        // no-cors fallback
+        await fetch(ENDPOINT, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        return { status: 'sent (no-cors)', message: 'Request sent, cannot read response' };
+    }
+}
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+async function runSurveys() {
+    log('Starting 15 survey submissions...', 'info');
+    let success = 0;
+
+    for (let i = 0; i < participants.length; i++) {
+        const p = participants[i];
+        const pr = profiles[i];
+
+        const orientRaw = pctToRaw(pr[0], 25);
+        const learnRaw = pctToRaw(pr[1], 25);
+        const useRaw = pctToRaw(pr[2], 30);
+        const knowRaw = pctToRaw(pr[3], 8);
+        const skillA = pctToRaw(pr[4], 4);
+        const skillB = pctToRaw(pr[4], 4);
+
+        const payload = {
+            type: "survey",
+            participant: {
+                name: p.name,
+                unit: p.unit,
+                date: "2026-04-03",
+                surveyMode: "pre",
+                governanceAcknowledged: true
+            },
+            scores: {
+                aiOrientation: { raw: orientRaw, max: 25, percentage: Math.round(orientRaw / 25 * 100) },
+                learningOrientation: { raw: learnRaw, max: 25, percentage: Math.round(learnRaw / 25 * 100) },
+                currentAIUse: { raw: useRaw, max: 30, percentage: Math.round(useRaw / 30 * 100) },
+                aiKnowledge: { raw: knowRaw, max: 8, percentage: Math.round(knowRaw / 8 * 100) },
+                appliedSkills: { raw: skillA + skillB, max: 8, percentage: Math.round((skillA + skillB) / 8 * 100), taskA: skillA, taskB: skillB }
+            },
+            responses: { participantName: p.name, participantUnit: p.unit, participantRole: p.role }
+        };
+
+        updateProgress(i + 1, 15, 'Surveys');
+
+        try {
+            const result = await postData(payload);
+            const level = result.fluencyLevel || '—';
+            const score = result.overallScore || '—';
+            log(`[${i+1}/15] ${p.name} — ${level} (${score}%) — ${result.status}`, 'success');
+            success++;
+        } catch (e) {
+            log(`[${i+1}/15] ${p.name} — ERROR: ${e.message}`, 'error');
+        }
+
+        await sleep(800);
+    }
+
+    log(`\nSurvey load complete: ${success}/15 submitted`, 'info');
+
+    const summary = document.getElementById('summary');
+    summary.style.display = 'block';
+    summary.innerHTML = `<h3>Survey Load Complete</h3><p>${success} of 15 survey responses submitted. Check your <a href="https://docs.google.com/spreadsheets/d/1efedt3aW103G2SdxPuBW7DiiFjfDXcJgiF9UuKoIaqQ" target="_blank" style="color:var(--gold);">Google Sheet</a> to verify data landed in the survey_responses tab.</p><p style="margin-top:0.5rem;">Next: Click "Load Milestone Data" to simulate completion tracking.</p>`;
+}
+
+async function runMilestones() {
+    const totalMilestones = progressLevels.reduce((a, b) => a + b, 0);
+    let sent = 0;
+    let success = 0;
+
+    log('\nStarting milestone submissions...', 'info');
+
+    for (let i = 0; i < participants.length; i++) {
+        const p = participants[i];
+        const numMilestones = progressLevels[i];
+
+        for (let m = 0; m < numMilestones; m++) {
+            const tmpl = milestoneTemplates[m];
+            const payload = {
+                type: "milestone",
+                participant_name: p.name,
+                milestone: tmpl.milestone,
+                phase: tmpl.phase,
+                page_source: tmpl.source,
+                details: `Simulated completion day ${tmpl.dayOffset} of pilot`
+            };
+
+            sent++;
+            updateProgress(sent, totalMilestones, 'Milestones');
+
+            try {
+                const result = await postData(payload);
+                log(`  ${p.name.replace('[TEST] ', '')} — ${tmpl.milestone} — ${result.status}`, 'milestone');
+                success++;
+            } catch (e) {
+                log(`  ${p.name.replace('[TEST] ', '')} — ERROR: ${e.message}`, 'error');
+            }
+
+            await sleep(500);
+        }
+    }
+
+    log(`\nMilestone load complete: ${success}/${totalMilestones} recorded`, 'info');
+
+    // Summary stats
+    const behindCount = progressLevels.filter(p => p <= 3).length;
+    const onTrackCount = progressLevels.filter(p => p >= 4 && p <= 5).length;
+    const aheadCount = progressLevels.filter(p => p >= 6).length;
+
+    const summary = document.getElementById('summary');
+    summary.style.display = 'block';
+    summary.innerHTML = `<h3>Full Test Data Load Complete</h3>
+        <p>15 survey responses + ${totalMilestones} milestone events loaded.</p>
+        <p style="margin-top:0.5rem;">Participant progress distribution: ${aheadCount} ahead of schedule, ${onTrackCount} on track, ${behindCount} behind.</p>
+        <p style="margin-top:0.5rem;">Check your <a href="https://docs.google.com/spreadsheets/d/1efedt3aW103G2SdxPuBW7DiiFjfDXcJgiF9UuKoIaqQ" target="_blank" style="color:var(--gold);">Google Sheet</a> — both tabs should now have data.</p>
+        <p style="margin-top:0.75rem; font-size:0.85rem; opacity:0.7;">All test entries are prefixed with [TEST] for easy filtering and cleanup.</p>`;
+}
+</script>
+</body>
+</html>
