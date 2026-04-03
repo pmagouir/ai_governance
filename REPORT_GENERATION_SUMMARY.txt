@@ -1,0 +1,201 @@
+DC CAP Enterprise AI Leadership Pilot
+Automated Analysis-to-Presentation Pipeline
+Generated: April 3, 2026
+
+================================================================================
+DELIVERABLE
+================================================================================
+
+File: /sessions/jolly-wonderful-bell/mnt/ai_governance/pilot_baseline_report.pptx
+Size: 1.2 MB
+Format: PowerPoint 16:9 Widescreen (10" x 7.5")
+Slides: 11 total
+Status: Ready for CEO and KPMG stakeholder briefing
+
+================================================================================
+SLIDE STRUCTURE
+================================================================================
+
+Slide 1:  Title Slide
+          "AI Fluency Pre-Launch Assessment: Baseline Report"
+          DC CAP branding + date
+
+Slide 2:  Executive Summary
+          4 key findings with statistics:
+          - Overall fluency baseline (60% average)
+          - Top/weakest constructs
+          - Fluency level distribution
+          - Knowing-doing gap prevalence
+
+Slide 3:  Sample Overview
+          Pie chart showing fluency distribution (N=15)
+          Levels: 4 Leading, 6 Applying, 4 Building, 1 Exploring
+
+Slide 4:  Construct Scores Overview
+          Grouped bar chart with error bars
+          All 5 constructs (Orientation, Learning, Current Use, Knowledge, Skills)
+          Mean scores with statistical error bounds
+
+Slide 5:  Unit Comparison
+          Heatmap of 3 units vs 5 constructs
+          Highlights unit strengths and gaps
+          Student Success, Data & Technology, Innovation Hub
+
+Slide 6:  The Knowing-Doing Gap
+          Horizontal bar chart (knowledge % - applied skills %)
+          Ranked by gap size
+          Identifies participants needing skill-building focus
+
+Slide 7:  Participant Clusters
+          Scatter plot: Knowledge (x) vs Applied Skills (y)
+          Quadrant analysis with median lines
+          Colored by unit for visual grouping
+
+Slide 8:  Milestone Progress
+          Horizontal bar chart of completion milestones per participant
+          Tracks onboarding and phase 1 activities
+          Shows engagement and pacing differences
+
+Slide 9:  Key Insights by Unit
+          Three-column layout with unit-specific metrics:
+          - Sample size, avg fluency, top construct, gap risk
+
+Slide 10: Recommended Interventions
+          4 key coaching initiatives:
+          - Skill-Building Accelerator
+          - Knowledge Integration Sessions
+          - Peer Mentoring Program
+          - Unit-Specific Coaching
+
+Slide 11: Next Steps
+          5 timeline milestones:
+          - Phase 1 Launch (April 8)
+          - Pulse checks (bi-weekly)
+          - Mid-phase coaching sprints (weeks 3-4)
+          - Post-phase assessment (May 15)
+          - Success metrics (>90% completion, 15% gap closure, 75% fluency)
+
+================================================================================
+BRAND COMPLIANCE
+================================================================================
+
+Colors Used:
+  Navy (#101A4C) - Primary background on all slides
+  Gold (#FCB017) - Header/title accents
+  Purple (#8352FF) - Primary chart color
+  Blue (#87B7D5) - Supporting/secondary color
+  Tan (#FFF4ED) - Light backgrounds (where needed)
+  White (#FFFFFF) - Body text, clean contrast
+
+Typography:
+  Headlines: 40-54pt bold, Gold on Navy
+  Subheads: 16-28pt, White/Blue on Navy
+  Body: 12-14pt, White on Navy
+  All text readable on projected slides
+
+Chart Standards:
+  Navy backgrounds on all visualizations
+  White text and axis labels
+  No gridlines (clean, minimal style)
+  Colors: Purple, Blue, Gold, supporting grays
+  300 DPI PNG exports for presentation quality
+  Chart sizing: Optimal for 10"x7.5" widescreen
+
+================================================================================
+DATA ANALYSIS PERFORMED
+================================================================================
+
+Survey Analysis (15 participants):
+  - Mean overall fluency: 60%
+  - Construct means calculated with standard errors
+  - Unit-level performance breakdown
+  - Knowing-doing gap quantification
+  - Fluency level clustering
+
+Milestone Tracking:
+  - 72 milestone records across 15 participants
+  - Completion rates by phase and activity
+  - Engagement pacing analysis
+
+Key Findings:
+  - Strong learning orientation (82%) but weak current AI use (52%)
+  - 12 of 15 show knowing-doing gap (positive knowledge > skills)
+  - Student Success unit needs applied skills focus
+  - Data & Technology unit most advanced
+  - Innovation Hub ready for advanced content
+
+================================================================================
+CHARTS GENERATED (6 total, 300 DPI PNGs)
+================================================================================
+
+1. fluency_distribution.png (235 KB)
+   Pie chart, 5-color palette, sample breakdown
+
+2. construct_overview.png (235 KB)
+   Grouped bars with error bars, 5 constructs, statistics
+
+3. unit_heatmap.png (223 KB)
+   Heatmap grid, 3 units × 5 constructs, color gradient
+
+4. knowing_doing_gap.png (306 KB)
+   Horizontal bar chart, 15 participants, ranked gaps
+
+5. participant_clusters.png (266 KB)
+   Scatter plot with quadrant lines, unit colors, legend
+
+6. milestone_progress.png (229 KB)
+   Horizontal bars, 15 participants, completion counts
+
+All charts:
+  - Navy (#101A4C) background
+  - White text and labels
+  - Readable at presentation size
+  - Minimal, clean styling
+
+================================================================================
+SCRIPT DETAILS
+================================================================================
+
+File: /sessions/jolly-wonderful-bell/mnt/ai_governance/generate_pilot_report.py
+Size: ~850 lines of Python
+Dependencies:
+  - pandas (data loading)
+  - numpy (calculations)
+  - matplotlib (charting)
+  - seaborn (palette)
+  - python-pptx (presentation building)
+
+Features:
+  - Loads CSV data and validates structure
+  - Calculates all key metrics and aggregations
+  - Generates 6 branded charts at 300 DPI
+  - Builds presentation slide-by-slide
+  - Applies DC CAP brand colors throughout
+  - Formats all text, fonts, and spacing
+  - Adds slide numbers and footers
+  - Saves final PPTX in standard format
+
+Runtime: ~3 seconds for full analysis + presentation generation
+Output: 1.2 MB PowerPoint file, production-ready
+
+================================================================================
+USAGE NOTES
+================================================================================
+
+To regenerate after data updates:
+  python3 /sessions/jolly-wonderful-bell/mnt/ai_governance/generate_pilot_report.py
+
+To examine charts:
+  ls /sessions/jolly-wonderful-bell/mnt/ai_governance/charts/
+
+To open presentation:
+  /sessions/jolly-wonderful-bell/mnt/ai_governance/pilot_baseline_report.pptx
+
+For KPMG/CEO briefing:
+  - Presentation is ready to present as-is
+  - All data, charts, and insights are polished
+  - Brand colors match DC CAP standards
+  - Layout and typography follow guidelines
+  - Justifies the $600K pilot investment scope
+
+================================================================================

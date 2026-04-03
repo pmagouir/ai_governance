@@ -1,0 +1,73 @@
+timestamp,participant_name,unit,milestone,phase,page_source,day_offset
+2026-04-03T10:00:00Z,[TEST] Maria Santos,Student Success,Pre-launch survey completed,Pre-Launch,ai_fluency_prelaunch_survey.html,0
+2026-04-04T10:00:00Z,[TEST] Maria Santos,Student Success,Start Here guide reviewed,Onboarding,start_here.html,1
+2026-04-05T10:00:00Z,[TEST] Maria Santos,Student Success,Kickoff deck viewed,Onboarding,kickoff_deck.html,2
+2026-04-08T10:00:00Z,[TEST] Maria Santos,Student Success,Activity 1: Governance Foundations completed,Phase 1: Foundation,phase1_activity_guide.html,5
+2026-04-12T10:00:00Z,[TEST] Maria Santos,Student Success,Activity 2: The Delegation Map completed,Phase 1: Foundation,phase1_activity_guide.html,9
+2026-04-03T11:00:00Z,[TEST] James Chen,Student Success,Pre-launch survey completed,Pre-Launch,ai_fluency_prelaunch_survey.html,0
+2026-04-04T11:00:00Z,[TEST] James Chen,Student Success,Start Here guide reviewed,Onboarding,start_here.html,1
+2026-04-05T11:00:00Z,[TEST] James Chen,Student Success,Kickoff deck viewed,Onboarding,kickoff_deck.html,2
+2026-04-03T12:00:00Z,[TEST] Aisha Johnson,Data & Technology,Pre-launch survey completed,Pre-Launch,ai_fluency_prelaunch_survey.html,0
+2026-04-04T12:00:00Z,[TEST] Aisha Johnson,Data & Technology,Start Here guide reviewed,Onboarding,start_here.html,1
+2026-04-05T12:00:00Z,[TEST] Aisha Johnson,Data & Technology,Kickoff deck viewed,Onboarding,kickoff_deck.html,2
+2026-04-08T12:00:00Z,[TEST] Aisha Johnson,Data & Technology,Activity 1: Governance Foundations completed,Phase 1: Foundation,phase1_activity_guide.html,5
+2026-04-12T12:00:00Z,[TEST] Aisha Johnson,Data & Technology,Activity 2: The Delegation Map completed,Phase 1: Foundation,phase1_activity_guide.html,9
+2026-04-16T12:00:00Z,[TEST] Aisha Johnson,Data & Technology,Activity 3: Description Lab completed,Phase 1: Foundation,phase1_activity_guide.html,13
+2026-04-03T13:00:00Z,[TEST] David Kim,Innovation Hub,Pre-launch survey completed,Pre-Launch,ai_fluency_prelaunch_survey.html,0
+2026-04-04T13:00:00Z,[TEST] David Kim,Innovation Hub,Start Here guide reviewed,Onboarding,start_here.html,1
+2026-04-05T13:00:00Z,[TEST] David Kim,Innovation Hub,Kickoff deck viewed,Onboarding,kickoff_deck.html,2
+2026-04-08T13:00:00Z,[TEST] David Kim,Innovation Hub,Activity 1: Governance Foundations completed,Phase 1: Foundation,phase1_activity_guide.html,5
+2026-04-12T13:00:00Z,[TEST] David Kim,Innovation Hub,Activity 2: The Delegation Map completed,Phase 1: Foundation,phase1_activity_guide.html,9
+2026-04-03T14:00:00Z,[TEST] Keisha Williams,Student Success,Pre-launch survey completed,Pre-Launch,ai_fluency_prelaunch_survey.html,0
+2026-04-04T14:00:00Z,[TEST] Keisha Williams,Student Success,Start Here guide reviewed,Onboarding,start_here.html,1
+2026-04-05T14:00:00Z,[TEST] Keisha Williams,Student Success,Kickoff deck viewed,Onboarding,kickoff_deck.html,2
+2026-04-08T14:00:00Z,[TEST] Keisha Williams,Student Success,Activity 1: Governance Foundations completed,Phase 1: Foundation,phase1_activity_guide.html,5
+2026-04-03T15:00:00Z,[TEST] Robert Taylor,Data & Technology,Pre-launch survey completed,Pre-Launch,ai_fluency_prelaunch_survey.html,0
+2026-04-04T15:00:00Z,[TEST] Robert Taylor,Data & Technology,Start Here guide reviewed,Onboarding,start_here.html,1
+2026-04-05T15:00:00Z,[TEST] Robert Taylor,Data & Technology,Kickoff deck viewed,Onboarding,kickoff_deck.html,2
+2026-04-08T15:00:00Z,[TEST] Robert Taylor,Data & Technology,Activity 1: Governance Foundations completed,Phase 1: Foundation,phase1_activity_guide.html,5
+2026-04-12T15:00:00Z,[TEST] Robert Taylor,Data & Technology,Activity 2: The Delegation Map completed,Phase 1: Foundation,phase1_activity_guide.html,9
+2026-04-16T15:00:00Z,[TEST] Robert Taylor,Data & Technology,Activity 3: Description Lab completed,Phase 1: Foundation,phase1_activity_guide.html,13
+2026-04-03T16:00:00Z,[TEST] Fatima Al-Hassan,Innovation Hub,Pre-launch survey completed,Pre-Launch,ai_fluency_prelaunch_survey.html,0
+2026-04-04T16:00:00Z,[TEST] Fatima Al-Hassan,Innovation Hub,Start Here guide reviewed,Onboarding,start_here.html,1
+2026-04-05T16:00:00Z,[TEST] Fatima Al-Hassan,Innovation Hub,Kickoff deck viewed,Onboarding,kickoff_deck.html,2
+2026-04-08T16:00:00Z,[TEST] Fatima Al-Hassan,Innovation Hub,Activity 1: Governance Foundations completed,Phase 1: Foundation,phase1_activity_guide.html,5
+2026-04-12T16:00:00Z,[TEST] Fatima Al-Hassan,Innovation Hub,Activity 2: The Delegation Map completed,Phase 1: Foundation,phase1_activity_guide.html,9
+2026-04-16T16:00:00Z,[TEST] Fatima Al-Hassan,Innovation Hub,Activity 3: Description Lab completed,Phase 1: Foundation,phase1_activity_guide.html,13
+2026-04-20T16:00:00Z,[TEST] Fatima Al-Hassan,Innovation Hub,Activity 4: Discernment Checkpoint completed,Phase 1: Foundation,phase1_activity_guide.html,17
+2026-04-03T17:00:00Z,[TEST] Marcus Brown,Student Success,Pre-launch survey completed,Pre-Launch,ai_fluency_prelaunch_survey.html,0
+2026-04-04T17:00:00Z,[TEST] Marcus Brown,Student Success,Start Here guide reviewed,Onboarding,start_here.html,1
+2026-04-03T18:00:00Z,[TEST] Sarah Mitchell,Data & Technology,Pre-launch survey completed,Pre-Launch,ai_fluency_prelaunch_survey.html,0
+2026-04-04T18:00:00Z,[TEST] Sarah Mitchell,Data & Technology,Start Here guide reviewed,Onboarding,start_here.html,1
+2026-04-05T18:00:00Z,[TEST] Sarah Mitchell,Data & Technology,Kickoff deck viewed,Onboarding,kickoff_deck.html,2
+2026-04-08T18:00:00Z,[TEST] Sarah Mitchell,Data & Technology,Activity 1: Governance Foundations completed,Phase 1: Foundation,phase1_activity_guide.html,5
+2026-04-12T18:00:00Z,[TEST] Sarah Mitchell,Data & Technology,Activity 2: The Delegation Map completed,Phase 1: Foundation,phase1_activity_guide.html,9
+2026-04-03T19:00:00Z,[TEST] Carlos Rivera,Innovation Hub,Pre-launch survey completed,Pre-Launch,ai_fluency_prelaunch_survey.html,0
+2026-04-04T19:00:00Z,[TEST] Carlos Rivera,Innovation Hub,Start Here guide reviewed,Onboarding,start_here.html,1
+2026-04-05T19:00:00Z,[TEST] Carlos Rivera,Innovation Hub,Kickoff deck viewed,Onboarding,kickoff_deck.html,2
+2026-04-08T19:00:00Z,[TEST] Carlos Rivera,Innovation Hub,Activity 1: Governance Foundations completed,Phase 1: Foundation,phase1_activity_guide.html,5
+2026-04-03T20:00:00Z,[TEST] Tanya Washington,Student Success,Pre-launch survey completed,Pre-Launch,ai_fluency_prelaunch_survey.html,0
+2026-04-04T20:00:00Z,[TEST] Tanya Washington,Student Success,Start Here guide reviewed,Onboarding,start_here.html,1
+2026-04-05T20:00:00Z,[TEST] Tanya Washington,Student Success,Kickoff deck viewed,Onboarding,kickoff_deck.html,2
+2026-04-08T20:00:00Z,[TEST] Tanya Washington,Student Success,Activity 1: Governance Foundations completed,Phase 1: Foundation,phase1_activity_guide.html,5
+2026-04-03T21:00:00Z,[TEST] Michael Okonkwo,Data & Technology,Pre-launch survey completed,Pre-Launch,ai_fluency_prelaunch_survey.html,0
+2026-04-04T21:00:00Z,[TEST] Michael Okonkwo,Data & Technology,Start Here guide reviewed,Onboarding,start_here.html,1
+2026-04-05T21:00:00Z,[TEST] Michael Okonkwo,Data & Technology,Kickoff deck viewed,Onboarding,kickoff_deck.html,2
+2026-04-08T21:00:00Z,[TEST] Michael Okonkwo,Data & Technology,Activity 1: Governance Foundations completed,Phase 1: Foundation,phase1_activity_guide.html,5
+2026-04-12T21:00:00Z,[TEST] Michael Okonkwo,Data & Technology,Activity 2: The Delegation Map completed,Phase 1: Foundation,phase1_activity_guide.html,9
+2026-04-16T21:00:00Z,[TEST] Michael Okonkwo,Data & Technology,Activity 3: Description Lab completed,Phase 1: Foundation,phase1_activity_guide.html,13
+2026-04-20T21:00:00Z,[TEST] Michael Okonkwo,Data & Technology,Activity 4: Discernment Checkpoint completed,Phase 1: Foundation,phase1_activity_guide.html,17
+2026-04-03T22:00:00Z,[TEST] Lisa Park,Student Success,Pre-launch survey completed,Pre-Launch,ai_fluency_prelaunch_survey.html,0
+2026-04-04T22:00:00Z,[TEST] Lisa Park,Student Success,Start Here guide reviewed,Onboarding,start_here.html,1
+2026-04-05T22:00:00Z,[TEST] Lisa Park,Student Success,Kickoff deck viewed,Onboarding,kickoff_deck.html,2
+2026-04-03T23:00:00Z,[TEST] Andre Jackson,Innovation Hub,Pre-launch survey completed,Pre-Launch,ai_fluency_prelaunch_survey.html,0
+2026-04-04T23:00:00Z,[TEST] Andre Jackson,Innovation Hub,Start Here guide reviewed,Onboarding,start_here.html,1
+2026-04-05T23:00:00Z,[TEST] Andre Jackson,Innovation Hub,Kickoff deck viewed,Onboarding,kickoff_deck.html,2
+2026-04-08T23:00:00Z,[TEST] Andre Jackson,Innovation Hub,Activity 1: Governance Foundations completed,Phase 1: Foundation,phase1_activity_guide.html,5
+2026-04-12T23:00:00Z,[TEST] Andre Jackson,Innovation Hub,Activity 2: The Delegation Map completed,Phase 1: Foundation,phase1_activity_guide.html,9
+2026-04-03T24:00:00Z,[TEST] Nina Patel,Data & Technology,Pre-launch survey completed,Pre-Launch,ai_fluency_prelaunch_survey.html,0
+2026-04-04T24:00:00Z,[TEST] Nina Patel,Data & Technology,Start Here guide reviewed,Onboarding,start_here.html,1
+2026-04-05T24:00:00Z,[TEST] Nina Patel,Data & Technology,Kickoff deck viewed,Onboarding,kickoff_deck.html,2
+2026-04-08T24:00:00Z,[TEST] Nina Patel,Data & Technology,Activity 1: Governance Foundations completed,Phase 1: Foundation,phase1_activity_guide.html,5
+2026-04-12T24:00:00Z,[TEST] Nina Patel,Data & Technology,Activity 2: The Delegation Map completed,Phase 1: Foundation,phase1_activity_guide.html,9
+2026-04-16T24:00:00Z,[TEST] Nina Patel,Data & Technology,Activity 3: Description Lab completed,Phase 1: Foundation,phase1_activity_guide.html,13

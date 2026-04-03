@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Leadership Pilot — Analytics Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-navy: #101A4C;
+            --color-purple: #8352FF;
+            --color-blue: #87B7D5;
+            --color-gold: #FCB017;
+            --color-tan: #FFF4ED;
+            --color-white: #FFFFFF;
+            --color-black: #000000;
+            --font-display: 'Noto Serif SemiCondensed', Georgia, serif;
+            --font-body: 'Noto Serif', Georgia, serif;
+            --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, var(--color-navy) 0%, rgba(131, 82, 255, 0.2) 50%, rgba(135, 183, 213, 0.15) 100%);
+            color: var(--color-navy);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: clamp(1rem, 5vw, 3rem);
+        }
+
+        @media print {
+            body {
+                background: var(--color-white);
+                padding: 0;
+            }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: clamp(2rem, 5vw, 4rem);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: var(--color-navy);
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .header p {
+            font-family: var(--font-subhead);
+            font-size: clamp(0.95rem, 2vw, 1.2rem);
+            color: var(--color-purple);
+            font-weight: 300;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-radius: 12px;
+            padding: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(16, 26, 76, 0.1);
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .card.reveal {
+            opacity: 0;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media print {
+            .card {
+                background: var(--color-white);
+                border: 1px solid #e0e0e0;
+                page-break-inside: avoid;
+                box-shadow: none;
+            }
+        }
+
+        .card h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--color-navy);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.015em;
+            border-bottom: 3px solid var(--color-purple);
+            padding-bottom: 0.75rem;
+        }
+
+        .card h3 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1rem, 1.8vw, 1.3rem);
+            font-weight: 500;
+            color: var(--color-navy);
+            margin-bottom: 1rem;
+        }
+
+        /* Hero Stats Row */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+            margin-bottom: 0;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, rgba(131, 82, 255, 0.05), rgba(135, 183, 213, 0.05));
+            border-radius: 8px;
+            padding: clamp(1.25rem, 3vw, 2rem);
+            text-align: center;
+            border: 1px solid rgba(131, 82, 255, 0.2);
+        }
+
+        .stat-label {
+            font-family: var(--font-subhead);
+            font-size: clamp(0.85rem, 1.5vw, 1rem);
+            color: var(--color-navy);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-family: var(--font-mono);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 500;
+            color: var(--color-purple);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-unit {
+            font-family: var(--font-body);
+            font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+            color: rgba(16, 26, 76, 0.6);
+        }
+
+        /* Grid Layout */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(1.5rem, 4vw, 2.5rem);
+        }
+
+        @media (max-width: 1024px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chart-container {
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Radar Chart Styles */
+        #radarContainer {
+            position: relative;
+            width: 100%;
+            height: 400px;
+        }
+
+        /* Bar Chart Container */
+        .bar-chart {
+            width: 100%;
+            min-height: 500px;
+            margin-top: 1rem;
+        }
+
+        .bar-group {
+            display: flex;
+            margin-bottom: 1rem;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .bar-label {
+            font-family: var(--font-subhead);
+            font-size: clamp(0.85rem, 1.5vw, 1rem);
+            min-width: 180px;
+            font-weight: 500;
+            color: var(--color-navy);
+        }
+
+        .bar-container {
+            flex: 1;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            height: 2rem;
+        }
+
+        .bar {
+            height: 100%;
+            border-radius: 3px;
+            position: relative;
+            transition: opacity 0.3s ease;
+        }
+
+        .bar:hover {
+            opacity: 0.8;
+        }
+
+        .bar-value {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--color-navy);
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+        }
+
+        /* Donut Chart */
+        .donut-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+            position: relative;
+        }
+
+        #donutCanvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .donut-center-text {
+            position: absolute;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .donut-center-label {
+            font-family: var(--font-subhead);
+            font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+            font-weight: 500;
+            color: rgba(16, 26, 76, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+        }
+
+        .donut-center-value {
+            font-family: var(--font-mono);
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 500;
+            color: var(--color-purple);
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: clamp(1rem, 2vw, 2rem);
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-body);
+            font-size: clamp(0.85rem, 1.5vw, 1rem);
+            color: var(--color-navy);
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Scatter Plot */
+        .scatter-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            margin-top: 1rem;
+        }
+
+        #scatterCanvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        .scatter-tooltip {
+            position: absolute;
+            background: rgba(16, 26, 76, 0.9);
+            color: var(--color-white);
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            pointer-events: none;
+            z-index: 1000;
+            white-space: nowrap;
+            display: none;
+        }
+
+        /* Progress Tracker */
+        .progress-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .progress-label {
+            font-family: var(--font-body);
+            font-size: clamp(0.85rem, 1.5vw, 1rem);
+            min-width: 200px;
+            color: var(--color-navy);
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: clamp(1.25rem, 2vw, 1.75rem);
+            background: linear-gradient(90deg, var(--color-navy) 0%, var(--color-blue) 100%);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 0.5rem;
+            font-family: var(--font-mono);
+            font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+            color: var(--color-white);
+            font-weight: 500;
+            transition: width 0.5s ease-out;
+        }
+
+        .progress-counter {
+            font-family: var(--font-mono);
+            font-size: clamp(0.85rem, 1.5vw, 1rem);
+            min-width: 50px;
+            text-align: right;
+            color: var(--color-navy);
+            font-weight: 500;
+        }
+
+        /* Gap Analysis */
+        .gap-bar-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .gap-label {
+            font-family: var(--font-body);
+            font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+            min-width: 160px;
+            color: var(--color-navy);
+            font-weight: 500;
+        }
+
+        .gap-bar-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 2rem;
+            position: relative;
+        }
+
+        .gap-bar {
+            height: 1.5rem;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--color-white);
+            font-weight: 500;
+            transition: width 0.5s ease-out;
+        }
+
+        .gap-bar.positive {
+            background: var(--color-blue);
+        }
+
+        .gap-bar.negative {
+            background: var(--color-gold);
+        }
+
+        .gap-value {
+            font-family: var(--font-mono);
+            font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+            min-width: 50px;
+            text-align: right;
+            color: var(--color-navy);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: clamp(2rem, 5vw, 4rem);
+            padding-top: clamp(1.5rem, 3vw, 2rem);
+            border-top: 1px solid rgba(16, 26, 76, 0.1);
+            font-family: var(--font-body);
+            font-size: clamp(0.85rem, 1.5vw, 1rem);
+            color: rgba(16, 26, 76, 0.6);
+        }
+
+        .footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                padding: 0;
+                background: none;
+            }
+            .card {
+                page-break-inside: avoid;
+                margin-bottom: 1.5rem;
+            }
+            .header {
+                margin-bottom: 1.5rem;
+            }
+            canvas {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .bar-label,
+            .progress-label,
+            .gap-label {
+                min-width: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .bar-label,
+            .progress-label,
+            .gap-label {
+                min-width: auto;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI Leadership Pilot Analytics</h1>
+            <p>Pre-Launch Assessment Summary — 15 Participants Across 3 Units</p>
+        </div>
+
+        <!-- Hero Stats -->
+        <div class="card reveal">
+            <h2>Key Metrics</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Total Participants</div>
+                    <div class="stat-value" data-value="15">0</div>
+                    <div class="stat-unit">leaders</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Average Fluency</div>
+                    <div class="stat-value" data-value="62">0</div>
+                    <div class="stat-unit">percent</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Milestones Completed</div>
+                    <div class="stat-value" data-value="48">0</div>
+                    <div class="stat-unit">activities</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Completion Rate</div>
+                    <div class="stat-value" data-value="63">0</div>
+                    <div class="stat-unit">percent</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <!-- Radar Chart -->
+            <div class="card reveal">
+                <h2>Competency Radar</h2>
+                <p style="font-size: 0.9rem; color: rgba(16, 26, 76, 0.7); margin-bottom: 1rem;">Overall average with unit overlays across 5 constructs</p>
+                <div id="radarContainer" class="chart-container"></div>
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: rgba(131, 82, 255, 0.4);"></div>
+                        <span>Overall Avg</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--color-gold);"></div>
+                        <span>Student Success</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--color-blue);"></div>
+                        <span>Data & Tech</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--color-purple);"></div>
+                        <span>Innovation Hub</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fluency Distribution -->
+            <div class="card reveal">
+                <h2>Fluency Distribution</h2>
+                <p style="font-size: 0.9rem; color: rgba(16, 26, 76, 0.7); margin-bottom: 1rem;">Participants by learning stage</p>
+                <div class="donut-wrapper">
+                    <canvas id="donutCanvas"></canvas>
+                    <div class="donut-center-text">
+                        <div class="donut-center-label">Most Common</div>
+                        <div class="donut-center-value" id="commonLevel">Applying</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Unit Comparison -->
+        <div class="card reveal">
+            <h2>Unit Comparison</h2>
+            <p style="font-size: 0.9rem; color: rgba(16, 26, 76, 0.7); margin-bottom: 1rem;">Grouped construct performance across 3 units</p>
+            <div class="bar-chart" id="unitComparison"></div>
+            <div class="legend" style="margin-top: 1.5rem;">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: var(--color-gold);"></div>
+                    <span>Student Success</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: var(--color-blue);"></div>
+                    <span>Data & Technology</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: var(--color-purple);"></div>
+                    <span>Innovation Hub</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <!-- Quadrant Scatter -->
+            <div class="card reveal">
+                <h2>Participant Quadrant</h2>
+                <p style="font-size: 0.9rem; color: rgba(16, 26, 76, 0.7); margin-bottom: 1rem;">Knowledge vs. Applied Skills positioning</p>
+                <div class="scatter-container">
+                    <canvas id="scatterCanvas"></canvas>
+                    <div class="scatter-tooltip" id="tooltip"></div>
+                </div>
+            </div>
+
+            <!-- Milestone Progress -->
+            <div class="card reveal">
+                <h2>Milestone Progress</h2>
+                <p style="font-size: 0.9rem; color: rgba(16, 26, 76, 0.7); margin-bottom: 1rem;">Activities completed per participant (of 7 total)</p>
+                <div id="progressTracker"></div>
+            </div>
+        </div>
+
+        <!-- Knowing-Doing Gap -->
+        <div class="card reveal">
+            <h2>Knowing-Doing Gap Analysis</h2>
+            <p style="font-size: 0.9rem; color: rgba(16, 26, 76, 0.7); margin-bottom: 1.5rem;">Knowledge % minus Applied Skills % (positive = coaching opportunity; negative = risk mitigation needed)</p>
+            <div id="gapAnalysis"></div>
+        </div>
+
+        <div class="footer">
+            <p>Enterprise AI Leadership Pilot — Pre-Launch Assessment</p>
+            <p>Dashboard generated 2026-04-03 | Data represents 15 participants across Student Success, Data & Technology, and Innovation Hub units</p>
+        </div>
+    </div>
+
+    <script>
+        // Embedded Survey Data
+        const surveyData = [
+            {name: '[TEST] Maria Santos', unit: 'Student Success', aiOrientation: 76, learningOrientation: 80, currentAiUse: 43, aiKnowledge: 62, appliedSkills: 38, fluency: 'Applying'},
+            {name: '[TEST] James Chen', unit: 'Student Success', aiOrientation: 56, learningOrientation: 68, currentAiUse: 33, aiKnowledge: 25, appliedSkills: 50, fluency: 'Building'},
+            {name: '[TEST] Aisha Johnson', unit: 'Data & Technology', aiOrientation: 92, learningOrientation: 84, currentAiUse: 77, aiKnowledge: 75, appliedSkills: 50, fluency: 'Applying'},
+            {name: '[TEST] David Kim', unit: 'Innovation Hub', aiOrientation: 76, learningOrientation: 76, currentAiUse: 57, aiKnowledge: 75, appliedSkills: 50, fluency: 'Applying'},
+            {name: '[TEST] Keisha Williams', unit: 'Student Success', aiOrientation: 60, learningOrientation: 72, currentAiUse: 30, aiKnowledge: 50, appliedSkills: 50, fluency: 'Building'},
+            {name: '[TEST] Robert Taylor', unit: 'Data & Technology', aiOrientation: 80, learningOrientation: 76, currentAiUse: 70, aiKnowledge: 88, appliedSkills: 62, fluency: 'Applying'},
+            {name: '[TEST] Fatima Al-Hassan', unit: 'Innovation Hub', aiOrientation: 84, learningOrientation: 96, currentAiUse: 80, aiKnowledge: 88, appliedSkills: 62, fluency: 'Leading'},
+            {name: '[TEST] Marcus Brown', unit: 'Student Success', aiOrientation: 44, learningOrientation: 64, currentAiUse: 17, aiKnowledge: 12, appliedSkills: 12, fluency: 'Exploring'},
+            {name: '[TEST] Sarah Mitchell', unit: 'Data & Technology', aiOrientation: 84, learningOrientation: 80, currentAiUse: 70, aiKnowledge: 75, appliedSkills: 75, fluency: 'Applying'},
+            {name: '[TEST] Carlos Rivera', unit: 'Innovation Hub', aiOrientation: 76, learningOrientation: 92, currentAiUse: 50, aiKnowledge: 62, appliedSkills: 50, fluency: 'Applying'},
+            {name: '[TEST] Tanya Washington', unit: 'Student Success', aiOrientation: 64, learningOrientation: 76, currentAiUse: 43, aiKnowledge: 50, appliedSkills: 50, fluency: 'Building'},
+            {name: '[TEST] Michael Okonkwo', unit: 'Data & Technology', aiOrientation: 96, learningOrientation: 84, currentAiUse: 83, aiKnowledge: 100, appliedSkills: 62, fluency: 'Leading'},
+            {name: '[TEST] Lisa Park', unit: 'Student Success', aiOrientation: 52, learningOrientation: 76, currentAiUse: 27, aiKnowledge: 38, appliedSkills: 25, fluency: 'Building'},
+            {name: '[TEST] Andre Jackson', unit: 'Innovation Hub', aiOrientation: 76, learningOrientation: 76, currentAiUse: 47, aiKnowledge: 50, appliedSkills: 38, fluency: 'Building'},
+            {name: '[TEST] Nina Patel', unit: 'Data & Technology', aiOrientation: 84, learningOrientation: 84, currentAiUse: 70, aiKnowledge: 88, appliedSkills: 50, fluency: 'Applying'}
+        ];
+
+        // Embedded Milestone Data
+        const milestoneData = [
+            {name: '[TEST] Maria Santos', unit: 'Student Success', count: 2},
+            {name: '[TEST] James Chen', unit: 'Student Success', count: 2},
+            {name: '[TEST] Aisha Johnson', unit: 'Data & Technology', count: 3},
+            {name: '[TEST] David Kim', unit: 'Innovation Hub', count: 2},
+            {name: '[TEST] Keisha Williams', unit: 'Student Success', count: 2},
+            {name: '[TEST] Robert Taylor', unit: 'Data & Technology', count: 3},
+            {name: '[TEST] Fatima Al-Hassan', unit: 'Innovation Hub', count: 4},
+            {name: '[TEST] Marcus Brown', unit: 'Student Success', count: 1},
+            {name: '[TEST] Sarah Mitchell', unit: 'Data & Technology', count: 2},
+            {name: '[TEST] Carlos Rivera', unit: 'Innovation Hub', count: 2},
+            {name: '[TEST] Tanya Washington', unit: 'Student Success', count: 2},
+            {name: '[TEST] Michael Okonkwo', unit: 'Data & Technology', count: 4},
+            {name: '[TEST] Lisa Park', unit: 'Student Success', count: 1},
+            {name: '[TEST] Andre Jackson', unit: 'Innovation Hub', count: 2},
+            {name: '[TEST] Nina Patel', unit: 'Data & Technology', count: 3}
+        ];
+
+        const unitColors = {
+            'Student Success': '#FCB017',
+            'Data & Technology': '#87B7D5',
+            'Innovation Hub': '#8352FF'
+        };
+
+        const fluencyColors = {
+            'Exploring': '#FF6B6B',
+            'Building': '#FFB366',
+            'Applying': '#FFD93D',
+            'Leading': '#6BCB77'
+        };
+
+        const constructs = ['AI Orientation', 'Learning Orientation', 'Current AI Use', 'AI Knowledge', 'Applied Skills'];
+
+        // Counter Animation
+        function animateCounters() {
+            document.querySelectorAll('[data-value]').forEach(el => {
+                const target = parseInt(el.dataset.value);
+                let current = 0;
+                const increment = target / 40;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        el.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        el.textContent = Math.floor(current);
+                    }
+                }, 20);
+            });
+        }
+
+        // Radar Chart
+        function drawRadarChart() {
+            const canvas = document.createElement('canvas');
+            const container = document.getElementById('radarContainer');
+            container.appendChild(canvas);
+            const ctx = canvas.getContext('2d');
+
+            const rect = container.getBoundingClientRect();
+            canvas.width = container.offsetWidth;
+            canvas.height = 400;
+
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const maxRadius = Math.min(centerX, centerY) - 60;
+            const sides = constructs.length;
+            const angleSlice = (Math.PI * 2) / sides;
+
+            // Calculate unit averages
+            const units = ['Student Success', 'Data & Technology', 'Innovation Hub'];
+            const unitAverages = {};
+            const overallAverage = [];
+
+            for (let i = 0; i < constructs.length; i++) {
+                let total = 0;
+                surveyData.forEach(p => {
+                    const constructKey = constructs[i].toLowerCase().replace(/\s+/g, '');
+                    if (constructKey === 'aiorientation') total += p.aiOrientation;
+                    else if (constructKey === 'learningorientaiton') total += p.learningOrientation;
+                    else if (constructKey === 'currentaiuse') total += p.currentAiUse;
+                    else if (constructKey === 'aiknowledge') total += p.aiKnowledge;
+                    else if (constructKey === 'appliedskills') total += p.appliedSkills;
+                });
+                overallAverage.push(total / surveyData.length);
+            }
+
+            units.forEach(unit => {
+                unitAverages[unit] = [];
+                for (let i = 0; i < constructs.length; i++) {
+                    let total = 0;
+                    let count = 0;
+                    surveyData.forEach(p => {
+                        if (p.unit === unit) {
+                            const constructKey = constructs[i].toLowerCase().replace(/\s+/g, '');
+                            if (constructKey === 'aiorientation') total += p.aiOrientation;
+                            else if (constructKey === 'learningorientaiton') total += p.learningOrientation;
+                            else if (constructKey === 'currentaiuse') total += p.currentAiUse;
+                            else if (constructKey === 'aiknowledge') total += p.aiKnowledge;
+                            else if (constructKey === 'appliedskills') total += p.appliedSkills;
+                            count++;
+                        }
+                    });
+                    unitAverages[unit].push(count > 0 ? total / count : 0);
+                }
+            });
+
+            // Draw concentric circles
+            ctx.strokeStyle = 'rgba(16, 26, 76, 0.1)';
+            ctx.lineWidth = 1;
+            for (let i = 1; i <= 5; i++) {
+                const radius = (maxRadius / 5) * i;
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+
+            // Draw axes
+            ctx.strokeStyle = 'rgba(16, 26, 76, 0.2)';
+            for (let i = 0; i < sides; i++) {
+                const angle = angleSlice * i;
+                const x = centerX + maxRadius * Math.cos(angle - Math.PI / 2);
+                const y = centerY + maxRadius * Math.sin(angle - Math.PI / 2);
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+            }
+
+            // Draw labels
+            ctx.fillStyle = '#101A4C';
+            ctx.font = 'bold 12px var(--font-body)';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            for (let i = 0; i < sides; i++) {
+                const angle = angleSlice * i;
+                const x = centerX + (maxRadius + 40) * Math.cos(angle - Math.PI / 2);
+                const y = centerY + (maxRadius + 40) * Math.sin(angle - Math.PI / 2);
+                ctx.fillText(constructs[i], x, y);
+            }
+
+            // Function to draw polygon
+            function drawPolygon(values, color, filled = false) {
+                ctx.beginPath();
+                for (let i = 0; i < values.length; i++) {
+                    const angle = angleSlice * i;
+                    const radius = (values[i] / 100) * maxRadius;
+                    const x = centerX + radius * Math.cos(angle - Math.PI / 2);
+                    const y = centerY + radius * Math.sin(angle - Math.PI / 2);
+                    if (i === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.closePath();
+                if (filled) {
+                    ctx.fillStyle = color;
+                    ctx.fill();
+                }
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+
+            // Draw overall average (filled)
+            drawPolygon(overallAverage, 'rgba(131, 82, 255, 0.3)', true);
+
+            // Draw unit overlays
+            drawPolygon(unitAverages['Student Success'], '#FCB017', false);
+            drawPolygon(unitAverages['Data & Technology'], '#87B7D5', false);
+            drawPolygon(unitAverages['Innovation Hub'], '#8352FF', false);
+        }
+
+        // Donut Chart
+        function drawDonutChart() {
+            const canvas = document.getElementById('donutCanvas');
+            const ctx = canvas.getContext('2d');
+
+            const container = canvas.parentElement;
+            canvas.width = container.offsetWidth;
+            canvas.height = 400;
+
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = Math.min(centerX, centerY) - 40;
+            const innerRadius = radius * 0.55;
+
+            // Count fluency levels
+            const fluencyCounts = { 'Exploring': 0, 'Building': 0, 'Applying': 0, 'Leading': 0 };
+            surveyData.forEach(p => {
+                fluencyCounts[p.fluency]++;
+            });
+
+            const levels = Object.keys(fluencyCounts).sort((a, b) => {
+                const order = ['Exploring', 'Building', 'Applying', 'Leading'];
+                return order.indexOf(a) - order.indexOf(b);
+            });
+            const counts = levels.map(l => fluencyCounts[l]);
+            const total = counts.reduce((a, b) => a + b, 0);
+
+            let currentAngle = -Math.PI / 2;
+            levels.forEach((level, i) => {
+                const sliceAngle = (counts[i] / total) * Math.PI * 2;
+
+                // Draw slice
+                ctx.fillStyle = fluencyColors[level];
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, currentAngle, currentAngle + sliceAngle);
+                ctx.lineTo(centerX + innerRadius * Math.cos(currentAngle + sliceAngle), centerY + innerRadius * Math.sin(currentAngle + sliceAngle));
+                ctx.arc(centerX, centerY, innerRadius, currentAngle + sliceAngle, currentAngle, true);
+                ctx.closePath();
+                ctx.fill();
+
+                currentAngle += sliceAngle;
+            });
+
+            // Find most common level
+            const maxCount = Math.max(...counts);
+            const commonIndex = counts.indexOf(maxCount);
+            document.getElementById('commonLevel').textContent = levels[commonIndex];
+
+            // Draw legend inside the donut
+            const legendStartY = centerY + innerRadius + 60;
+            let legendY = legendStartY;
+            levels.forEach((level, i) => {
+                ctx.fillStyle = fluencyColors[level];
+                ctx.fillRect(30, legendY - 8, 12, 12);
+                ctx.fillStyle = '#101A4C';
+                ctx.font = '12px var(--font-body)';
+                ctx.fillText(`${level}: ${counts[i]}`, 50, legendY);
+                legendY += 20;
+            });
+        }
+
+        // Unit Comparison Bar Chart
+        function drawUnitComparison() {
+            const container = document.getElementById('unitComparison');
+            const units = ['Student Success', 'Data & Technology', 'Innovation Hub'];
+
+            // Calculate gaps for each construct across units
+            const gaps = [];
+            constructs.forEach(construct => {
+                const values = units.map(unit => {
+                    let total = 0, count = 0;
+                    surveyData.forEach(p => {
+                        if (p.unit === unit) {
+                            const key = construct.toLowerCase().replace(/\s+/g, '');
+                            if (key === 'aiorientation') total += p.aiOrientation;
+                            else if (key === 'learningorientaiton') total += p.learningOrientation;
+                            else if (key === 'currentaiuse') total += p.currentAiUse;
+                            else if (key === 'aiknowledge') total += p.aiKnowledge;
+                            else if (key === 'appliedskills') total += p.appliedSkills;
+                            count++;
+                        }
+                    });
+                    return count > 0 ? total / count : 0;
+                });
+                const gap = Math.max(...values) - Math.min(...values);
+                gaps.push({ construct, values, gap });
+            });
+
+            // Sort by largest gap
+            gaps.sort((a, b) => b.gap - a.gap);
+
+            gaps.forEach(({ construct, values }) => {
+                const row = document.createElement('div');
+                row.className = 'bar-group';
+
+                const label = document.createElement('div');
+                label.className = 'bar-label';
+                label.textContent = construct;
+                row.appendChild(label);
+
+                const barContainer = document.createElement('div');
+                barContainer.className = 'bar-container';
+
+                units.forEach((unit, i) => {
+                    const percentage = values[i];
+                    const bar = document.createElement('div');
+                    bar.className = 'bar';
+                    bar.style.width = (percentage / 100) * 250 + 'px';
+                    bar.style.background = unitColors[unit];
+                    bar.title = `${unit}: ${percentage.toFixed(0)}%`;
+
+                    const value = document.createElement('div');
+                    value.className = 'bar-value';
+                    value.textContent = percentage.toFixed(0) + '%';
+                    bar.appendChild(value);
+
+                    barContainer.appendChild(bar);
+                });
+
+                row.appendChild(barContainer);
+                container.appendChild(row);
+            });
+        }
+
+        // Scatter Plot
+        function drawScatterPlot() {
+            const canvas = document.getElementById('scatterCanvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+
+            const padding = 60;
+            const width = canvas.width - padding * 2;
+            const height = canvas.height - padding * 2;
+
+            // Draw axes
+            ctx.strokeStyle = '#101A4C';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(padding, canvas.height - padding);
+            ctx.lineTo(canvas.width - padding, canvas.height - padding);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(padding, padding);
+            ctx.lineTo(padding, canvas.height - padding);
+            ctx.stroke();
+
+            // Draw grid lines at median
+            const medianKnowledge = 62; // median of aiKnowledge
+            const medianSkills = 50; // median of appliedSkills
+
+            ctx.strokeStyle = 'rgba(16, 26, 76, 0.2)';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([4, 4]);
+
+            const xMedian = padding + (medianKnowledge / 100) * width;
+            const yMedian = canvas.height - padding - (medianSkills / 100) * height;
+
+            ctx.beginPath();
+            ctx.moveTo(xMedian, padding);
+            ctx.lineTo(xMedian, canvas.height - padding);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(padding, yMedian);
+            ctx.lineTo(canvas.width - padding, yMedian);
+            ctx.stroke();
+
+            ctx.setLineDash([]);
+
+            // Labels
+            ctx.fillStyle = '#101A4C';
+            ctx.font = 'bold 12px var(--font-body)';
+            ctx.textAlign = 'center';
+            ctx.fillText('AI Knowledge %', canvas.width / 2, canvas.height - 20);
+            ctx.save();
+            ctx.translate(20, canvas.height / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.fillText('Applied Skills %', 0, 0);
+            ctx.restore();
+
+            // Quadrant labels
+            ctx.font = '11px var(--font-body)';
+            ctx.fillStyle = 'rgba(16, 26, 76, 0.5)';
+            ctx.textAlign = 'center';
+            ctx.fillText('Ready to Lead', xMedian + width / 4, padding + 20);
+            ctx.fillText('Knows More', xMedian - width / 4, padding + 20);
+            ctx.fillText('Intuitive', xMedian + width / 4, canvas.height - padding - 20);
+            ctx.fillText('Foundation', xMedian - width / 4, canvas.height - padding - 20);
+
+            // Plot points
+            surveyData.forEach(p => {
+                const x = padding + (p.aiKnowledge / 100) * width;
+                const y = canvas.height - padding - (p.appliedSkills / 100) * height;
+
+                ctx.fillStyle = unitColors[p.unit];
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // Store for hover
+                p.plotX = x;
+                p.plotY = y;
+            });
+
+            // Hover tooltips
+            canvas.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                const mouseY = e.clientY - rect.top;
+                const tooltip = document.getElementById('tooltip');
+
+                let found = false;
+                surveyData.forEach(p => {
+                    const dist = Math.sqrt((mouseX - p.plotX) ** 2 + (mouseY - p.plotY) ** 2);
+                    if (dist < 8) {
+                        tooltip.textContent = p.name.replace('[TEST] ', '');
+                        tooltip.style.left = (e.clientX - rect.left + 10) + 'px';
+                        tooltip.style.top = (e.clientY - rect.top - 30) + 'px';
+                        tooltip.style.display = 'block';
+                        found = true;
+                    }
+                });
+                if (!found) tooltip.style.display = 'none';
+            });
+
+            canvas.addEventListener('mouseleave', () => {
+                document.getElementById('tooltip').style.display = 'none';
+            });
+        }
+
+        // Milestone Progress
+        function drawProgressTracker() {
+            const container = document.getElementById('progressTracker');
+            const sorted = [...milestoneData].sort((a, b) => b.count - a.count);
+
+            sorted.forEach(p => {
+                const item = document.createElement('div');
+                item.className = 'progress-item';
+
+                const label = document.createElement('div');
+                label.className = 'progress-label';
+                label.textContent = p.name.replace('[TEST] ', '');
+                item.appendChild(label);
+
+                const barWrapper = document.createElement('div');
+                barWrapper.className = 'progress-bar';
+
+                const fill = document.createElement('div');
+                fill.className = 'progress-fill';
+
+                const percentage = (p.count / 7) * 100;
+                fill.style.width = '0%';
+                fill.textContent = p.count;
+
+                // Determine color based on count
+                if (p.count <= 2) {
+                    fill.style.background = 'linear-gradient(90deg, #FF6B6B, #FF8C8C)';
+                } else if (p.count <= 4) {
+                    fill.style.background = 'linear-gradient(90deg, #FCB017, #FFD93D)';
+                } else {
+                    fill.style.background = 'linear-gradient(90deg, #6BCB77, #95E1D3)';
+                }
+
+                barWrapper.appendChild(fill);
+                item.appendChild(barWrapper);
+
+                const counter = document.createElement('div');
+                counter.className = 'progress-counter';
+                counter.textContent = `${p.count}/7`;
+                item.appendChild(counter);
+
+                container.appendChild(item);
+
+                // Animate width
+                setTimeout(() => {
+                    fill.style.width = percentage + '%';
+                }, 100);
+            });
+        }
+
+        // Gap Analysis
+        function drawGapAnalysis() {
+            const container = document.getElementById('gapAnalysis');
+
+            const gaps = surveyData.map(p => ({
+                name: p.name,
+                gap: p.aiKnowledge - p.appliedSkills,
+                unit: p.unit
+            })).sort((a, b) => Math.abs(b.gap) - Math.abs(a.gap));
+
+            gaps.forEach(item => {
+                const row = document.createElement('div');
+                row.className = 'gap-bar-container';
+
+                const label = document.createElement('div');
+                label.className = 'gap-label';
+                label.textContent = item.name.replace('[TEST] ', '');
+                row.appendChild(label);
+
+                const wrapper = document.createElement('div');
+                wrapper.className = 'gap-bar-wrapper';
+
+                const bar = document.createElement('div');
+                bar.className = `gap-bar ${item.gap >= 0 ? 'positive' : 'negative'}`;
+                bar.textContent = item.gap > 0 ? `+${Math.abs(item.gap)}` : Math.abs(item.gap);
+
+                const absGap = Math.abs(item.gap);
+                bar.style.width = '0px';
+                wrapper.appendChild(bar);
+                row.appendChild(wrapper);
+
+                const value = document.createElement('div');
+                value.className = 'gap-value';
+                value.textContent = item.gap > 0 ? `+${item.gap}` : item.gap;
+                row.appendChild(value);
+
+                container.appendChild(row);
+
+                // Animate
+                setTimeout(() => {
+                    bar.style.width = (absGap / 88 * 200) + 'px';
+                }, 100);
+            });
+        }
+
+        // Intersection Observer for scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card.reveal').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Initialize
+        function init() {
+            animateCounters();
+            drawRadarChart();
+            drawDonutChart();
+            drawUnitComparison();
+            drawScatterPlot();
+            drawProgressTracker();
+            drawGapAnalysis();
+        }
+
+        window.addEventListener('load', init);
+        if (document.readyState === 'interactive' || document.readyState === 'complete') {
+            init();
+        }
+
+        // Handle window resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                location.reload();
+            }, 500);
+        });
+    </script>
+</body>
+</html>
