@@ -830,7 +830,7 @@
                 radial-gradient(ellipse at 20% 80%, rgba(131, 82, 255, 0.2) 0%, transparent 50%),
                 radial-gradient(ellipse at 80% 20%, rgba(135, 183, 213, 0.15) 0%, transparent 50%),
                 radial-gradient(ellipse at 50% 50%, rgba(252, 176, 23, 0.08) 0%, transparent 40%),
-                linear-gradient(135deg, #101A4C 0%, #1a2f6a 50%, #101A4C 100%);
+                linear-gradient(135deg, #101A4C 0%, #0d0f2d 50%, #101A4C 100%);
             position: relative;
             overflow: hidden;
         }
@@ -1090,8 +1090,10 @@
 
         <div class="activity-content">
             <div class="instructions">
-                <h3>Instructions</h3>
-                <p>Each pair receives 10 data scenarios. Classify each using the four-tier framework — without looking at the governance doc. Then check your answers against the framework. Debrief: where did people disagree, and why?</p>
+                <h3>Why This Matters</h3>
+                <p>Our scholars and their families trust DC CAP with deeply personal information — test scores, family hardships, financial circumstances, legal documentation. Every time we use Claude, we're making a decision about how to honor that trust. This activity isn't about passing a test. It's about learning to classify scenarios from your instinct as someone who works with students every day, then seeing how your protective instincts align with our governance framework.</p>
+                <h3>How It Works</h3>
+                <p>Each pair receives 10 data scenarios. Classify each using the four-tier framework from your instinct — no peeking at the answers. Then check your classifications against the framework. Debrief: where did people disagree, and why? Those disagreements tell us where we need clearer thinking together.</p>
             </div>
 
             <button class="reveal-all-btn" onclick="revealAllScenarios()">Reveal All Answers</button>
@@ -1190,6 +1192,11 @@
 
             <div class="output-note">
                 <strong>Output note:</strong> Classification sheets become evidence for the governance framework review in May.
+            </div>
+
+            <div class="reflection-section">
+                <h3>A Closing Reflection</h3>
+                <p>Every scenario you just classified represents a real student or family — their test scores, their economic circumstances, their personal struggles, their legal standing. The governance framework we've built doesn't exist to enforce rules from above. It exists to systematize the protective instincts you already have, as people who care about these scholars. When you classified Tier 1 data as requiring maximum protection, you were honoring trust. When you identified Tier 4 public content, you were being transparent. That's what governance is — trust made systematic.</p>
             </div>
         </div>
     </div>
@@ -1603,7 +1610,7 @@
     </footer>
 
     <!-- Activity Completion Tracking Banner -->
-    <div id="completionBanner" style="position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,var(--navy),#1a2566);color:white;padding:clamp(0.6rem,1.5vw,1rem) clamp(1rem,3vw,2rem);display:flex;align-items:center;justify-content:center;gap:clamp(0.4rem,1.5vw,1rem);flex-wrap:wrap;z-index:1001;box-shadow:0 -4px 20px rgba(16,26,76,0.2);font-family:var(--font-body);font-size:clamp(0.8rem,1.6vw,0.95rem);">
+    <div id="completionBanner" style="position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,var(--navy),#0d0f2d);color:white;padding:clamp(0.6rem,1.5vw,1rem) clamp(1rem,3vw,2rem);display:flex;align-items:center;justify-content:center;gap:clamp(0.4rem,1.5vw,1rem);flex-wrap:wrap;z-index:1001;box-shadow:0 -4px 20px rgba(16,26,76,0.2);font-family:var(--font-body);font-size:clamp(0.8rem,1.6vw,0.95rem);">
         <input id="participantNameInput" type="text" placeholder="Your name" style="padding:0.35rem 0.6rem;border-radius:6px;border:2px solid var(--purple);font-family:var(--font-body);font-size:0.85rem;width:clamp(120px,16vw,180px);">
         <button class="activity-complete-btn" data-activity="1" onclick="markActivityComplete(1)" style="padding:0.4rem 0.8rem;background:var(--navy);color:white;border:2px solid var(--gold);border-radius:6px;font-family:var(--font-subhead);font-weight:600;font-size:0.8rem;cursor:pointer;transition:all 0.2s;">Act 1</button>
         <button class="activity-complete-btn" data-activity="2" onclick="markActivityComplete(2)" style="padding:0.4rem 0.8rem;background:var(--navy);color:white;border:2px solid var(--gold);border-radius:6px;font-family:var(--font-subhead);font-weight:600;font-size:0.8rem;cursor:pointer;transition:all 0.2s;">Act 2</button>
@@ -1646,7 +1653,7 @@
             const name = document.getElementById('participantNameInput').value.trim();
             if (!name) {
                 const input = document.getElementById('participantNameInput');
-                input.style.borderColor = '#e74c3c';
+                input.style.borderColor = '#E63946';
                 input.setAttribute('placeholder', 'Enter your name first');
                 return;
             }

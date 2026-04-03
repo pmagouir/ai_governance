@@ -190,6 +190,12 @@
             border: 1px solid rgba(255, 255, 255, 0.5);
             cursor: pointer;
             transition: all 0.3s ease;
+            padding: 0.875rem;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .nav-dot.active {
             background: var(--gold);
@@ -468,7 +474,7 @@
 
         /* === SLIDE 5: BUILD NEXT === */
         .slide-buildnext {
-            background: linear-gradient(135deg, var(--purple) 0%, #5a2dcc 100%);
+            background: linear-gradient(135deg, var(--purple) 0%, #8352FF 100%);
             color: var(--white);
             text-align: center;
         }
@@ -477,8 +483,8 @@
             gap: var(--content-gap);
         }
         .buildnext-card {
-            background: rgba(255,255,255,0.1);
-            border: 2px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.3);
             border-radius: 12px;
             padding: clamp(1.5rem, 3vw, 2.5rem);
             width: 100%;
@@ -592,6 +598,22 @@
     <div class="slide slide-assessment" data-slide-index="2">
         <div class="slide-content">
             <h2 class="reveal" style="text-align: center; color: var(--white); margin-bottom: var(--content-gap);">My 4D Assessment</h2>
+            <div style="background: rgba(131, 82, 255, 0.08); border-left: 5px solid var(--purple); padding: 1.5rem; border-radius: 4px; margin-bottom: 2rem; font-size: 0.85rem; line-height: 1.6;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+                    <div>
+                        <strong style="color: var(--navy); display: block; margin-bottom: 0.4em;">1 — Still Exploring</strong>
+                        <p style="margin: 0; font-size: 0.8rem;">"I'm still figuring out what this looks like in my work"</p>
+                    </div>
+                    <div>
+                        <strong style="color: var(--navy); display: block; margin-bottom: 0.4em;">3 — Building Confidence</strong>
+                        <p style="margin: 0; font-size: 0.8rem;">"I can do this with some support and reference materials"</p>
+                    </div>
+                    <div>
+                        <strong style="color: var(--navy); display: block; margin-bottom: 0.4em;">5 — Leading Practice</strong>
+                        <p style="margin: 0; font-size: 0.8rem;">"I do this independently and could coach a colleague"</p>
+                    </div>
+                </div>
+            </div>
             <div class="assessment-grid">
                 <div class="assessment-card card-delegation reveal reveal-delay-1">
                     <div class="assessment-d-name">Delegation</div>

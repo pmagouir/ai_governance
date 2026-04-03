@@ -198,7 +198,7 @@
                 radial-gradient(ellipse at 20% 80%, rgba(131, 82, 255, 0.2) 0%, transparent 50%),
                 radial-gradient(ellipse at 80% 20%, rgba(135, 183, 213, 0.15) 0%, transparent 50%),
                 radial-gradient(ellipse at 50% 50%, rgba(252, 176, 23, 0.08) 0%, transparent 40%),
-                linear-gradient(135deg, #101A4C 0%, #1a2f6a 50%, #101A4C 100%);
+                linear-gradient(135deg, #101A4C 0%, #0d0f2d 50%, #101A4C 100%);
             color: var(--white);
             padding: clamp(3rem, 8vw, 5rem) clamp(1.5rem, 5vw, 3rem);
             text-align: center;
@@ -441,8 +441,8 @@
         }
 
         .status-available {
-            background-color: #e8f5e9;
-            color: #2e7d32;
+            background-color: rgba(39, 174, 96, 0.1);
+            color: #27AE60;
         }
 
         .status-coming {
@@ -523,13 +523,19 @@
 
         .checkbox-toggle input {
             cursor: pointer;
-            width: 20px;
-            height: 20px;
+            min-width: 22px;
+            min-height: 22px;
+            width: 22px;
+            height: 22px;
         }
 
         .checkbox-toggle label {
             cursor: pointer;
             font-size: 0.95rem;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem;
         }
 
         /* Office Hours Callout */
@@ -678,11 +684,11 @@
             margin-bottom: 1rem;
         }
 
-        .category-prompt { background-color: #f3e5f5; color: var(--purple); }
-        .category-spotlight { background-color: #e3f2fd; color: var(--navy); }
-        .category-tooltip { background-color: #e0f2f1; color: var(--blue); }
-        .category-sector { background-color: #fff3e0; color: var(--gold); }
-        .category-update { background-color: #f3e5f5; color: #b988ff; }
+        .category-prompt { background-color: rgba(131, 82, 255, 0.1); color: var(--purple); }
+        .category-spotlight { background-color: rgba(16, 26, 76, 0.08); color: var(--navy); }
+        .category-tooltip { background-color: rgba(135, 183, 213, 0.1); color: var(--blue); }
+        .category-sector { background-color: rgba(252, 176, 23, 0.1); color: var(--gold); }
+        .category-update { background-color: rgba(131, 82, 255, 0.1); color: #8352FF; }
 
         .entry-title {
             font-family: var(--font-display);
@@ -904,12 +910,23 @@
             <div class="quad quad-discernment">Discernment</div>
             <div class="quad quad-diligence">Diligence</div>
         </div>
+        <div class="reveal psychological-safety-callout" style="transition-delay: 0.8s; background: rgba(255, 244, 237, 0.8); backdrop-filter: blur(10px); border-left: 5px solid var(--gold); padding: clamp(1.5rem, 3vw, 2rem); border-radius: 8px; margin-top: clamp(1.5rem, 3vw, 2.5rem); max-width: 600px;">
+            <p style="font-size: clamp(0.95rem, 1.5vw, 1.1rem); line-height: 1.7; color: var(--navy); margin: 0; font-family: var(--font-body);">No technical experience required. This is a learning environment where questions are welcomed, mistakes are expected, and every participant brings expertise that matters. You are here because your leadership perspective shapes how DC CAP uses AI responsibly.</p>
+        </div>
     </div>
 </section>
 
 <section class="executive-brief">
     <div class="executive-brief-content">
-        <p>DC CAP is running a 60-day structured pilot to build AI fluency across three operational units. The initiative is grounded in Anthropic's AI Fluency Framework — the same 4D competency model (Delegation, Description, Discernment, Diligence) used by Anthropic's own Academy curriculum and co-developed with Ringling College and University College Cork.</p>
+        <p>DC CAP is running a 60-day structured pilot to build AI fluency across three operational units. The initiative is grounded in Anthropic's AI Fluency Framework — the same 4D competency model used by Anthropic's own Academy curriculum and co-developed with Ringling College and University College Cork.</p>
+        <div style="background: rgba(252, 176, 23, 0.08); border-left: 5px solid var(--gold); padding: clamp(1.5rem, 2vw, 2rem); border-radius: 4px; margin-top: 2rem; margin-bottom: 2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6;">
+                <div><strong style="color: var(--navy); display: block; margin-bottom: 0.4em;">Delegation</strong>Knowing which tasks to hand to Claude.</div>
+                <div><strong style="color: var(--navy); display: block; margin-bottom: 0.4em;">Description</strong>Writing clear instructions that get useful results.</div>
+                <div><strong style="color: var(--navy); display: block; margin-bottom: 0.4em;">Discernment</strong>Evaluating Claude's output before using it.</div>
+                <div><strong style="color: var(--navy); display: block; margin-bottom: 0.4em;">Diligence</strong>Protecting data and using AI responsibly.</div>
+            </div>
+        </div>
 
         <p>The pilot measures growth through a pre/post assessment instrument anchored to Anthropic's AI Fluency Index. Each participant completes four structured learning activities, six skill-building exercises, and a capstone presentation. By June 5, DC CAP will have evidence-based findings on whether structured AI fluency training translates to measurable workflow improvement — informing the Q3 organization-wide rollout.</p>
 
@@ -1079,6 +1096,12 @@
                 <h4 class="card-title">Phase 1 Activity Guide</h4>
                 <p class="card-description">Four structured activities for your first three weeks</p>
                 <p class="card-link" style="color: #999; cursor: default;">Available after onboarding</p>
+            </div>
+            <div class="card gold-accent reveal-scale">
+                <span class="status-badge" style="background: var(--gold); color: var(--navy);">Opens Week 4</span>
+                <h4 class="card-title">Phase 2 Activity Cards</h4>
+                <p class="card-description">Real-world workflows with modality frameworks</p>
+                <p class="card-link" style="color: #999; cursor: default;">Available in Week 4</p>
             </div>
             <div class="card blue-accent reveal-scale">
                 <span class="status-badge status-available">Available</span>
@@ -1524,6 +1547,114 @@
         });
     }
 
+    // Checkbox persistence and analytics
+    function initializeCheckboxPersistence() {
+        const checkboxes = ['check1', 'check2', 'check3'];
+
+        // Read from URL hash on page load
+        function restoreCheckboxState() {
+            const hash = window.location.hash.substring(1);
+            const params = new URLSearchParams(hash);
+
+            checkboxes.forEach((id, index) => {
+                const paramKey = 'c' + (index + 1);
+                const checkbox = document.getElementById(id);
+                if (checkbox) {
+                    checkbox.checked = params.get(paramKey) === '1';
+                }
+            });
+
+            // Check if all are checked and show congratulations message
+            checkAllComplete();
+        }
+
+        // Update URL hash when checkbox changes
+        function updateHashState() {
+            const states = checkboxes.map((id) => {
+                const checkbox = document.getElementById(id);
+                return checkbox && checkbox.checked ? '1' : '0';
+            });
+
+            const newHash = `c1=${states[0]}&c2=${states[1]}&c3=${states[2]}`;
+            window.location.hash = newHash;
+
+            // Send analytics data
+            sendAnalytics();
+
+            // Check if all are completed
+            checkAllComplete();
+        }
+
+        // Send completion data to Google Sheets (if endpoint exists)
+        function sendAnalytics() {
+            const states = checkboxes.map((id) => {
+                const checkbox = document.getElementById(id);
+                return checkbox && checkbox.checked ? '1' : '0';
+            });
+
+            const allComplete = states[0] === '1' && states[1] === '1' && states[2] === '1';
+
+            // TODO: Replace with actual Apps Script endpoint
+            // Example: const appsScriptUrl = 'https://script.google.com/macros/d/.../usercontent';
+            // if (appsScriptUrl) {
+            //     fetch(appsScriptUrl, {
+            //         method: 'POST',
+            //         body: JSON.stringify({
+            //             check1: states[0] === '1',
+            //             check2: states[1] === '1',
+            //             check3: states[2] === '1',
+            //             timestamp: new Date().toISOString(),
+            //             allComplete: allComplete
+            //         })
+            //     }).catch(err => console.log('Analytics sent'));
+            // }
+        }
+
+        // Show congratulations message when all checked
+        function checkAllComplete() {
+            const check1 = document.getElementById('check1');
+            const check2 = document.getElementById('check2');
+            const check3 = document.getElementById('check3');
+
+            const allComplete = check1 && check1.checked && check2 && check2.checked && check3 && check3.checked;
+
+            const existingMessage = document.getElementById('completion-message');
+            if (existingMessage) existingMessage.remove();
+
+            if (allComplete) {
+                const message = document.createElement('div');
+                message.id = 'completion-message';
+                message.style.cssText = `
+                    margin-top: 1rem;
+                    margin-left: 3.5rem;
+                    padding: 1rem;
+                    background: linear-gradient(135deg, rgba(131, 82, 255, 0.1), rgba(135, 183, 213, 0.1));
+                    border-left: 4px solid var(--purple);
+                    border-radius: 6px;
+                    font-weight: 600;
+                    color: var(--navy);
+                `;
+                message.textContent = '✓ All prerequisites complete! Account provisioning is now available.';
+
+                const enforcementNote = document.querySelector('.enforcement-note');
+                if (enforcementNote) {
+                    enforcementNote.parentNode.insertBefore(message, enforcementNote);
+                }
+            }
+        }
+
+        // Attach change listeners to all checkboxes
+        checkboxes.forEach((id) => {
+            const checkbox = document.getElementById(id);
+            if (checkbox) {
+                checkbox.addEventListener('change', updateHashState);
+            }
+        });
+
+        // Restore state on page load
+        restoreCheckboxState();
+    }
+
     // Initialize on load
     document.addEventListener('DOMContentLoaded', () => {
         initializeNewsletter();
@@ -1531,6 +1662,7 @@
         setupAnimations();
         setupCounters();
         updateTimelineProgress();
+        initializeCheckboxPersistence();
     });
 </script>
 

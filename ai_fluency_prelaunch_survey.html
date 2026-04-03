@@ -179,8 +179,10 @@
         input[type="radio"],
         input[type="checkbox"] {
             margin-top: 0.3rem;
-            width: 18px;
-            height: 18px;
+            min-width: 22px;
+            min-height: 22px;
+            width: 22px;
+            height: 22px;
             cursor: pointer;
             flex-shrink: 0;
         }
@@ -191,6 +193,10 @@
             font-weight: 400;
             cursor: pointer;
             flex: 1;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            padding: 0.25rem 0.5rem;
         }
 
         .likert-scale {
@@ -204,6 +210,19 @@
         .likert-option {
             flex: 1;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 44px;
+            justify-content: center;
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .likert-option:hover {
+            background-color: rgba(131, 82, 255, 0.1);
         }
 
         .likert-option input[type="radio"] {
@@ -238,7 +257,7 @@
 
         .mc-option {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 0.75rem;
             padding: 0.75rem;
             border: 2px solid transparent;
@@ -246,6 +265,7 @@
             cursor: pointer;
             transition: all 0.2s ease;
             margin-bottom: 0.75rem;
+            min-height: 44px;
         }
 
         .mc-option:hover {
@@ -300,12 +320,12 @@
         }
 
         .required-indicator {
-            color: #e74c3c;
+            color: #E63946;
             font-weight: bold;
         }
 
         .error-message {
-            color: #e74c3c;
+            color: #E63946;
             font-size: clamp(0.85rem, 1.5vw, 0.9rem);
             margin-top: 0.25rem;
         }
@@ -336,7 +356,7 @@
         }
 
         .btn-primary:hover {
-            background-color: #6b3bd4;
+            background-color: #8352FF;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(131, 82, 255, 0.2);
         }
@@ -353,7 +373,7 @@
         }
 
         .btn-secondary:hover {
-            background-color: #6da0bf;
+            background-color: #87B7D5;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(135, 183, 213, 0.2);
         }
@@ -516,13 +536,13 @@
         }
 
         .btn-export:hover {
-            background-color: #f0a300;
-            border-color: #f0a300;
+            background-color: #FCB017;
+            border-color: #FCB017;
         }
 
         .success-message {
-            background-color: #d4edda;
-            color: #155724;
+            background-color: rgba(39, 174, 96, 0.1);
+            color: #27AE60;
             padding: 1rem;
             border-radius: 4px;
             margin-bottom: 1rem;
@@ -634,6 +654,9 @@
 
             <div class="intro-text">
                 <p>This assessment measures your current orientation toward AI, learning preferences, existing knowledge, and applied skills. It takes approximately 12-15 minutes. Your responses will help shape the pilot experience and measure growth over the 60-day program.</p>
+                <div style="background: #FFF4ED; border-left: 5px solid var(--gold); padding: 1.5rem; border-radius: 4px; margin-top: 1.5rem; font-size: 0.95rem; line-height: 1.6; color: var(--navy);">
+                    <p style="margin: 0;"><strong>There are no right or wrong answers.</strong> This assessment captures your starting point so we can measure growth together. Your responses are confidential and will never be used for performance evaluation.</p>
+                </div>
             </div>
 
             <form id="pageForm1">
