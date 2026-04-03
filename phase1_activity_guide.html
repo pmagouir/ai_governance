@@ -1604,7 +1604,70 @@
         <button class="print-button" onclick="window.print()">Print Guide</button>
     </footer>
 
+    <!-- Activity Completion Tracking Banner -->
+    <div id="completionBanner" style="position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,var(--navy),#1a2566);color:white;padding:clamp(0.6rem,1.5vw,1rem) clamp(1rem,3vw,2rem);display:flex;align-items:center;justify-content:center;gap:clamp(0.4rem,1.5vw,1rem);flex-wrap:wrap;z-index:1001;box-shadow:0 -4px 20px rgba(16,26,76,0.2);font-family:var(--font-body);font-size:clamp(0.8rem,1.6vw,0.95rem);">
+        <input id="participantNameInput" type="text" placeholder="Your name" style="padding:0.35rem 0.6rem;border-radius:6px;border:2px solid var(--purple);font-family:var(--font-body);font-size:0.85rem;width:clamp(120px,16vw,180px);">
+        <button class="activity-complete-btn" data-activity="1" onclick="markActivityComplete(1)" style="padding:0.4rem 0.8rem;background:var(--navy);color:white;border:2px solid var(--gold);border-radius:6px;font-family:var(--font-subhead);font-weight:600;font-size:0.8rem;cursor:pointer;transition:all 0.2s;">Act 1</button>
+        <button class="activity-complete-btn" data-activity="2" onclick="markActivityComplete(2)" style="padding:0.4rem 0.8rem;background:var(--navy);color:white;border:2px solid var(--gold);border-radius:6px;font-family:var(--font-subhead);font-weight:600;font-size:0.8rem;cursor:pointer;transition:all 0.2s;">Act 2</button>
+        <button class="activity-complete-btn" data-activity="3" onclick="markActivityComplete(3)" style="padding:0.4rem 0.8rem;background:var(--navy);color:white;border:2px solid var(--gold);border-radius:6px;font-family:var(--font-subhead);font-weight:600;font-size:0.8rem;cursor:pointer;transition:all 0.2s;">Act 3</button>
+        <button class="activity-complete-btn" data-activity="4" onclick="markActivityComplete(4)" style="padding:0.4rem 0.8rem;background:var(--navy);color:white;border:2px solid var(--gold);border-radius:6px;font-family:var(--font-subhead);font-weight:600;font-size:0.8rem;cursor:pointer;transition:all 0.2s;">Act 4</button>
+        <span id="completionMsg" style="font-size:0.8rem;color:var(--gold);display:none;"></span>
+    </div>
+
     <script>
+        const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
+        const activityNames = {
+            1: 'Activity 1: Governance Foundations',
+            2: 'Activity 2: The Delegation Map',
+            3: 'Activity 3: Description Lab',
+            4: 'Activity 4: Discernment Checkpoint'
+        };
+        const completedActivities = new Set();
+
+        function submitMilestone(name, milestone, phase, source, details) {
+            if (SHEET_ENDPOINT === 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec') {
+                console.warn('Google Sheets endpoint not configured.');
+                return Promise.resolve();
+            }
+            return fetch(SHEET_ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    type: 'milestone',
+                    participant_name: name,
+                    milestone: milestone,
+                    phase: phase,
+                    page_source: source || '',
+                    details: details || ''
+                })
+            }).catch(err => console.error('Milestone error:', err));
+        }
+
+        function markActivityComplete(num) {
+            const name = document.getElementById('participantNameInput').value.trim();
+            if (!name) {
+                const input = document.getElementById('participantNameInput');
+                input.style.borderColor = '#e74c3c';
+                input.setAttribute('placeholder', 'Enter your name first');
+                return;
+            }
+            if (completedActivities.has(num)) return;
+            completedActivities.add(num);
+
+            submitMilestone(name, activityNames[num] + ' completed', 'Phase 1: Foundation', 'phase1_activity_guide.html');
+
+            const btn = document.querySelector('[data-activity="' + num + '"]');
+            btn.style.background = '#27ae60';
+            btn.style.borderColor = '#27ae60';
+            btn.textContent = 'Act ' + num + ' ✓';
+            btn.disabled = true;
+
+            const msg = document.getElementById('completionMsg');
+            msg.textContent = 'Recorded!';
+            msg.style.display = 'inline';
+            setTimeout(() => { msg.style.display = 'none'; }, 2000);
+        }
         /* === INTERSECTION OBSERVER FOR REVEAL ANIMATIONS === */
         const revealElements = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {

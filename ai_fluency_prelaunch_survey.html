@@ -1682,6 +1682,9 @@ DC CAP Scholarship Team</div>
             saveCurrentPageResponses();
             calculateScores();
 
+            // Submit to Google Sheets
+            submitToGoogleSheets();
+
             // Hide pages, show results
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
@@ -1915,6 +1918,91 @@ DC CAP Scholarship Team</div>
             skillsText += `Anxiety language identified: ${state.responses.taskB.anxiety ? 'Yes' : 'No'}</div>`;
             document.getElementById('items_skills').innerHTML = skillsText;
             document.getElementById('score_skills').textContent = state.scores.skills.raw + '/8';
+        }
+
+        // ==================== DATA SUBMISSION ====================
+        const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
+
+        function submitToGoogleSheets() {
+            const payload = {
+                type: 'survey',
+                participant: {
+                    name: state.responses.participantName,
+                    unit: state.responses.participantUnit,
+                    date: state.responses.participantDate,
+                    surveyMode: state.responses.surveyMode,
+                    governanceAcknowledged: state.responses.governanceAcknowledged || false
+                },
+                scores: {
+                    aiOrientation: {
+                        raw: state.scores.orientation.raw,
+                        max: state.scores.orientation.max,
+                        percentage: Math.round(state.scores.orientation.percentage)
+                    },
+                    learningOrientation: {
+                        raw: state.scores.learning.raw,
+                        max: state.scores.learning.max,
+                        percentage: Math.round(state.scores.learning.percentage)
+                    },
+                    currentAIUse: {
+                        raw: state.scores.use.raw,
+                        max: state.scores.use.max,
+                        percentage: Math.round(state.scores.use.percentage)
+                    },
+                    aiKnowledge: {
+                        raw: state.scores.knowledge.raw,
+                        max: state.scores.knowledge.max,
+                        percentage: Math.round(state.scores.knowledge.percentage)
+                    },
+                    appliedSkills: {
+                        raw: state.scores.skills.raw,
+                        max: state.scores.skills.max,
+                        percentage: Math.round(state.scores.skills.percentage),
+                        taskA: state.scores.skills.taskA,
+                        taskB: state.scores.skills.taskB
+                    }
+                },
+                responses: state.responses
+            };
+
+            if (SHEET_ENDPOINT === 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec') {
+                console.warn('Google Sheets endpoint not configured. Survey data not submitted.');
+                return;
+            }
+
+            fetch(SHEET_ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(() => {
+                const msg = document.getElementById('successMessage');
+                msg.textContent = 'Results submitted successfully';
+                msg.classList.add('show');
+                setTimeout(() => msg.classList.remove('show'), 3000);
+            }).catch(err => {
+                console.error('Submission error:', err);
+            });
+
+            // Also record as a milestone
+            submitMilestone(state.responses.participantName, 'Pre-launch survey completed', 'Pre-Launch', 'ai_fluency_prelaunch_survey.html');
+        }
+
+        function submitMilestone(name, milestone, phase, source, details) {
+            if (SHEET_ENDPOINT === 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec') return;
+            fetch(SHEET_ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    type: 'milestone',
+                    participant_name: name,
+                    milestone: milestone,
+                    phase: phase,
+                    page_source: source || '',
+                    details: details || ''
+                })
+            }).catch(err => console.error('Milestone error:', err));
         }
 
         // ==================== EXPORT ====================
