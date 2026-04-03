@@ -2005,11 +2005,15 @@
             button.addEventListener('click', () => {
                 const tabId = button.getAttribute('data-tab');
 
-                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-selected', 'false');
+                });
                 tabContents.forEach(content => content.classList.remove('active'));
 
                 button.classList.add('active');
-                const panel = document.getElementById(tabId);
+                button.setAttribute('aria-selected', 'true');
+                const panel = document.getElementById(tabId + '-panel');
                 panel.classList.add('active');
 
                 // Force-reveal any animated elements inside the newly active tab
