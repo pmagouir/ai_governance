@@ -36,10 +36,10 @@
             /* Responsive sizing */
             --title-size: clamp(1.5rem, 5vw, 3.5rem);
             --h2-size: clamp(1.25rem, 3.5vw, 2.25rem);
-            --h3-size: clamp(1rem, 2.5vw, 1.5rem);
+            --h3-size: clamp(1.3rem, 2.5vw, 1.6rem);
             --body-size: clamp(0.8rem, 1.5vw, 1.05rem);
             --small-size: clamp(0.7rem, 1vw, 0.875rem);
-            --slide-padding: clamp(1rem, 4vw, 3rem);
+            --slide-padding: clamp(1.5rem, 5vw, 3rem);
             --content-gap: clamp(0.5rem, 2vw, 1.5rem);
         }
 
@@ -178,7 +178,7 @@
             padding: var(--slide-padding);
             background: var(--light-gray);
             overflow-x: auto;
-            border-bottom: 2px solid #e0e0e0;
+            border-bottom: 2px solid var(--navy);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -338,7 +338,7 @@
             padding: var(--slide-padding);
             border-radius: 8px;
             margin-bottom: calc(var(--slide-padding) * 1.5);
-            border-left: 4px solid;
+            border-left: 5px solid;
         }
 
         .activity-1 .instructions {
@@ -458,7 +458,7 @@
         /* === OUTPUT NOTE === */
         .output-note {
             background: #f9f9f9;
-            border-left: 4px solid var(--purple);
+            border-left: 5px solid var(--purple);
             padding: var(--content-gap);
             margin-top: calc(var(--slide-padding) * 1.5);
             border-radius: 4px;
@@ -553,7 +553,7 @@
             padding: var(--content-gap);
             background: var(--white);
             border-radius: 6px;
-            border-left: 4px solid var(--purple);
+            border-left: 5px solid var(--purple);
         }
 
         .template-section-title {
@@ -1484,7 +1484,7 @@
                 <p>Best,<br>DC CAP Leadership</p>
             </div>
 
-            <div style="background: rgba(135, 183, 213, 0.1); border-left: 4px solid var(--blue); padding: var(--slide-padding); border-radius: 4px; margin-bottom: calc(var(--slide-padding) * 1.5);">
+            <div style="background: rgba(135, 183, 213, 0.1); border-left: 5px solid var(--blue); padding: var(--slide-padding); border-radius: 4px; margin-bottom: calc(var(--slide-padding) * 1.5);">
                 <h3 style="color: var(--blue); margin-bottom: var(--content-gap);">Find the Issues</h3>
                 <p style="margin-bottom: var(--content-gap);">This email contains <strong>three subtle but serious problems</strong>. Discuss with your partner and document what you find before scrolling to the answer key.</p>
                 <details style="margin-top: var(--content-gap);">
@@ -1587,12 +1587,12 @@
         <h2 class="reveal" style="color: var(--navy); font-size: var(--h2-size);">Weekly Iteration Check-In</h2>
         <p style="margin-bottom: var(--content-gap);">Starting Week 3, Preston opens every weekly check-in with two quick questions. These take 60 seconds and track the leading indicator of AI fluency development: whether you are iterating.</p>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--slide-padding); margin-bottom: var(--content-gap);">
-            <div style="background: var(--white); border-left: 4px solid var(--purple); padding: var(--content-gap); border-radius: 4px;">
+            <div style="background: var(--white); border-left: 5px solid var(--purple); padding: var(--content-gap); border-radius: 4px;">
                 <h3 style="color: var(--purple); margin-bottom: 0.5em;">Recall Check</h3>
                 <p style="font-style: italic;">"Name the 4Ds. Which modality were you in most this week?"</p>
                 <p style="font-size: var(--small-size); color: #666; margin-top: 0.5em;">If the cohort can't answer fluently by Week 4, the kickoff framing needs reinforcement.</p>
             </div>
-            <div style="background: var(--white); border-left: 4px solid var(--blue); padding: var(--content-gap); border-radius: 4px;">
+            <div style="background: var(--white); border-left: 5px solid var(--blue); padding: var(--content-gap); border-radius: 4px;">
                 <h3 style="color: var(--blue); margin-bottom: 0.5em;">Iteration Tracker</h3>
                 <p style="font-style: italic;">"How many times this week did you revise a prompt or push back on a Claude output?"</p>
                 <p style="font-size: var(--small-size); color: #666; margin-top: 0.5em;">Scale: Never · Once · A few times · Most sessions · Every session</p>

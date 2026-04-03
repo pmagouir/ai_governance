@@ -38,10 +38,10 @@
             /* Responsive sizing */
             --title-size: clamp(1.5rem, 5vw, 3.5rem);
             --h2-size: clamp(1.25rem, 3.5vw, 2.25rem);
-            --h3-size: clamp(1rem, 2.5vw, 1.5rem);
+            --h3-size: clamp(1.3rem, 2.5vw, 1.6rem);
             --body-size: clamp(0.8rem, 1.5vw, 1.05rem);
             --small-size: clamp(0.7rem, 1vw, 0.875rem);
-            --slide-padding: clamp(1rem, 4vw, 3rem);
+            --slide-padding: clamp(1.5rem, 5vw, 3rem);
             --content-gap: clamp(0.5rem, 2vw, 1.5rem);
         }
 
@@ -157,7 +157,7 @@
             padding: var(--slide-padding);
             background: var(--light-gray);
             overflow-x: auto;
-            border-bottom: 2px solid #e0e0e0;
+            border-bottom: 2px solid var(--navy);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -289,7 +289,7 @@
             padding: var(--slide-padding);
             border-radius: 8px;
             margin-bottom: calc(var(--slide-padding) * 1.5);
-            border-left: 4px solid;
+            border-left: 5px solid;
         }
         .card-1 .instructions { border-left-color: var(--blue); }
         .card-2 .instructions { border-left-color: var(--navy); }
@@ -395,7 +395,7 @@
             background: var(--white);
             padding: var(--content-gap);
             border-radius: 6px;
-            border-left: 4px solid var(--blue);
+            border-left: 5px solid var(--blue);
         }
         .template-slot-title {
             font-family: var(--font-subhead);
@@ -609,7 +609,7 @@
         /* === OUTPUT NOTE === */
         .output-note {
             background: #f9f9f9;
-            border-left: 4px solid var(--purple);
+            border-left: 5px solid var(--purple);
             padding: var(--content-gap);
             border-radius: 4px;
             font-style: italic;
@@ -752,7 +752,7 @@
             background: #f9f9f9;
             padding: calc(var(--content-gap) * 0.75);
             border-radius: 6px;
-            border-left: 3px solid;
+            border-left: 5px solid;
             font-size: var(--small-size);
             line-height: 1.5;
             color: #555;
