@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Classification Practice - DC CAP AI Governance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* === RESET & BASE === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* === CSS VARIABLES === */
+        :root {
+            --navy: #101A4C;
+            --purple: #8352FF;
+            --blue: #87B7D5;
+            --gold: #FCB017;
+            --tan: #FFF4ED;
+            --white: #FFFFFF;
+            --dark-gray: #333333;
+            --error: #E63946;
+            --success: #27AE60;
+            --font-display: 'Noto Serif SemiCondensed', Georgia, serif;
+            --font-body: 'Noto Serif', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --title-size: clamp(1.5rem, 5vw, 4rem);
+            --h2-size: clamp(1.25rem, 3.5vw, 2.5rem);
+            --h3-size: clamp(1rem, 2.5vw, 1.75rem);
+            --body-size: clamp(0.75rem, 1.5vw, 1.125rem);
+            --small-size: clamp(0.65rem, 1vw, 0.875rem);
+            --slide-padding: clamp(1rem, 4vw, 4rem);
+        }
+
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: var(--body-size);
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background: linear-gradient(135deg, #101A4C 0%, #0d0f2d 50%, #1a1a3e 100%);
+        }
+
+        /* === SLIDE STRUCTURE === */
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: var(--slide-padding);
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            max-height: 100%;
+            overflow: hidden;
+        }
+
+        /* === TYPOGRAPHY === */
+        h1 {
+            font-family: var(--font-display);
+            font-size: var(--title-size);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: 0.02em;
+            margin-bottom: clamp(0.75rem, 2vw, 2rem);
+            color: var(--white);
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: var(--h2-size);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--white);
+            margin-bottom: clamp(0.5rem, 1.5vw, 1.5rem);
+        }
+
+        h3 {
+            font-family: var(--font-display);
+            font-size: var(--h3-size);
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--white);
+            margin-bottom: clamp(0.5rem, 1vw, 1rem);
+        }
+
+        p {
+            font-size: var(--body-size);
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: clamp(0.5rem, 1vw, 1rem);
+        }
+
+        .subtitle {
+            font-size: var(--h3-size);
+            color: rgba(255, 255, 255, 0.75);
+            font-weight: 300;
+            max-width: 800px;
+            line-height: 1.7;
+            margin: 0 auto clamp(1.5rem, 3vw, 2.5rem);
+        }
+
+        /* === INTRO SLIDE (SLIDE 1) === */
+        .intro-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .tier-explanation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: clamp(1rem, 2vw, 1.5rem);
+            margin: clamp(2rem, 4vw, 3rem) 0;
+            width: 100%;
+        }
+
+        .tier-item {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: clamp(1rem, 2vw, 1.5rem);
+            text-align: center;
+        }
+
+        .tier-badge {
+            display: inline-block;
+            width: clamp(2.5rem, 4vw, 3.5rem);
+            height: clamp(2.5rem, 4vw, 3.5rem);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: clamp(1rem, 1.5vw, 1.25rem);
+            color: var(--white);
+            margin: 0 auto clamp(0.5rem, 1vw, 0.75rem);
+            font-family: var(--font-display);
+        }
+
+        .tier-badge.tier-4 { background: var(--success); }
+        .tier-badge.tier-3 { background: var(--blue); }
+        .tier-badge.tier-2 { background: var(--gold); color: var(--navy); }
+        .tier-badge.tier-1 { background: var(--error); }
+
+        .tier-label {
+            font-family: var(--font-display);
+            font-size: var(--h3-size);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-description {
+            font-size: var(--small-size);
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        /* === CTA BUTTON === */
+        .btn {
+            display: inline-block;
+            padding: clamp(0.75rem, 1.5vw, 1.25rem) clamp(1.5rem, 3vw, 2.5rem);
+            background: var(--purple);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: var(--body-size);
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s var(--ease-out-expo);
+            margin-top: clamp(1rem, 2vw, 1.5rem);
+        }
+
+        .btn:hover {
+            background: var(--blue);
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* === PRACTICE SLIDES (SLIDES 2-11) === */
+        .practice-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .score-display {
+            position: fixed;
+            top: clamp(1rem, 2vw, 2rem);
+            right: clamp(1rem, 2vw, 2rem);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: clamp(0.75rem, 1.5vw, 1rem);
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--white);
+            font-size: var(--body-size);
+            z-index: 40;
+        }
+
+        .scenario-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: clamp(2rem, 4vw, 3rem);
+            text-align: center;
+            width: 100%;
+            min-height: clamp(150px, 25vh, 200px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .scenario-card:active {
+            cursor: grabbing;
+        }
+
+        .scenario-card.dragging {
+            opacity: 0.7;
+            transform: scale(0.95);
+        }
+
+        .scenario-text {
+            font-size: var(--body-size);
+            line-height: 1.7;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .tier-buckets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: clamp(1rem, 2vw, 1.5rem);
+            width: 100%;
+            margin-top: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .tier-bucket {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: clamp(1rem, 2vw, 1.5rem);
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            gap: 0.75rem;
+        }
+
+        .tier-bucket:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.02);
+        }
+
+        .tier-bucket.over {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        .bucket-badge {
+            width: clamp(2rem, 3vw, 2.5rem);
+            height: clamp(2rem, 3vw, 2.5rem);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--white);
+            font-size: var(--body-size);
+            font-family: var(--font-display);
+        }
+
+        .bucket-badge.tier-4 { background: var(--success); }
+        .bucket-badge.tier-3 { background: var(--blue); }
+        .bucket-badge.tier-2 { background: var(--gold); color: var(--navy); }
+        .bucket-badge.tier-1 { background: var(--error); }
+
+        .bucket-label {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: var(--small-size);
+            text-align: center;
+        }
+
+        .feedback-message {
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            padding: clamp(1rem, 2vw, 1.5rem);
+            font-size: var(--body-size);
+            line-height: 1.6;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .feedback-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feedback-correct {
+            background: rgba(39, 174, 96, 0.15);
+            border: 1px solid rgba(39, 174, 96, 0.3);
+            color: var(--white);
+        }
+
+        .feedback-incorrect {
+            background: rgba(230, 57, 70, 0.15);
+            border: 1px solid rgba(230, 57, 70, 0.3);
+            color: var(--white);
+        }
+
+        .next-button {
+            display: none;
+            margin-top: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .next-button.show {
+            display: block;
+        }
+
+        /* === FLASH ANIMATION === */
+        @keyframes flash-correct {
+            0% { background-color: rgba(255, 255, 255, 0.08); }
+            50% { background-color: rgba(39, 174, 96, 0.2); }
+            100% { background-color: rgba(255, 255, 255, 0.08); }
+        }
+
+        @keyframes flash-incorrect {
+            0% { background-color: rgba(255, 255, 255, 0.08); }
+            50% { background-color: rgba(230, 57, 70, 0.2); }
+            100% { background-color: rgba(255, 255, 255, 0.08); }
+        }
+
+        .scenario-card.answer-correct {
+            animation: flash-correct 0.6s ease;
+        }
+
+        .scenario-card.answer-incorrect {
+            animation: flash-incorrect 0.6s ease;
+        }
+
+        /* === RESULTS SLIDE (SLIDE 12) === */
+        .results-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(2rem, 4vw, 3rem);
+        }
+
+        .score-circle {
+            width: clamp(150px, 20vw, 250px);
+            height: clamp(150px, 20vw, 250px);
+            border-radius: 50%;
+            background: var(--purple);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 8px 32px rgba(131, 82, 255, 0.3);
+        }
+
+        .score-number {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            color: var(--white);
+            font-family: var(--font-display);
+        }
+
+        .score-label {
+            font-size: var(--body-size);
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+        }
+
+        .results-message {
+            text-align: center;
+            max-width: 700px;
+        }
+
+        .results-message h2 {
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
+        }
+
+        .results-message p {
+            font-size: var(--body-size);
+            line-height: 1.8;
+            margin-bottom: clamp(1.5rem, 2vw, 2rem);
+        }
+
+        .summary-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: clamp(1rem, 2vw, 1.5rem);
+            margin: clamp(2rem, 4vw, 3rem) 0;
+        }
+
+        .summary-item {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: clamp(1.25rem, 2vw, 1.75rem);
+            text-align: left;
+        }
+
+        .summary-scenario {
+            font-size: var(--small-size);
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.75rem;
+        }
+
+        .summary-tier {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: var(--font-display);
+            color: var(--white);
+        }
+
+        .summary-tier.tier-4 { background: var(--success); }
+        .summary-tier.tier-3 { background: var(--blue); }
+        .summary-tier.tier-2 { background: var(--gold); color: var(--navy); }
+        .summary-tier.tier-1 { background: var(--error); }
+
+        .action-links {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(1rem, 1.5vw, 1.25rem);
+            margin-top: clamp(2rem, 4vw, 3rem);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .action-link {
+            padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+            border-radius: 8px;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: var(--body-size);
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s var(--ease-out-expo);
+        }
+
+        .action-link.primary {
+            background: var(--purple);
+            color: var(--white);
+        }
+
+        .action-link.primary:hover {
+            background: var(--blue);
+            transform: translateY(-2px);
+        }
+
+        .action-link.secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .action-link.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* === NAV DOTS === */
+        .nav-dots {
+            position: fixed;
+            right: clamp(1rem, 3vw, 2rem);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.5rem, 1vw, 1rem);
+            z-index: 50;
+        }
+
+        .nav-dot {
+            width: clamp(0.5rem, 1.5vw, 0.75rem);
+            height: clamp(0.5rem, 1.5vw, 0.75rem);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            padding: 0.875rem;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-dot.active {
+            background: var(--purple);
+            transform: scale(1.3);
+        }
+
+        .nav-dot:hover {
+            background: rgba(131, 82, 255, 0.7);
+        }
+
+        /* === PILOT HUB NAV === */
+        .pilot-hub-nav {
+            position: fixed;
+            bottom: 1rem;
+            left: 1rem;
+            background: rgba(16, 26, 76, 0.85);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            z-index: 9999;
+            backdrop-filter: blur(8px);
+            transition: background 0.2s ease;
+        }
+
+        .pilot-hub-nav:hover {
+            background: rgba(131, 82, 255, 0.9);
+        }
+
+        /* === REDUCED MOTION === */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .tier-explanation {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .scenario-card {
+                cursor: auto;
+            }
+            .tier-buckets {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .nav-dots {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .tier-explanation {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-height: 600px) {
+            .slide {
+                padding: clamp(0.75rem, 3vw, 2rem);
+            }
+            .score-display {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* === PRINT === */
+        @media print {
+            .nav-dots, .pilot-hub-nav, .score-display {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Score Display -->
+    <div class="score-display" id="scoreDisplay">0/10 correct</div>
+
+    <!-- Navigation Dots -->
+    <div class="nav-dots" id="navDots"></div>
+
+    <!-- Pilot Hub Navigation -->
+    <a href="pilot_hub.html" class="pilot-hub-nav">← Pilot Hub</a>
+
+    <!-- SLIDE 1: INTRODUCTION -->
+    <div class="slide" data-slide="1">
+        <div class="slide-content">
+            <div class="intro-content">
+                <h1>Data Classification Practice</h1>
+                <p class="subtitle">Our scholars and their families trust DC CAP with personal information. This exercise builds your instinct for protecting that trust.</p>
+
+                <div class="tier-explanation">
+                    <div class="tier-item">
+                        <div class="tier-badge tier-4">4</div>
+                        <div class="tier-label">Public</div>
+                        <div class="tier-description">Safe to share with Claude freely</div>
+                    </div>
+                    <div class="tier-item">
+                        <div class="tier-badge tier-3">3</div>
+                        <div class="tier-label">Internal</div>
+                        <div class="tier-description">OK for Claude with care</div>
+                    </div>
+                    <div class="tier-item">
+                        <div class="tier-badge tier-2">2</div>
+                        <div class="tier-label">Sensitive</div>
+                        <div class="tier-description">Requires review before AI use</div>
+                    </div>
+                    <div class="tier-item">
+                        <div class="tier-badge tier-1">1</div>
+                        <div class="tier-label">Restricted</div>
+                        <div class="tier-description">Never share with Claude</div>
+                    </div>
+                </div>
+
+                <button class="btn" onclick="goToSlide(2)">Begin Practice →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDES 2-11: PRACTICE SCENARIOS -->
+    <!-- Scenario 1 -->
+    <div class="slide" data-slide="2">
+        <div class="slide-content">
+            <div class="practice-container">
+                <h2>Scenario 1 of 10</h2>
+                <div class="scenario-card" draggable="true" data-scenario="0">
+                    <div class="scenario-text">Email thread discussing a scholar's family hardship and financial situation</div>
+                </div>
+                <div class="tier-buckets">
+                    <div class="tier-bucket" data-tier="4">
+                        <div class="bucket-badge tier-4">4</div>
+                        <div class="bucket-label">Public</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="3">
+                        <div class="bucket-badge tier-3">3</div>
+                        <div class="bucket-label">Internal</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="2">
+                        <div class="bucket-badge tier-2">2</div>
+                        <div class="bucket-label">Sensitive</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="1">
+                        <div class="bucket-badge tier-1">1</div>
+                        <div class="bucket-label">Restricted</div>
+                    </div>
+                </div>
+                <div class="feedback-message" id="feedback-0"></div>
+                <button class="btn next-button" id="next-0" onclick="goToSlide(3)">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 2 -->
+    <div class="slide" data-slide="3">
+        <div class="slide-content">
+            <div class="practice-container">
+                <h2>Scenario 2 of 10</h2>
+                <div class="scenario-card" draggable="true" data-scenario="1">
+                    <div class="scenario-text">DC CAP's total scholarship disbursements by fiscal year</div>
+                </div>
+                <div class="tier-buckets">
+                    <div class="tier-bucket" data-tier="4">
+                        <div class="bucket-badge tier-4">4</div>
+                        <div class="bucket-label">Public</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="3">
+                        <div class="bucket-badge tier-3">3</div>
+                        <div class="bucket-label">Internal</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="2">
+                        <div class="bucket-badge tier-2">2</div>
+                        <div class="bucket-label">Sensitive</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="1">
+                        <div class="bucket-badge tier-1">1</div>
+                        <div class="bucket-label">Restricted</div>
+                    </div>
+                </div>
+                <div class="feedback-message" id="feedback-1"></div>
+                <button class="btn next-button" id="next-1" onclick="goToSlide(4)">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 3 -->
+    <div class="slide" data-slide="4">
+        <div class="slide-content">
+            <div class="practice-container">
+                <h2>Scenario 3 of 10</h2>
+                <div class="scenario-card" draggable="true" data-scenario="2">
+                    <div class="scenario-text">Internal staff meeting notes about program strategy changes</div>
+                </div>
+                <div class="tier-buckets">
+                    <div class="tier-bucket" data-tier="4">
+                        <div class="bucket-badge tier-4">4</div>
+                        <div class="bucket-label">Public</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="3">
+                        <div class="bucket-badge tier-3">3</div>
+                        <div class="bucket-label">Internal</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="2">
+                        <div class="bucket-badge tier-2">2</div>
+                        <div class="bucket-label">Sensitive</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="1">
+                        <div class="bucket-badge tier-1">1</div>
+                        <div class="bucket-label">Restricted</div>
+                    </div>
+                </div>
+                <div class="feedback-message" id="feedback-2"></div>
+                <button class="btn next-button" id="next-2" onclick="goToSlide(5)">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 4 -->
+    <div class="slide" data-slide="5">
+        <div class="slide-content">
+            <div class="practice-container">
+                <h2>Scenario 4 of 10</h2>
+                <div class="scenario-card" draggable="true" data-scenario="3">
+                    <div class="scenario-text">A student's GPA, home address, and Social Security number</div>
+                </div>
+                <div class="tier-buckets">
+                    <div class="tier-bucket" data-tier="4">
+                        <div class="bucket-badge tier-4">4</div>
+                        <div class="bucket-label">Public</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="3">
+                        <div class="bucket-badge tier-3">3</div>
+                        <div class="bucket-label">Internal</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="2">
+                        <div class="bucket-badge tier-2">2</div>
+                        <div class="bucket-label">Sensitive</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="1">
+                        <div class="bucket-badge tier-1">1</div>
+                        <div class="bucket-label">Restricted</div>
+                    </div>
+                </div>
+                <div class="feedback-message" id="feedback-3"></div>
+                <button class="btn next-button" id="next-3" onclick="goToSlide(6)">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 5 -->
+    <div class="slide" data-slide="6">
+        <div class="slide-content">
+            <div class="practice-container">
+                <h2>Scenario 5 of 10</h2>
+                <div class="scenario-card" draggable="true" data-scenario="4">
+                    <div class="scenario-text">Published press release about a new university partnership</div>
+                </div>
+                <div class="tier-buckets">
+                    <div class="tier-bucket" data-tier="4">
+                        <div class="bucket-badge tier-4">4</div>
+                        <div class="bucket-label">Public</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="3">
+                        <div class="bucket-badge tier-3">3</div>
+                        <div class="bucket-label">Internal</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="2">
+                        <div class="bucket-badge tier-2">2</div>
+                        <div class="bucket-label">Sensitive</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="1">
+                        <div class="bucket-badge tier-1">1</div>
+                        <div class="bucket-label">Restricted</div>
+                    </div>
+                </div>
+                <div class="feedback-message" id="feedback-4"></div>
+                <button class="btn next-button" id="next-4" onclick="goToSlide(7)">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 6 -->
+    <div class="slide" data-slide="7">
+        <div class="slide-content">
+            <div class="practice-container">
+                <h2>Scenario 6 of 10</h2>
+                <div class="scenario-card" draggable="true" data-scenario="5">
+                    <div class="scenario-text">Salary ranges for DC CAP staff positions</div>
+                </div>
+                <div class="tier-buckets">
+                    <div class="tier-bucket" data-tier="4">
+                        <div class="bucket-badge tier-4">4</div>
+                        <div class="bucket-label">Public</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="3">
+                        <div class="bucket-badge tier-3">3</div>
+                        <div class="bucket-label">Internal</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="2">
+                        <div class="bucket-badge tier-2">2</div>
+                        <div class="bucket-label">Sensitive</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="1">
+                        <div class="bucket-badge tier-1">1</div>
+                        <div class="bucket-label">Restricted</div>
+                    </div>
+                </div>
+                <div class="feedback-message" id="feedback-5"></div>
+                <button class="btn next-button" id="next-5" onclick="goToSlide(8)">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 7 -->
+    <div class="slide" data-slide="8">
+        <div class="slide-content">
+            <div class="practice-container">
+                <h2>Scenario 7 of 10</h2>
+                <div class="scenario-card" draggable="true" data-scenario="6">
+                    <div class="scenario-text">Aggregated, anonymized graduation rates by cohort year</div>
+                </div>
+                <div class="tier-buckets">
+                    <div class="tier-bucket" data-tier="4">
+                        <div class="bucket-badge tier-4">4</div>
+                        <div class="bucket-label">Public</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="3">
+                        <div class="bucket-badge tier-3">3</div>
+                        <div class="bucket-label">Internal</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="2">
+                        <div class="bucket-badge tier-2">2</div>
+                        <div class="bucket-label">Sensitive</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="1">
+                        <div class="bucket-badge tier-1">1</div>
+                        <div class="bucket-label">Restricted</div>
+                    </div>
+                </div>
+                <div class="feedback-message" id="feedback-6"></div>
+                <button class="btn next-button" id="next-6" onclick="goToSlide(9)">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 8 -->
+    <div class="slide" data-slide="9">
+        <div class="slide-content">
+            <div class="practice-container">
+                <h2>Scenario 8 of 10</h2>
+                <div class="scenario-card" draggable="true" data-scenario="7">
+                    <div class="scenario-text">A counselor's notes about a student's mental health referral</div>
+                </div>
+                <div class="tier-buckets">
+                    <div class="tier-bucket" data-tier="4">
+                        <div class="bucket-badge tier-4">4</div>
+                        <div class="bucket-label">Public</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="3">
+                        <div class="bucket-badge tier-3">3</div>
+                        <div class="bucket-label">Internal</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="2">
+                        <div class="bucket-badge tier-2">2</div>
+                        <div class="bucket-label">Sensitive</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="1">
+                        <div class="bucket-badge tier-1">1</div>
+                        <div class="bucket-label">Restricted</div>
+                    </div>
+                </div>
+                <div class="feedback-message" id="feedback-7"></div>
+                <button class="btn next-button" id="next-7" onclick="goToSlide(10)">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 9 -->
+    <div class="slide" data-slide="10">
+        <div class="slide-content">
+            <div class="practice-container">
+                <h2>Scenario 9 of 10</h2>
+                <div class="scenario-card" draggable="true" data-scenario="8">
+                    <div class="scenario-text">Draft board deck with unreleased strategic priorities</div>
+                </div>
+                <div class="tier-buckets">
+                    <div class="tier-bucket" data-tier="4">
+                        <div class="bucket-badge tier-4">4</div>
+                        <div class="bucket-label">Public</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="3">
+                        <div class="bucket-badge tier-3">3</div>
+                        <div class="bucket-label">Internal</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="2">
+                        <div class="bucket-badge tier-2">2</div>
+                        <div class="bucket-label">Sensitive</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="1">
+                        <div class="bucket-badge tier-1">1</div>
+                        <div class="bucket-label">Restricted</div>
+                    </div>
+                </div>
+                <div class="feedback-message" id="feedback-8"></div>
+                <button class="btn next-button" id="next-8" onclick="goToSlide(11)">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 10 -->
+    <div class="slide" data-slide="11">
+        <div class="slide-content">
+            <div class="practice-container">
+                <h2>Scenario 10 of 10</h2>
+                <div class="scenario-card" draggable="true" data-scenario="9">
+                    <div class="scenario-text">DC CAP's organizational chart and team structure</div>
+                </div>
+                <div class="tier-buckets">
+                    <div class="tier-bucket" data-tier="4">
+                        <div class="bucket-badge tier-4">4</div>
+                        <div class="bucket-label">Public</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="3">
+                        <div class="bucket-badge tier-3">3</div>
+                        <div class="bucket-label">Internal</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="2">
+                        <div class="bucket-badge tier-2">2</div>
+                        <div class="bucket-label">Sensitive</div>
+                    </div>
+                    <div class="tier-bucket" data-tier="1">
+                        <div class="bucket-badge tier-1">1</div>
+                        <div class="bucket-label">Restricted</div>
+                    </div>
+                </div>
+                <div class="feedback-message" id="feedback-9"></div>
+                <button class="btn next-button" id="next-9" onclick="goToSlide(12)">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 12: RESULTS -->
+    <div class="slide" data-slide="12">
+        <div class="slide-content">
+            <div class="results-container">
+                <h1>Practice Complete</h1>
+
+                <div class="score-circle">
+                    <div class="score-number" id="finalScore">0</div>
+                    <div class="score-label">out of 10</div>
+                </div>
+
+                <div class="results-message">
+                    <h2 id="resultsTitle">Review Your Score</h2>
+                    <p id="resultsBody">Let's review the scenarios you classified.</p>
+                </div>
+
+                <div class="summary-grid" id="summaryGrid"></div>
+
+                <div class="action-links">
+                    <button class="action-link primary" onclick="goToSlide(2)">Try Again</button>
+                    <a href="ai_governance_framework.html" class="action-link secondary">Review AI Governance Framework →</a>
+                    <a href="pilot_hub.html" class="action-link secondary">← Return to Pilot Hub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data structure for scenarios
+        const scenarios = [
+            {
+                text: "Email thread discussing a scholar's family hardship and financial situation",
+                correctTier: 1,
+                explanation: "Correct. Family hardship information is deeply personal. Sharing it with any AI system could violate trust and privacy."
+            },
+            {
+                text: "DC CAP's total scholarship disbursements by fiscal year",
+                correctTier: 4,
+                explanation: "Correct. Aggregated financial data that's publicly shareable demonstrates the impact of the organization."
+            },
+            {
+                text: "Internal staff meeting notes about program strategy changes",
+                correctTier: 3,
+                explanation: "Correct. This is internal organizational information that's not public but can be used with Claude for analysis and planning."
+            },
+            {
+                text: "A student's GPA, home address, and Social Security number",
+                correctTier: 1,
+                explanation: "Correct. This contains personally identifiable information and sensitive financial data. Never share with Claude."
+            },
+            {
+                text: "Published press release about a new university partnership",
+                correctTier: 4,
+                explanation: "Correct. Published public information is safe to share with Claude and any other system."
+            },
+            {
+                text: "Salary ranges for DC CAP staff positions",
+                correctTier: 2,
+                explanation: "Correct. Internal compensation information requires careful handling and review before any AI use."
+            },
+            {
+                text: "Aggregated, anonymized graduation rates by cohort year",
+                correctTier: 4,
+                explanation: "Correct. De-identified, aggregated data is safe to share with Claude for analysis and reporting."
+            },
+            {
+                text: "A counselor's notes about a student's mental health referral",
+                correctTier: 1,
+                explanation: "Correct. Mental health information is deeply sensitive and protected. Never share with Claude."
+            },
+            {
+                text: "Draft board deck with unreleased strategic priorities",
+                correctTier: 2,
+                explanation: "Correct. Unreleased strategic information requires review before any AI use to prevent competitive harm."
+            },
+            {
+                text: "DC CAP's organizational chart and team structure",
+                correctTier: 3,
+                explanation: "Correct. Organizational structure is internal information safe to use with Claude for context and analysis."
+            }
+        ];
+
+        // State
+        let currentSlide = 1;
+        let answers = [null, null, null, null, null, null, null, null, null, null];
+        let correct = 0;
+        let answered = [false, false, false, false, false, false, false, false, false, false];
+        let draggedCard = null;
+
+        // Initialize nav dots
+        function initNavDots() {
+            const navDotsContainer = document.getElementById('navDots');
+            for (let i = 1; i <= 12; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'nav-dot';
+                if (i === 1) dot.classList.add('active');
+                dot.onclick = () => goToSlide(i);
+                navDotsContainer.appendChild(dot);
+            }
+        }
+
+        // Navigate to slide
+        function goToSlide(slideNum) {
+            currentSlide = slideNum;
+            const slides = document.querySelectorAll('.slide');
+            const navDots = document.querySelectorAll('.nav-dot');
+
+            slides.forEach((slide, index) => {
+                if (parseInt(slide.dataset.slide) === slideNum) {
+                    slide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+
+            navDots.forEach((dot, index) => {
+                if (index + 1 === slideNum) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+
+            // If results slide, populate results
+            if (slideNum === 12) {
+                populateResults();
+            }
+        }
+
+        // Drag and drop functionality
+        function setupDragAndDrop() {
+            const cards = document.querySelectorAll('.scenario-card');
+            const buckets = document.querySelectorAll('.tier-bucket');
+
+            cards.forEach(card => {
+                card.addEventListener('dragstart', handleDragStart);
+                card.addEventListener('dragend', handleDragEnd);
+            });
+
+            buckets.forEach(bucket => {
+                bucket.addEventListener('dragover', handleDragOver);
+                bucket.addEventListener('drop', handleDrop);
+                bucket.addEventListener('click', handleBucketClick);
+                bucket.addEventListener('dragenter', handleDragEnter);
+                bucket.addEventListener('dragleave', handleDragLeave);
+            });
+        }
+
+        function handleDragStart(e) {
+            draggedCard = this;
+            this.classList.add('dragging');
+        }
+
+        function handleDragEnd(e) {
+            draggedCard = null;
+            this.classList.remove('dragging');
+            document.querySelectorAll('.tier-bucket').forEach(b => b.classList.remove('over'));
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            return false;
+        }
+
+        function handleDragEnter(e) {
+            if (draggedCard) {
+                this.classList.add('over');
+            }
+        }
+
+        function handleDragLeave(e) {
+            this.classList.remove('over');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            if (!draggedCard) return;
+            handleBucketClick.call(this);
+            return false;
+        }
+
+        function handleBucketClick(e) {
+            const scenarioIdx = parseInt(draggedCard.dataset.scenario);
+            const selectedTier = parseInt(this.dataset.tier);
+            const correctTier = scenarios[scenarioIdx].correctTier;
+
+            answered[scenarioIdx] = true;
+            answers[scenarioIdx] = selectedTier;
+
+            const card = draggedCard;
+            const feedback = document.getElementById(`feedback-${scenarioIdx}`);
+            const nextBtn = document.getElementById(`next-${scenarioIdx}`);
+
+            if (selectedTier === correctTier) {
+                correct++;
+                card.classList.add('answer-correct');
+                feedback.classList.add('feedback-correct', 'show');
+                feedback.textContent = scenarios[scenarioIdx].explanation;
+            } else {
+                card.classList.add('answer-incorrect');
+                feedback.classList.add('feedback-incorrect', 'show');
+                const tierNames = ['', 'Restricted', 'Sensitive', 'Internal', 'Public'];
+                feedback.textContent = `Not quite. ${scenarios[scenarioIdx].explanation.replace(/^Correct\. /, '').replace(/^/, 'The correct answer is Tier ' + correctTier + ': ' + tierNames[correctTier] + '. ')}`;
+            }
+
+            updateScore();
+            card.style.pointerEvents = 'none';
+            card.style.opacity = '0.7';
+            nextBtn.classList.add('show');
+
+            // Remove drag capability after answer
+            draggedCard = null;
+            document.querySelectorAll('.tier-bucket').forEach(b => b.classList.remove('over'));
+        }
+
+        function updateScore() {
+            document.getElementById('scoreDisplay').textContent = `${correct}/${scenarios.length} correct`;
+        }
+
+        function populateResults() {
+            document.getElementById('finalScore').textContent = correct;
+
+            const resultsTitle = document.getElementById('resultsTitle');
+            const resultsBody = document.getElementById('resultsBody');
+
+            if (correct >= 8) {
+                resultsTitle.textContent = 'Strong Instincts';
+                resultsBody.textContent = "You're ready to work with Claude confidently. Your instinct for data governance is sharp.";
+            } else if (correct >= 5) {
+                resultsTitle.textContent = 'Good Foundation';
+                resultsBody.textContent = 'Review the scenarios you missed — the governance framework has your back. Practice builds confidence.';
+            } else {
+                resultsTitle.textContent = 'Keep Learning';
+                resultsBody.textContent = 'This is exactly why we practice. Review the AI Governance Framework and try again.';
+            }
+
+            const summaryGrid = document.getElementById('summaryGrid');
+            summaryGrid.innerHTML = '';
+
+            scenarios.forEach((scenario, idx) => {
+                const item = document.createElement('div');
+                item.className = 'summary-item';
+
+                const tierNames = ['', 'Restricted', 'Sensitive', 'Internal', 'Public'];
+                const tierClass = `tier-${scenario.correctTier}`;
+
+                item.innerHTML = `
+                    <div class="summary-scenario">${scenario.text}</div>
+                    <span class="summary-tier ${tierClass}">Tier ${scenario.correctTier}: ${tierNames[scenario.correctTier]}</span>
+                `;
+
+                summaryGrid.appendChild(item);
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            initNavDots();
+            setupDragAndDrop();
+            goToSlide(1);
+
+            // Mobile touch support for buckets
+            document.querySelectorAll('.tier-bucket').forEach(bucket => {
+                bucket.addEventListener('touchend', (e) => {
+                    const touch = e.changedTouches[0];
+                    const element = document.elementFromPoint(touch.clientX, touch.clientY);
+                    if (element && element.classList.contains('tier-bucket')) {
+                        handleBucketClick.call(element);
+                    }
+                });
+            });
+        });
+
+        // Handle keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' && currentSlide < 12) {
+                goToSlide(currentSlide + 1);
+            } else if (e.key === 'ArrowLeft' && currentSlide > 1) {
+                goToSlide(currentSlide - 1);
+            }
+        });
+    </script>
+</body>
+</html>

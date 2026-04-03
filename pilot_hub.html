@@ -242,14 +242,36 @@
         }
 
         /* 4D Quadrant Badge */
+        /* 4D Quadrant Badge - Interactive */
+        .quadrant-badge-container {
+            display: inline-block;
+            position: relative;
+        }
+
         .quadrant-badge {
             display: inline-grid;
             grid-template-columns: 1fr 1fr;
             gap: 3px;
-            margin-top: 1.5rem;
+            margin-top: 0.5rem;
             border-radius: clamp(8px, 1.5vw, 14px);
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .quadrant-hint {
+            font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+            color: rgba(16, 26, 76, 0.6);
+            text-align: center;
+            margin-top: clamp(0.75rem, 1.5vw, 1rem);
+            font-style: italic;
+            transition: opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .quadrant-hint.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
 
         .quad {
@@ -263,20 +285,86 @@
             letter-spacing: 0.02em;
             font-family: var(--font-subhead);
             color: var(--white);
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             text-align: center;
             padding: 0.5rem;
+            cursor: pointer;
+            border: none;
+            user-select: none;
         }
 
         .quad:hover {
             transform: scale(1.05);
-            z-index: 1;
+            z-index: 2;
         }
 
         .quad-delegation { background-color: var(--purple); }
         .quad-description { background-color: var(--blue); }
         .quad-discernment { background-color: var(--gold); color: var(--dark-gray); }
         .quad-diligence { background-color: var(--navy); }
+
+        /* Expanded Competency Card */
+        .competency-expansion {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+            opacity: 0;
+            margin-top: 0;
+        }
+
+        .competency-expansion.active {
+            max-height: 400px;
+            opacity: 1;
+            margin-top: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .competency-card {
+            background: rgba(16, 26, 76, 0.04);
+            border-left: 5px solid currentColor;
+            padding: clamp(1.5rem, 2.5vw, 2rem);
+            border-radius: clamp(6px, 1.5vw, 12px);
+            animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .competency-name {
+            font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+            font-weight: 900;
+            font-family: var(--font-display);
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
+        }
+
+        .competency-definition {
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            line-height: 1.8;
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
+            color: var(--dark-gray);
+        }
+
+        .competency-example-label {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+            color: var(--dark-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .competency-example {
+            font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+            line-height: 1.7;
+            color: var(--dark-gray);
+            font-style: italic;
+        }
 
         /* Executive Brief */
         .executive-brief {
@@ -538,6 +626,235 @@
             padding: 0.5rem;
         }
 
+        /* Flow Diagram Styles */
+        .prerequisite-flow-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+            margin-bottom: clamp(2rem, 4vw, 3rem);
+        }
+
+        .prerequisite-flow-total {
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            color: var(--navy);
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: clamp(1.5rem, 2vw, 2rem);
+        }
+
+        .flow-diagram {
+            display: flex;
+            align-items: flex-start;
+            gap: clamp(0.5rem, 2vw, 1.5rem);
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: clamp(2rem, 3vw, 3rem);
+        }
+
+        .flow-node {
+            flex: 1;
+            min-width: 200px;
+            max-width: 280px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .flow-node-circle {
+            width: clamp(60px, 8vw, 80px);
+            height: clamp(60px, 8vw, 80px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-weight: 700;
+            margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
+            position: relative;
+            font-family: var(--font-subhead);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .flow-node:nth-child(1) .flow-node-circle {
+            background-color: var(--gold);
+        }
+
+        .flow-node:nth-child(2) .flow-node-circle {
+            background-color: var(--purple);
+        }
+
+        .flow-node:nth-child(3) .flow-node-circle {
+            background-color: var(--blue);
+        }
+
+        .flow-node.completed .flow-node-circle {
+            box-shadow: 0 0 0 8px rgba(39, 174, 96, 0.2);
+            filter: brightness(1.1);
+        }
+
+        .flow-node.completed .flow-node-circle::after {
+            content: '✓';
+            position: absolute;
+            color: #27AE60;
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-weight: bold;
+        }
+
+        .flow-node-title {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+            color: var(--navy);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .flow-node-description {
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+            color: var(--dark-gray);
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .flow-time-badge {
+            display: inline-block;
+            background-color: rgba(16, 26, 76, 0.08);
+            color: var(--navy);
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .flow-checkbox-container {
+            margin: 0.75rem 0;
+        }
+
+        .flow-checkbox-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .flow-checkbox-toggle input {
+            cursor: pointer;
+            min-width: 20px;
+            min-height: 20px;
+            width: 20px;
+            height: 20px;
+            accent-color: var(--purple);
+        }
+
+        .flow-checkbox-toggle label {
+            cursor: pointer;
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .flow-links {
+            margin-top: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .flow-link a {
+            color: var(--purple);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+        }
+
+        .flow-link a:hover {
+            color: var(--blue);
+            text-decoration: underline;
+        }
+
+        .celebration-state {
+            text-align: center;
+            padding: clamp(1.5rem, 2vw, 2rem);
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.1), rgba(252, 176, 23, 0.1));
+            border: 2px solid #27AE60;
+            border-radius: clamp(8px, 1.5vw, 16px);
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+        }
+
+        .celebration-state.visible {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+
+        .celebration-icon {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .celebration-text {
+            font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+            color: var(--navy);
+            font-weight: 700;
+            font-family: var(--font-subhead);
+        }
+
+        .celebration-subtext {
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+            color: var(--dark-gray);
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .flow-diagram {
+                flex-direction: column;
+                gap: 0;
+                align-items: stretch;
+                margin-bottom: 0;
+            }
+
+            .flow-node {
+                max-width: 100%;
+                margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+                padding-left: clamp(2rem, 5vw, 3rem);
+                position: relative;
+            }
+
+            .flow-node::before {
+                content: '';
+                position: absolute;
+                left: clamp(1.5rem, 2vw, 2rem);
+                top: clamp(50px, 10vw, 80px);
+                width: 2px;
+                height: clamp(100px, 15vw, 150px);
+                background: linear-gradient(180deg, rgba(16, 26, 76, 0.15) 0%, rgba(16, 26, 76, 0.15) 100%);
+                transition: background 0.3s ease;
+                z-index: 1;
+            }
+
+            .flow-node.completed::before {
+                background: linear-gradient(180deg, var(--purple) 0%, var(--purple) 100%);
+                box-shadow: 0 0 8px rgba(131, 82, 255, 0.4);
+            }
+
+            .flow-node:last-child::before {
+                display: none;
+            }
+
+            .flow-node-circle {
+                position: absolute;
+                left: clamp(1rem, 2vw, 1.5rem);
+                top: 0;
+                margin-bottom: 0;
+            }
+        }
+
         /* Office Hours Callout */
         .office-hours-callout {
             background-color: var(--navy);
@@ -568,82 +885,181 @@
         }
 
 
-        /* Timeline Section */
+        /* Timeline Section - Interactive */
         .timeline-track {
             position: relative;
         }
 
+        .timeline-container {
+            padding: clamp(1.5rem, 3vw, 2.5rem);
+            background: linear-gradient(135deg, rgba(252, 176, 23, 0.04), rgba(135, 183, 213, 0.04));
+            border-radius: clamp(8px, 1.5vw, 16px);
+        }
+
         .timeline-bar {
-            height: 6px;
-            background: rgba(16, 26, 76, 0.1);
-            border-radius: 3px;
+            height: clamp(20px, 4vw, 32px);
+            background: rgba(16, 26, 76, 0.08);
+            border-radius: clamp(4px, 1vw, 8px);
             margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
             overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
         }
 
         .timeline-progress {
             height: 100%;
             width: 0;
-            background: linear-gradient(90deg, var(--navy), var(--purple));
-            border-radius: 3px;
+            background: linear-gradient(90deg, var(--navy), var(--purple), var(--blue));
+            border-radius: clamp(4px, 1vw, 8px);
             transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
         }
 
         .visible .timeline-progress {
             width: var(--target-width);
         }
 
+        .timeline-marker {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: clamp(16px, 2vw, 24px);
+            height: clamp(16px, 2vw, 24px);
+            background: var(--gold);
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 2px var(--gold), 0 2px 8px rgba(252, 176, 23, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 2px var(--gold), 0 2px 8px rgba(252, 176, 23, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 0 6px rgba(252, 176, 23, 0.3), 0 2px 8px rgba(252, 176, 23, 0.3);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .timeline-marker {
+                animation: none;
+            }
+        }
+
+        .timeline-day-counter {
+            text-align: center;
+            font-family: var(--font-subhead);
+            font-size: clamp(0.85rem, 1.3vw, 1rem);
+            color: var(--navy);
+            font-weight: 700;
+            margin-bottom: clamp(1.5rem, 2vw, 2rem);
+        }
+
         .timeline-phases {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: clamp(0.5rem, 2vw, 1rem);
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: clamp(1rem, 2vw, 1.5rem);
         }
 
         .timeline-phase {
             text-align: center;
-            opacity: 0.5;
-            transition: opacity 0.3s;
+            padding: clamp(1rem, 2vw, 1.5rem);
+            background: var(--white);
+            border-radius: clamp(6px, 1.5vw, 12px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            border: 2px solid transparent;
+            position: relative;
         }
 
-        .timeline-phase.active {
-            opacity: 1;
+        .timeline-phase:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(16, 26, 76, 0.12);
         }
 
-        .phase-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: rgba(16, 26, 76, 0.2);
-            margin: 0 auto clamp(6px, 1vh, 10px);
-            transition: all 0.3s;
+        .timeline-phase.phase-1 {
+            border-color: var(--navy);
         }
 
-        .timeline-phase.active .phase-dot {
-            background: var(--purple);
-            box-shadow: 0 0 0 4px rgba(131, 82, 255, 0.2);
+        .timeline-phase.phase-2 {
+            border-color: var(--purple);
         }
+
+        .timeline-phase.phase-3 {
+            border-color: var(--blue);
+        }
+
+        .phase-color-bar {
+            width: clamp(40px, 8vw, 60px);
+            height: clamp(6px, 1.2vw, 8px);
+            margin: 0 auto clamp(0.75rem, 1.5vw, 1rem);
+            border-radius: 3px;
+        }
+
+        .phase-color-bar.phase-1 { background: var(--navy); }
+        .phase-color-bar.phase-2 { background: var(--purple); }
+        .phase-color-bar.phase-3 { background: var(--blue); }
 
         .phase-label {
             font-family: var(--font-mono);
-            font-size: clamp(0.7rem, 1vw, 0.8rem);
+            font-size: clamp(0.7rem, 1vw, 0.85rem);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            color: var(--purple);
+            color: var(--dark-gray);
+            opacity: 0.8;
             margin-bottom: 4px;
         }
 
         .phase-name {
             font-family: var(--font-subhead);
-            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-size: clamp(1.1rem, 2.2vw, 1.35rem);
             font-weight: 700;
             color: var(--navy);
-            margin-bottom: 4px;
+            margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
         }
 
         .phase-dates {
             font-family: var(--font-body);
-            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+            font-size: clamp(0.8rem, 1.2vw, 0.95rem);
             color: var(--dark-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Phase Tooltip/Expansion */
+        .phase-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-top: 1px solid rgba(16, 26, 76, 0.1);
+            margin-top: clamp(0.75rem, 1.5vw, 1rem);
+        }
+
+        .timeline-phase.expanded .phase-details {
+            max-height: 300px;
+        }
+
+        .phase-details-content {
+            padding-top: clamp(0.75rem, 1.5vw, 1rem);
+            text-align: left;
+        }
+
+        .phase-deliverables-label {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-deliverables {
+            font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            text-align: left;
         }
 
         /* Newsletter */
@@ -904,11 +1320,22 @@
         <h1 class="hero-title reveal-blur">Co-Designing Organizational Intelligence</h1>
         <h2 class="hero-subtitle reveal" style="transition-delay: 0.2s;">DC CAP Enterprise AI Leadership Pilot</h2>
         <p class="hero-meta reveal" style="transition-delay: 0.4s;">April 6 – June 5, 2026</p>
-        <div class="quadrant-badge reveal" style="transition-delay: 0.6s;">
-            <div class="quad quad-delegation">Delegation</div>
-            <div class="quad quad-description">Description</div>
-            <div class="quad quad-discernment">Discernment</div>
-            <div class="quad quad-diligence">Diligence</div>
+        <div class="quadrant-badge-container reveal" style="transition-delay: 0.6s;">
+            <div class="quadrant-badge">
+                <button class="quad quad-delegation" data-quad="delegation" aria-label="Delegation">Delegation</button>
+                <button class="quad quad-description" data-quad="description" aria-label="Description">Description</button>
+                <button class="quad quad-discernment" data-quad="discernment" aria-label="Discernment">Discernment</button>
+                <button class="quad quad-diligence" data-quad="diligence" aria-label="Diligence">Diligence</button>
+            </div>
+            <div class="quadrant-hint" id="quadrant-hint">Click to explore</div>
+            <div class="competency-expansion" id="competency-expansion">
+                <div class="competency-card" id="competency-card">
+                    <div class="competency-name" id="competency-name"></div>
+                    <div class="competency-definition" id="competency-definition"></div>
+                    <div class="competency-example-label">DC CAP Example</div>
+                    <div class="competency-example" id="competency-example"></div>
+                </div>
+            </div>
         </div>
         <div class="reveal psychological-safety-callout" style="transition-delay: 0.8s; background: rgba(255, 244, 237, 0.8); backdrop-filter: blur(10px); border-left: 5px solid var(--gold); padding: clamp(1.5rem, 3vw, 2rem); border-radius: 8px; margin-top: clamp(1.5rem, 3vw, 2.5rem); max-width: 600px; margin-left: auto; margin-right: auto;">
             <p style="font-size: clamp(0.95rem, 1.5vw, 1.1rem); line-height: 1.7; color: var(--navy); margin: 0; font-family: var(--font-body);">No technical experience required. This is a learning environment where questions are welcomed, mistakes are expected, and every participant brings expertise that matters. You are here because your leadership perspective shapes how DC CAP uses AI responsibly.</p>
@@ -979,27 +1406,62 @@
     <div style="max-width: 900px; margin: 0 auto;">
         <h3 class="reveal" style="text-align: center; color: var(--navy); font-family: var(--font-subhead); margin-bottom: clamp(1.5rem, 3vw, 2.5rem);">Pilot Timeline</h3>
         <div class="timeline-track reveal" style="transition-delay: 0.15s">
-            <div class="timeline-bar">
-                <div class="timeline-progress" style="--target-width: 8%;"></div>
-            </div>
-            <div class="timeline-phases">
-                <div class="timeline-phase active">
-                    <div class="phase-dot"></div>
-                    <div class="phase-label">Phase 1</div>
-                    <div class="phase-name">Foundation</div>
-                    <div class="phase-dates">Apr 6 – Apr 25</div>
+            <div class="timeline-container">
+                <div class="timeline-bar">
+                    <div class="timeline-progress" style="--target-width: 0%;"></div>
+                    <div class="timeline-marker" id="timeline-marker"></div>
                 </div>
-                <div class="timeline-phase">
-                    <div class="phase-dot"></div>
-                    <div class="phase-label">Phase 2</div>
-                    <div class="phase-name">Application</div>
-                    <div class="phase-dates">Apr 28 – May 16</div>
-                </div>
-                <div class="timeline-phase">
-                    <div class="phase-dot"></div>
-                    <div class="phase-label">Phase 3</div>
-                    <div class="phase-name">Capstone</div>
-                    <div class="phase-dates">May 19 – Jun 5</div>
+                <div class="timeline-day-counter" id="day-counter">Day 0 of 60</div>
+                <div class="timeline-phases">
+                    <div class="timeline-phase phase-1" data-phase="1">
+                        <div class="phase-color-bar phase-1"></div>
+                        <div class="phase-label">Phase 1</div>
+                        <div class="phase-name">Foundation</div>
+                        <div class="phase-dates">Apr 6 – Apr 25</div>
+                        <div class="phase-details">
+                            <div class="phase-details-content">
+                                <div class="phase-deliverables-label">Key Deliverables</div>
+                                <div class="phase-deliverables">
+                                    • Onboarding<br>
+                                    • Prerequisites<br>
+                                    • First Claude Session<br>
+                                    • Governance Walk
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-phase phase-2" data-phase="2">
+                        <div class="phase-color-bar phase-2"></div>
+                        <div class="phase-label">Phase 2</div>
+                        <div class="phase-name">Application</div>
+                        <div class="phase-dates">Apr 28 – May 16</div>
+                        <div class="phase-details">
+                            <div class="phase-details-content">
+                                <div class="phase-deliverables-label">Key Deliverables</div>
+                                <div class="phase-deliverables">
+                                    • Skill Building<br>
+                                    • Real Workflow Integration<br>
+                                    • Activity Cards 1-2
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-phase phase-3" data-phase="3">
+                        <div class="phase-color-bar phase-3"></div>
+                        <div class="phase-label">Phase 3</div>
+                        <div class="phase-name">Capstone</div>
+                        <div class="phase-dates">May 19 – Jun 5</div>
+                        <div class="phase-details">
+                            <div class="phase-details-content">
+                                <div class="phase-deliverables-label">Key Deliverables</div>
+                                <div class="phase-deliverables">
+                                    • Capstone Presentation<br>
+                                    • Post-Assessment<br>
+                                    • Reflection
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1014,54 +1476,78 @@
     </div>
 
     <div style="padding: 0 clamp(1.5rem, 5vw, 3rem); max-width: 1200px; margin: 0 auto;">
-        <!-- Prerequisite 1 -->
-        <div class="prerequisite-card gold-accent reveal-left">
-            <div>
-                <span class="prerequisite-number">1</span>
-                <h3 class="prerequisite-title">Review Your Start Here Guide and AI Governance Framework</h3>
-            </div>
-            <div class="prerequisite-body">
-                Start here. The Start Here Guide is your operational reference for Claude at DC CAP — interfaces, file management, Skills, governance, and responsible use. The AI Governance Framework covers data handling, approved use cases, and organizational guardrails. Review both before moving to Step 2.
-            </div>
-            <div class="checkbox-toggle">
-                <input type="checkbox" id="check1">
-                <label for="check1">Mark as complete</label>
-            </div>
-            <p style="margin-top: 1rem; margin-left: 3.5rem;"><a href="start_here.html">Open Start Here Guide →</a></p>
-            <p style="margin-top: 0.5rem; margin-left: 3.5rem;"><a href="DCCAP_AI_Data_Governance_Framework_v1.docx">Open AI Governance Framework →</a></p>
-        </div>
+        <!-- Total time estimate -->
+        <div class="prerequisite-flow-total reveal">Total: ~3.5 hours at your own pace</div>
 
-        <!-- Prerequisite 2 -->
-        <div class="prerequisite-card purple-accent reveal-left">
-            <div>
-                <span class="prerequisite-number">2</span>
-                <h3 class="prerequisite-title">Take the Pre-Launch Assessment</h3>
-            </div>
-            <div class="prerequisite-body">
-                Captures your baseline across 5 constructs: AI orientation, learning orientation, current AI use, AI knowledge, and applied skills. Includes a governance acknowledgment. Takes 12–15 minutes.
-            </div>
-            <div class="checkbox-toggle">
-                <input type="checkbox" id="check2">
-                <label for="check2">Mark as complete</label>
-            </div>
-            <p style="margin-top: 1rem; margin-left: 3.5rem;"><a href="ai_fluency_prelaunch_survey.html">Open Assessment →</a></p>
-        </div>
+        <!-- Prerequisite Flow Diagram -->
+        <div class="prerequisite-flow-wrapper reveal">
+            <div class="flow-diagram">
+                <!-- Node 1 -->
+                <div class="flow-node">
+                    <div class="flow-node-circle">1</div>
+                    <div class="flow-node-content">
+                        <h3 class="flow-node-title">Review Your Start Here Guide and AI Governance Framework</h3>
+                        <p class="flow-node-description">Start here. The Start Here Guide is your operational reference for Claude at DC CAP — interfaces, file management, Skills, governance, and responsible use. The AI Governance Framework covers data handling, approved use cases, and organizational guardrails. Review both before moving to Step 2.</p>
+                        <span class="flow-time-badge">~1 hour</span>
+                        <div class="flow-checkbox-container">
+                            <div class="flow-checkbox-toggle">
+                                <input type="checkbox" id="check1">
+                                <label for="check1">Mark as complete</label>
+                            </div>
+                        </div>
+                        <div class="flow-links">
+                            <div class="flow-link"><a href="start_here.html">Open Start Here Guide →</a></div>
+                            <div class="flow-link"><a href="ai_governance_framework.html">Open AI Governance Framework →</a></div>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- Prerequisite 3 -->
-        <div class="prerequisite-card blue-accent reveal-left">
-            <div>
-                <span class="prerequisite-number">3</span>
-                <h3 class="prerequisite-title">Complete Two Courses</h3>
+                <!-- Node 2 -->
+                <div class="flow-node">
+                    <div class="flow-node-circle">2</div>
+                    <div class="flow-node-content">
+                        <h3 class="flow-node-title">Take the Pre-Launch Assessment</h3>
+                        <p class="flow-node-description">Captures your baseline across 5 constructs: AI orientation, learning orientation, current AI use, AI knowledge, and applied skills. Includes a governance acknowledgment. Takes 12–15 minutes.</p>
+                        <span class="flow-time-badge">~15 min</span>
+                        <div class="flow-checkbox-container">
+                            <div class="flow-checkbox-toggle">
+                                <input type="checkbox" id="check2">
+                                <label for="check2">Mark as complete</label>
+                            </div>
+                        </div>
+                        <div class="flow-links">
+                            <div class="flow-link"><a href="ai_fluency_prelaunch_survey.html">Open Assessment →</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Node 3 -->
+                <div class="flow-node">
+                    <div class="flow-node-circle">3</div>
+                    <div class="flow-node-content">
+                        <h3 class="flow-node-title">Complete Two Courses</h3>
+                        <p class="flow-node-description">Two free Anthropic Academy courses. <strong>Claude 101</strong> teaches the basics of working with Claude: features, prompts, and navigation. <strong>AI Fluency for Nonprofits</strong> applies the 4D framework to mission-driven work. Both earn certificates. Required before your first Claude session.</p>
+                        <span class="flow-time-badge">~2 hours</span>
+                        <div class="flow-checkbox-container">
+                            <div class="flow-checkbox-toggle">
+                                <input type="checkbox" id="check3">
+                                <label for="check3">Mark as complete</label>
+                            </div>
+                        </div>
+                        <div class="flow-links">
+                            <div class="flow-link"><a href="https://anthropic.skilljar.com/claude-101" target="_blank">Start Claude 101 →</a></div>
+                            <div class="flow-link"><a href="https://anthropic.skilljar.com/ai-fluency-for-nonprofits" target="_blank">Start AI Fluency for Nonprofits →</a></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="prerequisite-body">
-                Two free Anthropic Academy courses. <strong>Claude 101</strong> teaches the basics of working with Claude: features, prompts, and navigation. <strong>AI Fluency for Nonprofits</strong> applies the 4D framework to mission-driven work. Both earn certificates. Required before your first Claude session.
+
+            <!-- Celebration State (hidden until all checked) -->
+            <div class="celebration-state" id="celebration-state">
+                <div class="celebration-icon">🏆</div>
+                <div class="celebration-text">Ready to go!</div>
+                <div class="celebration-subtext">Account provisioning is now available.</div>
             </div>
-            <div class="checkbox-toggle">
-                <input type="checkbox" id="check3">
-                <label for="check3">Mark as complete</label>
-            </div>
-            <p style="margin-top: 1rem; margin-left: 3.5rem;"><a href="https://anthropic.skilljar.com/claude-101" target="_blank">Start Claude 101 →</a></p>
-            <p style="margin-top: 0.5rem; margin-left: 3.5rem;"><a href="https://anthropic.skilljar.com/ai-fluency-for-nonprofits" target="_blank">Start AI Fluency for Nonprofits →</a></p>
         </div>
 
         <!-- Office Hours Callout -->
@@ -1097,6 +1583,12 @@
                 <p class="card-description">Four structured activities for your first three weeks</p>
                 <p class="card-link" style="color: #999; cursor: default;">Available after onboarding</p>
             </div>
+            <div class="card purple-accent reveal-scale">
+                <span class="status-badge status-available">Available</span>
+                <h4 class="card-title">Data Classification Practice</h4>
+                <p class="card-description">Interactive drag-and-drop exercise for the 4-tier governance system</p>
+                <a href="data_tier_practice.html" class="card-link">Start Practice →</a>
+            </div>
             <div class="card gold-accent reveal-scale">
                 <span class="status-badge" style="background: var(--gold); color: var(--navy);">Opens Week 4</span>
                 <h4 class="card-title">Phase 2 Activity Cards</h4>
@@ -1126,13 +1618,13 @@
                 <span class="status-badge status-available">Available</span>
                 <h4 class="card-title">AI Governance Framework</h4>
                 <p class="card-description">Data classification, responsible use, incident response</p>
-                <a href="DCCAP_AI_Data_Governance_Framework_v1.docx" class="card-link">View Framework →</a>
+                <a href="ai_governance_framework.html" class="card-link">View Framework →</a>
             </div>
             <div class="card gold-accent reveal-scale">
-                <span class="status-badge status-coming">Distributed Apr 8</span>
+                <span class="status-badge status-available">Available</span>
                 <h4 class="card-title">User Guide</h4>
                 <p class="card-description">Comprehensive guide to Chat, Cowork, Projects, Skills, and Connectors</p>
-                <p class="card-link" style="color: #999; cursor: default;">Distributed at lunchtime office hours</p>
+                <a href="UserGuide_Claude_DCCAP_V1_20260313.docx" class="card-link">View Guide →</a>
             </div>
         </div>
     </div>
@@ -1154,10 +1646,10 @@
                 <p class="card-link" style="color: #999; cursor: default;">Coming May 9</p>
             </div>
             <div class="card purple-accent" style="animation-delay: 0.2s;">
-                <span class="status-badge status-available">Available</span>
+                <span class="status-badge status-coming">Opens Phase 3</span>
                 <h4 class="card-title">Capstone Template</h4>
                 <p class="card-description">Your 5-slide showcase presentation</p>
-                <a href="capstone_template.html" class="card-link">View Template →</a>
+                <p class="card-link" style="color: #999; cursor: default;">Available May 19</p>
             </div>
         </div>
     </div>
@@ -1518,28 +2010,115 @@
         const pilotEnd = new Date('2026-06-05');
         const today = new Date();
 
-        const totalDays = (pilotEnd - pilotStart) / (1000 * 60 * 60 * 24);
-        const elapsedDays = Math.max(0, (today - pilotStart) / (1000 * 60 * 60 * 24));
-        const progress = Math.min(100, Math.max(0, (elapsedDays / totalDays) * 100));
+        const totalMs = pilotEnd - pilotStart;
+        const elapsedMs = Math.max(0, today - pilotStart);
+        const progress = Math.min(100, Math.max(0, (elapsedMs / totalMs) * 100));
 
         const progressBar = document.querySelector('.timeline-progress');
         if (progressBar) {
             progressBar.style.setProperty('--target-width', progress + '%');
         }
 
-        const phase2Start = new Date('2026-04-28');
-        const phase3Start = new Date('2026-05-19');
+        // Position the "You are here" marker
+        const marker = document.getElementById('timeline-marker');
+        if (marker) {
+            marker.style.left = progress + '%';
+        }
 
-        const phases = document.querySelectorAll('.timeline-phase');
-        phases.forEach((phase, i) => {
-            phase.classList.remove('active');
-            if (i === 0 && today < phase2Start) phase.classList.add('active');
-            if (i === 1 && today >= phase2Start && today < phase3Start) phase.classList.add('active');
-            if (i === 2 && today >= phase3Start) phase.classList.add('active');
-            if (i === 0 && today >= phase2Start) { phase.style.opacity = '0.7'; phase.querySelector('.phase-dot').style.background = 'var(--navy)'; }
-            if (i === 1 && today >= phase3Start) { phase.style.opacity = '0.7'; phase.querySelector('.phase-dot').style.background = 'var(--navy)'; }
+        // Update day counter
+        const totalDays = 60;
+        const elapsedDays = Math.max(0, Math.floor(elapsedMs / (1000 * 60 * 60 * 24)));
+        const dayCounter = document.getElementById('day-counter');
+        if (dayCounter) {
+            dayCounter.textContent = `Day ${elapsedDays} of ${totalDays}`;
+        }
+    }
+
+    // Initialize competency wheel interactivity
+    function initializeCompetencyWheel() {
+        const competencyData = {
+            delegation: {
+                name: 'Delegation',
+                definition: 'Knowing which tasks to hand to Claude',
+                example: 'Choosing to have Claude draft a scholarship notification email rather than writing it from scratch'
+            },
+            description: {
+                name: 'Description',
+                definition: 'Writing clear instructions that get useful results',
+                example: 'Telling Claude the audience, tone, policy constraints, and desired format for a Board memo'
+            },
+            discernment: {
+                name: 'Discernment',
+                definition: 'Evaluating Claude\'s output before using it',
+                example: 'Checking that Claude\'s scholarship eligibility summary matches the actual DC CAP policy rules'
+            },
+            diligence: {
+                name: 'Diligence',
+                definition: 'Protecting data and using AI responsibly',
+                example: 'Never uploading student PII or family financial data to Claude, even in Cowork mode'
+            }
+        };
+
+        const quads = document.querySelectorAll('.quad[data-quad]');
+        const expansion = document.getElementById('competency-expansion');
+        const hint = document.getElementById('quadrant-hint');
+        let currentQuad = null;
+
+        quads.forEach(quad => {
+            quad.addEventListener('click', function() {
+                const quadType = this.getAttribute('data-quad');
+
+                // If clicking the same quad, collapse it
+                if (currentQuad === quadType) {
+                    expansion.classList.remove('active');
+                    hint.classList.remove('hidden');
+                    currentQuad = null;
+                    return;
+                }
+
+                // Update content and show expansion
+                const data = competencyData[quadType];
+                const card = document.getElementById('competency-card');
+
+                document.getElementById('competency-name').textContent = data.name;
+                document.getElementById('competency-definition').textContent = data.definition;
+                document.getElementById('competency-example').textContent = data.example;
+
+                // Set the border color to match the quad
+                const colorMap = {
+                    delegation: 'var(--purple)',
+                    description: 'var(--blue)',
+                    discernment: 'var(--gold)',
+                    diligence: 'var(--navy)'
+                };
+                card.style.borderLeftColor = colorMap[quadType];
+
+                expansion.classList.add('active');
+                hint.classList.add('hidden');
+                currentQuad = quadType;
+            });
         });
     }
+
+    // Initialize phase expansion on timeline
+    function initializePhaseExpansion() {
+        const phases = document.querySelectorAll('.timeline-phase[data-phase]');
+
+        phases.forEach(phase => {
+            phase.addEventListener('click', function() {
+                // Close other phases
+                phases.forEach(p => {
+                    if (p !== this) {
+                        p.classList.remove('expanded');
+                    }
+                });
+
+                // Toggle current phase
+                this.classList.toggle('expanded');
+            });
+        });
+    }
+
 
     // Checkbox persistence and analytics
     function initializeCheckboxPersistence() {
@@ -1612,6 +2191,9 @@
 
             const allComplete = check1 && check1.checked && check2 && check2.checked && check3 && check3.checked;
 
+            // Update flow diagram with celebration state
+            updateFlowDiagram();
+
             const existingMessage = document.getElementById('completion-message');
             if (existingMessage) existingMessage.remove();
 
@@ -1627,6 +2209,7 @@
                     border-radius: 6px;
                     font-weight: 600;
                     color: var(--navy);
+                    display: none;
                 `;
                 message.textContent = '✓ All prerequisites complete! Account provisioning is now available.';
 
@@ -1649,6 +2232,66 @@
         restoreCheckboxState();
     }
 
+    // Flow Diagram Management
+    function initFlowDiagram() {
+        const flowNodes = document.querySelectorAll('.flow-node');
+
+        flowNodes.forEach((node, index) => {
+            const checkbox = node.querySelector('input[type="checkbox"]');
+            if (checkbox) {
+                checkbox.addEventListener('change', updateFlowDiagram);
+            }
+        });
+
+        // Initial state
+        updateFlowDiagram();
+    }
+
+    function updateFlowDiagram() {
+        const check1 = document.getElementById('check1');
+        const check2 = document.getElementById('check2');
+        const check3 = document.getElementById('check3');
+        const flowNodes = document.querySelectorAll('.flow-node');
+
+        // Update node states
+        if (check1 && flowNodes[0]) {
+            if (check1.checked) {
+                flowNodes[0].classList.add('completed');
+            } else {
+                flowNodes[0].classList.remove('completed');
+            }
+        }
+
+        if (check2 && flowNodes[1]) {
+            if (check2.checked) {
+                flowNodes[1].classList.add('completed');
+            } else {
+                flowNodes[1].classList.remove('completed');
+            }
+        }
+
+        if (check3 && flowNodes[2]) {
+            if (check3.checked) {
+                flowNodes[2].classList.add('completed');
+            } else {
+                flowNodes[2].classList.remove('completed');
+            }
+        }
+
+        // Check if all are completed
+        const allComplete = check1 && check1.checked && check2 && check2.checked && check3 && check3.checked;
+
+        // Show/hide celebration state
+        const celebrationState = document.getElementById('celebration-state');
+        if (celebrationState) {
+            if (allComplete) {
+                celebrationState.classList.add('visible');
+            } else {
+                celebrationState.classList.remove('visible');
+            }
+        }
+    }
+
     // Initialize on load
     document.addEventListener('DOMContentLoaded', () => {
         initializeNewsletter();
@@ -1656,6 +2299,8 @@
         setupAnimations();
         setupCounters();
         updateTimelineProgress();
+        initializeCompetencyWheel();
+        initializePhaseExpansion();
         initializeCheckboxPersistence();
     });
 </script>

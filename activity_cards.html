@@ -617,6 +617,215 @@
         }
         .output-note strong { color: var(--dark-gray); }
 
+        /* === MODALITY MATRIX === */
+        .modality-intro {
+            font-size: var(--body-size);
+            color: #666;
+            margin-bottom: var(--slide-padding);
+            font-style: italic;
+        }
+
+        .modality-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 25vw, 320px), 1fr));
+            gap: var(--content-gap);
+            margin-bottom: calc(var(--slide-padding) * 1.5);
+        }
+
+        @media (max-width: 768px) {
+            .modality-matrix {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .modality-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all var(--duration-normal) var(--ease-out-expo);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e8e8e8;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modality-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .modality-header {
+            padding: var(--content-gap);
+            border-top: 4px solid;
+            display: flex;
+            align-items: center;
+            gap: calc(var(--content-gap) * 0.75);
+            min-height: clamp(60px, 8vw, 80px);
+        }
+
+        .modality-card.automation .modality-header {
+            border-top-color: var(--gold);
+            background: rgba(252, 176, 23, 0.04);
+        }
+
+        .modality-card.augmentation .modality-header {
+            border-top-color: var(--purple);
+            background: rgba(131, 82, 255, 0.04);
+        }
+
+        .modality-card.agency .modality-header {
+            border-top-color: var(--blue);
+            background: rgba(135, 183, 213, 0.04);
+        }
+
+        .modality-icon {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: clamp(40px, 6vw, 50px);
+            height: clamp(40px, 6vw, 50px);
+            border-radius: 8px;
+        }
+
+        .modality-card.automation .modality-icon {
+            background: var(--gold);
+            color: var(--dark-gray);
+        }
+
+        .modality-card.augmentation .modality-icon {
+            background: var(--purple);
+            color: var(--white);
+        }
+
+        .modality-card.agency .modality-icon {
+            background: var(--blue);
+            color: var(--dark-gray);
+        }
+
+        .modality-title {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: var(--body-size);
+            color: var(--dark-gray);
+            line-height: 1.3;
+        }
+
+        .modality-body {
+            padding: var(--content-gap);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--content-gap) * 0.75);
+        }
+
+        .modality-definition {
+            font-weight: 600;
+            font-size: var(--body-size);
+            color: var(--dark-gray);
+            line-height: 1.5;
+        }
+
+        .modality-line {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: var(--small-size);
+            color: #555;
+        }
+
+        .modality-line-label {
+            font-weight: 700;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            font-size: clamp(0.65rem, 1vw, 0.75rem);
+        }
+
+        .modality-line-content {
+            line-height: 1.5;
+            color: #666;
+        }
+
+        .modality-example {
+            background: #f9f9f9;
+            padding: calc(var(--content-gap) * 0.75);
+            border-radius: 6px;
+            border-left: 3px solid;
+            font-size: var(--small-size);
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .modality-card.automation .modality-example {
+            border-left-color: var(--gold);
+        }
+
+        .modality-card.augmentation .modality-example {
+            border-left-color: var(--purple);
+        }
+
+        .modality-card.agency .modality-example {
+            border-left-color: var(--blue);
+        }
+
+        .modality-example-label {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            font-size: clamp(0.65rem, 1vw, 0.75rem);
+        }
+
+        .balance-bar-container {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .balance-bar-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: clamp(0.65rem, 1vw, 0.75rem);
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .balance-bar {
+            display: flex;
+            height: clamp(12px, 2vw, 16px);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .balance-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(0.55rem, 0.8vw, 0.65rem);
+            font-weight: 700;
+            color: var(--white);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            transition: all var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .balance-segment.claude {
+            background: var(--dark-gray);
+        }
+
+        .balance-segment.human {
+            background: var(--tan);
+            color: var(--dark-gray);
+            text-shadow: none;
+        }
+
         /* === EXAMPLE WALKTHROUGH (Card 1) === */
         .example-walkthrough {
             background: var(--light-gray);
@@ -793,6 +1002,109 @@
                 <p>Discernment grows when you see how others evaluate Claude's output. This activity makes the edit layer visible: what the model produced, what the human changed, and why. Three presenters per session, 10 minutes each. The group learns to spot patterns in where Claude excels and where human judgment closes the gap.</p>
             </div>
 
+            <!-- === MODALITY MATRIX === -->
+            <div class="modality-intro reveal">
+                Every activity uses one of three modes. Here's how to think about each one.
+            </div>
+
+            <div class="modality-matrix reveal">
+                <!-- AUTOMATION -->
+                <div class="modality-card automation">
+                    <div class="modality-header">
+                        <div class="modality-icon">⚡</div>
+                        <div class="modality-title">Automation</div>
+                    </div>
+                    <div class="modality-body">
+                        <div class="modality-definition">Claude handles the task end-to-end; you review the output</div>
+                        <div class="modality-line">
+                            <span class="modality-line-label">What Claude does</span>
+                            <span class="modality-line-content">Generates the complete deliverable</span>
+                        </div>
+                        <div class="modality-line">
+                            <span class="modality-line-label">What you do</span>
+                            <span class="modality-line-content">Review, approve, and take ownership</span>
+                        </div>
+                        <div class="modality-example">
+                            <span class="modality-example-label">DC CAP Example</span>
+                            Claude generates a weekly data summary from your Salesforce export.
+                        </div>
+                        <div class="balance-bar-container">
+                            <div class="balance-bar-labels">
+                                <span>Claude ←→ You</span>
+                            </div>
+                            <div class="balance-bar">
+                                <div class="balance-segment claude" style="width: 80%;">80%</div>
+                                <div class="balance-segment human" style="width: 20%;">20%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AUGMENTATION -->
+                <div class="modality-card augmentation">
+                    <div class="modality-header">
+                        <div class="modality-icon">🔄</div>
+                        <div class="modality-title">Augmentation</div>
+                    </div>
+                    <div class="modality-body">
+                        <div class="modality-definition">You and Claude collaborate; Claude drafts, you refine</div>
+                        <div class="modality-line">
+                            <span class="modality-line-label">What Claude does</span>
+                            <span class="modality-line-content">Produces a first draft based on your direction</span>
+                        </div>
+                        <div class="modality-line">
+                            <span class="modality-line-label">What you do</span>
+                            <span class="modality-line-content">Edit, reshape, add judgment and context</span>
+                        </div>
+                        <div class="modality-example">
+                            <span class="modality-example-label">DC CAP Example</span>
+                            Claude drafts a scholarship decision letter; you personalize it for the student and verify policy accuracy.
+                        </div>
+                        <div class="balance-bar-container">
+                            <div class="balance-bar-labels">
+                                <span>Claude ←→ You</span>
+                            </div>
+                            <div class="balance-bar">
+                                <div class="balance-segment claude" style="width: 50%;">50%</div>
+                                <div class="balance-segment human" style="width: 50%;">50%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AGENCY -->
+                <div class="modality-card agency">
+                    <div class="modality-header">
+                        <div class="modality-icon">🎯</div>
+                        <div class="modality-title">Agency</div>
+                    </div>
+                    <div class="modality-body">
+                        <div class="modality-definition">Claude coaches your thinking; you make the decisions</div>
+                        <div class="modality-line">
+                            <span class="modality-line-label">What Claude does</span>
+                            <span class="modality-line-content">Asks questions, surfaces frameworks, challenges assumptions</span>
+                        </div>
+                        <div class="modality-line">
+                            <span class="modality-line-label">What you do</span>
+                            <span class="modality-line-content">Drive the thinking, make all decisions, own the direction</span>
+                        </div>
+                        <div class="modality-example">
+                            <span class="modality-example-label">DC CAP Example</span>
+                            You ask Claude to help you think through a program redesign by surfacing tradeoffs and evidence.
+                        </div>
+                        <div class="balance-bar-container">
+                            <div class="balance-bar-labels">
+                                <span>Claude ←→ You</span>
+                            </div>
+                            <div class="balance-bar">
+                                <div class="balance-segment claude" style="width: 20%;">20%</div>
+                                <div class="balance-segment human" style="width: 80%;">80%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Materials -->
             <div class="section-block reveal">
                 <h3><span class="section-icon">M</span> Materials</h3>
@@ -958,6 +1270,109 @@
             <div class="instructions reveal">
                 <h3>What This Activity Builds</h3>
                 <p>Delegation is the strategic decision about which tasks to hand to Claude and which to keep. This activity makes that decision visible by mapping your unit's recurring work onto a 2x2: AI-readiness on one axis, frequency on the other. The quadrant with high-frequency, AI-ready tasks is your immediate deployment target. The quadrant with low-frequency, human-required tasks clarifies where your judgment is irreplaceable.</p>
+            </div>
+
+            <!-- === MODALITY MATRIX === -->
+            <div class="modality-intro reveal">
+                Every activity uses one of three modes. Here's how to think about each one.
+            </div>
+
+            <div class="modality-matrix reveal">
+                <!-- AUTOMATION -->
+                <div class="modality-card automation">
+                    <div class="modality-header">
+                        <div class="modality-icon">⚡</div>
+                        <div class="modality-title">Automation</div>
+                    </div>
+                    <div class="modality-body">
+                        <div class="modality-definition">Claude handles the task end-to-end; you review the output</div>
+                        <div class="modality-line">
+                            <span class="modality-line-label">What Claude does</span>
+                            <span class="modality-line-content">Generates the complete deliverable</span>
+                        </div>
+                        <div class="modality-line">
+                            <span class="modality-line-label">What you do</span>
+                            <span class="modality-line-content">Review, approve, and take ownership</span>
+                        </div>
+                        <div class="modality-example">
+                            <span class="modality-example-label">DC CAP Example</span>
+                            Claude generates a weekly data summary from your Salesforce export.
+                        </div>
+                        <div class="balance-bar-container">
+                            <div class="balance-bar-labels">
+                                <span>Claude ←→ You</span>
+                            </div>
+                            <div class="balance-bar">
+                                <div class="balance-segment claude" style="width: 80%;">80%</div>
+                                <div class="balance-segment human" style="width: 20%;">20%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AUGMENTATION -->
+                <div class="modality-card augmentation">
+                    <div class="modality-header">
+                        <div class="modality-icon">🔄</div>
+                        <div class="modality-title">Augmentation</div>
+                    </div>
+                    <div class="modality-body">
+                        <div class="modality-definition">You and Claude collaborate; Claude drafts, you refine</div>
+                        <div class="modality-line">
+                            <span class="modality-line-label">What Claude does</span>
+                            <span class="modality-line-content">Produces a first draft based on your direction</span>
+                        </div>
+                        <div class="modality-line">
+                            <span class="modality-line-label">What you do</span>
+                            <span class="modality-line-content">Edit, reshape, add judgment and context</span>
+                        </div>
+                        <div class="modality-example">
+                            <span class="modality-example-label">DC CAP Example</span>
+                            Claude drafts a scholarship decision letter; you personalize it for the student and verify policy accuracy.
+                        </div>
+                        <div class="balance-bar-container">
+                            <div class="balance-bar-labels">
+                                <span>Claude ←→ You</span>
+                            </div>
+                            <div class="balance-bar">
+                                <div class="balance-segment claude" style="width: 50%;">50%</div>
+                                <div class="balance-segment human" style="width: 50%;">50%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AGENCY -->
+                <div class="modality-card agency">
+                    <div class="modality-header">
+                        <div class="modality-icon">🎯</div>
+                        <div class="modality-title">Agency</div>
+                    </div>
+                    <div class="modality-body">
+                        <div class="modality-definition">Claude coaches your thinking; you make the decisions</div>
+                        <div class="modality-line">
+                            <span class="modality-line-label">What Claude does</span>
+                            <span class="modality-line-content">Asks questions, surfaces frameworks, challenges assumptions</span>
+                        </div>
+                        <div class="modality-line">
+                            <span class="modality-line-label">What you do</span>
+                            <span class="modality-line-content">Drive the thinking, make all decisions, own the direction</span>
+                        </div>
+                        <div class="modality-example">
+                            <span class="modality-example-label">DC CAP Example</span>
+                            You ask Claude to help you think through a program redesign by surfacing tradeoffs and evidence.
+                        </div>
+                        <div class="balance-bar-container">
+                            <div class="balance-bar-labels">
+                                <span>Claude ←→ You</span>
+                            </div>
+                            <div class="balance-bar">
+                                <div class="balance-segment claude" style="width: 20%;">20%</div>
+                                <div class="balance-segment human" style="width: 80%;">80%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Materials -->

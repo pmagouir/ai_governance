@@ -831,6 +831,209 @@
             border-left: 4px solid #87B7D5;
         }
 
+        /* Concentric Circles Diagram */
+        .responsibility-circles-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: clamp(2rem, 4vw, 3rem) 0;
+        }
+
+        .responsibility-circles-container {
+            position: relative;
+            width: clamp(300px, 90vw, 500px);
+            height: clamp(300px, 90vw, 500px);
+            max-width: 500px;
+            margin-bottom: clamp(1.5rem, 2vw, 2rem);
+        }
+
+        .circles-svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 4px 12px rgba(16, 26, 76, 0.08));
+        }
+
+        .circle-ring {
+            fill: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .circle-ring:hover {
+            filter: brightness(1.2);
+        }
+
+        .circle-ring.active {
+            filter: brightness(1.1);
+        }
+
+        .circle-center {
+            fill: var(--navy);
+            transition: all 0.3s ease;
+        }
+
+        .person-icon {
+            fill: var(--white);
+            pointer-events: none;
+        }
+
+        .circles-label {
+            font-size: clamp(0.85rem, 1.5vw, 1rem);
+            font-weight: 600;
+            text-anchor: middle;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .circles-label-center {
+            font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+            font-weight: 700;
+            fill: var(--white);
+            font-family: var(--font-subhead);
+        }
+
+        .circles-label-ring1 {
+            fill: var(--gold);
+            font-family: var(--font-subhead);
+        }
+
+        .circles-label-ring2 {
+            fill: var(--purple);
+            font-family: var(--font-subhead);
+        }
+
+        .circles-label-ring3 {
+            fill: var(--blue);
+            font-family: var(--font-subhead);
+        }
+
+        .circle-expanded-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--white);
+            border-radius: clamp(8px, 1.5vw, 16px);
+            padding: clamp(1.5rem, 2vw, 2rem);
+            box-shadow: 0 8px 32px rgba(16, 26, 76, 0.15);
+            border-left: 4px solid var(--navy);
+            opacity: 0;
+            visibility: hidden;
+            transform: translate(-50%, -50%) scale(0.8);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 10;
+            max-width: 320px;
+            text-align: left;
+            pointer-events: none;
+        }
+
+        .circle-expanded-card.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: auto;
+        }
+
+        .circle-expanded-card.ring1 {
+            border-left-color: var(--gold);
+            background: linear-gradient(135deg, rgba(252, 176, 23, 0.05), rgba(252, 176, 23, 0.02));
+        }
+
+        .circle-expanded-card.ring2 {
+            border-left-color: var(--purple);
+            background: linear-gradient(135deg, rgba(131, 82, 255, 0.05), rgba(131, 82, 255, 0.02));
+        }
+
+        .circle-expanded-card.ring3 {
+            border-left-color: var(--blue);
+            background: linear-gradient(135deg, rgba(135, 183, 213, 0.05), rgba(135, 183, 213, 0.02));
+        }
+
+        .circle-expanded-title {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+            color: var(--navy);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .circle-expanded-items {
+            list-style: none;
+            padding: 0;
+        }
+
+        .circle-expanded-items li {
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+            color: var(--dark-gray);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .circle-expanded-items li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .circles-anchor {
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            color: var(--navy);
+            font-weight: 600;
+            font-family: var(--font-subhead);
+            text-align: center;
+            margin-top: clamp(1rem, 1.5vw, 1.5rem);
+            line-height: 1.5;
+        }
+
+        /* Animation on scroll */
+        .responsibility-circles-wrapper.reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: revealUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .responsibility-circles-wrapper.reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes revealUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes ringReveal {
+            from {
+                opacity: 0;
+                r: 0;
+            }
+            to {
+                opacity: 1;
+                r: auto;
+            }
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .responsibility-circles-container {
+                width: clamp(250px, 80vw, 400px);
+                height: clamp(250px, 80vw, 400px);
+            }
+
+            .circle-expanded-card {
+                max-width: 280px;
+            }
+        }
+
         .escalation-box {
             background: linear-gradient(135deg, rgba(252, 176, 23, 0.12) 0%, transparent 100%);
             border: 2px solid var(--gold);
@@ -1046,7 +1249,7 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
             <div style="background: rgba(255,255,255,0.08); border-left: 4px solid #FCB017; padding: 1rem; border-radius: 4px;">
                 <div style="font-family: 'Noto Serif SemiCondensed', Georgia, serif; font-weight: 700; color: #FCB017; margin-bottom: 0.5rem;">1. Review This Guide and AI Governance Framework</div>
-                <p style="font-size: clamp(0.8rem, 1.3vw, 0.95rem); line-height: 1.5; margin: 0;">Read the six sections below and the <a href="DCCAP_AI_Data_Governance_Framework_v1.docx" style="color: #87B7D5; text-decoration: underline;">AI Governance Framework</a>. Together they cover how Claude works at DC CAP — interfaces, files, skills, data handling, approved use cases, and responsible use.</p>
+                <p style="font-size: clamp(0.8rem, 1.3vw, 0.95rem); line-height: 1.5; margin: 0;">Read the six sections below and the <a href="ai_governance_framework.html" style="color: #87B7D5; text-decoration: underline;">AI Governance Framework</a>. Together they cover how Claude works at DC CAP — interfaces, files, skills, data handling, approved use cases, and responsible use.</p>
             </div>
             <div style="background: rgba(255,255,255,0.08); border-left: 4px solid #8352FF; padding: 1rem; border-radius: 4px;">
                 <div style="font-family: 'Noto Serif SemiCondensed', Georgia, serif; font-weight: 700; color: #8352FF; margin-bottom: 0.5rem;">2. Take the Pre-Launch Assessment</div>
@@ -1454,6 +1657,68 @@
                 Every team leader in this pilot is the governance owner for their functional area's AI use. This means you are responsible for ensuring your team's Claude interactions meet DC CAP's standards for data security, output quality, and responsible use.
             </div>
 
+            <!-- Concentric Circles Diagram -->
+            <div class="responsibility-circles-wrapper reveal">
+                <div class="responsibility-circles-container">
+                    <svg class="circles-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background circle for click detection -->
+                        <circle cx="150" cy="150" r="150" fill="transparent" class="circles-bg" id="circles-bg"></circle>
+
+                        <!-- Ring 3 (outermost, blue) -->
+                        <circle cx="150" cy="150" r="130" class="circle-ring ring3" id="ring3" data-ring="3" style="stroke: var(--blue); stroke-width: 3;"></circle>
+
+                        <!-- Ring 2 (middle, purple) -->
+                        <circle cx="150" cy="150" r="90" class="circle-ring ring2" id="ring2" data-ring="2" style="stroke: var(--purple); stroke-width: 3;"></circle>
+
+                        <!-- Ring 1 (innermost, gold) -->
+                        <circle cx="150" cy="150" r="50" class="circle-ring ring1" id="ring1" data-ring="1" style="stroke: var(--gold); stroke-width: 3;"></circle>
+
+                        <!-- Center circle -->
+                        <circle cx="150" cy="150" r="35" class="circle-center" id="circle-center"></circle>
+
+                        <!-- Person icon (simple SVG) -->
+                        <circle cx="150" cy="140" r="6" class="person-icon"></circle>
+                        <path d="M 150 148 L 145 160 L 150 155 L 155 160" class="person-icon" fill="var(--white)"></path>
+
+                        <!-- Labels -->
+                        <text x="150" y="155" class="circles-label circles-label-center">You</text>
+                        <text x="150" y="70" class="circles-label circles-label-ring1" id="label-ring1">Responsible Use</text>
+                        <text x="150" y="35" class="circles-label circles-label-ring2" id="label-ring2">Output Quality</text>
+                        <text x="150" y="5" class="circles-label circles-label-ring3" id="label-ring3">Data Security</text>
+                    </svg>
+
+                    <!-- Expanded cards for each ring (hidden by default) -->
+                    <div class="circle-expanded-card ring1" id="card-ring1">
+                        <h3 class="circle-expanded-title">Responsible Use</h3>
+                        <ul class="circle-expanded-items">
+                            <li>Iterate on outputs</li>
+                            <li>Own your final product</li>
+                            <li>Disclose AI involvement</li>
+                        </ul>
+                    </div>
+
+                    <div class="circle-expanded-card ring2" id="card-ring2">
+                        <h3 class="circle-expanded-title">Output Quality</h3>
+                        <ul class="circle-expanded-items">
+                            <li>Evaluate accuracy</li>
+                            <li>Review for bias</li>
+                            <li>Check against policy</li>
+                        </ul>
+                    </div>
+
+                    <div class="circle-expanded-card ring3" id="card-ring3">
+                        <h3 class="circle-expanded-title">Data Security</h3>
+                        <ul class="circle-expanded-items">
+                            <li>Classify before uploading</li>
+                            <li>Never share Tier 1 data</li>
+                            <li>Follow the governance framework</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="circles-anchor">Your choices protect DC CAP scholars and families</div>
+            </div>
+
             <h2>Three Governance Responsibilities</h2>
 
             <div class="responsibility-grid">
@@ -1671,6 +1936,68 @@
             document.getElementById('markCompleteBtn').textContent = 'Done';
             document.getElementById('markCompleteBtn').disabled = true;
         }
+        // Concentric Circles Diagram Interaction
+        function initConcentricCircles() {
+            const rings = document.querySelectorAll('.circle-ring');
+            const expandedCards = document.querySelectorAll('.circle-expanded-card');
+            const circlesBg = document.getElementById('circles-bg');
+
+            // Create a map for easy access
+            const ringMap = {};
+            rings.forEach(ring => {
+                const ringNum = ring.getAttribute('data-ring');
+                ringMap[ringNum] = {
+                    element: ring,
+                    card: document.getElementById('card-ring' + ringNum)
+                };
+            });
+
+            // Handle ring clicks
+            rings.forEach(ring => {
+                ring.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const ringNum = ring.getAttribute('data-ring');
+                    toggleRingCard(ringNum);
+                });
+
+                // Touch events for mobile
+                ring.addEventListener('touchend', (e) => {
+                    e.stopPropagation();
+                    const ringNum = ring.getAttribute('data-ring');
+                    toggleRingCard(ringNum);
+                });
+            });
+
+            // Handle background clicks to close cards
+            circlesBg.addEventListener('click', () => {
+                expandedCards.forEach(card => {
+                    card.classList.remove('visible');
+                });
+            });
+
+            function toggleRingCard(ringNum) {
+                const card = ringMap[ringNum].card;
+                if (!card) return;
+
+                // Close other cards
+                expandedCards.forEach(c => {
+                    if (c !== card) {
+                        c.classList.remove('visible');
+                    }
+                });
+
+                // Toggle current card
+                card.classList.toggle('visible');
+            }
+        }
+
+        // Initialize circles on load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initConcentricCircles);
+        } else {
+            initConcentricCircles();
+        }
+
         const tabButtons = document.querySelectorAll('.tab-button');
         const tabContents = document.querySelectorAll('.tab-content');
 
@@ -1719,7 +2046,7 @@
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-        document.querySelectorAll('section, .card-grid, .tab-content, .info-card, .skill-category, .flow-diagram, .decision-tree, .rule-card, .card, .interface-card, .responsibility-card, .principle, .callout-box, .skill-intro, .escalation-box, .footer-callout').forEach(el => {
+        document.querySelectorAll('section, .card-grid, .tab-content, .info-card, .skill-category, .flow-diagram, .decision-tree, .rule-card, .card, .interface-card, .responsibility-card, .responsibility-circles-wrapper, .principle, .callout-box, .skill-intro, .escalation-box, .footer-callout').forEach(el => {
             revealObserver.observe(el);
         });
 
