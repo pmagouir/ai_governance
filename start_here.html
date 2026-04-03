@@ -2009,7 +2009,13 @@
                 tabContents.forEach(content => content.classList.remove('active'));
 
                 button.classList.add('active');
-                document.getElementById(tabId).classList.add('active');
+                const panel = document.getElementById(tabId);
+                panel.classList.add('active');
+
+                // Force-reveal any animated elements inside the newly active tab
+                panel.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-blur').forEach(el => {
+                    el.classList.add('visible');
+                });
 
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
@@ -2050,38 +2056,39 @@
             revealObserver.observe(el);
         });
 
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(link => {
-        
-        // Add keyboard navigation for tabs (arrow keys)
-        const tabButtons = document.querySelectorAll("[role="tab"]");
-        tabButtons.forEach((button, index) => {
-            button.addEventListener("keydown", (e) => {
-                let nextIndex = null;
-                if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-                    nextIndex = (index + 1) % tabButtons.length;
-                    e.preventDefault();
-                } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-                    nextIndex = (index - 1 + tabButtons.length) % tabButtons.length;
-                    e.preventDefault();
-                } else if (e.key === "Home") {
-                    nextIndex = 0;
-                    e.preventDefault();
-                } else if (e.key === "End") {
-                    nextIndex = tabButtons.length - 1;
-                    e.preventDefault();
-                }
-                if (nextIndex !== null) {
-                    const nextButton = tabButtons[nextIndex];
-                    nextButton.focus();
-                    nextButton.click();
-                }
-            });
-        });
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const target = document.querySelector(link.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Keyboard navigation for tabs (arrow keys)
+        const ariaTabButtons = document.querySelectorAll('[role="tab"]');
+        ariaTabButtons.forEach((button, index) => {
+            button.addEventListener('keydown', (e) => {
+                let nextIndex = null;
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                    nextIndex = (index + 1) % ariaTabButtons.length;
+                    e.preventDefault();
+                } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                    nextIndex = (index - 1 + ariaTabButtons.length) % ariaTabButtons.length;
+                    e.preventDefault();
+                } else if (e.key === 'Home') {
+                    nextIndex = 0;
+                    e.preventDefault();
+                } else if (e.key === 'End') {
+                    nextIndex = ariaTabButtons.length - 1;
+                    e.preventDefault();
+                }
+                if (nextIndex !== null) {
+                    const nextButton = ariaTabButtons[nextIndex];
+                    nextButton.focus();
+                    nextButton.click();
                 }
             });
         });
