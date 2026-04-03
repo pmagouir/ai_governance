@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DC CAP AI Pilot — Capstone Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* === RESET & BASE === */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* === VIEWPORT FITTING: MANDATORY === */
+        html, body { height: 100%; overflow-x: hidden; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        .slide {
+            width: 100vw; height: 100vh; height: 100dvh;
+            overflow: hidden; scroll-snap-align: start;
+            display: flex; flex-direction: column; position: relative;
+        }
+        .slide-content {
+            flex: 1; display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            max-height: 100%; overflow: hidden;
+            padding: var(--slide-padding);
+        }
+
+        :root {
+            /* DC CAP Brand Colors */
+            --navy: #101A4C;
+            --purple: #8352FF;
+            --blue: #87B7D5;
+            --gold: #FCB017;
+            --tan: #FFF4ED;
+            --white: #FFFFFF;
+            --dark-gray: #333333;
+
+            /* DC CAP Brand Typography */
+            --font-display: 'Akkordeon Ten', 'Noto Serif SemiCondensed', Georgia, serif;
+            --font-body: 'Noto Serif', Georgia, serif;
+            --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Responsive Sizing */
+            --title-size: clamp(1.5rem, 5vw, 4rem);
+            --h2-size: clamp(1.25rem, 3.5vw, 2.5rem);
+            --h3-size: clamp(1rem, 2.5vw, 1.75rem);
+            --body-size: clamp(0.75rem, 1.5vw, 1.125rem);
+            --small-size: clamp(0.65rem, 1vw, 0.875rem);
+            --slide-padding: clamp(1.5rem, 5vw, 5rem);
+            --content-gap: clamp(0.5rem, 2vw, 2rem);
+
+            /* Animation */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --duration-normal: 0.6s;
+        }
+
+        @media (max-height: 700px) {
+            :root {
+                --slide-padding: clamp(1rem, 3vw, 2.5rem);
+                --content-gap: clamp(0.4rem, 1.5vw, 1rem);
+                --title-size: clamp(1.25rem, 4.5vw, 2.5rem);
+                --h2-size: clamp(1rem, 3vw, 1.75rem);
+            }
+        }
+        @media (max-height: 600px) {
+            :root {
+                --slide-padding: clamp(0.75rem, 2.5vw, 1.5rem);
+                --content-gap: clamp(0.3rem, 1vw, 0.75rem);
+                --title-size: clamp(1.1rem, 4vw, 2rem);
+                --body-size: clamp(0.7rem, 1.2vw, 0.95rem);
+            }
+        }
+        @media (max-height: 500px) {
+            :root {
+                --slide-padding: clamp(0.5rem, 2vw, 1rem);
+                --title-size: clamp(1rem, 3.5vw, 1.5rem);
+                --h2-size: clamp(0.9rem, 2.5vw, 1.25rem);
+                --body-size: clamp(0.65rem, 1vw, 0.85rem);
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        /* === GLOBAL TYPOGRAPHY === */
+        body {
+            font-family: var(--font-body);
+            font-size: var(--body-size);
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background: var(--white);
+        }
+        h1 {
+            font-family: var(--font-display);
+            font-size: var(--title-size);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+        h2 {
+            font-family: var(--font-display);
+            font-size: var(--h2-size);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+        h3 {
+            font-family: var(--font-subhead);
+            font-size: var(--h3-size);
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        /* === REVEAL ANIMATION === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.15s; }
+        .reveal-delay-2 { transition-delay: 0.3s; }
+        .reveal-delay-3 { transition-delay: 0.45s; }
+
+        /* === EDITABLE FIELDS === */
+        .editable {
+            border: 2px dashed rgba(131, 82, 255, 0.3);
+            border-radius: 8px;
+            padding: clamp(0.75rem, 2vw, 1.5rem);
+            min-height: 2.5em;
+            cursor: text;
+            transition: border-color 0.3s ease, background 0.3s ease;
+            position: relative;
+        }
+        .editable:hover {
+            border-color: var(--purple);
+            background: rgba(131, 82, 255, 0.03);
+        }
+        .editable:focus {
+            outline: none;
+            border-color: var(--purple);
+            border-style: solid;
+            background: rgba(131, 82, 255, 0.05);
+        }
+        .editable:empty::before {
+            content: attr(data-placeholder);
+            color: rgba(0, 0, 0, 0.3);
+            font-style: italic;
+            pointer-events: none;
+        }
+        .edit-hint {
+            position: absolute;
+            top: clamp(0.5rem, 1vw, 0.75rem);
+            right: clamp(0.5rem, 1vw, 0.75rem);
+            font-family: var(--font-mono);
+            font-size: clamp(0.55rem, 0.8vw, 0.7rem);
+            color: rgba(131, 82, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            pointer-events: none;
+        }
+
+        /* === NAV DOTS === */
+        .nav-dots {
+            position: fixed;
+            right: clamp(0.75rem, 2vw, 1.5rem);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.4rem, 1vh, 0.75rem);
+            z-index: 100;
+        }
+        .nav-dot {
+            width: clamp(8px, 1vw, 12px);
+            height: clamp(8px, 1vw, 12px);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .nav-dot.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            transform: scale(1.3);
+        }
+        .nav-dot.dark { background: rgba(0, 0, 0, 0.15); border-color: rgba(0, 0, 0, 0.3); }
+        .nav-dot.dark.active { background: var(--purple); border-color: var(--purple); }
+
+        /* === SLIDE 1: TITLE === */
+        .slide-title {
+            background: linear-gradient(135deg, var(--navy) 0%, #0d0f2d 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        .slide-title .slide-content {
+            gap: var(--content-gap);
+            max-width: min(90vw, 800px);
+        }
+        .participant-name {
+            font-family: var(--font-display);
+            font-size: var(--title-size);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: var(--white);
+        }
+        .pilot-sentence {
+            font-family: var(--font-subhead);
+            font-size: var(--h3-size);
+            font-weight: 300;
+            color: var(--tan);
+            line-height: 1.5;
+            max-width: 700px;
+        }
+        .pilot-sentence.editable {
+            border-color: rgba(255, 244, 237, 0.3);
+        }
+        .pilot-sentence.editable:hover {
+            border-color: var(--tan);
+            background: rgba(255, 244, 237, 0.05);
+        }
+        .pilot-sentence.editable:focus {
+            border-color: var(--tan);
+            background: rgba(255, 244, 237, 0.08);
+        }
+        .pilot-sentence.editable:empty::before { color: rgba(255, 244, 237, 0.4); }
+        .title-meta {
+            font-size: var(--small-size);
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: var(--content-gap);
+        }
+        .quadrant-badge-small {
+            display: inline-grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3px;
+            width: clamp(40px, 5vw, 60px);
+            height: clamp(40px, 5vw, 60px);
+            vertical-align: middle;
+            margin-left: calc(var(--content-gap) * 0.5);
+        }
+        .quadrant-badge-small div { border-radius: 3px; }
+        .qb-navy { background: var(--navy); border: 1px solid rgba(255,255,255,0.2); }
+        .qb-purple { background: var(--purple); }
+        .qb-blue { background: var(--blue); }
+        .qb-gold { background: var(--gold); }
+
+        /* === SLIDE 2: USE CASE === */
+        .slide-usecase {
+            background: var(--white);
+            color: var(--dark-gray);
+        }
+        .slide-usecase .slide-content {
+            max-width: min(90vw, 900px);
+            align-items: stretch;
+            gap: var(--content-gap);
+        }
+        .usecase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--content-gap);
+            flex: 1;
+            max-height: 60vh;
+        }
+        @media (max-width: 700px) { .usecase-grid { grid-template-columns: 1fr; } }
+        .usecase-panel {
+            border-radius: 8px;
+            padding: clamp(1rem, 2.5vw, 2rem);
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--content-gap) * 0.75);
+        }
+        .usecase-before {
+            background: var(--tan);
+            border: 2px solid rgba(16, 26, 76, 0.15);
+        }
+        .usecase-after {
+            background: rgba(131, 82, 255, 0.06);
+            border: 2px solid var(--purple);
+        }
+        .usecase-panel-label {
+            font-family: var(--font-display);
+            font-size: var(--small-size);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .usecase-before .usecase-panel-label { color: var(--navy); }
+        .usecase-after .usecase-panel-label { color: var(--purple); }
+        .usecase-impact {
+            display: flex;
+            gap: var(--content-gap);
+            justify-content: center;
+            margin-top: auto;
+        }
+        .impact-stat {
+            text-align: center;
+            padding: calc(var(--content-gap) * 0.5) var(--content-gap);
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 6px;
+            flex: 1;
+            max-width: 280px;
+        }
+        .impact-stat-label {
+            font-size: var(--small-size);
+            color: var(--blue);
+            font-weight: 600;
+        }
+        .impact-stat-value {
+            font-family: var(--font-display);
+            font-size: var(--h3-size);
+            font-weight: 800;
+            color: var(--gold);
+        }
+        .impact-stat-value.editable {
+            border-color: rgba(252, 176, 23, 0.3);
+            color: var(--gold);
+        }
+
+        /* === SLIDE 3: 4D ASSESSMENT === */
+        .slide-assessment {
+            background: var(--navy);
+            color: var(--white);
+        }
+        .slide-assessment .slide-content {
+            max-width: min(90vw, 900px);
+            align-items: stretch;
+            gap: var(--content-gap);
+        }
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: calc(var(--content-gap) * 0.75);
+            flex: 1;
+            max-height: 55vh;
+        }
+        @media (max-width: 700px) {
+            .assessment-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .assessment-card {
+            border-radius: 8px;
+            padding: clamp(0.75rem, 2vw, 1.5rem);
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--content-gap) * 0.5);
+            transition: transform 0.3s var(--ease-out-expo);
+        }
+        .assessment-card:hover { transform: translateY(-4px); }
+        .assessment-card.card-delegation { background: rgba(255,255,255,0.1); border-left: 4px solid var(--white); }
+        .assessment-card.card-description { background: rgba(131,82,255,0.2); border-left: 4px solid var(--purple); }
+        .assessment-card.card-discernment { background: rgba(135,183,213,0.2); border-left: 4px solid var(--blue); }
+        .assessment-card.card-diligence { background: rgba(252,176,23,0.2); border-left: 4px solid var(--gold); }
+        .assessment-d-name {
+            font-family: var(--font-display);
+            font-size: var(--body-size);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .card-delegation .assessment-d-name { color: var(--white); }
+        .card-description .assessment-d-name { color: var(--purple); }
+        .card-discernment .assessment-d-name { color: var(--blue); }
+        .card-diligence .assessment-d-name { color: var(--gold); }
+        .assessment-rating {
+            display: flex;
+            gap: 4px;
+        }
+        .rating-dot {
+            width: clamp(10px, 1.5vw, 16px);
+            height: clamp(10px, 1.5vw, 16px);
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .rating-dot.filled { background: var(--gold); border-color: var(--gold); }
+        .rating-dot:hover { border-color: var(--gold); transform: scale(1.2); }
+        .assessment-note {
+            font-size: var(--small-size);
+            color: rgba(255,255,255,0.7);
+            line-height: 1.5;
+        }
+        .assessment-note.editable {
+            border-color: rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.9);
+        }
+        .assessment-note.editable:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05); }
+        .assessment-note.editable:focus { border-color: var(--gold); background: rgba(255,255,255,0.08); }
+        .assessment-note.editable:empty::before { color: rgba(255,255,255,0.3); }
+        .hardest-d {
+            text-align: center;
+            margin-top: auto;
+            padding-top: var(--content-gap);
+        }
+        .hardest-d-label {
+            font-size: var(--small-size);
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        /* === SLIDE 4: WHAT I'M TEACHING === */
+        .slide-teaching {
+            background: var(--tan);
+            color: var(--dark-gray);
+        }
+        .slide-teaching .slide-content {
+            max-width: min(90vw, 800px);
+            gap: var(--content-gap);
+        }
+        .teaching-card {
+            background: var(--white);
+            border: 2px solid var(--purple);
+            border-radius: 12px;
+            padding: clamp(1.5rem, 3vw, 2.5rem);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: var(--content-gap);
+        }
+        .teaching-label {
+            font-family: var(--font-subhead);
+            font-size: var(--small-size);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--purple);
+        }
+        .teaching-modality-tags {
+            display: flex;
+            gap: calc(var(--content-gap) * 0.5);
+            flex-wrap: wrap;
+        }
+        .modality-tag {
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-family: var(--font-subhead);
+            font-size: var(--small-size);
+            font-weight: 700;
+            cursor: pointer;
+            border: 2px solid;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+        .modality-tag.tag-auto { border-color: var(--navy); color: var(--navy); }
+        .modality-tag.tag-aug { border-color: var(--purple); color: var(--purple); }
+        .modality-tag.tag-agency { border-color: var(--gold); color: var(--gold); }
+        .modality-tag.selected {
+            color: var(--white);
+        }
+        .modality-tag.tag-auto.selected { background: var(--navy); }
+        .modality-tag.tag-aug.selected { background: var(--purple); }
+        .modality-tag.tag-agency.selected { background: var(--gold); color: var(--dark-gray); }
+
+        /* === SLIDE 5: BUILD NEXT === */
+        .slide-buildnext {
+            background: linear-gradient(135deg, var(--purple) 0%, #5a2dcc 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        .slide-buildnext .slide-content {
+            max-width: min(90vw, 750px);
+            gap: var(--content-gap);
+        }
+        .buildnext-card {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: clamp(1.5rem, 3vw, 2.5rem);
+            width: 100%;
+            backdrop-filter: blur(10px);
+        }
+        .buildnext-card .editable {
+            border-color: rgba(255,255,255,0.3);
+            color: var(--white);
+        }
+        .buildnext-card .editable:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+        .buildnext-card .editable:focus { border-color: var(--gold); background: rgba(255,255,255,0.08); }
+        .buildnext-card .editable:empty::before { color: rgba(255,255,255,0.4); }
+        .buildnext-footer {
+            font-size: var(--small-size);
+            color: rgba(255,255,255,0.6);
+            margin-top: var(--content-gap);
+        }
+
+        /* === SLIDE FOOTER === */
+        .slide-footer {
+            position: absolute;
+            bottom: clamp(0.5rem, 1.5vw, 1rem);
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: var(--small-size);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            font-family: var(--font-subhead);
+        }
+        .slide.light-footer .slide-footer { color: rgba(0,0,0,0.3); }
+
+        /* === PRINT STYLES === */
+        @media print {
+            html { scroll-snap-type: none; }
+            .slide { height: auto; min-height: 100vh; page-break-after: always; overflow: visible; }
+            .nav-dots { display: none; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+            .editable { border-style: solid; border-color: #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- === NAV DOTS === -->
+    <div class="nav-dots" id="navDots">
+        <div class="nav-dot active" data-slide="0" title="My Pilot"></div>
+        <div class="nav-dot" data-slide="1" title="Use Case"></div>
+        <div class="nav-dot" data-slide="2" title="4D Assessment"></div>
+        <div class="nav-dot dark" data-slide="3" title="Teaching"></div>
+        <div class="nav-dot" data-slide="4" title="Build Next"></div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SLIDE 1: MY PILOT IN A SENTENCE                              -->
+    <!-- ============================================================ -->
+    <div class="slide slide-title" data-slide-index="0">
+        <div class="slide-content">
+            <div class="reveal">
+                <div class="participant-name editable" contenteditable="true" data-placeholder="Your Name"></div>
+            </div>
+            <div class="reveal reveal-delay-1">
+                <h3 style="color: rgba(255,255,255,0.5); margin-bottom: calc(var(--content-gap) * 0.5);">My pilot in a sentence:</h3>
+                <div class="pilot-sentence editable" contenteditable="true" data-placeholder="Write your one-sentence summary of what these 60 days meant for your work..."></div>
+            </div>
+            <div class="reveal reveal-delay-2 title-meta">
+                DC CAP Enterprise AI Pilot · Capstone Showcase · June 2026
+                <div class="quadrant-badge-small">
+                    <div class="qb-navy"></div>
+                    <div class="qb-purple"></div>
+                    <div class="qb-blue"></div>
+                    <div class="qb-gold"></div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">1 / 5</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SLIDE 2: THE USE CASE                                        -->
+    <!-- ============================================================ -->
+    <div class="slide slide-usecase light-footer" data-slide-index="1">
+        <div class="slide-content">
+            <h2 class="reveal" style="text-align: center; margin-bottom: var(--content-gap);">The Use Case</h2>
+            <div class="usecase-grid">
+                <div class="usecase-panel usecase-before reveal reveal-delay-1">
+                    <div class="usecase-panel-label">Before Claude</div>
+                    <div class="editable" contenteditable="true" data-placeholder="Describe the task and how you used to do it. How long did it take? What was the pain point?" style="flex: 1; font-size: var(--body-size); line-height: 1.6;"></div>
+                </div>
+                <div class="usecase-panel usecase-after reveal reveal-delay-2">
+                    <div class="usecase-panel-label">After Claude</div>
+                    <div class="editable" contenteditable="true" data-placeholder="Describe the same task with Claude. What changed? What's the workflow now?" style="flex: 1; font-size: var(--body-size); line-height: 1.6;"></div>
+                </div>
+            </div>
+            <div class="usecase-impact reveal reveal-delay-3">
+                <div class="impact-stat">
+                    <div class="impact-stat-label">Time Saved</div>
+                    <div class="impact-stat-value editable" contenteditable="true" data-placeholder="e.g., 2 hrs/week" style="min-height: 1.5em;"></div>
+                </div>
+                <div class="impact-stat">
+                    <div class="impact-stat-label">Quality Gained</div>
+                    <div class="impact-stat-value editable" contenteditable="true" data-placeholder="e.g., Consistency" style="min-height: 1.5em;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">2 / 5</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SLIDE 3: MY 4D ASSESSMENT                                    -->
+    <!-- ============================================================ -->
+    <div class="slide slide-assessment" data-slide-index="2">
+        <div class="slide-content">
+            <h2 class="reveal" style="text-align: center; color: var(--white); margin-bottom: var(--content-gap);">My 4D Assessment</h2>
+            <div class="assessment-grid">
+                <div class="assessment-card card-delegation reveal reveal-delay-1">
+                    <div class="assessment-d-name">Delegation</div>
+                    <div class="assessment-rating" data-d="delegation">
+                        <div class="rating-dot" data-rating="1"></div>
+                        <div class="rating-dot" data-rating="2"></div>
+                        <div class="rating-dot" data-rating="3"></div>
+                        <div class="rating-dot" data-rating="4"></div>
+                        <div class="rating-dot" data-rating="5"></div>
+                    </div>
+                    <div class="assessment-note editable" contenteditable="true" data-placeholder="How did your delegation instincts change?"></div>
+                </div>
+                <div class="assessment-card card-description reveal reveal-delay-1">
+                    <div class="assessment-d-name">Description</div>
+                    <div class="assessment-rating" data-d="description">
+                        <div class="rating-dot" data-rating="1"></div>
+                        <div class="rating-dot" data-rating="2"></div>
+                        <div class="rating-dot" data-rating="3"></div>
+                        <div class="rating-dot" data-rating="4"></div>
+                        <div class="rating-dot" data-rating="5"></div>
+                    </div>
+                    <div class="assessment-note editable" contenteditable="true" data-placeholder="How did your prompting improve?"></div>
+                </div>
+                <div class="assessment-card card-discernment reveal reveal-delay-2">
+                    <div class="assessment-d-name">Discernment</div>
+                    <div class="assessment-rating" data-d="discernment">
+                        <div class="rating-dot" data-rating="1"></div>
+                        <div class="rating-dot" data-rating="2"></div>
+                        <div class="rating-dot" data-rating="3"></div>
+                        <div class="rating-dot" data-rating="4"></div>
+                        <div class="rating-dot" data-rating="5"></div>
+                    </div>
+                    <div class="assessment-note editable" contenteditable="true" data-placeholder="How did your output evaluation sharpen?"></div>
+                </div>
+                <div class="assessment-card card-diligence reveal reveal-delay-2">
+                    <div class="assessment-d-name">Diligence</div>
+                    <div class="assessment-rating" data-d="diligence">
+                        <div class="rating-dot" data-rating="1"></div>
+                        <div class="rating-dot" data-rating="2"></div>
+                        <div class="rating-dot" data-rating="3"></div>
+                        <div class="rating-dot" data-rating="4"></div>
+                        <div class="rating-dot" data-rating="5"></div>
+                    </div>
+                    <div class="assessment-note editable" contenteditable="true" data-placeholder="How consistent is your governance practice?"></div>
+                </div>
+            </div>
+            <div class="hardest-d reveal reveal-delay-3">
+                <div class="hardest-d-label">Which D was hardest?</div>
+                <div class="editable" contenteditable="true" data-placeholder="Name it and explain why" style="color: var(--tan); font-family: var(--font-subhead); font-size: var(--h3-size); font-weight: 300; border-color: rgba(255,255,255,0.2); max-width: 600px; margin: 0 auto;"></div>
+            </div>
+        </div>
+        <div class="slide-footer">3 / 5</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SLIDE 4: WHAT I'M TEACHING                                   -->
+    <!-- ============================================================ -->
+    <div class="slide slide-teaching light-footer" data-slide-index="3">
+        <div class="slide-content">
+            <h2 class="reveal" style="text-align: center;">What I'm Teaching in Q3</h2>
+            <div class="teaching-card reveal reveal-delay-1">
+                <div>
+                    <div class="teaching-label">The Workflow, Skill, or Prompt Pattern</div>
+                    <div class="editable" contenteditable="true" data-placeholder="Describe the one thing you commit to teaching a colleague. Be specific enough that someone could follow your instructions." style="font-size: var(--body-size); line-height: 1.6; min-height: 4em;"></div>
+                </div>
+                <div>
+                    <div class="teaching-label">Who Benefits Most</div>
+                    <div class="editable" contenteditable="true" data-placeholder="Which role or unit would gain the most from this?" style="font-size: var(--body-size); line-height: 1.6;"></div>
+                </div>
+                <div>
+                    <div class="teaching-label">Modality</div>
+                    <div class="teaching-modality-tags">
+                        <span class="modality-tag tag-auto" onclick="toggleTag(this)">Automation</span>
+                        <span class="modality-tag tag-aug" onclick="toggleTag(this)">Augmentation</span>
+                        <span class="modality-tag tag-agency" onclick="toggleTag(this)">Agency</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">4 / 5</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SLIDE 5: WHAT WE SHOULD BUILD NEXT                           -->
+    <!-- ============================================================ -->
+    <div class="slide slide-buildnext" data-slide-index="4">
+        <div class="slide-content">
+            <h2 class="reveal" style="color: var(--white);">What We Should Build Next</h2>
+            <div class="buildnext-card reveal reveal-delay-1">
+                <div style="margin-bottom: var(--content-gap);">
+                    <div style="font-family: var(--font-subhead); font-size: var(--small-size); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold); margin-bottom: 6px;">What Didn't Work</div>
+                    <div class="editable" contenteditable="true" data-placeholder="Be direct. What task did Claude handle poorly? Where did you revert to doing it yourself? What workflow felt slower with AI than without it? The pilot was designed to surface these findings." style="font-size: var(--body-size); line-height: 1.6; min-height: 3em;"></div>
+                </div>
+                <div style="margin-bottom: var(--content-gap);">
+                    <div style="font-family: var(--font-subhead); font-size: var(--small-size); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold); margin-bottom: 6px;">The Gap</div>
+                    <div class="editable" contenteditable="true" data-placeholder="Name one gap in our current AI tooling. What's missing? What broke? What would make the biggest difference for your unit?" style="font-size: var(--body-size); line-height: 1.6; min-height: 3em;"></div>
+                </div>
+                <div>
+                    <div style="font-family: var(--font-subhead); font-size: var(--small-size); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold); margin-bottom: 6px;">The Proposed Solution</div>
+                    <div class="editable" contenteditable="true" data-placeholder="A new skill? A workflow change? A data connection? Be concrete." style="font-size: var(--body-size); line-height: 1.6; min-height: 3em;"></div>
+                </div>
+            </div>
+            <div class="buildnext-footer reveal reveal-delay-2">
+                These proposals feed directly into the Q3 AI roadmap and the June board briefing.
+            </div>
+        </div>
+        <div class="slide-footer" style="color: rgba(255,255,255,0.4);">5 / 5</div>
+    </div>
+
+    <script>
+        /* === INTERSECTION OBSERVER === */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        /* === NAV DOTS === */
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.nav-dot');
+
+        const slideObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const idx = parseInt(entry.target.dataset.slideIndex);
+                    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+                }
+            });
+        }, { threshold: 0.5 });
+        slides.forEach(s => slideObserver.observe(s));
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                slides[parseInt(dot.dataset.slide)].scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        /* === RATING DOTS === */
+        document.querySelectorAll('.rating-dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                const rating = parseInt(dot.dataset.rating);
+                const container = dot.parentElement;
+                container.querySelectorAll('.rating-dot').forEach((d, i) => {
+                    d.classList.toggle('filled', i < rating);
+                });
+            });
+        });
+
+        /* === MODALITY TAG TOGGLE === */
+        function toggleTag(tag) {
+            tag.classList.toggle('selected');
+        }
+
+        /* === KEYBOARD NAVIGATION === */
+        document.addEventListener('keydown', (e) => {
+            if (e.target.isContentEditable) return;
+            const current = Array.from(slides).findIndex(s => {
+                const rect = s.getBoundingClientRect();
+                return rect.top >= -100 && rect.top < window.innerHeight / 2;
+            });
+            if (e.key === 'ArrowDown' || e.key === ' ') {
+                e.preventDefault();
+                if (current < slides.length - 1) slides[current + 1].scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (current > 0) slides[current - 1].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
