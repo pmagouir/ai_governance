@@ -2021,7 +2021,8 @@
                     el.classList.add('visible');
                 });
 
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                // Scroll to the tab nav so the selected tab stays in view
+                document.querySelector('.tab-nav').scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
