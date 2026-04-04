@@ -628,40 +628,9 @@
                 display: none;
             }
         }
-    
-        
-body > nav:not(.site-nav) { display: none !important; }
-section[id] { scroll-margin-top: 80px; }
-.page-hero {
-    position: relative; min-height: clamp(280px, 40vh, 420px);
-    display: flex; align-items: flex-end;
-    padding: clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 5vw, 4rem);
-    overflow: hidden;
-    background: linear-gradient(135deg, rgba(16,26,76,0.88) 0%, rgba(131,82,255,0.65) 100%), url('photos/joshua-song-vZYCWV-vNZg-unsplash.jpg') center/cover no-repeat;
-    background-color: #101A4C;
-}
-.page-hero h1, .page-hero h2, .page-hero p { position: relative; z-index: 2; }
-.page-hero h1 { font-family: var(--font-display, 'Noto Serif SemiCondensed', Georgia, serif); color: #FFF; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.1; margin-bottom: 0.75rem; }
-.page-hero .hero-eyebrow { font-family: var(--font-subhead); color: #FCB017; text-transform: uppercase; letter-spacing: 0.12em; font-size: clamp(0.75rem, 1.2vw, 0.9rem); font-weight: 600; margin-bottom: 0.5rem; }
-.page-hero .hero-subtitle { font-family: var(--font-subhead); color: rgba(255,255,255,0.9); font-size: clamp(1rem, 2vw, 1.3rem); font-weight: 300; max-width: 600px; }
-
     </style>
-    <link rel="stylesheet" href="site.css">
 </head>
 <body>
-
-<nav class="site-nav">
-    <a href="pilot_hub.html" class="nav-logo">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAA6CAYAAADC4Bv9AAAD4klEQVR42u2YS4gdVRCG/7p3ZjQZfEXEJwiCICQ4LhR1owsRdSEKIiP4SEQSYxZqEOMDjboQEY1g3Cjixp2IggtRGPIQNC40RNS4EEVc6UZ0ER8zdt/PRepAcej76u57Bb0FTfc9p/uc71bVqTp1pJnMZCYDxZoOAHSafG5m/H81CHQlndVgnF/M7M9BL8zVNauZ9SSdI+kLSQuSGAO0lNSVtEXSO8CcmRWtAQbpSdowSQvWAjSzHmCSfpJ0l6TzXCs2BtiqpJWg0cmsYjf5/Lh/dpjvtRlmupIOS9roJh817Fwu6chxVuu1auIMTpJOqzFWaWa4q/SVTgO4jpmVZlZK2uvNhWuREa6RpG6YmTOzAtgq6Vcz2wMgaU9YLK34dy04v+/guPSAW73tAW8rvH2QLLWQKvvC7fRJ/gZKB7rN++7zvnIIZHuAgAW4RzMtJZAecKe/s3UEyHYAM7jdfUyYQAG2+Lt3D4FsDuhwXX9+Npi1asIIuc2/uT1ot2wVMIN7YQhcFeR2/3Y5fFe2AuhwHX/eG+BGkZ67CMD9PsYtwFoG2Qgwwb06JlxZAbnTx7oR+Cv01wMMZk2aW6WeRMhdPuYNwB/etqkuYNLeTa65YX5X+jsFcNQBirB6E+RjPu61wO/AZU1M3M0yw2qAGCTXOWQ/Te72ca8BLkr+3jRrvFExYbx/CRwEVkIgPwTsy3wu+fHTbaU182seeA54BXg3TJiuz4BL/JsFvy/6AlvLFk6CfBFYaDUPB/CP+2STpfDOoUzLSdb8/i1wUlJCK6kOOMGfN7lPpoVQAj8A64F7gTM9sJdZeErPnwMbGvnfCH75TBaC3gfe9ufvgZey1Z/gPgVOdvOe3jpkSn+uzW+y4Ey2ynO4g67l9f58Zev7wSwEXZWlrqJi95J87kPX2inAJ962cSKAmalfH5AKE9x7rvkzgMPhzyxNFNAn3dwHMP1+y98/F/g66xsJsDa9H5vNV3QVXoy9aWbLwAWSDnjdXIxbqDVVL33gXjOzzZ7O9ku6sA5cm4AEgJfNbLtnl/2SzvdStFaJ2xSwCKdcc5KeN7MHgSv8YOjscNT2r9TGd4Qw85S3XQ38VhEXJ18XVwDe45M95L+vB46NWLxPFLAbNrVpt3xz2F6V2S5muoAVwMshvkW4HwfUxpMHDLn5u2DWBPoRcCrwRJ+Sdaoa/MonT7ubfcBi6H+yAnKqgEeDWVeAdclXw4J6vE6qawvwiE/6AXBiVh3Gs51Hgk9ePE3An4EDoSbpDAhND09Vg8A63+IvDpswQO4CLp0WYCeu6jEOBiZv2rxErfOnZjKTmfzX5R+C6tS3uqqRyAAAAABJRU5ErkJggg==" alt="DC CAP">
-        <span class="nav-logo-text">AI Leadership Pilot</span>
-    </a>
-    <div class="nav-links">
-        <a href="#hero" class="nav-link">Overview</a>
-        <a href="#practice" class="nav-link">Practice</a>
-        <a href="#scenarios" class="nav-link">Scenarios</a>
-    </div>
-</nav>
-
     <!-- Score Display -->
     <div class="score-display" id="scoreDisplay">0/10 correct</div>
 
@@ -669,7 +638,7 @@ section[id] { scroll-margin-top: 80px; }
     <div class="nav-dots" id="navDots"></div>
 
     <!-- Pilot Hub Navigation -->
-    
+    <a href="pilot_hub.html" class="pilot-hub-nav">← Pilot Hub</a>
 
     <!-- SLIDE 1: INTRODUCTION -->
     <div class="slide" data-slide="1">
@@ -1048,7 +1017,7 @@ section[id] { scroll-margin-top: 80px; }
                 <div class="action-links">
                     <button class="action-link primary" onclick="goToSlide(2)">Try Again</button>
                     <a href="ai_governance_framework.html" class="action-link secondary">Review AI Governance Framework →</a>
-                    
+                    <a href="pilot_hub.html" class="action-link secondary">← Return to Pilot Hub</a>
                 </div>
             </div>
         </div>
@@ -1307,19 +1276,5 @@ section[id] { scroll-margin-top: 80px; }
             }
         });
     </script>
-<footer class="site-footer">
-    <div class="site-footer__inner">
-        <div class="site-footer__logo">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAA6CAYAAADC4Bv9AAAD4klEQVR42u2YS4gdVRCG/7p3ZjQZfEXEJwiCICQ4LhR1owsRdSEKIiP4SEQSYxZqEOMDjboQEY1g3Cjixp2IggtRGPIQNC40RNS4EEVc6UZ0ER8zdt/PRepAcej76u57Bb0FTfc9p/uc71bVqTp1pJnMZCYDxZoOAHSafG5m/H81CHQlndVgnF/M7M9BL8zVNauZ9SSdI+kLSQuSGAO0lNSVtEXSO8CcmRWtAQbpSdowSQvWAjSzHmCSfpJ0l6TzXCs2BtiqpJWg0cmsYjf5/Lh/dpjvtRlmupIOS9roJh817Fwu6chxVuu1auIMTpJOqzFWaWa4q/SVTgO4jpmVZlZK2uvNhWuREa6RpG6YmTOzAtgq6Vcz2wMgaU9YLK34dy04v+/guPSAW73tAW8rvH2QLLWQKvvC7fRJ/gZKB7rN++7zvnIIZHuAgAW4RzMtJZAecKe/s3UEyHYAM7jdfUyYQAG2+Lt3D4FsDuhwXX9+Npi1asIIuc2/uT1ot2wVMIN7YQhcFeR2/3Y5fFe2AuhwHX/eG+BGkZ67CMD9PsYtwFoG2Qgwwb06JlxZAbnTx7oR+Cv01wMMZk2aW6WeRMhdPuYNwB/etqkuYNLeTa65YX5X+jsFcNQBirB6E+RjPu61wO/AZU1M3M0yw2qAGCTXOWQ/Te72ca8BLkr+3jRrvFExYbx/CRwEVkIgPwTsy3wu+fHTbaU182seeA54BXg3TJiuz4BL/JsFvy/6AlvLFk6CfBFYaDUPB/CP+2STpfDOoUzLSdb8/i1wUlJCK6kOOMGfN7lPpoVQAj8A64F7gTM9sJdZeErPnwMbGvnfCH75TBaC3gfe9ufvgZey1Z/gPgVOdvOe3jpkSn+uzW+y4Ey2ynO4g67l9f58Zev7wSwEXZWlrqJi95J87kPX2inAJ962cSKAmalfH5AKE9x7rvkzgMPhzyxNFNAn3dwHMP1+y98/F/g66xsJsDa9H5vNV3QVXoy9aWbLwAWSDnjdXIxbqDVVL33gXjOzzZ7O9ku6sA5cm4AEgJfNbLtnl/2SzvdStFaJ2xSwCKdcc5KeN7MHgSv8YOjscNT2r9TGd4Qw85S3XQ38VhEXJ18XVwDe45M95L+vB46NWLxPFLAbNrVpt3xz2F6V2S5muoAVwMshvkW4HwfUxpMHDLn5u2DWBPoRcCrwRJ+Sdaoa/MonT7ubfcBi6H+yAnKqgEeDWVeAdclXw4J6vE6qawvwiE/6AXBiVh3Gs51Hgk9ePE3An4EDoSbpDAhND09Vg8A63+IvDpswQO4CLp0WYCeu6jEOBiZv2rxErfOnZjKTmfzX5R+C6tS3uqqRyAAAAABJRU5ErkJggg==" alt="DC CAP Scholars">
-        </div>
-        <div class="site-footer__text">
-            <strong>DC CAP Enterprise AI Leadership Pilot</strong><br>
-            Powered by the Innovation Hub · April 2026<br>
-            Questions? <a href="mailto:preston.magouirk@dccap.org">preston.magouirk@dccap.org</a>
-        </div>
-        <div class="site-footer__tagline">EXCEL BEYOND BELIEF</div>
-    </div>
-</footer>
-
 </body>
 </html>
