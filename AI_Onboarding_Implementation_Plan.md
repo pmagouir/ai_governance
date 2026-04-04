@@ -1,6 +1,40 @@
 # DC CAP AI Onboarding: Comprehensive Implementation Plan
 **Prepared April 4, 2026 | Preston Magouirk, CSAO**
 **Source: Adversarial audit of onboarding experience vs. enterprise AI deployment best practices**
+**Last updated: April 4, 2026**
+
+---
+
+## Progress Dashboard
+
+| Status | Count | Items |
+|---|---|---|
+| ✅ Complete | 6 | C2, C4, R2, R5, R6 |
+| ✅ Partial | 1 | C1 (instrument live; post-assessment and analysis remain) |
+| 🏗️ Leader-Owned | 1 | C3 (team leaders build their unit modules; scaffold provided; tracked via weekly check-in Q5) |
+| 🔲 Not Started | 15 | R1, R3, R4, R7, R8, S1-S6, V1-V5 |
+
+**Additionally completed (infrastructure, not in original 23):**
+- Analytics pipeline fix: Guard clause bug removed from 3 pages (survey, start_here, phase1). Data now flows to Google Sheets.
+- Pilot hub checkbox analytics: Prerequisite completion events now fire to Google Sheets with named milestones.
+- Cross-linking: All new pages wired into pilot_hub.html and start_here.html.
+
+**Next up (Week 1, April 7-11):** R7 (buddy assignments), R3 (permission guides), R1 (workflow redesign template), V2 (DC CAP Intelligence Project). C3 is now leader-owned: each leader builds their unit's module by Week 8, tracked via weekly check-in Q5.
+
+---
+
+## Change Log
+
+| Date | Items | What Changed |
+|---|---|---|
+| April 4, 2026 | C2 | `kpi_framework.html` created and deployed. Three-tier framework (Engagement/Proficiency/Impact) with specific targets, SCALE/PAUSE/PIVOT decision matrix, and tracking calendar. Linked from pilot_hub.html Assessment & Governance row. |
+| April 4, 2026 | R5 | `ai_glossary.html` created and deployed. 18 terms in plain English across Frameworks and Technical sections. Completion tracking wired to Google Sheets. Linked from pilot_hub.html Reference row and start_here.html Key Terms tab. |
+| April 4, 2026 | R6 | Anthropic Academy links added to pilot_hub.html (Reference row, "External" badge) and start_here.html (Responsible Use Principles tab). Course routing: Framework & Foundations for all, Teaching AI Fluency for T3 candidates. |
+| April 4, 2026 | C1 | Pre-launch survey instrument confirmed live. Analytics guard clause bug fixed so responses now submit to Google Sheets. Post-assessment scheduling (June 1-3) and analysis pipeline remain. |
+| April 4, 2026 | Infra | Analytics guard clause removed from `ai_fluency_prelaunch_survey.html`, `start_here.html`, `phase1_activity_guide.html`. Pilot hub prerequisite checkboxes wired to Google Sheets milestone tracking. |
+| April 4, 2026 | C4 | `weekly_checkin.html` created. 30-second, 5-question weekly pulse: iteration frequency, confidence, wins, struggles, and module-building progress. Auto-detects pilot week. Submits to Google Sheets. Linked from pilot_hub.html. |
+| April 4, 2026 | R2 | `session_facilitation_guide.html` created. Opening ritual protocol, session structure for all 3 phases, Failure Wall guidelines, psychological safety principles, and 8-week facilitation transition checklist from Preston-led to champion-led. |
+| April 4, 2026 | C3 | Reclassified as **leader-owned**. Each leader builds their unit's AI training module by Week 8 using the 5-component scaffold. Progress tracked via weekly check-in Q5. "Your Unit. Your Module. Your Legacy." section added to pilot_hub.html with timeline and accountability framing. |
 
 ---
 
@@ -47,7 +81,7 @@ The pilot runs April 6 through June 5. The June board briefing and Q3 full-org r
 
 ---
 
-### C1: Deploy Pre/Post Fluency Measurement Instrument
+### C1: Deploy Pre/Post Fluency Measurement Instrument ✅ PARTIAL — BASELINE INSTRUMENT LIVE
 
 **Research basis:** "Organizations that invest systematically in people achieve 60% adoption rates versus 30% without training." The AI Fluency Index identifies 11 observable and 13 unobservable fluency behaviors. BCG and McKinsey recommend 3-layer measurement: engagement (30-60 days), proficiency (60-90 days), business impact (90-180 days). Without a baseline, the June board briefing has no quantitative story.
 
@@ -74,7 +108,7 @@ The pilot runs April 6 through June 5. The June board briefing and Q3 full-org r
 
 ---
 
-### C2: Define Three-Tier KPI Framework with Specific Targets
+### C2: Define Three-Tier KPI Framework with Specific Targets ✅ COMPLETE — SITE DELIVERABLE LIVE
 
 **Research basis:** "Most organizations measure the wrong things — 23% can accurately measure AI ROI despite 89% deploying tools." The strategy prescribes three measurement tiers: action counts, workflow time saved, and mission impact. Anthropic's internal data shows usage in daily work increased from 28% to 59% year-over-year, with power users reporting 100%+ productivity increases.
 
@@ -108,7 +142,7 @@ The pilot runs April 6 through June 5. The June board briefing and Q3 full-org r
 
 ---
 
-### C3: Build and Deploy Role-Specific Training Modules
+### C3: Build and Deploy Role-Specific Training Modules 🏗️ LEADER-OWNED
 
 **Research basis:** "Deploy tiered onboarding with role-specific pathways, not one-size-fits-all training. Enterprise research consistently shows three-tier models deliver 3.8x higher ROI than ad-hoc approaches." The site gap analysis found 9/10 simulated participants couldn't translate the framework to their actual work, and 5 distinct role clusters are underserved by current generic examples.
 
@@ -171,18 +205,21 @@ The pilot runs April 6 through June 5. The June board briefing and Q3 full-org r
 - Permission guide: What strategic documents are safe for Claude context; how to prepare board materials with AI assistance while maintaining executive judgment on framing and recommendations
 - Relevant skills: board-deck, executive-summary-formatter, data-interpreter, dc-cap-org-intelligence
 
-**Deployment approach:**
-- Build as additions to `phase1_activity_guide.html` (new domain-specific tabs) or as standalone one-pagers
-- Each participant receives their unit's module + encouraged to explore one adjacent module
-- Module outputs feed the capstone showcase (Deliverable 5)
+**Deployment approach — UPDATED April 4: Leader-Owned Build**
+- Each leader builds their own unit's module using the 5-component scaffold above
+- Preston provides the scaffold structure and permission guides (R3); leaders provide the domain content
+- Module-building progress tracked weekly via the Weekly Pulse Check-In (Q5)
+- Peer review during weekly sessions in Weeks 6-7
+- Completed modules become Q3 rollout training materials, owned and delivered by the leader who built them
+- This approach develops leadership capability directly: leaders who build the training are leaders who can sustain AI adoption in their units
 
-**Owner:** Preston (module design) + unit leads (scenario validation, sample data provision)
-**Deadline:** Modules 1-3 (Development, Communications, Student Success) by April 14; Modules 4-6 (GEAR UP, Operations, Executive Office) by April 18
-**Deliverable:** 6 domain-specific activity modules (HTML additions or standalone resources)
+**Owner:** Unit leaders (module content) + Preston (scaffold, permission guides, peer review facilitation)
+**Timeline:** Weeks 1-3: build personal fluency and identify use cases. Weeks 4-5: draft modules. Weeks 6-7: peer review. Week 8: finalize for capstone.
+**Deliverable:** 6 leader-built training modules (format flexible: HTML, deck, or document)
 
 ---
 
-### C4: Implement Iteration Tracking
+### C4: Implement Iteration Tracking ✅ COMPLETE — WEEKLY CHECK-IN LIVE
 
 **Research basis:** "The AI Fluency Index found that iteration is the single strongest predictor of broader fluency development. Conversations with iteration averaged 2.67 additional fluency behaviors compared to 1.33 in non-iterative interactions."
 
@@ -218,7 +255,7 @@ The pilot runs April 6 through June 5. The June board briefing and Q3 full-org r
 
 ---
 
-### R1: Create Workflow Redesign Templates and Real-Work Transition Plan
+### R1: Create Workflow Redesign Templates and Real-Work Transition Plan 🔲 NOT STARTED
 
 **Research basis:** "Full automation slowed teams by 17.7%; targeted augmentation increased performance by 24.3%." McKinsey: "Most companies layer AI onto old workflows and wonder why productivity stalls." 10/10 simulated participants expressed frustration at practice scenarios and wanted real work. The "demo effect" kills 88% of pilots.
 
@@ -250,7 +287,7 @@ The pilot runs April 6 through June 5. The June board briefing and Q3 full-org r
 
 ---
 
-### R2: Strengthen Psychological Safety from Declarative to Experiential
+### R2: Strengthen Psychological Safety from Declarative to Experiential ✅ COMPLETE — FACILITATION GUIDE LIVE
 
 **Research basis:** "83% of executives believe psychological safety improves AI success; only 39% rate their organization's psychological safety as 'very high.' When psychological safety is absent, people retreat into silence, stop experimenting, and stop learning." 7/10 simulated participants exhibited anxiety about doing it "right." The alignment audit flagged this as GAP 3.
 
@@ -282,7 +319,7 @@ The pilot runs April 6 through June 5. The June board briefing and Q3 full-org r
 
 ---
 
-### R3: Build "What You CAN Do" Role-Based Permission Guides
+### R3: Build "What You CAN Do" Role-Based Permission Guides 🔲 NOT STARTED
 
 **Research basis:** "Governance clarity should enable use, not block it." Robert (finance) expressed paralysis: "I get the tier system, but am I allowed to ask questions about budget forecasts?" Marcus (data): "I know PII is forbidden. But what about de-identified data?" Restriction-focused framing creates caution and compliance; permission-focused framing creates confidence and experimentation.
 
@@ -307,7 +344,7 @@ Integrate with the role-specific training modules (C3) — each module's permiss
 
 ---
 
-### R4: Build Polished Output Discernment Trap
+### R4: Build Polished Output Discernment Trap 🔲 NOT STARTED
 
 **Research basis:** "The polished output paradox — users are more critical of rough outputs and less critical of outputs that look finished." Anthropic's AI Fluency Index shows Discernment is tested when the output looks good and the errors are hidden. This is the gap between "I can spot a bad draft" and "I can catch a subtle error in a professional document."
 
@@ -334,7 +371,7 @@ Integrate with the role-specific training modules (C3) — each module's permiss
 
 ---
 
-### R5: Deploy Plain-English Glossary
+### R5: Deploy Plain-English Glossary ✅ COMPLETE — SITE DELIVERABLE LIVE
 
 **Research basis:** "75% of employees don't feel confident using AI; vocabulary gaps drive confidence loss." 6/10 simulated participants expressed confusion about technical terms. Denise: "What does 'context window' mean? Is that about the window on my screen?"
 
@@ -355,7 +392,7 @@ Key terms to define:
 
 ---
 
-### R6: Connect to Anthropic Academy
+### R6: Connect to Anthropic Academy ✅ COMPLETE — LINKS DEPLOYED
 
 **Research basis:** Anthropic Academy (anthropic.skilljar.com) provides free courses aligned to the exact 4D framework DC CAP adopted: "AI Fluency: Framework & Foundations," "Teaching AI Fluency" (for T3 candidates), and "Driving Enterprise Adoption of Claude" (for implementation leaders). These include formative assessments and completion certificates.
 
@@ -378,7 +415,7 @@ Key terms to define:
 
 ---
 
-### R7: Implement Structured Support Plan for High-Anxiety Participants
+### R7: Implement Structured Support Plan for High-Anxiety Participants 🔲 NOT STARTED
 
 **Research basis:** "Trust in direct managers is the strongest predictor of whether people engage with organizational change." Denise (tech-averse) is at HIGH risk of disengagement without explicit buddy system. Robert and Angela are at MEDIUM risk. One participant disengaging stalls cohort momentum — the remaining cohort interprets it as permission to step back.
 
@@ -407,7 +444,7 @@ Key terms to define:
 
 ---
 
-### R8: Evolve Live AI Fridays to Champion-Facilitated Peer Learning
+### R8: Evolve Live AI Fridays to Champion-Facilitated Peer Learning 🔲 NOT STARTED
 
 **Research basis:** "Knowledge retention scores are 3.2x better for collaborative versus passive learners." GitHub's AI Advocate Program identifies four champion roles: making AI real, helping others start, continuous learning, and surfacing insights. The research recommends evolving from leader-led demonstrations to peer-facilitated learning sessions.
 
@@ -437,7 +474,7 @@ Key terms to define:
 
 ---
 
-### S1: Formalize "Crawl-Walk-Run-Fly" Capability Staging
+### S1: Formalize "Crawl-Walk-Run-Fly" Capability Staging 🔲 NOT STARTED
 
 **Research basis:** "Organizations deploying advanced capabilities before staff master basics overwhelm people and trigger resistance." The staged approach: Crawl (simple assistive tasks), Walk (complex tasks with Projects), Run (custom workflows and citizen automation), Fly (advanced agentic systems).
 
@@ -449,7 +486,7 @@ Key terms to define:
 
 ---
 
-### S2: Design Cohort-Based Q3 Rollout Structure
+### S2: Design Cohort-Based Q3 Rollout Structure 🔲 NOT STARTED
 
 **Research basis:** "Cohort-based learning achieves 85-96% completion versus 2-12% for self-paced courses." For DC CAP's 30-50 staff, this means either a single cohort (if bandwidth allows) or two staggered cohorts where pilot graduates support the second wave.
 
@@ -477,7 +514,7 @@ Key terms to define:
 
 ---
 
-### S3: Build Apprenticeship Pairing Protocol
+### S3: Build Apprenticeship Pairing Protocol 🔲 NOT STARTED
 
 **Research basis:** "McKinsey identifies apprenticeship as most effective for AI competency development because skills markets are moving too fast for static courses. When people teach others they retain 90% of material versus 5% for lecture."
 
@@ -489,7 +526,7 @@ Key terms to define:
 
 ---
 
-### S4: Establish Spaced Repetition Reinforcement Schedule
+### S4: Establish Spaced Repetition Reinforcement Schedule 🔲 NOT STARTED
 
 **Research basis:** "People forget approximately 70% of new information within 24 hours. The AI skills half-life is only 3-4 months. Monthly training significantly more effective than 3-month, 6-month, or 12-month intervals. Spaced repetition at increasing intervals (1 week, 1 month, 3 months) improves long-term memory by 35%."
 
@@ -509,7 +546,7 @@ Each reinforcement session should introduce one new technique, revisit one found
 
 ---
 
-### S5: Build Board-Ready Metrics Narrative
+### S5: Build Board-Ready Metrics Narrative 🔲 NOT STARTED
 
 **Research basis:** "CEO involvement in responsible AI delivers 58% more business benefits. Companies building trust are 2x more likely to see 10%+ revenue growth." The June board briefing needs quantitative evidence, qualitative stories, and a clear ask for Q3 resources.
 
@@ -528,7 +565,7 @@ Board briefing structure (for June presentation):
 
 ---
 
-### S6: Frame AI Onboarding as Talent Development and Retention Tool
+### S6: Frame AI Onboarding as Talent Development and Retention Tool 🔲 NOT STARTED
 
 **Research basis:** "94% of employees would stay longer at a company that invests in their learning. Companies with strong learning cultures achieve 57% retention rates versus 27% with moderate learning cultures. The AI skills half-life is 3-4 months, requiring continuous learning that positions DC CAP's training infrastructure as a competitive advantage in tight nonprofit talent markets."
 
@@ -554,7 +591,7 @@ Board briefing structure (for June presentation):
 
 ---
 
-### V1: Address Middle Manager Resistance with ADKAR-Based Change Management
+### V1: Address Middle Manager Resistance with ADKAR-Based Change Management 🔲 NOT STARTED
 
 **Research basis:** "Mid-level managers display higher resistance than either senior leadership or front-line staff because AI threatens their expertise-based authority. These managers control budget approvals, schedule priorities, and informal influence — they can block AI adoption without ever explicitly refusing." The strategy recommends 81+ hours of training for managers (more than staff they supervise), ADKAR framework (Awareness, Desire, Knowledge, Ability, Reinforcement), and positioning managers as knowledgeable guides by training them before their teams.
 
@@ -581,7 +618,7 @@ Board briefing structure (for June presentation):
 
 ---
 
-### V2: Build Organizational Claude Projects as Knowledge Infrastructure
+### V2: Build Organizational Claude Projects as Knowledge Infrastructure 🔲 NOT STARTED
 
 **Research basis:** "Anthropic's 500K context window and Projects feature enable scaling expertise across teams in ways impossible with traditional documentation. Integrating Claude with your organization's knowledge scales expertise across more projects, decisions, and teams than ever before." The strategy recommends program-specific Projects, role-specific Projects, and cross-functional Projects.
 
@@ -617,7 +654,7 @@ This single Project serves as DC CAP's organizational knowledge hub in Claude, c
 
 ---
 
-### V3: Build Domain-Specific Prompt Template Arsenal
+### V3: Build Domain-Specific Prompt Template Arsenal 🔲 NOT STARTED
 
 **Research basis:** "MIT Sloan research reveals the most powerful approach is building a template arsenal rather than crafting one-off perfect prompts. Templates function as cognitive scaffolding — they provide structure without limiting options." A Fortune 500 case study showed combining prompt engineers' best practices with subject matter expertise improved accuracy by 20%.
 
@@ -643,7 +680,7 @@ Each template follows the Context-Task-Content-Constraints structure with DC CAP
 
 ---
 
-### V4: Implement Hallucination Mitigation and LEAP Framework Training
+### V4: Implement Hallucination Mitigation and LEAP Framework Training 🔲 NOT STARTED
 
 **Research basis:** "AI hallucinations occur at rates exceeding 15% overall, with domain-specific rates of 6.4% for legal and 4.3% for medical information. Anthropic recommends five mitigation strategies: scratchpads, document grounding, few-shot examples, step-by-step reasoning, and continuous monitoring." The strategy prescribes the LEAP framework: test outputs for Logic, Evidence, Attribution, and Perspective.
 
@@ -667,7 +704,7 @@ Each template follows the Context-Task-Content-Constraints structure with DC CAP
 
 ---
 
-### V5: Establish Privacy-by-Design Operational Protocols
+### V5: Establish Privacy-by-Design Operational Protocols 🔲 NOT STARTED
 
 **Research basis:** "1 in 5 organizations have been breached through shadow AI, with average added costs of $670K. For nonprofits serving students, the stakes are even higher: student data often includes sensitive information about family financial hardship, learning disabilities, immigration status." The strategy recommends anonymization before AI input, enterprise account data controls, opt-out of training features, and regular privacy audits.
 
@@ -700,10 +737,10 @@ Each template follows the Context-Task-Content-Constraints structure with DC CAP
 
 | Week | Dates | Critical Items | Recommended Items | Strategic + Verification Items |
 |---|---|---|---|---|
-| Now | April 4-6 | C1: Verify/deploy baseline survey | R5: Plain-English glossary | — |
-| 1 | April 7-11 | C2: KPI framework + dashboard; C4: Iteration tracking starts | R2: Psychological safety rituals; R7: Buddy assignments | — |
-| 2 | April 14-18 | C3: Role-specific modules 1-3 | R3: Permission guides; R4: Polished output trap; R6: Academy links | V4: LEAP protocol; V5: Anonymization reference |
-| 3 | April 21-25 | C3: Role-specific modules 4-5 | R1: Workflow redesign templates deployed | V4: Hallucination exercise |
+| Now | April 4-6 | ✅ C1: Baseline survey live + analytics fixed; ✅ C4: Weekly check-in live | ✅ R2: Facilitation guide live; ✅ R5: Glossary deployed; ✅ R6: Academy links live | ✅ Analytics pipeline fixed; 🏗️ C3: Reclassified as leader-owned |
+| 1 | April 7-11 | ✅ C2: KPI framework deployed | R7: Buddy assignments; R3: Permission guides; R1: Workflow redesign template | V2: DC CAP Intelligence Project |
+| 2 | April 14-18 | C3: Leaders identify unit use cases | R4: Polished output trap | V4: LEAP protocol; V5: Anonymization reference |
+| 3 | April 21-25 | C3: Leaders begin drafting modules | R1: Real-work transition begins | V4: Hallucination exercise |
 | 4 | April 28-May 2 | — | R1: Real-work transition begins; R8: Co-facilitated Fridays start | S1: Capability staging; V2: 3 priority Projects; V3: 5 priority templates; V5: Audit checklist |
 | 5-6 | May 5-16 | — | R1: Workflow redesigns documented | S2: Q3 rollout; S3: Apprenticeship protocol; V1: Manager pre-briefing protocol |
 | 7-8 | May 18-27 | — | R8: Champion-led Fridays | S4: Reinforcement schedule; S6: Competency framework; V1: Manager communication |
