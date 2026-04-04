@@ -1372,64 +1372,127 @@
                 How We Work Together
             </div>
 
-            <h2>The Collaboration Loop</h2>
+            <h2>Three Layers of Collaboration</h2>
 
-            <div class="flow-diagram">
-                <div class="flow-steps">
-                    <div class="flow-step reveal">Brief Claude<br>(in Project or Chat)</div>
-                    <div class="flow-step reveal">Claude generates draft</div>
-                    <div class="flow-step reveal">Save to SharePoint<br>(live document)</div>
-                    <div class="flow-step reveal">Team reviews & edits in SharePoint<br>(co-authoring, comments, version history)</div>
-                    <div class="flow-step reveal">Paste back into Claude<br>(for further refinement)</div>
-                    <div class="flow-step reveal">Return to Save step</div>
+            <p style="font-size: clamp(1rem, 1.5vw, 1.15rem); margin-bottom: 2rem;">Claude Enterprise gives DC CAP three collaboration layers. Each one serves a specific purpose, and understanding these layers is the foundation for working effectively as a team.</p>
+
+            <!-- Layer Architecture Diagram -->
+            <div style="display: flex; flex-direction: column; gap: 0; margin-bottom: 2.5rem;">
+
+                <!-- Layer 1: Projects -->
+                <div class="card purple reveal" style="border-left: none; border: 3px solid var(--purple); border-radius: 16px 16px 0 0; margin-bottom: 0; position: relative; z-index: 3;">
+                    <div style="display: flex; align-items: flex-start; gap: 1.25rem;">
+                        <div style="flex-shrink: 0; width: 52px; height: 52px; background: rgba(131, 82, 255, 0.12); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="color: var(--purple); margin-bottom: 0.25rem;">Layer 1: Projects — Where Your Team Thinks Together</h3>
+                            <p style="font-weight: 600; color: var(--navy); margin-bottom: 0.75rem;">This is your collaboration center.</p>
+                            <p>A Project is a persistent shared workspace. Every conversation inside a Project starts with the same organizational context — DC CAP's policies, your team's guidelines, reference documents, past work. Claude remembers all of it across every conversation, so you never re-explain who DC CAP is or what your program does.</p>
+                            <p>Your teammates can see conversations in the same Project, continue work someone else started, and build on each other's outputs. When you upload a document to a Project's knowledge base, every team member's Claude conversations benefit from it immediately.</p>
+                            <p style="margin-top: 0.75rem;"><strong>What goes here:</strong> Program documentation, grant templates, evaluation frameworks, policy references, student success protocols, strategic plans — anything your team references repeatedly.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="callout-box">
-                    SharePoint is always the single source of truth. Claude is always the drafting engine.
+                <!-- Layer 2: Cowork -->
+                <div class="card navy reveal" style="border-left: none; border: 3px solid var(--navy); border-top: none; border-radius: 0; margin-bottom: 0; position: relative; z-index: 2;">
+                    <div style="display: flex; align-items: flex-start; gap: 1.25rem;">
+                        <div style="flex-shrink: 0; width: 52px; height: 52px; background: rgba(16, 26, 76, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="color: var(--navy); margin-bottom: 0.25rem;">Layer 2: Cowork — Where Files Get Made</h3>
+                            <p style="font-weight: 600; color: var(--navy); margin-bottom: 0.75rem;">This is your production workspace.</p>
+                            <p>Cowork connects Claude to a folder on your computer and gives it the ability to create real files: Word documents, PowerPoints, spreadsheets, PDFs. It also connects to external tools through connectors (Monday.com, Google Drive, Canva). When you need a polished deliverable or need to work across multiple tools, Cowork is the right interface.</p>
+                            <p>Cowork also runs DC CAP's organizational Skills — pre-built expert workflows that encode our voice, framing rules, and policy accuracy. You describe what you need in plain language; Cowork detects the right Skill automatically.</p>
+                            <p style="margin-top: 0.75rem;"><strong>What happens here:</strong> Board decks, grant drafts, student communications, data analysis scripts, branded documents — anything that produces a file or touches an external tool.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Layer 3: SharePoint -->
+                <div class="card blue reveal" style="border-left: none; border: 3px solid var(--blue); border-top: none; border-radius: 0 0 16px 16px; margin-bottom: 0; position: relative; z-index: 1;">
+                    <div style="display: flex; align-items: flex-start; gap: 1.25rem;">
+                        <div style="flex-shrink: 0; width: 52px; height: 52px; background: rgba(135, 183, 213, 0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="color: #5a8ea8; margin-bottom: 0.25rem;">Layer 3: SharePoint — Where Final Work Lives</h3>
+                            <p style="font-weight: 600; color: var(--navy); margin-bottom: 0.75rem;">This is your archive and version control.</p>
+                            <p>Once a deliverable is ready for team review or final distribution, move it to your team's SharePoint folder. SharePoint provides co-authoring, comments, version history, and access controls. It is where finished documents get stored, shared externally, and maintained over time.</p>
+                            <p style="margin-top: 0.75rem;"><strong>What goes here:</strong> Finalized documents, approved communications, board materials, anything that needs version history or external sharing.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <h2>Projects</h2>
+            <div class="callout-box">
+                Projects hold your team's knowledge. Cowork produces your deliverables. SharePoint stores your finished work.
+            </div>
 
-            <div class="card navy reveal">
-                <p><strong>A Project is a shared workspace where your team works under the same context.</strong></p>
-                <h4>Three key features:</h4>
-                <ul>
-                    <li><strong>Shared Project Instructions:</strong> Claude's standing briefing for your team</li>
-                    <li><strong>Shared Knowledge Base:</strong> Uploaded reference documents everyone can use</li>
-                    <li><strong>Shared conversation visibility:</strong> Team members can see and continue each other's work</li>
-                </ul>
-                <p style="margin-top: 1rem; font-style: italic; color: var(--navy);">"If you find yourself re-explaining DC CAP's mission every conversation, you should be in a Project."</p>
+            <h2>How Files Move Through the System</h2>
+
+            <div class="flow-diagram">
+                <div class="flow-steps" style="grid-template-columns: repeat(4, 1fr);">
+                    <div class="flow-step reveal" style="border-color: var(--purple);">Start a conversation<br>in a <strong>Project</strong></div>
+                    <div class="flow-step reveal" style="border-color: var(--navy);">Open <strong>Cowork</strong><br>to produce files</div>
+                    <div class="flow-step reveal" style="border-color: var(--navy);">Review output in your<br><strong>working folder</strong></div>
+                    <div class="flow-step reveal" style="border-color: var(--blue);">Move final version to<br><strong>SharePoint</strong></div>
+                </div>
+            </div>
+
+            <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); color: var(--navy); margin-top: -0.5rem; margin-bottom: 2rem;">Many tasks stay entirely within Projects or Cowork. You only move to SharePoint when a deliverable is ready for team review, external sharing, or archival.</p>
+
+            <h2>Your Working Folder</h2>
+
+            <div class="card gold reveal">
+                <p>When you open Cowork, it asks you to select a folder on your computer. This is your <strong>working folder</strong> — a dedicated space where Claude saves files during a session.</p>
+                <p><strong>Create a folder like <code style="background: rgba(252, 176, 23, 0.15); padding: 0.15rem 0.4rem; border-radius: 4px;">Claude_Working</code> on your Desktop.</strong> Point Cowork at this folder every session. When a file is finished, move it to SharePoint or wherever it belongs. Keep the working folder clean.</p>
+                <p style="margin-top: 0.75rem; font-style: italic; color: var(--navy);">Your working folder is a scratchpad. SharePoint is the archive. A Claude conversation is the log of how you got there.</p>
             </div>
 
             <h2>When to Use What</h2>
 
             <div class="decision-tree reveal">
                 <div class="branch">
-                    <span class="condition">Solo task?</span>
+                    <span class="condition">Quick question or brainstorm?</span>
                     <span class="arrow">→</span>
-                    <span class="result">Chat</span>
+                    <span class="result"><strong>Chat</strong> — fast, no setup needed</span>
                 </div>
                 <div class="branch">
-                    <span class="condition">Recurring team workflow?</span>
+                    <span class="condition">Working on DC CAP tasks that need org context?</span>
                     <span class="arrow">→</span>
-                    <span class="result">Project</span>
+                    <span class="result"><strong>Project</strong> — Claude already knows your program, policies, and team context</span>
                 </div>
                 <div class="branch">
-                    <span class="condition">Need formatted files?</span>
+                    <span class="condition">Need a file (doc, deck, spreadsheet, PDF)?</span>
                     <span class="arrow">→</span>
-                    <span class="result">Cowork</span>
+                    <span class="result"><strong>Cowork</strong> — produces real files in your working folder</span>
                 </div>
                 <div class="branch">
-                    <span class="condition">Need Monday/Canva/Drive?</span>
+                    <span class="condition">Need Monday.com, Canva, or Google Drive?</span>
                     <span class="arrow">→</span>
-                    <span class="result">Cowork + Connectors</span>
+                    <span class="result"><strong>Cowork + Connectors</strong> — bridges Claude to external tools</span>
                 </div>
                 <div class="branch">
-                    <span class="condition">Team needs to review/edit?</span>
+                    <span class="condition">Deliverable ready for team or external review?</span>
                     <span class="arrow">→</span>
-                    <span class="result">Save to SharePoint</span>
+                    <span class="result"><strong>SharePoint</strong> — version history, co-authoring, access controls</span>
                 </div>
+            </div>
+
+            <h2>Quick Start: Your First Team Collaboration</h2>
+
+            <div class="card navy reveal" style="background: linear-gradient(135deg, rgba(16, 26, 76, 0.04) 0%, rgba(131, 82, 255, 0.04) 100%);">
+                <p style="font-weight: 600; color: var(--navy); font-size: clamp(1rem, 1.5vw, 1.1rem); margin-bottom: 1rem;">Try this in under 5 minutes:</p>
+                <ol style="margin-left: 1.5rem;">
+                    <li style="margin-bottom: 0.75rem;"><strong>Open your team's Project</strong> in Claude. Your CSAO has already created Projects with DC CAP's organizational knowledge loaded.</li>
+                    <li style="margin-bottom: 0.75rem;"><strong>Start a conversation</strong> about a real task: "Help me draft talking points for next week's partner meeting." Notice that Claude already knows DC CAP's mission, your program details, and your voice standards — you didn't have to explain any of it.</li>
+                    <li style="margin-bottom: 0.75rem;"><strong>If you need a file,</strong> switch to Cowork and describe what you need. Claude will create the document in your working folder.</li>
+                    <li style="margin-bottom: 0.75rem;"><strong>When the output is ready,</strong> move it from your working folder to your team's SharePoint for review.</li>
+                </ol>
+                <p style="margin-top: 1rem; font-style: italic; color: var(--purple);">The key insight: you spend most of your time in Projects and Cowork. SharePoint is where finished work lands.</p>
             </div>
         </section>
 
