@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Framework for AI Fluency — DC CAP Enterprise AI Pilot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* === CSS CUSTOM PROPERTIES === */
+        :root {
+            --navy: #101A4C;
+            --purple: #8352FF;
+            --blue: #87B7D5;
+            --gold: #FCB017;
+            --tan: #FFF4ED;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --dark-gray: #333333;
+            --red: #E63946;
+            --font-display: 'Akkordeon Ten', 'Noto Serif SemiCondensed', Georgia, serif;
+            --font-body: 'Noto Serif', Georgia, serif;
+            --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --duration-normal: 0.6s;
+
+            /* 4Ds Competency Colors */
+            --delegation: var(--navy);
+            --description: var(--purple);
+            --discernment: var(--blue);
+            --diligence: var(--gold);
+
+            /* Responsive sizing */
+            --title-size: clamp(1.5rem, 5vw, 3.5rem);
+            --h2-size: clamp(1.25rem, 3.5vw, 2.25rem);
+            --h3-size: clamp(1.3rem, 2.5vw, 1.6rem);
+            --body-size: clamp(0.8rem, 1.5vw, 1.05rem);
+            --small-size: clamp(0.7rem, 1vw, 0.875rem);
+            --slide-padding: clamp(1.5rem, 5vw, 3rem);
+            --content-gap: clamp(0.5rem, 2vw, 1.5rem);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            :root {
+                --duration-normal: 0.01s;
+            }
+            * {
+                animation-duration: 0.01s !important;
+                transition-duration: 0.01s !important;
+            }
+        }
+
+        /* === GLOBAL STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: var(--body-size);
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: var(--title-size);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            margin-bottom: var(--content-gap);
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: var(--h2-size);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            margin-bottom: var(--content-gap);
+        }
+
+        h3 {
+            font-family: var(--font-subhead);
+            font-size: var(--h3-size);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: calc(var(--content-gap) * 0.75);
+        }
+
+        h4 {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            margin-bottom: calc(var(--content-gap) * 0.5);
+        }
+
+        p {
+            margin-bottom: var(--content-gap);
+        }
+
+        a {
+            color: var(--purple);
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: var(--navy);
+        }
+
+        /* === REVEAL ANIMATION === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === HEADER SECTION === */
+        header {
+            background: linear-gradient(135deg, var(--navy) 0%, #0d0f2d 100%);
+            color: var(--white);
+            padding: var(--slide-padding);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(131, 82, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(135, 183, 213, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        header > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            color: var(--white);
+            margin-bottom: calc(var(--content-gap) * 0.5);
+        }
+
+        .header-subtitle {
+            font-size: var(--h3-size);
+            font-weight: 600;
+            margin-bottom: var(--content-gap);
+            color: var(--tan);
+        }
+
+        .header-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--content-gap);
+            flex-wrap: wrap;
+            font-size: var(--small-size);
+        }
+
+        .header-meta span {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* === STICKY NAVIGATION === */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--navy);
+            padding: calc(var(--content-gap) * 0.75) var(--slide-padding);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: clamp(0.5rem, 3vw, 2rem);
+            flex-wrap: wrap;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        nav a {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: var(--body-size);
+            color: var(--dark-gray);
+            text-decoration: none;
+            transition: all var(--duration-normal) var(--ease-out-expo);
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--purple);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--purple);
+            transition: width var(--duration-normal) var(--ease-out-expo);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav button {
+            padding: calc(var(--content-gap) * 0.5) var(--content-gap);
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-family: var(--font-subhead);
+            font-weight: 600;
+            font-size: var(--small-size);
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-out-expo);
+        }
+
+        nav button:hover {
+            background: var(--purple);
+            transform: translateY(-2px);
+        }
+
+        /* === MAIN CONTENT === */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--slide-padding);
+        }
+
+        section {
+            margin-bottom: calc(var(--slide-padding) * 2);
+            scroll-margin-top: 120px;
+        }
+
+        /* === SECTION HEADERS === */
+        .section-header {
+            padding: var(--slide-padding);
+            border-radius: 0;
+            margin-bottom: var(--slide-padding);
+            color: var(--white);
+        }
+
+        .section-about .section-header {
+            background: linear-gradient(135deg, var(--navy) 0%, #0d0f2d 100%);
+        }
+
+        .section-modalities .section-header {
+            background: linear-gradient(135deg, var(--purple) 0%, #6a2d8e 100%);
+        }
+
+        .section-4ds .section-header {
+            background: linear-gradient(135deg, var(--blue) 0%, #5a8ba0 100%);
+        }
+
+        .section-application .section-header {
+            background: linear-gradient(135deg, var(--gold) 0%, #e09b00 100%);
+            color: var(--dark-gray);
+        }
+
+        .section-header h2 {
+            color: inherit;
+            margin-bottom: calc(var(--content-gap) * 0.5);
+        }
+
+        .section-header p {
+            font-size: var(--h3-size);
+            font-weight: 300;
+            margin: 0;
+            color: inherit;
+        }
+
+        /* === ABOUT SECTION === */
+        .about-intro {
+            background: var(--light-gray);
+            padding: var(--slide-padding);
+            border-radius: 8px;
+            margin-bottom: var(--slide-padding);
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--slide-padding);
+            margin-bottom: var(--slide-padding);
+        }
+
+        .advantage-card {
+            background: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: var(--slide-padding);
+            border-left: 5px solid var(--navy);
+            transition: all var(--duration-normal) var(--ease-out-expo));
+        }
+
+        .advantage-card:nth-child(2) {
+            border-left-color: var(--purple);
+        }
+
+        .advantage-card:nth-child(3) {
+            border-left-color: var(--gold);
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .advantage-card h4 {
+            color: var(--navy);
+        }
+
+        .advantage-card:nth-child(2) h4 {
+            color: var(--purple);
+        }
+
+        .advantage-card:nth-child(3) h4 {
+            color: var(--gold);
+            color: #d4860a;
+        }
+
+        /* === MODALITIES SECTION === */
+        .modalities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--slide-padding);
+            margin-bottom: var(--slide-padding);
+        }
+
+        .modality-card {
+            background: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: var(--slide-padding);
+            border-left: 5px solid var(--navy);
+            transition: all var(--duration-normal) var(--ease-out-expo));
+        }
+
+        .modality-card.automation {
+            border-left-color: var(--navy);
+        }
+
+        .modality-card.augmentation {
+            border-left-color: var(--purple);
+        }
+
+        .modality-card.agency {
+            border-left-color: var(--gold);
+        }
+
+        .modality-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .modality-title {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: var(--h3-size);
+            margin-bottom: calc(var(--content-gap) * 0.5);
+        }
+
+        .modality-card.automation .modality-title {
+            color: var(--navy);
+        }
+
+        .modality-card.augmentation .modality-title {
+            color: var(--purple);
+        }
+
+        .modality-card.agency .modality-title {
+            color: var(--gold);
+        }
+
+        .modality-definition {
+            font-family: var(--font-subhead);
+            font-weight: 600;
+            color: var(--dark-gray);
+            margin-bottom: var(--content-gap);
+            font-size: var(--body-size);
+        }
+
+        .modality-example {
+            background: var(--light-gray);
+            padding: calc(var(--content-gap) * 0.75);
+            border-radius: 6px;
+            font-size: var(--small-size);
+            margin-top: var(--content-gap);
+        }
+
+        .modality-example strong {
+            display: block;
+            margin-bottom: calc(var(--content-gap) * 0.25);
+            color: var(--dark-gray);
+        }
+
+        /* === 4Ds SECTION === */
+        .competency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--slide-padding);
+            margin-bottom: var(--slide-padding);
+        }
+
+        .competency-card {
+            background: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all var(--duration-normal) var(--ease-out-expo));
+        }
+
+        .competency-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .competency-header {
+            padding: var(--content-gap);
+            color: var(--white);
+            border-left: 5px solid;
+        }
+
+        .competency-card.delegation .competency-header {
+            background: var(--delegation);
+            border-left-color: var(--delegation);
+        }
+
+        .competency-card.description .competency-header {
+            background: var(--description);
+            border-left-color: var(--description);
+        }
+
+        .competency-card.discernment .competency-header {
+            background: var(--discernment);
+            border-left-color: var(--discernment);
+            color: var(--dark-gray);
+        }
+
+        .competency-card.diligence .competency-header {
+            background: var(--diligence);
+            color: var(--dark-gray);
+            border-left-color: var(--diligence);
+        }
+
+        .competency-header h3 {
+            margin: 0;
+            font-size: var(--h3-size);
+        }
+
+        .competency-definition {
+            font-size: var(--small-size);
+            font-weight: 600;
+            margin: 0;
+            opacity: 0.95;
+        }
+
+        .competency-content {
+            padding: var(--slide-padding);
+        }
+
+        .sub-competency {
+            margin-bottom: var(--slide-padding);
+        }
+
+        .sub-competency:last-child {
+            margin-bottom: 0;
+        }
+
+        .sub-competency-title {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: var(--body-size);
+            margin-bottom: calc(var(--content-gap) * 0.5);
+            color: var(--dark-gray);
+        }
+
+        .sub-competency-content {
+            font-size: var(--small-size);
+            line-height: 1.5;
+            color: var(--dark-gray);
+        }
+
+        .sub-competency-content ul {
+            margin-left: 1.5em;
+            margin-top: calc(var(--content-gap) * 0.25);
+        }
+
+        .sub-competency-content li {
+            margin-bottom: calc(var(--content-gap) * 0.25);
+        }
+
+        /* === APPLICATION SECTION === */
+        .application-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: var(--slide-padding);
+        }
+
+        .application-table th,
+        .application-table td {
+            padding: var(--content-gap);
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .application-table th {
+            background: var(--navy);
+            color: var(--white);
+            font-family: var(--font-subhead);
+            font-weight: 700;
+        }
+
+        .application-table tr:nth-child(even) {
+            background: var(--light-gray);
+        }
+
+        .application-note {
+            background: var(--tan);
+            padding: var(--slide-padding);
+            border-radius: 8px;
+            border-left: 5px solid var(--gold);
+            margin-bottom: var(--slide-padding);
+        }
+
+        .application-note h4 {
+            color: var(--navy);
+            margin-top: 0;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: var(--light-gray);
+            padding: var(--slide-padding);
+            text-align: center;
+            border-top: 2px solid var(--navy);
+            font-size: var(--small-size);
+            margin-top: calc(var(--slide-padding) * 2);
+        }
+
+        footer img {
+            height: clamp(20px, 2vw, 28px);
+            opacity: 0.85;
+            margin-bottom: calc(var(--content-gap) * 0.5);
+            display: inline-block;
+        }
+
+        footer div {
+            margin-bottom: var(--content-gap);
+        }
+
+        footer a {
+            font-family: var(--font-subhead);
+            font-weight: 600;
+            font-size: var(--body-size);
+        }
+
+        .print-button {
+            display: inline-block;
+            padding: calc(var(--content-gap) * 0.5) var(--content-gap);
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-family: var(--font-subhead);
+            font-weight: 600;
+            font-size: var(--small-size);
+            cursor: pointer;
+            margin-top: var(--content-gap);
+            transition: all var(--duration-normal) var(--ease-out-expo));
+        }
+
+        .print-button:hover {
+            background: var(--purple);
+            transform: translateY(-2px);
+        }
+
+        @media print {
+            nav,
+            #completionBanner,
+            .print-button {
+                display: none !important;
+            }
+            footer {
+                border-top: 1px solid #ccc;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                gap: calc(var(--content-gap) * 0.5);
+            }
+
+            nav a {
+                font-size: var(--small-size);
+            }
+
+            .modalities-grid,
+            .competency-grid,
+            .advantages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .application-table {
+                font-size: var(--small-size);
+            }
+
+            .application-table th,
+            .application-table td {
+                padding: calc(var(--content-gap) * 0.5);
+            }
+        }
+
+        /* === COMPLETION TRACKING BANNER === */
+        #completionBanner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--navy), #0d0f2d);
+            color: white;
+            padding: clamp(0.6rem, 1.5vw, 1rem) clamp(1rem, 3vw, 2rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(0.4rem, 1.5vw, 1rem);
+            flex-wrap: wrap;
+            z-index: 1001;
+            box-shadow: 0 -4px 20px rgba(16, 26, 76, 0.2);
+            font-family: var(--font-body);
+            font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+        }
+
+        #participantNameInput {
+            padding: 0.35rem 0.6rem;
+            border-radius: 6px;
+            border: 2px solid var(--purple);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            width: clamp(120px, 16vw, 180px);
+            transition: all var(--duration-normal) var(--ease-out-expo));
+        }
+
+        #participantNameInput:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 8px rgba(252, 176, 23, 0.3);
+        }
+
+        .framework-complete-btn {
+            padding: 0.4rem 0.8rem;
+            background: var(--navy);
+            color: white;
+            border: 2px solid var(--gold);
+            border-radius: 6px;
+            font-family: var(--font-subhead);
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-out-expo));
+        }
+
+        .framework-complete-btn:hover {
+            background: var(--purple);
+            transform: translateY(-2px);
+        }
+
+        .framework-complete-btn:disabled {
+            background: #27ae60;
+            border-color: #27ae60;
+            cursor: not-allowed;
+        }
+
+        #completionMsg {
+            font-size: 0.8rem;
+            color: var(--gold);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- === HEADER === -->
+    <header>
+        <h1>Framework for AI Fluency</h1>
+        <div class="header-subtitle">DC CAP Enterprise AI Pilot</div>
+        <div class="header-meta">
+            <span>Dakan & Feller, v1.1</span>
+            <span>Adapted for DC CAP</span>
+        </div>
+    </header>
+
+    <!-- === STICKY NAVIGATION === -->
+    <nav>
+        <a href="#about">About</a>
+        <a href="#modalities">Modalities</a>
+        <a href="#4ds">The 4Ds</a>
+        <a href="#application">DC CAP Application</a>
+        <button class="print-button" onclick="window.print()">Print</button>
+    </nav>
+
+    <!-- === MAIN CONTENT === -->
+    <main>
+        <!-- SECTION 1: ABOUT === -->
+        <section id="about" class="section-about reveal">
+            <div class="section-header">
+                <h2>About This Framework</h2>
+                <p>Understanding AI fluency as the ability to work effectively, ethically, and safely with emerging AI tools.</p>
+            </div>
+
+            <div class="about-intro">
+                <p><strong>AI Fluency</strong> is defined as the ability to work effectively, efficiently, ethically, and safely within emerging modalities of Human-AI interaction.</p>
+                <p>The Framework for AI Fluency describes the interconnected competencies needed to use AI in creative, innovative, and problem-solving work. Rather than viewing AI merely as an efficiency engine, the framework recognizes AI's potential as an authentic thinking partner for meaningful cognitive work — while acknowledging that this potential is only realized through the development of specific human competencies.</p>
+                <p>This framework emerged from research collaboration across higher education and extends to organizations addressing the challenges and opportunities of generative AI. DC CAP's adoption of this framework reflects its alignment with our enterprise AI adoption principles and our commitment to building genuine organizational AI fluency.</p>
+            </div>
+
+            <h3 style="margin-top: var(--slide-padding);">Key Advantages</h3>
+            <div class="advantages-grid">
+                <div class="advantage-card reveal">
+                    <h4>Platform Agnostic</h4>
+                    <p>Independent of specific tools or platforms. Adaptable to rapidly evolving technologies and use cases.</p>
+                </div>
+                <div class="advantage-card reveal">
+                    <h4>Contextual & Flexible</h4>
+                    <p>Characterizes effective action rather than prescribing rigid processes. Compatible with other skills taxonomies.</p>
+                </div>
+                <div class="advantage-card reveal">
+                    <h4>Ethics-Centered</h4>
+                    <p>Treats ethical considerations as fundamental. Responsible and safe AI use is as important as responsible AI design.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: MODALITIES === -->
+        <section id="modalities" class="section-modalities reveal">
+            <div class="section-header">
+                <h2>Three Interaction Modalities</h2>
+                <p>Human-AI interactions often bridge multiple modalities, with practitioners moving between contexts even within single projects.</p>
+            </div>
+
+            <div class="modalities-grid">
+                <div class="modality-card automation reveal">
+                    <div class="modality-title">Automation</div>
+                    <div class="modality-definition">AI Performs Human-Defined Tasks</div>
+                    <p>AI performs tasks independently, based on direct human instructions. Particularly useful for improving the efficiency of repetitive, time-consuming, or data-intensive tasks.</p>
+                    <ul>
+                        <li>Requires clear task definition and quality control measures</li>
+                        <li>Focuses on efficiency gains and task completion</li>
+                    </ul>
+                    <div class="modality-example">
+                        <strong>DC CAP Examples:</strong>
+                        Email drafts, data summaries, social media posts, document formatting
+                    </div>
+                </div>
+
+                <div class="modality-card augmentation reveal">
+                    <div class="modality-title">Augmentation</div>
+                    <div class="modality-definition">AI and Human Collaborate</div>
+                    <p>AI and human co-define and co-execute tasks in an iterative way, collaborating toward an end goal. Focuses on enhancing human expertise rather than replacing it.</p>
+                    <ul>
+                        <li>Dynamic interplay between human and AI contribution</li>
+                        <li>Involves dialogue and iterative refinement</li>
+                    </ul>
+                    <div class="modality-example">
+                        <strong>DC CAP Examples:</strong>
+                        Grant narrative development, board materials, program strategy analysis, complex research and synthesis
+                    </div>
+                </div>
+
+                <div class="modality-card agency reveal">
+                    <div class="modality-title">Agency</div>
+                    <div class="modality-definition">Human Configures AI for Independence</div>
+                    <p>Human configures AI to independently perform future tasks (including for others) on behalf of the user. Defines the characteristics and behavior of an AI.</p>
+                    <ul>
+                        <li>Requires sophisticated understanding of AI capabilities and limitations</li>
+                        <li>Enables at-scale deployment of AI assistance</li>
+                    </ul>
+                    <div class="modality-example">
+                        <strong>DC CAP Examples:</strong>
+                        Custom Skills in Cowork, Project Instructions, multi-agent workflows built by the Innovation Hub
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: THE 4Ds === -->
+        <section id="4ds" class="section-4ds reveal">
+            <div class="section-header">
+                <h2>Core Competencies: The 4Ds</h2>
+                <p>Four interconnected competencies that enable effective, efficient, ethical, and safe Human-AI interaction.</p>
+            </div>
+
+            <p style="font-size: var(--h3-size); text-align: center; margin-bottom: var(--slide-padding); color: var(--dark-gray);">
+                <strong>The 4Ds reinforce each other.</strong> Delegation requires Discernment to evaluate tool choices. Description requires Delegation to know what to ask for. Diligence applies to all three.
+            </p>
+
+            <div class="competency-grid">
+                <!-- DELEGATION === -->
+                <div class="competency-card delegation reveal">
+                    <div class="competency-header">
+                        <h3>Delegation</h3>
+                        <p class="competency-definition">Creative vision and selection of the right AI tools.</p>
+                    </div>
+                    <div class="competency-content">
+                        <p style="margin-bottom: var(--slide-padding); font-size: var(--small-size);">The ability to identify when and how to use AI tools and modalities effectively in creative and problem-solving processes. Understanding capabilities and limitations of AI technologies and making informed decisions about when to use Automation, Augmentation, or Agency.</p>
+
+                        <div class="sub-competency">
+                            <div class="sub-competency-title">a) Goal and Task Awareness</div>
+                            <div class="sub-competency-content">
+                                <ul>
+                                    <li>Envisioning an effective goal for a project</li>
+                                    <li>Understanding the nature and requirements of tasks toward the defined goal</li>
+                                    <li>Analyzing and deconstructing a task into AI, human, and collaborative components</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="sub-competency">
+                            <div class="sub-competency-title">b) Platform Awareness</div>
+                            <div class="sub-competency-content">
+                                <ul>
+                                    <li>Understanding the capabilities and limitations of current AI tools</li>
+                                    <li>Knowledge of various AI platforms and their specific strengths</li>
+                                    <li>Evaluating tools based on project requirements, budget, and operational needs</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="sub-competency">
+                            <div class="sub-competency-title">c) Task Delegation</div>
+                            <div class="sub-competency-content">
+                                <ul>
+                                    <li>Balancing AI and human capabilities throughout a project</li>
+                                    <li>Understanding different affordances of each modality</li>
+                                    <li>Assigning project tasks to human and AI tools optimally</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DESCRIPTION === -->
+                <div class="competency-card description reveal">
+                    <div class="competency-header">
+                        <h3>Description</h3>
+                        <p class="competency-definition">Effectively describing tasks to prompt AI behaviors.</p>
+                    </div>
+                    <div class="competency-content">
+                        <p style="margin-bottom: var(--slide-padding); font-size: var(--small-size);">The skills needed to effectively communicate ideas, requirements, constraints, and other aspects of creative visions to AI systems. Crafting clear, specific, and well-structured prompts that guide AI to produce desired behaviors and outputs.</p>
+
+                        <div class="sub-competency">
+                            <div class="sub-competency-title">a) Product Description</div>
+                            <div class="sub-competency-content">
+                                <ul>
+                                    <li>Prompting to define desired output</li>
+                                    <li>Clearly articulating desired characteristics and features</li>
+                                    <li>Translating creative vision into AI-understandable terms</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="sub-competency">
+                            <div class="sub-competency-title">b) Process Description</div>
+                            <div class="sub-competency-content">
+                                <ul>
+                                    <li>Dialogic prompting to produce effective iterative collaboration</li>
+                                    <li>Engaging in dynamic, back-and-forth communication with AI</li>
+                                    <li>Breaking down complex tasks into manageable prompts</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="sub-competency">
+                            <div class="sub-competency-title">c) Performance Description</div>
+                            <div class="sub-competency-content">
+                                <ul>
+                                    <li>Directive prompting to define future AI behaviors</li>
+                                    <li>Defining how AI-generated content should behave in the world</li>
+                                    <li>Translating user needs into AI behavior guidelines</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DISCERNMENT === -->
+                <div class="competency-card discernment reveal">
+                    <div class="competency-header">
+                        <h3>Discernment</h3>
+                        <p class="competency-definition">Accurately assessing the usefulness of AI outputs.</p>
+                    </div>
+                    <div class="competency-content">
+                        <p style="margin-bottom: var(--slide-padding); font-size: var(--small-size);">The critical evaluation of AI-generated outputs — understanding their quality, relevance, potential biases, and other characteristics. The ability to iterate and refine the collaborative process with AI tools.</p>
+
+                        <div class="sub-competency">
+                            <div class="sub-competency-title">a) Product Discernment</div>
+                            <div class="sub-competency-content">
+                                <ul>
+                                    <li>Evaluating output quality and identifying improvements</li>
+                                    <li>Critically assessing relevance and effectiveness</li>
+                                    <li>Identifying strengths and weaknesses in AI outputs</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="sub-competency">
+                            <div class="sub-competency-title">b) Process Discernment</div>
+                            <div class="sub-competency-content">
+                                <ul>
+                                    <li>Assessing if human-AI collaboration is fruitful</li>
+                                    <li>Evaluating effectiveness of the collaborative dynamic</li>
+                                    <li>Identifying which aspects are most beneficial and where improvements fit</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="sub-competency">
+                            <div class="sub-competency-title">c) Performance Discernment</div>
+                            <div class="sub-competency-content">
+                                <ul>
+                                    <li>Evaluating if AI-driven independent behaviors enable positive experiences</li>
+                                    <li>Assessing effectiveness in user-facing scenarios</li>
+                                    <li>Gathering and interpreting feedback to refine AI behaviors</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DILIGENCE === -->
+                <div class="competency-card diligence reveal">
+                    <div class="competency-header">
+                        <h3>Diligence</h3>
+                        <p class="competency-definition">Taking responsibility and vouching for final products.</p>
+                    </div>
+                    <div class="competency-content">
+                        <p style="margin-bottom: var(--slide-padding); font-size: var(--small-size);">The responsible use of AI — including ethical considerations, transparency about AI use, and taking accountability for final products created with AI assistance.</p>
+
+                        <div class="sub-competency">
+                            <div class="sub-competency-title">a) Creation Diligence</div>
+                            <div class="sub-competency-content">
+                                <ul>
+                                    <li>Responsible use of AI tools with ethical and legal best practices</li>
+                                    <li>Understanding and applying ethical principles throughout the process</li>
+                                    <li>Identifying and mitigating potential biases and ethical risks</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="sub-competency">
+                            <div class="sub-competency-title">b) Transparency Diligence</div>
+                            <div class="sub-competency-content">
+                                <ul>
+                                    <li>Transparency and accountability when distributing end products</li>
+                                    <li>Understanding audience, industry, and legal expectations</li>
+                                    <li>Clearly communicating the nature of AI involvement</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="sub-competency">
+                            <div class="sub-competency-title">c) Deployment Diligence</div>
+                            <div class="sub-competency-content">
+                                <ul>
+                                    <li>Taking responsibility for verifying and vouching for AI outputs</li>
+                                    <li>Implementing thorough fact-checking and testing procedures</li>
+                                    <li>Managing and assuming responsibility for deployment risks</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: DC CAP APPLICATION === -->
+        <section id="application" class="section-application reveal">
+            <div class="section-header">
+                <h2>DC CAP Application Notes</h2>
+                <p>How the 4Ds map to DC CAP's enterprise AI adoption strategy.</p>
+            </div>
+
+            <p style="margin-bottom: var(--slide-padding);">The 4Ds map directly to DC CAP's enterprise AI adoption strategy and Anthropic's framework for responsible AI use. Every staff member with a Claude Enterprise seat is expected to develop competency across all four dimensions.</p>
+
+            <table class="application-table">
+                <thead>
+                    <tr>
+                        <th>4D Competency</th>
+                        <th>DC CAP Application</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Delegation</strong></td>
+                        <td>Choosing when to use Automation (email drafts), Augmentation (grant writing), or Agency (custom Skills) for each workflow</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Description</strong></td>
+                        <td>Writing effective prompts, Project Instructions, and Skill configurations that produce on-brand, policy-accurate outputs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Discernment</strong></td>
+                        <td>Reviewing Claude outputs for accuracy, appropriate tone, correct data framing, and policy compliance before any external use</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Diligence</strong></td>
+                        <td>Following the AI Governance Framework's data classification tiers, attribution norms, and incident response protocols</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="application-note">
+                <h4>Phased Adoption Path</h4>
+                <p style="margin: 0;">The three interaction modalities also map to the phased adoption plan: <strong>Phase 1</strong> focuses primarily on Automation and Augmentation. <strong>Phase 3</strong> introduces full Agency through Skills, Connectors, and multi-agent workflows.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- === FOOTER === -->
+    <footer>
+        <div>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAA6CAYAAADC4Bv8AAAD4klEQVR42u2YS4gdVRCG/7p3ZjQZfEXEJwiCICQ4LhR1owsRdSEKIiP4SEQSYxZqEOMDjboQEY1g3Cjixp2IggtRGPIQNC40RNS4EEVc6UZ0ER8zdt/PRepAcej76u57Bb0FTfc9p/uc71bVqTp1pJnMZCYDxZoOAHSafG5m/H81CHQlndVgnF/M7M9BL8zVNauZ9SSdI+kLSQuSGAO0lNSVtEXSO8CcmRWtAQbpSdowSQvWAjSzHmCSfpJ0l6TzXCs2BtiqpJWg0cmsYjf5/Lh/dpjvtRlmupIOS9roJh817Fwu6chxVuu1auIMTpJOqzFWaWa4q/SVTgO4jpmVZlZK2uvNhWuREa6RpG6YmTOzAtgq6Vcz2wMgaU9YLK34dy04v+/guPSAW73tAW8rvH2QLLWQKvvC7fRJ/gZKB7rN++7zvnIIZHuAgAW4RzMtJZAecKe/s3UEyHYAM7jdfUyYQAG2Qgwwb06JlxZAbnTx7oR+Cv01wMMZk2aW6WeRMhdPuYNwB/etqkuYNLeTa65YX5X+jsFcNQBirB6E+RjPu41wO/AZU1M3M0yw2qAGCTXOWQ/Te72ca8BLkr+3jRrvFExYbx/CRwEVkIgPwTsy3wu+fHTbaU182seeA54BXg3TJiuz4BL/JsFvy/6AlvLFk6CfBFYaDUPB/CP+2STpfDOoUzLSdb8/i1wUlJCK6kOOMGfN7lPpoVQAj8A64F7gTM9sJdZeErPnwMbGvnfCH75TBaC3gfe9ufvgZey1Z/gPgVOdvOe3jpkSn+uzW+y4Ey2ynO4g67l9f58Zev7wSwEXZWlrqJi95J87kPX2inAJ962cSKAmalfH5AKE9x7rvkzgMPhzyxNFNAn3dwHMP1+y98/F/g66xsJsDa9H5vNV3QVXoy9aWbLwAWSDnjdXIxbqDVVL33gXjOzzZ7O9ku6sA5cm4AEgJfNbLtnl/2SzvdStFaJ2xSwCKdcc5KeN7MHgSv8YOjscNT2r9TGd4Qw85S3XQ38VhEXJ18XVwDe45M95L+vB46NWLxPFLAbNrVpt3xz2F6V2S5muoAVwMshvkW4HwfUxpMHDLn5u2DWBPoRcCrwRJ+Sdaoa/MonT7ubfcBi6H+yAnKqgEeDWVeAdclXw4J6vE6qawvwiE/6AXBiVh3Gs51Hgk9ePE3An4EDoSbpDAhND09Vg8A63+IvDpswQO4CLp0WYCeu6jEOBiZv2rxErfOnZjKTmfzX5R+C6tS3uqqRyAAAAABJRU5ErkJggg==" alt="DC CAP Scholars">
+        </div>
+        <span>DC CAP Enterprise AI Initiative · Framework for AI Fluency · April 2026</span>
+        <div style="margin: var(--content-gap) 0;">
+            <a href="pilot_hub.html" style="color: var(--purple); text-decoration: none; font-family: var(--font-subhead); font-weight: 600; font-size: clamp(0.9rem, 1.5vw, 1.1rem);">← Return to Pilot Hub</a>
+        </div>
+        <button class="print-button" onclick="window.print()">Print Framework</button>
+    </footer>
+
+    <!-- Completion Tracking Banner -->
+    <div id="completionBanner">
+        <input id="participantNameInput" type="text" placeholder="Your name">
+        <button class="framework-complete-btn" onclick="markFrameworkComplete()" style="padding:0.4rem 0.8rem;background:var(--navy);color:white;border:2px solid var(--gold);border-radius:6px;font-family:var(--font-subhead);font-weight:600;font-size:0.8rem;cursor:pointer;transition:all 0.2s;">Mark Complete</button>
+        <span id="completionMsg"></span>
+    </div>
+
+    <script>
+        const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
+
+        function submitMilestone(name, milestone, phase, source, details) {
+            const payload = JSON.stringify({
+                type: 'milestone',
+                participant_name: name,
+                milestone: milestone,
+                phase: phase,
+                page_source: source || '',
+                details: details || ''
+            });
+            return fetch(SHEET_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: payload,
+                redirect: 'follow'
+            }).catch(() => fetch(SHEET_ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: payload
+            })).catch(err => console.error('Milestone error:', err));
+        }
+
+        function markFrameworkComplete() {
+            const name = document.getElementById('participantNameInput').value.trim();
+            if (!name) {
+                const input = document.getElementById('participantNameInput');
+                input.style.borderColor = '#E63946';
+                input.setAttribute('placeholder', 'Enter your name first');
+                setTimeout(() => {
+                    input.style.borderColor = '#8352FF';
+                    input.setAttribute('placeholder', 'Your name');
+                }, 2000);
+                return;
+            }
+
+            submitMilestone(name, 'AI Fluency Framework reviewed', 'Onboarding', 'ai_fluency_framework.html', 'Framework review completed');
+
+            const btn = document.querySelector('.framework-complete-btn');
+            btn.style.background = '#27ae60';
+            btn.style.borderColor = '#27ae60';
+            btn.textContent = 'Completed ✓';
+            btn.disabled = true;
+
+            const msg = document.getElementById('completionMsg');
+            msg.textContent = 'Framework completion recorded!';
+            msg.style.display = 'inline';
+            setTimeout(() => { msg.style.display = 'none'; }, 3000);
+        }
+
+        /* === INTERSECTION OBSERVER FOR REVEAL ANIMATIONS === */
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        revealElements.forEach(el => observer.observe(el));
+
+        /* === SMOOTH SCROLL NAVIGATION === */
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

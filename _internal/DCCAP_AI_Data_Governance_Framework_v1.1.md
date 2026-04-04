@@ -1,7 +1,7 @@
 # AI Data Governance Framework
 ## Claude Enterprise Adoption & Data Security
 **DC College Access Program (DC CAP Scholars)**
-v1 | February 2026 | Prepared by: PLM/AMC
+v1.1 | April 2026 | Prepared by: PLM/AMC
 
 > **INTERNAL USE ONLY — FOR LEADERSHIP REVIEW**
 
@@ -14,11 +14,13 @@ v1 | February 2026 | Prepared by: PLM/AMC
 
 ## Executive Summary
 
-This framework establishes the governance structure, data classification standards, and operational protocols for DC CAP Scholars to adopt Anthropic's Claude Enterprise AI platform. The framework balances two priorities: maximizing the platform's strategic value by connecting it to organizational data, and protecting the personally identifiable information (PII) of the scholars, families, partners, and employees we serve.
+DC CAP serves over 800 scholars annually through a model that combines financial aid, intensive coaching, and university partnerships. Every hour staff spend on grant drafting, program reporting, and operational documentation is an hour not spent on direct student interaction, partner relationship management, or the coaching conversations that drive persistence and graduation. Enterprise AI adoption exists to shift that ratio.
+
+This framework establishes the governance structure, data classification standards, and operational protocols for DC CAP Scholars to adopt Anthropic's Claude Enterprise AI platform. The framework balances two priorities: maximizing the platform's strategic value by connecting it to organizational data, and protecting the personally identifiable information (PII) of the scholars, families, partners, and employees we serve. The intended result is that coaching staff recover time for high-value student engagement, development teams accelerate grant cycles that fund scholarships, and program leaders strengthen the evaluation practices that improve outcomes across the scholar portfolio.
 
 Claude Enterprise provides the security architecture required for responsible adoption. Anthropic does not use Enterprise customer inputs or outputs to train its models. The platform includes single sign-on (SSO) integration, audit logging, custom data retention controls, and role-based access management. These protections are comparable to the enterprise platforms DC CAP already operates, including Salesforce Education Cloud and Microsoft 365.
 
-This document recommends a phased adoption approach that begins with a leadership pilot cohort using low-sensitivity organizational data, then expands access and data integration as the team builds fluency and governance matures. The framework is designed to be a living document, updated iteratively as real usage patterns inform policy refinements.
+Research across 1,400+ executives shows that 95% of AI pilots fail to deliver measurable returns, and the primary determinant of success is organizational investment in people and processes, which should represent 70% of total effort. This document recommends a phased adoption approach that begins with a leadership pilot cohort using low-sensitivity organizational data, then expands access and data integration as the team builds fluency and governance matures. Success will be measured through a three-tier framework tracking adoption activity, workflow time recovered, and mission-level impact on the scholars we serve. The framework is designed to be a living document, updated iteratively as real usage patterns inform policy refinements.
 
 ---
 
@@ -127,19 +129,64 @@ The following security settings were configured at contract activation and will 
 
 ---
 
-## 6. Acceptable Use Policy
+## 6. Onboarding & Fluency Requirements
 
-All Claude Enterprise users at DC CAP must adhere to the following guidelines. These will be covered in onboarding training and acknowledged in writing by each user before receiving platform access. Across these use cases, it is important to keep in mind that all Claude-generated errors are the responsibility of the user. It is critical to always embed personal review and expertise — otherwise called 'human in the loop' best practices — into your AI workflows.
+Platform access is conditional on training completion. Research shows it takes 2-3 months for skilled workers to reach competent AI use, and organizations that invest systematically in training achieve 60% adoption rates compared to 30% without. The governance framework protects data. The training program builds the fluency that makes governance intuitive rather than burdensome.
 
-### 6.1 Required Practices
+### 6.1 Training Prerequisites for Platform Access
+
+No staff member receives Claude Enterprise access until they complete the following:
+
+| Requirement | Format | Duration | Verified By |
+|-------------|--------|----------|-------------|
+| Data Classification Walkthrough | Facilitated session covering Tier 1-4 classification with scenario-based practice | 45 minutes | AI Governance Lead |
+| Acceptable Use Acknowledgment | Written acknowledgment of Section 7 policies (signed before first login) | 15 minutes | AI Governance Co-Owner |
+| Foundation Fluency Training | Structured hands-on session covering prompt writing, output evaluation, and Claude navigation | 90 minutes | AI Governance Lead or designated facilitator |
+
+Detailed training content, session plans, and facilitation guides are maintained in the **AI Onboarding Implementation Plan** (separate document, managed by the AI Governance Lead). That plan defines the full 60-day learning arc, weekly session structure, competency progression, and assessment instruments.
+
+### 6.2 Ongoing Fluency Development
+
+Training is an ongoing requirement. The AI skills landscape changes rapidly, and one-time onboarding produces declining returns within 3-4 months without reinforcement.
+
+| Cadence | Activity | Owner |
+|---------|----------|-------|
+| Weekly (Phase 1-2) | Structured practice sessions with peer learning and facilitated problem-solving | AI Governance Lead + designated facilitators |
+| Monthly (Phase 2+) | Live AI working sessions where staff share workflow integrations and troubleshoot challenges together | Champion network (see below) |
+| By end of Phase 2 | All team members complete Anthropic Academy's 5-course progression | Individual responsibility, tracked by AI Governance Co-Owner |
+| Quarterly (Phase 3+) | Advanced topics, platform updates, and governance refresh | AI Governance Lead |
+
+### 6.3 Champion Network
+
+Each functional area will have 1-2 designated AI champions by the end of Phase 2. Champions are staff members who demonstrate strong fluency and willingness to support peers. Their role: find and share practical team-specific examples, answer questions and mentor colleagues, surface feedback on what works and what creates friction, and participate in monthly governance feedback sessions.
+
+Champion identification begins during Phase 1 as leadership pilot members observe their teams. The AI Governance Lead maintains the champion roster and provides facilitation training for champions during Phase 2. The **Program Lead** (Stephanie Gardner) owns champion development within coaching teams. The **Development Co-Lead** (Sashia Moore) owns champion development within fundraising workflows.
+
+---
+
+## 7. Acceptable Use Policy
+
+All Claude Enterprise users at DC CAP must adhere to the following guidelines. These are covered in the onboarding training described in Section 6 and acknowledged in writing by each user before receiving platform access. All Claude-generated errors are the responsibility of the user. Embedding personal review and expertise into every AI workflow is a non-negotiable practice at DC CAP.
+
+### 7.1 Encouraged Uses
+
+The following represent the kinds of high-value AI use this governance framework is designed to enable:
+
+- Draft grant narratives, program reports, and strategic documents using shared Projects loaded with approved organizational language, past submissions, and data dictionaries.
+- Analyze de-identified program data (Tier 3) for trends that inform coaching strategies, partnership evaluations, and board reporting.
+- Prepare board and funder materials by working with strategic plans, OKR frameworks, and published outcome data in dedicated Projects.
+- Streamline operational workflows through Microsoft 365 integration for email drafting, document review, and meeting preparation.
+- Build and share team-specific Projects that capture institutional knowledge so best practices are replicated across the organization.
+
+### 7.2 Required Practices
 
 - Verify the data tier classification of any information before uploading or referencing it in Claude conversations.
 - Use shared organizational Projects for team knowledge rather than duplicating documents across individual accounts.
 - Review Claude outputs for accuracy before incorporating them into external communications, grant submissions, or reports. Claude is a drafting and analysis accelerant. Staff remain accountable for the quality and accuracy of all work product.
-- Report any accidental upload of Tier 1 data to the AI Governance Lead immediately. The incident response protocol (Section 7) applies.
+- Report any accidental upload of Tier 1 data to the AI Governance Lead immediately. The incident response protocol (Section 8) applies.
 - Separate personal projects and chats from DC CAP projects. Every employee is expected to keep personal projects, build team projects, share projects with others, and separate them appropriately.
 
-### 6.2 Prohibited Uses
+### 7.3 Prohibited Uses
 
 - Uploading or referencing any Tier 1 (Restricted) data, including scholar names linked to academic records, financial details, or family information.
 - Using Claude to make automated decisions about scholar eligibility, placement, or support level without human review and approval.
@@ -148,7 +195,7 @@ All Claude Enterprise users at DC CAP must adhere to the following guidelines. T
 
 ---
 
-## 7. Incident Response Protocol
+## 8. Incident Response Protocol
 
 If Tier 1 data is accidentally uploaded to Claude or a potential data breach is identified, the following protocol applies:
 
@@ -163,30 +210,83 @@ If Tier 1 data is accidentally uploaded to Claude or a potential data breach is 
 
 ---
 
-## 8. Governance Review Cycle
+## 9. Success Measurement Framework
+
+Governance without measurement is compliance theater. We need to know whether this platform is producing the outcomes that justify the investment, and we need to know early enough to course-correct. The following three-tier framework tracks the journey from basic adoption activity through workflow efficiency to mission-level impact. Each phase of adoption (Section 3) has specific targets.
+
+### Tier 1: Adoption Activity
+
+These are leading indicators. They tell us whether staff are using the platform and building fluency.
+
+| Metric | Phase 1 Target | Phase 2 Target | Phase 3 Target |
+|--------|---------------|----------------|----------------|
+| Weekly active users (% of licensed seats) | 80% of pilot cohort by Week 4 | 60% of all licensed users by Month 4 | 75% of all licensed users by Month 8 |
+| Prompts per active user per week | 10+ (indicating real workflow use) | 15+ | 20+ |
+| Identified use cases per pilot member | 2+ by Week 6 | 3+ per functional area | Integrated into SOPs |
+| Anthropic Academy course completions | Optional pre-work | 5-course progression for all team members | Required for new hires within 60 days |
+
+### Tier 2: Workflow Time Recovered
+
+These metrics capture whether AI adoption translates into measurable efficiency gains for specific DC CAP workflows.
+
+| Workflow | Baseline (establish Phase 1) | Phase 2 Target | Phase 3 Target |
+|----------|------------------------------|----------------|----------------|
+| Grant narrative first-draft cycle | Establish current hours per narrative | 25% reduction | 40% reduction |
+| Program evaluation reporting | Establish current hours per report | 20% reduction | 35% reduction |
+| Board and funder materials preparation | Establish current hours per cycle | 20% reduction | 30% reduction |
+| Coaching documentation and follow-up | Establish current hours per scholar | 15% reduction | 25% reduction |
+
+Pilot cohort members will self-report baseline time estimates during Week 1. We will use these as the denominator for Phase 2 and Phase 3 comparisons. Where possible, we will triangulate self-report data with Claude usage logs available through the Enterprise admin panel.
+
+### Tier 3: Mission Impact
+
+These are lagging indicators that connect AI-assisted efficiency to the outcomes that matter. We expect to see initial signal by the end of Phase 2 and reportable results by Phase 3.
+
+| Metric | Measurement Approach |
+|--------|---------------------|
+| Staff time redirected to direct student interaction | Track coaching contact hours before and after AI workflow integration |
+| Grant submission volume and success rate | Compare annual grant submissions and win rate year-over-year |
+| Program evaluation quality and timeliness | Track whether reports meet deadlines and whether evaluation depth increases |
+| Scholar satisfaction and engagement | Monitor existing survey instruments for changes correlated with staff capacity gains |
+
+### Governance-Specific Metrics
+
+| Metric | Target | Frequency |
+|--------|--------|-----------|
+| Tier 1 or Tier 2 data incidents | Zero | Continuous, reported monthly |
+| Governance framework updates based on usage data | 1+ per quarter | Quarterly |
+| Staff governance confidence (self-reported) | 80%+ report confidence in data tier classification by end of Phase 1 | Pre/post survey |
+| Audit log review completion | 100% of scheduled reviews completed on time | Monthly |
+
+These metrics will be reported to the CEO monthly during Phase 1, quarterly during Phases 2-3, and included in the annual board briefing on AI adoption outcomes and risk posture (Section 10).
+
+---
+
+## 10. Governance Review Cycle
 
 This framework is a living document. Governance matures alongside organizational fluency with the platform. The following review cadence ensures continuous improvement.
 
 | Frequency | Activity | Owner |
 |-----------|----------|-------|
-| **Monthly** | Review audit logs. Check for unauthorized data access patterns. Gather user feedback on friction points and productivity gains. | AI Governance Lead & Co-Owner |
-| **Quarterly** | Formal governance review with leadership team. Update data classification decisions, revise acceptable use policy, assess phase progression. Review Anthropic platform updates for new capabilities or policy changes. | AI Governance Lead & Co-Owner + Executive Sponsor |
-| **Annually** | Comprehensive framework revision. Align with organizational strategic plan updates. Benchmark against peer nonprofit AI governance practices. Board briefing on AI adoption outcomes and risk posture. | AI Governance Lead & Co-Owner + CEO |
+| **Monthly** | Review audit logs. Check for unauthorized data access patterns. Gather user feedback on friction points and productivity gains. Report adoption metrics (Section 9, Tier 1) to CEO. | AI Governance Lead & Co-Owner |
+| **Quarterly** | Formal governance review with leadership team. Update data classification decisions, revise acceptable use policy, assess phase progression. Review Anthropic platform updates for new capabilities or policy changes. Include staff feedback from champion network and quarterly survey. Report workflow metrics (Section 9, Tier 2). | AI Governance Lead & Co-Owner + Executive Sponsor |
+| **Annually** | Comprehensive framework revision. Align with organizational strategic plan updates. Benchmark against peer nonprofit AI governance practices. Board briefing on AI adoption outcomes, mission impact metrics (Section 9, Tier 3), and risk posture. | AI Governance Lead & Co-Owner + CEO |
 
 ---
 
-## 9. Alignment with Existing Policies
+## 11. Alignment with Existing Policies
 
 This AI Data Governance Framework operates within and reinforces DC CAP's existing policy infrastructure. It should be read alongside the following organizational policies:
 
 - **GEAR UP Data Policy:** Establishes data handling requirements for federally funded programming. The AI framework's Tier 1 restrictions exceed GEAR UP's data protection requirements.
 - **Salesforce Data Governance:** Defines field-level security, role-based access, and data sharing rules within the Education Cloud platform. The AI framework's classification tiers mirror and extend these protections.
-- **Employee Handbook / Acceptable Use:** Claude Enterprise use falls under existing technology acceptable use provisions. Section 6 of this framework provides AI-specific supplementary guidance.
+- **Employee Handbook / Acceptable Use:** Claude Enterprise use falls under existing technology acceptable use provisions. Section 7 of this framework provides AI-specific supplementary guidance.
 - **Partner MOUs:** University partnership agreements include data sharing provisions. Tier 2 classification of partner-shared confidential data respects these contractual obligations.
+- **AI Onboarding Implementation Plan:** Defines the 60-day training arc, session facilitation guides, competency progression, pre/post assessment instruments, and champion network development. Section 6 of this framework establishes the training prerequisites; the Implementation Plan provides the detailed curriculum.
 
 ---
 
-## 10. Decision Log & Next Steps
+## 12. Decision Log & Next Steps
 
 ### Completed Actions
 

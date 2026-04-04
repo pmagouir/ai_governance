@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Fluency: Key Terminology | DC CAP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #101A4C;
+            --purple: #8352FF;
+            --blue: #87B7D5;
+            --gold: #FCB017;
+            --tan: #FFF4ED;
+            --white: #FFFFFF;
+            --dark-gray: #333333;
+            --font-display: 'Akkordeon Ten', 'Noto Serif SemiCondensed', Georgia, serif;
+            --font-body: 'Noto Serif', Georgia, serif;
+            --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--dark-gray);
+            background: var(--white);
+            padding-bottom: 80px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: clamp(4rem, 10vw, 6rem) clamp(1.5rem, 5vw, 3rem);
+            background: radial-gradient(ellipse at 20% 80%, rgba(131, 82, 255, 0.2) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, rgba(135, 183, 213, 0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at 50% 50%, rgba(252, 176, 23, 0.08) 0%, transparent 40%),
+                        linear-gradient(135deg, #101A4C 0%, #0d0f2d 50%, #101A4C 100%);
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" seed="2"/></filter><rect width="200" height="200" fill="rgba(255,255,255,0.03)" filter="url(%23noise)"/></svg>');
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: var(--font-subhead);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: clamp(0.5rem, 2vw, 1rem);
+            letter-spacing: -0.02em;
+        }
+
+        .hero .subtitle {
+            font-family: var(--font-body);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            opacity: 0.95;
+            margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
+            font-weight: 400;
+        }
+
+        .hero .metadata {
+            font-family: var(--font-body);
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            opacity: 0.85;
+        }
+
+        /* Sticky Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(16, 26, 76, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--navy);
+            padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 5vw, 3rem);
+            display: flex;
+            justify-content: center;
+            gap: clamp(1.5rem, 5vw, 3rem);
+            font-family: var(--font-subhead);
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            padding-bottom: 0.25rem;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        nav a:hover {
+            border-bottom-color: var(--purple);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 5vw, 3rem);
+        }
+
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        section h2 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 700;
+            margin: clamp(2.5rem, 5vw, 3.5rem) 0 clamp(1.5rem, 3vw, 2rem);
+            padding-bottom: clamp(0.75rem, 2vw, 1rem);
+            border-bottom: 3px solid var(--purple);
+            color: var(--navy);
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--white);
+            border: 1px solid #e0e0e0;
+            border-left: 5px solid var(--navy);
+            border-radius: 8px;
+            padding: clamp(1.25rem, 3vw, 1.75rem);
+            margin-bottom: clamp(1.25rem, 2vw, 1.75rem);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            opacity: 0;
+            animation: reveal 0.6s ease-out forwards;
+        }
+
+        @keyframes reveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card.navy { border-left-color: var(--navy); }
+        .card.purple { border-left-color: var(--purple); }
+        .card.blue { border-left-color: var(--blue); }
+        .card.gold { border-left-color: var(--gold); }
+
+        .card h3 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+            font-weight: 700;
+            margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+            color: var(--dark-gray);
+        }
+
+        .card.navy h3 { color: var(--navy); }
+        .card.purple h3 { color: var(--purple); }
+        .card.blue h3 { color: var(--blue); }
+        .card.gold h3 { color: #d4851f; }
+
+        .card p {
+            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+            line-height: 1.65;
+            margin-bottom: 0.75rem;
+            color: var(--dark-gray);
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .card ul {
+            list-style: none;
+            margin: 1rem 0 0 1.5rem;
+        }
+
+        .card li {
+            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+            line-height: 1.65;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+            position: relative;
+            padding-left: 1.25rem;
+        }
+
+        .card li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--purple);
+            font-weight: bold;
+        }
+
+        .card li strong {
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        /* Grid for interaction modes */
+        .interaction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(1rem, 2vw, 2rem);
+            margin-bottom: clamp(2rem, 4vw, 3rem);
+        }
+
+        /* Grid for technical concepts */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: clamp(1rem, 2vw, 1.75rem);
+            margin-bottom: clamp(2rem, 4vw, 3rem);
+        }
+
+        .tech-grid .card {
+            min-height: 180px;
+        }
+
+        .tech-grid .card h3 {
+            margin-bottom: 0.75rem;
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+        }
+
+        .tech-grid .card p {
+            font-size: clamp(0.9rem, 1.2vw, 1rem);
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: linear-gradient(135deg, rgba(131, 82, 255, 0.08) 0%, rgba(135, 183, 213, 0.06) 100%);
+            border-left: 4px solid var(--purple);
+            border-radius: 6px;
+            padding: clamp(1.25rem, 3vw, 1.75rem);
+            margin: clamp(2rem, 4vw, 3rem) 0;
+            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+            line-height: 1.65;
+            color: var(--dark-gray);
+        }
+
+        .callout strong {
+            color: var(--navy);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        /* 4Ds Layout */
+        .four-d-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: clamp(1rem, 2vw, 1.75rem);
+            margin-bottom: clamp(2rem, 4vw, 3rem);
+        }
+
+        .four-d-grid .card {
+            min-height: 300px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: white;
+            text-align: center;
+            padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 5vw, 3rem);
+            margin-top: clamp(3rem, 5vw, 4rem);
+            border-top: 3px solid var(--purple);
+            font-family: var(--font-body);
+        }
+
+        footer img {
+            height: 40px;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        footer p {
+            font-size: clamp(0.9rem, 1.2vw, 1rem);
+            margin-bottom: 0.75rem;
+            opacity: 0.9;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+        }
+
+        footer a:hover {
+            opacity: 0.8;
+        }
+
+        /* Completion Banner */
+        #completionBanner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--navy);
+            color: white;
+            padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 5vw, 3rem);
+            display: flex;
+            gap: clamp(0.75rem, 2vw, 1.5rem);
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.1);
+            font-family: var(--font-body);
+            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+            z-index: 50;
+        }
+
+        #participantNameInput {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+            min-width: 180px;
+        }
+
+        #markCompleteBtn {
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #markCompleteBtn:hover {
+            background: #ffcc33;
+        }
+
+        #completionMsg {
+            color: var(--gold);
+            font-weight: 600;
+            display: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            nav {
+                gap: 1rem;
+            }
+
+            .interaction-grid,
+            .four-d-grid,
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #completionBanner {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            #participantNameInput {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>AI Fluency: Key Terminology</h1>
+            <p class="subtitle">DC CAP Enterprise AI Pilot</p>
+            <p class="metadata">Dakan, Feller & Anthropic | Reference Guide</p>
+        </div>
+    </div>
+
+    <nav>
+        <a href="#the-4ds">The 4Ds</a>
+        <a href="#interaction-modes">Interaction Modes</a>
+        <a href="#technical-concepts">Technical Concepts</a>
+        <a href="#prompt-engineering">Prompt Engineering</a>
+    </nav>
+
+    <main>
+        <section id="intro">
+            <div class="callout">
+                <strong>What is AI Fluency?</strong>
+                The ability to work with AI systems in ways that are effective, efficient, ethical, and safe. This reference guide defines the core frameworks and technical vocabulary you need to work effectively and responsibly with AI at DC CAP. The 4Ds and 3 interaction modes form the foundation of our enterprise AI adoption strategy.
+            </div>
+        </section>
+
+        <!-- THE 4DS SECTION -->
+        <section id="the-4ds">
+            <h2>The 4Ds: Core Framework</h2>
+            <p style="font-size: clamp(0.95rem, 1.3vw, 1.05rem); line-height: 1.65; margin-bottom: 2rem; color: var(--dark-gray);">
+                The four core competencies of AI Fluency that guide effective, ethical AI work:
+            </p>
+
+            <div class="four-d-grid">
+                <!-- Delegation -->
+                <div class="card navy">
+                    <h3>Delegation</h3>
+                    <p>Deciding on what work should be done by humans, what work should be done by AI, and how to distribute tasks between them. Includes understanding your goals, AI capabilities, and making strategic choices about collaboration.</p>
+                    <ul>
+                        <li><strong>Problem Awareness:</strong> Clearly understanding your goals and the nature of the work before involving AI.</li>
+                        <li><strong>Platform Awareness:</strong> Understanding the capabilities and limitations of different AI systems.</li>
+                        <li><strong>Task Delegation:</strong> Thoughtfully distributing work between humans and AI to leverage the strengths of each.</li>
+                    </ul>
+                </div>
+
+                <!-- Description -->
+                <div class="card purple">
+                    <h3>Description</h3>
+                    <p>Effectively communicating with AI systems. Includes clearly defining outputs, guiding AI processes, and specifying desired AI behaviors and interactions.</p>
+                    <ul>
+                        <li><strong>Product Description:</strong> Defining what you want in terms of outputs, format, audience, and style.</li>
+                        <li><strong>Process Description:</strong> Defining how the AI approaches your request, such as providing step-by-step instructions for the AI to follow.</li>
+                        <li><strong>Performance Description:</strong> Defining the AI's behavior during your collaboration, such as whether it should be concise or detailed, challenging or supportive.</li>
+                    </ul>
+                </div>
+
+                <!-- Discernment -->
+                <div class="card blue">
+                    <h3>Discernment</h3>
+                    <p>Thoughtfully and critically evaluating AI outputs, processes, behaviors, and interactions. Includes assessing quality, accuracy, appropriateness, and determining areas for improvement.</p>
+                    <ul>
+                        <li><strong>Product Discernment:</strong> Evaluating the quality of what AI produces (accuracy, appropriateness, coherence, relevance).</li>
+                        <li><strong>Process Discernment:</strong> Evaluating how the AI arrived at its output, looking for logical errors, lapses in attention, or inappropriate reasoning steps.</li>
+                        <li><strong>Performance Discernment:</strong> Evaluating how the AI behaves during your interaction, considering whether its communication style is effective for your needs.</li>
+                    </ul>
+                </div>
+
+                <!-- Diligence -->
+                <div class="card gold">
+                    <h3>Diligence</h3>
+                    <p>Using AI responsibly and ethically. Includes making thoughtful choices about AI systems and interactions, maintaining transparency, and taking accountability for AI-assisted work.</p>
+                    <ul>
+                        <li><strong>Creation Diligence:</strong> Being thoughtful about which AI systems you use and how you interact with them.</li>
+                        <li><strong>Transparency Diligence:</strong> Being honest about AI's role in your work with everyone who needs to know.</li>
+                        <li><strong>Deployment Diligence:</strong> Taking responsibility for verifying and vouching for the outputs you use or share.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERACTION MODES SECTION -->
+        <section id="interaction-modes">
+            <h2>Human-AI Interaction Modes</h2>
+            <p style="font-size: clamp(0.95rem, 1.3vw, 1.05rem); line-height: 1.65; margin-bottom: 2rem; color: var(--dark-gray);">
+                Three distinct ways humans and AI work together, each with different levels of human direction:
+            </p>
+
+            <div class="interaction-grid">
+                <div class="card navy">
+                    <h3>Automation</h3>
+                    <p>When AI performs specific tasks based on specific human instructions. The human defines what needs to be done, and the AI executes it. High human direction, low AI autonomy.</p>
+                </div>
+
+                <div class="card purple">
+                    <h3>Augmentation</h3>
+                    <p>When humans and AI collaborate as thinking partners to complete tasks together. Involves iterative back-and-forth where both contribute to the outcome. Balanced collaboration.</p>
+                </div>
+
+                <div class="card gold">
+                    <h3>Agency</h3>
+                    <p>When humans configure AI to work independently on their behalf, including interacting with other humans or AI. The human establishes the AI's knowledge and behavior patterns rather than specifying exact actions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECHNICAL CONCEPTS SECTION -->
+        <section id="technical-concepts">
+            <h2>AI Technical Concepts</h2>
+            <p style="font-size: clamp(0.95rem, 1.3vw, 1.05rem); line-height: 1.65; margin-bottom: 2rem; color: var(--dark-gray);">
+                Essential vocabulary for understanding how AI systems work. Reference these terms in conversations about AI capabilities, limitations, and implementation.
+            </p>
+
+            <h3 style="font-family: var(--font-subhead); font-size: clamp(1.3rem, 2.5vw, 1.8rem); color: var(--navy); margin-top: 2rem; margin-bottom: 1rem;">Models & Architecture</h3>
+            <div class="tech-grid">
+                <div class="card navy">
+                    <h3>Generative AI</h3>
+                    <p>AI systems that can create new content (text, images, code, etc.) rather than just analyzing existing data.</p>
+                </div>
+
+                <div class="card navy">
+                    <h3>Large Language Models (LLMs)</h3>
+                    <p>Generative AI systems trained on vast amounts of text data to understand and generate human language.</p>
+                </div>
+
+                <div class="card navy">
+                    <h3>Claude</h3>
+                    <p>Anthropic's family of large language models, the AI system used by DC CAP for enterprise applications.</p>
+                </div>
+
+                <div class="card navy">
+                    <h3>Parameters</h3>
+                    <p>The mathematical values within an AI model that determine how it processes information. Modern LLMs contain billions of parameters.</p>
+                </div>
+
+                <div class="card navy">
+                    <h3>Neural Networks</h3>
+                    <p>Computing systems composed of interconnected nodes organized in layers that learn patterns from data through training.</p>
+                </div>
+
+                <div class="card navy">
+                    <h3>Transformer Architecture</h3>
+                    <p>The breakthrough AI design from 2017 that enables LLMs to process sequences of text in parallel while paying attention to relationships between words across long passages.</p>
+                </div>
+
+                <div class="card navy">
+                    <h3>Scaling Laws</h3>
+                    <p>As AI models grow larger and train on more data with more computing power, performance improves in consistent patterns. Entirely new capabilities can emerge at certain scale thresholds.</p>
+                </div>
+            </div>
+
+            <h3 style="font-family: var(--font-subhead); font-size: clamp(1.3rem, 2.5vw, 1.8rem); color: var(--purple); margin-top: 2.5rem; margin-bottom: 1rem;">Training & Capabilities</h3>
+            <div class="tech-grid">
+                <div class="card purple">
+                    <h3>Pre-training</h3>
+                    <p>The initial training phase where AI models learn patterns from vast amounts of text data, developing foundational language and knowledge.</p>
+                </div>
+
+                <div class="card purple">
+                    <h3>Fine-tuning</h3>
+                    <p>Additional training after pre-training where models learn to follow instructions, provide helpful responses, and avoid generating harmful content.</p>
+                </div>
+
+                <div class="card purple">
+                    <h3>Context Window</h3>
+                    <p>The amount of information an AI can consider at one time, including conversation history and shared documents. Has a maximum limit that varies by model.</p>
+                </div>
+
+                <div class="card purple">
+                    <h3>Knowledge Cutoff Date</h3>
+                    <p>The point after which an AI model has no built-in knowledge of the world, based on when it was trained.</p>
+                </div>
+
+                <div class="card purple">
+                    <h3>Reasoning/Thinking Models</h3>
+                    <p>AI models specifically designed to think step-by-step through complex problems, showing improved capabilities for tasks requiring logical reasoning.</p>
+                </div>
+            </div>
+
+            <h3 style="font-family: var(--font-subhead); font-size: clamp(1.3rem, 2.5vw, 1.8rem); color: var(--blue); margin-top: 2.5rem; margin-bottom: 1rem;">Quality & Limitations</h3>
+            <div class="tech-grid">
+                <div class="card blue">
+                    <h3>Hallucination</h3>
+                    <p>A type of error where AI confidently states something that sounds plausible but is actually incorrect.</p>
+                </div>
+
+                <div class="card blue">
+                    <h3>Temperature</h3>
+                    <p>A setting that controls how random an AI's responses are. Higher temperature = more varied and creative; lower temperature = more predictable and focused.</p>
+                </div>
+
+                <div class="card blue">
+                    <h3>Retrieval Augmented Generation (RAG)</h3>
+                    <p>A technique that connects AI models to external knowledge sources to improve accuracy and reduce hallucinations.</p>
+                </div>
+
+                <div class="card blue">
+                    <h3>Bias</h3>
+                    <p>Systematic patterns in AI outputs that unfairly favor or disadvantage certain groups or perspectives, often reflecting patterns in training data.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROMPT ENGINEERING SECTION -->
+        <section id="prompt-engineering">
+            <h2>Prompt Engineering Concepts</h2>
+            <p style="font-size: clamp(0.95rem, 1.3vw, 1.05rem); line-height: 1.65; margin-bottom: 2rem; color: var(--dark-gray);">
+                Techniques and strategies for designing effective prompts that elicit high-quality AI responses. These concepts form the foundation of practical AI work.
+            </p>
+
+            <div class="tech-grid">
+                <div class="card gold">
+                    <h3>Prompt</h3>
+                    <p>The input given to an AI model, including instructions and any documents shared.</p>
+                </div>
+
+                <div class="card gold">
+                    <h3>Prompt Engineering</h3>
+                    <p>The practice of designing effective prompts for AI systems to produce desired outputs. Combines clear communication with AI-specific techniques.</p>
+                </div>
+
+                <div class="card gold">
+                    <h3>Chain-of-Thought Prompting</h3>
+                    <p>Encouraging an AI to work through a problem step by step, breaking down complex tasks into smaller steps that help the AI follow your thinking.</p>
+                </div>
+
+                <div class="card gold">
+                    <h3>Few-Shot Learning (n-shot prompting)</h3>
+                    <p>Teaching AI by showing examples of the desired input-output pattern. The "N" refers to the number of examples provided.</p>
+                </div>
+
+                <div class="card gold">
+                    <h3>Role or Persona Definition</h3>
+                    <p>Specifying a particular character, expertise level, or communication style for the AI to adopt when responding.</p>
+                </div>
+
+                <div class="card gold">
+                    <h3>Output Constraints</h3>
+                    <p>Clearly specifying within your prompt the desired format, length, structure, or other characteristics of the AI's response.</p>
+                </div>
+
+                <div class="card gold">
+                    <h3>Think-First Approach</h3>
+                    <p>Explicitly asking the AI to work through its reasoning process before providing a final answer, which can lead to more thorough and well-considered responses.</p>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top: clamp(3rem, 5vw, 4rem);">
+            <div class="callout">
+                <strong>Self-Assessment:</strong> If you can explain 12+ of these concepts to a colleague, you're ready to move into applied AI projects. If you can explain 20+, you're ready to mentor others on the DC CAP AI team.
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div style="margin-bottom: clamp(0.5rem, 1vw, 1rem);"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAA6CAYAAADC4Bv8AAAD4klEQVR42u2YS4gdVRCG/7p3ZjQZfEXEJwiCICQ4LhR1owsRdSEKIiP4SEQSYxZqEOMDjboQEY1g3Cjixp2IggtRGPIQNC40RNS4EEVc6UZ0ER8zdt/PRepAcej76u57Bb0FTfc9p/uc71bVqTp1pJnMZCYDxZoOAHSafG5m/H81CHQlndVgnF/M7M9BL8zVNauZ9SSdI+kLSQuSGAO0lNSVtEXSO8CcmRWtAQbpSdowSQvWAjSzHmCSfpJ0l6TzXCs2BtiqpJWg0cmsYjf5/Lh/dpjvtRlmupIOS9roJh817Fwu6chxVuu1auIMTpJOqzFWaWa4q/SVTgO4jpmVZlZK2uvNhWuREa6RpG6YmTOzAtgq6Vcz2wMgaU9YLK34dy04v+/guPSAW73tAW8rvH2QLLWQKvvC7fRJ/gZKB7rN++7zvnIIZHuAgAW4RzMtJZAecKe/s3UEyHYAM7jdfUyYQAG2Qgwwb06JlxZAbnTx7oR+Cv01wMMZk2aW6WeRMhdPuYNwB/etqkuYNLeTa65YX5X+jsFcNQBirB6E+RjPu41wO/AZU1M3M0yw2qAGCTXOWQ/Te72ca8BLkr+3jRrvFExYbx/CRwEVkIgPwTsy3wu+fHTbaU182seeA54BXg3TJiuz4BL/JsFvy/6AlvLFk6CfBFYaDUPB/CP+2STpfDOoUzLSdb8/i1wUlJCK6kOOMGfN7lPpoVQAj8A64F7gTM9sJdZeErPnwMbGvnfCH75TBaC3gfe9ufvgZey1Z/gPgVOdvOe3jpkSn+uzW+y4Ey2ynO4g67l9f58Zev7wSwEXZWlrqJi95J87kPX2inAJ962cSKAmalfH5AKE9x7rvkzgMPhzyxNFNAn3dwHMP1+y98/F/g66xsJsDa9H5vNV3QVXoy9aWbLwAWSDnjdXIxbqDVVL33gXjOzzZ7O9ku6sA5cm4AEgJfNbLtnl/2SzvdStFaJ2xSwCKdcc5KeN7MHgSv8YOjscNT2r9TGd4Qw85S3XQ38VhEXJ18XVwDe45M95L+vB46NWLxPFLAbNrVpt3xz2F6V2S5muoAVwMshvkW4HwfUxpMHDLn5u2DWBPoRcCrwRJ+Sdaoa/MonT7ubfcBi6H+yAnKqgEeDWVeAdclXw4J6vE6qawvwiE/6AXBiVh3Gs51Hgk9ePE3An4EDoSbpDAhND09Vg8A63+IvDpswQO4CLp0WYCeu6jEOBiZv2rxErfOnZjKTmfzX5R+C6tS3uqqRyAAAAABJRU5ErkJggg==" alt="DC CAP"></div>
+        <p>DC CAP Enterprise AI Initiative · Key Terminology Reference · April 2026</p>
+        <div style="margin: 1rem 0;"><a href="pilot_hub.html">← Return to Pilot Hub</a></div>
+    </footer>
+
+    <div id="completionBanner">
+        <span>Finished reviewing the terminology?</span>
+        <input id="participantNameInput" type="text" placeholder="Your name">
+        <button id="markCompleteBtn" onclick="markKeyTerminologyComplete()">Mark Complete</button>
+        <span id="completionMsg"></span>
+    </div>
+
+    <script>
+        const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
+
+        function submitMilestone(name, milestone, phase, source, details) {
+            const payload = JSON.stringify({
+                type: 'milestone',
+                participant_name: name,
+                milestone: milestone,
+                phase: phase,
+                page_source: source || '',
+                details: details || ''
+            });
+            return fetch(SHEET_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: payload,
+                redirect: 'follow'
+            }).catch(() => fetch(SHEET_ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: payload
+            })).catch(err => console.error('Milestone error:', err));
+        }
+
+        function markKeyTerminologyComplete() {
+            const name = document.getElementById('participantNameInput').value.trim();
+            if (!name) {
+                alert('Please enter your name to mark complete.');
+                return;
+            }
+
+            submitMilestone(name, 'Key Terminology reviewed', 'Onboarding', 'ai_key_terminology.html');
+
+            const msg = document.getElementById('completionMsg');
+            msg.textContent = 'Marked complete! Thanks for learning.';
+            msg.style.display = 'inline';
+
+            setTimeout(() => {
+                document.getElementById('participantNameInput').value = '';
+                msg.style.display = 'none';
+            }, 3000);
+        }
+
+        // Allow Enter key to submit
+        document.getElementById('participantNameInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                markKeyTerminologyComplete();
+            }
+        });
+
+        // IntersectionObserver for reveal animations
+        const cards = document.querySelectorAll('.card');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => observer.observe(card));
+    </script>
+</body>
+</html>
