@@ -34,7 +34,7 @@
 | April 4, 2026 | Infra | Analytics guard clause removed from `ai_fluency_prelaunch_survey.html`, `start_here.html`, `phase1_activity_guide.html`. Pilot hub prerequisite checkboxes wired to Google Sheets milestone tracking. |
 | April 4, 2026 | C4 | `weekly_checkin.html` created. 30-second, 5-question weekly pulse: iteration frequency, confidence, wins, struggles, and module-building progress. Auto-detects pilot week. Submits to Google Sheets. Linked from pilot_hub.html. |
 | April 4, 2026 | R2 | `session_facilitation_guide.html` created. Opening ritual protocol, session structure for all 3 phases, Failure Wall guidelines, psychological safety principles, and 8-week facilitation transition checklist from Preston-led to champion-led. |
-| April 4, 2026 | C3 | Reclassified as **leader-owned**. Each leader builds their unit's AI training module by Week 8 using the 5-component scaffold. Progress tracked via weekly check-in Q5. "Your Unit. Your Module. Your Legacy." section added to pilot_hub.html with timeline and accountability framing. |
+| April 4, 2026 | C3 | Reclassified as **leader-owned**. Each leader builds their unit's AI training module by Week 8 using the 5-component scaffold. Progress tracked via weekly check-in Q5. "Department / Team Leaders: Build Your Team Environment For Your Team and the Organization to Use" section added to pilot_hub.html with timeline and accountability framing. |
 
 ---
 
