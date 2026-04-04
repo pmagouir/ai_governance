@@ -20,7 +20,7 @@ This framework establishes the governance structure, data classification standar
 
 Claude Enterprise provides the security architecture required for responsible adoption. Anthropic does not use Enterprise customer inputs or outputs to train its models. The platform includes single sign-on (SSO) integration, audit logging, custom data retention controls, and role-based access management. These protections are comparable to the enterprise platforms DC CAP already operates, including Salesforce Education Cloud and Microsoft 365.
 
-Research across 1,400+ executives shows that 95% of AI pilots fail to deliver measurable returns, and the primary determinant of success is organizational investment in people and processes, which should represent 70% of total effort. This document recommends a phased adoption approach that begins with a leadership pilot cohort using low-sensitivity organizational data, then expands access and data integration as the team builds fluency and governance matures. Success will be measured through a three-tier framework tracking adoption activity, workflow time recovered, and mission-level impact on the scholars we serve. The framework is designed to be a living document, updated iteratively as real usage patterns inform policy refinements.
+Research across 1,400+ executives shows that 95% of AI pilots fail to deliver measurable returns, and the primary determinant of success is organizational investment in people and processes, which should represent 70% of total effort. This document recommends a phased adoption approach that begins with a leadership pilot cohort using low-sensitivity organizational data, then expands access and data integration as the team builds fluency and governance matures. Success will be measured through a three-tier framework tracking engagement, proficiency, and impact on the scholars we serve, with explicit Scale/Pause/Pivot decision gates at Day 45 and Day 60. The framework is designed to be a living document, updated iteratively as real usage patterns inform policy refinements.
 
 ---
 
@@ -75,15 +75,15 @@ Adoption follows three phases designed to build organizational fluency, refine g
 
 ### Phase 2: Team Expansion (Months 3–5)
 
-**Objective:** Extend access to coaching and operations teams. Introduce Tier 2 data access for authorized users. Integrate Microsoft 365 connector.
+**Objective:** Extend access to coaching and operations teams through an all-staff kickoff in June. Introduce Tier 2 data access for authorized users. Integrate Microsoft 365 connector.
 
-- Develop training materials and protocols to 'train the trainer,' where all leadership power users will exit Phase 2 trained sufficiently to lead their respective teams in Phase 3.
+- Launch Phase 2 with all-staff kickoff led by pilot leaders delivering the training modules they developed during Phase 1. Each leader facilitates onboarding for their functional area using unit-specific workflows, governance scenarios, and use cases.
 - Enable Microsoft 365 connector for document access within Claude.
 - Authorize Tier 2 aggregate data access for leadership team with de-identification verification protocols.
 - Develop team-specific Projects loaded with role-relevant knowledge (coaching playbooks, partner evaluation frameworks, GEAR UP documentation).
-- Conduct structured training sessions and document emerging best practices for an internal AI use guide.
+- Document emerging best practices in an internal AI use guide informed by Phase 1 learnings.
 - Reduce data retention to 60 days based on Phase 1 learnings. Review audit logs monthly. In the event of disclosure emergency, data can be removed immediately.
-- Require five-course progression completion in Claude Academy from all team members by end of term.
+- Require five-course progression completion in Anthropic Academy from all team members by end of term.
 
 ### Phase 3: Full Integration (Months 6–12)
 
@@ -135,32 +135,51 @@ Platform access is conditional on training completion. Research shows it takes 2
 
 ### 6.1 Training Prerequisites for Platform Access
 
-No staff member receives Claude Enterprise access until they complete the following:
+No staff member receives Claude Enterprise access until they complete the following three prerequisites. The AI Governance Lead verifies completion through the pilot hub prerequisite tracker before provisioning accounts.
 
-| Requirement | Format | Duration | Verified By |
-|-------------|--------|----------|-------------|
-| Data Classification Walkthrough | Facilitated session covering Tier 1-4 classification with scenario-based practice | 45 minutes | AI Governance Lead |
-| Acceptable Use Acknowledgment | Written acknowledgment of Section 7 policies (signed before first login) | 15 minutes | AI Governance Co-Owner |
-| Foundation Fluency Training | Structured hands-on session covering prompt writing, output evaluation, and Claude navigation | 90 minutes | AI Governance Lead or designated facilitator |
+| Requirement | What It Covers | Estimated Time |
+|-------------|---------------|----------------|
+| Review the Start Here Guide and AI Governance Framework | Claude interfaces, organizational skills, data tier classification, approved use cases, and responsible use principles | ~30 minutes |
+| Complete the Pre-Launch Assessment | Baseline fluency measurement across five constructs (AI orientation, learning orientation, current use, AI knowledge, applied skills) with embedded governance acknowledgment | ~30 minutes |
+| Complete Two Anthropic Academy Courses | **Claude 101** (platform basics, features, prompts, navigation) and **AI Fluency for Nonprofits** (4D framework applied to mission-driven work). Certificates required. | ~60 minutes |
 
-Detailed training content, session plans, and facilitation guides are maintained in the **AI Onboarding Implementation Plan** (separate document, managed by the AI Governance Lead). That plan defines the full 60-day learning arc, weekly session structure, competency progression, and assessment instruments.
+Account provisioning is conditioned on completing all three prerequisites. The AI Governance Lead reviews the prerequisite tracker and confirms completion before activating each user's Enterprise seat.
 
-### 6.2 Ongoing Fluency Development
+Detailed training content, facilitation guides, and the full 60-day learning arc are maintained in the **AI Onboarding Implementation Plan** (separate document, managed by the AI Governance Lead). The prerequisite experience described above is the entry point into a structured progression that includes 1:1 coaching, hands-on activities (including a facilitated Governance Walk with scenario-based data tier classification practice), intermittent group learning sessions, and capstone module development.
+
+### 6.2 Pilot Experience Structure (Phase 1)
+
+The leadership pilot operates through three complementary formats designed to build individual fluency while creating shared organizational capacity.
+
+| Format | Cadence | Purpose | Owner |
+|--------|---------|---------|-------|
+| Leadership-wide introduction | Pilot launch (April 6-10) | Establish shared vocabulary, complete prerequisites, align on governance and expectations | AI Governance Lead + AI Governance Co-Owner |
+| 1:1 check-ins with Preston and Angela | Recurring throughout pilot | Individualized coaching on each leader's workflow integration, use case development, and fluency growth. The primary vehicle for building competency. | AI Governance Lead + AI Governance Co-Owner |
+| All-group meetings | Intermittent throughout pilot | Shared problem-solving, peer learning, module development feedback, and collective progress check-ins | AI Governance Lead |
+| Weekly pulse check-in | Weekly (self-directed, ~30 seconds) | Track engagement, iteration frequency, confidence, and surface wins and friction points | Individual participants |
+
+### 6.3 All-Staff Kickoff and Scaling (Phase 2)
+
+The leadership pilot produces two outputs that enable organization-wide scaling: trained leaders who can facilitate AI adoption within their functional areas, and training modules built by those leaders for their specific teams.
+
+The all-staff kickoff in June marks the transition from Phase 1 (leadership pilot) to Phase 2 (team expansion). Each pilot leader will have developed a training module tailored to their unit's workflows, governance considerations, and use cases. The kickoff is the delivery point for those modules, led by the leaders who built them.
+
+### 6.4 Ongoing Fluency Development
 
 Training is an ongoing requirement. The AI skills landscape changes rapidly, and one-time onboarding produces declining returns within 3-4 months without reinforcement.
 
 | Cadence | Activity | Owner |
 |---------|----------|-------|
-| Weekly (Phase 1-2) | Structured practice sessions with peer learning and facilitated problem-solving | AI Governance Lead + designated facilitators |
-| Monthly (Phase 2+) | Live AI working sessions where staff share workflow integrations and troubleshoot challenges together | Champion network (see below) |
+| Phase 2 (post-June kickoff) | Unit-level training delivered by pilot leaders using their modules | Pilot leaders within each functional area |
+| Monthly (Phase 2+) | All-hands working sessions where staff share workflow integrations and troubleshoot challenges together | AI Governance Lead + pilot leaders |
 | By end of Phase 2 | All team members complete Anthropic Academy's 5-course progression | Individual responsibility, tracked by AI Governance Co-Owner |
 | Quarterly (Phase 3+) | Advanced topics, platform updates, and governance refresh | AI Governance Lead |
 
-### 6.3 Champion Network
+### 6.5 Champion Network
 
-Each functional area will have 1-2 designated AI champions by the end of Phase 2. Champions are staff members who demonstrate strong fluency and willingness to support peers. Their role: find and share practical team-specific examples, answer questions and mentor colleagues, surface feedback on what works and what creates friction, and participate in monthly governance feedback sessions.
+Each functional area will have 1-2 designated AI champions by the end of Phase 2. Champions emerge from the pilot cohort and from early adopters identified during the all-staff rollout. Their role: find and share practical team-specific examples, answer questions and mentor colleagues, surface feedback on what works and what creates friction, and participate in monthly governance feedback sessions.
 
-Champion identification begins during Phase 1 as leadership pilot members observe their teams. The AI Governance Lead maintains the champion roster and provides facilitation training for champions during Phase 2. The **Program Lead** (Stephanie Gardner) owns champion development within coaching teams. The **Development Co-Lead** (Sashia Moore) owns champion development within fundraising workflows.
+Champion identification begins during Phase 1 as pilot leaders build fluency through 1:1 coaching and group sessions. Leaders who demonstrate strong competency and willingness to facilitate peer learning become the natural champion candidates for their units. The AI Governance Lead maintains the champion roster and provides facilitation support. The **Program Lead** (Stephanie Gardner) owns champion development within coaching teams. The **Development Co-Lead** (Sashia Moore) owns champion development within fundraising workflows.
 
 ---
 
@@ -212,42 +231,55 @@ If Tier 1 data is accidentally uploaded to Claude or a potential data breach is 
 
 ## 9. Success Measurement Framework
 
-Governance without measurement is compliance theater. We need to know whether this platform is producing the outcomes that justify the investment, and we need to know early enough to course-correct. The following three-tier framework tracks the journey from basic adoption activity through workflow efficiency to mission-level impact. Each phase of adoption (Section 3) has specific targets.
+Governance without measurement is compliance theater. We need to know whether this platform is producing the outcomes that justify the investment, and we need to know early enough to course-correct. The following framework measures success across three dimensions: Engagement (are people using it?), Proficiency (are they getting better?), and Impact (is it producing mission-relevant results?). These measurement dimensions are distinct from the data classification tiers in Section 2. Detailed metric definitions, tracking instruments, and collection schedules are maintained in the **KPI Framework** (separate operational document). This section establishes the governance-level targets and reporting cadence.
 
-### Tier 1: Adoption Activity
+### Engagement
 
-These are leading indicators. They tell us whether staff are using the platform and building fluency.
+These are leading indicators. They tell us whether staff are using the platform and building habits.
 
-| Metric | Phase 1 Target | Phase 2 Target | Phase 3 Target |
-|--------|---------------|----------------|----------------|
-| Weekly active users (% of licensed seats) | 80% of pilot cohort by Week 4 | 60% of all licensed users by Month 4 | 75% of all licensed users by Month 8 |
-| Prompts per active user per week | 10+ (indicating real workflow use) | 15+ | 20+ |
-| Identified use cases per pilot member | 2+ by Week 6 | 3+ per functional area | Integrated into SOPs |
-| Anthropic Academy course completions | Optional pre-work | 5-course progression for all team members | Required for new hires within 60 days |
+| Metric | Phase 1 Target (Pilot, Day 60) | Phase 2 Target | Phase 3 Target |
+|--------|-------------------------------|----------------|----------------|
+| Monthly active users (% of licensed seats) | 80%+ of pilot cohort (7+ of 9) | 60% of all licensed users by Month 4 | 75% of all licensed users by Month 8 |
+| Prompts per participant per week | Baseline established Week 1; 15+ by Week 6 | 15+ sustained | 20+ |
+| Active user segmentation | Cohort shifting from Light (1-5/week) toward Moderate (6-19) and Heavy (20+) | Majority in Moderate+ | Majority in Heavy |
+| Anthropic Academy course completions | Claude 101 + AI Fluency for Nonprofits (prerequisite); Framework & Foundations (recommended) | 5-course progression for all team members | Required for new hires within 60 days |
 
-### Tier 2: Workflow Time Recovered
+Data source: Claude Enterprise admin panel (usage logs) + weekly check-in self-report. Tracked weekly starting Week 1.
 
-These metrics capture whether AI adoption translates into measurable efficiency gains for specific DC CAP workflows.
+### Proficiency
 
-| Workflow | Baseline (establish Phase 1) | Phase 2 Target | Phase 3 Target |
-|----------|------------------------------|----------------|----------------|
-| Grant narrative first-draft cycle | Establish current hours per narrative | 25% reduction | 40% reduction |
-| Program evaluation reporting | Establish current hours per report | 20% reduction | 35% reduction |
-| Board and funder materials preparation | Establish current hours per cycle | 20% reduction | 30% reduction |
-| Coaching documentation and follow-up | Establish current hours per scholar | 15% reduction | 25% reduction |
+These metrics capture whether platform engagement translates into fluency development. Proficiency is the leading indicator that predicts workflow impact.
 
-Pilot cohort members will self-report baseline time estimates during Week 1. We will use these as the denominator for Phase 2 and Phase 3 comparisons. Where possible, we will triangulate self-report data with Claude usage logs available through the Enterprise admin panel.
+| Metric | Phase 1 Target (Day 60) | Measurement |
+|--------|------------------------|-------------|
+| Iteration frequency | 60%+ of cohort reporting "A few times" or higher on weekly check-in | Self-report (weekly check-in) + admin logs where available |
+| Observable fluency behaviors | 70%+ of participants demonstrate 3+ behaviors (iteration on drafts, clarifying goals, questioning model reasoning, identifying missing context, specifying output formats, providing examples, fact-checking outputs) | Biweekly observation starting Week 3; pre/post survey |
+| Session depth | Average conversation length increasing over time | Enterprise admin data cross-referenced with self-report |
+| Workflow redesign documentation | Each participant identifies at least 1 workflow with before/after comparison; minimum 2 documented redesigns per unit (6 total) | Templates deployed Week 3; tracked at Day 45 and Day 60 |
 
-### Tier 3: Mission Impact
+Early warning: any participant reporting "Never" on iteration for 2+ consecutive weeks triggers a 1:1 coaching conversation with the AI Governance Lead.
 
-These are lagging indicators that connect AI-assisted efficiency to the outcomes that matter. We expect to see initial signal by the end of Phase 2 and reportable results by Phase 3.
+### Impact
 
-| Metric | Measurement Approach |
-|--------|---------------------|
-| Staff time redirected to direct student interaction | Track coaching contact hours before and after AI workflow integration |
-| Grant submission volume and success rate | Compare annual grant submissions and win rate year-over-year |
-| Program evaluation quality and timeliness | Track whether reports meet deadlines and whether evaluation depth increases |
-| Scholar satisfaction and engagement | Monitor existing survey instruments for changes correlated with staff capacity gains |
+These are lagging indicators that connect AI-assisted proficiency to mission outcomes. We expect initial signal by Day 45 and reportable results by Day 60 for the pilot; Phase 2-3 targets are longer-horizon.
+
+| Metric | Phase 1 Target | Phase 2-3 Target | Measurement |
+|--------|---------------|-----------------|-------------|
+| Time savings evidence | Each participant documents at least 1 task with before/after time comparison | Aggregated into "total hours redirected per week" by function | Self-report + workflow redesign documentation |
+| Quality improvement evidence | At least 3 examples of AI-assisted outputs rated higher quality than previous manual outputs (peer-assessed) | Ongoing peer assessment integrated into champion sessions | Standard quality rubric |
+| Mission connection | At least 1 example per unit of AI-freed time redirected to high-value student interaction | Grant cycle acceleration, coaching contact hour increases, program evaluation depth | Unit-level tracking by champion + Program Lead |
+| Grant narrative first-draft cycle | Establish baseline hours per narrative | 25% reduction (Phase 2); 40% reduction (Phase 3) | Self-report by Development team |
+| Coaching documentation time | Establish baseline hours per scholar | 15% reduction (Phase 2); 25% reduction (Phase 3) | Self-report by coaching team |
+
+### Decision Gates
+
+The pilot measurement framework includes explicit Scale/Pause/Pivot thresholds at Day 45 and Day 60 to inform Q3 rollout decisions:
+
+| Decision | Criteria | Recommendation |
+|----------|----------|----------------|
+| **Scale** | 70%+ monthly active users, 60%+ demonstrating iteration, 3+ documented workflow redesigns | Full Q3 rollout with cohort-based structure |
+| **Pause** | 40-70% active users, proficiency plateau, budget or bandwidth constraints | Extend pilot 30 days; diagnose barriers before scaling |
+| **Pivot** | Below 40% active users, leadership misalignment, governance incidents | Restructure approach before investing further |
 
 ### Governance-Specific Metrics
 
@@ -268,9 +300,9 @@ This framework is a living document. Governance matures alongside organizational
 
 | Frequency | Activity | Owner |
 |-----------|----------|-------|
-| **Monthly** | Review audit logs. Check for unauthorized data access patterns. Gather user feedback on friction points and productivity gains. Report adoption metrics (Section 9, Tier 1) to CEO. | AI Governance Lead & Co-Owner |
-| **Quarterly** | Formal governance review with leadership team. Update data classification decisions, revise acceptable use policy, assess phase progression. Review Anthropic platform updates for new capabilities or policy changes. Include staff feedback from champion network and quarterly survey. Report workflow metrics (Section 9, Tier 2). | AI Governance Lead & Co-Owner + Executive Sponsor |
-| **Annually** | Comprehensive framework revision. Align with organizational strategic plan updates. Benchmark against peer nonprofit AI governance practices. Board briefing on AI adoption outcomes, mission impact metrics (Section 9, Tier 3), and risk posture. | AI Governance Lead & Co-Owner + CEO |
+| **Monthly** | Review audit logs. Check for unauthorized data access patterns. Gather user feedback on friction points and productivity gains. Report engagement metrics (Section 9) to CEO. | AI Governance Lead & Co-Owner |
+| **Quarterly** | Formal governance review with leadership team. Update data classification decisions, revise acceptable use policy, assess phase progression. Review Anthropic platform updates for new capabilities or policy changes. Include staff feedback from champion network and quarterly survey. Report proficiency and early impact metrics (Section 9). | AI Governance Lead & Co-Owner + Executive Sponsor |
+| **Annually** | Comprehensive framework revision. Align with organizational strategic plan updates. Benchmark against peer nonprofit AI governance practices. Board briefing on AI adoption outcomes, full impact metrics (Section 9), and risk posture. | AI Governance Lead & Co-Owner + CEO |
 
 ---
 
@@ -283,6 +315,7 @@ This AI Data Governance Framework operates within and reinforces DC CAP's existi
 - **Employee Handbook / Acceptable Use:** Claude Enterprise use falls under existing technology acceptable use provisions. Section 7 of this framework provides AI-specific supplementary guidance.
 - **Partner MOUs:** University partnership agreements include data sharing provisions. Tier 2 classification of partner-shared confidential data respects these contractual obligations.
 - **AI Onboarding Implementation Plan:** Defines the 60-day training arc, session facilitation guides, competency progression, pre/post assessment instruments, and champion network development. Section 6 of this framework establishes the training prerequisites; the Implementation Plan provides the detailed curriculum.
+- **KPI Framework:** Operational measurement instrument with detailed metric definitions, collection schedules, tracking dashboards, and Scale/Pause/Pivot decision gates. Section 9 of this framework establishes governance-level targets; the KPI Framework provides the tracking infrastructure.
 
 ---
 
