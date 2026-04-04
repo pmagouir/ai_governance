@@ -532,7 +532,7 @@
     <section class="hero">
         <h2>Weekly Pulse Check-In</h2>
         <p class="subtitle">DC CAP Enterprise AI Leadership Pilot</p>
-        <p class="tagline">30 seconds. 5 questions. The data that drives your growth.</p>
+        <p class="tagline">30 seconds. 4 questions. The data that drives your growth.</p>
     </section>
 
     <!-- Main Content -->
@@ -575,7 +575,6 @@
                 <div class="pulse-dot" data-question="q2"></div>
                 <div class="pulse-dot" data-question="q3"></div>
                 <div class="pulse-dot" data-question="q4"></div>
-                <div class="pulse-dot" data-question="q5"></div>
             </div>
 
             <!-- Question 1: Iteration Frequency -->
@@ -647,26 +646,6 @@
                 <div class="helper-text">Sharing struggles helps everyone learn. Your honest answer improves the pilot for the whole cohort.</div>
             </div>
 
-            <!-- Question 5: Leadership Module Progress -->
-            <div class="card">
-                <h3>What progress did you make on building your unit's AI training module this week?</h3>
-                <div class="radio-group" id="q5Group">
-                    <input type="radio" id="q5_start" name="q5" value="Haven't started yet" class="radio-pill" data-question="q5" />
-                    <label for="q5_start" class="radio-pill-label">Haven't started</label>
-
-                    <input type="radio" id="q5_thinking" name="q5" value="Thinking about it" class="radio-pill" data-question="q5" />
-                    <label for="q5_thinking" class="radio-pill-label">Thinking about it</label>
-
-                    <input type="radio" id="q5_scenarios" name="q5" value="Identified scenarios" class="radio-pill" data-question="q5" />
-                    <label for="q5_scenarios" class="radio-pill-label">Identified scenarios</label>
-
-                    <input type="radio" id="q5_drafting" name="q5" value="Drafting content" class="radio-pill" data-question="q5" />
-                    <label for="q5_drafting" class="radio-pill-label">Drafting content</label>
-
-                    <input type="radio" id="q5_review" name="q5" value="Ready for peer review" class="radio-pill" data-question="q5" />
-                    <label for="q5_review" class="radio-pill-label">Ready for peer review</label>
-                </div>
-            </div>
 
             <!-- Submit Section -->
             <div class="submit-section">
@@ -697,6 +676,27 @@
         const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
         const PILOT_START = new Date(2026, 3, 6); // April 6, 2026
 
+        // Duplicate submission prevention
+        function getSubmissionKey(name, week) {
+            return `dccap_checkin_${name.toLowerCase().replace(/\s+/g, '_')}_week${week}`;
+        }
+
+        function hasAlreadySubmitted(name, week) {
+            try {
+                return localStorage.getItem(getSubmissionKey(name, week)) === 'true';
+            } catch (e) {
+                return false; // localStorage unavailable, allow submission
+            }
+        }
+
+        function markAsSubmitted(name, week) {
+            try {
+                localStorage.setItem(getSubmissionKey(name, week), 'true');
+            } catch (e) {
+                // localStorage unavailable, continue without tracking
+            }
+        }
+
         // DOM Elements
         const form = document.getElementById('checkInForm');
         const weekSelect = document.getElementById('weekSelect');
@@ -725,7 +725,6 @@
             document.querySelector('[data-question="q2"]').classList.toggle('completed', !!q2);
             document.querySelector('[data-question="q3"]').classList.toggle('completed', !!document.getElementById('q3').value.trim());
             document.querySelector('[data-question="q4"]').classList.toggle('completed', !!document.getElementById('q4').value.trim());
-            document.querySelector('[data-question="q5"]').classList.toggle('completed', !!document.querySelector('input[name="q5"]:checked'));
         }
 
         // Set up event listeners for progress tracking
@@ -773,23 +772,41 @@
                 q2_usage_confidence: q2.value,
                 q3_biggest_win: document.getElementById('q3').value.trim(),
                 q4_biggest_struggle: document.getElementById('q4').value.trim(),
-                q5_module_progress: document.querySelector('input[name="q5"]:checked')?.value || '',
                 timestamp: new Date().toISOString()
             };
 
             submitBtn.disabled = true;
             submitBtn.textContent = 'Submitting...';
 
+            if (hasAlreadySubmitted(participantName.value.trim(), weekSelect.value)) {
+                if (!confirm('You already submitted a check-in for this week. Submit again to update your response?')) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Check-In';
+                    return;
+                }
+            }
+
             try {
                 // Submit to Google Sheets
-                const response = await fetch(SHEET_ENDPOINT, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
+                let verified = false;
+                try {
+                    const response = await fetch(SHEET_ENDPOINT, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload),
+                        redirect: 'follow'
+                    });
+                    const result = await response.json();
+                    verified = true;
+                } catch (corsErr) {
+                    // CORS fallback — data likely sent but cannot confirm
+                    await fetch(SHEET_ENDPOINT, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                }
 
                 // Track milestone event
                 const weekNum = parseInt(weekSelect.value);
@@ -802,6 +819,8 @@
                         page_source: 'weekly_checkin.html'
                     });
                 }
+
+                markAsSubmitted(participantName.value.trim(), weekSelect.value);
 
                 // Show confirmation
                 showConfirmation();

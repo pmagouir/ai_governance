@@ -1992,16 +1992,26 @@ DC CAP Scholarship Team</div>
 
             fetch(SHEET_ENDPOINT, {
                 method: 'POST',
-                mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            }).then(() => {
+                body: JSON.stringify(payload),
+                redirect: 'follow'
+            }).then(resp => resp.json()).then(result => {
                 const msg = document.getElementById('successMessage');
-                msg.textContent = 'Results submitted successfully';
+                msg.textContent = 'Results submitted and verified';
                 msg.classList.add('show');
                 setTimeout(() => msg.classList.remove('show'), 3000);
-            }).catch(err => {
-                console.error('Submission error:', err);
+            }).catch(corsErr => {
+                // CORS fallback
+                fetch(SHEET_ENDPOINT, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const msg = document.getElementById('successMessage');
+                msg.textContent = 'Results submitted';
+                msg.classList.add('show');
+                setTimeout(() => msg.classList.remove('show'), 3000);
             });
 
             // Also record as a milestone
@@ -2009,19 +2019,25 @@ DC CAP Scholarship Team</div>
         }
 
         function submitMilestone(name, milestone, phase, source, details) {
-            fetch(SHEET_ENDPOINT, {
+            const payload = JSON.stringify({
+                type: 'milestone',
+                participant_name: name,
+                milestone: milestone,
+                phase: phase,
+                page_source: source || '',
+                details: details || ''
+            });
+            return fetch(SHEET_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: payload,
+                redirect: 'follow'
+            }).catch(() => fetch(SHEET_ENDPOINT, {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    type: 'milestone',
-                    participant_name: name,
-                    milestone: milestone,
-                    phase: phase,
-                    page_source: source || '',
-                    details: details || ''
-                })
-            }).catch(err => console.error('Milestone error:', err));
+                body: payload
+            })).catch(err => console.error('Milestone error:', err));
         }
 
         // ==================== EXPORT ====================

@@ -20,9 +20,17 @@ library(stats)
 
 cat("\n========== DATA LOADING AND CLEANING ==========\n\n")
 
+# --- Configuration ---
+# Set base path to the directory containing data files
+# Update this path when running in different environments
+base_path <- dirname(rstudioapi::getSourceEditorContext()$path)
+if (is.null(base_path) || base_path == "") {
+  base_path <- getwd()
+}
+
 # Read survey data
 survey_raw <- read_csv(
-  "/sessions/jolly-wonderful-bell/mnt/ai_governance/test_survey_data.csv",
+  file.path(base_path, "test_survey_data.csv"),
   col_types = cols(.default = col_character())
 ) %>%
   mutate(
@@ -50,7 +58,7 @@ survey_raw <- read_csv(
 
 # Read milestone data
 milestones_raw <- read_csv(
-  "/sessions/jolly-wonderful-bell/mnt/ai_governance/test_milestone_data.csv",
+  file.path(base_path, "test_milestone_data.csv"),
   col_types = cols(.default = col_character())
 ) %>%
   mutate(
@@ -727,10 +735,10 @@ cat("  Accumulate data through mid-pilot and end-of-pilot checkpoints.\n\n")
 cat("========== EXPORTING ANALYSIS DATASETS ==========\n\n")
 
 # Export pilot_data for downstream analysis
-write_csv(pilot_data, "/sessions/jolly-wonderful-bell/mnt/ai_governance/pilot_data_with_clusters.csv")
+write_csv(pilot_data, file.path(base_path, "pilot_data_with_clusters.csv"))
 
 # Export cluster assignments
-write_csv(cluster_assignments, "/sessions/jolly-wonderful-bell/mnt/ai_governance/participant_clusters.csv")
+write_csv(cluster_assignments, file.path(base_path, "participant_clusters.csv"))
 
 cat("Exported datasets:\n")
 cat("  * pilot_data_with_clusters.csv (survey + milestone data merged)\n")

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Verification Tool</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    .subtitle {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 30px;
+      font-style: italic;
+    }
+
+    .section {
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .section:last-child {
+      border-bottom: none;
+    }
+
+    .section h2 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 10px 16px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background-color: #007acc;
+      color: white;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background-color: #005a9e;
+    }
+
+    .btn-secondary {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      background-color: #218838;
+    }
+
+    .btn-tertiary {
+      background-color: #6c757d;
+      color: white;
+    }
+
+    .btn-tertiary:hover:not(:disabled) {
+      background-color: #5a6268;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .result-box {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 15px;
+      margin-top: 12px;
+      font-family: "Courier New", monospace;
+      font-size: 12px;
+      max-height: 300px;
+      overflow-y: auto;
+      color: #333;
+    }
+
+    .status-success {
+      border-left: 4px solid #28a745;
+      background-color: #f0fdf4;
+    }
+
+    .status-error {
+      border-left: 4px solid #dc3545;
+      background-color: #fef2f2;
+    }
+
+    .status-pending {
+      border-left: 4px solid #ffc107;
+      background-color: #fffbf0;
+    }
+
+    .status-label {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .status-success .status-label {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .status-error .status-label {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .status-pending .status-label {
+      background-color: #ffc107;
+      color: #333;
+    }
+
+    .timestamp {
+      color: #999;
+      font-size: 11px;
+      margin-top: 8px;
+    }
+
+    .info-box {
+      background-color: #e7f3ff;
+      border: 1px solid #b3d9ff;
+      border-radius: 4px;
+      padding: 12px;
+      margin-top: 15px;
+      font-size: 13px;
+      color: #004085;
+    }
+
+    .config-display {
+      background-color: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 12px;
+      margin-bottom: 20px;
+      font-family: "Courier New", monospace;
+      font-size: 12px;
+    }
+
+    .config-display code {
+      color: #d63384;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #f3f3f3;
+      border-top: 2px solid #007acc;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Data Verification Tool</h1>
+    <p class="subtitle">Internal tool for testing data pipeline endpoints and submitting verification check-ins</p>
+
+    <div class="config-display">
+      <strong>Endpoint:</strong> <code>https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec</code>
+    </div>
+
+    <!-- Section 1: Test Endpoint -->
+    <div class="section">
+      <h2>1. Test Endpoint Connectivity</h2>
+      <p style="margin-bottom: 15px; color: #666; font-size: 14px;">
+        Sends a GET request to verify the endpoint is responding.
+      </p>
+      <div class="button-group">
+        <button class="btn-primary" onclick="testEndpoint()">Test Endpoint</button>
+        <button class="btn-tertiary" onclick="clearResult('endpoint-result')">Clear</button>
+      </div>
+      <div id="endpoint-result"></div>
+    </div>
+
+    <!-- Section 2: Test Check-In -->
+    <div class="section">
+      <h2>2. Send Test Weekly Check-In</h2>
+      <p style="margin-bottom: 15px; color: #666; font-size: 14px;">
+        Submits a test weekly check-in with name "[VERIFICATION TEST]" and week 0.
+        Attempts CORS-enabled request first, then falls back to no-CORS mode.
+      </p>
+      <div class="button-group">
+        <button class="btn-secondary" onclick="sendTestCheckIn()">Send Test Check-In</button>
+        <button class="btn-tertiary" onclick="clearResult('checkin-result')">Clear</button>
+      </div>
+      <div id="checkin-result"></div>
+    </div>
+
+    <!-- Section 3: Test Milestone -->
+    <div class="section">
+      <h2>3. Send Test Milestone</h2>
+      <p style="margin-bottom: 15px; color: #666; font-size: 14px;">
+        Submits a test milestone submission for verification.
+        Attempts CORS-enabled request first, then falls back to no-CORS mode.
+      </p>
+      <div class="button-group">
+        <button class="btn-secondary" onclick="sendTestMilestone()">Send Test Milestone</button>
+        <button class="btn-tertiary" onclick="clearResult('milestone-result')">Clear</button>
+      </div>
+      <div id="milestone-result"></div>
+    </div>
+  </div>
+
+  <script>
+    const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
+
+    function formatTimestamp() {
+      const now = new Date();
+      return now.toLocaleString('en-US', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      });
+    }
+
+    function displayResult(elementId, status, title, message, details = '') {
+      const element = document.getElementById(elementId);
+      const statusClass = status === 'success' ? 'status-success' : status === 'error' ? 'status-error' : 'status-pending';
+      const statusLabel = status === 'success' ? 'SUCCESS' : status === 'error' ? 'ERROR' : 'PENDING';
+
+      let html = `
+        <div class="result-box ${statusClass}">
+          <div class="status-label">${statusLabel}</div>
+          <strong>${title}</strong><br>
+          ${message}
+      `;
+
+      if (details) {
+        html += `<pre style="margin-top: 10px; white-space: pre-wrap; word-wrap: break-word;">${escapeHtml(details)}</pre>`;
+      }
+
+      html += `<div class="timestamp">Timestamp: ${formatTimestamp()}</div>
+        </div>`;
+
+      element.innerHTML = html;
+    }
+
+    function clearResult(elementId) {
+      document.getElementById(elementId).innerHTML = '';
+    }
+
+    function escapeHtml(text) {
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, m => map[m]);
+    }
+
+    function showPending(elementId) {
+      const element = document.getElementById(elementId);
+      element.innerHTML = `
+        <div class="result-box status-pending">
+          <div style="font-size: 14px;">
+            <span class="spinner"></span>Testing connection...
+          </div>
+        </div>
+      `;
+    }
+
+    async function testEndpoint() {
+      const elementId = 'endpoint-result';
+      showPending(elementId);
+
+      try {
+        const response = await fetch(SHEET_ENDPOINT, {
+          method: 'GET',
+          mode: 'cors',
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        const data = await response.text();
+        const status = response.ok ? 'success' : 'error';
+        const message = response.ok
+          ? `Endpoint is responding (HTTP ${response.status})`
+          : `Endpoint returned HTTP ${response.status}`;
+
+        displayResult(elementId, status, 'Endpoint Test', message, `Response:\n${data}`);
+      } catch (error) {
+        displayResult(elementId, 'error', 'Endpoint Test Failed', `Connection error: ${error.message}`, error.stack);
+      }
+    }
+
+    async function sendTestCheckIn() {
+      const elementId = 'checkin-result';
+      showPending(elementId);
+
+      const payload = {
+        action: 'submitCheckIn',
+        name: '[VERIFICATION TEST]',
+        week: 0,
+        notes: 'Automated verification test'
+      };
+
+      try {
+        // Try CORS-enabled request first
+        const response = await fetch(SHEET_ENDPOINT, {
+          method: 'POST',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.text();
+        const status = response.ok ? 'success' : 'error';
+        const message = response.ok
+          ? 'Test check-in submitted successfully (CORS mode)'
+          : `Check-in submission returned HTTP ${response.status} (CORS mode)`;
+
+        displayResult(elementId, status, 'Test Check-In Submission', message, `Payload:\n${JSON.stringify(payload, null, 2)}\n\nResponse:\n${data}`);
+      } catch (corsError) {
+        // Fallback to no-CORS mode
+        try {
+          const response = await fetch(SHEET_ENDPOINT, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'text/plain'
+            },
+            body: JSON.stringify(payload)
+          });
+
+          // In no-CORS mode, response is always opaque
+          const message = 'Test check-in submitted (no-CORS fallback mode - response cannot be verified due to CORS restrictions)';
+          displayResult(elementId, 'success', 'Test Check-In Submission', message, `Payload:\n${JSON.stringify(payload, null, 2)}\n\nNote: Server may have processed request even though we cannot read response.\nCheck Google Sheet or logs for confirmation.`);
+        } catch (noCorsError) {
+          displayResult(elementId, 'error', 'Test Check-In Failed', `Both CORS and no-CORS attempts failed: ${noCorsError.message}`, `CORS error: ${corsError.message}\nno-CORS error: ${noCorsError.message}`);
+        }
+      }
+    }
+
+    async function sendTestMilestone() {
+      const elementId = 'milestone-result';
+      showPending(elementId);
+
+      const payload = {
+        action: 'submitMilestone',
+        name: '[VERIFICATION TEST]',
+        milestone: 'Verification Test Milestone',
+        unit: 'Testing',
+        notes: 'Automated verification test for milestone endpoint'
+      };
+
+      try {
+        // Try CORS-enabled request first
+        const response = await fetch(SHEET_ENDPOINT, {
+          method: 'POST',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.text();
+        const status = response.ok ? 'success' : 'error';
+        const message = response.ok
+          ? 'Test milestone submitted successfully (CORS mode)'
+          : `Milestone submission returned HTTP ${response.status} (CORS mode)`;
+
+        displayResult(elementId, status, 'Test Milestone Submission', message, `Payload:\n${JSON.stringify(payload, null, 2)}\n\nResponse:\n${data}`);
+      } catch (corsError) {
+        // Fallback to no-CORS mode
+        try {
+          const response = await fetch(SHEET_ENDPOINT, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'text/plain'
+            },
+            body: JSON.stringify(payload)
+          });
+
+          // In no-CORS mode, response is always opaque
+          const message = 'Test milestone submitted (no-CORS fallback mode - response cannot be verified due to CORS restrictions)';
+          displayResult(elementId, 'success', 'Test Milestone Submission', message, `Payload:\n${JSON.stringify(payload, null, 2)}\n\nNote: Server may have processed request even though we cannot read response.\nCheck Google Sheet or logs for confirmation.`);
+        } catch (noCorsError) {
+          displayResult(elementId, 'error', 'Test Milestone Failed', `Both CORS and no-CORS attempts failed: ${noCorsError.message}`, `CORS error: ${corsError.message}\nno-CORS error: ${noCorsError.message}`);
+        }
+      }
+    }
+  </script>
+</body>
+</html>

@@ -494,19 +494,25 @@
         const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
 
         function submitMilestone(name, milestone, phase, source, details) {
+            const payload = JSON.stringify({
+                type: 'milestone',
+                participant_name: name,
+                milestone: milestone,
+                phase: phase,
+                page_source: source || '',
+                details: details || ''
+            });
             return fetch(SHEET_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: payload,
+                redirect: 'follow'
+            }).catch(() => fetch(SHEET_ENDPOINT, {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    type: 'milestone',
-                    participant_name: name,
-                    milestone: milestone,
-                    phase: phase,
-                    page_source: source || '',
-                    details: details || ''
-                })
-            }).catch(err => console.error('Milestone error:', err));
+                body: payload
+            })).catch(err => console.error('Milestone error:', err));
         }
 
         function markGlossaryComplete() {
