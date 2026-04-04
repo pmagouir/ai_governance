@@ -1838,6 +1838,8 @@
 
             <div class="footer-callout">
                 These terms appear throughout DC CAP's AI training materials. Knowing them helps you understand how to work effectively with Claude and troubleshoot when something isn't working the way you expected.
+                <br><br>
+                <strong>Want the full list?</strong> The <a href="ai_glossary.html" style="color: var(--purple); font-weight: 600;">Plain-English Glossary</a> covers all 18 terms you'll encounter in the pilot, with explanations of why each one matters for your work.
             </div>
         </section>
 
@@ -1879,6 +1881,8 @@
 
             <div class="footer-callout">
                 These principles are drawn from Anthropic's AI Fluency Framework and DC CAP's AI Governance Policy. They apply to all Claude use at DC CAP, across all interfaces (Chat, Cowork, and Code), starting April 6.
+                <br><br>
+                <strong>Continue learning:</strong> <a href="https://anthropic.skilljar.com" target="_blank" rel="noopener" style="color: var(--purple); font-weight: 600;">Anthropic Academy</a> offers free courses aligned to our 4D framework. "AI Fluency: Framework &amp; Foundations" is recommended for all participants. "Teaching AI Fluency" is required for T3 (Train-the-Trainer) candidates.
             </div>
         </section>
     </main>
@@ -1902,10 +1906,6 @@
         const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
 
         function submitMilestone(name, milestone, phase, source, details) {
-            if (SHEET_ENDPOINT === 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec') {
-                console.warn('Google Sheets endpoint not configured.');
-                return Promise.resolve();
-            }
             return fetch(SHEET_ENDPOINT, {
                 method: 'POST',
                 mode: 'no-cors',

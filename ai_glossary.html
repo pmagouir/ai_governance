@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plain-English AI Glossary | DC CAP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #101A4C;
+            --purple: #8352FF;
+            --blue: #87B7D5;
+            --gold: #FCB017;
+            --tan: #FFF4ED;
+            --white: #FFFFFF;
+            --dark-gray: #333333;
+            --font-display: 'Akkordeon Ten', 'Noto Serif SemiCondensed', Georgia, serif;
+            --font-body: 'Noto Serif', Georgia, serif;
+            --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--dark-gray);
+            background: var(--white);
+            padding-bottom: 80px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: clamp(4rem, 10vw, 6rem) clamp(1.5rem, 5vw, 3rem);
+            background: radial-gradient(ellipse at 20% 80%, rgba(131, 82, 255, 0.2) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, rgba(135, 183, 213, 0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at 50% 50%, rgba(252, 176, 23, 0.08) 0%, transparent 40%),
+                        linear-gradient(135deg, #101A4C 0%, #0d0f2d 50%, #101A4C 100%);
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" seed="2"/></filter><rect width="200" height="200" fill="rgba(255,255,255,0.03)" filter="url(%23noise)"/></svg>');
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: var(--font-subhead);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: clamp(0.5rem, 2vw, 1rem);
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-family: var(--font-body);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        /* Sticky Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(16, 26, 76, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--navy);
+            padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 5vw, 3rem);
+            display: flex;
+            justify-content: center;
+            gap: clamp(1.5rem, 5vw, 3rem);
+            font-family: var(--font-subhead);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            padding-bottom: 0.25rem;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        nav a:hover {
+            border-bottom-color: var(--purple);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 5vw, 3rem);
+        }
+
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        section h2 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 700;
+            margin: clamp(2.5rem, 5vw, 3.5rem) 0 clamp(1.5rem, 3vw, 2rem);
+            padding-bottom: clamp(0.75rem, 2vw, 1rem);
+            border-bottom: 3px solid var(--purple);
+            color: var(--navy);
+        }
+
+        /* Glossary Cards */
+        .card {
+            background: var(--white);
+            border: 1px solid #e0e0e0;
+            border-left: 5px solid var(--navy);
+            border-radius: 8px;
+            padding: clamp(1.25rem, 3vw, 1.75rem);
+            margin-bottom: clamp(1.25rem, 2vw, 1.75rem);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            opacity: 0;
+            animation: reveal 0.6s ease-out forwards;
+        }
+
+        @keyframes reveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card.navy { border-left-color: var(--navy); }
+        .card.purple { border-left-color: var(--purple); }
+        .card.blue { border-left-color: var(--blue); }
+        .card.gold { border-left-color: var(--gold); }
+        .card.warning { border-left-color: #d9534f; }
+
+        .card h3 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+            font-weight: 700;
+            margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+            color: var(--navy);
+        }
+
+        .card p {
+            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+            line-height: 1.65;
+            margin-bottom: 0.75rem;
+            color: var(--dark-gray);
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .card p strong {
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .card p em {
+            color: var(--purple);
+            font-style: italic;
+        }
+
+        /* Self-Check Callout */
+        .callout {
+            background: linear-gradient(135deg, rgba(131, 82, 255, 0.08) 0%, rgba(135, 183, 213, 0.06) 100%);
+            border-left: 5px solid var(--purple);
+            border-radius: 8px;
+            padding: clamp(1.5rem, 3vw, 2rem);
+            margin: clamp(2.5rem, 5vw, 3.5rem) 0;
+            font-size: clamp(1rem, 1.5vw, 1.15rem);
+            line-height: 1.7;
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3rem);
+            background-color: var(--navy);
+            color: rgba(255, 255, 255, 0.75);
+            font-size: clamp(0.85rem, 1.3vw, 0.95rem);
+            margin-top: clamp(3rem, 5vw, 4rem);
+        }
+
+        footer img {
+            height: 28px;
+            opacity: 0.85;
+            margin-bottom: clamp(0.5rem, 1vw, 1rem);
+        }
+
+        footer p {
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
+            font-family: var(--font-body);
+        }
+
+        footer a {
+            color: var(--purple);
+            text-decoration: none;
+            font-family: var(--font-subhead);
+            font-weight: 600;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--blue);
+        }
+
+        /* Completion Banner */
+        #completionBanner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--navy), #0d0f2d);
+            color: white;
+            padding: clamp(0.75rem, 2vw, 1.25rem) clamp(1rem, 3vw, 2rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(0.5rem, 2vw, 1.5rem);
+            flex-wrap: wrap;
+            z-index: 1001;
+            box-shadow: 0 -4px 20px rgba(16, 26, 76, 0.2);
+            font-family: var(--font-body);
+            transition: transform 0.4s ease;
+            transform: translateY(0);
+        }
+
+        #completionBanner span {
+            font-size: clamp(0.85rem, 1.8vw, 1rem);
+        }
+
+        #participantNameInput {
+            padding: 0.4rem 0.75rem;
+            border-radius: 6px;
+            border: 2px solid var(--purple);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            width: clamp(140px, 20vw, 220px);
+            transition: border-color 0.2s;
+        }
+
+        #participantNameInput:focus {
+            outline: none;
+            border-color: var(--blue);
+        }
+
+        #markCompleteBtn {
+            padding: 0.5rem 1.25rem;
+            background: var(--purple);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: var(--font-subhead);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        #markCompleteBtn:hover {
+            background: var(--blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(131, 82, 255, 0.3);
+        }
+
+        #markCompleteBtn:active {
+            transform: translateY(0);
+        }
+
+        #completionMsg {
+            font-size: 0.85rem;
+            color: var(--gold);
+            display: none;
+        }
+
+        /* Print Styles */
+        @media print {
+            nav, #completionBanner {
+                display: none;
+            }
+            body {
+                padding-bottom: 0;
+            }
+            section {
+                page-break-inside: avoid;
+            }
+            .card {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            nav {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            #completionBanner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Plain-English AI Glossary</h1>
+            <p>Every term you'll encounter in the pilot, explained in everyday language.</p>
+        </div>
+    </div>
+
+    <nav>
+        <a href="#frameworks">Frameworks</a>
+        <a href="#technical">Technical Terms</a>
+    </nav>
+
+    <main>
+        <section id="frameworks">
+            <h2>The Frameworks</h2>
+
+            <div class="card navy">
+                <h3>The 4Ds</h3>
+                <p><strong>Four skills for working with AI:</strong> deciding what to hand off (Delegation), communicating clearly (Description), evaluating what comes back (Discernment), and using AI responsibly (Diligence).</p>
+                <p><em>Why it matters:</em> These are the core competencies the pilot develops in you.</p>
+            </div>
+
+            <div class="card navy">
+                <h3>Delegation</h3>
+                <p><strong>Deciding which tasks to give Claude and which to keep for yourself.</strong> This is where you start every interaction: does this task benefit from AI assistance, and what part specifically?</p>
+                <p><em>Why it matters:</em> Smart delegation multiplies your time without sacrificing quality or control.</p>
+            </div>
+
+            <div class="card purple">
+                <h3>Description</h3>
+                <p><strong>How clearly you communicate what you need from Claude,</strong> including what you want, how you want it done, and what tone or format to use.</p>
+                <p><em>Why it matters:</em> Better descriptions produce better outputs on the first try, which saves you revision time.</p>
+            </div>
+
+            <div class="card blue">
+                <h3>Discernment</h3>
+                <p><strong>Your ability to evaluate whether Claude's output is accurate, appropriate, and ready to use.</strong> This is the skill that prevents errors from reaching students, funders, or the board.</p>
+                <p><em>Why it matters:</em> You're the gatekeeper. Your judgment is what makes AI safe in your organization.</p>
+            </div>
+
+            <div class="card gold">
+                <h3>Diligence</h3>
+                <p><strong>Using AI responsibly:</strong> being transparent about AI's role in your work, following governance rules, and owning every output you send.</p>
+                <p><em>Why it matters:</em> Your name goes on it, so you verify it. Diligence protects your credibility and the organization's reputation.</p>
+            </div>
+
+            <div class="card navy">
+                <h3>Automation</h3>
+                <p><strong>When you give Claude a specific task with clear instructions and it executes.</strong> Think: 'Reformat this list into a table' or 'Summarize these meeting notes.' You define the task; Claude does it.</p>
+                <p><em>Why it matters:</em> Automation handles the routine, freeing you for higher-impact work.</p>
+            </div>
+
+            <div class="card purple">
+                <h3>Augmentation</h3>
+                <p><strong>When you and Claude think together,</strong> going back and forth to develop something. Think: brainstorming grant angles, refining a draft through multiple rounds, or exploring different framings for a board presentation. You both contribute.</p>
+                <p><em>Why it matters:</em> Augmentation is where the magic happens—Claude amplifies your thinking, not replaces it.</p>
+            </div>
+
+            <div class="card blue">
+                <h3>Agency</h3>
+                <p><strong>When you set Claude up with background knowledge and guidelines so it can work more independently.</strong> Think: Claude Projects loaded with DC CAP context, or Skills that encode your team's standards. You configure the system; Claude operates within it.</p>
+                <p><em>Why it matters:</em> Agency scales your impact—Claude remembers your context and priorities across conversations.</p>
+            </div>
+        </section>
+
+        <section id="technical">
+            <h2>Technical Terms You'll Hear</h2>
+
+            <div class="card purple">
+                <h3>Prompt</h3>
+                <p><strong>The message or instruction you type to Claude.</strong> Everything you write in the chat box is your prompt, including questions, instructions, and any documents you paste in.</p>
+                <p><em>Why it matters:</em> Your prompt is how you talk to Claude. The better your prompt, the better your result.</p>
+            </div>
+
+            <div class="card purple">
+                <h3>Prompt Engineering</h3>
+                <p><strong>The practice of writing prompts that get you better results.</strong> DC CAP uses the Context-Task-Content-Constraints template to structure prompts.</p>
+                <p><em>Why it matters:</em> Good prompt engineering means fewer revision rounds and faster results.</p>
+            </div>
+
+            <div class="card gold">
+                <h3>Iteration</h3>
+                <p><strong>Revising your prompt or pushing back on Claude's output to get a better result.</strong> Research shows this is the single strongest predictor of AI fluency.</p>
+                <p><em>Why it matters:</em> The more you iterate, the faster your skills grow. Every revision teaches Claude what you need.</p>
+            </div>
+
+            <div class="card blue">
+                <h3>Context Window</h3>
+                <p><strong>The amount of text Claude can hold in its memory during a single conversation.</strong> Think of it as Claude's working memory. If a conversation gets very long, Claude may lose track of things mentioned early on.</p>
+                <p><em>Why it matters:</em> You don't need to manage it, but understanding it helps you know when to start fresh or save important context.</p>
+            </div>
+
+            <div class="card warning">
+                <h3>Hallucination</h3>
+                <p><strong>When Claude states something confidently that sounds plausible but is factually wrong.</strong> This happens because Claude generates language patterns, not truth.</p>
+                <p><em>Why it matters:</em> Always verify statistics, citations, and specific claims before using them. This is where Discernment saves the day.</p>
+            </div>
+
+            <div class="card blue">
+                <h3>Token</h3>
+                <p><strong>A small chunk of text (roughly one word) that Claude processes.</strong> You don't need to manage tokens yourself.</p>
+                <p><em>Why it matters:</em> Just know that longer conversations and documents use more of Claude's working memory. It helps explain why very long chats can slow down.</p>
+            </div>
+
+            <div class="card navy">
+                <h3>Model</h3>
+                <p><strong>The AI system itself.</strong> Claude is a model built by Anthropic. Different models have different capabilities. DC CAP uses Claude, specifically the enterprise version with data protections.</p>
+                <p><em>Why it matters:</em> When someone says 'model,' they mean the AI engine you're talking to. It's helpful to know what model you're using and its strengths.</p>
+            </div>
+
+            <div class="card purple">
+                <h3>System Prompt / Project Instructions</h3>
+                <p><strong>Background instructions that shape how Claude responds to you,</strong> set before the conversation starts. DC CAP's organizational context, brand voice rules, and governance policies live in Project Instructions so every team member gets consistent, context-rich outputs.</p>
+                <p><em>Why it matters:</em> These are the rules and guardrails that make Claude behave like "DC CAP's Claude," not generic Claude.</p>
+            </div>
+
+            <div class="card gold">
+                <h3>Project (in Claude)</h3>
+                <p><strong>A workspace in Claude where you can load documents and instructions that persist across conversations.</strong> DC CAP's Intelligence Project contains our impact data, pitch deck, and strategic documents so Claude has organizational context whenever you need it.</p>
+                <p><em>Why it matters:</em> Projects eliminate the need to re-explain context every time. Claude remembers your organization's priorities and materials.</p>
+            </div>
+
+            <div class="card gold">
+                <h3>Skill (in Claude)</h3>
+                <p><strong>A specialized instruction set that tells Claude how to do a specific task well.</strong> DC CAP has built Skills for grant writing, student outreach, data interpretation, and more. Skills encode your team's best practices so Claude follows them every time.</p>
+                <p><em>Why it matters:</em> Skills make your team's expertise repeatable and consistent. Once you build a Skill, anyone can use it—no training needed.</p>
+            </div>
+        </section>
+
+        <section style="margin-top: clamp(3rem, 5vw, 4rem);">
+            <div class="callout">
+                <strong>Quick Self-Check:</strong> If you can explain 8 of these 18 terms to a colleague without looking, you're ready for Phase 1. If you can explain 14+, you're ahead of most enterprise AI rollouts.
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div style="margin-bottom: clamp(0.5rem, 1vw, 1rem);"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAA6CAYAAADC4Bv8AAAD4klEQVR42u2YS4gdVRCG/7p3ZjQZfEXEJwiCICQ4LhR1owsRdSEKIiP4SEQSYxZqEOMDjboQEY1g3Cjixp2IggtRGPIQNC40RNS4EEVc6UZ0ER8zdt/PRepAcej76u57Bb0FTfc9p/uc71bVqTp1pJnMZCYDxZoOAHSafG5m/H81CHQlndVgnF/M7M9BL8zVNauZ9SSdI+kLSQuSGAO0lNSVtEXSO8CcmRWtAQbpSdowSQvWAjSzHmCSfpJ0l6TzXCs2BtiqpJWg0cmsYjf5/Lh/dpjvtRlmupIOS9roJh817Fwu6chxVuu1auIMTpJOqzFWaWa4q/SVTgO4jpmVZlZK2uvNhWuREa6RpG6YmTOzAtgq6Vcz2wMgaU9YLK34dy04v+/guPSAW73tAW8rvH2QLLWQKvvC7fRJ/gZKB7rN++7zvnIIZHuAgAW4RzMtJZAecKe/s3UEyHYAM7jdfUyYQAG2Qgwwb06JlxZAbnTx7oR+Cv01wMMZk2aW6WeRMhdPuYNwB/etqkuYNLeTa65YX5X+jsFcNQBirB6E+RjPu41wO/AZU1M3M0yw2qAGCTXOWQ/Te72ca8BLkr+3jRrvFExYbx/CRwEVkIgPwTsy3wu+fHTbaU182seeA54BXg3TJiuz4BL/JsFvy/6AlvLFk6CfBFYaDUPB/CP+2STpfDOoUzLSdb8/i1wUlJCK6kOOMGfN7lPpoVQAj8A64F7gTM9sJdZeErPnwMbGvnfCH75TBaC3gfe9ufvgZey1Z/gPgVOdvOe3jpkSn+uzW+y4Ey2ynO4g67l9f58Zev7wSwEXZWlrqJi95J87kPX2inAJ962cSKAmalfH5AKE9x7rvkzgMPhzyxNFNAn3dwHMP1+y98/F/g66xsJsDa9H5vNV3QVXoy9aWbLwAWSDnjdXIxbqDVVL33gXjOzzZ7O9ku6sA5cm4AEgJfNbLtnl/2SzvdStFaJ2xSwCKdcc5KeN7MHgSv8YOjscNT2r9TGd4Qw85S3XQ38VhEXJ18XVwDe45M95L+vB46NWLxPFLAbNrVpt3xz2F6V2S5muoAVwMshvkW4HwfUxpMHDLn5u2DWBPoRcCrwRJ+Sdaoa/MonT7ubfcBi6H+yAnKqgEeDWVeAdclXw4J6vE6qawvwiE/6AXBiVh3Gs51Hgk9ePE3An4EDoSbpDAhND09Vg8A63+IvDpswQO4CLp0WYCeu6jEOBiZv2rxErfOnZjKTmfzX5R+C6tS3uqqRyAAAAABJRU5ErkJggg==" alt="DC CAP"></div>
+        <p>DC CAP Enterprise AI Initiative · Plain-English Glossary · April 2026</p>
+        <div style="margin: 1rem 0;"><a href="pilot_hub.html">← Return to Pilot Hub</a></div>
+    </footer>
+
+    <div id="completionBanner">
+        <span>Finished reviewing the glossary?</span>
+        <input id="participantNameInput" type="text" placeholder="Your name">
+        <button id="markCompleteBtn" onclick="markGlossaryComplete()">Mark Complete</button>
+        <span id="completionMsg"></span>
+    </div>
+
+    <script>
+        const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
+
+        function submitMilestone(name, milestone, phase, source, details) {
+            return fetch(SHEET_ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    type: 'milestone',
+                    participant_name: name,
+                    milestone: milestone,
+                    phase: phase,
+                    page_source: source || '',
+                    details: details || ''
+                })
+            }).catch(err => console.error('Milestone error:', err));
+        }
+
+        function markGlossaryComplete() {
+            const name = document.getElementById('participantNameInput').value.trim();
+            if (!name) {
+                alert('Please enter your name to mark complete.');
+                return;
+            }
+
+            submitMilestone(name, 'Glossary reviewed', 'Onboarding', 'ai_glossary.html');
+
+            const msg = document.getElementById('completionMsg');
+            msg.textContent = 'Marked complete! Thanks for learning.';
+            msg.style.display = 'inline';
+
+            setTimeout(() => {
+                document.getElementById('participantNameInput').value = '';
+                msg.style.display = 'none';
+            }, 3000);
+        }
+
+        // Allow Enter key to submit
+        document.getElementById('participantNameInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                markGlossaryComplete();
+            }
+        });
+
+        // Scroll reveal animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0s';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

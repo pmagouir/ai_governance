@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DC CAP KPI Framework | Three-Tier Measurement System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #101A4C;
+            --purple: #8352FF;
+            --blue: #87B7D5;
+            --gold: #FCB017;
+            --tan: #FFF4ED;
+            --white: #FFFFFF;
+            --dark-gray: #333333;
+            --red: #E63946;
+            --green: #06A77D;
+            --font-display: 'Akkordeon Ten', 'Noto Serif SemiCondensed', Georgia, serif;
+            --font-body: 'Noto Serif', Georgia, serif;
+            --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--dark-gray);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at 20% 80%, rgba(131, 82, 255, 0.2) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, rgba(135, 183, 213, 0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at 50% 50%, rgba(252, 176, 23, 0.08) 0%, transparent 40%),
+                        linear-gradient(135deg, #101A4C 0%, #0d0f2d 50%, #101A4C 100%);
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3CfilterPrimitiveAttributes%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02' numOctaves='4' result='noise'/%3E%3C/filterPrimitiveAttributes%3E%3C/defs%3E%3Crect width='100' height='100' fill='%23101A4C'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: clamp(1rem, 5vw, 2rem);
+            max-width: clamp(300px, 90vw, 800px);
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: clamp(0.5rem, 2vw, 1rem);
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Sticky Nav */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            background-color: rgba(16, 26, 76, 0.92);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: clamp(0.75rem, 2vw, 1.25rem) clamp(1rem, 5vw, 2rem);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: clamp(1rem, 3vw, 2.5rem);
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-family: var(--font-subhead);
+            font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(1.5rem, 5vw, 3rem);
+        }
+
+        section {
+            padding: clamp(2.5rem, 5vw, 4rem) 0;
+        }
+
+        section h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            margin-bottom: clamp(1rem, 2vw, 2rem);
+            color: var(--navy);
+        }
+
+        section > p {
+            font-size: clamp(1rem, 1.5vw, 1.15rem);
+            margin-bottom: clamp(1.5rem, 3vw, 2rem);
+            line-height: 1.8;
+            color: var(--dark-gray);
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: translateY(0);
+                transition: none;
+            }
+        }
+
+        /* Three-Tier Overview Cards */
+        .tier-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 30vw, 350px), 1fr));
+            gap: clamp(1.5rem, 3vw, 2rem);
+            margin: clamp(1.5rem, 3vw, 2rem) 0;
+        }
+
+        .tier-card {
+            border-left: 5px solid;
+            padding: clamp(1.5rem, 3vw, 2rem);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tier-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .tier-card.tier1 {
+            border-left-color: var(--blue);
+        }
+
+        .tier-card.tier2 {
+            border-left-color: var(--purple);
+        }
+
+        .tier-card.tier3 {
+            border-left-color: var(--gold);
+        }
+
+        .tier-card h3 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.3rem, 2vw, 1.6rem);
+            font-weight: 700;
+            margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+            color: var(--navy);
+        }
+
+        .tier-card .tier-subtitle {
+            font-family: var(--font-subhead);
+            font-size: clamp(1rem, 1.3vw, 1.2rem);
+            font-weight: 500;
+            color: var(--dark-gray);
+            margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+        }
+
+        .tier-card p {
+            font-size: clamp(0.9rem, 1.2vw, 1rem);
+            color: rgba(51, 51, 51, 0.8);
+            margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+        }
+
+        .tier-card .timing {
+            font-family: var(--font-mono);
+            font-size: clamp(0.8rem, 1vw, 0.9rem);
+            color: var(--purple);
+            font-weight: 500;
+        }
+
+        /* Metric Cards */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 100%, 400px), 1fr));
+            gap: clamp(1.5rem, 3vw, 2rem);
+            margin: clamp(1.5rem, 3vw, 2rem) 0;
+        }
+
+        .metric-card {
+            border-left: 5px solid;
+            padding: clamp(1.5rem, 3vw, 2rem);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .metric-card.blue {
+            border-left-color: var(--blue);
+        }
+
+        .metric-card.purple {
+            border-left-color: var(--purple);
+        }
+
+        .metric-card.gold {
+            border-left-color: var(--gold);
+        }
+
+        .metric-card h4 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+            font-weight: 700;
+            margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+            color: var(--navy);
+        }
+
+        .metric-card p {
+            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+            color: rgba(51, 51, 51, 0.85);
+            line-height: 1.7;
+        }
+
+        /* Callout Boxes */
+        .callout {
+            padding: clamp(1.5rem, 3vw, 2rem);
+            border-radius: 8px;
+            margin: clamp(1.5rem, 3vw, 2rem) 0;
+            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+            border-left: 5px solid;
+        }
+
+        .callout.info {
+            background-color: rgba(135, 183, 213, 0.12);
+            border-left-color: var(--blue);
+            color: var(--dark-gray);
+        }
+
+        .callout.info strong {
+            color: var(--blue);
+            font-weight: 600;
+        }
+
+        /* Success Thresholds */
+        .thresholds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 100%, 350px), 1fr));
+            gap: clamp(1.5rem, 3vw, 2rem);
+            margin: clamp(1.5rem, 3vw, 2rem) 0;
+        }
+
+        .threshold-box {
+            padding: clamp(1.5rem, 3vw, 2rem);
+            border-radius: 8px;
+            border-left: 5px solid;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .threshold-box.scale {
+            border-left-color: var(--green);
+            background-color: rgba(6, 168, 125, 0.08);
+        }
+
+        .threshold-box.pause {
+            border-left-color: var(--gold);
+            background-color: rgba(252, 176, 23, 0.08);
+        }
+
+        .threshold-box.pivot {
+            border-left-color: var(--red);
+            background-color: rgba(230, 57, 70, 0.08);
+        }
+
+        .threshold-box h4 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.25rem, 2vw, 1.5rem);
+            font-weight: 700;
+            margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+        }
+
+        .threshold-box.scale h4 {
+            color: var(--green);
+        }
+
+        .threshold-box.pause h4 {
+            color: var(--gold);
+        }
+
+        .threshold-box.pivot h4 {
+            color: var(--red);
+        }
+
+        .threshold-box p {
+            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+            color: var(--dark-gray);
+            margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+        }
+
+        .threshold-box .criteria {
+            font-family: var(--font-mono);
+            font-size: clamp(0.9rem, 1.2vw, 1rem);
+            color: rgba(51, 51, 51, 0.75);
+            margin: clamp(0.75rem, 1.5vw, 1rem) 0;
+            padding: clamp(0.75rem, 1.5vw, 1rem);
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 4px;
+        }
+
+        .threshold-box .recommendation {
+            font-weight: 600;
+            margin-top: clamp(0.75rem, 1.5vw, 1rem);
+            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+        }
+
+        /* Timeline */
+        .timeline {
+            margin: clamp(2rem, 4vw, 3rem) 0;
+            position: relative;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: clamp(100px, 15vw, 180px) 1fr;
+            gap: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: clamp(1.5rem, 3vw, 2rem);
+            align-items: start;
+        }
+
+        .timeline-label {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            color: var(--navy);
+        }
+
+        .timeline-content {
+            padding: clamp(1rem, 2vw, 1.5rem);
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            border-left: 4px solid var(--purple);
+            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+            color: var(--dark-gray);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3rem);
+            background-color: var(--navy);
+            color: rgba(255, 255, 255, 0.75);
+            font-size: clamp(0.85rem, 1.3vw, 0.95rem);
+            margin-top: clamp(3rem, 5vw, 5rem);
+        }
+
+        footer img {
+            height: 28px;
+            opacity: 0.85;
+            margin-bottom: clamp(0.5rem, 1vw, 1rem);
+        }
+
+        footer p {
+            margin: clamp(0.75rem, 1.5vw, 1rem) 0;
+        }
+
+        footer a {
+            color: var(--purple);
+            text-decoration: none;
+            font-family: var(--font-subhead);
+            font-weight: 600;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            transition: opacity 0.3s ease;
+        }
+
+        footer a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: clamp(1rem, 3vw, 2rem);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: clamp(1rem, 2vw, 1.5rem) 0;
+            align-items: center;
+        }
+
+        .footer-divider {
+            width: 1px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Print Styles */
+        @media print {
+            nav {
+                display: none;
+            }
+
+            .no-print {
+                display: none;
+            }
+
+            body {
+                background-color: var(--white);
+                color: var(--dark-gray);
+            }
+
+            main {
+                max-width: 100%;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+
+            .tier-card,
+            .metric-card,
+            .threshold-box,
+            .callout {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+            }
+
+            footer {
+                background-color: var(--white);
+                color: var(--dark-gray);
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+            }
+
+            a {
+                color: var(--purple);
+            }
+        }
+
+        /* Utility */
+        .button-group {
+            display: flex;
+            gap: clamp(1rem, 2vw, 1.5rem);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: clamp(1.5rem, 3vw, 2rem) 0;
+        }
+
+        .btn {
+            padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+            border: none;
+            border-radius: 6px;
+            font-family: var(--font-subhead);
+            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-print {
+            background-color: var(--navy);
+            color: var(--white);
+        }
+
+        .btn-print:hover {
+            background-color: var(--purple);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Pilot KPI Framework</h1>
+            <p>Three tiers of measurement. One story for the board.</p>
+        </div>
+    </section>
+
+    <!-- Sticky Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#tier1">Tier 1</a></li>
+            <li><a href="#tier2">Tier 2</a></li>
+            <li><a href="#tier3">Tier 3</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Section 1: Overview -->
+        <section id="overview" class="reveal">
+            <h2>Overview</h2>
+            <p>
+                Most organizations measure the wrong things. 23% can accurately measure AI ROI despite 89% deploying tools. This framework gives DC CAP three layers of evidence — what people do (engagement), how well they do it (proficiency), and what it produces (impact). Together, these layers tell the June board briefing story: the investment is working, here's the proof, here's what we need for Q3.
+            </p>
+
+            <div class="tier-overview">
+                <div class="tier-card tier1 reveal">
+                    <h3>Tier 1</h3>
+                    <div class="tier-subtitle">Engagement</div>
+                    <p>Are people using it?</p>
+                    <div class="timing">Tracked weekly starting now</div>
+                </div>
+                <div class="tier-card tier2 reveal">
+                    <h3>Tier 2</h3>
+                    <div class="tier-subtitle">Proficiency</div>
+                    <p>Are they getting better?</p>
+                    <div class="timing">Tracked biweekly starting Week 3</div>
+                </div>
+                <div class="tier-card tier3 reveal">
+                    <h3>Tier 3</h3>
+                    <div class="tier-subtitle">Impact</div>
+                    <p>Is it producing results?</p>
+                    <div class="timing">Tracked at Day 45 and Day 60</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Tier 1 -->
+        <section id="tier1" class="reveal">
+            <h2>Tier 1: Engagement KPIs</h2>
+            <p>
+                Engagement measures adoption and basic usage patterns. These metrics track whether participants are actually using Claude and how frequently.
+            </p>
+
+            <div class="metrics-grid">
+                <div class="metric-card blue reveal">
+                    <h4>Monthly Active Users</h4>
+                    <p>
+                        <strong>Target:</strong> 80%+ of pilot cohort (7+ of 9) by Day 60.
+                    </p>
+                    <p>
+                        <strong>Data source:</strong> Claude Enterprise admin panel.
+                    </p>
+                </div>
+
+                <div class="metric-card blue reveal">
+                    <h4>Prompts per Participant per Week</h4>
+                    <p>
+                        <strong>Baseline:</strong> Established Week 1.
+                    </p>
+                    <p>
+                        <strong>Target:</strong> 15+ by Week 6.
+                    </p>
+                    <p>
+                        <strong>Segmentation:</strong> Light (1-5/week), Moderate (6-19), Heavy (20+).
+                    </p>
+                </div>
+
+                <div class="metric-card blue reveal">
+                    <h4>Active User Segmentation</h4>
+                    <p>
+                        Track distribution across Light/Moderate/Heavy each week.
+                    </p>
+                    <p>
+                        <strong>Success =</strong> Cohort shifting rightward over time (more users adopting heavier usage patterns).
+                    </p>
+                </div>
+            </div>
+
+            <div class="callout info reveal">
+                <strong>How We Track:</strong> Data source is Claude Enterprise admin panel usage logs. Preston pulls weekly reports and shares with unit leads.
+            </div>
+        </section>
+
+        <!-- Section 3: Tier 2 -->
+        <section id="tier2" class="reveal">
+            <h2>Tier 2: Proficiency KPIs</h2>
+            <p>
+                Proficiency measures skill development and effective use patterns. These metrics track whether participants are learning to use Claude better over time.
+            </p>
+
+            <div class="metrics-grid">
+                <div class="metric-card purple reveal">
+                    <h4>Iteration Frequency</h4>
+                    <p>
+                        <strong>Self-report:</strong> "How many times this week did you revise a prompt or push back on Claude's output?"
+                    </p>
+                    <p>
+                        <strong>Scale:</strong> Never / Once / A few times / Most sessions / Every session.
+                    </p>
+                    <p>
+                        <strong>Early warning:</strong> "Never" for 2+ consecutive weeks triggers 1:1 coaching.
+                    </p>
+                </div>
+
+                <div class="metric-card purple reveal">
+                    <h4>Observable Fluency Behaviors</h4>
+                    <p>
+                        <strong>Target:</strong> 70%+ participants demonstrate 3+ behaviors by Day 60.
+                    </p>
+                    <p>
+                        <strong>Behaviors tracked:</strong> Iteration on drafts, clarifying goals, questioning model reasoning, identifying missing context, specifying output formats, providing examples, fact-checking outputs.
+                    </p>
+                </div>
+
+                <div class="metric-card purple reveal">
+                    <h4>Session Depth</h4>
+                    <p>
+                        <strong>Metric:</strong> Average conversation length increasing over time.
+                    </p>
+                    <p>
+                        <strong>Data:</strong> Enterprise admin data if available, cross-referenced with self-report.
+                    </p>
+                </div>
+            </div>
+
+            <div class="callout info reveal">
+                <strong>How We Track:</strong> Weekly self-report (30 seconds per person) + enterprise admin data cross-reference. Added to weekly check-in protocol starting Week 1.
+            </div>
+        </section>
+
+        <!-- Section 4: Tier 3 -->
+        <section id="tier3" class="reveal">
+            <h2>Tier 3: Impact KPIs</h2>
+            <p>
+                Impact measures actual value delivery. These metrics track whether AI adoption is redesigning workflows, saving time, improving quality, and freeing capacity for high-value work.
+            </p>
+
+            <div class="metrics-grid">
+                <div class="metric-card gold reveal">
+                    <h4>Documented Workflow Redesigns</h4>
+                    <p>
+                        <strong>Target:</strong> Minimum 2 per unit (6 total).
+                    </p>
+                    <p>
+                        Each documents: old process, new AI-integrated process, governance check, and measured outcome.
+                    </p>
+                </div>
+
+                <div class="metric-card gold reveal">
+                    <h4>Time Savings Evidence</h4>
+                    <p>
+                        <strong>Target:</strong> Each participant documents at least 1 task with before/after time comparison.
+                    </p>
+                    <p>
+                        Aggregated into "total hours redirected per week" metric.
+                    </p>
+                </div>
+
+                <div class="metric-card gold reveal">
+                    <h4>Quality Improvement Evidence</h4>
+                    <p>
+                        <strong>Target:</strong> At least 3 examples of AI-assisted outputs rated higher quality than previous manual outputs.
+                    </p>
+                    <p>
+                        Peer-assessed using standard rubric.
+                    </p>
+                </div>
+
+                <div class="metric-card gold reveal">
+                    <h4>Mission Connection</h4>
+                    <p>
+                        <strong>Target:</strong> At least 1 example per unit of AI-freed time redirected to high-value student interaction.
+                    </p>
+                    <p>
+                        Demonstrates impact on core mission, not just efficiency.
+                    </p>
+                </div>
+            </div>
+
+            <div class="callout info reveal">
+                <strong>How We Track:</strong> Workflow redesign templates deployed Week 3. Each participant completes at least one. These templates become board briefing evidence.
+            </div>
+        </section>
+
+        <!-- Section 5: Success Thresholds -->
+        <section class="reveal">
+            <h2>Success Thresholds & Decisions</h2>
+            <p>
+                At Day 45 and Day 60, data across all three tiers informs a go/pause/pivot decision for Q3 planning. Success is not just high numbers—it's evidence that the pilot can scale responsibly.
+            </p>
+
+            <div class="thresholds-grid">
+                <div class="threshold-box scale reveal">
+                    <h4>SCALE</h4>
+                    <div class="criteria">
+                        • 70%+ monthly active users<br>
+                        • 60%+ demonstrating iteration<br>
+                        • 3+ documented workflow redesigns
+                    </div>
+                    <p class="recommendation">
+                        Recommendation: Full Q3 rollout with cohort-based structure.
+                    </p>
+                </div>
+
+                <div class="threshold-box pause reveal">
+                    <h4>PAUSE</h4>
+                    <div class="criteria">
+                        • 40-70% active users<br>
+                        • Proficiency plateau<br>
+                        • Budget/bandwidth constraints
+                    </div>
+                    <p class="recommendation">
+                        Recommendation: Extend pilot 30 days. Diagnose barriers before scaling.
+                    </p>
+                </div>
+
+                <div class="threshold-box pivot reveal">
+                    <h4>PIVOT</h4>
+                    <div class="criteria">
+                        • Below 40% active users<br>
+                        • Leadership misalignment<br>
+                        • Governance incidents
+                    </div>
+                    <p class="recommendation">
+                        Recommendation: Restructure approach before investing further.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Tracking Calendar -->
+        <section class="reveal">
+            <h2>Tracking Calendar</h2>
+            <p>
+                Key milestones for data collection and review across the 9-week pilot window.
+            </p>
+
+            <div class="timeline reveal">
+                <div class="timeline-item">
+                    <div class="timeline-label">Week 1<br><small style="font-weight: normal; font-size: 0.9em;">Apr 7–11</small></div>
+                    <div class="timeline-content">
+                        <strong>Tier 1 baseline established</strong> — First week of usage data collected.<br>
+                        <strong>Tier 2 self-report added</strong> — Iteration frequency question integrated into weekly check-in.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-label">Week 3<br><small style="font-weight: normal; font-size: 0.9em;">Apr 21–25</small></div>
+                    <div class="timeline-content">
+                        <strong>First Tier 2 biweekly pull</strong> — Iteration patterns and fluency behaviors assessed.<br>
+                        <strong>Workflow redesign templates deployed</strong> — Tier 3 tracking begins.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-label">Week 5<br><small style="font-weight: normal; font-size: 0.9em;">May 5–9</small></div>
+                    <div class="timeline-content">
+                        <strong>Tier 3 first check</strong> — Early workflow redesigns in progress, time savings anecdotes collected.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-label">Week 7<br><small style="font-weight: normal; font-size: 0.9em;">May 19–23</small></div>
+                    <div class="timeline-content">
+                        <strong>Tier 2 + Tier 3 second check</strong> — Proficiency trends, workflow redesigns consolidated, quality examples gathered.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-label">Week 9<br><small style="font-weight: normal; font-size: 0.9em;">Jun 2–5</small></div>
+                    <div class="timeline-content">
+                        <strong>Final data pull all tiers</strong> — Complete usage, proficiency, and impact data compiled.<br>
+                        <strong>Board narrative compiled</strong> — Evidence organized for June board briefing.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div style="margin-bottom:clamp(0.5rem,1vw,1rem);"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAA6CAYAAADC4Bv8AAAD4klEQVR42u2YS4gdVRCG/7p3ZjQZfEXEJwiCICQ4LhR1owsRdSEKIiP4SEQSYxZqEOMDjboQEY1g3Cjixp2IggtRGPIQNC40RNS4EEVc6UZ0ER8zdt/PRepAcej76u57Bb0FTfc9p/uc71bVqTp1pJnMZCYDxZoOAHSafG5m/H81CHQlndVgnF/M7M9BL8zVNauZ9SSdI+kLSQuSGAO0lNSVtEXSO8CcmRWtAQbpSdowSQvWAjSzHmCSfpJ0l6TzXCs2BtiqpJWg0cmsYjf5/Lh/dpjvtRlmupIOS9roJh817Fwu6chxVuu1auIMTpJOqzFWaWa4q/SVTgO4jpmVZlZK2uvNhWuREa6RpG6YmTOzAtgq6Vcz2wMgaU9YLK34dy04v+/guPSAW73tAW8rvH2QLLWQKvvC7fRJ/gZKB7rN++7zvnIIZHuAgAW4RzMtJZAecKe/s3UEyHYAM7jdfUyYQAG2Qgwwb06JlxZAbnTx7oR+Cv01wMMZk2aW6WeRMhdPuYNwB/etqkuYNLeTa65YX5X+jsFcNQBirB6E+RjPu41wO/AZU1M3M0yw2qAGCTXOWQ/Te72ca8BLkr+3jRrvFExYbx/CRwEVkIgPwTsy3wu+fHTbaU182seeA54BXg3TJiuz4BL/JsFvy/6AlvLFk6CfBFYaDUPB/CP+2STpfDOoUzLSdb8/i1wUlJCK6kOOMGfN7lPpoVQAj8A64F7gTM9sJdZeErPnwMbGvnfCH75TBaC3gfe9ufvgZey1Z/gPgVOdvOe3jpkSn+uzW+y4Ey2ynO4g67l9f58Zev7wSwEXZWlrqJi95J87kPX2inAJ962cSKAmalfH5AKE9x7rvkzgMPhzyxNFNAn3dwHMP1+y98/F/g66xsJsDa9H5vNV3QVXoy9aWbLwAWSDnjdXIxbqDVVL33gXjOzzZ7O9ku6sA5cm4AEgJfNbLtnl/2SzvdStFaJ2xSwCKdcc5KeN7MHgSv8YOjscNT2r9TGd4Qw85S3XQ38VhEXJ18XVwDe45M95L+vB46NWLxPFLAbNrVpt3xz2F6V2S5muoAVwMshvkW4HwfUxpMHDLn5u2DWBPoRcCrwRJ+Sdaoa/MonT7ubfcBi6H+yAnKqgEeDWVeAdclXw4J6vE6qawvwiE/6AXBiVh3Gs51Hgk9ePE3An4EDoSbpDAhND09Vg8A63+IvDpswQO4CLp0WYCeu6jEOBiZv2rxErfOnZjKTmfzX5R+C6tS3uqqRyAAAAABJRU5ErkJggg==" alt="DC CAP"></div>
+        <p>DC CAP Enterprise AI Initiative · KPI Framework · April 2026</p>
+        <div class="footer-nav">
+            <button class="btn btn-print no-print" onclick="window.print()">Print Framework</button>
+            <div class="footer-divider no-print"></div>
+            <a href="pilot_hub.html">← Return to Pilot Hub</a>
+        </div>
+    </footer>
+
+    <script>
+        // IntersectionObserver for scroll-triggered reveal animations
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

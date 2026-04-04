@@ -1630,10 +1630,6 @@
         const completedActivities = new Set();
 
         function submitMilestone(name, milestone, phase, source, details) {
-            if (SHEET_ENDPOINT === 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec') {
-                console.warn('Google Sheets endpoint not configured.');
-                return Promise.resolve();
-            }
             return fetch(SHEET_ENDPOINT, {
                 method: 'POST',
                 mode: 'no-cors',

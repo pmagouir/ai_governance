@@ -1626,6 +1626,12 @@
                 <p class="card-description">Comprehensive guide to Chat, Cowork, Projects, Skills, and Connectors</p>
                 <a href="UserGuide_Claude_DCCAP_V1_20260313.docx" class="card-link">View Guide →</a>
             </div>
+            <div class="card blue-accent reveal-scale">
+                <span class="status-badge status-available">Available</span>
+                <h4 class="card-title">KPI Framework</h4>
+                <p class="card-description">Three-tier measurement: engagement, proficiency, and impact targets for the board</p>
+                <a href="kpi_framework.html" class="card-link">View Framework →</a>
+            </div>
         </div>
     </div>
 
@@ -1669,6 +1675,18 @@
                 <h4 class="card-title">Key Terminology</h4>
                 <p class="card-description">Definitions and vocabulary reference</p>
                 <a href="AI_Fluency_Key_Terminology.md" class="card-link">View Terms →</a>
+            </div>
+            <div class="card gold-accent reveal-scale" style="animation-delay: 0.2s;">
+                <span class="status-badge status-available">Available</span>
+                <h4 class="card-title">Plain-English Glossary</h4>
+                <p class="card-description">Every pilot term in everyday language, with why it matters for your work</p>
+                <a href="ai_glossary.html" class="card-link">View Glossary →</a>
+            </div>
+            <div class="card purple-accent reveal-scale" style="animation-delay: 0.3s;">
+                <span class="status-badge" style="background: var(--purple); color: var(--white);">External</span>
+                <h4 class="card-title">Anthropic Academy</h4>
+                <p class="card-description">Free courses from the team behind Claude. "Framework &amp; Foundations" for all participants; "Teaching AI Fluency" for T3 candidates.</p>
+                <a href="https://anthropic.skilljar.com" target="_blank" rel="noopener" class="card-link">Open Academy →</a>
             </div>
         </div>
     </div>
@@ -2158,7 +2176,9 @@
             checkAllComplete();
         }
 
-        // Send completion data to Google Sheets (if endpoint exists)
+        // Send completion data to Google Sheets
+        const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
+
         function sendAnalytics() {
             const states = checkboxes.map((id) => {
                 const checkbox = document.getElementById(id);
@@ -2167,20 +2187,46 @@
 
             const allComplete = states[0] === '1' && states[1] === '1' && states[2] === '1';
 
-            // TODO: Replace with actual Apps Script endpoint
-            // Example: const appsScriptUrl = 'https://script.google.com/macros/d/.../usercontent';
-            // if (appsScriptUrl) {
-            //     fetch(appsScriptUrl, {
-            //         method: 'POST',
-            //         body: JSON.stringify({
-            //             check1: states[0] === '1',
-            //             check2: states[1] === '1',
-            //             check3: states[2] === '1',
-            //             timestamp: new Date().toISOString(),
-            //             allComplete: allComplete
-            //         })
-            //     }).catch(err => console.log('Analytics sent'));
-            // }
+            // Send each newly checked prerequisite as a milestone
+            const milestoneNames = [
+                'Prerequisite 1: Start Here + Governance reviewed',
+                'Prerequisite 2: Pre-Launch Assessment completed',
+                'Prerequisite 3: Anthropic Academy courses completed'
+            ];
+
+            states.forEach((state, i) => {
+                if (state === '1') {
+                    fetch(SHEET_ENDPOINT, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            type: 'milestone',
+                            participant_name: 'anonymous',
+                            milestone: milestoneNames[i],
+                            phase: 'Onboarding',
+                            page_source: 'pilot_hub.html',
+                            details: JSON.stringify({ check1: states[0], check2: states[1], check3: states[2], allComplete: allComplete })
+                        })
+                    }).catch(err => console.error('Analytics error:', err));
+                }
+            });
+
+            if (allComplete) {
+                fetch(SHEET_ENDPOINT, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        type: 'milestone',
+                        participant_name: 'anonymous',
+                        milestone: 'All prerequisites completed',
+                        phase: 'Onboarding',
+                        page_source: 'pilot_hub.html',
+                        details: ''
+                    })
+                }).catch(err => console.error('Analytics error:', err));
+            }
         }
 
         // Show congratulations message when all checked
