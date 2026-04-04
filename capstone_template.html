@@ -785,6 +785,115 @@
                 if (current > 0) slides[current - 1].scrollIntoView({ behavior: 'smooth' });
             }
         });
+
+        /* === LOCAL STORAGE PERSISTENCE === */
+        const STORAGE_KEY = 'dccap_capstone_data';
+
+        function getStorageData() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                return raw ? JSON.parse(raw) : {};
+            } catch (e) { return {}; }
+        }
+
+        function saveStorageData(data) {
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
+        }
+
+        // Assign stable IDs to each editable field based on position
+        const editables = document.querySelectorAll('.editable[contenteditable="true"]');
+        editables.forEach((el, i) => {
+            el.dataset.fieldId = 'field_' + i;
+        });
+
+        // Restore saved content on page load
+        (function restoreState() {
+            const data = getStorageData();
+
+            // Restore editable text fields
+            editables.forEach(el => {
+                const key = el.dataset.fieldId;
+                if (data[key] && data[key].trim()) {
+                    el.innerHTML = data[key];
+                }
+            });
+
+            // Restore rating dots
+            if (data.ratings) {
+                document.querySelectorAll('.assessment-rating').forEach(container => {
+                    const d = container.dataset.d;
+                    if (data.ratings[d]) {
+                        const rating = data.ratings[d];
+                        container.querySelectorAll('.rating-dot').forEach((dot, i) => {
+                            dot.classList.toggle('filled', i < rating);
+                        });
+                    }
+                });
+            }
+
+            // Restore modality tags
+            if (data.modalities) {
+                document.querySelectorAll('.modality-tag').forEach(tag => {
+                    const label = tag.textContent.trim();
+                    if (data.modalities.includes(label)) {
+                        tag.classList.add('selected');
+                    }
+                });
+            }
+        })();
+
+        // Save editable fields on input (debounced)
+        let saveTimeout;
+        function debouncedSave() {
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(() => {
+                const data = getStorageData();
+                editables.forEach(el => {
+                    data[el.dataset.fieldId] = el.innerHTML;
+                });
+                saveStorageData(data);
+            }, 400);
+        }
+        editables.forEach(el => el.addEventListener('input', debouncedSave));
+
+        // Save ratings on click
+        document.querySelectorAll('.rating-dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                const data = getStorageData();
+                if (!data.ratings) data.ratings = {};
+                const container = dot.parentElement;
+                const d = container.dataset.d;
+                data.ratings[d] = parseInt(dot.dataset.rating);
+                saveStorageData(data);
+            });
+        });
+
+        // Save modality tags on toggle
+        const originalToggleTag = toggleTag;
+        toggleTag = function(tag) {
+            originalToggleTag(tag);
+            const data = getStorageData();
+            const selected = [];
+            document.querySelectorAll('.modality-tag.selected').forEach(t => {
+                selected.push(t.textContent.trim());
+            });
+            data.modalities = selected;
+            saveStorageData(data);
+        };
+
+        // Auto-save indicator
+        const savedBanner = document.createElement('div');
+        savedBanner.id = 'save-status';
+        savedBanner.style.cssText = 'position:fixed;top:1rem;right:1rem;font-family:var(--font-mono);font-size:0.7rem;color:rgba(255,255,255,0.4);z-index:9999;opacity:0;transition:opacity 0.3s ease;pointer-events:none;';
+        document.body.appendChild(savedBanner);
+
+        const origSave = saveStorageData;
+        saveStorageData = function(data) {
+            origSave(data);
+            savedBanner.textContent = 'Draft saved';
+            savedBanner.style.opacity = '1';
+            setTimeout(() => { savedBanner.style.opacity = '0'; }, 1500);
+        };
     </script>
     <a href="pilot_hub.html" style="position:fixed;bottom:1rem;left:1rem;background:rgba(16,26,76,0.85);color:#fff;padding:0.5rem 1rem;border-radius:6px;font-family:'Noto Serif SemiCondensed',Georgia,serif;font-size:0.85rem;font-weight:600;text-decoration:none;z-index:9999;backdrop-filter:blur(8px);transition:background 0.2s;" onmouseover="this.style.background='rgba(131,82,255,0.9)'" onmouseout="this.style.background='rgba(16,26,76,0.85)'">← Pilot Hub</a>
 </body>

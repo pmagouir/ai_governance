@@ -208,7 +208,7 @@
             font-family: var(--font-subhead);
             font-weight: 600;
             color: var(--dark-gray);
-            font-size: clamp(0.85rem, 1.3vw, 1rem);
+            font-size: clamp(0.8rem, 1.2vw, 0.95rem);
             padding: 0.5rem 0;
             border-bottom: 3px solid transparent;
             transition: all 0.2s ease;
@@ -294,6 +294,20 @@
         .intro-section p {
             font-size: clamp(1rem, 1.6vw, 1.15rem);
             line-height: 1.8;
+        }
+
+        /* Guiding Principle Blockquote */
+        .guiding-principle {
+            background: rgba(131, 82, 255, 0.06);
+            border-left: 5px solid var(--purple);
+            padding: clamp(1.5rem, 3vw, 2rem);
+            border-radius: clamp(8px, 1.5vw, 12px);
+            margin: clamp(1.5rem, 3vw, 2.5rem) 0;
+            font-family: var(--font-subhead);
+            font-size: clamp(1rem, 1.6vw, 1.15rem);
+            font-style: italic;
+            line-height: 1.8;
+            color: var(--navy);
         }
 
         /* Callout Boxes - Frosted Glass */
@@ -415,7 +429,6 @@
         }
 
         .phase-number {
-            display: inline-block;
             width: clamp(40px, 8vw, 50px);
             height: clamp(40px, 8vw, 50px);
             background: var(--purple);
@@ -525,19 +538,7 @@
         }
 
         /* Roles & Responsibilities Table */
-        .roles-table {
-            overflow-x: auto;
-            margin: clamp(1.5rem, 3vw, 2.5rem) 0;
-        }
-
-        /* Configuration Table */
-        .config-table {
-            overflow-x: auto;
-            margin: clamp(1.5rem, 3vw, 2.5rem) 0;
-        }
-
-        /* Governance Review Table */
-        .review-table {
+        .roles-table, .config-table, .review-table, .metrics-table {
             overflow-x: auto;
             margin: clamp(1.5rem, 3vw, 2.5rem) 0;
         }
@@ -571,6 +572,14 @@
             position: relative;
             font-size: clamp(0.95rem, 1.4vw, 1.05rem);
             line-height: 1.7;
+        }
+
+        .aup-column.encouraged li::before {
+            content: '★';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
         }
 
         .aup-column.required li::before {
@@ -644,6 +653,78 @@
             font-weight: 600;
         }
 
+        /* Subsection styling */
+        .subsection {
+            margin-top: clamp(1.5rem, 3vw, 2.5rem);
+            padding-top: clamp(1rem, 2vw, 1.5rem);
+            border-top: 1px solid rgba(16, 26, 76, 0.08);
+        }
+
+        .subsection:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        /* Bullet list for general use */
+        .content-list {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            list-style: disc;
+        }
+
+        .content-list li {
+            margin-bottom: 0.5rem;
+            font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+            line-height: 1.7;
+        }
+
+        /* Decision gate cards */
+        .gate-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(1rem, 2vw, 1.5rem);
+            margin: clamp(1.5rem, 3vw, 2rem) 0;
+        }
+
+        .gate-card {
+            padding: clamp(1.25rem, 2.5vw, 1.75rem);
+            border-radius: clamp(8px, 1.5vw, 12px);
+            border-left: 5px solid;
+        }
+
+        .gate-card.scale {
+            background: rgba(39, 174, 96, 0.06);
+            border-left-color: var(--success);
+        }
+
+        .gate-card.pause {
+            background: rgba(252, 176, 23, 0.06);
+            border-left-color: var(--gold);
+        }
+
+        .gate-card.pivot {
+            background: rgba(230, 57, 70, 0.06);
+            border-left-color: var(--error);
+        }
+
+        .gate-card h4 {
+            margin-top: 0;
+        }
+
+        .gate-card.scale h4 { color: var(--success); }
+        .gate-card.pause h4 { color: var(--gold); }
+        .gate-card.pivot h4 { color: var(--error); }
+
+        /* Strategic Note at bottom */
+        .strategic-note {
+            background: rgba(131, 82, 255, 0.06);
+            border-left: 5px solid var(--purple);
+            padding: clamp(1.5rem, 3vw, 2rem);
+            border-radius: clamp(8px, 1.5vw, 12px);
+            margin-top: clamp(2rem, 4vw, 3rem);
+            font-style: italic;
+        }
+
         /* Footer */
         footer {
             background: var(--navy);
@@ -681,10 +762,6 @@
             td, th {
                 padding: clamp(0.75rem, 1.5vw, 1rem);
             }
-
-            .aup-section {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -694,34 +771,46 @@
         <div class="hero-content">
             <h1 class="hero-title">AI Data Governance Framework</h1>
             <p class="hero-subtitle">Claude Enterprise Adoption & Data Security</p>
-            <p class="hero-meta">DC CAP Scholars | v1 | February 2026</p>
+            <p class="hero-meta">DC CAP Scholars | v1.1 | April 2026 | Prepared by: PLM/AMC</p>
         </div>
     </section>
 
     <!-- Section Navigation -->
     <nav class="section-nav">
         <ul>
-            <li><a href="#executive-summary">Executive Summary</a></li>
-            <li><a href="#strategic-rationale">Strategic Rationale</a></li>
-            <li><a href="#data-classification">Data Classification</a></li>
-            <li><a href="#adoption-plan">Adoption Plan</a></li>
-            <li><a href="#security-compliance">Security & Compliance</a></li>
-            <li><a href="#roles">Roles & Responsibilities</a></li>
-            <li><a href="#acceptable-use">Acceptable Use</a></li>
-            <li><a href="#incident-response">Incident Response</a></li>
-            <li><a href="#governance-review">Governance Review</a></li>
+            <li><a href="#executive-summary">Summary</a></li>
+            <li><a href="#strategic-rationale">Rationale</a></li>
+            <li><a href="#data-classification">Data Tiers</a></li>
+            <li><a href="#adoption-plan">Adoption</a></li>
+            <li><a href="#security-compliance">Security</a></li>
+            <li><a href="#roles">Roles</a></li>
+            <li><a href="#onboarding">Onboarding</a></li>
+            <li><a href="#acceptable-use">Use Policy</a></li>
+            <li><a href="#incident-response">Incidents</a></li>
+            <li><a href="#measurement">Measurement</a></li>
+            <li><a href="#governance-review">Review Cycle</a></li>
             <li><a href="#alignment">Alignment</a></li>
-            <li><a href="#decision-log">Decision Log</a></li>
+            <li><a href="#decision-log">Decisions</a></li>
         </ul>
     </nav>
+
+    <!-- Guiding Principle -->
+    <section>
+        <div class="container">
+            <div class="guiding-principle reveal">
+                Enterprise AI delivers value in direct proportion to the organizational context it can access. Governance exists to structure that access responsibly, allowing teams to work at the frontier of what the technology enables while maintaining strict protections for the people we serve.
+            </div>
+        </div>
+    </section>
 
     <!-- Executive Summary -->
     <section id="executive-summary" class="intro-section">
         <div class="container reveal">
             <h2>Executive Summary</h2>
-            <p>This framework establishes the governance structure, data classification standards, and operational protocols for DC CAP Scholars to adopt Anthropic's Claude Enterprise AI platform. The framework balances organizational efficiency gains with rigorous data protection.</p>
-            <p>Claude Enterprise provides the security architecture required for responsible adoption. Anthropic does not use Enterprise customer inputs or outputs to train its models. The platform includes single sign-on, audit logging, and configurable data retention.</p>
-            <p>This document recommends a phased adoption approach that begins with a leadership pilot cohort using low-sensitivity organizational data, then expands access and data integration as the team builds fluency with the technology.</p>
+            <p>DC CAP serves over 800 scholars annually through a model that combines financial aid, intensive coaching, and university partnerships. Every hour staff spend on grant drafting, program reporting, and operational documentation is an hour redirected from direct student interaction, partner relationship management, or the coaching conversations that drive persistence and graduation. Enterprise AI adoption exists to shift that ratio.</p>
+            <p>This framework establishes the governance structure, data classification standards, and operational protocols for DC CAP Scholars to adopt Anthropic's Claude Enterprise AI platform. The framework balances two priorities: maximizing the platform's strategic value by connecting it to organizational data, and protecting the personally identifiable information (PII) of the scholars, families, partners, and employees we serve. The intended result is that coaching staff recover time for high-value student engagement, development teams accelerate grant cycles that fund scholarships, and program leaders strengthen the evaluation practices that improve outcomes across the scholar portfolio.</p>
+            <p>Claude Enterprise provides the security architecture required for responsible adoption. Anthropic does not use Enterprise customer inputs or outputs to train its models. The platform includes single sign-on (SSO) integration, audit logging, custom data retention controls, and role-based access management. These protections are comparable to the enterprise platforms DC CAP already operates, including Salesforce Education Cloud and Microsoft 365.</p>
+            <p>Research across 1,400+ executives shows that 95% of AI pilots fail to deliver measurable returns, and the primary determinant of success is organizational investment in people and processes, which should represent 70% of total effort. This document recommends a phased adoption approach that begins with a leadership pilot cohort using low-sensitivity organizational data, then expands access and data integration as the team builds fluency and governance matures. Success will be measured through a three-tier framework tracking engagement, proficiency, and impact on the scholars we serve, with explicit Scale/Pause/Pivot decision gates at Day 45 and Day 60. The framework is designed to be a living document, updated iteratively as real usage patterns inform policy refinements.</p>
         </div>
     </section>
 
@@ -730,16 +819,16 @@
         <div class="container">
             <h2 class="reveal">1. Strategic Rationale for Enterprise AI Adoption</h2>
             <div class="reveal">
-                <p>DC CAP Scholars operates a comprehensive student success model that combines financial aid, intensive coaching, and university partnerships to serve over 800 scholars annually. The organization's strategic plan prioritizes operational efficiency, data-driven decision making, and scaling impact.</p>
-                <p>Claude Enterprise addresses these needs with:</p>
+                <p>DC CAP Scholars operates a comprehensive student success model that combines financial aid, intensive coaching, and university partnerships to serve over 800 scholars annually. The organization's strategic priorities require increased capacity across grant writing, program evaluation, partnership analysis, strategic communications, operational efficiency, and data-informed decision-making. At the same time, emerging AI capabilities require that users add relevant technology orchestration skills to remain both effective in their current roles and competitive across their careers.</p>
+                <p>Claude Enterprise addresses these needs by providing a secure platform where staff can work with organizational knowledge in a more secure environment. Several features are particularly relevant to DC CAP's operating context:</p>
             </div>
             <div class="reveal">
-                <ul style="margin-left: 2rem; margin-bottom: 1.5rem; list-style: disc;">
-                    <li><strong>Projects:</strong> Persistent workspaces loaded with organizational documents that Claude can reference across conversations</li>
-                    <li><strong>Skills:</strong> Building skills ensures best practices are captured for replication and efficiency</li>
-                    <li><strong>Connectors:</strong> Direct integrations with Microsoft 365 and nonprofit-specific platforms</li>
-                    <li><strong>Custom Retention:</strong> Organization-controlled data storage policies with full audit logging</li>
-                    <li><strong>Nonprofit Pricing:</strong> 75% discount for qualifying 501(c)(3) organizations</li>
+                <ul class="content-list">
+                    <li><strong>Projects:</strong> Persistent workspaces loaded with organizational documents (grant narratives, program models, strategic plans, data dictionaries) that Claude can reference across conversations.</li>
+                    <li><strong>Skills:</strong> Repeated tasks should not, but often do, require new context and orientation. Building skills in Claude ensures best practices are captured so they can be replicated and made more efficient.</li>
+                    <li><strong>Connectors:</strong> Direct integrations with Microsoft 365, and nonprofit-specific platforms (Blackbaud Raiser's Edge, for example) that allow Claude to access specific information without individual manual uploads.</li>
+                    <li><strong>Custom Retention:</strong> Organization-controlled policies for how long conversation data is stored, with a minimum of 30 days and full audit logging.</li>
+                    <li><strong>Nonprofit Pricing:</strong> Qualifying 501(c)(3) organizations receive a 75% discount on this platform, making it less expensive to purchase as an organization than allow each staff member to purchase a comparable subscription individually ($10/per seat/per month vs. $20 in individual plans).</li>
                 </ul>
             </div>
         </div>
@@ -750,10 +839,9 @@
         <div class="container">
             <h2 class="reveal">2. Data Classification Framework</h2>
             <div class="reveal">
-                <p>The following classification system governs what organizational data can be used with Claude Enterprise, under what conditions, and by whom.</p>
+                <p>The following classification system governs what organizational data can be used with Claude Enterprise, under what conditions, and by whom. All DC CAP data falls into one of four tiers.</p>
             </div>
 
-            <!-- Data Tier Table -->
             <div class="data-tier-table reveal">
                 <table>
                     <thead>
@@ -767,45 +855,38 @@
                     <tbody>
                         <tr class="tier-1">
                             <td><span class="tier-label">Tier 1<br>Restricted</span></td>
-                            <td>Individual PII, FERPA-protected data, SSN, financial aid details</td>
-                            <td>Scholar names + academic records, SSNs, financial aid details</td>
-                            <td><span class="prohibited">PROHIBITED — Never upload to Claude in any form</span></td>
+                            <td>Individual PII, FERPA-protected data, SSN, financial aid details. Protected by FERPA, GEAR UP regulations, and organizational policy.</td>
+                            <td>Scholar names + academic records, SSNs, financial aid details linked to individuals, health/disability information, family income data, employee PII (social security, withholding, salary, evaluation, bank account information, benefits information), organizational financial and security information (including banking account numbers and platform logins), partner financial information</td>
+                            <td><span class="prohibited">PROHIBITED — Never upload to Claude in any form. No exceptions without legal review and explicit board authorization.</span></td>
                         </tr>
                         <tr class="tier-2">
                             <td><span class="tier-label">Tier 2<br>Sensitive</span></td>
-                            <td>Internal financial records, embargoed data, staff performance</td>
-                            <td>Budget models, Investment Portfolio allocations, disbursement schedules</td>
-                            <td>RESTRICTED ACCESS — Role-specific with least access defaults</td>
+                            <td>Internal financial records, embargoed data, staff performance data, partner-shared confidential information, and small-cell aggregates (N&lt;10) that could enable re-identification.</td>
+                            <td>Budget models, Investment Portfolio allocations, disbursement totals, embargoed research or reports, staff evaluation summaries, partner MOU terms, aggregate student data with cell sizes below 10, aggregated HR/employee data where it is not possible to identify individuals</td>
+                            <td>RESTRICTED ACCESS — Role-specific access with least access default as the norm. Requires de-identification verification before upload. 30-day retention.</td>
                         </tr>
                         <tr class="tier-3">
                             <td><span class="tier-label">Tier 3<br>Internal</span></td>
-                            <td>Organizational knowledge, program documentation, draft strategic analyses</td>
-                            <td>Strategic plans, grant narratives, internal process docs</td>
-                            <td>OPEN ACCESS — All licensed users. Upload to shared Projects</td>
+                            <td>Organizational knowledge, program documentation, draft strategies, operational content, and de-identified aggregated outcomes and demographics. Does not contain PII or confidential partner data.</td>
+                            <td>Strategic plans, draft strategic analyses, grant narratives, program models, data dictionaries, process documentation, meeting templates, OKR frameworks, training materials, aggregated retention/graduation rates, demographic distributions (percentages)</td>
+                            <td>OPEN ACCESS — All licensed users within DC CAP. Upload to shared Projects. Standard retention policy.</td>
                         </tr>
                         <tr class="tier-4">
                             <td><span class="tier-label">Tier 4<br>Public</span></td>
-                            <td>Published materials, public-facing content</td>
-                            <td>Annual reports, website content, press releases</td>
-                            <td>UNRESTRICTED — All users</td>
+                            <td>Published materials, public-facing content, and externally available research or data.</td>
+                            <td>Annual reports, website content, published research, press releases, public data sets (IPEDS, NSC aggregates, Census)</td>
+                            <td>UNRESTRICTED — All users. Standard retention.</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- Aggregation Note -->
             <div class="callout info reveal">
-                <strong>Aggregation Guidance:</strong> Aggregated outcomes (retention rates, graduation rates by cohort year) are Tier 4 when anonymized. If any individual can be identified, the data reverts to Tier 1.
+                <strong>Aggregation Guidance:</strong> Aggregated outcomes (retention rates, graduation rates) and demographics (percentages, distributions) are Tier 3 when fully de-identified. If cell size is below 10 and could enable re-identification, treat as Tier 2.
             </div>
 
-            <!-- FERPA Note -->
             <div class="callout warning reveal">
-                <strong>FERPA Compliance:</strong> DC CAP operates under FERPA requirements for student educational records. Student data protected by FERPA is classified as Tier 1 (Restricted) and must never be uploaded to Claude Enterprise in any form.
-            </div>
-
-            <!-- Anthropic Data Handling Note -->
-            <div class="callout success reveal">
-                <strong>Anthropic's Data Commitment:</strong> Anthropic confirms that Enterprise customer data is never used for model training. Your data is protected with 90-day default retention (configurable) and full audit logging.
+                <strong>FERPA &amp; GEAR UP Compliance:</strong> DC CAP operates under FERPA protections for scholar educational records and GEAR UP federal grant data requirements. Tier 1 restrictions are designed to exceed these requirements. Any future consideration of using individual-level data with AI tools would require a formal Data Protection Impact Assessment (DPIA), legal counsel review, and board approval.
             </div>
         </div>
     </section>
@@ -814,53 +895,51 @@
     <section id="adoption-plan">
         <div class="container">
             <h2 class="reveal">3. Phased Adoption Plan</h2>
-            <p class="reveal">DC CAP will roll out Claude Enterprise access in three phases, progressively expanding reach and data access as organizational fluency increases.</p>
+            <p class="reveal">Adoption follows three phases designed to build organizational fluency, refine governance based on real usage, and expand access as trust and competency mature. This resembles the phased infrastructure approach DC CAP applied to Salesforce Education Cloud deployment.</p>
 
             <div class="phase-cards">
                 <div class="phase-card reveal-scale">
                     <div class="phase-number">1</div>
-                    <div class="phase-title">Leadership Pilot</div>
+                    <div class="phase-title">Leadership Pilot (Months 1–2)</div>
                     <div class="phase-content">
-                        <p><strong>Months 1–2</strong></p>
-                        <p><strong>Objective:</strong> Build leadership fluency and validate governance protocols with low-risk data</p>
+                        <p><strong>Objective:</strong> Build leadership fluency and validate governance protocols with low-risk data.</p>
                         <ul class="phase-list">
-                            <li>8 seats: CEO, COO, CSAO, Director of Program Strategy, plus rotating leads</li>
-                            <li>All tiers with role dependencies</li>
-                            <li>Design project infrastructure</li>
-                            <li>Identify skill needs and build knowledge base</li>
-                            <li><strong>Success metrics:</strong> User adoption rate, tasks completed, time savings</li>
+                            <li>8 seats: CEO, COO, CSAO, Director of Program Strategy and Strategic Partnerships, GEAR UP Director, Director of Communications, Director of Development Operations, Director of Foundation Relations, Manager of Executive Operations</li>
+                            <li>All tiers with role dependencies employed. Organizational knowledge, program models, grant language, strategic documents, and public data.</li>
+                            <li>Design project infrastructure, identifying skill needs, identifying and adding connectors, building shared organizational context</li>
+                            <li>Load shared Projects with program documentation, past grant narratives, strategic plan, OKR frameworks, and data dictionaries</li>
+                            <li><strong>Success metrics:</strong> User adoption rate, tasks completed, time savings reported, zero Tier 1 or Tier 2 data incidents, governance framework updated based on real usage</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="phase-card reveal-scale">
                     <div class="phase-number">2</div>
-                    <div class="phase-title">Team Expansion</div>
+                    <div class="phase-title">Team Expansion (Months 3–5)</div>
                     <div class="phase-content">
-                        <p><strong>Months 3–5</strong></p>
-                        <p><strong>Objective:</strong> Extend access and begin data integration</p>
+                        <p><strong>Objective:</strong> Extend access to coaching and operations teams through an all-staff kickoff in June. Introduce Tier 2 data access for authorized users.</p>
                         <ul class="phase-list">
-                            <li>Extend access to coaching and operations teams</li>
-                            <li>Introduce Tier 2 data access for authorized users</li>
-                            <li>Enable Microsoft 365 connector</li>
-                            <li>Train-the-trainer approach</li>
-                            <li>Reduce retention to 60 days</li>
+                            <li>Launch Phase 2 with all-staff kickoff led by pilot leaders delivering the training modules they developed during Phase 1</li>
+                            <li>Enable Microsoft 365 connector for document access within Claude</li>
+                            <li>Authorize Tier 2 aggregate data access for leadership team with de-identification verification protocols</li>
+                            <li>Develop team-specific Projects loaded with role-relevant knowledge (coaching playbooks, partner evaluation frameworks, GEAR UP documentation)</li>
+                            <li>Reduce data retention to 60 days. Review audit logs monthly.</li>
+                            <li>Require five-course progression completion in Anthropic Academy from all team members by end of term</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="phase-card reveal-scale">
                     <div class="phase-number">3</div>
-                    <div class="phase-title">Full Integration</div>
+                    <div class="phase-title">Full Integration (Months 6–12)</div>
                     <div class="phase-content">
-                        <p><strong>Months 6–12</strong></p>
-                        <p><strong>Objective:</strong> Organization-wide deployment with mature governance</p>
+                        <p><strong>Objective:</strong> Organization-wide deployment with mature governance.</p>
                         <ul class="phase-list">
-                            <li>Deploy all staff with role-appropriate permissions</li>
-                            <li>Evaluate additional connectors (Candid, Salesforce)</li>
-                            <li>Integrate into SOPs for grant writing, program reporting</li>
-                            <li>Quarterly governance review cycle</li>
-                            <li>Continuous optimization and training</li>
+                            <li>Deploy to all staff with role-appropriate access permissions</li>
+                            <li>Evaluate and deploy additional connectors (Candid for funder research, Salesforce if available)</li>
+                            <li>Integrate Claude workflows into standard operating procedures for grant writing, program reporting, and partnership analysis</li>
+                            <li>Establish quarterly governance review cycle with audit log analysis, policy updates, and compliance verification</li>
+                            <li>Connect AI governance to broader organizational data governance under the existing GEAR UP data policy framework</li>
                         </ul>
                     </div>
                 </div>
@@ -871,7 +950,8 @@
     <!-- 4. Security & Compliance Configuration -->
     <section id="security-compliance">
         <div class="container">
-            <h2 class="reveal">4. Security & Compliance Configuration</h2>
+            <h2 class="reveal">4. Security &amp; Compliance Configuration</h2>
+            <p class="reveal">The following security settings were configured at contract activation and will be reviewed quarterly.</p>
 
             <div class="config-table reveal">
                 <table>
@@ -886,37 +966,37 @@
                         <tr>
                             <td><strong>Model Training</strong></td>
                             <td>Disabled (Enterprise default)</td>
-                            <td>DC CAP data never used to train Anthropic models</td>
+                            <td>DC CAP data will never be used to train Anthropic models.</td>
                         </tr>
                         <tr>
                             <td><strong>SSO Integration</strong></td>
                             <td>Enabled via Microsoft Entra ID</td>
-                            <td>Aligns with existing Microsoft 365 identity management</td>
+                            <td>Aligns with existing Microsoft 365 identity management. Centralizes access control.</td>
                         </tr>
                         <tr>
                             <td><strong>Data Retention</strong></td>
                             <td>90 days (Phase 1), reduce to 60 days (Phase 2+)</td>
-                            <td>Balances utility with data minimization</td>
+                            <td>Balances utility of persistent conversations with data minimization principles.</td>
                         </tr>
                         <tr>
                             <td><strong>SCIM Provisioning</strong></td>
                             <td>Enabled</td>
-                            <td>Automated user lifecycle management</td>
+                            <td>Automated user lifecycle management aligned with HR onboarding/offboarding.</td>
                         </tr>
                         <tr>
                             <td><strong>Audit Logging</strong></td>
                             <td>Enabled, reviewed monthly</td>
-                            <td>Provides visibility into platform usage</td>
+                            <td>Provides visibility into platform usage. Supports compliance documentation. Does not reveal information about specific conversations.</td>
                         </tr>
                         <tr>
                             <td><strong>Role-Based Access</strong></td>
                             <td>Tiered by data classification level</td>
-                            <td>Staff access only authorized data tiers</td>
+                            <td>Ensures staff access only the data tiers authorized for their role.</td>
                         </tr>
                         <tr>
                             <td><strong>Domain Capture</strong></td>
                             <td>Enabled for @dccap.org domain</td>
-                            <td>All staff accounts route through organizational SSO</td>
+                            <td>Ensures all staff accounts route through organizational SSO. Prevents shadow IT.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -927,7 +1007,7 @@
     <!-- 5. Roles & Responsibilities -->
     <section id="roles">
         <div class="container">
-            <h2 class="reveal">5. Roles & Responsibilities</h2>
+            <h2 class="reveal">5. Roles &amp; Responsibilities</h2>
 
             <div class="roles-table reveal">
                 <table>
@@ -940,48 +1020,48 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>AI Governance Lead & Co-Owner</strong></td>
-                            <td>Owns this framework. Manages platform config, conducts reviews</td>
-                            <td>Preston Magouirk</td>
+                            <td><strong>AI Governance Lead &amp; Co-Owner</strong></td>
+                            <td>Owns this framework. Manages platform configuration, conducts audit reviews, approves Tier 2 data access, leads quarterly governance reviews. Shares governance ownership with the AI Governance Co-Owner.</td>
+                            <td>Preston Magouirk, CSAO</td>
                         </tr>
                         <tr>
                             <td><strong>AI Governance Co-Owner</strong></td>
-                            <td>Co-owns platform governance and operations. Manages SSO/SCIM</td>
-                            <td>Angela Cammack</td>
+                            <td>Co-owns platform governance and operations. Manages SSO/SCIM integration, coordinates with IT vendors, supports user onboarding and technical troubleshooting. Holds full platform operational authority by end of Phase 1. Participates in governance reviews and policy decisions alongside the AI Governance Lead.</td>
+                            <td>Angela Cammack, COO</td>
                         </tr>
                         <tr>
                             <td><strong>Executive Sponsor</strong></td>
-                            <td>Authorizes policy changes, approves budget, escalation point</td>
-                            <td>Eric Waldo</td>
+                            <td>Authorizes policy changes, approves budget, escalation point for governance decisions requiring organizational authority.</td>
+                            <td>Eric Waldo, CEO</td>
                         </tr>
                         <tr>
-                            <td><strong>Student Success Lead</strong></td>
-                            <td>Champions adoption within coaching teams</td>
-                            <td>Stephanie Gardner</td>
+                            <td><strong>Program Lead</strong></td>
+                            <td>Champions adoption within coaching teams, identifies high-value use cases, ensures Tier 1 data protections are maintained in daily workflows.</td>
+                            <td>Stephanie Gardner, Director of Strategic Partnerships and Program Strategy</td>
                         </tr>
                         <tr>
                             <td><strong>Communications Lead</strong></td>
-                            <td>Ensures Claude-assisted external communications meet standards</td>
-                            <td>Alexander Vassiliadis</td>
+                            <td>Ensures all Claude-assisted external communications, donor materials, and public-facing content receive staff review before distribution. Maintains brand voice standards in AI-assisted drafting workflows. Advises on Tier 2 data use in storytelling and impact reporting.</td>
+                            <td>Alexander Vassiliadis, Director of Communications</td>
                         </tr>
                         <tr>
                             <td><strong>GEAR UP Compliance Lead</strong></td>
-                            <td>Ensures GEAR UP data compliance</td>
-                            <td>Danielle Walker</td>
+                            <td>Ensures GEAR UP data compliance requirements are maintained in AI workflows. Consulted on Tier 2 boundary decisions involving federal grant data. Advises on aggregation thresholds for GEAR UP reporting.</td>
+                            <td>Danielle Walker, GEAR UP Director</td>
                         </tr>
                         <tr>
                             <td><strong>Development Co-Leads</strong></td>
-                            <td>Champions adoption in fundraising</td>
-                            <td>Sashia Moore, Candice Thomas</td>
+                            <td>Champions adoption within fundraising and donor relations workflows. Identifies high-value use cases for grant writing, prospect research, and donor communications. Ensures development data (donor PII, gift amounts) follows Tier 2 protections. Leads Blackbaud connector adoption and implementation.</td>
+                            <td>Sashia Moore, Director of Development Operations</td>
                         </tr>
                         <tr>
                             <td><strong>Operations Content Lead</strong></td>
-                            <td>Curates HR, finance, and operations documentation</td>
-                            <td>Andre Mendes</td>
+                            <td>Curates and organizes HR, finance, and operations documentation for ingestion into Claude Projects. Classifies content per data tier framework before upload. Ensures Tier 1 and Tier 2 materials are filtered appropriately and that only authorized content enters shared knowledge bases.</td>
+                            <td>Andre Mendes, Executive Operations Manager</td>
                         </tr>
                         <tr>
                             <td><strong>All Licensed Users</strong></td>
-                            <td>Complete training, follow data classification, report incidents</td>
+                            <td>Complete AI onboarding training, follow data classification protocols, report any incidents or concerns to the AI Governance Lead.</td>
                             <td>All staff with Enterprise seats</td>
                         </tr>
                     </tbody>
@@ -990,30 +1070,201 @@
         </div>
     </section>
 
-    <!-- 6. Acceptable Use Policy -->
+    <!-- 6. Onboarding & Fluency Requirements (NEW in v1.1) -->
+    <section id="onboarding">
+        <div class="container">
+            <h2 class="reveal">6. Onboarding &amp; Fluency Requirements</h2>
+            <div class="reveal">
+                <p>Platform access is conditional on training completion. Research shows it takes 2-3 months for skilled workers to reach competent AI use, and organizations that invest systematically in training achieve 60% adoption rates compared to 30% without. The governance framework protects data. The training program builds the fluency that makes governance intuitive rather than burdensome.</p>
+            </div>
+
+            <!-- 6.1 Training Prerequisites -->
+            <div class="subsection">
+                <h3 class="reveal">6.1 Training Prerequisites for Platform Access</h3>
+                <div class="reveal">
+                    <p>No staff member receives Claude Enterprise access until they complete the following three prerequisites. The AI Governance Lead verifies completion through the pilot hub prerequisite tracker before provisioning accounts.</p>
+                </div>
+                <div class="metrics-table reveal">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Requirement</th>
+                                <th>What It Covers</th>
+                                <th>Estimated Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Review the Start Here Guide and AI Governance Framework</strong></td>
+                                <td>Claude interfaces, organizational skills, data tier classification, approved use cases, and responsible use principles</td>
+                                <td>~30 minutes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Complete the Pre-Launch Assessment</strong></td>
+                                <td>Baseline fluency measurement across five constructs (AI orientation, learning orientation, current use, AI knowledge, applied skills) with embedded governance acknowledgment</td>
+                                <td>~30 minutes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Complete Two Anthropic Academy Courses</strong></td>
+                                <td><strong>Claude 101</strong> (platform basics, features, prompts, navigation) and <strong>AI Fluency for Nonprofits</strong> (4D framework applied to mission-driven work). Certificates required.</td>
+                                <td>~60 minutes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="reveal">
+                    <p>Account provisioning is conditioned on completing all three prerequisites. The AI Governance Lead reviews the prerequisite tracker and confirms completion before activating each user's Enterprise seat.</p>
+                    <p>Detailed training content, facilitation guides, and the full 60-day learning arc are maintained in the <strong>AI Onboarding Implementation Plan</strong> (separate document, managed by the AI Governance Lead). The prerequisite experience described above is the entry point into a structured progression that includes 1:1 coaching, hands-on activities (including a facilitated Governance Walk with scenario-based data tier classification practice), intermittent group learning sessions, and capstone module development.</p>
+                </div>
+            </div>
+
+            <!-- 6.2 Pilot Experience Structure -->
+            <div class="subsection">
+                <h3 class="reveal">6.2 Pilot Experience Structure (Phase 1)</h3>
+                <div class="reveal">
+                    <p>The leadership pilot operates through three complementary formats designed to build individual fluency while creating shared organizational capacity.</p>
+                </div>
+                <div class="metrics-table reveal">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Format</th>
+                                <th>Cadence</th>
+                                <th>Purpose</th>
+                                <th>Owner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Leadership-wide introduction</strong></td>
+                                <td>Pilot launch (April 6-10)</td>
+                                <td>Establish shared vocabulary, complete prerequisites, align on governance and expectations</td>
+                                <td>AI Governance Lead + Co-Owner</td>
+                            </tr>
+                            <tr>
+                                <td><strong>1:1 check-ins</strong></td>
+                                <td>Recurring throughout pilot</td>
+                                <td>Individualized coaching on each leader's workflow integration, use case development, and fluency growth. The primary vehicle for building competency.</td>
+                                <td>AI Governance Lead + Co-Owner</td>
+                            </tr>
+                            <tr>
+                                <td><strong>All-group meetings</strong></td>
+                                <td>Intermittent throughout pilot</td>
+                                <td>Shared problem-solving, peer learning, module development feedback, and collective progress check-ins</td>
+                                <td>AI Governance Lead</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Weekly pulse check-in</strong></td>
+                                <td>Weekly (self-directed, ~30 seconds)</td>
+                                <td>Track engagement, iteration frequency, confidence, and surface wins and friction points</td>
+                                <td>Individual participants</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 6.3 All-Staff Kickoff -->
+            <div class="subsection">
+                <h3 class="reveal">6.3 All-Staff Kickoff and Scaling (Phase 2)</h3>
+                <div class="reveal">
+                    <p>The leadership pilot produces two outputs that enable organization-wide scaling: trained leaders who can facilitate AI adoption within their functional areas, and training modules built by those leaders for their specific teams.</p>
+                    <p>The all-staff kickoff in June marks the transition from Phase 1 (leadership pilot) to Phase 2 (team expansion). Each pilot leader will have developed a training module tailored to their unit's workflows, governance considerations, and use cases. The kickoff is the delivery point for those modules, led by the leaders who built them.</p>
+                </div>
+            </div>
+
+            <!-- 6.4 Ongoing Fluency -->
+            <div class="subsection">
+                <h3 class="reveal">6.4 Ongoing Fluency Development</h3>
+                <div class="reveal">
+                    <p>Training is an ongoing requirement. The AI skills landscape changes rapidly, and one-time onboarding produces declining returns within 3-4 months without reinforcement.</p>
+                </div>
+                <div class="metrics-table reveal">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Cadence</th>
+                                <th>Activity</th>
+                                <th>Owner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Phase 2 (post-June kickoff)</strong></td>
+                                <td>Unit-level training delivered by pilot leaders using their modules</td>
+                                <td>Pilot leaders within each functional area</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Monthly (Phase 2+)</strong></td>
+                                <td>All-hands working sessions where staff share workflow integrations and troubleshoot challenges together</td>
+                                <td>AI Governance Lead + pilot leaders</td>
+                            </tr>
+                            <tr>
+                                <td><strong>By end of Phase 2</strong></td>
+                                <td>All team members complete Anthropic Academy's 5-course progression</td>
+                                <td>Individual responsibility, tracked by AI Governance Co-Owner</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Quarterly (Phase 3+)</strong></td>
+                                <td>Advanced topics, platform updates, and governance refresh</td>
+                                <td>AI Governance Lead</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 6.5 Champion Network -->
+            <div class="subsection">
+                <h3 class="reveal">6.5 Champion Network</h3>
+                <div class="reveal">
+                    <p>Each functional area will have 1-2 designated AI champions by the end of Phase 2. Champions emerge from the pilot cohort and from early adopters identified during the all-staff rollout. Their role: find and share practical team-specific examples, answer questions and mentor colleagues, surface feedback on what works and what creates friction, and participate in monthly governance feedback sessions.</p>
+                    <p>Champion identification begins during Phase 1 as pilot leaders build fluency through 1:1 coaching and group sessions. Leaders who demonstrate strong competency and willingness to facilitate peer learning become the natural champion candidates for their units. The AI Governance Lead maintains the champion roster and provides facilitation support. The <strong>Program Lead</strong> (Stephanie Gardner) owns champion development within coaching teams. The <strong>Development Co-Lead</strong> (Sashia Moore) owns champion development within fundraising workflows.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Acceptable Use Policy -->
     <section id="acceptable-use">
         <div class="container">
-            <h2 class="reveal">6. Acceptable Use Policy</h2>
+            <h2 class="reveal">7. Acceptable Use Policy</h2>
+            <div class="reveal">
+                <p>All Claude Enterprise users at DC CAP must adhere to the following guidelines. These are covered in the onboarding training described in Section 6 and acknowledged in writing by each user before receiving platform access. All Claude-generated errors are the responsibility of the user. Embedding personal review and expertise into every AI workflow is a non-negotiable practice at DC CAP.</p>
+            </div>
+
+            <!-- Encouraged Uses -->
+            <h3 class="reveal">7.1 Encouraged Uses</h3>
+            <div class="reveal">
+                <p>The following represent the kinds of high-value AI use this governance framework is designed to enable:</p>
+                <ul class="content-list">
+                    <li>Draft grant narratives, program reports, and strategic documents using shared Projects loaded with approved organizational language, past submissions, and data dictionaries.</li>
+                    <li>Analyze de-identified program data (Tier 3) for trends that inform coaching strategies, partnership evaluations, and board reporting.</li>
+                    <li>Prepare board and funder materials by working with strategic plans, OKR frameworks, and published outcome data in dedicated Projects.</li>
+                    <li>Streamline operational workflows through Microsoft 365 integration for email drafting, document review, and meeting preparation.</li>
+                    <li>Build and share team-specific Projects that capture institutional knowledge so best practices are replicated across the organization.</li>
+                </ul>
+            </div>
 
             <div class="aup-section">
                 <div class="aup-column required reveal">
-                    <h3>Required Practices</h3>
+                    <h3>7.2 Required Practices</h3>
                     <ul>
-                        <li>Verify data tier classification before uploading</li>
-                        <li>Use shared organizational Projects for team knowledge</li>
-                        <li>Review Claude outputs for accuracy before external use</li>
-                        <li>Report accidental Tier 1 data uploads immediately</li>
-                        <li>Separate personal projects from DC CAP projects</li>
+                        <li>Verify the data tier classification of any information before uploading or referencing it in Claude conversations.</li>
+                        <li>Use shared organizational Projects for team knowledge rather than duplicating documents across individual accounts.</li>
+                        <li>Review Claude outputs for accuracy before incorporating them into external communications, grant submissions, or reports. Claude is a drafting and analysis accelerant. Staff remain accountable for the quality and accuracy of all work product.</li>
+                        <li>Report any accidental upload of Tier 1 data to the AI Governance Lead immediately. The incident response protocol (Section 8) applies.</li>
+                        <li>Separate personal projects and chats from DC CAP projects. Every employee is expected to keep personal projects, build team projects, share projects with others, and separate them appropriately.</li>
                     </ul>
                 </div>
 
                 <div class="aup-column prohibited reveal">
-                    <h3>Prohibited Uses</h3>
+                    <h3>7.3 Prohibited Uses</h3>
                     <ul>
-                        <li>Uploading any Tier 1 (Restricted) data</li>
-                        <li>Automated decisions about scholar eligibility without human review</li>
-                        <li>Automated outreach, hiring, dismissal without human review</li>
-                        <li>Sharing Claude content externally without staff review and attribution</li>
+                        <li>Uploading or referencing any Tier 1 (Restricted) data, including scholar names linked to academic records, financial details, or family information.</li>
+                        <li>Using Claude to make automated decisions about scholar eligibility, placement, or support level without human review and approval.</li>
+                        <li>Using Claude to make automated outreach, hiring, dismissal, evaluation, and other decisions without human review and approval.</li>
+                        <li>Sharing Claude-generated content externally without staff review and attribution. All external communications remain staff-authored; Claude is a tool in the drafting process.</li>
                     </ul>
                 </div>
             </div>
@@ -1024,51 +1275,279 @@
         </div>
     </section>
 
-    <!-- 7. Incident Response Protocol -->
+    <!-- 8. Incident Response Protocol -->
     <section id="incident-response">
         <div class="container">
-            <h2 class="reveal">7. Incident Response Protocol</h2>
-            <p class="reveal">If accidental data upload occurs, follow these steps immediately:</p>
+            <h2 class="reveal">8. Incident Response Protocol</h2>
+            <p class="reveal">If Tier 1 data is accidentally uploaded to Claude or a potential data breach is identified, the following protocol applies:</p>
 
             <ol class="incident-steps">
                 <li class="reveal">
                     <div class="step-content">
                         <h4>Immediate Containment</h4>
-                        <p>Delete the conversation containing the data. Remove any shared links or access.</p>
+                        <p>The user who identified the incident deletes the conversation containing the data immediately. Claude's custom retention policy will process the deletion, but manual deletion accelerates removal.</p>
                     </div>
                 </li>
                 <li class="reveal">
                     <div class="step-content">
                         <h4>Notification</h4>
-                        <p>Notify AI Governance Lead within 2 hours; CEO/COO within 4 hours. Provide context and data description.</p>
+                        <p>Notify the AI Governance Lead (Preston Magouirk) within 2 hours of discovery. The Governance Lead notifies the CEO and COO within 4 hours.</p>
                     </div>
                 </li>
                 <li class="reveal">
                     <div class="step-content">
                         <h4>Assessment</h4>
-                        <p>Review audit logs for scope. Determine if data was shared or processed further.</p>
+                        <p>The Governance Lead reviews audit logs to determine the scope of the incident: what data was exposed, for how long, and whether it was referenced in any outputs.</p>
                     </div>
                 </li>
                 <li class="reveal">
                     <div class="step-content">
                         <h4>Remediation</h4>
-                        <p>Tighten access controls. Update training. Document lessons learned.</p>
+                        <p>Review and tighten access controls if the incident results from a permissions gap. Update training protocols and ensure immediate remediation when the incident results from user error.</p>
                     </div>
                 </li>
                 <li class="reveal">
                     <div class="step-content">
                         <h4>Documentation</h4>
-                        <p>Record incident in governance log with resolution and preventive measures.</p>
+                        <p>Record the incident, root cause, and corrective actions in the governance log. Present findings at the next quarterly governance review.</p>
                     </div>
                 </li>
             </ol>
+
+            <div class="callout success reveal">
+                <strong>Note on Anthropic's Data Handling:</strong> Anthropic confirms that Enterprise customer data is not used for model training by default. Deleted conversations are processed for removal within 30 days. Custom retention settings provide additional organizational control over data lifecycle. These protections mean that even in an incident scenario, the blast radius is contained by platform architecture.
+            </div>
         </div>
     </section>
 
-    <!-- 8. Governance Review Cycle -->
+    <!-- 9. Success Measurement Framework (NEW in v1.1) -->
+    <section id="measurement">
+        <div class="container">
+            <h2 class="reveal">9. Success Measurement Framework</h2>
+            <div class="reveal">
+                <p>Governance without measurement is compliance theater. We need to know whether this platform is producing the outcomes that justify the investment, and we need to know early enough to course-correct. The following framework measures success across three dimensions: Engagement (are people using it?), Proficiency (are they getting better?), and Impact (is it producing mission-relevant results?). Detailed metric definitions, tracking instruments, and collection schedules are maintained in the <strong>KPI Framework</strong> (separate operational document).</p>
+            </div>
+
+            <!-- Engagement -->
+            <div class="subsection">
+                <h3 class="reveal">Engagement</h3>
+                <div class="reveal">
+                    <p>These are leading indicators. They tell us whether staff are using the platform and building habits.</p>
+                </div>
+                <div class="metrics-table reveal">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Phase 1 Target (Day 60)</th>
+                                <th>Phase 2 Target</th>
+                                <th>Phase 3 Target</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Monthly active users</strong></td>
+                                <td>80%+ of pilot cohort (7+ of 9)</td>
+                                <td>60% of all licensed users by Month 4</td>
+                                <td>75% of all licensed users by Month 8</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prompts per participant per week</strong></td>
+                                <td>Baseline established Week 1; 15+ by Week 6</td>
+                                <td>15+ sustained</td>
+                                <td>20+</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Active user segmentation</strong></td>
+                                <td>Cohort shifting from Light (1-5/week) toward Moderate (6-19) and Heavy (20+)</td>
+                                <td>Majority in Moderate+</td>
+                                <td>Majority in Heavy</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Anthropic Academy completions</strong></td>
+                                <td>Claude 101 + AI Fluency for Nonprofits (prerequisite); Framework &amp; Foundations (recommended)</td>
+                                <td>5-course progression for all team members</td>
+                                <td>Required for new hires within 60 days</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="reveal">
+                    <p><em>Data source: Claude Enterprise admin panel (usage logs) + weekly check-in self-report. Tracked weekly starting Week 1.</em></p>
+                </div>
+            </div>
+
+            <!-- Proficiency -->
+            <div class="subsection">
+                <h3 class="reveal">Proficiency</h3>
+                <div class="reveal">
+                    <p>These metrics capture whether platform engagement translates into fluency development. Proficiency is the leading indicator that predicts workflow impact.</p>
+                </div>
+                <div class="metrics-table reveal">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Phase 1 Target (Day 60)</th>
+                                <th>Measurement</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Iteration frequency</strong></td>
+                                <td>60%+ of cohort reporting "A few times" or higher on weekly check-in</td>
+                                <td>Self-report (weekly check-in) + admin logs where available</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Observable fluency behaviors</strong></td>
+                                <td>70%+ of participants demonstrate 3+ behaviors (iteration on drafts, clarifying goals, questioning model reasoning, identifying missing context, specifying output formats, providing examples, fact-checking outputs)</td>
+                                <td>Biweekly observation starting Week 3; pre/post survey</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Session depth</strong></td>
+                                <td>Average conversation length increasing over time</td>
+                                <td>Enterprise admin data cross-referenced with self-report</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Workflow redesign documentation</strong></td>
+                                <td>Each participant identifies at least 1 workflow with before/after comparison; minimum 2 documented redesigns per unit (6 total)</td>
+                                <td>Templates deployed Week 3; tracked at Day 45 and Day 60</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="callout warning reveal">
+                    <strong>Early Warning:</strong> Any participant reporting "Never" on iteration for 2+ consecutive weeks triggers a 1:1 coaching conversation with the AI Governance Lead.
+                </div>
+            </div>
+
+            <!-- Impact -->
+            <div class="subsection">
+                <h3 class="reveal">Impact</h3>
+                <div class="reveal">
+                    <p>These are lagging indicators that connect AI-assisted proficiency to mission outcomes. We expect initial signal by Day 45 and reportable results by Day 60 for the pilot; Phase 2-3 targets are longer-horizon.</p>
+                </div>
+                <div class="metrics-table reveal">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Phase 1 Target</th>
+                                <th>Phase 2-3 Target</th>
+                                <th>Measurement</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Time savings evidence</strong></td>
+                                <td>Each participant documents at least 1 task with before/after time comparison</td>
+                                <td>Aggregated into "total hours redirected per week" by function</td>
+                                <td>Self-report + workflow redesign documentation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Quality improvement evidence</strong></td>
+                                <td>At least 3 examples of AI-assisted outputs rated higher quality than previous manual outputs (peer-assessed)</td>
+                                <td>Ongoing peer assessment integrated into champion sessions</td>
+                                <td>Standard quality rubric</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mission connection</strong></td>
+                                <td>At least 1 example per unit of AI-freed time redirected to high-value student interaction</td>
+                                <td>Grant cycle acceleration, coaching contact hour increases, program evaluation depth</td>
+                                <td>Unit-level tracking by champion + Program Lead</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Grant narrative first-draft cycle</strong></td>
+                                <td>Establish baseline hours per narrative</td>
+                                <td>25% reduction (Phase 2); 40% reduction (Phase 3)</td>
+                                <td>Self-report by Development team</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Coaching documentation time</strong></td>
+                                <td>Establish baseline hours per scholar</td>
+                                <td>15% reduction (Phase 2); 25% reduction (Phase 3)</td>
+                                <td>Self-report by coaching team</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Decision Gates -->
+            <div class="subsection">
+                <h3 class="reveal">Decision Gates</h3>
+                <div class="reveal">
+                    <p>The pilot measurement framework includes explicit Scale/Pause/Pivot thresholds at Day 45 and Day 60 to inform Q3 rollout decisions:</p>
+                </div>
+                <div class="gate-cards">
+                    <div class="gate-card scale reveal-scale">
+                        <h4>Scale</h4>
+                        <p><strong>Criteria:</strong> 70%+ monthly active users, 60%+ demonstrating iteration, 3+ documented workflow redesigns</p>
+                        <p><strong>Recommendation:</strong> Full Q3 rollout with cohort-based structure</p>
+                    </div>
+                    <div class="gate-card pause reveal-scale">
+                        <h4>Pause</h4>
+                        <p><strong>Criteria:</strong> 40-70% active users, proficiency plateau, budget or bandwidth constraints</p>
+                        <p><strong>Recommendation:</strong> Extend pilot 30 days; diagnose barriers before scaling</p>
+                    </div>
+                    <div class="gate-card pivot reveal-scale">
+                        <h4>Pivot</h4>
+                        <p><strong>Criteria:</strong> Below 40% active users, leadership misalignment, governance incidents</p>
+                        <p><strong>Recommendation:</strong> Restructure approach before investing further</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Governance-Specific Metrics -->
+            <div class="subsection">
+                <h3 class="reveal">Governance-Specific Metrics</h3>
+                <div class="metrics-table reveal">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Target</th>
+                                <th>Frequency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Tier 1 or Tier 2 data incidents</strong></td>
+                                <td>Zero</td>
+                                <td>Continuous, reported monthly</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Governance framework updates based on usage data</strong></td>
+                                <td>1+ per quarter</td>
+                                <td>Quarterly</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Staff governance confidence (self-reported)</strong></td>
+                                <td>80%+ report confidence in data tier classification by end of Phase 1</td>
+                                <td>Pre/post survey</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Audit log review completion</strong></td>
+                                <td>100% of scheduled reviews completed on time</td>
+                                <td>Monthly</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="reveal">
+                    <p>These metrics will be reported to the CEO monthly during Phase 1, quarterly during Phases 2-3, and included in the annual board briefing on AI adoption outcomes and risk posture (Section 10).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Governance Review Cycle -->
     <section id="governance-review">
         <div class="container">
-            <h2 class="reveal">8. Governance Review Cycle</h2>
+            <h2 class="reveal">10. Governance Review Cycle</h2>
+            <div class="reveal">
+                <p>This framework is a living document. Governance matures alongside organizational fluency with the platform. The following review cadence ensures continuous improvement.</p>
+            </div>
 
             <div class="review-table reveal">
                 <table>
@@ -1082,18 +1561,18 @@
                     <tbody>
                         <tr>
                             <td><strong>Monthly</strong></td>
-                            <td>Review audit logs, check for unauthorized access</td>
-                            <td>AI Governance Lead</td>
+                            <td>Review audit logs. Check for unauthorized data access patterns. Gather user feedback on friction points and productivity gains. Report engagement metrics (Section 9) to CEO.</td>
+                            <td>AI Governance Lead &amp; Co-Owner</td>
                         </tr>
                         <tr>
                             <td><strong>Quarterly</strong></td>
-                            <td>Formal governance review with leadership team</td>
-                            <td>AI Governance Lead + Executive Sponsor</td>
+                            <td>Formal governance review with leadership team. Update data classification decisions, revise acceptable use policy, assess phase progression. Review Anthropic platform updates for new capabilities or policy changes. Include staff feedback from champion network and quarterly survey. Report proficiency and early impact metrics (Section 9).</td>
+                            <td>AI Governance Lead &amp; Co-Owner + Executive Sponsor</td>
                         </tr>
                         <tr>
                             <td><strong>Annually</strong></td>
-                            <td>Comprehensive framework revision</td>
-                            <td>AI Governance Lead + CEO</td>
+                            <td>Comprehensive framework revision. Align with organizational strategic plan updates. Benchmark against peer nonprofit AI governance practices. Board briefing on AI adoption outcomes, full impact metrics (Section 9), and risk posture.</td>
+                            <td>AI Governance Lead &amp; Co-Owner + CEO</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1101,57 +1580,58 @@
         </div>
     </section>
 
-    <!-- 9. Alignment with Existing Policies -->
+    <!-- 11. Alignment with Existing Policies -->
     <section id="alignment">
         <div class="container">
-            <h2 class="reveal">9. Alignment with Existing Policies</h2>
+            <h2 class="reveal">11. Alignment with Existing Policies</h2>
             <div class="reveal">
-                <p>This AI Governance Framework aligns with and complements DC CAP's existing governance infrastructure:</p>
-                <ul style="margin-left: 2rem; margin-bottom: 1.5rem; list-style: disc;">
-                    <li><strong>GEAR UP Data Policy:</strong> All GEAR UP data handling complies with GEAR UP requirements. Tier 1 classification ensures restricted data is never uploaded.</li>
-                    <li><strong>Salesforce Data Governance:</strong> Claude can reference Salesforce via connector with appropriate access controls. SFDC data classification mirrors Claude tier system.</li>
-                    <li><strong>Employee Handbook / Acceptable Use:</strong> Claude Enterprise acceptable use policy extends existing IT security policies. All staff complete required training.</li>
-                    <li><strong>Partner MOUs:</strong> University and funder partnerships governed by existing MOUs. Claude Enterprise use must comply with contractual data handling obligations.</li>
+                <p>This AI Data Governance Framework operates within and reinforces DC CAP's existing policy infrastructure. It should be read alongside the following organizational policies:</p>
+                <ul class="content-list">
+                    <li><strong>GEAR UP Data Policy:</strong> Establishes data handling requirements for federally funded programming. The AI framework's Tier 1 restrictions exceed GEAR UP's data protection requirements.</li>
+                    <li><strong>Salesforce Data Governance:</strong> Defines field-level security, role-based access, and data sharing rules within the Education Cloud platform. The AI framework's classification tiers mirror and extend these protections.</li>
+                    <li><strong>Employee Handbook / Acceptable Use:</strong> Claude Enterprise use falls under existing technology acceptable use provisions. Section 7 of this framework provides AI-specific supplementary guidance.</li>
+                    <li><strong>Partner MOUs:</strong> University partnership agreements include data sharing provisions. Tier 2 classification of partner-shared confidential data respects these contractual obligations.</li>
+                    <li><strong>AI Onboarding Implementation Plan:</strong> Defines the 60-day training arc, session facilitation guides, competency progression, pre/post assessment instruments, and champion network development. Section 6 of this framework establishes the training prerequisites; the Implementation Plan provides the detailed curriculum.</li>
+                    <li><strong>KPI Framework:</strong> Operational measurement instrument with detailed metric definitions, collection schedules, tracking dashboards, and Scale/Pause/Pivot decision gates. Section 9 of this framework establishes governance-level targets; the KPI Framework provides the tracking infrastructure.</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- 10. Decision Log & Next Steps -->
+    <!-- 12. Decision Log & Next Steps -->
     <section id="decision-log">
         <div class="container">
-            <h2 class="reveal">10. Decision Log & Next Steps</h2>
+            <h2 class="reveal">12. Decision Log &amp; Next Steps</h2>
 
             <div class="decision-log">
                 <div class="decision-card reveal-scale">
                     <h4>Completed Actions</h4>
                     <ul>
-                        <li>Framework design and alignment audit</li>
-                        <li>Leadership stakeholder alignment</li>
-                        <li>Data classification workshop</li>
-                        <li>Security requirements review</li>
+                        <li>Enterprise order form signed with Anthropic. Nonprofit pricing confirmed. Initial seat count: 24.</li>
+                        <li>CEO and CSAO reviewed and approved this framework for pilot implementation.</li>
+                        <li>COO designated as AI Governance Co-Owner with full platform authority development path through end of Phase 1.</li>
                     </ul>
                 </div>
 
                 <div class="decision-card reveal-scale">
-                    <h4>Immediate Actions</h4>
+                    <h4>Immediate Actions (Weeks 1–4)</h4>
                     <ul>
-                        <li>Complete staff training module</li>
-                        <li>Configure SSO and SCIM with Microsoft Entra ID</li>
-                        <li>Set up Phase 1 pilot projects and connectors</li>
-                        <li>Establish monthly governance review cycle</li>
+                        <li>Execute 4-Week Kickoff Plan. Configure security infrastructure, build knowledge base, launch pilot cohort.</li>
+                        <li>COO assesses Microsoft Entra ID readiness for SSO integration.</li>
+                        <li>CSAO prepares onboarding training materials for Phase 1 pilot cohort.</li>
                     </ul>
                 </div>
 
                 <div class="decision-card reveal-scale">
                     <h4>Open Questions</h4>
                     <ul>
-                        <li>Additional connectors (Candid, Salesforce) timeline?</li>
-                        <li>External communications review SOP finalization?</li>
-                        <li>Custom skills library roadmap?</li>
-                        <li>Phase 2 expansion criteria and timeline?</li>
+                        <li>Should the board receive a briefing on AI adoption before or after the pilot phase? <strong>Recommendation:</strong> brief the board at the conclusion of Phase 1 with initial usage data and governance learnings.</li>
                     </ul>
                 </div>
+            </div>
+
+            <div class="strategic-note reveal">
+                <strong>Strategic Note:</strong> Governance documents built from actual usage patterns are more durable and practical than those designed in the abstract. The leadership pilot will generate the real-world data needed to refine this framework for Phase 2 expansion. The framework will be updated at the conclusion of Phase 1 based on pilot learnings.
             </div>
         </div>
     </section>
@@ -1159,19 +1639,19 @@
     <!-- Footer -->
     <footer>
         <p><strong>DC CAP Enterprise AI Leadership Pilot</strong></p>
-        <p>AI Data Governance Framework | Version 1.0 | February 2026</p>
-        <p style="margin-top: 1.5rem;"><a href="pilot_hub.html">← Return to Pilot Hub</a></p>
+        <p>AI Data Governance Framework | Version 1.1 | April 2026</p>
+        <p style="margin-top: 1.5rem;"><a href="pilot_hub.html">&larr; Return to Pilot Hub</a></p>
     </footer>
 
     <!-- Navigation Pill -->
     <div class="nav-pill">
-        <a href="pilot_hub.html">← Pilot Hub</a>
+        <a href="pilot_hub.html">&larr; Pilot Hub</a>
     </div>
 
     <script>
         // Smooth scroll to section and update nav
         const navLinks = document.querySelectorAll('nav.section-nav a');
-        const sections = document.querySelectorAll('section');
+        const sections = document.querySelectorAll('section[id]');
 
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
@@ -1181,7 +1661,6 @@
                 if (targetSection) {
                     targetSection.scrollIntoView({ behavior: 'smooth' });
                 }
-                updateActiveNav();
             });
         });
 
@@ -1222,7 +1701,7 @@
         reveals.forEach(reveal => revealObserver.observe(reveal));
 
         // Parent container visibility for stagger
-        const containers = document.querySelectorAll('.container, .phase-cards, .aup-section, .decision-log, .incident-steps');
+        const containers = document.querySelectorAll('.container, .phase-cards, .aup-section, .decision-log, .incident-steps, .gate-cards');
         containers.forEach(container => {
             const children = container.querySelectorAll('.reveal, .reveal-scale, .reveal-left');
             if (children.length > 0) {
