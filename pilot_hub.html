@@ -2038,201 +2038,133 @@
 </footer>
 
 <script>
-    // Newsletter Data
-    const newsletterEntries = [
-        {
-            date: "2026-04-06",
-            category: "prompt",
-            title: "The Before-and-After Prompt",
-            content: "Most people write their first prompt like a search query: short, vague, hoping Claude reads their mind. Here's the single most impactful change you can make: add context before your request. Instead of 'Write an email about the deadline,' try: 'I'm a program manager at DC CAP writing to scholarship applicants who haven't submitted their FAFSA yet. Write a warm, encouraging reminder email that explains why the FAFSA matters for their DC CAP scholarship and gives them a clear deadline. Keep it under 200 words.' The difference is dramatic. Context transforms Claude from a generic text generator into a knowledgeable colleague.",
-            tryThis: "Take a task you did last week. Write the worst possible prompt for it (under 10 words). Then rewrite it with context, audience, format, and constraints. Compare the outputs."
-        },
-        {
-            date: "2026-04-07",
-            category: "spotlight",
-            title: "Delegation: The Decision Before the Prompt",
-            content: "Delegation is the competency most people skip. Before you type a single word into Claude, you've already made a delegation decision: 'Is this a task AI should help with?' Good delegation means understanding both what Claude does well (drafting, summarizing, analyzing patterns, formatting) and what requires human judgment (final decisions on student welfare, sensitive communications, anything involving live relationships). The Delegation Map activity in Week 3 will help you map your recurring tasks on a grid. For now, start noticing: every time you open Claude, you've made a delegation choice. Was it a good one?",
-            tryThis: "Keep a running list today of every task you considered using Claude for. At the end of the day, mark each one: 'Good delegation' or 'Should have done this myself.' You'll start seeing patterns."
-        },
-        {
-            date: "2026-04-08",
-            category: "tooltip",
-            title: "Chat vs. Cowork: Pick the Right Tool",
-            content: "Chat (claude.ai) is your everyday thinking partner. Use it for quick drafts, brainstorming, one-off analysis, and anything where you need text output you'll copy elsewhere. Cowork (the desktop app) is your production studio. Use it when you need actual files — Word docs, PowerPoints, Excel workbooks — or when you want DC CAP's built-in Skills to handle the formatting and voice rules for you. A good rule of thumb: if you're going to copy-paste Claude's output into another application, Chat is fine. If you want Claude to produce the final deliverable directly, use Cowork.",
-            tryThis: "Open both Chat and Cowork today. Ask each the same question: 'Draft a one-paragraph summary of what DC CAP does for a new donor.' Compare the experience. Notice which felt more natural for this task."
-        },
-        {
-            date: "2026-04-09",
-            category: "sector",
-            title: "Anthropic's AI Fluency Index: What 10,000 Conversations Reveal",
-            content: "In February 2026, Anthropic published the AI Fluency Index — an analysis of 9,830 multi-turn conversations to identify what separates effective AI users from everyone else. The headline finding: iteration is the strongest predictor of fluency. Users who revised their prompts and pushed back on outputs demonstrated 2.67 additional fluency behaviors compared to 1.33 in users who accepted the first response. The uncomfortable finding: users are least critical of polished-looking outputs. Clean formatting and confident language reduce scrutiny — exactly when scrutiny matters most. This is why we built the 'Polished Output Trap' into Activity 4.",
-            tryThis: "Next time Claude gives you a response that looks great on first read, pause. Ask yourself: 'What would I check if a new hire wrote this?' Then check those things."
-        },
-        {
-            date: "2026-04-10",
-            category: "update",
-            title: "Your Anthropic Academy Certificate Matters",
-            content: "The AI Fluency for Nonprofits course you're completing this week was built in partnership with GivingTuesday and specifically adapted for organizations like DC CAP — teams with limited resources, multiple stakeholder accountabilities, and mission-driven work. The certificate you earn is recognized by Anthropic and signals that you've completed structured training in the 4D framework. Beyond the credential: the course covers the same competencies we'll practice hands-on during the pilot. Think of it as the conceptual foundation. The pilot activities are where you apply it to DC CAP's actual work.",
-            tryThis: "When you finish the course, screenshot your certificate and share it in the pilot Slack channel. Seeing your cohort complete the same milestone builds momentum."
-        },
-        {
-            date: "2026-04-20",
-            category: "prompt",
-            title: "The Iteration Habit",
-            content: "Your first supervised Claude session is this week. Here's the prompt habit that separates fluent users from beginners: treat the first output as a draft brief, not a final product. After Claude responds, don't just read it — respond to it. 'The tone is too formal for students. Make it warmer and cut the length by half.' 'Good structure, but the third paragraph assumes the reader knows what DCTAG is. Add a one-sentence explanation.' 'This is close. Now rewrite the opening to lead with the deadline instead of the background.' Each iteration teaches Claude more about what you need. Three rounds of feedback typically produces better output than one perfectly crafted prompt.",
-            tryThis: "In your supervised session, commit to at least three rounds of iteration on your first task. Document what changed with each round."
-        },
-        {
-            date: "2026-04-21",
-            category: "spotlight",
-            title: "Description: The Art of Telling Claude What You Actually Need",
-            content: "Description is the competency that improves fastest with practice. It covers three levels: Product Description (what do you want the output to look like?), Process Description (how should Claude approach the task?), and Performance Description (how should Claude behave during the conversation?). Most beginners only use Product Description: 'Write me an email.' Intermediate users add Process Description: 'Think through the key points first, then draft the email, then review it for tone.' Advanced users add Performance Description: 'Be direct and concise. If my request is ambiguous, ask clarifying questions before drafting. Push back if my framing sounds defensive.' All three levels are available to you right now.",
-            tryThis: "Write a prompt that uses all three Description levels. Notice how Claude's behavior changes when you specify the process and performance, not just the product."
-        },
-        {
-            date: "2026-04-22",
-            category: "tooltip",
-            title: "Skills: Your Organization's Intelligence, Encoded",
-            content: "DC CAP has 24 custom Skills built into Cowork. Each one encodes organizational knowledge — voice standards, framing rules, policy accuracy checks, document formats — that would normally live in someone's head or a style guide nobody reads. You don't activate Skills manually. Just describe what you need in natural language: 'Write an email to university partners about the preference deadline' triggers the partner outreach skill automatically. 'Audit this grant narrative' triggers the adversarial audit. The key insight: Skills make Claude's output DC CAP-specific. Without Skills, Claude writes generic nonprofit content. With Skills, Claude writes like someone who has read every DC CAP style guide, policy document, and brand guideline.",
-            tryThis: "In Cowork, try triggering three different Skills using only natural language. Don't look at the trigger descriptions. See which ones you can activate intuitively."
-        },
-        {
-            date: "2026-04-23",
-            category: "sector",
-            title: "The $100M Claude Partner Network",
-            content: "Anthropic launched the Claude Partner Network in early 2026 with $100M in investment — a signal that enterprise AI adoption is moving from experimentation to infrastructure. Deloitte has trained over 1,000 AI professionals through the program. Accenture launched a multi-year partnership focused on enterprise AI transformation across industries. For DC CAP, this matters because the tools, training, and governance frameworks are maturing fast. The 4D framework we're using in this pilot is the same one Anthropic's partners use to train Fortune 500 companies. DC CAP is applying enterprise-grade methodology at nonprofit scale. That's a story worth telling to funders.",
-            tryThis: "Think about one way DC CAP's AI pilot could strengthen a future grant narrative. Write it down. You'll use this in the capstone."
-        },
-        {
-            date: "2026-04-24",
-            category: "update",
-            title: "Projects: The Feature Most Teams Underuse",
-            content: "Projects in Claude are shared workspaces where your entire team operates under the same context. You write Project Instructions once — who DC CAP is, what this workflow serves, the audience, the voice rules — and every conversation in that Project inherits them. No more re-explaining DC CAP's mission every session. Your teammates can see each other's conversations. If someone drafted the executive summary yesterday, you can pick up where they left off. The Innovation Hub has already built Projects for grants, board materials, and student communications. During the pilot, you'll set up a Project for your own functional area.",
-            tryThis: "Think about one recurring workflow in your unit that involves multiple people and Claude. Write a draft of the Project Instructions you'd use. Bring it to the next lunchtime office hours."
-        },
-        {
-            date: "2026-04-27",
-            category: "prompt",
-            title: "The Constraint That Improves Everything",
-            content: "Here's a prompt upgrade that works for any task: add a constraint about what Claude should NOT do. 'Draft this board memo. Do not use bullet points — write in continuous prose. Do not exceed one page. Do not use the phrase 'it is important to note.'' Constraints narrow the output space. They force Claude away from its defaults (which tend toward generic, bulleted, AI-sounding content) and toward the specific style you need. DC CAP's Skills already encode many constraints — voice rules, framing rules, length limits. When you're working in Chat without Skills, you need to provide these constraints yourself.",
-            tryThis: "Take a prompt you used this week. Add three constraints (one about format, one about tone, one about length). Run both versions and compare."
-        },
-        {
-            date: "2026-04-28",
-            category: "spotlight",
-            title: "Discernment: The Competency That Protects Your Reputation",
-            content: "Discernment is the ability to evaluate whether Claude's output is actually good — accurate, appropriately toned, correctly framed, and ready for the stated audience. Anthropic's AI Fluency Index found that most users iterate frequently but are significantly less critical of outputs that look polished. Clean formatting reduces scrutiny. This is precisely backwards. The time you most need Discernment is when the output looks ready to send. The pre-send checklist from your Start Here card applies every single time: Is the content factually accurate? Does the tone match the audience? Is the data framing correct? Would you sign your name to this? If any answer is 'I'm not sure,' the answer is 'not yet.'",
-            tryThis: "Pull up the last Claude output you used for real work. Run it through the four-question checklist. Be honest about whether you checked all four before you sent it."
-        }
-    ];
+    // ── Daily Briefing: JSON-driven rendering ──
 
-    // Utility: Format date
-    function formatDate(dateStr) {
-        const date = new Date(dateStr + 'T00:00:00');
-        const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
-        return date.toLocaleDateString('en-US', options);
-    }
-
-    // Utility: Get category label and color
+    // Category definitions (new 6-pillar system + legacy fallbacks)
     function getCategoryInfo(category) {
         const categories = {
-            prompt: { label: 'Prompt of the Week', class: 'category-prompt' },
-            spotlight: { label: '4D Spotlight', class: 'category-spotlight' },
-            tooltip: { label: 'Tool Tip', class: 'category-tooltip' },
-            sector: { label: 'AI in the Sector', class: 'category-sector' },
-            update: { label: 'Claude Update', class: 'category-update' }
+            foundational: { label: 'Foundational Learning', class: 'category-foundational' },
+            tips:         { label: 'Tips & Tricks',         class: 'category-tips' },
+            governance:   { label: 'Governance',            class: 'category-governance' },
+            trends:       { label: 'Emerging Trends',       class: 'category-trends' },
+            advanced:     { label: 'Advanced Topics',       class: 'category-advanced' },
+            news:         { label: 'News & Extra',          class: 'category-news' },
+            // Legacy mappings for backward compatibility with pre-v2 entries
+            prompt:    { label: 'Foundational Learning', class: 'category-foundational' },
+            spotlight: { label: 'Governance',            class: 'category-governance' },
+            tooltip:   { label: 'Tips & Tricks',         class: 'category-tips' },
+            sector:    { label: 'Emerging Trends',       class: 'category-trends' },
+            update:    { label: 'News & Extra',          class: 'category-news' }
         };
-        return categories[category] || { label: category, class: 'category-prompt' };
+        return categories[category] || { label: category, class: 'category-foundational' };
     }
 
-    // Initialize newsletter
-    function initializeNewsletter() {
-        const today = new Date();
+    function formatDate(dateStr) {
+        const date = new Date(dateStr + 'T00:00:00');
+        return date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    }
 
-        // Filter entries: only show entries with date <= today
-        const visibleEntries = newsletterEntries.filter(entry => {
+    function escapeHtml(text) {
+        const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+        return text.replace(/[&<>"']/g, m => map[m]);
+    }
+
+    function renderFeaturedEntry(entry) {
+        const cat = getCategoryInfo(entry.category);
+        let html = `
+            <div class="featured-entry">
+                <div class="entry-date">${formatDate(entry.date)}</div>
+                <span class="entry-category ${cat.class}">${cat.label}</span>
+                <h3 class="entry-title">${escapeHtml(entry.title)}</h3>
+                <div class="entry-content">${escapeHtml(entry.content).replace(/\n/g, '<br>')}</div>
+                <div class="try-this">
+                    <div class="try-this-label">Try This</div>
+                    <div class="try-this-content">${escapeHtml(entry.tryThis).replace(/\n/g, '<br>')}</div>
+                </div>`;
+        if (entry.resource) {
+            html += `<div style="margin-top: 1rem; font-size: 0.9rem;"><a href="${escapeHtml(entry.resource)}" target="_blank" rel="noopener" style="color: var(--blue); text-decoration: underline;">Learn More →</a></div>`;
+        }
+        html += `</div>`;
+        return html;
+    }
+
+    function renderArchiveEntry(entry) {
+        const cat = getCategoryInfo(entry.category);
+        let resourceLink = '';
+        if (entry.resource) {
+            resourceLink = `<div style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="${escapeHtml(entry.resource)}" target="_blank" rel="noopener" style="color: var(--blue); text-decoration: underline;">Learn More →</a></div>`;
+        }
+        return `
+            <div class="archive-entry" onclick="toggleArchiveEntry(this)">
+                <div class="archive-entry-header">
+                    <div>
+                        <div class="archive-entry-meta">
+                            <span class="archive-entry-date">${formatDate(entry.date)}</span>
+                            <span class="entry-category ${cat.class}" style="padding: 0.25rem 0.5rem; font-size: 0.7rem;">${cat.label}</span>
+                        </div>
+                        <div class="archive-entry-title">${escapeHtml(entry.title)}</div>
+                    </div>
+                    <div style="color: #ccc; font-size: 1.5rem; margin-top: 0.25rem;">▼</div>
+                </div>
+                <div class="archive-entry-content">
+                    <div class="archive-entry-text">${escapeHtml(entry.content).replace(/\n/g, '<br>')}</div>
+                    <div class="try-this" style="margin-top: 1rem;">
+                        <div class="try-this-label">Try This</div>
+                        <div class="try-this-content">${escapeHtml(entry.tryThis).replace(/\n/g, '<br>')}</div>
+                    </div>
+                    ${resourceLink}
+                </div>
+            </div>`;
+    }
+
+    // Load briefings from JSON, with inline fallback
+    async function initializeNewsletter() {
+        const featuredContainer = document.getElementById('featured-entry-container');
+        const archiveContainer = document.getElementById('archive-entries-container');
+        let allEntries = [];
+
+        try {
+            const response = await fetch('briefings.json');
+            if (response.ok) {
+                const data = await response.json();
+                // Combine published entries (drafts are excluded until approved)
+                allEntries = (data.published || []).filter(e => e.status === 'published');
+            }
+        } catch (e) {
+            // JSON fetch failed — site may be running locally or file not yet deployed
+            console.warn('briefings.json not available, no entries to display.');
+        }
+
+        const today = new Date();
+        const visibleEntries = allEntries.filter(entry => {
             const entryDate = new Date(entry.date + 'T00:00:00');
             return entryDate <= today;
         });
 
-        const featuredContainer = document.getElementById('featured-entry-container');
-        const archiveContainer = document.getElementById('archive-entries-container');
-
         if (visibleEntries.length === 0) {
             featuredContainer.innerHTML = '<div class="no-entries-message">The Daily Briefing launches April 6, 2026.</div>';
+            archiveContainer.innerHTML = '';
             return;
         }
 
-        // Featured entry is the most recent one
-        const featuredEntry = visibleEntries[visibleEntries.length - 1];
-        const categoryInfo = getCategoryInfo(featuredEntry.category);
+        // Featured = most recent entry
+        const featured = visibleEntries[visibleEntries.length - 1];
+        featuredContainer.innerHTML = renderFeaturedEntry(featured);
 
-        const featuredHTML = `
-            <div class="featured-entry">
-                <div class="entry-date">${formatDate(featuredEntry.date)}</div>
-                <span class="entry-category ${categoryInfo.class}">${categoryInfo.label}</span>
-                <h3 class="entry-title">${escapeHtml(featuredEntry.title)}</h3>
-                <div class="entry-content">${escapeHtml(featuredEntry.content).replace(/\n/g, '<br>')}</div>
-                <div class="try-this">
-                    <div class="try-this-label">Try This</div>
-                    <div class="try-this-content">${escapeHtml(featuredEntry.tryThis).replace(/\n/g, '<br>')}</div>
-                </div>
-            </div>
-        `;
-
-        featuredContainer.innerHTML = featuredHTML;
-
-        // Archive entries (all except featured, in reverse chronological order)
-        const archiveEntries = visibleEntries.slice(0, -1).reverse();
-
-        if (archiveEntries.length === 0) {
+        // Archive = everything else, reverse chronological
+        const archive = visibleEntries.slice(0, -1).reverse();
+        if (archive.length === 0) {
             archiveContainer.innerHTML = '';
             return;
         }
 
         let archiveHTML = '<h3 style="color: var(--navy); margin-bottom: 1.5rem; font-family: var(--font-subhead); text-align: center;">Past Entries</h3>';
-
-        archiveEntries.forEach((entry, index) => {
-            const catInfo = getCategoryInfo(entry.category);
-            archiveHTML += `
-                <div class="archive-entry" onclick="toggleArchiveEntry(this)">
-                    <div class="archive-entry-header">
-                        <div>
-                            <div class="archive-entry-meta">
-                                <span class="archive-entry-date">${formatDate(entry.date)}</span>
-                                <span class="entry-category ${catInfo.class}" style="padding: 0.25rem 0.5rem; font-size: 0.7rem;">${catInfo.label}</span>
-                            </div>
-                            <div class="archive-entry-title">${escapeHtml(entry.title)}</div>
-                        </div>
-                        <div style="color: #ccc; font-size: 1.5rem; margin-top: 0.25rem;">▼</div>
-                    </div>
-                    <div class="archive-entry-content">
-                        <div class="archive-entry-text">${escapeHtml(entry.content).replace(/\n/g, '<br>')}</div>
-                        <div class="try-this" style="margin-top: 1rem;">
-                            <div class="try-this-label">Try This</div>
-                            <div class="try-this-content">${escapeHtml(entry.tryThis).replace(/\n/g, '<br>')}</div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        });
-
+        archive.forEach(entry => { archiveHTML += renderArchiveEntry(entry); });
         archiveContainer.innerHTML = archiveHTML;
     }
 
     function toggleArchiveEntry(element) {
         element.classList.toggle('expanded');
-    }
-
-    function escapeHtml(text) {
-        const map = {
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#039;'
-        };
-        return text.replace(/[&<>"']/g, m => map[m]);
     }
 
     // Navigation highlighting
