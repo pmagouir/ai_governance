@@ -892,6 +892,73 @@
             align-items: center;
         }
 
+        /* Certificate Attestation Styles */
+        .certificate-attestation {
+            margin-top: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: rgba(131, 82, 255, 0.04);
+            border: 1px solid rgba(131, 82, 255, 0.15);
+            border-radius: 8px;
+        }
+
+        .certificate-attestation.verified {
+            display: none;
+        }
+
+        .certificate-instructions {
+            font-size: 0.85rem;
+            color: var(--dark-gray);
+            margin-bottom: 0.6rem;
+            line-height: 1.4;
+        }
+
+        .certificate-input-row {
+            display: flex;
+            gap: 0.5rem;
+            align-items: stretch;
+        }
+
+        .certificate-input-row input {
+            flex: 1;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            min-height: 44px;
+        }
+
+        .certificate-input-row input:focus {
+            outline: none;
+            border-color: var(--purple);
+            box-shadow: 0 0 0 2px rgba(131, 82, 255, 0.15);
+        }
+
+        .certificate-verify-btn {
+            padding: 0.5rem 1.25rem;
+            background: var(--purple);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            min-height: 44px;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+
+        .certificate-verify-btn:hover {
+            background: #6b3de8;
+        }
+
+        .certificate-error {
+            margin-top: 0.4rem;
+            font-size: 0.82rem;
+            color: #c0392b;
+        }
+
         .flow-links {
             margin-top: 0.75rem;
             display: flex;
@@ -1687,8 +1754,16 @@
                         <span class="flow-time-badge">~1 hour</span>
                         <div class="flow-checkbox-container">
                             <div class="flow-checkbox-toggle">
-                                <input type="checkbox" id="check3">
-                                <label for="check3">Mark as complete</label>
+                                <input type="checkbox" id="check3" disabled>
+                                <label for="check3" id="check3Label">Not yet verified</label>
+                            </div>
+                            <div class="certificate-attestation" id="certificateAttestation">
+                                <p class="certificate-instructions">After completing both courses, paste your Anthropic Academy certificate URL or enter the name shown on your certificate to verify completion.</p>
+                                <div class="certificate-input-row">
+                                    <input type="text" id="certificateInput" placeholder="e.g. https://anthropic.skilljar.com/certificates/... or your certificate name" aria-label="Certificate URL or name">
+                                    <button type="button" id="certificateVerifyBtn" class="certificate-verify-btn">Verify</button>
+                                </div>
+                                <p class="certificate-error" id="certificateError" style="display:none;"></p>
                             </div>
                         </div>
                         <div class="flow-links">
@@ -2453,13 +2528,13 @@
         // Verified completion flags from actual page submissions
         const VERIFIED_FLAGS = {
             check1: 'dccap_survey_completed',
-            check2: 'dccap_starthere_completed'
+            check2: 'dccap_starthere_completed',
+            check3: 'dccap_academy_completed'
         };
 
         function restoreCheckboxState() {
-            // Check1 and Check2: auto-populate from verified localStorage flags
-            // These cannot be manually checked — they only activate when the
-            // participant actually completes the survey or start_here guide
+            // All three checkboxes: auto-populate from verified localStorage flags
+            // None can be manually checked — they only activate through verified actions
             try {
                 Object.entries(VERIFIED_FLAGS).forEach(([checkId, storageKey]) => {
                     const checkbox = document.getElementById(checkId);
@@ -2471,29 +2546,81 @@
                 });
             } catch(e) {}
 
-            // Check3 (Anthropic Academy): restore from URL hash (self-reported, external site)
-            const hash = window.location.hash.substring(1);
-            const params = new URLSearchParams(hash);
-            const check3 = document.getElementById('check3');
-            if (check3) {
-                check3.checked = params.get('c3') === '1';
-            }
+            // Hide certificate attestation form if already verified
+            try {
+                if (localStorage.getItem('dccap_academy_completed') === 'true') {
+                    const attestation = document.getElementById('certificateAttestation');
+                    if (attestation) attestation.classList.add('verified');
+                }
+            } catch(e) {}
 
             checkAllComplete();
         }
 
-        // Update URL hash when checkbox changes (only check3 is user-togglable)
+        // Certificate attestation handler
+        function initCertificateVerification() {
+            const verifyBtn = document.getElementById('certificateVerifyBtn');
+            const input = document.getElementById('certificateInput');
+            const errorEl = document.getElementById('certificateError');
+
+            if (!verifyBtn || !input) return;
+
+            verifyBtn.addEventListener('click', function() {
+                const value = input.value.trim();
+                if (!value || value.length < 3) {
+                    errorEl.textContent = 'Please enter your certificate URL or the name shown on your certificate.';
+                    errorEl.style.display = 'block';
+                    return;
+                }
+
+                errorEl.style.display = 'none';
+
+                // Store verified completion and certificate data
+                try {
+                    localStorage.setItem('dccap_academy_completed', 'true');
+                    localStorage.setItem('dccap_academy_certificate', value);
+                } catch(e) {}
+
+                // Update checkbox and label
+                const check3 = document.getElementById('check3');
+                const label = document.getElementById('check3Label');
+                if (check3) check3.checked = true;
+                if (label) label.textContent = 'Completed';
+
+                // Hide attestation form
+                const attestation = document.getElementById('certificateAttestation');
+                if (attestation) attestation.classList.add('verified');
+
+                // Send milestone with certificate data
+                const participantName = getParticipantName();
+                if (participantName) {
+                    sendMilestone(
+                        participantName,
+                        'Prerequisite 3: Anthropic Academy courses completed',
+                        'Onboarding',
+                        'pilot_hub.html',
+                        JSON.stringify({ certificate: value, method: 'attestation' })
+                    );
+                }
+
+                checkAllComplete();
+            });
+
+            // Allow Enter key to submit
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    verifyBtn.click();
+                }
+            });
+        }
+
+        // Update analytics when verified state changes
         function updateHashState() {
             const states = checkboxes.map((id) => {
                 const checkbox = document.getElementById(id);
                 return checkbox && checkbox.checked ? '1' : '0';
             });
-
-            // Only persist check3 in hash (check1/2 are verified via localStorage)
-            const check3 = document.getElementById('check3');
-            if (check3) {
-                window.location.hash = `c3=${check3.checked ? '1' : '0'}`;
-            }
 
             // Send analytics with real participant name
             sendCheckboxAnalytics(states);
@@ -2580,6 +2707,9 @@
 
         // Restore state on page load
         restoreCheckboxState();
+
+        // Initialize certificate attestation for Anthropic Academy
+        initCertificateVerification();
     }
 
     // Flow Diagram Management

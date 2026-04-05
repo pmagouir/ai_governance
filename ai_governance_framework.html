@@ -1026,7 +1026,7 @@
                         </tr>
                         <tr>
                             <td><strong>AI Governance Co-Owner</strong></td>
-                            <td>Co-owns platform governance and operations. Manages SSO/SCIM integration, coordinates with IT vendors, supports user onboarding and technical troubleshooting. Holds full platform operational authority by end of Phase 1. Participates in governance reviews and policy decisions alongside the AI Governance Lead.</td>
+                            <td>Co-owns platform governance and operations. Manages SSO/SCIM integration, coordinates with IT vendors, supports user onboarding and technical troubleshooting. Holds full platform operational authority, including independent incident response capability, by end of Phase 1. Serves as primary governance contact when AI Governance Lead is unavailable. Participates in governance reviews and policy decisions alongside the AI Governance Lead.</td>
                             <td>Angela Cammack, COO</td>
                         </tr>
                         <tr>
@@ -1266,6 +1266,11 @@
                         <li>Using Claude to make automated outreach, hiring, dismissal, evaluation, and other decisions without human review and approval.</li>
                         <li>Sharing Claude-generated content externally without staff review and attribution. All external communications remain staff-authored; Claude is a tool in the drafting process.</li>
                     </ul>
+
+                    <h3>7.4 Personal AI Tool Use with Organizational Data</h3>
+                    <p>DC CAP's data governance obligations apply regardless of which AI platform staff use. Claude Enterprise is DC CAP's approved AI platform because it provides the enterprise security controls, audit logging, data retention policies, and training data exclusions that protect our organization and our students. Personal AI accounts (ChatGPT, Google Gemini, Microsoft Copilot, or any other consumer AI service) lack these protections.</p>
+                    <p>Staff should not use personal AI accounts to process DC CAP data at any classification tier. Internal documents, student information, strategic plans, grant materials, partner communications, and any other organizational content should be worked with exclusively through Claude Enterprise. This policy exists because consumer AI platforms may use uploaded content for model training, lack audit trails required for governance compliance, and operate outside DC CAP's data retention and security infrastructure.</p>
+                    <p>If a staff member identifies a capability available in another AI platform that Claude Enterprise does not currently provide, they should raise it with the AI Governance Lead or Co-Owner. DC CAP's approach is to consolidate AI use within a governed, auditable environment rather than fragment it across unmonitored tools.</p>
                 </div>
             </div>
 
@@ -1291,7 +1296,7 @@
                 <li class="reveal">
                     <div class="step-content">
                         <h4>Notification</h4>
-                        <p>Notify the AI Governance Lead (Preston Magouirk) within 2 hours of discovery. The Governance Lead notifies the CEO and COO within 4 hours.</p>
+                        <p>Notify the AI Governance Lead (Preston Magouirk) or AI Governance Co-Owner (Angela Cammack) within 2 hours of discovery. Either can initiate the full response protocol. The responding Governance owner notifies the CEO within 4 hours.</p>
                     </div>
                 </li>
                 <li class="reveal">
@@ -1473,28 +1478,51 @@
                 </div>
             </div>
 
-            <!-- Decision Gates -->
+            <!-- Q1 Rollout Decision Framework -->
             <div class="subsection">
-                <h3 class="reveal">Decision Gates</h3>
+                <h3 class="reveal">Q1 Rollout Decision Framework</h3>
                 <div class="reveal">
-                    <p>The pilot measurement framework includes explicit Scale/Pause/Pivot thresholds at Day 45 and Day 60 to inform Q3 rollout decisions:</p>
+                    <p>The June board briefing presents pilot outcomes and a rollout recommendation. The recommendation is determined by the following pre-committed decision framework. Each pathway specifies the evidence required and the action it triggers, so the board receives a decision tool rather than a report.</p>
                 </div>
+
                 <div class="gate-cards">
                     <div class="gate-card scale reveal-scale">
-                        <h4>Scale</h4>
-                        <p><strong>Criteria:</strong> 70%+ monthly active users, 60%+ demonstrating iteration, 3+ documented workflow redesigns</p>
-                        <p><strong>Recommendation:</strong> Full Q3 rollout with cohort-based structure</p>
+                        <h4>Scale: Full Q1 Rollout</h4>
+                        <p><strong>All four conditions must be met:</strong></p>
+                        <ul style="margin: 0.5rem 0; padding-left: 1.25rem; font-size: 0.95rem;">
+                            <li>7+ of 9 pilot participants are monthly active users by Day 60</li>
+                            <li>Pre/post knowledge assessment shows measurable improvement across the cohort (median gain of 15%+ on scored constructs)</li>
+                            <li>6+ documented workflow redesigns with time-savings evidence across at least 4 of 6 units</li>
+                            <li>Zero Tier 1 data incidents; zero unresolved Tier 2 incidents</li>
+                        </ul>
+                        <p><strong>Board recommendation:</strong> Approve Q1 FY27 (July-September) rollout to all 24 licensed users via cohort-based onboarding. Budget: existing Enterprise license allocation plus facilitation time from Governance Lead and Co-Owner.</p>
                     </div>
                     <div class="gate-card pause reveal-scale">
-                        <h4>Pause</h4>
-                        <p><strong>Criteria:</strong> 40-70% active users, proficiency plateau, budget or bandwidth constraints</p>
-                        <p><strong>Recommendation:</strong> Extend pilot 30 days; diagnose barriers before scaling</p>
+                        <h4>Scale with Modifications</h4>
+                        <p><strong>Two or three of the four Scale conditions are met, with specific gaps:</strong></p>
+                        <ul style="margin: 0.5rem 0; padding-left: 1.25rem; font-size: 0.95rem;">
+                            <li>Active user rate is 5-6 of 9 (adoption variance by unit)</li>
+                            <li>Knowledge gains are positive but below 15% median threshold</li>
+                            <li>Fewer than 6 workflow redesigns, or redesigns concentrated in 2-3 units</li>
+                            <li>Governance record is clean</li>
+                        </ul>
+                        <p><strong>Board recommendation:</strong> Approve Q1 rollout with targeted modifications. Extend pilot by 30 days for underperforming units. Pair new cohort members with pilot graduates as mentors. Present a modified rollout timeline at the September board meeting.</p>
                     </div>
                     <div class="gate-card pivot reveal-scale">
-                        <h4>Pivot</h4>
-                        <p><strong>Criteria:</strong> Below 40% active users, leadership misalignment, governance incidents</p>
-                        <p><strong>Recommendation:</strong> Restructure approach before investing further</p>
+                        <h4>Pause and Restructure</h4>
+                        <p><strong>One or more of the following conditions are present:</strong></p>
+                        <ul style="margin: 0.5rem 0; padding-left: 1.25rem; font-size: 0.95rem;">
+                            <li>Fewer than 5 of 9 participants are active users by Day 60</li>
+                            <li>Pre/post knowledge assessment shows no measurable improvement</li>
+                            <li>Any Tier 1 data incident occurred during the pilot</li>
+                            <li>Leadership alignment has eroded (2+ participants disengaged after Week 4)</li>
+                        </ul>
+                        <p><strong>Board recommendation:</strong> Pause org-wide rollout. Conduct a root-cause analysis of pilot barriers. Present revised approach and timeline at the September board meeting. Maintain licenses for active pilot users during the diagnostic period.</p>
                     </div>
+                </div>
+
+                <div class="callout warning reveal">
+                    <strong>Pre-commitment matters.</strong> This framework was established before pilot outcomes are known. Defining decision criteria in advance prevents post-hoc rationalization and ensures the board receives an honest, evidence-driven recommendation regardless of outcome.
                 </div>
             </div>
 
@@ -1576,6 +1604,55 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10b. Long-Term Governance Sustainability -->
+    <section id="governance-sustainability">
+        <div class="container">
+            <h2 class="reveal">10b. Long-Term Governance Sustainability (Year 2+)</h2>
+            <div class="reveal">
+                <p>The review cadence above governs the pilot and initial rollout phases. Sustained AI governance requires infrastructure that outlasts any individual and adapts as the organization's AI maturity evolves. The following maintenance commitments ensure this framework remains a living system.</p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="reveal">Annual Framework Revision</h3>
+                <div class="reveal">
+                    <p>Each July (aligned with DC CAP's fiscal year), the AI Governance Lead and Co-Owner conduct a comprehensive framework revision. This includes updating data classification decisions based on the prior year's audit findings, incorporating new Anthropic platform capabilities, revising acceptable use policy based on observed usage patterns, and benchmarking against peer nonprofit AI governance practices. The revised framework is presented to the CEO and included in the annual board briefing on AI adoption outcomes.</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="reveal">Recurring Knowledge Assessment</h3>
+                <div class="reveal">
+                    <p>All licensed users complete the AI Fluency Assessment annually. The post-pilot version of the instrument (administered June 2026) becomes the baseline for ongoing measurement. Annual results are compared against prior-year scores to track organizational fluency trends, identify emerging knowledge gaps, and inform training investments. Results are reported in aggregate to the CEO and board; individual results are used for professional development conversations only.</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="reveal">New-Hire Onboarding Pathway</h3>
+                <div class="reveal">
+                    <p>Every new DC CAP employee with a Claude Enterprise license completes the onboarding prerequisites (assessment, Start Here guide, governance framework review, and Anthropic Academy courses) within their first 30 days. The AI Governance Co-Owner is responsible for ensuring new-hire onboarding is tracked and completed. New hires are paired with a trained colleague from their unit for their first two weeks of AI use.</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="reveal">Governance Role Succession</h3>
+                <div class="reveal">
+                    <p>The AI Governance Lead and Co-Owner roles carry institutional knowledge that must transfer smoothly during personnel transitions. Both roles maintain written documentation of platform configuration decisions, active governance issues, and in-progress policy changes. If either role transitions, a 30-day knowledge transfer period is initiated with the successor before the departing owner's last day. The remaining governance owner holds full operational authority during any transition period.</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="reveal">Quarterly Spot-Check Protocol</h3>
+                <div class="reveal">
+                    <p>Beginning in Year 2, the quarterly governance review includes a brief knowledge spot-check for all licensed users: 5 scenario-based questions drawn from the data classification tiers, incident response protocol, and acceptable use policy. The spot-check takes under 3 minutes, reinforces governance awareness, and surfaces areas where refresher training may be needed. Results are tracked in aggregate; individual results trigger a coaching conversation only if a user scores below the threshold on data classification items.</p>
+                </div>
+            </div>
+
+            <div class="callout success reveal">
+                <strong>Design Principle:</strong> Governance sustainability depends on making compliance easy and visible. Recurring assessments, structured onboarding, and role succession planning ensure that organizational AI fluency and safety practices deepen over time rather than decay after the initial training investment.
             </div>
         </div>
     </section>

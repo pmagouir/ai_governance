@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "version": "2.0",
+    "lastGenerated": "2026-04-05T00:00:00-04:00",
+    "lastPublished": null,
+    "categories": {
+      "foundational": { "label": "Foundational Learning", "class": "category-foundational" },
+      "tips": { "label": "Tips & Tricks", "class": "category-tips" },
+      "governance": { "label": "Governance", "class": "category-governance" },
+      "trends": { "label": "Emerging Trends", "class": "category-trends" },
+      "advanced": { "label": "Advanced Topics", "class": "category-advanced" },
+      "news": { "label": "News & Extra", "class": "category-news" }
+    },
+    "rotation": {
+      "monday": "foundational",
+      "tuesday": "tips",
+      "wednesday": "governance",
+      "thursday": "trends",
+      "friday": ["news", "rotating"]
+    }
+  },
+  "drafts": [],
+  "published": [
+    {
+      "date": "2026-04-06",
+      "category": "foundational",
+      "title": "The Before-and-After Prompt",
+      "content": "Most people write their first prompt like a search query: short, vague, hoping Claude reads their mind. Here's the single most impactful change you can make: add context before your request. Instead of 'Write an email about the deadline,' try: 'I'm a program manager at DC CAP writing to scholarship applicants who haven't submitted their FAFSA yet. Write a warm, encouraging reminder email that explains why the FAFSA matters for their DC CAP scholarship and gives them a clear deadline. Keep it under 200 words.' The difference is dramatic. Context transforms Claude from a generic text generator into a knowledgeable colleague.",
+      "tryThis": "Take a task you did last week. Write the worst possible prompt for it (under 10 words). Then rewrite it with context, audience, format, and constraints. Compare the outputs.",
+      "resource": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+      "status": "published"
+    },
+    {
+      "date": "2026-04-07",
+      "category": "foundational",
+      "title": "Delegation: The Decision Before the Prompt",
+      "content": "Delegation is the competency most people skip. Before you type a single word into Claude, you've already made a delegation decision: 'Is this a task AI should help with?' Good delegation means understanding both what Claude does well (drafting, summarizing, analyzing patterns, formatting) and what requires human judgment (final decisions on student welfare, sensitive communications, anything involving live relationships). The Delegation Map activity in Week 3 will help you map your recurring tasks on a grid. For now, start noticing: every time you open Claude, you've made a delegation choice. Was it a good one?",
+      "tryThis": "Keep a running list today of every task you considered using Claude for. At the end of the day, mark each one: 'Good delegation' or 'Should have done this myself.' You'll start seeing patterns.",
+      "resource": null,
+      "status": "published"
+    },
+    {
+      "date": "2026-04-08",
+      "category": "tips",
+      "title": "Chat vs. Cowork: Pick the Right Tool",
+      "content": "Chat (claude.ai) is your everyday thinking partner. Use it for quick drafts, brainstorming, one-off analysis, and anything where you need text output you'll copy elsewhere. Cowork (the desktop app) is your production studio. Use it when you need actual files — Word docs, PowerPoints, Excel workbooks — or when you want DC CAP's built-in Skills to handle the formatting and voice rules for you. A good rule of thumb: if you're going to copy-paste Claude's output into another application, Chat is fine. If you want Claude to produce the final deliverable directly, use Cowork.",
+      "tryThis": "Open both Chat and Cowork today. Ask each the same question: 'Draft a one-paragraph summary of what DC CAP does for a new donor.' Compare the experience. Notice which felt more natural for this task.",
+      "resource": null,
+      "status": "published"
+    },
+    {
+      "date": "2026-04-09",
+      "category": "trends",
+      "title": "Anthropic's AI Fluency Index: What 10,000 Conversations Reveal",
+      "content": "In February 2026, Anthropic published the AI Fluency Index — an analysis of 9,830 multi-turn conversations to identify what separates effective AI users from everyone else. The headline finding: iteration is the strongest predictor of fluency. Users who revised their prompts and pushed back on outputs demonstrated 2.67 additional fluency behaviors compared to 1.33 in users who accepted the first response. The uncomfortable finding: users are least critical of polished-looking outputs. Clean formatting and confident language reduce scrutiny — exactly when scrutiny matters most. This is why we built the 'Polished Output Trap' into Activity 4.",
+      "tryThis": "Next time Claude gives you a response that looks great on first read, pause. Ask yourself: 'What would I check if a new hire wrote this?' Then check those things.",
+      "resource": null,
+      "status": "published"
+    },
+    {
+      "date": "2026-04-10",
+      "category": "news",
+      "title": "Your Anthropic Academy Certificate Matters",
+      "content": "The AI Fluency for Nonprofits course you're completing this week was built in partnership with GivingTuesday and specifically adapted for organizations like DC CAP — teams with limited resources, multiple stakeholder accountabilities, and mission-driven work. The certificate you earn is recognized by Anthropic and signals that you've completed structured training in the 4D framework. Beyond the credential: the course covers the same competencies we'll practice hands-on during the pilot. Think of it as the conceptual foundation. The pilot activities are where you apply it to DC CAP's actual work.",
+      "tryThis": "When you finish the course, screenshot your certificate and share it in the pilot Slack channel. Seeing your cohort complete the same milestone builds momentum.",
+      "resource": "https://anthropic.skilljar.com",
+      "status": "published"
+    }
+  ],
+  "archive": []
+}
