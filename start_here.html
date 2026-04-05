@@ -844,7 +844,7 @@
             border-left: 5px solid #87B7D5;
         }
 
-        /* Concentric Circles Diagram */
+        /* Concentric Circles Diagram — Redesigned */
         .responsibility-circles-wrapper {
             display: flex;
             flex-direction: column;
@@ -854,85 +854,52 @@
 
         .responsibility-circles-container {
             position: relative;
-            width: clamp(300px, 90vw, 500px);
-            height: clamp(300px, 90vw, 500px);
-            max-width: 500px;
-            margin-bottom: clamp(1.5rem, 2vw, 2rem);
+            width: clamp(320px, 70vw, 440px);
+            height: clamp(320px, 70vw, 440px);
+            max-width: 440px;
+            margin-bottom: clamp(0.5rem, 1vw, 1rem);
         }
 
         .circles-svg {
             width: 100%;
             height: 100%;
-            filter: drop-shadow(0 4px 12px rgba(16, 26, 76, 0.08));
         }
 
-        .circle-ring {
-            fill: none;
-            transition: all 0.3s ease;
+        .circle-ring-group {
             cursor: pointer;
+            transition: opacity 0.3s ease;
         }
 
-        .circle-ring:hover {
-            filter: brightness(1.2);
+        .circle-ring-group:hover {
+            opacity: 0.85;
         }
 
-        .circle-ring.active {
-            filter: brightness(1.1);
+        .circle-ring-group.active circle {
+            stroke-width: 4;
         }
 
-        .circle-center {
-            fill: var(--navy);
-            transition: all 0.3s ease;
-        }
-
-        .person-icon {
-            fill: var(--white);
-            pointer-events: none;
-        }
-
-        .circles-label {
-            font-size: clamp(0.85rem, 1.5vw, 1rem);
-            font-weight: 600;
-            text-anchor: middle;
-            pointer-events: none;
-            transition: all 0.3s ease;
-        }
-
-        .circles-label-center {
-            font-size: clamp(0.9rem, 1.3vw, 1.05rem);
-            font-weight: 700;
-            fill: var(--white);
-            font-family: var(--font-subhead);
-        }
-
-        .circles-label-ring1 {
-            fill: var(--gold);
-            font-family: var(--font-subhead);
-        }
-
-        .circles-label-ring2 {
-            fill: var(--purple);
-            font-family: var(--font-subhead);
-        }
-
-        .circles-label-ring3 {
-            fill: var(--blue);
-            font-family: var(--font-subhead);
+        .circles-hint {
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+            color: var(--dark-gray);
+            text-align: center;
+            margin: 0;
+            opacity: 0.6;
+            font-style: italic;
+            font-family: var(--font-body);
         }
 
         .circle-expanded-card {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%) scale(0.8);
             background: var(--white);
             border-radius: clamp(8px, 1.5vw, 16px);
             padding: clamp(1.5rem, 2vw, 2rem);
-            box-shadow: 0 8px 32px rgba(16, 26, 76, 0.15);
+            box-shadow: 0 8px 32px rgba(16, 26, 76, 0.18);
             border-left: 5px solid var(--navy);
             opacity: 0;
             visibility: hidden;
-            transform: translate(-50%, -50%) scale(0.8);
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             z-index: 10;
             max-width: 320px;
@@ -948,24 +915,23 @@
         }
 
         .circle-expanded-card.ring1 {
-            border-left-color: var(--gold);
-            background: linear-gradient(135deg, rgba(252, 176, 23, 0.05), rgba(252, 176, 23, 0.02));
+            border-left-color: #FCB017;
+            background: linear-gradient(135deg, rgba(252, 176, 23, 0.08), rgba(252, 176, 23, 0.02));
         }
 
         .circle-expanded-card.ring2 {
-            border-left-color: var(--purple);
-            background: linear-gradient(135deg, rgba(131, 82, 255, 0.05), rgba(131, 82, 255, 0.02));
+            border-left-color: #6B3FA0;
+            background: linear-gradient(135deg, rgba(107, 63, 160, 0.08), rgba(107, 63, 160, 0.02));
         }
 
         .circle-expanded-card.ring3 {
-            border-left-color: var(--blue);
-            background: linear-gradient(135deg, rgba(135, 183, 213, 0.05), rgba(135, 183, 213, 0.02));
+            border-left-color: #87B7D5;
+            background: linear-gradient(135deg, rgba(135, 183, 213, 0.08), rgba(135, 183, 213, 0.02));
         }
 
         .circle-expanded-title {
             font-family: var(--font-subhead);
             font-size: clamp(1.05rem, 1.8vw, 1.3rem);
-            color: var(--navy);
             font-weight: 700;
             margin-bottom: 0.75rem;
         }
@@ -985,10 +951,11 @@
         }
 
         .circle-expanded-items li::before {
-            content: '•';
+            content: '\2713';
             position: absolute;
             left: 0;
             font-weight: bold;
+            color: var(--navy);
         }
 
         .circles-anchor {
@@ -997,7 +964,7 @@
             font-weight: 600;
             font-family: var(--font-subhead);
             text-align: center;
-            margin-top: clamp(1rem, 1.5vw, 1.5rem);
+            margin-top: clamp(0.5rem, 1vw, 1rem);
             line-height: 1.5;
         }
 
@@ -1005,45 +972,24 @@
         .responsibility-circles-wrapper.reveal {
             opacity: 0;
             transform: translateY(20px);
-            animation: revealUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
 
         .responsibility-circles-wrapper.reveal.visible {
             opacity: 1;
             transform: translateY(0);
-        }
-
-        @keyframes revealUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes ringReveal {
-            from {
-                opacity: 0;
-                r: 0;
-            }
-            to {
-                opacity: 1;
-                r: auto;
-            }
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         /* Mobile responsive */
         @media (max-width: 768px) {
             .responsibility-circles-container {
-                width: clamp(250px, 80vw, 400px);
-                height: clamp(250px, 80vw, 400px);
+                width: clamp(280px, 85vw, 380px);
+                height: clamp(280px, 85vw, 380px);
             }
 
             .circle-expanded-card {
-                max-width: 280px;
+                max-width: 260px;
+                padding: 1.25rem;
             }
         }
 
@@ -1735,65 +1681,108 @@
                 Every team leader in this pilot is the governance owner for their functional area's AI use. This means you are responsible for ensuring your team's Claude interactions meet DC CAP's standards for data security, output quality, and responsible use.
             </div>
 
-            <!-- Concentric Circles Diagram -->
+            <!-- Concentric Circles Diagram — Redesigned -->
             <div class="responsibility-circles-wrapper reveal">
                 <div class="responsibility-circles-container">
-                    <svg class="circles-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Background circle for click detection -->
-                        <circle cx="150" cy="150" r="150" fill="transparent" class="circles-bg" id="circles-bg"></circle>
+                    <svg class="circles-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <!-- Radial gradients for each band -->
+                            <radialGradient id="grad-ring3" cx="50%" cy="50%" r="50%">
+                                <stop offset="70%" stop-color="rgba(135, 183, 213, 0.18)" />
+                                <stop offset="100%" stop-color="rgba(135, 183, 213, 0.08)" />
+                            </radialGradient>
+                            <radialGradient id="grad-ring2" cx="50%" cy="50%" r="50%">
+                                <stop offset="70%" stop-color="rgba(107, 63, 160, 0.18)" />
+                                <stop offset="100%" stop-color="rgba(107, 63, 160, 0.10)" />
+                            </radialGradient>
+                            <radialGradient id="grad-ring1" cx="50%" cy="50%" r="50%">
+                                <stop offset="70%" stop-color="rgba(252, 176, 23, 0.20)" />
+                                <stop offset="100%" stop-color="rgba(252, 176, 23, 0.10)" />
+                            </radialGradient>
+                            <!-- Drop shadow filter -->
+                            <filter id="ring-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                                <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="rgba(16,26,76,0.10)" />
+                            </filter>
+                        </defs>
 
-                        <!-- Ring 3 (outermost, blue) -->
-                        <circle cx="150" cy="150" r="130" class="circle-ring ring3" id="ring3" data-ring="3" style="stroke: var(--blue); stroke-width: 3;"></circle>
+                        <!-- Background click target -->
+                        <circle cx="200" cy="200" r="200" fill="transparent" class="circles-bg" id="circles-bg"></circle>
 
-                        <!-- Ring 2 (middle, purple) -->
-                        <circle cx="150" cy="150" r="90" class="circle-ring ring2" id="ring2" data-ring="2" style="stroke: var(--purple); stroke-width: 3;"></circle>
+                        <!-- Ring 3: Data Security (outermost band) — filled annulus -->
+                        <g class="circle-ring-group" id="ring3" data-ring="3" filter="url(#ring-shadow)">
+                            <circle cx="200" cy="200" r="185" fill="url(#grad-ring3)" stroke="#87B7D5" stroke-width="2.5" />
+                            <!-- Inner cutout is handled by the next ring overlapping -->
+                        </g>
 
-                        <!-- Ring 1 (innermost, gold) -->
-                        <circle cx="150" cy="150" r="50" class="circle-ring ring1" id="ring1" data-ring="1" style="stroke: var(--gold); stroke-width: 3;"></circle>
+                        <!-- Ring 2: Output Quality (middle band) -->
+                        <g class="circle-ring-group" id="ring2" data-ring="2">
+                            <circle cx="200" cy="200" r="135" fill="url(#grad-ring2)" stroke="#6B3FA0" stroke-width="2.5" />
+                        </g>
 
-                        <!-- Center circle -->
-                        <circle cx="150" cy="150" r="35" class="circle-center" id="circle-center"></circle>
+                        <!-- Ring 1: Responsible Use (inner band) -->
+                        <g class="circle-ring-group" id="ring1" data-ring="1">
+                            <circle cx="200" cy="200" r="88" fill="url(#grad-ring1)" stroke="#FCB017" stroke-width="2.5" />
+                        </g>
 
-                        <!-- Person icon (simple SVG) -->
-                        <circle cx="150" cy="140" r="6" class="person-icon"></circle>
-                        <path d="M 150 148 L 145 160 L 150 155 L 155 160" class="person-icon" fill="var(--white)"></path>
+                        <!-- Center circle: "You" -->
+                        <circle cx="200" cy="200" r="48" fill="#101A4C" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
 
-                        <!-- Labels -->
-                        <text x="150" y="155" class="circles-label circles-label-center">You</text>
-                        <text x="150" y="70" class="circles-label circles-label-ring1" id="label-ring1">Responsible Use</text>
-                        <text x="150" y="35" class="circles-label circles-label-ring2" id="label-ring2">Output Quality</text>
-                        <text x="150" y="5" class="circles-label circles-label-ring3" id="label-ring3">Data Security</text>
+                        <!-- Person icon — clean silhouette -->
+                        <circle cx="200" cy="188" r="8" fill="white" opacity="0.9" />
+                        <ellipse cx="200" cy="210" rx="12" ry="9" fill="white" opacity="0.9" />
+
+                        <!-- Center label -->
+                        <text x="200" y="234" text-anchor="middle" fill="white" font-family="var(--font-subhead)" font-size="13" font-weight="700" opacity="0.95">YOU</text>
+
+                        <!-- Ring 1 label — centered in band (midpoint of r=48 and r=88 → ~68) -->
+                        <text x="200" y="128" text-anchor="middle" fill="#9A6D00" font-family="var(--font-subhead)" font-size="12.5" font-weight="700" letter-spacing="0.5">Responsible Use</text>
+                        <text x="200" y="278" text-anchor="middle" fill="#9A6D00" font-family="var(--font-subhead)" font-size="10" font-weight="500" opacity="0.7">Diligence</text>
+
+                        <!-- Ring 2 label — centered in band (midpoint of r=88 and r=135 → ~112) -->
+                        <text x="200" y="80" text-anchor="middle" fill="#6B3FA0" font-family="var(--font-subhead)" font-size="12.5" font-weight="700" letter-spacing="0.5">Output Quality</text>
+                        <text x="200" y="326" text-anchor="middle" fill="#6B3FA0" font-family="var(--font-subhead)" font-size="10" font-weight="500" opacity="0.7">Discernment</text>
+
+                        <!-- Ring 3 label — centered in band (midpoint of r=135 and r=185 → ~160) -->
+                        <text x="200" y="34" text-anchor="middle" fill="#4A7C99" font-family="var(--font-subhead)" font-size="12.5" font-weight="700" letter-spacing="0.5">Data Security</text>
+                        <text x="200" y="376" text-anchor="middle" fill="#4A7C99" font-family="var(--font-subhead)" font-size="10" font-weight="500" opacity="0.7">Delegation</text>
+
+                        <!-- Click affordance hint ring indicators -->
+                        <circle cx="200" cy="200" r="88" fill="none" stroke="#FCB017" stroke-width="0" class="ring-pulse" opacity="0">
+                            <animate attributeName="stroke-width" values="0;4;0" dur="3s" repeatCount="indefinite" begin="1s" />
+                            <animate attributeName="opacity" values="0;0.4;0" dur="3s" repeatCount="indefinite" begin="1s" />
+                        </circle>
                     </svg>
 
                     <!-- Expanded cards for each ring (hidden by default) -->
                     <div class="circle-expanded-card ring1" id="card-ring1">
-                        <h3 class="circle-expanded-title">Responsible Use</h3>
+                        <h3 class="circle-expanded-title" style="color: #9A6D00;">Responsible Use</h3>
                         <ul class="circle-expanded-items">
-                            <li>Iterate on outputs</li>
-                            <li>Own your final product</li>
-                            <li>Disclose AI involvement</li>
+                            <li>Iterate on outputs before finalizing</li>
+                            <li>Own your final product fully</li>
+                            <li>Disclose AI involvement when appropriate</li>
                         </ul>
                     </div>
 
                     <div class="circle-expanded-card ring2" id="card-ring2">
-                        <h3 class="circle-expanded-title">Output Quality</h3>
+                        <h3 class="circle-expanded-title" style="color: #6B3FA0;">Output Quality</h3>
                         <ul class="circle-expanded-items">
-                            <li>Evaluate accuracy</li>
-                            <li>Review for bias</li>
-                            <li>Check against policy</li>
+                            <li>Evaluate accuracy of every output</li>
+                            <li>Review for bias and blind spots</li>
+                            <li>Check against DC CAP policy</li>
                         </ul>
                     </div>
 
                     <div class="circle-expanded-card ring3" id="card-ring3">
-                        <h3 class="circle-expanded-title">Data Security</h3>
+                        <h3 class="circle-expanded-title" style="color: #4A7C99;">Data Security</h3>
                         <ul class="circle-expanded-items">
-                            <li>Classify before uploading</li>
-                            <li>Never share Tier 1 data</li>
+                            <li>Classify data before uploading</li>
+                            <li>Never share Tier 1 restricted data</li>
                             <li>Follow the governance framework</li>
                         </ul>
                     </div>
                 </div>
 
+                <p class="circles-hint">Click any ring to explore responsibilities</p>
                 <div class="circles-anchor">Your choices protect DC CAP scholars and families</div>
             </div>
 
@@ -2042,11 +2031,11 @@
         }
         // Concentric Circles Diagram Interaction
         function initConcentricCircles() {
-            const rings = document.querySelectorAll('.circle-ring');
+            const rings = document.querySelectorAll('.circle-ring-group');
             const expandedCards = document.querySelectorAll('.circle-expanded-card');
             const circlesBg = document.getElementById('circles-bg');
+            const hint = document.querySelector('.circles-hint');
 
-            // Create a map for easy access
             const ringMap = {};
             rings.forEach(ring => {
                 const ringNum = ring.getAttribute('data-ring');
@@ -2056,7 +2045,6 @@
                 };
             });
 
-            // Handle ring clicks
             rings.forEach(ring => {
                 ring.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -2064,38 +2052,47 @@
                     toggleRingCard(ringNum);
                 });
 
-                // Touch events for mobile
                 ring.addEventListener('touchend', (e) => {
+                    e.preventDefault();
                     e.stopPropagation();
                     const ringNum = ring.getAttribute('data-ring');
                     toggleRingCard(ringNum);
                 });
             });
 
-            // Handle background clicks to close cards
-            circlesBg.addEventListener('click', () => {
-                expandedCards.forEach(card => {
-                    card.classList.remove('visible');
+            if (circlesBg) {
+                circlesBg.addEventListener('click', () => {
+                    closeAll();
                 });
+            }
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.responsibility-circles-container')) {
+                    closeAll();
+                }
             });
+
+            function closeAll() {
+                expandedCards.forEach(card => card.classList.remove('visible'));
+                rings.forEach(r => r.classList.remove('active'));
+            }
 
             function toggleRingCard(ringNum) {
                 const card = ringMap[ringNum].card;
                 if (!card) return;
 
-                // Close other cards
-                expandedCards.forEach(c => {
-                    if (c !== card) {
-                        c.classList.remove('visible');
-                    }
-                });
+                const isOpen = card.classList.contains('visible');
 
-                // Toggle current card
-                card.classList.toggle('visible');
+                closeAll();
+
+                if (!isOpen) {
+                    card.classList.add('visible');
+                    ringMap[ringNum].element.classList.add('active');
+                    if (hint) hint.style.opacity = '0';
+                }
             }
         }
 
-        // Initialize circles on load
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initConcentricCircles);
         } else {
