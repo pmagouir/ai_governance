@@ -139,6 +139,131 @@
             border-bottom-color: var(--purple);
         }
 
+        /* Identity Gate Overlay */
+        .identity-gate-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(16, 26, 76, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.4s ease;
+        }
+
+        .identity-gate-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .identity-gate-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: clamp(2rem, 4vw, 3rem);
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .identity-gate-card h2 {
+            font-family: var(--font-subhead);
+            color: var(--navy);
+            font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+            margin-bottom: 0.75rem;
+        }
+
+        .identity-gate-card p {
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .identity-gate-card input[type="text"] {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .identity-gate-card input[type="text"]:focus {
+            outline: none;
+            border-color: var(--purple);
+        }
+
+        .identity-gate-card input[type="text"].error {
+            border-color: #E63946;
+        }
+
+        .identity-gate-card .gate-error-msg {
+            color: #E63946;
+            font-size: 0.85rem;
+            margin-top: -0.75rem;
+            margin-bottom: 0.75rem;
+            display: none;
+        }
+
+        .identity-gate-card button {
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            background: var(--purple);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-subhead);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            min-height: 44px;
+        }
+
+        .identity-gate-card button:hover {
+            background: #6b3de8;
+        }
+
+        .identity-gate-logo {
+            margin-bottom: 1.25rem;
+        }
+
+        .identity-gate-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        /* Participant greeting bar */
+        .participant-greeting {
+            background: linear-gradient(135deg, rgba(131, 82, 255, 0.08), rgba(135, 183, 213, 0.08));
+            padding: 0.5rem 1rem;
+            text-align: right;
+            font-family: var(--font-subhead);
+            font-size: 0.85rem;
+            color: var(--navy);
+            border-bottom: 1px solid rgba(131, 82, 255, 0.15);
+        }
+
+        .participant-greeting span {
+            font-weight: 600;
+        }
+
+        .participant-greeting a {
+            font-size: 0.8rem;
+            color: var(--purple);
+            margin-left: 1rem;
+            cursor: pointer;
+        }
+
         /* Sections */
         section {
             scroll-margin-top: 80px;
@@ -1301,6 +1426,26 @@
 </head>
 <body>
 
+<!-- Identity Gate Overlay -->
+<div class="identity-gate-overlay" id="identityGate">
+    <div class="identity-gate-card">
+        <div class="identity-gate-logo">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23101A4C'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-weight='bold' font-size='18' fill='white'%3EDC%3C/text%3E%3C/svg%3E" alt="DC CAP">
+        </div>
+        <h2>Welcome to the AI Leadership Pilot</h2>
+        <p>Enter your full name to begin tracking your onboarding progress. You'll only need to do this once.</p>
+        <input type="text" id="gateNameInput" placeholder="Your full name (e.g., Angela Cammack)" autocomplete="name">
+        <p class="gate-error-msg" id="gateError">Please enter your full name to continue.</p>
+        <button id="gateSubmitBtn">Get Started</button>
+    </div>
+</div>
+
+<!-- Participant Greeting Bar -->
+<div class="participant-greeting" id="participantGreeting" style="display:none;">
+    Signed in as <span id="greetingName"></span>
+    <a id="changeIdentityLink">Not you?</a>
+</div>
+
 <!-- Navigation -->
 <nav>
     <div style="display:flex;align-items:center;justify-content:center;padding:clamp(0.5rem,1.5vw,1rem) clamp(1rem,3vw,3rem) 0;">
@@ -2200,6 +2345,97 @@
     }
 
 
+    // ==================== IDENTITY GATE ====================
+    const LOCALSTORAGE_KEY = 'dccap_participant_name';
+
+    function getParticipantName() {
+        try { return localStorage.getItem(LOCALSTORAGE_KEY) || ''; }
+        catch(e) { return ''; }
+    }
+
+    function setParticipantName(name) {
+        try { localStorage.setItem(LOCALSTORAGE_KEY, name.trim()); }
+        catch(e) { /* localStorage unavailable */ }
+    }
+
+    function initIdentityGate() {
+        const overlay = document.getElementById('identityGate');
+        const greeting = document.getElementById('participantGreeting');
+        const greetingName = document.getElementById('greetingName');
+        const nameInput = document.getElementById('gateNameInput');
+        const submitBtn = document.getElementById('gateSubmitBtn');
+        const errorMsg = document.getElementById('gateError');
+        const changeLink = document.getElementById('changeIdentityLink');
+
+        const storedName = getParticipantName();
+
+        if (storedName) {
+            // Already identified: hide gate, show greeting
+            overlay.classList.add('hidden');
+            setTimeout(() => { overlay.style.display = 'none'; }, 400);
+            greeting.style.display = 'block';
+            greetingName.textContent = storedName;
+        }
+
+        submitBtn.addEventListener('click', handleGateSubmit);
+        nameInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') handleGateSubmit();
+        });
+
+        function handleGateSubmit() {
+            const name = nameInput.value.trim();
+            if (!name || name.length < 2) {
+                nameInput.classList.add('error');
+                errorMsg.style.display = 'block';
+                nameInput.focus();
+                return;
+            }
+            setParticipantName(name);
+            overlay.classList.add('hidden');
+            setTimeout(() => { overlay.style.display = 'none'; }, 400);
+            greeting.style.display = 'block';
+            greetingName.textContent = name;
+
+            // Send a milestone that this participant visited the hub
+            sendMilestone(name, 'Pilot Hub first visit', 'Onboarding', 'pilot_hub.html', '');
+        }
+
+        changeLink.addEventListener('click', function() {
+            // Re-show the gate for name correction
+            overlay.style.display = 'flex';
+            setTimeout(() => { overlay.classList.remove('hidden'); }, 10);
+            greeting.style.display = 'none';
+            nameInput.value = getParticipantName();
+            nameInput.focus();
+            nameInput.select();
+        });
+    }
+
+    // ==================== ANALYTICS ====================
+    const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
+
+    function sendMilestone(participantName, milestone, phase, pageSource, details) {
+        const payload = JSON.stringify({
+            type: 'milestone',
+            participant_name: participantName,
+            milestone: milestone,
+            phase: phase,
+            page_source: pageSource,
+            details: details
+        });
+        fetch(SHEET_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: payload,
+            redirect: 'follow'
+        }).catch(() => fetch(SHEET_ENDPOINT, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: payload
+        })).catch(err => console.error('Analytics error:', err));
+    }
+
     // Checkbox persistence and analytics
     function initializeCheckboxPersistence() {
         const checkboxes = ['check1', 'check2', 'check3'];
@@ -2217,7 +2453,6 @@
                 }
             });
 
-            // Check if all are checked and show congratulations message
             checkAllComplete();
         }
 
@@ -2231,75 +2466,38 @@
             const newHash = `c1=${states[0]}&c2=${states[1]}&c3=${states[2]}`;
             window.location.hash = newHash;
 
-            // Send analytics data
-            sendAnalytics();
+            // Send analytics with real participant name
+            sendCheckboxAnalytics(states);
 
-            // Check if all are completed
             checkAllComplete();
         }
 
-        // Send completion data to Google Sheets
-        const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
-
-        function sendAnalytics() {
-            const states = checkboxes.map((id) => {
-                const checkbox = document.getElementById(id);
-                return checkbox && checkbox.checked ? '1' : '0';
-            });
+        function sendCheckboxAnalytics(states) {
+            const participantName = getParticipantName();
+            if (!participantName) return; // gate ensures this won't happen
 
             const allComplete = states[0] === '1' && states[1] === '1' && states[2] === '1';
 
-            // Send each newly checked prerequisite as a milestone
             const milestoneNames = [
-                'Prerequisite 1: Start Here + Governance reviewed',
-                'Prerequisite 2: Pre-Launch Assessment completed',
+                'Prerequisite 1: Pre-Launch Assessment completed',
+                'Prerequisite 2: Start Here + Governance reviewed',
                 'Prerequisite 3: Anthropic Academy courses completed'
             ];
 
             states.forEach((state, i) => {
                 if (state === '1') {
-                    const payload = JSON.stringify({
-                        type: 'milestone',
-                        participant_name: 'anonymous',
-                        milestone: milestoneNames[i],
-                        phase: 'Onboarding',
-                        page_source: 'pilot_hub.html',
-                        details: JSON.stringify({ check1: states[0], check2: states[1], check3: states[2], allComplete: allComplete })
-                    });
-                    fetch(SHEET_ENDPOINT, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: payload,
-                        redirect: 'follow'
-                    }).catch(() => fetch(SHEET_ENDPOINT, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: payload
-                    })).catch(err => console.error('Analytics error:', err));
+                    sendMilestone(
+                        participantName,
+                        milestoneNames[i],
+                        'Onboarding',
+                        'pilot_hub.html',
+                        JSON.stringify({ check1: states[0], check2: states[1], check3: states[2], allComplete: allComplete })
+                    );
                 }
             });
 
             if (allComplete) {
-                const allCompletePayload = JSON.stringify({
-                    type: 'milestone',
-                    participant_name: 'anonymous',
-                    milestone: 'All prerequisites completed',
-                    phase: 'Onboarding',
-                    page_source: 'pilot_hub.html',
-                    details: ''
-                });
-                fetch(SHEET_ENDPOINT, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: allCompletePayload,
-                    redirect: 'follow'
-                }).catch(() => fetch(SHEET_ENDPOINT, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: allCompletePayload
-                })).catch(err => console.error('Analytics error:', err));
+                sendMilestone(participantName, 'All prerequisites completed', 'Onboarding', 'pilot_hub.html', '');
             }
         }
 
@@ -2311,13 +2509,13 @@
 
             const allComplete = check1 && check1.checked && check2 && check2.checked && check3 && check3.checked;
 
-            // Update flow diagram with celebration state
             updateFlowDiagram();
 
             const existingMessage = document.getElementById('completion-message');
             if (existingMessage) existingMessage.remove();
 
             if (allComplete) {
+                const participantName = getParticipantName();
                 const message = document.createElement('div');
                 message.id = 'completion-message';
                 message.style.cssText = `
@@ -2331,7 +2529,10 @@
                     color: var(--navy);
                     display: none;
                 `;
-                message.textContent = '✓ All prerequisites complete! Account provisioning is now available.';
+                const displayName = participantName ? participantName.split(' ')[0] : '';
+                message.textContent = displayName
+                    ? '\u2713 All prerequisites complete, ' + displayName + '! Account provisioning is now available.'
+                    : '\u2713 All prerequisites complete! Account provisioning is now available.';
 
                 const enforcementNote = document.querySelector('.enforcement-note');
                 if (enforcementNote) {
@@ -2414,6 +2615,7 @@
 
     // Initialize on load
     document.addEventListener('DOMContentLoaded', () => {
+        initIdentityGate();
         initializeNewsletter();
         setupNavigation();
         setupAnimations();

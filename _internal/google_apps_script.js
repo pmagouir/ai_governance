@@ -81,6 +81,7 @@ function handleSurvey(ss, data) {
   }
 
   const p = data.participant || {};
+  p.name = normalizeName(p.name);
   const s = data.scores || {};
 
   // Calculate overall
@@ -162,6 +163,9 @@ function handleMilestone(ss, data) {
     sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold');
   }
 
+  // Normalize participant name for consistent matching
+  data.participant_name = normalizeName(data.participant_name);
+
   // Check for duplicate: same participant + same milestone
   const existingData = sheet.getDataRange().getValues();
   for (let i = 1; i < existingData.length; i++) {
@@ -193,6 +197,16 @@ function handleMilestone(ss, data) {
 }
 
 // ==================== UTILITY ====================
+
+/**
+ * Normalizes participant names for consistent deduplication.
+ * Trims whitespace and converts to title case (e.g., "preston magouirk" -> "Preston Magouirk").
+ */
+function normalizeName(name) {
+  if (!name || typeof name !== 'string') return '';
+  return name.trim().toLowerCase().replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+}
+
 function jsonResponse(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj))
     .setMimeType(ContentService.MimeType.JSON);

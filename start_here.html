@@ -1982,6 +1982,20 @@
 
     <script>
         const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
+        const LOCALSTORAGE_KEY = 'dccap_participant_name';
+
+        // Pre-fill name from localStorage on page load
+        window.addEventListener('load', function() {
+            try {
+                const storedName = localStorage.getItem(LOCALSTORAGE_KEY);
+                if (storedName) {
+                    const nameField = document.getElementById('participantNameInput');
+                    if (nameField && !nameField.value) {
+                        nameField.value = storedName;
+                    }
+                }
+            } catch(e) { /* localStorage unavailable */ }
+        });
 
         function submitMilestone(name, milestone, phase, source, details) {
             const payload = JSON.stringify({
@@ -2012,6 +2026,9 @@
                 document.getElementById('participantNameInput').setAttribute('placeholder', 'Please enter your name');
                 return;
             }
+            // Sync name to localStorage for cross-page persistence
+            try { localStorage.setItem(LOCALSTORAGE_KEY, name); } catch(e) {}
+
             submitMilestone(name, 'Start Here guide reviewed', 'Onboarding', 'start_here.html');
             const msg = document.getElementById('completionMsg');
             msg.textContent = 'Recorded! You\'re all set, ' + name.split(' ')[0] + '.';

@@ -705,6 +705,14 @@
         const confirmationModal = document.getElementById('confirmationModal');
         const errorMessage = document.getElementById('errorMessage');
 
+        // Pre-fill name from cross-page localStorage
+        try {
+            const storedName = localStorage.getItem('dccap_participant_name');
+            if (storedName && participantName && !participantName.value) {
+                participantName.value = storedName;
+            }
+        } catch(e) {}
+
         // Initialize week selector
         function initializeWeekSelector() {
             const today = new Date(2026, 3, 4); // April 4, 2026 (today)
