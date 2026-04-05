@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": "2.0",
-    "lastGenerated": "2026-04-05T00:00:00-04:00",
-    "lastPublished": null,
+    "lastGenerated": "2026-04-05T14:00:00-04:00",
+    "lastPublished": "2026-04-05T14:05:00-04:00",
     "categories": {
       "foundational": { "label": "Foundational Learning", "class": "category-foundational" },
       "tips": { "label": "Tips & Tricks", "class": "category-tips" },
@@ -64,6 +64,15 @@
       "content": "The AI Fluency for Nonprofits course you're completing this week was built in partnership with GivingTuesday and specifically adapted for organizations like DC CAP — teams with limited resources, multiple stakeholder accountabilities, and mission-driven work. The certificate you earn is recognized by Anthropic and signals that you've completed structured training in the 4D framework. Beyond the credential: the course covers the same competencies we'll practice hands-on during the pilot. Think of it as the conceptual foundation. The pilot activities are where you apply it to DC CAP's actual work.",
       "tryThis": "When you finish the course, screenshot your certificate and share it in the pilot Slack channel. Seeing your cohort complete the same milestone builds momentum.",
       "resource": "https://anthropic.skilljar.com",
+      "status": "published"
+    },
+    {
+      "date": "2026-04-13",
+      "category": "foundational",
+      "title": "Discernment Starts With One Question",
+      "content": "Claude will almost always give you a confident, well-formatted answer. That confidence is the exact moment your Discernment competency matters most. Discernment, one of the four core competencies in DC CAP's AI Fluency Framework (alongside Delegation, Description, and Diligence), is the ability to critically evaluate AI-generated outputs for quality, accuracy, relevance, and bias. In practice, it begins with a single question: \"How would I verify this if a new colleague handed it to me?\" Anthropic's own research found that structured prompting techniques like step-by-step reasoning and few-shot examples improved accuracy by 20% in one enterprise case study. That means a well-structured prompt yields better output. But even a well-structured prompt can produce plausible-sounding errors. A scholarship renewal reminder that cites the wrong GPA threshold. A board summary that rounds enrollment numbers in a misleading direction. A donor email that attributes a statistic to a report that doesn't exist. These errors look polished. They read smoothly. And that is precisely why Discernment requires deliberate practice. The DC CAP AI Fluency Framework breaks Discernment into three layers: evaluating output quality, assessing whether the human-AI collaboration is productive, and gathering feedback to refine AI behaviors over time. You are building a verification habit. The federal government has begun formalizing AI literacy as a workforce competency, with the Department of Labor publishing an AI literacy framework in early 2026. DC CAP's 4D framework already embeds this skill. Your job now is to practice it consistently.",
+      "tryThis": "Open your most recent Claude conversation. Pick one factual claim in the output and verify it using an independent source. Notice how long the verification takes versus how long you spent reviewing the original output. That ratio tells you something about your current Discernment habits.",
+      "resource": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
       "status": "published"
     }
   ],
