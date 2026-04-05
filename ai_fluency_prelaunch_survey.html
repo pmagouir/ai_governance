@@ -974,14 +974,17 @@
             </div>
         </div>
 
-        <!-- Page 5: AI Knowledge -->
+        <!-- Page 5: AI Knowledge (16 questions, 5 domains) -->
         <div class="page" data-page="5">
             <h2>AI Concepts & Frameworks</h2>
-            <p class="section-description">Select the best answer for each question. These assess your current understanding of AI concepts and the frameworks we'll use during the pilot.</p>
+            <p class="section-description">Select the best answer for each question. These assess your current understanding of AI concepts, governance rules, and the frameworks we'll use during the pilot.</p>
 
             <form id="pageForm5">
                 <fieldset>
                     <legend style="display: none;">AI Knowledge</legend>
+
+                    <!-- DOMAIN 1: Core AI Concepts (Q1-3) -->
+                    <h3 style="color: var(--navy); margin-top: 1.5rem; margin-bottom: 1rem; font-family: var(--font-subhead); font-size: 1.1rem; border-bottom: 2px solid var(--purple); padding-bottom: 0.5rem;">Core AI Concepts</h3>
 
                     <div class="mc-question" data-item="1">
                         <h3>In AI, a "hallucination" refers to:</h3>
@@ -1024,27 +1027,30 @@
                     </div>
 
                     <div class="mc-question" data-item="3">
-                        <h3>You ask Claude to summarize a 30-page PDF into three bullet points. This is an example of:</h3>
+                        <h3>Under Claude Enterprise at DC CAP, Anthropic:</h3>
                         <div class="mc-option">
                             <input type="radio" id="q3_a" name="knowledge_3" value="a">
-                            <label for="q3_a">Automation</label>
+                            <label for="q3_a">Uses customer conversations to improve Claude's training</label>
                         </div>
                         <div class="mc-option">
                             <input type="radio" id="q3_b" name="knowledge_3" value="b">
-                            <label for="q3_b">Augmentation</label>
+                            <label for="q3_b">Does not use customer inputs or outputs for model training</label>
                         </div>
                         <div class="mc-option">
                             <input type="radio" id="q3_c" name="knowledge_3" value="c">
-                            <label for="q3_c">Agency</label>
+                            <label for="q3_c">Shares anonymized conversation data with research partners</label>
                         </div>
                         <div class="mc-option">
                             <input type="radio" id="q3_d" name="knowledge_3" value="d">
-                            <label for="q3_d">None of the above</label>
+                            <label for="q3_d">Retains all conversation data permanently for quality assurance</label>
                         </div>
                     </div>
 
+                    <!-- DOMAIN 2: 3 A's and 4 D's Frameworks (Q4-8) -->
+                    <h3 style="color: var(--navy); margin-top: 2rem; margin-bottom: 1rem; font-family: var(--font-subhead); font-size: 1.1rem; border-bottom: 2px solid var(--purple); padding-bottom: 0.5rem;">Frameworks: The 3 A's & 4 D's</h3>
+
                     <div class="mc-question" data-item="4">
-                        <h3>You and Claude spend 20 minutes iteratively refining a grant narrative together. This is an example of:</h3>
+                        <h3>You ask Claude to summarize a 30-page PDF into three bullet points. This is an example of:</h3>
                         <div class="mc-option">
                             <input type="radio" id="q4_a" name="knowledge_4" value="a">
                             <label for="q4_a">Automation</label>
@@ -1064,7 +1070,7 @@
                     </div>
 
                     <div class="mc-question" data-item="5">
-                        <h3>You write Project Instructions so any team member who opens a Claude project gets consistent, on-brand outputs. This is an example of:</h3>
+                        <h3>You and Claude spend 20 minutes iteratively refining a grant narrative together. This is an example of:</h3>
                         <div class="mc-option">
                             <input type="radio" id="q5_a" name="knowledge_5" value="a">
                             <label for="q5_a">Automation</label>
@@ -1084,22 +1090,22 @@
                     </div>
 
                     <div class="mc-question" data-item="6">
-                        <h3>A spreadsheet containing scholar names and GPAs should be classified as:</h3>
+                        <h3>You write Project Instructions so any team member who opens a Claude project gets consistent, on-brand outputs. This is an example of:</h3>
                         <div class="mc-option">
                             <input type="radio" id="q6_a" name="knowledge_6" value="a">
-                            <label for="q6_a">Tier 4 — Public</label>
+                            <label for="q6_a">Automation</label>
                         </div>
                         <div class="mc-option">
                             <input type="radio" id="q6_b" name="knowledge_6" value="b">
-                            <label for="q6_b">Tier 3 — Internal</label>
+                            <label for="q6_b">Augmentation</label>
                         </div>
                         <div class="mc-option">
                             <input type="radio" id="q6_c" name="knowledge_6" value="c">
-                            <label for="q6_c">Tier 2 — Sensitive</label>
+                            <label for="q6_c">Agency</label>
                         </div>
                         <div class="mc-option">
                             <input type="radio" id="q6_d" name="knowledge_6" value="d">
-                            <label for="q6_d">Tier 1 — Restricted</label>
+                            <label for="q6_d">None of the above</label>
                         </div>
                     </div>
 
@@ -1140,6 +1146,175 @@
                         <div class="mc-option">
                             <input type="radio" id="q8_d" name="knowledge_8" value="d">
                             <label for="q8_d">Diligence</label>
+                        </div>
+                    </div>
+
+                    <!-- DOMAIN 3: Data Governance & Classification (Q9-12) -->
+                    <h3 style="color: var(--navy); margin-top: 2rem; margin-bottom: 1rem; font-family: var(--font-subhead); font-size: 1.1rem; border-bottom: 2px solid var(--purple); padding-bottom: 0.5rem;">Data Governance & Classification</h3>
+
+                    <div class="mc-question" data-item="9">
+                        <h3>A spreadsheet containing scholar names and GPAs should be classified as:</h3>
+                        <div class="mc-option">
+                            <input type="radio" id="q9_a" name="knowledge_9" value="a">
+                            <label for="q9_a">Tier 4 — Public</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q9_b" name="knowledge_9" value="b">
+                            <label for="q9_b">Tier 3 — Internal</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q9_c" name="knowledge_9" value="c">
+                            <label for="q9_c">Tier 2 — Sensitive</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q9_d" name="knowledge_9" value="d">
+                            <label for="q9_d">Tier 1 — Restricted</label>
+                        </div>
+                    </div>
+
+                    <div class="mc-question" data-item="10">
+                        <h3>Aggregated retention and graduation rates (without individual names) are classified as:</h3>
+                        <div class="mc-option">
+                            <input type="radio" id="q10_a" name="knowledge_10" value="a">
+                            <label for="q10_a">Tier 4 — Public</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q10_b" name="knowledge_10" value="b">
+                            <label for="q10_b">Tier 3 — Internal</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q10_c" name="knowledge_10" value="c">
+                            <label for="q10_c">Tier 2 — Sensitive</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q10_d" name="knowledge_10" value="d">
+                            <label for="q10_d">Tier 1 — Restricted</label>
+                        </div>
+                    </div>
+
+                    <div class="mc-question" data-item="11">
+                        <h3>A staff member accidentally uploads a file with student Social Security numbers to Claude. The first step is to:</h3>
+                        <div class="mc-option">
+                            <input type="radio" id="q11_a" name="knowledge_11" value="a">
+                            <label for="q11_a">Notify IT and wait for instructions</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q11_b" name="knowledge_11" value="b">
+                            <label for="q11_b">Delete the conversation containing the exposed data immediately</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q11_c" name="knowledge_11" value="c">
+                            <label for="q11_c">Document the incident and continue working</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q11_d" name="knowledge_11" value="d">
+                            <label for="q11_d">Ask Claude to delete the sensitive information from its memory</label>
+                        </div>
+                    </div>
+
+                    <div class="mc-question" data-item="12">
+                        <h3>Which of the following is a prohibited use of Claude at DC CAP?</h3>
+                        <div class="mc-option">
+                            <input type="radio" id="q12_a" name="knowledge_12" value="a">
+                            <label for="q12_a">Drafting grant narratives using published outcome data</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q12_b" name="knowledge_12" value="b">
+                            <label for="q12_b">Using Claude to make automated decisions about scholar eligibility without human review</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q12_c" name="knowledge_12" value="c">
+                            <label for="q12_c">Analyzing de-identified program data for trends</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q12_d" name="knowledge_12" value="d">
+                            <label for="q12_d">Preparing board materials using strategic plans and OKRs</label>
+                        </div>
+                    </div>
+
+                    <!-- DOMAIN 4: Claude Interfaces & Platform (Q13-14) -->
+                    <h3 style="color: var(--navy); margin-top: 2rem; margin-bottom: 1rem; font-family: var(--font-subhead); font-size: 1.1rem; border-bottom: 2px solid var(--purple); padding-bottom: 0.5rem;">Claude Interfaces & Platform</h3>
+
+                    <div class="mc-question" data-item="13">
+                        <h3>Which Claude interface should you use to create a formatted Word document or PowerPoint using DC CAP's organizational Skills?</h3>
+                        <div class="mc-option">
+                            <input type="radio" id="q13_a" name="knowledge_13" value="a">
+                            <label for="q13_a">Chat (claude.ai)</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q13_b" name="knowledge_13" value="b">
+                            <label for="q13_b">Cowork (Desktop App)</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q13_c" name="knowledge_13" value="c">
+                            <label for="q13_c">Code (Terminal)</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q13_d" name="knowledge_13" value="d">
+                            <label for="q13_d">Any of the above — they all produce files the same way</label>
+                        </div>
+                    </div>
+
+                    <div class="mc-question" data-item="14">
+                        <h3>A Claude Project at DC CAP is best described as:</h3>
+                        <div class="mc-option">
+                            <input type="radio" id="q14_a" name="knowledge_14" value="a">
+                            <label for="q14_a">A single conversation thread that can be bookmarked</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q14_b" name="knowledge_14" value="b">
+                            <label for="q14_b">A persistent shared workspace where every conversation starts with the same organizational context</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q14_c" name="knowledge_14" value="c">
+                            <label for="q14_c">A folder on SharePoint where Claude saves its outputs</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q14_d" name="knowledge_14" value="d">
+                            <label for="q14_d">An individual workspace that only the creator can access</label>
+                        </div>
+                    </div>
+
+                    <!-- DOMAIN 5: Responsible Use & Governance Roles (Q15-16) -->
+                    <h3 style="color: var(--navy); margin-top: 2rem; margin-bottom: 1rem; font-family: var(--font-subhead); font-size: 1.1rem; border-bottom: 2px solid var(--purple); padding-bottom: 0.5rem;">Responsible Use & Governance</h3>
+
+                    <div class="mc-question" data-item="15">
+                        <h3>Before sharing any Claude-generated content externally (to funders, media, or partners), DC CAP staff must:</h3>
+                        <div class="mc-option">
+                            <input type="radio" id="q15_a" name="knowledge_15" value="a">
+                            <label for="q15_a">Include a disclaimer that the content was AI-generated</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q15_b" name="knowledge_15" value="b">
+                            <label for="q15_b">Get approval from the AI Governance Lead</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q15_c" name="knowledge_15" value="c">
+                            <label for="q15_c">Review the output for accuracy, tone, and policy compliance — all external communications remain staff-authored</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q15_d" name="knowledge_15" value="d">
+                            <label for="q15_d">Run the content through a second AI tool for quality assurance</label>
+                        </div>
+                    </div>
+
+                    <div class="mc-question" data-item="16">
+                        <h3>After an incident involving Tier 1 data exposure in Claude, who should the staff member notify immediately after deleting the conversation?</h3>
+                        <div class="mc-option">
+                            <input type="radio" id="q16_a" name="knowledge_16" value="a">
+                            <label for="q16_a">Their direct supervisor</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q16_b" name="knowledge_16" value="b">
+                            <label for="q16_b">The AI Governance Lead</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q16_c" name="knowledge_16" value="c">
+                            <label for="q16_c">Anthropic support</label>
+                        </div>
+                        <div class="mc-option">
+                            <input type="radio" id="q16_d" name="knowledge_16" value="d">
+                            <label for="q16_d">The CEO</label>
                         </div>
                     </div>
                 </fieldset>
@@ -1335,17 +1510,17 @@ DC CAP Scholarship Team</div>
             <!-- Construct Detail Cards -->
             <h2>Detailed Results</h2>
 
-            <div class="construct-card">
-                <h4>AI Orientation</h4>
+            <div class="construct-card" style="border-left-color: var(--blue);">
+                <h4>AI Orientation <span style="font-size:0.8rem;font-weight:400;color:#666;font-style:italic;">(Descriptive Profile)</span></h4>
                 <div class="construct-score">
-                    <span>Total Score</span>
+                    <span>Your responses describe where you are starting from. These are collected as context for your development and are not factored into your fluency score.</span>
                     <span class="construct-score-value" id="score_orientation">—</span>
                 </div>
                 <div class="construct-items" id="items_orientation"></div>
             </div>
 
-            <div class="construct-card">
-                <h4>Learning Orientation</h4>
+            <div class="construct-card" style="border-left-color: var(--blue);">
+                <h4>Learning Orientation <span style="font-size:0.8rem;font-weight:400;color:#666;font-style:italic;">(Descriptive Profile)</span></h4>
                 <div class="construct-score">
                     <span>Total Score</span>
                     <span class="construct-score-value" id="score_learning">—</span>
@@ -1574,7 +1749,7 @@ DC CAP Scholarship Team</div>
                 }
             } else if (state.currentPage === 5) {
                 state.responses.knowledge = {};
-                for (let i = 1; i <= 8; i++) {
+                for (let i = 1; i <= 16; i++) {
                     const checked = form.querySelector(`input[name="knowledge_${i}"]:checked`);
                     if (checked) {
                         state.responses.knowledge[i] = checked.value;
@@ -1604,39 +1779,40 @@ DC CAP Scholarship Team</div>
         function calculateScores() {
             state.scores = {};
 
-            // AI Orientation (7 items, 5-point Likert)
-            // Items 3 & 6 are reverse-scored
-            let orientationTotal = 0;
-            for (let i = 1; i <= 7; i++) {
-                let score = state.responses.orientation[i] || 0;
-                if (i === 3 || i === 6) {
-                    score = 6 - score;
-                }
-                orientationTotal += score;
-            }
+            // ==================== DESCRIPTIVE PROFILES (NOT SCORED) ====================
+            // AI Orientation and Learning Orientation are collected as context,
+            // not scored toward fluency level. Raw responses stored without reverse-scoring.
+
+            // AI Orientation — descriptive profile (7 items, raw responses only)
             state.scores.orientation = {
-                raw: orientationTotal,
+                raw: 0,
                 max: 35,
-                percentage: (orientationTotal / 35) * 100,
+                percentage: 0,
+                scored: false,
                 items: state.responses.orientation
             };
+            // Store raw total for profile display (no reverse scoring)
+            let orientationRaw = 0;
+            for (let i = 1; i <= 7; i++) {
+                orientationRaw += (state.responses.orientation[i] || 0);
+            }
+            state.scores.orientation.raw = orientationRaw;
+            state.scores.orientation.percentage = (orientationRaw / 35) * 100;
 
-            // Learning Orientation (5 items, 5-point Likert)
-            // Item 4 is reverse-scored
-            let learningTotal = 0;
+            // Learning Orientation — descriptive profile (5 items, raw responses only)
+            let learningRaw = 0;
             for (let i = 1; i <= 5; i++) {
-                let score = state.responses.learning[i] || 0;
-                if (i === 4) {
-                    score = 6 - score;
-                }
-                learningTotal += score;
+                learningRaw += (state.responses.learning[i] || 0);
             }
             state.scores.learning = {
-                raw: learningTotal,
+                raw: learningRaw,
                 max: 25,
-                percentage: (learningTotal / 25) * 100,
+                percentage: (learningRaw / 25) * 100,
+                scored: false,
                 items: state.responses.learning
             };
+
+            // ==================== SCORED CONSTRUCTS (DRIVE FLUENCY LEVEL) ====================
 
             // Current AI Use (6 items, 5-point frequency)
             let useTotal = 0;
@@ -1647,43 +1823,51 @@ DC CAP Scholarship Team</div>
                 raw: useTotal,
                 max: 30,
                 percentage: (useTotal / 30) * 100,
+                scored: true,
                 items: state.responses.use
             };
 
-            // AI Knowledge (8 MC items, 1 point each = 8 max, scale to 0-100)
+            // AI Knowledge (16 MC items, 1 point each = 16 max)
             const correctAnswers = {
-                1: 'b',
-                2: 'b',
-                3: 'a',
-                4: 'b',
-                5: 'c',
-                6: 'd',
-                7: 'a',
-                8: 'd'
+                1: 'b',   // hallucination
+                2: 'b',   // context window
+                3: 'b',   // Claude Enterprise data policy
+                4: 'a',   // summarize PDF = Automation
+                5: 'b',   // iterative grant = Augmentation
+                6: 'c',   // Project Instructions = Agency
+                7: 'a',   // Delegation = choosing tasks for AI
+                8: 'd',   // "You own it" = Diligence
+                9: 'd',   // scholar names + GPAs = Tier 1
+                10: 'b',  // aggregated rates = Tier 3
+                11: 'b',  // first step = delete conversation
+                12: 'b',  // prohibited = automated eligibility decisions
+                13: 'b',  // file creation = Cowork
+                14: 'b',  // Project = persistent shared workspace
+                15: 'c',  // external sharing = staff review
+                16: 'b'   // incident notification = AI Governance Lead
             };
             let knowledgeTotal = 0;
-            for (let i = 1; i <= 8; i++) {
+            for (let i = 1; i <= 16; i++) {
                 if (state.responses.knowledge[i] === correctAnswers[i]) {
                     knowledgeTotal += 1;
                 }
             }
             state.scores.knowledge = {
                 raw: knowledgeTotal,
-                max: 8,
-                percentage: (knowledgeTotal / 8) * 100,
+                max: 16,
+                percentage: (knowledgeTotal / 16) * 100,
+                scored: true,
                 items: state.responses.knowledge,
                 correct: correctAnswers
             };
 
             // Applied Skills (Task A: 0-4 pts, Task B: 0-4 pts, total 0-8)
-            // Task A: count self-assessment checkboxes
             let taskAScore = 0;
             if (state.responses.taskA.audience) taskAScore++;
             if (state.responses.taskA.deadline) taskAScore++;
             if (state.responses.taskA.tone) taskAScore++;
             if (state.responses.taskA.format) taskAScore++;
 
-            // Task B: count identified issues
             let taskBScore = 0;
             if (state.responses.taskB.gpa) taskBScore++;
             if (state.responses.taskB.tone) taskBScore++;
@@ -1695,6 +1879,7 @@ DC CAP Scholarship Team</div>
                 raw: skillsTotal,
                 max: 8,
                 percentage: (skillsTotal / 8) * 100,
+                scored: true,
                 taskA: taskAScore,
                 taskB: taskBScore,
                 taskAResponse: state.responses.taskA.prompt,
@@ -1744,8 +1929,6 @@ DC CAP Scholarship Team</div>
             const maxRadius = 150;
 
             const axes = [
-                { label: 'AI Orientation', value: state.scores.orientation.percentage },
-                { label: 'Learning Orientation', value: state.scores.learning.percentage },
                 { label: 'Current AI Use', value: state.scores.use.percentage },
                 { label: 'AI Knowledge', value: state.scores.knowledge.percentage },
                 { label: 'Applied Skills', value: state.scores.skills.percentage }
@@ -1837,15 +2020,14 @@ DC CAP Scholarship Team</div>
             const tbody = document.getElementById('scoreTableBody');
             tbody.innerHTML = '';
 
-            const constructs = [
-                { name: 'AI Orientation', key: 'orientation' },
-                { name: 'Learning Orientation', key: 'learning' },
+            // Scored constructs (drive fluency level)
+            const scoredConstructs = [
                 { name: 'Current AI Use', key: 'use' },
                 { name: 'AI Knowledge', key: 'knowledge' },
                 { name: 'Applied Skills', key: 'skills' }
             ];
 
-            constructs.forEach(construct => {
+            scoredConstructs.forEach(construct => {
                 const score = state.scores[construct.key];
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -1856,42 +2038,65 @@ DC CAP Scholarship Team</div>
                 `;
                 tbody.appendChild(row);
             });
+
+            // Descriptive profiles (context only, not scored toward fluency)
+            const profileRow = document.createElement('tr');
+            profileRow.innerHTML = `
+                <td colspan="4" style="text-align:center; padding-top:1rem; font-style:italic; color:#666; font-size:0.9rem; border-top: 2px solid var(--purple);">
+                    The profiles below capture your starting orientation. They describe where you are coming from and are collected as context for your development, not scored toward your fluency level.
+                </td>
+            `;
+            tbody.appendChild(profileRow);
+
+            const profileConstructs = [
+                { name: 'AI Orientation (Profile)', key: 'orientation' },
+                { name: 'Learning Orientation (Profile)', key: 'learning' }
+            ];
+
+            profileConstructs.forEach(construct => {
+                const score = state.scores[construct.key];
+                const row = document.createElement('tr');
+                row.style.color = '#666';
+                row.innerHTML = `
+                    <td>${construct.name}</td>
+                    <td>${score.raw}/${score.max}</td>
+                    <td>${score.max}</td>
+                    <td>${Math.round(score.percentage)}%</td>
+                `;
+                tbody.appendChild(row);
+            });
         }
 
         function populateConstructDetails() {
-            // AI Orientation
+            // AI Orientation — descriptive profile (no reverse scoring displayed)
             let orientText = '';
             const orientItems = ['I believe AI tools can meaningfully improve the quality of my work.',
                 'I feel confident in my ability to learn and use new AI tools.',
-                'I am concerned that AI could produce errors that affect our students or programs. (reverse scored)',
+                'I am concerned that AI could produce errors that affect our students or programs.',
                 'I see AI as directly relevant to my specific role at DC CAP.',
                 'I am excited about the opportunity to integrate AI into my daily work.',
-                'I worry that AI adoption will create more work rather than save time. (reverse scored)',
+                'I worry that AI adoption will create more work rather than save time.',
                 'DC CAP should be a leader in AI adoption among nonprofit organizations.'];
 
             for (let i = 1; i <= 7; i++) {
-                let score = state.responses.orientation[i] || 0;
-                if (i === 3 || i === 6) score = 6 - score;
-                orientText += `<div class="construct-item">Q${i}: ${orientItems[i-1]}<br>Response: ${state.responses.orientation[i]}/5 (Scored: ${score})</div>`;
+                orientText += `<div class="construct-item">Q${i}: ${orientItems[i-1]}<br>Response: ${state.responses.orientation[i]}/5</div>`;
             }
             document.getElementById('items_orientation').innerHTML = orientText;
-            document.getElementById('score_orientation').textContent = state.scores.orientation.raw + '/35';
+            document.getElementById('score_orientation').textContent = 'Profile';
 
-            // Learning Orientation
+            // Learning Orientation — descriptive profile (no reverse scoring displayed)
             let learnText = '';
             const learnItems = ['When I encounter a tool I don\'t understand, I enjoy figuring it out.',
                 'I learn best by trying things and iterating, even if my first attempt fails.',
                 'I am comfortable asking colleagues for help when learning something new.',
-                'I prefer to wait for clear instructions rather than experiment on my own. (reverse scored)',
+                'I prefer to wait for clear instructions rather than experiment on my own.',
                 'Making mistakes is a valuable part of learning new technology.'];
 
             for (let i = 1; i <= 5; i++) {
-                let score = state.responses.learning[i] || 0;
-                if (i === 4) score = 6 - score;
-                learnText += `<div class="construct-item">Q${i}: ${learnItems[i-1]}<br>Response: ${state.responses.learning[i]}/5 (Scored: ${score})</div>`;
+                learnText += `<div class="construct-item">Q${i}: ${learnItems[i-1]}<br>Response: ${state.responses.learning[i]}/5</div>`;
             }
             document.getElementById('items_learning').innerHTML = learnText;
-            document.getElementById('score_learning').textContent = state.scores.learning.raw + '/25';
+            document.getElementById('score_learning').textContent = 'Profile';
 
             // Current AI Use
             let useText = '';
@@ -1904,29 +2109,42 @@ DC CAP Scholarship Team</div>
 
             const useLabels = { 1: 'Never', 2: 'Rarely', 3: 'Sometimes', 4: 'Often', 5: 'Daily' };
             for (let i = 1; i <= 6; i++) {
-                useText += `<div class="construct-item">Q${i}: ${useItems[i-1]}<br>Response: ${useLabels[state.responses.use[i]] || '—'}</div>`;
+                useText += `<div class="construct-item">Q${i}: ${useItems[i-1]}<br>Response: ${useLabels[state.responses.use[i]] || '\u2014'}</div>`;
             }
             document.getElementById('items_use').innerHTML = useText;
             document.getElementById('score_use').textContent = state.scores.use.raw + '/30';
 
-            // AI Knowledge
-            let knowText = '';
-            const knowItems = [
-                'In AI, a "hallucination" refers to: Selected: ' + (state.responses.knowledge[1] || '—') + ' (Correct: b)',
-                'The "context window" of an AI model is: Selected: ' + (state.responses.knowledge[2] || '—') + ' (Correct: b)',
-                'You ask Claude to summarize a 30-page PDF into three bullet points. This is an example of: Selected: ' + (state.responses.knowledge[3] || '—') + ' (Correct: a)',
-                'You and Claude spend 20 minutes iteratively refining a grant narrative together. This is an example of: Selected: ' + (state.responses.knowledge[4] || '—') + ' (Correct: b)',
-                'You write Project Instructions so any team member who opens a Claude project gets consistent, on-brand outputs. This is an example of: Selected: ' + (state.responses.knowledge[5] || '—') + ' (Correct: c)',
-                'A spreadsheet containing scholar names and GPAs should be classified as: Selected: ' + (state.responses.knowledge[6] || '—') + ' (Correct: d)',
-                'Which 4D competency is most relevant when deciding whether a task is suitable for AI?: Selected: ' + (state.responses.knowledge[7] || '—') + ' (Correct: a)',
-                '"Claude drafted it. You own it." This principle best reflects which competency?: Selected: ' + (state.responses.knowledge[8] || '—') + ' (Correct: d)'
+            // AI Knowledge (16 items)
+            const knowQuestions = [
+                'In AI, a "hallucination" refers to:',
+                'The "context window" of an AI model is:',
+                'Under Claude Enterprise at DC CAP, Anthropic:',
+                'Summarize a 30-page PDF into bullet points:',
+                'Iteratively refining a grant narrative:',
+                'Writing Project Instructions for team consistency:',
+                'Which 4D competency for deciding AI suitability?',
+                '"Claude drafted it. You own it." reflects:',
+                'Scholar names and GPAs classified as:',
+                'Aggregated retention rates classified as:',
+                'First step after Tier 1 data exposure:',
+                'Prohibited use of Claude at DC CAP:',
+                'Interface for creating files with DC CAP Skills:',
+                'A Claude Project is best described as:',
+                'Before sharing Claude content externally:',
+                'After Tier 1 incident, notify who next?'
             ];
-
-            knowItems.forEach((item, idx) => {
-                knowText += `<div class="construct-item">Q${idx+1}: ${item}</div>`;
-            });
+            const knowCorrect = state.scores.knowledge.correct;
+            let knowText = '';
+            for (let i = 1; i <= 16; i++) {
+                const selected = state.responses.knowledge[i] || '\u2014';
+                const correct = knowCorrect[i];
+                const isCorrect = selected === correct;
+                const mark = isCorrect ? '\u2713' : '\u2717';
+                const color = isCorrect ? '#27ae60' : '#E63946';
+                knowText += `<div class="construct-item" style="border-left: 3px solid ${color}; padding-left: 0.75rem;">Q${i}: ${knowQuestions[i-1]}<br><span style="color:${color};font-weight:600;">${mark}</span> Selected: ${selected.toUpperCase()} (Correct: ${correct.toUpperCase()})</div>`;
+            }
             document.getElementById('items_knowledge').innerHTML = knowText;
-            document.getElementById('score_knowledge').textContent = state.scores.knowledge.raw + '/8';
+            document.getElementById('score_knowledge').textContent = state.scores.knowledge.raw + '/16';
 
             // Applied Skills
             let skillsText = '<strong>Prompt Writing Task (Task A):</strong><br>';

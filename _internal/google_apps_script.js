@@ -84,11 +84,11 @@ function handleSurvey(ss, data) {
   p.name = normalizeName(p.name);
   const s = data.scores || {};
 
-  // Calculate overall
-  const constructs = ['aiOrientation', 'learningOrientation', 'currentAIUse', 'aiKnowledge', 'appliedSkills'];
+  // Calculate overall from SCORED constructs only (orientation profiles excluded)
+  const scoredConstructs = ['currentAIUse', 'aiKnowledge', 'appliedSkills'];
   let totalPct = 0;
   let count = 0;
-  constructs.forEach(c => {
+  scoredConstructs.forEach(c => {
     if (s[c] && s[c].percentage !== undefined) {
       totalPct += s[c].percentage;
       count++;
