@@ -874,6 +874,16 @@
             accent-color: var(--purple);
         }
 
+        .flow-checkbox-toggle input:disabled:checked + label {
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        .flow-checkbox-toggle input:disabled:not(:checked) + label {
+            color: #999;
+            font-style: italic;
+        }
+
         .flow-checkbox-toggle label {
             cursor: pointer;
             font-size: clamp(0.9rem, 1.3vw, 1rem);
@@ -1638,8 +1648,8 @@
                         <span class="flow-time-badge">~8 min</span>
                         <div class="flow-checkbox-container">
                             <div class="flow-checkbox-toggle">
-                                <input type="checkbox" id="check1">
-                                <label for="check1">Mark as complete</label>
+                                <input type="checkbox" id="check1" disabled>
+                                <label for="check1" id="check1Label">Not yet completed</label>
                             </div>
                         </div>
                         <div class="flow-links">
@@ -1657,8 +1667,8 @@
                         <span class="flow-time-badge">~30 min</span>
                         <div class="flow-checkbox-container">
                             <div class="flow-checkbox-toggle">
-                                <input type="checkbox" id="check2">
-                                <label for="check2">Mark as complete</label>
+                                <input type="checkbox" id="check2" disabled>
+                                <label for="check2" id="check2Label">Not yet completed</label>
                             </div>
                         </div>
                         <div class="flow-links">
@@ -2440,31 +2450,50 @@
     function initializeCheckboxPersistence() {
         const checkboxes = ['check1', 'check2', 'check3'];
 
-        // Read from URL hash on page load
+        // Verified completion flags from actual page submissions
+        const VERIFIED_FLAGS = {
+            check1: 'dccap_survey_completed',
+            check2: 'dccap_starthere_completed'
+        };
+
         function restoreCheckboxState() {
+            // Check1 and Check2: auto-populate from verified localStorage flags
+            // These cannot be manually checked — they only activate when the
+            // participant actually completes the survey or start_here guide
+            try {
+                Object.entries(VERIFIED_FLAGS).forEach(([checkId, storageKey]) => {
+                    const checkbox = document.getElementById(checkId);
+                    const label = document.getElementById(checkId + 'Label');
+                    if (checkbox && localStorage.getItem(storageKey) === 'true') {
+                        checkbox.checked = true;
+                        if (label) label.textContent = 'Completed';
+                    }
+                });
+            } catch(e) {}
+
+            // Check3 (Anthropic Academy): restore from URL hash (self-reported, external site)
             const hash = window.location.hash.substring(1);
             const params = new URLSearchParams(hash);
-
-            checkboxes.forEach((id, index) => {
-                const paramKey = 'c' + (index + 1);
-                const checkbox = document.getElementById(id);
-                if (checkbox) {
-                    checkbox.checked = params.get(paramKey) === '1';
-                }
-            });
+            const check3 = document.getElementById('check3');
+            if (check3) {
+                check3.checked = params.get('c3') === '1';
+            }
 
             checkAllComplete();
         }
 
-        // Update URL hash when checkbox changes
+        // Update URL hash when checkbox changes (only check3 is user-togglable)
         function updateHashState() {
             const states = checkboxes.map((id) => {
                 const checkbox = document.getElementById(id);
                 return checkbox && checkbox.checked ? '1' : '0';
             });
 
-            const newHash = `c1=${states[0]}&c2=${states[1]}&c3=${states[2]}`;
-            window.location.hash = newHash;
+            // Only persist check3 in hash (check1/2 are verified via localStorage)
+            const check3 = document.getElementById('check3');
+            if (check3) {
+                window.location.hash = `c3=${check3.checked ? '1' : '0'}`;
+            }
 
             // Send analytics with real participant name
             sendCheckboxAnalytics(states);

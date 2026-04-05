@@ -2234,6 +2234,9 @@ DC CAP Scholarship Team</div>
 
             // Also record as a milestone
             submitMilestone(state.responses.participantName, 'Pre-launch survey completed', 'Pre-Launch', 'ai_fluency_prelaunch_survey.html');
+
+            // Set verified completion flag for pilot_hub prerequisite auto-check
+            try { localStorage.setItem('dccap_survey_completed', 'true'); } catch(e) {}
         }
 
         function submitMilestone(name, milestone, phase, source, details) {

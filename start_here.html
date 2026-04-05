@@ -2029,6 +2029,9 @@
             // Sync name to localStorage for cross-page persistence
             try { localStorage.setItem(LOCALSTORAGE_KEY, name); } catch(e) {}
 
+            // Set verified completion flag for pilot_hub prerequisite auto-check
+            try { localStorage.setItem('dccap_starthere_completed', 'true'); } catch(e) {}
+
             submitMilestone(name, 'Start Here guide reviewed', 'Onboarding', 'start_here.html');
             const msg = document.getElementById('completionMsg');
             msg.textContent = 'Recorded! You\'re all set, ' + name.split(' ')[0] + '.';
