@@ -959,6 +959,34 @@
             color: #c0392b;
         }
 
+        .certificate-success {
+            margin-top: 0.4rem;
+            font-size: 0.82rem;
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        .certificate-course-block {
+            margin-bottom: 0.75rem;
+        }
+
+        .certificate-course-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .certificate-course-block.verified .certificate-input-row,
+        .certificate-course-block.verified .certificate-error {
+            display: none;
+        }
+
+        .certificate-course-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.35rem;
+        }
+
         .flow-links {
             margin-top: 0.75rem;
             display: flex;
@@ -1765,12 +1793,25 @@
                                 <label for="check3" id="check3Label">Not yet verified</label>
                             </div>
                             <div class="certificate-attestation" id="certificateAttestation">
-                                <p class="certificate-instructions">After completing both courses, paste your Anthropic Academy certificate URL or enter the name shown on your certificate to verify completion.</p>
-                                <div class="certificate-input-row">
-                                    <input type="text" id="certificateInput" placeholder="e.g. https://anthropic.skilljar.com/certificates/... or your certificate name" aria-label="Certificate URL or name">
-                                    <button type="button" id="certificateVerifyBtn" class="certificate-verify-btn">Verify</button>
+                                <p class="certificate-instructions">Verify each course separately. Paste your certificate URL or enter the name shown on your certificate.</p>
+                                <div class="certificate-course-block" id="claude101Block">
+                                    <label class="certificate-course-label">Claude 101</label>
+                                    <div class="certificate-input-row">
+                                        <input type="text" id="claude101Input" placeholder="Certificate URL or name from Claude 101" aria-label="Claude 101 certificate URL or name">
+                                        <button type="button" id="claude101VerifyBtn" class="certificate-verify-btn">Verify</button>
+                                    </div>
+                                    <p class="certificate-error" id="claude101Error" style="display:none;"></p>
+                                    <p class="certificate-success" id="claude101Success" style="display:none;">✓ Claude 101 verified</p>
                                 </div>
-                                <p class="certificate-error" id="certificateError" style="display:none;"></p>
+                                <div class="certificate-course-block" id="fluencyBlock">
+                                    <label class="certificate-course-label">AI Fluency for Nonprofits</label>
+                                    <div class="certificate-input-row">
+                                        <input type="text" id="fluencyInput" placeholder="Certificate URL or name from AI Fluency for Nonprofits" aria-label="AI Fluency for Nonprofits certificate URL or name">
+                                        <button type="button" id="fluencyVerifyBtn" class="certificate-verify-btn">Verify</button>
+                                    </div>
+                                    <p class="certificate-error" id="fluencyError" style="display:none;"></p>
+                                    <p class="certificate-success" id="fluencySuccess" style="display:none;">✓ AI Fluency for Nonprofits verified</p>
+                                </div>
                             </div>
                         </div>
                         <div class="flow-links">
@@ -2467,13 +2508,19 @@
         // Verified completion flags from actual page submissions
         const VERIFIED_FLAGS = {
             check1: 'dccap_survey_completed',
-            check2: 'dccap_starthere_completed',
-            check3: 'dccap_academy_completed'
+            check2: 'dccap_starthere_completed'
         };
 
+        function isAcademyComplete() {
+            try {
+                return localStorage.getItem('dccap_claude101_completed') === 'true' &&
+                       localStorage.getItem('dccap_fluency_completed') === 'true';
+            } catch(e) { return false; }
+        }
+
         function restoreCheckboxState() {
-            // All three checkboxes: auto-populate from verified localStorage flags
-            // None can be manually checked — they only activate through verified actions
+            // Checkboxes 1 & 2: auto-populate from verified localStorage flags
+            // Checkbox 3: requires both academy courses verified
             try {
                 Object.entries(VERIFIED_FLAGS).forEach(([checkId, storageKey]) => {
                     const checkbox = document.getElementById(checkId);
@@ -2483,11 +2530,33 @@
                         if (label) label.textContent = 'Completed';
                     }
                 });
+
+                // Check3 (Academy): requires both courses
+                if (isAcademyComplete()) {
+                    const check3 = document.getElementById('check3');
+                    const label3 = document.getElementById('check3Label');
+                    if (check3) check3.checked = true;
+                    if (label3) label3.textContent = 'Completed';
+                }
             } catch(e) {}
 
-            // Hide certificate attestation form if already verified
+            // Restore individual course verification states
             try {
-                if (localStorage.getItem('dccap_academy_completed') === 'true') {
+                if (localStorage.getItem('dccap_claude101_completed') === 'true') {
+                    const block = document.getElementById('claude101Block');
+                    const success = document.getElementById('claude101Success');
+                    if (block) block.classList.add('verified');
+                    if (success) success.style.display = 'block';
+                }
+                if (localStorage.getItem('dccap_fluency_completed') === 'true') {
+                    const block = document.getElementById('fluencyBlock');
+                    const success = document.getElementById('fluencySuccess');
+                    if (block) block.classList.add('verified');
+                    if (success) success.style.display = 'block';
+                }
+                // Hide entire attestation only if both verified
+                if (localStorage.getItem('dccap_claude101_completed') === 'true' &&
+                    localStorage.getItem('dccap_fluency_completed') === 'true') {
                     const attestation = document.getElementById('certificateAttestation');
                     if (attestation) attestation.classList.add('verified');
                 }
@@ -2496,15 +2565,39 @@
             checkAllComplete();
         }
 
-        // Certificate attestation handler
+        // Certificate attestation handler — dual course verification
         function initCertificateVerification() {
-            const verifyBtn = document.getElementById('certificateVerifyBtn');
-            const input = document.getElementById('certificateInput');
-            const errorEl = document.getElementById('certificateError');
+            setupCourseVerification({
+                inputId: 'claude101Input',
+                btnId: 'claude101VerifyBtn',
+                errorId: 'claude101Error',
+                successId: 'claude101Success',
+                blockId: 'claude101Block',
+                storageKeyCompleted: 'dccap_claude101_completed',
+                storageKeyCert: 'dccap_claude101_certificate',
+                milestoneName: 'Prerequisite 3a: Claude 101 completed'
+            });
 
-            if (!verifyBtn || !input) return;
+            setupCourseVerification({
+                inputId: 'fluencyInput',
+                btnId: 'fluencyVerifyBtn',
+                errorId: 'fluencyError',
+                successId: 'fluencySuccess',
+                blockId: 'fluencyBlock',
+                storageKeyCompleted: 'dccap_fluency_completed',
+                storageKeyCert: 'dccap_fluency_certificate',
+                milestoneName: 'Prerequisite 3b: AI Fluency for Nonprofits completed'
+            });
+        }
 
-            verifyBtn.addEventListener('click', function() {
+        function setupCourseVerification(cfg) {
+            const btn = document.getElementById(cfg.btnId);
+            const input = document.getElementById(cfg.inputId);
+            const errorEl = document.getElementById(cfg.errorId);
+
+            if (!btn || !input) return;
+
+            btn.addEventListener('click', function() {
                 const value = input.value.trim();
                 if (!value || value.length < 3) {
                     errorEl.textContent = 'Please enter your certificate URL or the name shown on your certificate.';
@@ -2514,44 +2607,76 @@
 
                 errorEl.style.display = 'none';
 
-                // Store verified completion and certificate data
+                // Store this course's verification
                 try {
-                    localStorage.setItem('dccap_academy_completed', 'true');
-                    localStorage.setItem('dccap_academy_certificate', value);
+                    localStorage.setItem(cfg.storageKeyCompleted, 'true');
+                    localStorage.setItem(cfg.storageKeyCert, value);
                 } catch(e) {}
 
-                // Update checkbox and label
-                const check3 = document.getElementById('check3');
-                const label = document.getElementById('check3Label');
-                if (check3) check3.checked = true;
-                if (label) label.textContent = 'Completed';
+                // Show success, hide input row
+                const block = document.getElementById(cfg.blockId);
+                const success = document.getElementById(cfg.successId);
+                if (block) block.classList.add('verified');
+                if (success) success.style.display = 'block';
 
-                // Hide attestation form
-                const attestation = document.getElementById('certificateAttestation');
-                if (attestation) attestation.classList.add('verified');
-
-                // Send milestone with certificate data
+                // Send individual course milestone
                 const participantName = getParticipantName();
                 if (participantName) {
                     sendMilestone(
                         participantName,
-                        'Prerequisite 3: Anthropic Academy courses completed',
+                        cfg.milestoneName,
                         'Onboarding',
                         'pilot_hub.html',
                         JSON.stringify({ certificate: value, method: 'attestation' })
                     );
                 }
 
-                checkAllComplete();
+                // Check if BOTH courses are now verified
+                checkBothCoursesComplete();
             });
 
             // Allow Enter key to submit
             input.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter') {
                     e.preventDefault();
-                    verifyBtn.click();
+                    btn.click();
                 }
             });
+        }
+
+        function checkBothCoursesComplete() {
+            try {
+                const claude101Done = localStorage.getItem('dccap_claude101_completed') === 'true';
+                const fluencyDone = localStorage.getItem('dccap_fluency_completed') === 'true';
+
+                if (claude101Done && fluencyDone) {
+                    // Mark checkbox complete
+                    const check3 = document.getElementById('check3');
+                    const label = document.getElementById('check3Label');
+                    if (check3) check3.checked = true;
+                    if (label) label.textContent = 'Completed';
+
+                    // Hide entire attestation block
+                    const attestation = document.getElementById('certificateAttestation');
+                    if (attestation) attestation.classList.add('verified');
+
+                    // Send combined milestone
+                    const participantName = getParticipantName();
+                    if (participantName) {
+                        const cert1 = localStorage.getItem('dccap_claude101_certificate') || '';
+                        const cert2 = localStorage.getItem('dccap_fluency_certificate') || '';
+                        sendMilestone(
+                            participantName,
+                            'Prerequisite 3: Anthropic Academy courses completed',
+                            'Onboarding',
+                            'pilot_hub.html',
+                            JSON.stringify({ claude101: cert1, fluency: cert2, method: 'attestation' })
+                        );
+                    }
+
+                    checkAllComplete();
+                }
+            } catch(e) {}
         }
 
         // Update analytics when verified state changes
