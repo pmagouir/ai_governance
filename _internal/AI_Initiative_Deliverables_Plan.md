@@ -7,7 +7,7 @@
 
 ## Strategic Frame
 
-The 60-day pilot runs April 6 – June 5 across 9 staff in three units. Four phases. Four questions to answer by June 5. The deliverables in this plan serve one purpose: make the initiative land as something the team owns and drives.
+The 65-day pilot runs April 6 – June 10 across 10 staff in six units. Four phases. Four questions to answer by June 10. The deliverables in this plan serve one purpose: make the initiative land as something the team owns and drives.
 
 Every deliverable follows three design rules:
 
@@ -25,7 +25,7 @@ Ship deadline: **April 3, 2026.** Five working days from today.
 |-------------|-----------|-------------|-------|
 | **1. Kickoff Deck** | April 3 | Mar 29–Apr 2 | Must be complete and tested before pilot Day 1 (April 6) |
 | **2. Phase 1 Activity Guide** | April 3 | Mar 30–Apr 3 | Built in parallel with Deck; needed for orientation block (Apr 8–9) |
-| **3. Activity Cards 1–2** | April 21 | Apr 14–20 (during org closure) | Cards 1–2 as HTML. Cards 3–6 start as Monday Docs, upgrade to HTML before Q3 rollout |
+| **3. Activity Cards 1–2** | April 21 | Apr 14–20 (during org closure) | Cards 1–2 as HTML. Cards 3–6 start as Monday Docs, upgrade to HTML before Q1 rollout |
 | **4. Train-the-Trainer Toolkit** | May 9 | May 1–9 | Draws from pilot data; builds during flight |
 | **5. Capstone Template** | May 21 | May 15–21 | Simplest build; gives participants one week to prepare |
 
@@ -39,7 +39,7 @@ Ship deadline: **April 3, 2026.** Five working days from today.
 |---|-------------|--------|--------|-------|
 | 1 | Kickoff Deck | HTML slide deck (frontend-slides) | Day 1 — April 6 | Preston presents, team activates |
 | 2 | Phase 1 Activity Guide | Interactive HTML activity page | Orientation + supervised sessions | Team-led pairs |
-| 3 | Activity Card Set | Cards 1–2 HTML; Cards 3–6 Monday Docs → HTML for Q3 | Weeks 3–8 | Rotating team leads |
+| 3 | Activity Card Set | Cards 1–2 HTML; Cards 3–6 Monday Docs → HTML for Q1 | Weeks 3–8 | Rotating team leads |
 | 4 | Train-the-Trainer Toolkit | HTML deck + facilitator guide | Phase 3 — May 13–20 | T3 candidates |
 | 5 | Capstone Showcase Template | HTML presentation template | Phase 4 — May 28 – Jun 5 | Each participant |
 
@@ -56,7 +56,7 @@ Ship deadline: **April 3, 2026.** Five working days from today.
 
 **Opening Block (Slides 1–3) — 5 min**
 
-- **Slide 1 — Title:** "We Built Something. Now We Use It." DC CAP wordmark. Pilot dates (April 6 – June 5). Cohort size (9 staff, 3 units). Minimal. Confident.
+- **Slide 1 — Title:** "We Built Something. Now We Use It." DC CAP wordmark. Pilot dates (April 6 – June 10). Cohort size (10 staff, 6 units). Minimal. Confident.
 - **Slide 2 — The Frame:** "Over the next 60 days, you are co-investigators." You log what you observe, surface what breaks, teach what you learn. One sentence. Full-bleed typography.
 - **Slide 3 — What's Already Built:** Visual inventory — 24 skills, governance framework, user guide, 24 seats, $600K KPMG grant. This is infrastructure waiting to be used. Icon-based layout, no paragraph text.
 
@@ -82,7 +82,7 @@ Ship deadline: **April 3, 2026.** Five working days from today.
 **Governance + Timeline Block (Slides 11–13) — 10 min**
 
 - **Slide 11 — The Data Classification Pyramid:** Four tiers, visual pyramid. Tier 1 (Restricted) at the top in red. Tier 4 (Public) at the base in green. Gold accent for the Tier 2 boundary line. One rule: "When in doubt, one tier more restricted than you think." This is the only governance slide in the kickoff — the full walkthrough happens in the orientation sessions (Days 3–4).
-- **Slide 12 — The 60 Days:** Timeline visual — four phases, color-coded. Key milestones called out. The org closure week (April 13–19) marked. June 5 evaluation anchored. One sentence per phase: what makes it distinct.
+- **Slide 12 — The 60 Days:** Timeline visual — four phases, color-coded. Key milestones called out. The org closure week (April 13–19) marked. June 10 evaluation anchored. One sentence per phase: what makes it distinct.
 - **Slide 13 — What Happens Next:** Three concrete things: (1) Account provisioning starts today, (2) Orientation sessions April 8–9 where you'll get hands-on, (3) Your first supervised Claude session April 20–22 with a real work task. Closes with: "This is yours. Own it."
 
 **Moved to Phase 1 Activity Guide (previously Slides 14, 16, 18):**
@@ -145,7 +145,7 @@ Starting Week 3 and continuing at every weekly check-in, Preston opens with a 60
 ## Deliverable 3: Activity Card Set
 
 **Cards 1–2:** `activity_cards.html` — HTML, same design system as the kickoff deck
-**Cards 3–6:** Monday Docs during pilot → upgraded to HTML before Q3 rollout
+**Cards 3–6:** Monday Docs during pilot → upgraded to HTML before Q1 rollout
 **When:** Weeks 3–8 (April 23 – May 27), one per week
 **Purpose:** Structured activities that advance from skill practice to team teaching. Each card follows a consistent layout: competency tag, modality tag, time estimate, materials, steps, output, facilitator notes.
 
@@ -170,7 +170,7 @@ Starting Week 3 and continuing at every weekly check-in, Preston opens with a 60
 
 **Card 5 — Use Case Showcase:** Structured show-and-tell. Each person presents one use case: the task, prompt strategy, output, and what they'd do differently. 5 minutes each, open Q&A. Facilitator captures notes for the governance framework review.
 
-**Card 6 — Train the Room:** T3 candidates each deliver a 15-minute mini-training on one skill or workflow — as if onboarding a colleague in Q3. The cohort role-plays a skeptical new user. Structured feedback after each delivery: what landed, what was unclear, what question wasn't answered.
+**Card 6 — Train the Room:** T3 candidates each deliver a 15-minute mini-training on one skill or workflow — as if onboarding a colleague in Q1. The cohort role-plays a skeptical new user. Structured feedback after each delivery: what landed, what was unclear, what question wasn't answered.
 
 ---
 
@@ -178,7 +178,7 @@ Starting Week 3 and continuing at every weekly check-in, Preston opens with a 60
 
 **File:** `train_the_trainer_deck.html`
 **When:** Phase 3 — May 13–20 (build May 1–9)
-**Purpose:** Give 2–3 T3 candidates everything they need to onboard the full organization in Q3.
+**Purpose:** Give 2–3 T3 candidates everything they need to onboard the full organization in Q1.
 **Format:** Slide deck with facilitator guide — presenter notes on second screen with anticipated questions, time cues, and activity instructions.
 
 ### Contents
@@ -194,7 +194,7 @@ Starting Week 3 and continuing at every weekly check-in, Preston opens with a 60
 ## Deliverable 5: Capstone Showcase Template
 
 **File:** `capstone_template.html`
-**When:** Phase 4 — May 28 – June 5 (build May 15–21)
+**When:** Phase 4 — May 28 – June 10 (build May 15–21)
 **Purpose:** Each participant presents a 5-minute capstone. Public proof of the pilot's value and handoff artifact for the June board briefing.
 
 ### Template Structure (5 slides per participant)
@@ -202,8 +202,8 @@ Starting Week 3 and continuing at every weekly check-in, Preston opens with a 60
 - **Slide 1 — My Pilot in a Sentence:** One sentence. Written by them.
 - **Slide 2 — The Use Case:** One task. Before Claude, after Claude. Time saved or quality gained. Specific.
 - **Slide 3 — My 4D Assessment:** Honest self-assessment. Which D was hardest. What changed.
-- **Slide 4 — What I'm Teaching:** One workflow, skill, or prompt pattern they commit to sharing in Q3.
-- **Slide 5 — What We Should Build Next:** One gap in current tooling. Feeds the Q3 roadmap.
+- **Slide 4 — What I'm Teaching:** One workflow, skill, or prompt pattern they commit to sharing in Q1.
+- **Slide 5 — What We Should Build Next:** One gap in current tooling. Feeds the Q1 roadmap.
 
 ---
 
@@ -244,7 +244,7 @@ All five deliverables share a unified design language.
 - Print-ready layout (single page per card when printed)
 - Clickable links to relevant Monday board items
 
-**The 4Ds quadrant is the visual anchor of the entire initiative.** It appears in the kickoff deck, on every activity card header, in the recall check, in the T3 toolkit, and in the capstone self-assessment. By June 5, the team should be able to draw it from memory.
+**The 4Ds quadrant is the visual anchor of the entire initiative.** It appears in the kickoff deck, on every activity card header, in the recall check, in the T3 toolkit, and in the capstone self-assessment. By June 10, the team should be able to draw it from memory.
 
 ---
 
@@ -261,8 +261,8 @@ All HTML deliverables are single-file. Zero external dependencies. Deployable vi
 | Commitment ritual (Slide 18) | Cut. The kickoff closes with concrete next steps, not performance. |
 | Phase 1 activity dates | Realigned to published pilot calendar milestones. Activities are embedded in orientation (Apr 8–9), governance acknowledgment (Apr 10–12), and supervised sessions (Apr 20–22). |
 | Deck length | Cut from 18 to 13 slides. Skills Library and Collaboration Workflow moved to Phase 1 Activity Guide as hands-on experiences. |
-| Activity Cards format | Cards 1–2 as HTML for launch. Cards 3–6 as Monday Docs, upgraded to HTML before Q3. |
+| Activity Cards format | Cards 1–2 as HTML for launch. Cards 3–6 as Monday Docs, upgraded to HTML before Q1. |
 | Gold in internal materials | Approved. Gold added as Diligence competency color and Tier 2 boundary accent. |
-| QR codes on cards | Cut. Clickable links serve the same function for a 9-person pilot. Reserve QR for Q3 printed materials. |
+| QR codes on cards | Cut. Clickable links serve the same function for a 9-person pilot. Reserve QR for Q1 printed materials. |
 | Build timeline | Added. Deliverables 1–2 ship by April 3. Everything else builds during the pilot. |
 | "What Sticks" measurement | Added. 60-second recall check at every weekly check-in starting Week 3. |

@@ -42,7 +42,7 @@
 
 This plan translates the research-backed best practices from DC CAP's `ai_nonprofit_onboarding_strategy` into actionable implementation steps, organized by priority and timeline. Each item maps directly to a research finding, identifies the current gap, specifies the deliverable, assigns ownership, and sets a deadline.
 
-The pilot runs April 6 through June 5. The June board briefing and Q3 full-org rollout decisions depend on what gets implemented in the remaining weeks. The plan is organized into three tiers: Critical (determines whether the pilot produces evidence), Recommended (determines whether adoption sticks), and Strategic (determines whether Q3 rollout succeeds at scale).
+The pilot runs April 6 through June 10. The June board briefing and Q1 full-org rollout decisions depend on what gets implemented in the remaining weeks. The plan is organized into three tiers: Critical (determines whether the pilot produces evidence), Recommended (determines whether adoption sticks), and Strategic (determines whether Q1 rollout succeeds at scale).
 
 ---
 
@@ -63,7 +63,7 @@ The pilot runs April 6 through June 5. The June board briefing and Q3 full-org r
 | Structured support for high-anxiety participants | No buddy system or differentiated support | MODERATE | R7 |
 | Champion-facilitated peer learning (vs. leader-led demos) | Live AI Fridays are Preston-led | MODERATE | R8 |
 | Crawl-walk-run-fly progressive capability staging | Phased adoption exists; no explicit capability gates | STRATEGIC | S1 |
-| Cohort-based Q3 rollout structure (85-96% completion rates) | Q3 planning deferred | STRATEGIC | S2 |
+| Cohort-based Q1 rollout structure (85-96% completion rates) | Q1 planning deferred | STRATEGIC | S2 |
 | Apprenticeship pairing protocol | T3 toolkit exists; no shadowing structure | STRATEGIC | S3 |
 | Spaced repetition reinforcement schedule | No post-pilot reinforcement plan | STRATEGIC | S4 |
 | Three-tier measurement for board and funder reporting | No board-ready metrics framework | STRATEGIC | S5 |
@@ -98,7 +98,7 @@ The pilot runs April 6 through June 5. The June board briefing and Q3 full-org r
    - AI Knowledge (conceptual understanding of 4Ds, hallucination, context window): 5-6 items
    - Applied Skills (scenario-based prompt writing + output evaluation): 2-3 worked examples
 
-3. **Schedule the post-assessment for June 1-3** (before the June 5 capstone). Allow 3 business days for analysis before the board briefing.
+3. **Schedule the post-assessment for June 1-3** (before the June 10 capstone). Allow 3 business days for analysis before the board briefing.
 
 4. **Analysis output:** Individual scores, cohort-level radar charts across 5 dimensions, pre/post delta with effect sizes. This becomes the centerpiece evidence for the June board slide on fluency development.
 
@@ -117,7 +117,7 @@ The pilot runs April 6 through June 5. The June board briefing and Q3 full-org r
 **What to build:**
 
 1. **Tier 1 — Engagement KPIs (track weekly starting now):**
-   - Monthly active users: Target 80%+ of pilot cohort (7+ of 9) by Day 60
+   - Monthly active users: Target 80%+ of pilot cohort (8+ of 10) by Day 65
    - Prompts per participant per week: Establish baseline Week 1, target 15+ by Week 6
    - Active user segmentation: Light (1-5 prompts/week), Moderate (6-19), Heavy (20+)
    - Data source: Claude Enterprise admin panel usage logs (confirm access with IT)
@@ -210,7 +210,7 @@ The pilot runs April 6 through June 5. The June board briefing and Q3 full-org r
 - Preston provides the scaffold structure and permission guides (R3); leaders provide the domain content
 - Module-building progress tracked weekly via the Weekly Pulse Check-In (Q5)
 - Peer review during weekly sessions in Weeks 6-7
-- Completed modules become Q3 rollout training materials, owned and delivered by the leader who built them
+- Completed modules become Q1 rollout training materials, owned and delivered by the leader who built them
 - This approach develops leadership capability directly: leaders who build the training are leaders who can sustain AI adoption in their units
 
 **Owner:** Unit leaders (module content) + Preston (scaffold, permission guides, peer review facilitation)
@@ -279,7 +279,7 @@ The pilot runs April 6 through June 5. The June board briefing and Q3 full-org r
    - Week 6: Present workflow redesign in weekly session; cohort provides feedback
    - Output: 9 completed workflow redesign templates (one per participant) — direct evidence for board briefing
 
-3. **Scaling mechanism:** Successful redesigns become templates for Q3 rollout. Each unit's best workflow becomes the demonstration case for new cohort members.
+3. **Scaling mechanism:** Successful redesigns become templates for Q1 rollout. Each unit's best workflow becomes the demonstration case for new cohort members.
 
 **Owner:** Preston (template design, protocol) + participants (execute) + champions (peer review)
 **Deadline:** Template by April 11; protocol communicated by April 14; first real-work attempts by April 21
@@ -470,7 +470,7 @@ Key terms to define:
 ---
 
 ## TIER 3: STRATEGIC IMPLEMENTATIONS
-### These determine whether Q3 rollout succeeds at organizational scale
+### These determine whether Q1 rollout succeeds at organizational scale
 
 ---
 
@@ -478,15 +478,15 @@ Key terms to define:
 
 **Research basis:** "Organizations deploying advanced capabilities before staff master basics overwhelm people and trigger resistance." The staged approach: Crawl (simple assistive tasks), Walk (complex tasks with Projects), Run (custom workflows and citizen automation), Fly (advanced agentic systems).
 
-**What to build:** A capability progression framework that maps to the 4 pilot phases and extends into Q3. Include explicit criteria for advancing (e.g., "demonstrated 3+ fluency behaviors consistently for 2 weeks before advancing from Walk to Run"). Acknowledge that program staff may remain at Walk while technical staff reach Fly — and frame that as appropriate differentiation.
+**What to build:** A capability progression framework that maps to the 4 pilot phases and extends into Q1. Include explicit criteria for advancing (e.g., "demonstrated 3+ fluency behaviors consistently for 2 weeks before advancing from Walk to Run"). Acknowledge that program staff may remain at Walk while technical staff reach Fly — and frame that as appropriate differentiation.
 
 **Owner:** Preston
-**Deadline:** Draft by May 1; finalized before Q3 planning
-**Deliverable:** Capability Staging Framework (1-2 pages) integrated into Q3 rollout plan
+**Deadline:** Draft by May 1; finalized before Q1 planning
+**Deliverable:** Capability Staging Framework (1-2 pages) integrated into Q1 rollout plan
 
 ---
 
-### S2: Design Cohort-Based Q3 Rollout Structure 🔲 NOT STARTED
+### S2: Design Cohort-Based Q1 Rollout Structure 🔲 NOT STARTED
 
 **Research basis:** "Cohort-based learning achieves 85-96% completion versus 2-12% for self-paced courses." For DC CAP's 30-50 staff, this means either a single cohort (if bandwidth allows) or two staggered cohorts where pilot graduates support the second wave.
 
@@ -510,7 +510,7 @@ Key terms to define:
 
 **Owner:** Preston + Angela Cammack (COO) + Eric Waldo (CEO)
 **Deadline:** Draft framework by May 15; final decision criteria by May 25 (before board briefing)
-**Deliverable:** Q3 Rollout Plan document + decision criteria matrix
+**Deliverable:** Q1 Rollout Plan document + decision criteria matrix
 
 ---
 
@@ -518,10 +518,10 @@ Key terms to define:
 
 **Research basis:** "McKinsey identifies apprenticeship as most effective for AI competency development because skills markets are moving too fast for static courses. When people teach others they retain 90% of material versus 5% for lecture."
 
-**What to build:** Formalize a 2-3 week shadowing structure where pilot graduates pair with Q3 cohort members on real work tasks. The T3 toolkit (Deliverable 4) is the foundation; this extends it into ongoing practice. Include: pairing criteria, shadowing schedule (2 sessions/week, 30 min each), co-working protocol (work on a real task together, not observation), and feedback loop.
+**What to build:** Formalize a 2-3 week shadowing structure where pilot graduates pair with Q1 cohort members on real work tasks. The T3 toolkit (Deliverable 4) is the foundation; this extends it into ongoing practice. Include: pairing criteria, shadowing schedule (2 sessions/week, 30 min each), co-working protocol (work on a real task together, not observation), and feedback loop.
 
 **Owner:** Preston + T3 candidates
-**Deadline:** Protocol designed by May 15; tested during remaining pilot weeks; deployed at Q3 launch
+**Deadline:** Protocol designed by May 15; tested during remaining pilot weeks; deployed at Q1 launch
 **Deliverable:** Apprenticeship Pairing Protocol (1-2 pages) as addendum to T3 toolkit
 
 ---
@@ -548,19 +548,19 @@ Each reinforcement session should introduce one new technique, revisit one found
 
 ### S5: Build Board-Ready Metrics Narrative 🔲 NOT STARTED
 
-**Research basis:** "CEO involvement in responsible AI delivers 58% more business benefits. Companies building trust are 2x more likely to see 10%+ revenue growth." The June board briefing needs quantitative evidence, qualitative stories, and a clear ask for Q3 resources.
+**Research basis:** "CEO involvement in responsible AI delivers 58% more business benefits. Companies building trust are 2x more likely to see 10%+ revenue growth." The June board briefing needs quantitative evidence, qualitative stories, and a clear ask for Q1 resources.
 
 **What to build:**
 
 Board briefing structure (for June presentation):
-1. **The Investment:** 9 staff, 60 days, integrated into existing workflows (not additive burden)
+1. **The Investment:** 10 staff, 65 days, integrated into existing workflows (not additive burden)
 2. **The Evidence:** Pre/post fluency scores (C1), engagement KPIs (C2), iteration trends (C4), workflow redesigns with documented time savings (R1)
 3. **The Stories:** 2-3 capstone highlights (Deliverable 5) — specific use cases with before/after impact
-4. **The Ask:** Resources for Q3 rollout — cohort size, champion time allocation, technology budget, training calendar
+4. **The Ask:** Resources for Q1 rollout — cohort size, champion time allocation, technology budget, training calendar
 5. **The Risk of Inaction:** 95% of pilots fail when organizations don't invest in the 70% people component; DC CAP's governance infrastructure and pilot evidence position us to be in the 5%
 
 **Owner:** Preston (metrics compilation, narrative) + CEO/COO (review and endorse)
-**Deadline:** Metrics compiled by June 3; narrative drafted by June 5; presented at June board meeting
+**Deadline:** Metrics compiled by June 3; narrative drafted by June 10; presented at June board meeting
 **Deliverable:** Board briefing slide deck (draw from board-deck skill) + 1-page executive summary (draw from executive-summary-formatter skill)
 
 ---
@@ -581,7 +581,7 @@ Board briefing structure (for June presentation):
 3. **Recognition structure:** Public acknowledgment of progression milestones. Anthropic Academy certificates as supplementary credentials. Capstone presentations as portfolio pieces.
 
 **Owner:** Preston + HR/Operations lead
-**Deadline:** Framework designed by May 25; integrated into Q3 planning
+**Deadline:** Framework designed by May 25; integrated into Q1 planning
 **Deliverable:** AI Competency Progression Framework (1-2 pages) + integration memo for performance review cycle
 
 ---
@@ -595,17 +595,17 @@ Board briefing structure (for June presentation):
 
 **Research basis:** "Mid-level managers display higher resistance than either senior leadership or front-line staff because AI threatens their expertise-based authority. These managers control budget approvals, schedule priorities, and informal influence — they can block AI adoption without ever explicitly refusing." The strategy recommends 81+ hours of training for managers (more than staff they supervise), ADKAR framework (Awareness, Desire, Knowledge, Ability, Reinforcement), and positioning managers as knowledgeable guides by training them before their teams.
 
-**Current state:** The pilot cohort is 9 staff across 3 units. The plan addresses participant-level support (R7) but does not explicitly address program directors, team leads, or other managers who control whether AI integration survives beyond the pilot.
+**Current state:** The pilot cohort is 10 staff across 6 units. The plan addresses participant-level support (R7) but does not explicitly address program directors, team leads, or other managers who control whether AI integration survives beyond the pilot.
 
 **What to build:**
 
-1. **Manager pre-briefing before Q3 rollout:** All program directors and team leads complete Tier 2 role-specific training before their staff begin Q3 onboarding. They need to be knowledgeable guides, not learning alongside or behind their reports.
+1. **Manager pre-briefing before Q1 rollout:** All program directors and team leads complete Tier 2 role-specific training before their staff begin Q1 onboarding. They need to be knowledgeable guides, not learning alongside or behind their reports.
 
 2. **Explicit job-security communication to middle managers:** Frame AI as expanding their capacity for strategic work and judgment, freeing them from operational tasks that consume bandwidth. Address the expertise-authority concern directly: "Your value increases because you become the person who knows both the domain and how to leverage AI within it."
 
 3. **Manager-specific KPI:** Track whether managers are actively using Claude (Tier 1 engagement), not just whether they've approved their teams to use it. Managers who aren't using the tool signal to their teams that it's optional.
 
-4. **ADKAR implementation for Q3:**
+4. **ADKAR implementation for Q1:**
    - Awareness: CEO communicates vision with explicit manager input on rollout design
    - Desire: Address job security, show investment in reskilling
    - Knowledge: Managers complete training first (81+ hours threshold)
@@ -613,7 +613,7 @@ Board briefing structure (for June presentation):
    - Reinforcement: Celebrate manager AI wins publicly; connect adoption to performance expectations
 
 **Owner:** Preston + Eric Waldo (CEO) + Angela Cammack (COO)
-**Deadline:** Manager pre-briefing protocol designed by May 20; executed before Q3 cohort launch
+**Deadline:** Manager pre-briefing protocol designed by May 20; executed before Q1 cohort launch
 **Deliverable:** Manager Change Management Protocol (2-3 pages) + CEO talking points for manager communication
 
 ---
@@ -675,7 +675,7 @@ A template library covering DC CAP's most frequent AI-assisted tasks:
 Each template follows the Context-Task-Content-Constraints structure with DC CAP-specific context pre-filled. Templates are stored in the relevant Claude Project (V2) so they're available to all team members.
 
 **Owner:** Preston (template design) + domain experts (validate and refine through use)
-**Deadline:** 5 priority templates by May 1; full library by Q3 launch
+**Deadline:** 5 priority templates by May 1; full library by Q1 launch
 **Deliverable:** DC CAP Prompt Template Library (stored in Projects + linked from pilot_hub.html)
 
 ---
@@ -725,10 +725,10 @@ Each template follows the Context-Task-Content-Constraints structure with DC CAP
    - Review and update approved tools list
    - Document findings and any corrective actions
 
-3. **Shadow AI prevention:** Include in Q3 onboarding a clear statement that personal AI accounts (ChatGPT, Gemini, personal Claude) must not be used for DC CAP work data. Provide the rationale (data exposure risk) alongside the rule.
+3. **Shadow AI prevention:** Include in Q1 onboarding a clear statement that personal AI accounts (ChatGPT, Gemini, personal Claude) must not be used for DC CAP work data. Provide the rationale (data exposure risk) alongside the rule.
 
 **Owner:** Preston + IT/Compliance
-**Deadline:** Anonymization reference by April 18; audit checklist by May 1; shadow AI communication at Q3 launch
+**Deadline:** Anonymization reference by April 18; audit checklist by May 1; shadow AI communication at Q1 launch
 **Deliverable:** Anonymization Quick-Reference (1-page) + Quarterly Privacy Audit Checklist + Shadow AI Policy Communication
 
 ---
@@ -742,7 +742,7 @@ Each template follows the Context-Task-Content-Constraints structure with DC CAP
 | 2 | April 14-18 | C3: Leaders identify unit use cases | R4: Polished output trap | V4: LEAP protocol; V5: Anonymization reference |
 | 3 | April 21-25 | C3: Leaders begin drafting modules | R1: Real-work transition begins | V4: Hallucination exercise |
 | 4 | April 28-May 2 | — | R1: Real-work transition begins; R8: Co-facilitated Fridays start | S1: Capability staging; V2: 3 priority Projects; V3: 5 priority templates; V5: Audit checklist |
-| 5-6 | May 5-16 | — | R1: Workflow redesigns documented | S2: Q3 rollout; S3: Apprenticeship protocol; V1: Manager pre-briefing protocol |
+| 5-6 | May 5-16 | — | R1: Workflow redesigns documented | S2: Q1 rollout; S3: Apprenticeship protocol; V1: Manager pre-briefing protocol |
 | 7-8 | May 18-27 | — | R8: Champion-led Fridays | S4: Reinforcement schedule; S6: Competency framework; V1: Manager communication |
 | 9 | May 28-June 1 | C1: Post-assessment administered | — | S5: Board metrics compiled |
 | 10 | June 2-5 | C1: Analysis complete | Capstone presentations | S5: Board narrative finalized |
@@ -763,14 +763,14 @@ Each template follows the Context-Task-Content-Constraints structure with DC CAP
 
 ## Success Criteria for This Plan
 
-This implementation plan succeeds if, by June 5:
+This implementation plan succeeds if, by June 10:
 
 1. The June board briefing includes quantitative pre/post fluency evidence (C1)
 2. At least 7 of 9 participants are monthly active users (C2, Tier 1)
 3. Iteration frequency is increasing across the cohort (C4)
 4. At least 6 documented workflow redesigns exist with time-savings evidence (R1)
 5. No participant has fully disengaged (R7)
-6. A Q3 rollout plan with decision criteria is ready for board review (S2)
+6. A Q1 rollout plan with decision criteria is ready for board review (S2)
 
 These criteria map directly to the research finding that separates the 5% of pilots that achieve breakthrough results from the 95% that quietly die: systematic investment in measurement, role-specificity, workflow integration, and people.
 

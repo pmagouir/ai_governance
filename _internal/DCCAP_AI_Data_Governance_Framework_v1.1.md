@@ -67,7 +67,7 @@ Adoption follows three phases designed to build organizational fluency, refine g
 
 | Element | Details |
 |---------|---------|
-| **Users** | 8 seats: CEO, COO, CSAO, Director of Strategic Partnerships and Student Success, GEAR UP Director, Director of Communications, Director of Development Operations, Director of Foundation Relations, Manager of Executive Operations, possibly Manager of Data Operations |
+| **Users** | 10 seats: CEO, COO, Director of Strategic Partnerships and Student Success, GEAR UP Director, Director of Communications, Director of Development Operations, Director of Foundation Relations, Manager of Executive Operations, Data Lead, Development Co-Lead |
 | **Data Access** | All tiers with role dependencies employed. Organizational knowledge, program models, grant language, strategic documents, and public data. |
 | **Key Activities** | Design project infrastructure, deploy pre-built organizational skills, identify and add connectors, build shared organizational context, and load shared Projects with program documentation, past grant narratives, strategic plan, OKR frameworks, and data dictionaries. Use Claude for drafting, analysis, and strategic thinking. Generate ideas for practical, innovative use case scenarios. |
 | **Governance Actions** | Configure SSO, set 90-day data retention, establish role-based permissions, enable audit logging. Document usage patterns and refine classification decisions. |
@@ -123,7 +123,8 @@ The following security settings were configured at contract activation and will 
 | **Student Success Lead** | Champions adoption within coaching teams, identifies high-value use cases, ensures Tier 1 data protections are maintained in daily workflows. | Stephanie Gardner, Director of Strategic Partnerships and Program Strategy |
 | **Communications Lead** | Ensures all Claude-assisted external communications, donor materials, and public-facing content receive staff review before distribution. Maintains brand voice standards in AI-assisted drafting workflows. Advises on Tier 2 data use in storytelling and impact reporting. | Alexander Vassiliadis, Director of Communications |
 | **GEAR UP Compliance Lead** | Ensures GEAR UP data compliance requirements are maintained in AI workflows. Consulted on Tier 2 boundary decisions involving federal grant data. Advises on aggregation thresholds for GEAR UP reporting. | Danielle Walker, GEAR UP Director |
-| **Development Co-Leads** | Champions adoption within fundraising and donor relations workflows. Identifies high-value use cases for grant writing, prospect research, and donor communications. Ensures development data (donor PII, gift amounts) follows Tier 2 protections. Lead Blackbaud connector adoption and implementation. | Sashia Moore, Director of Development Operations |
+| **Development Co-Leads** | Champions adoption within fundraising and donor relations workflows. Identifies high-value use cases for grant writing, prospect research, and donor communications. Ensures development data (donor PII, gift amounts) follows Tier 2 protections. Lead Blackbaud connector adoption and implementation. | Sashia Moore, Director of Development Operations; Anna Hartge, Development Co-Lead |
+| **Data Lead** | Supports data infrastructure, analytics workflows, and Salesforce data integration within AI-assisted processes. Ensures data quality standards and Tier 2 protections are maintained in analytical outputs. | Anthony Little, Data Lead |
 | **Operations Content Lead** | Curates and organizes HR, finance, and operations documentation for ingestion into Claude Projects. Classifies content per data tier framework before upload. Ensures Tier 1 and Tier 2 materials are filtered appropriately and that only authorized content enters shared knowledge bases. | Andre Mendes, Executive Operations Manager |
 | **All Licensed Users** | Complete AI onboarding training, follow data classification protocols, report any incidents or concerns to the AI Governance Lead. | All staff with Enterprise seats |
 
@@ -239,7 +240,7 @@ These are leading indicators. They tell us whether staff are using the platform 
 
 | Metric | Phase 1 Target (Pilot, Day 60) | Phase 2 Target | Phase 3 Target |
 |--------|-------------------------------|----------------|----------------|
-| Monthly active users (% of licensed seats) | 80%+ of pilot cohort (7+ of 9) | 60% of all licensed users by Month 4 | 75% of all licensed users by Month 8 |
+| Monthly active users (% of licensed seats) | 80%+ of pilot cohort (8+ of 10) | 60% of all licensed users by Month 4 | 75% of all licensed users by Month 8 |
 | Prompts per participant per week | Baseline established Week 1; 15+ by Week 6 | 15+ sustained | 20+ |
 | Active user segmentation | Cohort shifting from Light (1-5/week) toward Moderate (6-19) and Heavy (20+) | Majority in Moderate+ | Majority in Heavy |
 | Anthropic Academy course completions | Claude 101 + AI Fluency for Nonprofits (prerequisite); Framework & Foundations (recommended) | 5-course progression for all team members | Required for new hires within 60 days |
@@ -273,7 +274,7 @@ These are lagging indicators that connect AI-assisted proficiency to mission out
 
 ### Decision Gates
 
-The pilot measurement framework includes explicit Scale/Pause/Pivot thresholds at Day 45 and Day 60 to inform Q3 rollout decisions:
+The pilot measurement framework includes explicit Scale/Pause/Pivot thresholds at Day 45 and Day 60 to inform Q1 rollout decisions:
 
 | Decision | Criteria | Recommendation |
 |----------|----------|----------------|

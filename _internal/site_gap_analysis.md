@@ -163,7 +163,7 @@ No systematic pre/post assessment to measure AI fluency development, only vocabu
 - Enterprise AI deployment research shows measurement is the foundation for evidence-based iteration and board reporting
 - Anthropic's AI Fluency Index identifies 11 observable fluency behaviors (iteration, questioning, verification, etc.) that are directly measurable
 - McKinsey and BCG research emphasize 3-layer measurement: engagement (30-60 days), proficiency (60-90 days), business impact (90-180 days)
-- DC CAP's June board briefing and Q3 scaling decision will require quantitative evidence of fluency development and impact
+- DC CAP's June board briefing and Q1 scaling decision will require quantitative evidence of fluency development and impact
 - Benchmark: 60%+ monthly active users by 90 days; 75%+ by 6 months (research consensus threshold)
 
 **Participant Impact:**

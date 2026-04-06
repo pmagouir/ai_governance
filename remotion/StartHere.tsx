@@ -148,7 +148,7 @@ const SlideTitle: React.FC = () => {
           letterSpacing: "0.05em",
         }}
       >
-        Enterprise AI Leadership Pilot · April 6 – June 5, 2026
+        Enterprise AI Leadership Pilot · April 6 – June 10, 2026
       </p>
     </AbsoluteFill>
   );

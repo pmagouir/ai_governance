@@ -1,6 +1,6 @@
 # DC CAP Enterprise AI Leadership Pilot: Participant Simulation Interviews
 
-**Pilot Overview:** 60-day pilot (April 6 - June 5, 2026) deploying Claude to 9 staff across 3 organizational units. 10 simulated participants spanning diverse roles, experience levels, and psychological dispositions.
+**Pilot Overview:** 65-day pilot (April 6 - June 10, 2026) deploying Claude to 10 staff across 6 organizational units. 10 simulated participants spanning diverse roles, experience levels, and psychological dispositions.
 
 ---
 
@@ -14,7 +14,7 @@
 ### A. First Impressions (Pilot Hub)
 
 **What grabs attention:**
-- The animated stats at the top ("60 days," "9 leaders," "24 skills") feels professional and official—reassuring that this is real and structured, not a one-off experiment.
+- The animated stats at the top ("65 days," "10 leaders," "24 skills") feels professional and official—reassuring that this is real and structured, not a one-off experiment.
 - The "Getting Started" section with prerequisites feels manageable. She's relieved there's a clear checklist.
 
 **What confuses her:**

@@ -1,8 +1,8 @@
 # DC CAP AI Governance & Leadership Pilot
 
-DC CAP launched its 60-day Enterprise AI Leadership Pilot on April 6, 2026. This repository contains every governance policy, training deliverable, interactive tool, and analytics pipeline that powers the initiative. Nine senior leaders across six functional units are building AI fluency through structured activities, governance-first sequencing, and a capstone module they own from design through delivery.
+DC CAP launched its Enterprise AI Leadership Pilot on April 6, 2026. This repository contains every governance policy, training deliverable, interactive tool, and analytics pipeline that powers the initiative. Ten senior leaders across six functional units are building AI fluency through structured activities, governance-first sequencing, and a capstone module they own from design through delivery.
 
-The pilot site is live at **https://pmagouir.github.io/ai_governance/**
+The pilot site is live at **https://dccapinnovation.org**
 
 ---
 
@@ -140,7 +140,8 @@ Six custom visualizations across the site:
 | Executive Sponsor | Eric Waldo, CEO |
 | Student Success Lead | Stephanie Gardner |
 | Communications Lead | Alexander Vassiliadis |
-| Development Co-Leads | Sashia Moore, Candice Thomas |
+| Development Co-Leads | Sashia Moore, Anna Hartge |
+| Data Lead | Anthony Little |
 
 Report Tier 1 data incidents to the AI Governance Lead within 2 hours. See Section 7 of the Governance Framework for the full incident response protocol.
 

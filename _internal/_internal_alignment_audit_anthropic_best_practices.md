@@ -25,7 +25,7 @@ Anthropic's enterprise deployment guidance emphasizes governance infrastructure 
 The deliverable plan's third design rule ("Distributed ownership from day one") directly addresses Anthropic's emphasis on leader-led adoption rationale and systematic success sharing. By Phase 3, participants are facilitating sessions and training peers, which mirrors the Train-the-Trainer pathway Anthropic recommends for scaling beyond pilot cohorts.
 
 ### 5. Phased Adoption Arc
-The four-phase pilot structure (Foundation → Application → Expansion → Evaluation) maps to Anthropic's three-phase model (Activation → Acceleration → Expansion). DC CAP's Phase 1 corresponds to Activation, Phases 2-3 to Acceleration, and Phase 4 (capstone + evaluation) provides the measurement foundation for Expansion in Q3.
+The four-phase pilot structure (Foundation → Application → Expansion → Evaluation) maps to Anthropic's three-phase model (Activation → Acceleration → Expansion). DC CAP's Phase 1 corresponds to Activation, Phases 2-3 to Acceleration, and Phase 4 (capstone + evaluation) provides the measurement foundation for Expansion in Q1.
 
 ---
 
@@ -43,7 +43,7 @@ The four-phase pilot structure (Foundation → Application → Expansion → Eva
 - AI knowledge (conceptual understanding)
 - Applied skills (prompt writing + output evaluation tasks)
 
-This instrument should produce individual and cohort-level scores that enable pre/post comparison, informing both the June board briefing and Q3 scaling decisions.
+This instrument should produce individual and cohort-level scores that enable pre/post comparison, informing both the June board briefing and Q1 scaling decisions.
 
 **Status:** IN PROGRESS — survey instrument being built alongside this audit.
 
@@ -111,7 +111,7 @@ These courses include formative assessments, completion certificates, and learni
 | Psychological Safety Framing | ●●●○○ Moderate | Add explicit norm to kickoff (Gap 3) |
 | Anthropic Resource Integration | ●○○○○ Weak | Connect to Anthropic Academy courses (Gap 4) |
 | Growth Mindset / Success Sharing | ●●●●○ Strong | Already embedded in distributed ownership model |
-| Scalability Planning | ●●●●○ Strong | T3 toolkit and Q3 rollout plan are solid |
+| Scalability Planning | ●●●●○ Strong | T3 toolkit and Q1 rollout plan are solid |
 
 ---
 

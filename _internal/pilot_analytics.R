@@ -2,7 +2,7 @@
 # DC CAP AI Leadership Pilot: Comprehensive Tidyverse Analysis
 # ============================================================================
 # Purpose: Generate CSO-ready descriptive and inferential insights on the
-# 9-week Enterprise AI Leadership Pilot (n=15, April 6 - June 5, 2026)
+# 9-week Enterprise AI Leadership Pilot (n=15, April 6 - June 10, 2026)
 #
 # Data: Pre-launch fluency survey + milestone completion tracking
 # Author: Data Analysis Team
