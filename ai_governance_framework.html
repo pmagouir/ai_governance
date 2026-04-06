@@ -1758,6 +1758,35 @@
         </div>
     </section>
 
+    <!-- Governance Acknowledgment Section -->
+    <section id="governance-acknowledgment" style="padding: 4rem 0; background: linear-gradient(180deg, var(--white) 0%, #f8f4ff 100%);">
+        <div class="container" style="max-width: 800px; margin: 0 auto; padding: 0 2rem;">
+            <h2 class="reveal" style="text-align: center; margin-bottom: 1.5rem;">Governance Acknowledgment</h2>
+            <div class="reveal" id="govAckSection" style="padding: 2rem; background: var(--white); border: 2px solid var(--navy); border-radius: 12px; box-shadow: 0 4px 20px rgba(16, 26, 76, 0.08);">
+                <p style="font-size: 0.95em; line-height: 1.7; margin-bottom: 1.25rem;">By checking the box below, I certify that I have read and understand the DC CAP AI Governance Policy Framework. I acknowledge my personal responsibility for maintaining best practices within my functional area as they relate to:</p>
+                <ul style="list-style: none; padding: 0; margin: 0 0 1.5rem 0;">
+                    <li style="padding: 0.5em 0; padding-left: 1.5rem; position: relative; font-size: 0.95em;"><span style="position: absolute; left: 0; color: var(--purple); font-weight: bold;">&rarr;</span><strong style="color: var(--navy);">Data Security &amp; Diligence</strong> &mdash; classifying data before upload, following the four-tier framework, and protecting student and organizational information</li>
+                    <li style="padding: 0.5em 0; padding-left: 1.5rem; position: relative; font-size: 0.95em;"><span style="position: absolute; left: 0; color: var(--purple); font-weight: bold;">&rarr;</span><strong style="color: var(--navy);">Responsible Delegation</strong> &mdash; making informed decisions about which tasks to assign to AI and maintaining human judgment on sensitive matters</li>
+                    <li style="padding: 0.5em 0; padding-left: 1.5rem; position: relative; font-size: 0.95em;"><span style="position: absolute; left: 0; color: var(--purple); font-weight: bold;">&rarr;</span><strong style="color: var(--navy);">Discernment in Review</strong> &mdash; critically evaluating all AI-generated outputs for accuracy, tone, and policy compliance before any external use</li>
+                </ul>
+                <div style="background: #f9f7ff; padding: 1.25rem; border-radius: 8px; border: 2px solid #ddd; margin-bottom: 1.5rem; display: flex; align-items: flex-start; gap: 0.75rem;" id="govAckContainer">
+                    <input type="checkbox" id="governanceAck" style="margin-top: 0.25rem; min-width: 18px; min-height: 18px; accent-color: var(--purple); cursor: pointer;">
+                    <label for="governanceAck" style="font-weight: 600; color: var(--navy); cursor: pointer; line-height: 1.5;">I have read the AI Governance Policy Framework, and I accept responsibility for upholding these standards in my use of AI tools at DC CAP.</label>
+                </div>
+                <div style="text-align: center;">
+                    <button id="govSubmitBtn" onclick="submitGovernanceAck()" disabled style="display: inline-block; padding: 1rem 2.5rem; font-size: 1.05em; font-weight: 700; font-family: var(--font-display); border-radius: 8px; border: none; background: #ccc; color: white; cursor: not-allowed; transition: all 0.3s ease;">Confirm Acknowledgment</button>
+                </div>
+                <p id="govAckMessage" style="display: none; text-align: center; margin-top: 1rem; font-weight: 600; color: #27AE60; font-size: 0.95em;"></p>
+            </div>
+
+            <!-- Continue to Step 3 (hidden until acknowledgment confirmed) -->
+            <div id="continueToStep3" style="display: none; text-align: center; margin-top: 2rem;">
+                <a href="pilot_hub.html#step3" class="btn-primary" style="display: inline-block; text-decoration: none; text-align: center; padding: 1rem 2.5rem; font-size: 1.1em; font-weight: 700; font-family: var(--font-display); border-radius: 8px; background: linear-gradient(135deg, #6B3FA0, #8352FF); color: white; box-shadow: 0 4px 15px rgba(107, 63, 160, 0.3); transition: all 0.3s ease;">Continue to Step 3: Anthropic Academy Courses &rarr;</a>
+                <p style="margin-top: 0.75rem; font-size: 0.85em; color: #666;">Two free courses: Claude 101 + AI Fluency for Nonprofits</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <p><strong>DC CAP Enterprise AI Leadership Pilot</strong></p>
@@ -1841,6 +1870,114 @@
                 containerObserver.observe(container);
             }
         });
+        // ==================== GOVERNANCE ACKNOWLEDGMENT ====================
+        const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
+
+        // Enable/disable submit button based on checkbox
+        const govCheckbox = document.getElementById('governanceAck');
+        const govSubmitBtn = document.getElementById('govSubmitBtn');
+
+        if (govCheckbox && govSubmitBtn) {
+            govCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    govSubmitBtn.disabled = false;
+                    govSubmitBtn.style.background = 'linear-gradient(135deg, #6B3FA0, #8352FF)';
+                    govSubmitBtn.style.cursor = 'pointer';
+                    govSubmitBtn.style.boxShadow = '0 4px 15px rgba(107, 63, 160, 0.3)';
+                } else {
+                    govSubmitBtn.disabled = true;
+                    govSubmitBtn.style.background = '#ccc';
+                    govSubmitBtn.style.cursor = 'not-allowed';
+                    govSubmitBtn.style.boxShadow = 'none';
+                }
+            });
+        }
+
+        function submitGovernanceAck() {
+            if (!document.getElementById('governanceAck').checked) return;
+
+            // Get participant name from localStorage
+            let participantName = '';
+            try { participantName = localStorage.getItem('dccap_participant_name') || ''; } catch(e) {}
+
+            // Store acknowledgment in localStorage
+            try { localStorage.setItem('dccap_governance_acknowledged', 'true'); } catch(e) {}
+
+            // Submit milestone to Google Sheets
+            const payload = JSON.stringify({
+                type: 'milestone',
+                participant_name: participantName,
+                milestone: 'Governance framework acknowledged',
+                phase: 'Onboarding',
+                page_source: 'ai_governance_framework.html',
+                details: 'Participant read and acknowledged the AI Data Governance Policy Framework'
+            });
+
+            fetch(SHEET_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: payload,
+                redirect: 'follow'
+            }).catch(() => fetch(SHEET_ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: payload
+            })).catch(err => console.error('Milestone error:', err));
+
+            // Update UI
+            const msg = document.getElementById('govAckMessage');
+            const firstName = participantName ? participantName.split(' ')[0] : '';
+            msg.textContent = firstName
+                ? 'Acknowledged! Thank you, ' + firstName + '. You\'re ready for Step 3.'
+                : 'Acknowledged! You\'re ready for Step 3.';
+            msg.style.display = 'block';
+
+            govSubmitBtn.textContent = 'Confirmed';
+            govSubmitBtn.style.background = '#27AE60';
+            govSubmitBtn.disabled = true;
+            govSubmitBtn.style.cursor = 'default';
+
+            document.getElementById('governanceAck').disabled = true;
+
+            // Show the Continue to Step 3 button
+            document.getElementById('continueToStep3').style.display = 'block';
+
+            // Smooth scroll so user sees the next-step button
+            setTimeout(function() {
+                document.getElementById('continueToStep3').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 300);
+        }
+
+        // On page load, restore acknowledgment state if already completed
+        (function restoreGovAckState() {
+            try {
+                if (localStorage.getItem('dccap_governance_acknowledged') === 'true') {
+                    const checkbox = document.getElementById('governanceAck');
+                    const btn = document.getElementById('govSubmitBtn');
+                    const msg = document.getElementById('govAckMessage');
+                    const continueBtn = document.getElementById('continueToStep3');
+
+                    if (checkbox) { checkbox.checked = true; checkbox.disabled = true; }
+                    if (btn) {
+                        btn.textContent = 'Confirmed';
+                        btn.style.background = '#27AE60';
+                        btn.disabled = true;
+                        btn.style.cursor = 'default';
+                    }
+
+                    let participantName = localStorage.getItem('dccap_participant_name') || '';
+                    let firstName = participantName ? participantName.split(' ')[0] : '';
+                    if (msg) {
+                        msg.textContent = firstName
+                            ? 'Acknowledged! Thank you, ' + firstName + '.'
+                            : 'Previously acknowledged.';
+                        msg.style.display = 'block';
+                    }
+                    if (continueBtn) continueBtn.style.display = 'block';
+                }
+            } catch(e) {}
+        })();
     </script>
 </body>
 </html>

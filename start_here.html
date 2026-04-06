@@ -1968,6 +1968,7 @@
         <input id="participantNameInput" type="text" placeholder="Your name" style="padding:0.4rem 0.75rem;border-radius:6px;border:2px solid var(--purple);font-family:var(--font-body);font-size:0.9rem;width:clamp(140px,20vw,220px);">
         <button id="markCompleteBtn" onclick="markStartHereComplete()" style="padding:0.5rem 1.25rem;background:var(--purple);color:white;border:none;border-radius:6px;font-family:var(--font-subhead);font-weight:600;font-size:0.9rem;cursor:pointer;transition:all 0.2s;">Mark Complete</button>
         <span id="completionMsg" style="font-size:0.85rem;color:var(--gold);display:none;"></span>
+        <a id="continueToGovFramework" href="ai_governance_framework.html#governance-acknowledgment" style="display:none;padding:0.5rem 1.25rem;background:linear-gradient(135deg,#6B3FA0,#8352FF);color:white;border:none;border-radius:6px;font-family:var(--font-subhead);font-weight:600;font-size:0.9rem;text-decoration:none;transition:all 0.2s;box-shadow:0 2px 8px rgba(107,63,160,0.3);">Next: AI Governance Framework &rarr;</a>
     </div>
 
     <script>
@@ -1983,6 +1984,15 @@
                     if (nameField && !nameField.value) {
                         nameField.value = storedName;
                     }
+                }
+                // If already completed, show done state and continue link
+                if (localStorage.getItem('dccap_starthere_completed') === 'true') {
+                    var btn = document.getElementById('markCompleteBtn');
+                    var msg = document.getElementById('completionMsg');
+                    var continueLink = document.getElementById('continueToGovFramework');
+                    if (btn) { btn.style.background = '#27ae60'; btn.textContent = 'Done'; btn.disabled = true; }
+                    if (msg) { msg.textContent = 'Previously completed.'; msg.style.display = 'inline'; }
+                    if (continueLink) continueLink.style.display = 'inline-block';
                 }
             } catch(e) { /* localStorage unavailable */ }
         });
@@ -2029,6 +2039,10 @@
             document.getElementById('markCompleteBtn').style.background = '#27ae60';
             document.getElementById('markCompleteBtn').textContent = 'Done';
             document.getElementById('markCompleteBtn').disabled = true;
+
+            // Show continue to Governance Framework link
+            var continueLink = document.getElementById('continueToGovFramework');
+            if (continueLink) continueLink.style.display = 'inline-block';
         }
         // Concentric Circles Diagram Interaction
         function initConcentricCircles() {
