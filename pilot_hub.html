@@ -664,6 +664,77 @@
             color: #666;
         }
 
+        /* ── Pre-Assessment Gate ── */
+        .pre-gate-locked {
+            position: relative;
+            opacity: 0.45;
+            pointer-events: none;
+            user-select: none;
+            filter: grayscale(40%);
+            transition: opacity 0.4s ease, filter 0.4s ease;
+        }
+        .pre-gate-locked .card-link,
+        .pre-gate-locked a {
+            pointer-events: none;
+            color: #999 !important;
+        }
+        .pre-gate-locked .card::before,
+        .card.pre-gate-locked::before {
+            content: "\1F512";
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            font-size: 1.1rem;
+            z-index: 2;
+        }
+        .pre-gate-locked-label {
+            display: block;
+            text-align: center;
+            font-family: var(--font-subhead);
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+            color: var(--purple);
+            font-weight: 600;
+            margin-top: 0.5rem;
+            letter-spacing: 0.3px;
+            pointer-events: none;
+        }
+        .pre-gate-banner {
+            background: linear-gradient(135deg, var(--navy) 0%, #1a2766 100%);
+            color: var(--white);
+            padding: clamp(1rem, 2.5vw, 1.5rem) clamp(1.5rem, 5vw, 3rem);
+            text-align: center;
+            font-family: var(--font-subhead);
+            border-bottom: 3px solid var(--purple);
+            display: none;
+        }
+        .pre-gate-banner.visible {
+            display: block;
+        }
+        .pre-gate-banner h3 {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+        }
+        .pre-gate-banner p {
+            font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+            opacity: 0.9;
+            line-height: 1.5;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .pre-gate-banner a {
+            color: var(--gold);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+        /* Unlocked transition */
+        .pre-gate-unlocked {
+            opacity: 1;
+            pointer-events: auto;
+            user-select: auto;
+            filter: none;
+        }
+
         /* Prerequisite Cards */
         .prerequisite-card {
             background: var(--white);
@@ -1579,14 +1650,14 @@
         <div class="reveal" style="text-align:center;margin-bottom:clamp(1rem,2vw,2rem);"><img src="assets/dccap-logo-hero.png" alt="DC CAP Scholars" style="height:clamp(50px,8vw,90px);filter:drop-shadow(0 2px 12px rgba(0,0,0,0.3));"></div>
         <h1 class="hero-title reveal-blur">Co-Designing Organizational Intelligence</h1>
         <h2 class="hero-subtitle reveal" style="transition-delay: 0.2s;">DC CAP Enterprise AI Leadership Pilot</h2>
-        <p class="hero-meta reveal" style="transition-delay: 0.4s;">April 6 – June 5, 2026</p>
+        <p class="hero-meta reveal" style="transition-delay: 0.4s;">April 6 – June 10, 2026</p>
         <div class="reveal" style="transition-delay: 0.6s; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: clamp(0.75rem, 2vw, 1.25rem); max-width: 700px; margin: clamp(1rem, 3vw, 2rem) auto 0;">
             <div style="text-align: center; padding: 0.75rem; border-radius: 6px; background: rgba(255,255,255,0.1);">
-                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--gold);">60</div>
+                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--gold);">65</div>
                 <div style="font-size: clamp(0.8rem, 1.2vw, 0.9rem); opacity: 0.9;">Days</div>
             </div>
             <div style="text-align: center; padding: 0.75rem; border-radius: 6px; background: rgba(255,255,255,0.1);">
-                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--gold);">9</div>
+                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--gold);">10</div>
                 <div style="font-size: clamp(0.8rem, 1.2vw, 0.9rem); opacity: 0.9;">Leaders</div>
             </div>
             <div style="text-align: center; padding: 0.75rem; border-radius: 6px; background: rgba(255,255,255,0.1);">
@@ -1609,7 +1680,7 @@
     <div style="max-width: 900px; margin: 0 auto;">
         <h2 class="reveal" style="text-align: center; color: var(--navy); font-family: var(--font-subhead); margin-bottom: clamp(0.75rem, 2vw, 1rem); font-size: clamp(1.75rem, 4vw, 2.5rem);">Purpose</h2>
         <div class="reveal" style="max-width: 750px; margin: 0 auto clamp(1.5rem, 3vw, 2.5rem);">
-            <p style="font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.8; text-align: center; color: var(--dark-gray);">This pilot answers one question: <strong style="color: var(--navy);">Does structured AI fluency training translate to measurable workflow improvement for DC CAP?</strong> By June 5, we will have evidence-based findings to inform the Q3 organization-wide rollout. This initiative is funded by a $600K KPMG grant and represents DC CAP's position at the leading edge of nonprofit AI adoption.</p>
+            <p style="font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.8; text-align: center; color: var(--dark-gray);">This pilot builds the evidence base for DC CAP's Q1 organization-wide AI rollout by measuring whether structured fluency training translates to measurable workflow improvement. By June 10, leadership will have the data to make an informed go/no-go decision on full deployment. This initiative is funded by a $600K KPMG grant and represents DC CAP's position at the leading edge of nonprofit AI adoption.</p>
         </div>
 
         <h3 class="reveal" style="text-align: center; color: var(--navy); font-family: var(--font-subhead); margin-bottom: clamp(1rem, 2vw, 1.5rem); font-size: clamp(1.3rem, 3vw, 1.8rem);">Pilot Goals</h3>
@@ -1649,7 +1720,7 @@
         </div>
 
         <div class="reveal" style="margin-top: clamp(1.5rem, 3vw, 2rem); text-align: center;">
-            <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--dark-gray); opacity: 0.8; margin: 0;">Full goal detail and measurement framework: <a href="kpi_framework.html">KPI Framework</a> | Governance goals: <a href="ai_governance_framework.html#governance-goals">AI Governance Framework</a></p>
+            <p data-pre-gate="lock" style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--dark-gray); opacity: 0.8; margin: 0;">Full goal detail and measurement framework: <a href="kpi_framework.html">KPI Framework</a> | Governance goals: <a href="ai_governance_framework.html#governance-goals">AI Governance Framework</a></p>
         </div>
     </div>
 </section>
@@ -1668,7 +1739,7 @@
                 <p style="font-size: clamp(0.95rem, 1.5vw, 1.1rem); line-height: 1.6; margin: 0;">Each participant has identified at least one workflow where Claude saves time or improves quality</p>
             </div>
             <div class="reveal-scale" style="background: rgba(252, 176, 23, 0.08); border-left: 5px solid var(--gold); padding: clamp(1rem, 2vw, 1.5rem); border-radius: 4px;">
-                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: var(--navy); margin-bottom: 0.5em;">By June 5</div>
+                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: var(--navy); margin-bottom: 0.5em;">By June 10</div>
                 <p style="font-size: clamp(0.95rem, 1.5vw, 1.1rem); line-height: 1.6; margin: 0;">Measurable fluency growth on pre/post assessment; 3+ reusable workflow templates documented; capstone presentations completed</p>
             </div>
         </div>
@@ -1686,7 +1757,7 @@
                     <div class="timeline-marker" id="timeline-marker"></div>
                 </div>
                 <div class="timeline-day-counter" id="day-counter">Day 0 of 60</div>
-                <div class="timeline-phases">
+                <div class="timeline-phases" data-pre-gate="lock">
                     <div class="timeline-phase phase-1" data-phase="1">
                         <div class="phase-color-bar phase-1"></div>
                         <div class="phase-label">Phase 1</div>
@@ -1776,7 +1847,7 @@
                 </div>
 
                 <!-- Node 2 -->
-                <div class="flow-node">
+                <div class="flow-node" data-pre-gate="lock">
                     <div class="flow-node-circle">2</div>
                     <div class="flow-node-content">
                         <h3 class="flow-node-title">Review Your Start Here Guide and AI Governance Framework</h3>
@@ -1796,7 +1867,7 @@
                 </div>
 
                 <!-- Node 3 -->
-                <div class="flow-node">
+                <div class="flow-node" data-pre-gate="lock">
                     <div class="flow-node-circle">3</div>
                     <div class="flow-node-content">
                         <h3 class="flow-node-title">Complete Two Courses</h3>
@@ -1859,7 +1930,7 @@
 <section id="leadership" style="padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3rem); background: linear-gradient(135deg, var(--navy) 0%, #1a2666 100%);">
     <div style="max-width: 900px; margin: 0 auto; text-align: center;">
         <h2 class="reveal" style="color: var(--white); font-family: var(--font-subhead); font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: clamp(0.75rem, 2vw, 1rem);">Department / Team Leaders: Build Your Team Environment For Your Team and the Organization to Use</h2>
-        <p class="reveal" style="color: rgba(255,255,255,0.85); font-size: clamp(1rem, 1.6vw, 1.15rem); line-height: 1.7; margin-bottom: clamp(1.5rem, 3vw, 2rem);">This pilot produces leaders who shape the AI environment for their department. By Week 8, each leader defines what goes into their unit's Claude workspace: which organizational knowledge to load, which skills and projects are worth implementing, and which practices are worth streamlining. That environment becomes the foundation for how your team works with AI during Q3 rollout. First, you become a fluent user. Then, you build the intelligence layer for your unit and the organization.</p>
+        <p class="reveal" style="color: rgba(255,255,255,0.85); font-size: clamp(1rem, 1.6vw, 1.15rem); line-height: 1.7; margin-bottom: clamp(1.5rem, 3vw, 2rem);">This pilot produces leaders who shape the AI environment for their department. By Week 8, each leader defines what goes into their unit's Claude workspace: which organizational knowledge to load, which skills and projects are worth implementing, and which practices are worth streamlining. That environment becomes the foundation for how your team works with AI during Q1 rollout. First, you become a fluent user. Then, you build the intelligence layer for your unit and the organization.</p>
     </div>
     <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(1rem, 2vw, 1.5rem);">
         <div class="reveal-scale" style="background: rgba(255,255,255,0.08); border-left: 5px solid var(--gold); border-radius: 12px; padding: clamp(1.25rem, 2.5vw, 1.75rem);">
@@ -1876,7 +1947,7 @@
         </div>
         <div class="reveal-scale" style="background: rgba(255,255,255,0.08); border-left: 5px solid var(--gold); border-radius: 12px; padding: clamp(1.25rem, 2.5vw, 1.75rem);">
             <h4 style="color: var(--gold); font-family: var(--font-subhead); font-size: clamp(1rem, 1.5vw, 1.15rem); margin-bottom: 0.75rem;">Week 8: Ship It</h4>
-            <p style="color: rgba(255,255,255,0.8); font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6;">Finalize your unit's AI environment. Present it at the capstone. Your team inherits the intelligence layer you designed during Q3 rollout. You built it. You own it. You lead the adoption in your unit.</p>
+            <p style="color: rgba(255,255,255,0.8); font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6;">Finalize your unit's AI environment. Present it at the capstone. Your team inherits the intelligence layer you designed during Q1 rollout. You built it. You own it. You lead the adoption in your unit.</p>
         </div>
     </div>
 </section>
@@ -1903,6 +1974,12 @@
     </div>
 </section>
 
+<!-- Pre-Assessment Gate Banner -->
+<div class="pre-gate-banner" id="preGateBanner">
+    <h3>Complete Your Pre-Assessment First</h3>
+    <p>Resources below unlock after you complete the Pre-Launch Assessment. This ensures we capture your genuine starting point before any content exposure. <a href="ai_fluency_prelaunch_survey.html">Open Assessment →</a></p>
+</div>
+
 <!-- Section 3: Pilot Resources -->
 <section id="resources">
     <div class="section-header">
@@ -1911,7 +1988,7 @@
     </div>
 
     <!-- Core Materials Row -->
-    <div style="padding: clamp(1rem, 3vw, 2rem) clamp(1.5rem, 5vw, 3rem); background-color: var(--white);">
+    <div data-pre-gate="lock" style="padding: clamp(1rem, 3vw, 2rem) clamp(1.5rem, 5vw, 3rem); background-color: var(--white);">
         <h3 class="reveal" style="text-align: center; color: var(--navy); margin-bottom: clamp(1.5rem, 3vw, 2rem); font-family: var(--font-subhead);">Core Materials</h3>
         <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
             <div class="card blue-accent reveal-scale">
@@ -1948,10 +2025,10 @@
     </div>
 
     <!-- Assessment & Governance Row -->
-    <div style="padding: clamp(1rem, 3vw, 2rem) clamp(1.5rem, 5vw, 3rem); background-color: #f9f9f9;">
+    <div data-pre-gate="lock-partial" style="padding: clamp(1rem, 3vw, 2rem) clamp(1.5rem, 5vw, 3rem); background-color: #f9f9f9;">
         <h3 class="reveal" style="text-align: center; color: var(--navy); margin-bottom: clamp(1.5rem, 3vw, 2rem); font-family: var(--font-subhead);">Assessment & Governance</h3>
         <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-            <div class="card navy-accent reveal-scale">
+            <div class="card navy-accent reveal-scale" data-pre-gate-exempt>
                 <span class="status-badge status-available">Available</span>
                 <h4 class="card-title">Pre-Launch Assessment</h4>
                 <p class="card-description">Baseline survey with auto-scoring dashboard</p>
@@ -1991,7 +2068,7 @@
     </div>
 
     <!-- Coming During Pilot Row -->
-    <div style="padding: clamp(1rem, 3vw, 2rem) clamp(1.5rem, 5vw, 3rem); background-color: var(--white);">
+    <div data-pre-gate="lock" style="padding: clamp(1rem, 3vw, 2rem) clamp(1.5rem, 5vw, 3rem); background-color: var(--white);">
         <h3 class="reveal" style="text-align: center; color: var(--navy); margin-bottom: clamp(1.5rem, 3vw, 2rem); font-family: var(--font-subhead);">Coming During Pilot</h3>
         <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
             <div class="card blue-accent" style="animation-delay: 0s;">
@@ -2016,7 +2093,7 @@
     </div>
 
     <!-- Reference Row -->
-    <div style="padding: clamp(1rem, 3vw, 2rem) clamp(1.5rem, 5vw, 3rem); background-color: #f9f9f9;">
+    <div data-pre-gate="lock" style="padding: clamp(1rem, 3vw, 2rem) clamp(1.5rem, 5vw, 3rem); background-color: #f9f9f9;">
         <h3 class="reveal" style="text-align: center; color: var(--navy); margin-bottom: clamp(1.5rem, 3vw, 2rem); font-family: var(--font-subhead);">Reference</h3>
         <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
             <div class="card gold-accent" style="animation-delay: 0s;">
@@ -2047,7 +2124,7 @@
     </div>
 
     <!-- Permissions & Quick Reference Row -->
-    <div style="padding: clamp(1rem, 3vw, 2rem) clamp(1.5rem, 5vw, 3rem); background-color: var(--tan);">
+    <div data-pre-gate="lock" style="padding: clamp(1rem, 3vw, 2rem) clamp(1.5rem, 5vw, 3rem); background-color: var(--tan);">
         <h3 class="reveal" style="text-align: center; color: var(--navy); margin-bottom: clamp(1.5rem, 3vw, 2rem); font-family: var(--font-subhead);">Permissions & Quick Reference</h3>
         <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
             <div class="card blue-accent reveal-scale">
@@ -2074,7 +2151,7 @@
 </section>
 
 <!-- Section 4: Daily Briefing -->
-<section id="briefing" class="newsletter-section">
+<section id="briefing" class="newsletter-section" data-pre-gate="lock">
     <div class="section-header">
         <h2 class="section-title reveal">The Daily Briefing</h2>
         <p class="section-subtitle reveal" style="transition-delay: 0.08s;">Small, digestible content to build your AI fluency — one day at a time.</p>
@@ -2791,8 +2868,70 @@
     }
 
     // Initialize on load
+    // ── Pre-Assessment Gate ──
+    function initPreAssessmentGate() {
+        const surveyDone = localStorage.getItem('dccap_survey_completed') === 'true';
+        const banner = document.getElementById('preGateBanner');
+        const gateSections = document.querySelectorAll('[data-pre-gate="lock"]');
+        const partialSections = document.querySelectorAll('[data-pre-gate="lock-partial"]');
+
+        if (surveyDone) {
+            // Unlocked: hide banner, remove any lock classes
+            if (banner) banner.classList.remove('visible');
+            gateSections.forEach(el => {
+                el.classList.remove('pre-gate-locked');
+                const label = el.querySelector('.pre-gate-locked-label');
+                if (label) label.remove();
+            });
+            partialSections.forEach(el => {
+                el.querySelectorAll('.card:not([data-pre-gate-exempt])').forEach(card => {
+                    card.classList.remove('pre-gate-locked');
+                    const label = card.querySelector('.pre-gate-locked-label');
+                    if (label) label.remove();
+                });
+            });
+            return;
+        }
+
+        // Locked: show banner and apply lock state
+        if (banner) banner.classList.add('visible');
+
+        // Full-lock sections: lock entire container
+        gateSections.forEach(el => {
+            el.classList.add('pre-gate-locked');
+            if (!el.querySelector('.pre-gate-locked-label')) {
+                const label = document.createElement('span');
+                label.className = 'pre-gate-locked-label';
+                label.textContent = 'Available after pre-assessment';
+                el.appendChild(label);
+            }
+        });
+
+        // Partial-lock sections: lock individual cards except exempt ones
+        partialSections.forEach(el => {
+            el.querySelectorAll('.card:not([data-pre-gate-exempt])').forEach(card => {
+                card.classList.add('pre-gate-locked');
+                card.style.position = 'relative';
+                if (!card.querySelector('.pre-gate-locked-label')) {
+                    const label = document.createElement('span');
+                    label.className = 'pre-gate-locked-label';
+                    label.textContent = 'Available after pre-assessment';
+                    card.appendChild(label);
+                }
+            });
+        });
+    }
+
+    // Re-check gate when tab regains focus (catches survey completion in another tab)
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+            initPreAssessmentGate();
+        }
+    });
+
     document.addEventListener('DOMContentLoaded', () => {
         initIdentityGate();
+        initPreAssessmentGate();
         initializeNewsletter();
         setupNavigation();
         setupAnimations();
