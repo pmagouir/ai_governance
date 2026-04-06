@@ -1565,6 +1565,7 @@
     </div>
     <ul>
         <li><a href="#hero" class="nav-link active">Overview</a></li>
+        <li><a href="#purpose-goals" class="nav-link">Goals</a></li>
         <li><a href="#getting-started" class="nav-link">Getting Started</a></li>
         <li><a href="#resources" class="nav-link">Resources</a></li>
         <li><a href="#leadership" class="nav-link">Your Module</a></li>
@@ -1579,21 +1580,22 @@
         <h1 class="hero-title reveal-blur">Co-Designing Organizational Intelligence</h1>
         <h2 class="hero-subtitle reveal" style="transition-delay: 0.2s;">DC CAP Enterprise AI Leadership Pilot</h2>
         <p class="hero-meta reveal" style="transition-delay: 0.4s;">April 6 – June 5, 2026</p>
-        <div class="quadrant-badge-container reveal" style="transition-delay: 0.6s;">
-            <div class="quadrant-badge">
-                <button class="quad quad-delegation" data-quad="delegation" aria-label="Delegation">Delegation</button>
-                <button class="quad quad-description" data-quad="description" aria-label="Description">Description</button>
-                <button class="quad quad-discernment" data-quad="discernment" aria-label="Discernment">Discernment</button>
-                <button class="quad quad-diligence" data-quad="diligence" aria-label="Diligence">Diligence</button>
+        <div class="reveal" style="transition-delay: 0.6s; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: clamp(0.75rem, 2vw, 1.25rem); max-width: 700px; margin: clamp(1rem, 3vw, 2rem) auto 0;">
+            <div style="text-align: center; padding: 0.75rem; border-radius: 6px; background: rgba(255,255,255,0.1);">
+                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--gold);">60</div>
+                <div style="font-size: clamp(0.8rem, 1.2vw, 0.9rem); opacity: 0.9;">Days</div>
             </div>
-            <div class="quadrant-hint" id="quadrant-hint">Click to explore</div>
-            <div class="competency-expansion" id="competency-expansion">
-                <div class="competency-card" id="competency-card">
-                    <div class="competency-name" id="competency-name"></div>
-                    <div class="competency-definition" id="competency-definition"></div>
-                    <div class="competency-example-label">DC CAP Example</div>
-                    <div class="competency-example" id="competency-example"></div>
-                </div>
+            <div style="text-align: center; padding: 0.75rem; border-radius: 6px; background: rgba(255,255,255,0.1);">
+                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--gold);">9</div>
+                <div style="font-size: clamp(0.8rem, 1.2vw, 0.9rem); opacity: 0.9;">Leaders</div>
+            </div>
+            <div style="text-align: center; padding: 0.75rem; border-radius: 6px; background: rgba(255,255,255,0.1);">
+                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--gold);">3</div>
+                <div style="font-size: clamp(0.8rem, 1.2vw, 0.9rem); opacity: 0.9;">Units</div>
+            </div>
+            <div style="text-align: center; padding: 0.75rem; border-radius: 6px; background: rgba(255,255,255,0.1);">
+                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--gold);">4</div>
+                <div style="font-size: clamp(0.8rem, 1.2vw, 0.9rem); opacity: 0.9;">Phases</div>
             </div>
         </div>
         <div class="reveal psychological-safety-callout" style="transition-delay: 0.8s; background: rgba(255, 244, 237, 0.8); backdrop-filter: blur(10px); border-left: 5px solid var(--gold); padding: clamp(1.5rem, 3vw, 2rem); border-radius: 8px; margin-top: clamp(1.5rem, 3vw, 2.5rem); max-width: 600px; margin-left: auto; margin-right: auto;">
@@ -1602,40 +1604,53 @@
     </div>
 </section>
 
-<section class="executive-brief">
-    <div class="executive-brief-content">
-        <p>DC CAP is running a 60-day structured pilot to build AI fluency across three operational units. The initiative is grounded in Anthropic's AI Fluency Framework — the same 4D competency model used by Anthropic's own Academy curriculum and co-developed with Ringling College and University College Cork.</p>
-        <div style="background: rgba(252, 176, 23, 0.08); border-left: 5px solid var(--gold); padding: clamp(1.5rem, 2vw, 2rem); border-radius: 4px; margin-top: 2rem; margin-bottom: 2rem;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6;">
-                <div><strong style="color: var(--navy); display: block; margin-bottom: 0.4em;">Delegation</strong>Knowing which tasks to hand to Claude.</div>
-                <div><strong style="color: var(--navy); display: block; margin-bottom: 0.4em;">Description</strong>Writing clear instructions that get useful results.</div>
-                <div><strong style="color: var(--navy); display: block; margin-bottom: 0.4em;">Discernment</strong>Evaluating Claude's output before using it.</div>
-                <div><strong style="color: var(--navy); display: block; margin-bottom: 0.4em;">Diligence</strong>Protecting data and using AI responsibly.</div>
-            </div>
+<!-- Purpose & Goals -->
+<section id="purpose-goals" style="background: var(--white); padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 3rem);">
+    <div style="max-width: 900px; margin: 0 auto;">
+        <h2 class="reveal" style="text-align: center; color: var(--navy); font-family: var(--font-subhead); margin-bottom: clamp(0.75rem, 2vw, 1rem); font-size: clamp(1.75rem, 4vw, 2.5rem);">Purpose</h2>
+        <div class="reveal" style="max-width: 750px; margin: 0 auto clamp(1.5rem, 3vw, 2.5rem);">
+            <p style="font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.8; text-align: center; color: var(--dark-gray);">This pilot answers one question: <strong style="color: var(--navy);">Does structured AI fluency training translate to measurable workflow improvement for DC CAP?</strong> By June 5, we will have evidence-based findings to inform the Q3 organization-wide rollout. This initiative is funded by a $600K KPMG grant and represents DC CAP's position at the leading edge of nonprofit AI adoption.</p>
         </div>
 
-        <p>The pilot measures growth through a pre/post assessment instrument anchored to Anthropic's AI Fluency Index. Each participant completes four structured learning activities, six skill-building exercises, and a capstone presentation. By June 5, DC CAP will have evidence-based findings on whether structured AI fluency training translates to measurable workflow improvement — informing the Q3 organization-wide rollout.</p>
+        <h3 class="reveal" style="text-align: center; color: var(--navy); font-family: var(--font-subhead); margin-bottom: clamp(1rem, 2vw, 1.5rem); font-size: clamp(1.3rem, 3vw, 1.8rem);">Pilot Goals</h3>
 
-        <p>This initiative is funded by a $600K KPMG grant and represents DC CAP's position at the leading edge of nonprofit AI adoption.</p>
-    </div>
-</section>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(1rem, 2vw, 1.5rem);">
 
-<section class="quick-stats">
-    <div class="stat-card reveal-scale">
-        <div class="stat-number">60</div>
-        <div class="stat-label">Days<br>Program Duration</div>
-    </div>
-    <div class="stat-card reveal-scale">
-        <div class="stat-number">9</div>
-        <div class="stat-label">Leaders<br>Pilot Cohort</div>
-    </div>
-    <div class="stat-card reveal-scale">
-        <div class="stat-number">24</div>
-        <div class="stat-label">Skills<br>Built for DC CAP</div>
-    </div>
-    <div class="stat-card reveal-scale">
-        <div class="stat-number">4</div>
-        <div class="stat-label">Phases<br>Foundation → Application</div>
+            <div class="reveal-scale" style="background: var(--white); border: 1px solid rgba(16, 26, 76, 0.1); border-left: 5px solid var(--purple); padding: clamp(1rem, 2vw, 1.5rem); border-radius: 4px;">
+                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--purple); margin-bottom: 0.5em;">AI Fluency</div>
+                <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6; margin: 0;">Advance all participants toward regular AI use in daily workflows, measured by pre/post assessment across five fluency dimensions. 70%+ demonstrate three or more observable fluency behaviors by Day 60.</p>
+            </div>
+
+            <div class="reveal-scale" style="background: var(--white); border: 1px solid rgba(16, 26, 76, 0.1); border-left: 5px solid var(--blue); padding: clamp(1rem, 2vw, 1.5rem); border-radius: 4px;">
+                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--blue); margin-bottom: 0.5em;">Psychological Safety</div>
+                <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6; margin: 0;">Create conditions where participants experiment openly, share failures productively, and build confidence through practice. Weekly confidence scores trend upward. Facilitation transitions from leader-led to champion-facilitated.</p>
+            </div>
+
+            <div class="reveal-scale" style="background: var(--white); border: 1px solid rgba(16, 26, 76, 0.1); border-left: 5px solid var(--gold); padding: clamp(1rem, 2vw, 1.5rem); border-radius: 4px;">
+                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--navy); margin-bottom: 0.5em;">Shared Learning</div>
+                <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6; margin: 0;">Build a peer learning ecosystem where knowledge transfers through champion networks and distributed facilitation. Each unit produces at least one champion candidate. Participants teach techniques to peers.</p>
+            </div>
+
+            <div class="reveal-scale" style="background: var(--white); border: 1px solid rgba(16, 26, 76, 0.1); border-left: 5px solid var(--purple); padding: clamp(1rem, 2vw, 1.5rem); border-radius: 4px;">
+                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--purple); margin-bottom: 0.5em;">Productivity</div>
+                <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6; margin: 0;">Document measurable time savings and workflow improvements. Each participant captures at least one before/after comparison. Minimum two workflow redesigns per unit, six total across the pilot.</p>
+            </div>
+
+            <div class="reveal-scale" style="background: var(--white); border: 1px solid rgba(16, 26, 76, 0.1); border-left: 5px solid var(--blue); padding: clamp(1rem, 2vw, 1.5rem); border-radius: 4px;">
+                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--blue); margin-bottom: 0.5em;">Innovation</div>
+                <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6; margin: 0;">Move beyond doing the same things faster toward building fundamentally new capabilities. At least one unit demonstrates an AI-enabled capability that could not exist at current quality or scale without it.</p>
+            </div>
+
+            <div class="reveal-scale" style="background: var(--white); border: 1px solid rgba(16, 26, 76, 0.1); border-left: 5px solid var(--gold); padding: clamp(1rem, 2vw, 1.5rem); border-radius: 4px;">
+                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--navy); margin-bottom: 0.5em;">Governance</div>
+                <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6; margin: 0;">All participants complete governance orientation and demonstrate responsible data classification. Zero Tier 1 or Tier 2 data incidents. AI-assisted outputs carry clear human ownership and review checkpoints.</p>
+            </div>
+
+        </div>
+
+        <div class="reveal" style="margin-top: clamp(1.5rem, 3vw, 2rem); text-align: center;">
+            <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--dark-gray); opacity: 0.8; margin: 0;">Full goal detail and measurement framework: <a href="kpi_framework.html">KPI Framework</a> | Governance goals: <a href="ai_governance_framework.html#governance-goals">AI Governance Framework</a></p>
+        </div>
     </div>
 </section>
 
@@ -2324,70 +2339,9 @@
         }
     }
 
-    // Initialize competency wheel interactivity
+    // Competency wheel removed — 4D content covered in Start Here
     function initializeCompetencyWheel() {
-        const competencyData = {
-            delegation: {
-                name: 'Delegation',
-                definition: 'Knowing which tasks to hand to Claude',
-                example: 'Choosing to have Claude draft a scholarship notification email rather than writing it from scratch'
-            },
-            description: {
-                name: 'Description',
-                definition: 'Writing clear instructions that get useful results',
-                example: 'Telling Claude the audience, tone, policy constraints, and desired format for a Board memo'
-            },
-            discernment: {
-                name: 'Discernment',
-                definition: 'Evaluating Claude\'s output before using it',
-                example: 'Checking that Claude\'s scholarship eligibility summary matches the actual DC CAP policy rules'
-            },
-            diligence: {
-                name: 'Diligence',
-                definition: 'Protecting data and using AI responsibly',
-                example: 'Never uploading student PII or family financial data to Claude, even in Cowork mode'
-            }
-        };
-
-        const quads = document.querySelectorAll('.quad[data-quad]');
-        const expansion = document.getElementById('competency-expansion');
-        const hint = document.getElementById('quadrant-hint');
-        let currentQuad = null;
-
-        quads.forEach(quad => {
-            quad.addEventListener('click', function() {
-                const quadType = this.getAttribute('data-quad');
-
-                // If clicking the same quad, collapse it
-                if (currentQuad === quadType) {
-                    expansion.classList.remove('active');
-                    hint.classList.remove('hidden');
-                    currentQuad = null;
-                    return;
-                }
-
-                // Update content and show expansion
-                const data = competencyData[quadType];
-                const card = document.getElementById('competency-card');
-
-                document.getElementById('competency-name').textContent = data.name;
-                document.getElementById('competency-definition').textContent = data.definition;
-                document.getElementById('competency-example').textContent = data.example;
-
-                // Set the border color to match the quad
-                const colorMap = {
-                    delegation: 'var(--purple)',
-                    description: 'var(--blue)',
-                    discernment: 'var(--gold)',
-                    diligence: 'var(--navy)'
-                };
-                card.style.borderLeftColor = colorMap[quadType];
-
-                expansion.classList.add('active');
-                hint.classList.add('hidden');
-                currentQuad = quadType;
-            });
-        });
+        // No-op: quadrant badge moved to start_here.html
     }
 
     // Initialize phase expansion on timeline
