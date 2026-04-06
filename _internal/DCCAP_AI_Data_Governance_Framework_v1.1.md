@@ -67,7 +67,7 @@ Adoption follows three phases designed to build organizational fluency, refine g
 
 | Element | Details |
 |---------|---------|
-| **Users** | 8 seats: CEO, COO, CSAO, Director of Program Strategy and Strategic Partnerships, GEAR UP Director, Director of Communications, Director of Development Operations, Director of Foundation Relations, Manager of Executive Operations, possibly Manager of Data Operations |
+| **Users** | 8 seats: CEO, COO, CSAO, Director of Strategic Partnerships and Student Success, GEAR UP Director, Director of Communications, Director of Development Operations, Director of Foundation Relations, Manager of Executive Operations, possibly Manager of Data Operations |
 | **Data Access** | All tiers with role dependencies employed. Organizational knowledge, program models, grant language, strategic documents, and public data. |
 | **Key Activities** | Design project infrastructure, deploy pre-built organizational skills, identify and add connectors, build shared organizational context, and load shared Projects with program documentation, past grant narratives, strategic plan, OKR frameworks, and data dictionaries. Use Claude for drafting, analysis, and strategic thinking. Generate ideas for practical, innovative use case scenarios. |
 | **Governance Actions** | Configure SSO, set 90-day data retention, establish role-based permissions, enable audit logging. Document usage patterns and refine classification decisions. |
@@ -120,7 +120,7 @@ The following security settings were configured at contract activation and will 
 | **AI Governance Lead & Co-Owner** | Owns this framework. Manages platform configuration, conducts audit reviews, approves Tier 2 data access, leads quarterly governance reviews. Shares governance ownership with the AI Governance Co-Owner. | Preston Magouirk, CSAO |
 | **AI Governance Co-Owner** | Co-owns platform governance and operations. Manages SSO/SCIM integration, coordinates with IT vendors, supports user onboarding and technical troubleshooting. Holds full platform operational authority by end of Phase 1. Participates in governance reviews and policy decisions alongside the AI Governance Lead. | Angela Cammack, COO |
 | **Executive Sponsor** | Authorizes policy changes, approves budget, escalation point for governance decisions requiring organizational authority. | Eric Waldo, CEO |
-| **Program Lead** | Champions adoption within coaching teams, identifies high-value use cases, ensures Tier 1 data protections are maintained in daily workflows. | Stephanie Gardner, Director of Strategic Partnerships and Program Strategy |
+| **Student Success Lead** | Champions adoption within coaching teams, identifies high-value use cases, ensures Tier 1 data protections are maintained in daily workflows. | Stephanie Gardner, Director of Strategic Partnerships and Program Strategy |
 | **Communications Lead** | Ensures all Claude-assisted external communications, donor materials, and public-facing content receive staff review before distribution. Maintains brand voice standards in AI-assisted drafting workflows. Advises on Tier 2 data use in storytelling and impact reporting. | Alexander Vassiliadis, Director of Communications |
 | **GEAR UP Compliance Lead** | Ensures GEAR UP data compliance requirements are maintained in AI workflows. Consulted on Tier 2 boundary decisions involving federal grant data. Advises on aggregation thresholds for GEAR UP reporting. | Danielle Walker, GEAR UP Director |
 | **Development Co-Leads** | Champions adoption within fundraising and donor relations workflows. Identifies high-value use cases for grant writing, prospect research, and donor communications. Ensures development data (donor PII, gift amounts) follows Tier 2 protections. Lead Blackbaud connector adoption and implementation. | Sashia Moore, Director of Development Operations |
@@ -179,7 +179,7 @@ Training is an ongoing requirement. The AI skills landscape changes rapidly, and
 
 Each functional area will have 1-2 designated AI champions by the end of Phase 2. Champions emerge from the pilot cohort and from early adopters identified during the all-staff rollout. Their role: find and share practical team-specific examples, answer questions and mentor colleagues, surface feedback on what works and what creates friction, and participate in monthly governance feedback sessions.
 
-Champion identification begins during Phase 1 as pilot leaders build fluency through 1:1 coaching and group sessions. Leaders who demonstrate strong competency and willingness to facilitate peer learning become the natural champion candidates for their units. The AI Governance Lead maintains the champion roster and provides facilitation support. The **Program Lead** (Stephanie Gardner) owns champion development within coaching teams. The **Development Co-Lead** (Sashia Moore) owns champion development within fundraising workflows.
+Champion identification begins during Phase 1 as pilot leaders build fluency through 1:1 coaching and group sessions. Leaders who demonstrate strong competency and willingness to facilitate peer learning become the natural champion candidates for their units. The AI Governance Lead maintains the champion roster and provides facilitation support. The **Student Success Lead** (Stephanie Gardner) owns champion development within coaching teams. The **Development Co-Lead** (Sashia Moore) owns champion development within fundraising workflows.
 
 ---
 
@@ -267,7 +267,7 @@ These are lagging indicators that connect AI-assisted proficiency to mission out
 |--------|---------------|-----------------|-------------|
 | Time savings evidence | Each participant documents at least 1 task with before/after time comparison | Aggregated into "total hours redirected per week" by function | Self-report + workflow redesign documentation |
 | Quality improvement evidence | At least 3 examples of AI-assisted outputs rated higher quality than previous manual outputs (peer-assessed) | Ongoing peer assessment integrated into champion sessions | Standard quality rubric |
-| Mission connection | At least 1 example per unit of AI-freed time redirected to high-value student interaction | Grant cycle acceleration, coaching contact hour increases, program evaluation depth | Unit-level tracking by champion + Program Lead |
+| Mission connection | At least 1 example per unit of AI-freed time redirected to high-value student interaction | Grant cycle acceleration, coaching contact hour increases, program evaluation depth | Unit-level tracking by champion + Student Success Lead |
 | Grant narrative first-draft cycle | Establish baseline hours per narrative | 25% reduction (Phase 2); 40% reduction (Phase 3) | Self-report by Development team |
 | Coaching documentation time | Establish baseline hours per scholar | 15% reduction (Phase 2); 25% reduction (Phase 3) | Self-report by coaching team |
 

@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "2.0",
-    "lastGenerated": "2026-04-05T14:00:00-04:00",
+    "lastGenerated": "2026-04-06T08:00:00-04:00",
     "lastPublished": "2026-04-05T14:05:00-04:00",
     "categories": {
       "foundational": { "label": "Foundational Learning", "class": "category-foundational" },
@@ -19,7 +19,19 @@
       "friday": ["news", "rotating"]
     }
   },
-  "drafts": [],
+  "drafts": [
+    {
+      "date": "2026-04-20",
+      "category": "foundational",
+      "title": "Diligence: Your Name Is Still on the Work",
+      "content": "When you send a scholarship renewal reminder that Claude helped you draft, your name goes on that email. When a board summary includes enrollment figures Claude formatted, your credibility backs those numbers. Diligence, the fourth competency in DC CAP's AI Fluency Framework, is the practice of taking full responsibility for outputs created with AI assistance. The framework breaks Diligence into three layers. Creation Diligence means using AI tools in line with ethical and legal best practices, including identifying potential biases in outputs. Transparency Diligence means being clear about AI involvement when distributing work products and understanding what your audience, industry, and legal context expect. Deployment Diligence means verifying and vouching for every output before it goes out the door, implementing fact-checking procedures, and owning the risks. This competency matters more now than ever. On March 24, 2026, the U.S. Department of Labor launched \"Make America AI-Ready,\" a free AI literacy course built around five core areas. The fifth area, \"Using AI Responsibly,\" maps directly to what DC CAP calls Diligence. The federal government is formalizing the expectation that workers who use AI take accountability for what AI helps them produce. Here is the practical test: if a colleague asked \"Did you check this?\" and you could not explain exactly what you verified and how, Diligence has not been practiced. The standard is simple. Every output you share carries your professional judgment. AI generated the draft. You own the final product.",
+      "tryThis": "Pull up the last document Claude helped you create. Read it as though you were handing it to your supervisor with your name on it. Identify one claim or number you did not independently verify, and verify it now.",
+      "resource": "https://www.dol.gov/newsroom/releases/osec/osec20260324",
+      "sourceNotes": "Claim: DC CAP 4D framework defines Diligence with Creation, Transparency, Deployment sub-competencies | Source: GROUNDED (ai_fluency_framework.html lines 955-997)\nClaim: Diligence is 'responsible use of AI including ethical considerations, transparency, and accountability' | Source: GROUNDED (ai_fluency_framework.html line 962)\nClaim: DOL launched 'Make America AI-Ready' on March 24, 2026 | Source: https://www.dol.gov/newsroom/releases/osec/osec20260324\nClaim: Free AI literacy course with five core areas including 'Using AI Responsibly' | Source: https://www.axios.com/2026/03/24/labor-department-ai-literacy-course and https://www.metaintro.com/blog/dol-free-ai-literacy-course-text-message-make-america-ai-ready-2026\nAdversarial review: No catches. All claims verified or grounded. No fabricated URLs.",
+      "validationStatus": "PASSED",
+      "status": "draft"
+    }
+  ],
   "published": [
     {
       "date": "2026-04-06",
