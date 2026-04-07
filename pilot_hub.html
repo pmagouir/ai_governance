@@ -2535,14 +2535,12 @@
         }
 
         /**
-         * Calls the Apps Script to look up a participant's progress
-         * and hydrate localStorage so they can resume from any device.
-         * Uses POST (proven CORS-safe) with type:'lookup'.
+         * Looks up a participant's server-side progress and hydrates localStorage.
+         * Uses JSONP (dynamic script tag) to bypass CORS restrictions on Apps Script.
          */
         function resumeSession(name) {
-            // Clear all dccap_* progress keys BEFORE hydrating from server.
-            // This prevents a previous user's localStorage from bleeding into
-            // a new session (e.g., switching identities on the same browser).
+            // Clear all progress keys BEFORE hydrating from server.
+            // Prevents a previous user's localStorage from bleeding through.
             const progressKeys = [
                 'dccap_survey_completed',
                 'dccap_starthere_completed',
@@ -2556,34 +2554,52 @@
                 progressKeys.forEach(k => localStorage.removeItem(k));
             } catch(e) {}
 
-            const payload = JSON.stringify({
-                type: 'lookup',
-                participant_name: name
-            });
-            return fetch(SHEET_ENDPOINT, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: payload,
-                redirect: 'follow'
-            })
-                .then(resp => resp.json())
-                .then(data => {
-                    if (data.status === 'found' && data.progress) {
-                        // Hydrate every localStorage key from server-side progress
-                        Object.entries(data.progress).forEach(([key, value]) => {
+            return new Promise(function(resolve) {
+                // Generate a unique callback name to avoid collisions
+                const cbName = '__resumeCb_' + Date.now();
+
+                // Set a timeout in case the script never loads
+                const timeout = setTimeout(function() {
+                    cleanup();
+                    console.warn('Session resume timed out');
+                    resolve();
+                }, 8000);
+
+                function cleanup() {
+                    clearTimeout(timeout);
+                    delete window[cbName];
+                    const tag = document.getElementById(cbName);
+                    if (tag) tag.remove();
+                }
+
+                // Register the JSONP callback on window
+                window[cbName] = function(data) {
+                    cleanup();
+                    if (data && data.status === 'found' && data.progress) {
+                        Object.entries(data.progress).forEach(function([key, value]) {
                             if (value && value !== 'false') {
                                 try { localStorage.setItem(key, value); } catch(e) {}
                             }
                         });
                         console.log('Session resumed for', data.participant,
-                            'restored', Object.keys(data.progress).filter(k => data.progress[k] !== 'false').length, 'flags');
+                            'restored', Object.keys(data.progress).filter(function(k) { return data.progress[k] !== 'false'; }).length, 'flags');
                     }
-                })
-                .catch(err => {
-                    // If lookup fails (offline, endpoint down), proceed silently.
-                    // The person can still use the site; they just won't see prior progress.
-                    console.warn('Session resume unavailable:', err.message || err);
-                });
+                    resolve();
+                };
+
+                // Create and inject the script tag
+                var script = document.createElement('script');
+                script.id = cbName;
+                script.src = SHEET_ENDPOINT
+                    + '?participant=' + encodeURIComponent(name)
+                    + '&callback=' + cbName;
+                script.onerror = function() {
+                    cleanup();
+                    console.warn('Session resume: script load failed');
+                    resolve();
+                };
+                document.head.appendChild(script);
+            });
         }
 
         changeLink.addEventListener('click', function() {

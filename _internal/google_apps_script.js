@@ -37,20 +37,91 @@ function doPost(e) {
 }
 
 function doGet(e) {
-  // If no participant name provided, return health check
   var params = e ? e.parameter : {};
   var name = params.participant || '';
+  var callback = params.callback || '';
 
+  // Health check if no participant name
   if (!name) {
     return jsonResponse({ status: 'ok', message: 'DC CAP AI Pilot tracking endpoint is live' });
   }
 
-  // Look up this participant's progress across milestones + surveys
+  // Look up participant progress
   try {
-    return lookupParticipantProgress(name);
+    var result = lookupParticipantProgress(name);
+
+    // If a JSONP callback was provided, wrap the response as executable JavaScript.
+    // This bypasses CORS because the browser loads it via a <script> tag.
+    if (callback) {
+      var jsonText = ContentService.createTextOutput('').getContent(); // unused, just for reference
+      var progressData = JSON.stringify(getProgressObject(name));
+      return ContentService.createTextOutput(callback + '(' + progressData + ');')
+        .setMimeType(ContentService.MimeType.JAVASCRIPT);
+    }
+
+    return result;
   } catch (err) {
+    if (callback) {
+      var errObj = JSON.stringify({ status: 'error', message: err.toString() });
+      return ContentService.createTextOutput(callback + '(' + errObj + ');')
+        .setMimeType(ContentService.MimeType.JAVASCRIPT);
+    }
     return jsonResponse({ status: 'error', message: err.toString() });
   }
+}
+
+/**
+ * Returns the progress object directly (used by JSONP path to avoid
+ * double-wrapping in ContentService).
+ */
+function getProgressObject(rawName) {
+  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  var name = normalizeName(rawName);
+
+  var milestoneSheet = ss.getSheetByName('milestones');
+  var milestones = [];
+  if (milestoneSheet && milestoneSheet.getLastRow() > 1) {
+    var data = milestoneSheet.getDataRange().getValues();
+    for (var i = 1; i < data.length; i++) {
+      if (data[i][1] === name) {
+        milestones.push({ milestone: data[i][2], phase: data[i][3], details: data[i][5] });
+      }
+    }
+  }
+
+  var surveySheet = ss.getSheetByName('survey_responses');
+  var hasSurvey = false;
+  if (surveySheet && surveySheet.getLastRow() > 1) {
+    var sData = surveySheet.getDataRange().getValues();
+    for (var j = 1; j < sData.length; j++) {
+      if (sData[j][1] === name) { hasSurvey = true; break; }
+    }
+  }
+
+  var milestoneNames = milestones.map(function(m) { return m.milestone; });
+
+  var progress = {
+    dccap_survey_completed: hasSurvey ? 'true' : 'false',
+    dccap_starthere_completed: milestoneNames.indexOf('Start Here guide reviewed') > -1 ? 'true' : 'false',
+    dccap_claude101_completed: milestoneNames.indexOf('Prerequisite 3a: Claude 101 completed') > -1 ? 'true' : 'false',
+    dccap_fluency_completed: milestoneNames.indexOf('Prerequisite 3b: AI Fluency for Nonprofits completed') > -1 ? 'true' : 'false',
+    dccap_governance_acknowledged: milestoneNames.indexOf('Governance framework acknowledged') > -1 ? 'true' : 'false'
+  };
+
+  for (var k = 0; k < milestones.length; k++) {
+    var m = milestones[k];
+    if (m.details) {
+      try {
+        var det = typeof m.details === 'string' ? JSON.parse(m.details) : m.details;
+        if (det.certificate) {
+          if (m.milestone === 'Prerequisite 3a: Claude 101 completed') progress.dccap_claude101_certificate = det.certificate;
+          if (m.milestone === 'Prerequisite 3b: AI Fluency for Nonprofits completed') progress.dccap_fluency_certificate = det.certificate;
+        }
+      } catch(parseErr) {}
+    }
+  }
+
+  return { status: 'found', participant: name, progress: progress, milestones: milestoneNames };
 }
 
 // ==================== SESSION RESUME LOOKUP ====================
