@@ -35,8 +35,94 @@ function doPost(e) {
 }
 
 function doGet(e) {
-  // Allow GET requests to check if the endpoint is live
-  return jsonResponse({ status: 'ok', message: 'DC CAP AI Pilot tracking endpoint is live' });
+  // If no participant name provided, return health check
+  var params = e ? e.parameter : {};
+  var name = params.participant || '';
+
+  if (!name) {
+    return jsonResponse({ status: 'ok', message: 'DC CAP AI Pilot tracking endpoint is live' });
+  }
+
+  // Look up this participant's progress across milestones + surveys
+  try {
+    return lookupParticipantProgress(name);
+  } catch (err) {
+    return jsonResponse({ status: 'error', message: err.toString() });
+  }
+}
+
+// ==================== SESSION RESUME LOOKUP ====================
+function lookupParticipantProgress(rawName) {
+  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  var name = normalizeName(rawName);
+
+  // 1. Check milestones tab for this participant
+  var milestoneSheet = ss.getSheetByName('milestones');
+  var milestones = [];
+  if (milestoneSheet && milestoneSheet.getLastRow() > 1) {
+    var data = milestoneSheet.getDataRange().getValues();
+    for (var i = 1; i < data.length; i++) {
+      if (data[i][1] === name) {
+        milestones.push({
+          milestone: data[i][2],
+          phase: data[i][3],
+          details: data[i][5]
+        });
+      }
+    }
+  }
+
+  // 2. Check survey_responses tab for this participant
+  var surveySheet = ss.getSheetByName('survey_responses');
+  var hasSurvey = false;
+  if (surveySheet && surveySheet.getLastRow() > 1) {
+    var sData = surveySheet.getDataRange().getValues();
+    for (var j = 1; j < sData.length; j++) {
+      if (sData[j][1] === name) {
+        hasSurvey = true;
+        break;
+      }
+    }
+  }
+
+  // 3. Build localStorage hydration map from milestones
+  var milestoneNames = milestones.map(function(m) { return m.milestone; });
+
+  // Map milestone names to the localStorage keys the frontend expects
+  var progress = {
+    dccap_survey_completed: hasSurvey ? 'true' : 'false',
+    dccap_starthere_completed: milestoneNames.indexOf('Start Here guide reviewed') > -1 ? 'true' : 'false',
+    dccap_claude101_completed: milestoneNames.indexOf('Prerequisite 3a: Claude 101 completed') > -1 ? 'true' : 'false',
+    dccap_fluency_completed: milestoneNames.indexOf('Prerequisite 3b: AI Fluency for Nonprofits completed') > -1 ? 'true' : 'false',
+    dccap_governance_acknowledged: milestoneNames.indexOf('Governance framework acknowledged') > -1 ? 'true' : 'false'
+  };
+
+  // Extract certificate values from milestone details if available
+  for (var k = 0; k < milestones.length; k++) {
+    var m = milestones[k];
+    if (m.details) {
+      try {
+        var det = typeof m.details === 'string' ? JSON.parse(m.details) : m.details;
+        if (det.certificate) {
+          if (m.milestone === 'Prerequisite 3a: Claude 101 completed') {
+            progress.dccap_claude101_certificate = det.certificate;
+          }
+          if (m.milestone === 'Prerequisite 3b: AI Fluency for Nonprofits completed') {
+            progress.dccap_fluency_certificate = det.certificate;
+          }
+        }
+      } catch(parseErr) {
+        // details wasn't valid JSON; skip
+      }
+    }
+  }
+
+  return jsonResponse({
+    status: 'found',
+    participant: name,
+    progress: progress,
+    milestones: milestoneNames
+  });
 }
 
 // ==================== SURVEY HANDLER ====================

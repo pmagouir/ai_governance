@@ -2457,6 +2457,9 @@
     }
 
 
+    // ==================== ANALYTICS ====================
+    const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
+
     // ==================== IDENTITY GATE ====================
     const LOCALSTORAGE_KEY = 'dccap_participant_name';
 
@@ -2487,6 +2490,11 @@
             setTimeout(() => { overlay.style.display = 'none'; }, 400);
             greeting.style.display = 'block';
             greetingName.textContent = storedName;
+
+            // Background sync: pick up any progress made on other devices
+            resumeSession(storedName).then(() => {
+                restoreCheckboxState();
+            });
         }
 
         submitBtn.addEventListener('click', handleGateSubmit);
@@ -2502,14 +2510,55 @@
                 nameInput.focus();
                 return;
             }
-            setParticipantName(name);
-            overlay.classList.add('hidden');
-            setTimeout(() => { overlay.style.display = 'none'; }, 400);
-            greeting.style.display = 'block';
-            greetingName.textContent = name;
 
-            // Send a milestone that this participant visited the hub
-            sendMilestone(name, 'Pilot Hub first visit', 'Onboarding', 'pilot_hub.html', '');
+            // Disable button while we check for existing progress
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Loading...';
+
+            // Try to resume session from server-side progress
+            resumeSession(name).then(() => {
+                setParticipantName(name);
+                overlay.classList.add('hidden');
+                setTimeout(() => { overlay.style.display = 'none'; }, 400);
+                greeting.style.display = 'block';
+                greetingName.textContent = name;
+
+                // Refresh checkbox UI to reflect any restored progress
+                restoreCheckboxState();
+
+                // Send a milestone that this participant visited the hub
+                sendMilestone(name, 'Pilot Hub first visit', 'Onboarding', 'pilot_hub.html', '');
+            }).finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enter the Pilot Hub';
+            });
+        }
+
+        /**
+         * Calls the Apps Script doGet() to look up a participant's progress
+         * and hydrate localStorage so they can resume from any device.
+         */
+        function resumeSession(name) {
+            const lookupUrl = SHEET_ENDPOINT + '?participant=' + encodeURIComponent(name);
+            return fetch(lookupUrl, { redirect: 'follow' })
+                .then(resp => resp.json())
+                .then(data => {
+                    if (data.status === 'found' && data.progress) {
+                        // Hydrate every localStorage key from server-side progress
+                        Object.entries(data.progress).forEach(([key, value]) => {
+                            if (value && value !== 'false') {
+                                try { localStorage.setItem(key, value); } catch(e) {}
+                            }
+                        });
+                        console.log('Session resumed for', data.participant,
+                            '— restored', Object.keys(data.progress).filter(k => data.progress[k] !== 'false').length, 'flags');
+                    }
+                })
+                .catch(err => {
+                    // If lookup fails (offline, endpoint down), proceed silently.
+                    // The person can still use the site; they just won't see prior progress.
+                    console.warn('Session resume unavailable:', err.message || err);
+                });
         }
 
         changeLink.addEventListener('click', function() {
@@ -2522,9 +2571,6 @@
             nameInput.select();
         });
     }
-
-    // ==================== ANALYTICS ====================
-    const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
 
     function sendMilestone(participantName, milestone, phase, pageSource, details) {
         const payload = JSON.stringify({
