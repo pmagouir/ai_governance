@@ -2540,6 +2540,22 @@
          * Uses POST (proven CORS-safe) with type:'lookup'.
          */
         function resumeSession(name) {
+            // Clear all dccap_* progress keys BEFORE hydrating from server.
+            // This prevents a previous user's localStorage from bleeding into
+            // a new session (e.g., switching identities on the same browser).
+            const progressKeys = [
+                'dccap_survey_completed',
+                'dccap_starthere_completed',
+                'dccap_claude101_completed',
+                'dccap_fluency_completed',
+                'dccap_claude101_certificate',
+                'dccap_fluency_certificate',
+                'dccap_governance_acknowledged'
+            ];
+            try {
+                progressKeys.forEach(k => localStorage.removeItem(k));
+            } catch(e) {}
+
             const payload = JSON.stringify({
                 type: 'lookup',
                 participant_name: name
