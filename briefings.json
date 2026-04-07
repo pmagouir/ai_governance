@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": "2.0",
-    "lastGenerated": "2026-04-06T08:00:00-04:00",
-    "lastPublished": "2026-04-05T14:05:00-04:00",
+    "lastGenerated": "2026-04-07T08:00:00-04:00",
+    "lastPublished": "2026-04-07T09:00:00-04:00",
     "categories": {
       "foundational": { "label": "Foundational Learning", "class": "category-foundational" },
       "tips": { "label": "Tips & Tricks", "class": "category-tips" },
@@ -85,6 +85,15 @@
       "content": "Claude will almost always give you a confident, well-formatted answer. That confidence is the exact moment your Discernment competency matters most. Discernment, one of the four core competencies in DC CAP's AI Fluency Framework (alongside Delegation, Description, and Diligence), is the ability to critically evaluate AI-generated outputs for quality, accuracy, relevance, and bias. In practice, it begins with a single question: \"How would I verify this if a new colleague handed it to me?\" Anthropic's own research found that structured prompting techniques like step-by-step reasoning and few-shot examples improved accuracy by 20% in one enterprise case study. That means a well-structured prompt yields better output. But even a well-structured prompt can produce plausible-sounding errors. A scholarship renewal reminder that cites the wrong GPA threshold. A board summary that rounds enrollment numbers in a misleading direction. A donor email that attributes a statistic to a report that doesn't exist. These errors look polished. They read smoothly. And that is precisely why Discernment requires deliberate practice. The DC CAP AI Fluency Framework breaks Discernment into three layers: evaluating output quality, assessing whether the human-AI collaboration is productive, and gathering feedback to refine AI behaviors over time. You are building a verification habit. The federal government has begun formalizing AI literacy as a workforce competency, with the Department of Labor publishing an AI literacy framework in early 2026. DC CAP's 4D framework already embeds this skill. Your job now is to practice it consistently.",
       "tryThis": "Open your most recent Claude conversation. Pick one factual claim in the output and verify it using an independent source. Notice how long the verification takes versus how long you spent reviewing the original output. That ratio tells you something about your current Discernment habits.",
       "resource": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+      "status": "published"
+    },
+    {
+      "date": "2026-04-07",
+      "category": "tips",
+      "title": "Give Claude a Project, Not Just a Prompt",
+      "content": "Every time you open a new conversation outside a Project, you spend time re-establishing context. You re-explain your role, your audience, the tone you want. Projects in Cowork eliminate that repetition entirely. A Project is a persistent workspace where you bundle instructions, reference files, and links that Claude loads automatically every time you start a new task. Think of it as a briefing packet Claude reads before you say a word. For scholarship communications, you could create a Project that includes DC CAP's voice guidelines, the current application timeline, and a standing instruction like \"Always reference DCTAG documentation requirements when writing to applicants.\" For board reporting, a separate Project might hold last quarter's metrics, your executive summary template, and formatting rules. Claude's memory is scoped to each Project, meaning context it learns from your scholarship work stays in the scholarship workspace and does not bleed into your donor communications. This matters when you manage several distinct workstreams. The practical payoff is speed. Anthropic's support documentation describes Projects as dedicated workspaces where context, instructions, files, memory, and scheduled tasks all live together in one place. When you reduce the setup time on each conversation, the gains compound quickly. You set up the workspace once, and every future task in that Project inherits the full context automatically. Your third task in a Project benefits from the context Claude retained from the first two.",
+      "tryThis": "Create your first Cowork Project today. Pick one recurring task area, such as student emails or weekly reports. Add a two-sentence instruction describing the audience and tone, plus one reference file Claude should always consult. Run one task and notice how much less setup the conversation requires.",
+      "resource": "https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-cowork",
       "status": "published"
     }
   ],
