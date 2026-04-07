@@ -26,6 +26,8 @@ function doPost(e) {
       return handleSurvey(ss, data);
     } else if (data.type === 'milestone') {
       return handleMilestone(ss, data);
+    } else if (data.type === 'weekly_checkin') {
+      return handleWeeklyCheckin(ss, data);
     } else if (data.type === 'lookup') {
       return lookupParticipantProgress(data.participant_name || '');
     } else {
@@ -352,6 +354,77 @@ function handleMilestone(ss, data) {
     message: 'Milestone recorded',
     participant: data.participant_name,
     milestone: data.milestone
+  });
+}
+
+// ==================== WEEKLY CHECK-IN HANDLER ====================
+function handleWeeklyCheckin(ss, data) {
+  var sheet = ss.getSheetByName('weekly_checkins');
+  if (!sheet) {
+    // Auto-create the tab with headers
+    sheet = ss.insertSheet('weekly_checkins');
+    var headers = [
+      'timestamp',
+      'participant_name',
+      'week_number',
+      'q1_iteration_frequency',
+      'q2_usage_confidence',
+      'q3_biggest_win',
+      'q4_biggest_struggle'
+    ];
+    sheet.appendRow(headers);
+    sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold');
+  }
+
+  var name = normalizeName(data.participant_name);
+
+  // Check for duplicate: same participant + same week
+  var existing = sheet.getDataRange().getValues();
+  for (var i = 1; i < existing.length; i++) {
+    if (existing[i][1] === name && existing[i][2] === data.week_number) {
+      // Update in place instead of duplicating
+      var rowNum = i + 1;
+      sheet.getRange(rowNum, 1).setValue(new Date().toISOString());
+      sheet.getRange(rowNum, 4).setValue(data.q1_iteration_frequency || '');
+      sheet.getRange(rowNum, 5).setValue(data.q2_usage_confidence || '');
+      sheet.getRange(rowNum, 6).setValue(data.q3_biggest_win || '');
+      sheet.getRange(rowNum, 7).setValue(data.q4_biggest_struggle || '');
+      return jsonResponse({
+        status: 'updated',
+        message: 'Weekly check-in updated for this week',
+        participant: name,
+        week: data.week_number
+      });
+    }
+  }
+
+  var row = [
+    new Date().toISOString(),
+    name,
+    data.week_number || 0,
+    data.q1_iteration_frequency || '',
+    data.q2_usage_confidence || '',
+    data.q3_biggest_win || '',
+    data.q4_biggest_struggle || ''
+  ];
+
+  sheet.appendRow(row);
+
+  // Also record as a milestone for session resume
+  handleMilestone(ss, {
+    type: 'milestone',
+    participant_name: name,
+    milestone: 'Weekly check-in Week ' + data.week_number + ' submitted',
+    phase: data.week_number <= 4 ? 'Phase 1: Foundation' : 'Phase 2: Application',
+    page_source: 'weekly_checkin.html',
+    details: JSON.stringify({ week: data.week_number })
+  });
+
+  return jsonResponse({
+    status: 'success',
+    message: 'Weekly check-in recorded',
+    participant: name,
+    week: data.week_number
   });
 }
 
