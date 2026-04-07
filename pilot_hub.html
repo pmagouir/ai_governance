@@ -258,6 +258,66 @@
             width: auto;
         }
 
+        /* Session Restore Overlay */
+        .session-restore-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(16, 26, 76, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.4s ease;
+        }
+        .session-restore-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .session-restore-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            max-width: 380px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .session-restore-card h3 {
+            font-family: var(--font-display);
+            color: var(--navy);
+            margin: 0 0 0.75rem 0;
+            font-size: 1.25rem;
+        }
+        .session-restore-card p {
+            color: #555;
+            font-size: 0.9rem;
+            margin: 0 0 1.25rem 0;
+        }
+        .restore-spinner {
+            width: 36px;
+            height: 36px;
+            border: 3px solid rgba(131, 82, 255, 0.2);
+            border-top-color: var(--purple);
+            border-radius: 50%;
+            animation: restore-spin 0.8s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes restore-spin {
+            to { transform: rotate(360deg); }
+        }
+        .restore-success {
+            display: none;
+            color: var(--purple);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+        }
+
         /* Participant greeting bar */
         .participant-greeting {
             background: linear-gradient(135deg, rgba(131, 82, 255, 0.08), rgba(135, 183, 213, 0.08));
@@ -1632,10 +1692,20 @@
             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23101A4C'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-weight='bold' font-size='18' fill='white'%3EDC%3C/text%3E%3C/svg%3E" alt="DC CAP">
         </div>
         <h2>Welcome to the AI Leadership Pilot</h2>
-        <p>Enter your full name to begin tracking your onboarding progress. You'll only need to do this once.</p>
+        <p>Enter your full name to begin or resume your onboarding progress. Your progress syncs across devices.</p>
         <input type="text" id="gateNameInput" placeholder="Your full name (e.g., Angela Cammack)" autocomplete="name">
         <p class="gate-error-msg" id="gateError">Please enter your full name to continue.</p>
         <button id="gateSubmitBtn">Get Started</button>
+    </div>
+</div>
+
+<!-- Session Restore Overlay (shown during cross-device progress sync) -->
+<div class="session-restore-overlay hidden" id="sessionRestoreOverlay" style="display:none;">
+    <div class="session-restore-card">
+        <h3>Restoring Your Progress</h3>
+        <p id="restoreStatusMsg">Looking up your pilot activity...</p>
+        <div class="restore-spinner" id="restoreSpinner"></div>
+        <div class="restore-success" id="restoreSuccess"></div>
     </div>
 </div>
 
@@ -2487,6 +2557,9 @@
             setTimeout(() => { overlay.style.display = 'none'; }, 400);
             greeting.style.display = 'block';
             greetingName.textContent = storedName;
+
+            // Sync progress from cloud on every page load (handles device switches)
+            resumeSessionWithUI(storedName);
         }
 
         submitBtn.addEventListener('click', handleGateSubmit);
@@ -2508,8 +2581,10 @@
             greeting.style.display = 'block';
             greetingName.textContent = name;
 
-            // Send a milestone that this participant visited the hub
-            sendMilestone(name, 'Pilot Hub first visit', 'Onboarding', 'pilot_hub.html', '');
+            // Restore any existing progress from cloud, then send first-visit milestone
+            resumeSessionWithUI(name, function() {
+                sendMilestone(name, 'Pilot Hub first visit', 'Onboarding', 'pilot_hub.html', '');
+            });
         }
 
         changeLink.addEventListener('click', function() {
@@ -2525,6 +2600,217 @@
 
     // ==================== ANALYTICS ====================
     const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
+
+    // ==================== SESSION RESUME (CROSS-DEVICE SYNC) ====================
+    /**
+     * Fetches participant progress from Google Sheets via JSONP and hydrates
+     * localStorage so the UI reflects their true state on any device.
+     * Uses additive merge: cloud 'true' values are written, but existing
+     * local 'true' values are never downgraded (handles offline completions
+     * that haven't synced yet).
+     */
+    let _sessionResumeComplete = false;
+
+    function resumeSession(participantName, onComplete) {
+        if (!participantName || participantName.length < 2) {
+            if (onComplete) onComplete(false);
+            return;
+        }
+
+        const callbackName = '_dccapResumeCallback_' + Date.now();
+        const timeoutMs = 8000;
+        let resolved = false;
+
+        // Define the JSONP callback
+        window[callbackName] = function(data) {
+            resolved = true;
+            cleanupJsonp();
+
+            if (data && data.status === 'found' && data.progress) {
+                // Additive merge: only promote values to 'true', never demote
+                const progress = data.progress;
+                try {
+                    Object.keys(progress).forEach(function(key) {
+                        const cloudVal = progress[key];
+                        const localVal = localStorage.getItem(key);
+
+                        // For boolean flags: set to 'true' if cloud says so
+                        if (cloudVal === 'true') {
+                            localStorage.setItem(key, 'true');
+                        }
+                        // For certificate strings: fill in if local is empty
+                        if (cloudVal && cloudVal !== 'true' && cloudVal !== 'false' && !localVal) {
+                            localStorage.setItem(key, cloudVal);
+                        }
+                    });
+
+                    // Ensure participant name is stored consistently
+                    localStorage.setItem(LOCALSTORAGE_KEY, data.participant || participantName);
+
+                    console.log('[Session Resume] Progress restored for', data.participant,
+                        '| Milestones:', (data.milestones || []).length);
+                } catch(e) {
+                    console.error('[Session Resume] localStorage write failed:', e);
+                }
+
+                _sessionResumeComplete = true;
+                if (onComplete) onComplete(true, data);
+            } else {
+                // Participant not found in cloud (new user or name mismatch)
+                console.log('[Session Resume] No cloud progress found for', participantName);
+                _sessionResumeComplete = true;
+                if (onComplete) onComplete(false, data);
+            }
+        };
+
+        // Inject JSONP script tag
+        const script = document.createElement('script');
+        script.id = 'jsonp_resume_' + Date.now();
+        script.src = SHEET_ENDPOINT
+            + '?participant=' + encodeURIComponent(participantName)
+            + '&callback=' + callbackName;
+        script.onerror = function() {
+            if (!resolved) {
+                resolved = true;
+                cleanupJsonp();
+                console.warn('[Session Resume] JSONP request failed (network error)');
+                _sessionResumeComplete = true;
+                if (onComplete) onComplete(false);
+            }
+        };
+
+        // Timeout fallback in case Apps Script is slow
+        const timer = setTimeout(function() {
+            if (!resolved) {
+                resolved = true;
+                cleanupJsonp();
+                console.warn('[Session Resume] JSONP timed out after', timeoutMs, 'ms');
+                _sessionResumeComplete = true;
+                if (onComplete) onComplete(false);
+            }
+        }, timeoutMs);
+
+        function cleanupJsonp() {
+            clearTimeout(timer);
+            try { delete window[callbackName]; } catch(e) { window[callbackName] = undefined; }
+            const el = document.getElementById(script.id);
+            if (el && el.parentNode) el.parentNode.removeChild(el);
+        }
+
+        document.head.appendChild(script);
+    }
+
+    /**
+     * Shows the restore overlay, runs the JSONP lookup, then refreshes all UI.
+     */
+    function resumeSessionWithUI(participantName, onDone) {
+        const overlay = document.getElementById('sessionRestoreOverlay');
+        const statusMsg = document.getElementById('restoreStatusMsg');
+        const spinner = document.getElementById('restoreSpinner');
+        const successEl = document.getElementById('restoreSuccess');
+
+        // Show the overlay
+        overlay.style.display = 'flex';
+        requestAnimationFrame(() => { overlay.classList.remove('hidden'); });
+
+        resumeSession(participantName, function(found, data) {
+            // Update overlay to show result
+            spinner.style.display = 'none';
+
+            if (found) {
+                const count = (data && data.milestones) ? data.milestones.length : 0;
+                successEl.textContent = '\u2713 Welcome back! Restored ' + count + ' milestone' + (count !== 1 ? 's' : '') + '.';
+            } else {
+                successEl.textContent = 'Starting fresh. Your progress will sync across devices from here.';
+            }
+            successEl.style.display = 'block';
+
+            // Brief pause so user sees the message, then dismiss and refresh UI
+            setTimeout(function() {
+                overlay.classList.add('hidden');
+                setTimeout(function() { overlay.style.display = 'none'; }, 400);
+
+                // Refresh all progress-dependent UI
+                refreshAllProgressUI();
+                if (onDone) onDone(found);
+            }, 1200);
+        });
+    }
+
+    /**
+     * Re-runs every UI reader that depends on localStorage.
+     * Called after session resume hydrates the local store.
+     * Does NOT re-attach event listeners (avoids duplicates).
+     */
+    function refreshAllProgressUI() {
+        // Re-run pre-assessment gate (locks/unlocks sections based on survey flag)
+        initPreAssessmentGate();
+
+        // Manually refresh checkbox visual states from localStorage
+        // (mirrors restoreCheckboxState logic without re-binding listeners)
+        try {
+            const flagMap = { check1: 'dccap_survey_completed', check2: 'dccap_starthere_completed' };
+            Object.entries(flagMap).forEach(([checkId, storageKey]) => {
+                const cb = document.getElementById(checkId);
+                const label = document.getElementById(checkId + 'Label');
+                if (cb && localStorage.getItem(storageKey) === 'true') {
+                    cb.checked = true;
+                    if (label) label.textContent = 'Completed';
+                }
+            });
+
+            // Check3 (Academy): both courses required
+            if (localStorage.getItem('dccap_claude101_completed') === 'true' &&
+                localStorage.getItem('dccap_fluency_completed') === 'true') {
+                const check3 = document.getElementById('check3');
+                const label3 = document.getElementById('check3Label');
+                if (check3) check3.checked = true;
+                if (label3) label3.textContent = 'Completed';
+            }
+
+            // Refresh course verification block visuals
+            if (localStorage.getItem('dccap_claude101_completed') === 'true') {
+                const block = document.getElementById('claude101Block');
+                const success = document.getElementById('claude101Success');
+                if (block) block.classList.add('verified');
+                if (success) success.style.display = 'block';
+            }
+            if (localStorage.getItem('dccap_fluency_completed') === 'true') {
+                const block = document.getElementById('fluencyBlock');
+                const success = document.getElementById('fluencySuccess');
+                if (block) block.classList.add('verified');
+                if (success) success.style.display = 'block';
+            }
+            if (localStorage.getItem('dccap_claude101_completed') === 'true' &&
+                localStorage.getItem('dccap_fluency_completed') === 'true') {
+                const attestation = document.getElementById('certificateAttestation');
+                if (attestation) attestation.classList.add('verified');
+            }
+        } catch(e) {}
+
+        // Re-run flow diagram and completion check
+        if (typeof updateFlowDiagram === 'function') updateFlowDiagram();
+
+        // Show completion message if all done
+        const check1 = document.getElementById('check1');
+        const check2 = document.getElementById('check2');
+        const check3 = document.getElementById('check3');
+        if (check1 && check1.checked && check2 && check2.checked && check3 && check3.checked) {
+            const participantName = getParticipantName();
+            const existingMsg = document.getElementById('completion-message');
+            if (!existingMsg) {
+                const message = document.createElement('div');
+                message.id = 'completion-message';
+                message.style.cssText = 'margin-top:1rem;margin-left:3.5rem;padding:1rem;background:linear-gradient(135deg,rgba(131,82,255,0.1),rgba(135,183,213,0.1));border-left:5px solid var(--purple);border-radius:6px;font-weight:600;color:var(--navy);';
+                const displayName = participantName ? participantName.split(' ')[0] : '';
+                message.textContent = displayName
+                    ? '\u2713 All prerequisites complete, ' + displayName + '! Account provisioning is now available.'
+                    : '\u2713 All prerequisites complete! Account provisioning is now available.';
+                const enforcementNote = document.querySelector('.enforcement-note');
+                if (enforcementNote) enforcementNote.parentNode.insertBefore(message, enforcementNote);
+            }
+        }
+    }
 
     function sendMilestone(participantName, milestone, phase, pageSource, details) {
         const payload = JSON.stringify({
