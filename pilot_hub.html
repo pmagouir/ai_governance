@@ -1603,6 +1603,95 @@
             font-style: italic;
         }
 
+        /* External Resources Section */
+        .external-resources-section {
+            background-color: var(--white);
+            padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 5vw, 3rem);
+        }
+
+        .resources-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(1.5rem, 2.5vw, 2rem);
+        }
+
+        .resource-category-card {
+            background-color: var(--white);
+            border-radius: 6px;
+            padding: clamp(1.5rem, 2.5vw, 2rem);
+            box-shadow: 0 2px 12px rgba(16, 26, 76, 0.06);
+            border-top: 4px solid var(--navy);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .resource-category-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 26, 76, 0.1);
+        }
+
+        .resource-category-card.accent-purple { border-top-color: var(--purple); }
+        .resource-category-card.accent-blue { border-top-color: var(--blue); }
+        .resource-category-card.accent-gold { border-top-color: var(--gold); }
+
+        .resource-category-card h3 {
+            font-family: var(--font-display);
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            color: var(--navy);
+            margin-bottom: 0.35rem;
+        }
+
+        .resource-category-card .category-desc {
+            font-size: clamp(0.8rem, 1.2vw, 0.88rem);
+            color: #888;
+            margin-bottom: 1.25rem;
+            line-height: 1.5;
+        }
+
+        .resource-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .resource-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .resource-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .resource-item-content {
+            flex: 1;
+        }
+
+        .resource-item-content a {
+            font-family: var(--font-subhead);
+            font-weight: 600;
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+            color: var(--navy);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .resource-item-content a:hover {
+            color: var(--purple);
+        }
+
+        .resource-item-content .resource-byline {
+            font-size: clamp(0.78rem, 1.1vw, 0.85rem);
+            color: #777;
+            line-height: 1.5;
+            margin-top: 0.2rem;
+        }
+
         /* Footer */
         footer {
             background-color: var(--navy);
@@ -1727,6 +1816,7 @@
         <li><a href="#leadership" class="nav-link">Your Module</a></li>
         <li><a href="#resources" class="nav-link">Resources</a></li>
         <li><a href="#briefing" class="nav-link">Daily Briefing</a></li>
+        <li><a href="#external-resources" class="nav-link">Field Guide</a></li>
     </ul>
 </nav>
 
@@ -2246,6 +2336,178 @@
     <div class="newsletter-container">
         <div id="featured-entry-container"></div>
         <div id="archive-entries-container" class="archive-entries"></div>
+    </div>
+</section>
+
+<!-- Section 5: External Resources / Field Guide -->
+<section id="external-resources" class="external-resources-section" data-pre-gate="lock">
+    <div class="section-header">
+        <h2 class="section-title reveal">Your AI Field Guide</h2>
+        <p class="section-subtitle reveal" style="transition-delay: 0.08s;">Curated voices, tools, and case studies to keep you sharp between sessions.</p>
+    </div>
+
+    <div class="resources-grid">
+
+        <!-- Card 1: Work-Related AI -->
+        <div class="resource-category-card accent-purple reveal" style="transition-delay: 0.1s;">
+            <h3>Voices in AI for Work</h3>
+            <p class="category-desc">Practical AI thinking for knowledge workers and leaders</p>
+
+            <div class="resource-item">
+                <span class="resource-icon">📘</span>
+                <div class="resource-item-content">
+                    <a href="https://www.oneusefulthing.org/" target="_blank" rel="noopener">One Useful Thing</a>
+                    <p class="resource-byline">Ethan Mollick, Wharton. Author of <em>Co-Intelligence</em>. The definitive newsletter on AI adoption for knowledge workers.</p>
+                </div>
+            </div>
+
+            <div class="resource-item">
+                <span class="resource-icon">🎬</span>
+                <div class="resource-item-content">
+                    <a href="https://www.youtube.com/@JeffSu" target="_blank" rel="noopener">Jeff Su</a>
+                    <p class="resource-byline">YouTube's go-to for AI productivity workflows. Concrete tutorials on Claude, ChatGPT, and integrating AI into daily work.</p>
+                </div>
+            </div>
+
+            <div class="resource-item">
+                <span class="resource-icon">🎙️</span>
+                <div class="resource-item-content">
+                    <a href="https://nathanielwhittemore.com/" target="_blank" rel="noopener">Nathaniel Whittemore — AI Daily Brief</a>
+                    <p class="resource-byline">Daily podcast covering the biggest AI developments. Concise, well-sourced, and built for busy leaders who want to stay current.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2: Bleeding Edge Updates -->
+        <div class="resource-category-card accent-blue reveal" style="transition-delay: 0.2s;">
+            <h3>Bleeding Edge Updates</h3>
+            <p class="category-desc">Stay current on the frontier of AI development</p>
+
+            <div class="resource-item">
+                <span class="resource-icon">🔬</span>
+                <div class="resource-item-content">
+                    <a href="https://www.anthropic.com/research" target="_blank" rel="noopener">Anthropic Research Blog</a>
+                    <p class="resource-byline">Model releases, safety research, and capability updates directly from the team that builds Claude.</p>
+                </div>
+            </div>
+
+            <div class="resource-item">
+                <span class="resource-icon">📰</span>
+                <div class="resource-item-content">
+                    <a href="https://www.therundown.ai/" target="_blank" rel="noopener">The Rundown AI</a>
+                    <p class="resource-byline">Daily AI newsletter. 600K+ subscribers. Fast, digestible coverage of the biggest developments.</p>
+                </div>
+            </div>
+
+            <div class="resource-item">
+                <span class="resource-icon">📬</span>
+                <div class="resource-item-content">
+                    <a href="https://www.theneurondaily.com/" target="_blank" rel="noopener">The Neuron</a>
+                    <p class="resource-byline">5-minute daily AI digest. Covers model launches, policy moves, and industry shifts in plain language.</p>
+                </div>
+            </div>
+
+            <div class="resource-item">
+                <span class="resource-icon">🎧</span>
+                <div class="resource-item-content">
+                    <a href="https://www.latent.space/podcast" target="_blank" rel="noopener">Latent Space Podcast</a>
+                    <p class="resource-byline">Deep technical interviews with AI engineers and researchers. For when you want the full story behind a breakthrough.</p>
+                </div>
+            </div>
+
+            <div class="resource-item">
+                <span class="resource-icon">🎧</span>
+                <div class="resource-item-content">
+                    <a href="https://podcasts.apple.com/us/podcast/hard-fork/id1528594034" target="_blank" rel="noopener">Hard Fork (NYT)</a>
+                    <p class="resource-byline">Kevin Roose and Casey Newton unpack how AI is reshaping tech, business, and culture each week.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3: Claude-Specific Skills -->
+        <div class="resource-category-card reveal" style="transition-delay: 0.3s;">
+            <h3>Claude Skills &amp; Reference</h3>
+            <p class="category-desc">Official Anthropic documentation for getting the most from Claude</p>
+
+            <div class="resource-item">
+                <span class="resource-icon">📖</span>
+                <div class="resource-item-content">
+                    <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener">Prompt Engineering Guide</a>
+                    <p class="resource-byline">Anthropic's official guide to writing effective prompts. The single best reference for improving your Claude outputs.</p>
+                </div>
+            </div>
+
+            <div class="resource-item">
+                <span class="resource-icon">📋</span>
+                <div class="resource-item-content">
+                    <a href="https://docs.anthropic.com/en/docs/about-claude/models" target="_blank" rel="noopener">Claude Model Overview</a>
+                    <p class="resource-byline">Current model capabilities, context windows, and guidance on choosing the right Claude model for your task.</p>
+                </div>
+            </div>
+
+            <div class="resource-item">
+                <span class="resource-icon">🛡️</span>
+                <div class="resource-item-content">
+                    <a href="https://www.anthropic.com/responsible-disclosure" target="_blank" rel="noopener">Anthropic Safety &amp; Governance</a>
+                    <p class="resource-byline">Anthropic's approach to AI safety, usage policies, and responsible deployment. Essential reading for governance leads.</p>
+                </div>
+            </div>
+
+            <div class="resource-item">
+                <span class="resource-icon">🎓</span>
+                <div class="resource-item-content">
+                    <a href="https://www.anthropic.com/learn" target="_blank" rel="noopener">Anthropic Learning Hub</a>
+                    <p class="resource-byline">Courses, guides, and best practices for teams deploying Claude across an organization.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4: Ideas & Inspiration -->
+        <div class="resource-category-card accent-gold reveal" style="transition-delay: 0.4s;">
+            <h3>Ideas &amp; Inspiration</h3>
+            <p class="category-desc">How education, nonprofits, and philanthropy are deploying AI now</p>
+
+            <div class="resource-item">
+                <span class="resource-icon">🎓</span>
+                <div class="resource-item-content">
+                    <a href="https://www.educause.edu/topics/artificial-intelligence" target="_blank" rel="noopener">EDUCAUSE AI Hub</a>
+                    <p class="resource-byline">Higher ed's primary source for AI adoption research, case studies, and institutional strategy frameworks.</p>
+                </div>
+            </div>
+
+            <div class="resource-item">
+                <span class="resource-icon">🏛️</span>
+                <div class="resource-item-content">
+                    <a href="https://www.gatesfoundation.org/ideas/articles/artificial-intelligence" target="_blank" rel="noopener">Gates Foundation on AI</a>
+                    <p class="resource-byline">How the world's largest philanthropy is investing in AI for education, health, and global development.</p>
+                </div>
+            </div>
+
+            <div class="resource-item">
+                <span class="resource-icon">🤝</span>
+                <div class="resource-item-content">
+                    <a href="https://ssir.org/topics/category/technology" target="_blank" rel="noopener">Stanford Social Innovation Review — Tech</a>
+                    <p class="resource-byline">Rigorous analysis of how technology and AI are transforming the social sector. Research-grounded, sector-aware.</p>
+                </div>
+            </div>
+
+            <div class="resource-item">
+                <span class="resource-icon">📊</span>
+                <div class="resource-item-content">
+                    <a href="https://www.nten.org/" target="_blank" rel="noopener">NTEN — Nonprofit Technology Network</a>
+                    <p class="resource-byline">The community hub for nonprofits navigating technology adoption. Webinars, research, and peer learning on AI deployment.</p>
+                </div>
+            </div>
+
+            <div class="resource-item">
+                <span class="resource-icon">📐</span>
+                <div class="resource-item-content">
+                    <a href="https://www.brookings.edu/topics/artificial-intelligence/" target="_blank" rel="noopener">Brookings AI Policy</a>
+                    <p class="resource-byline">Policy research on AI governance, workforce transformation, and education technology from a leading DC think tank.</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
