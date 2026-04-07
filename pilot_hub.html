@@ -2636,46 +2636,45 @@
     }
 
     function restoreCheckboxState() {
-        // Checkboxes 1 & 2: auto-populate from verified localStorage flags
-        // Checkbox 3: requires both academy courses verified
+        // Bidirectional: checks OR unchecks based on current localStorage state.
+        // This is critical for session resume, where localStorage is wiped and
+        // rehydrated from the server before this function runs.
         try {
             Object.entries(VERIFIED_FLAGS).forEach(([checkId, storageKey]) => {
                 const checkbox = document.getElementById(checkId);
                 const label = document.getElementById(checkId + 'Label');
-                if (checkbox && localStorage.getItem(storageKey) === 'true') {
-                    checkbox.checked = true;
-                    if (label) label.textContent = 'Completed';
-                }
+                const isComplete = localStorage.getItem(storageKey) === 'true';
+                if (checkbox) checkbox.checked = isComplete;
+                if (label) label.textContent = isComplete ? 'Completed' : 'Not yet completed';
             });
 
             // Check3 (Academy): requires both courses
-            if (isAcademyComplete()) {
-                const check3 = document.getElementById('check3');
-                const label3 = document.getElementById('check3Label');
-                if (check3) check3.checked = true;
-                if (label3) label3.textContent = 'Completed';
-            }
+            const academyDone = isAcademyComplete();
+            const check3 = document.getElementById('check3');
+            const label3 = document.getElementById('check3Label');
+            if (check3) check3.checked = academyDone;
+            if (label3) label3.textContent = academyDone ? 'Completed' : 'Not yet completed';
         } catch(e) {}
 
-        // Restore individual course verification states
+        // Restore (or reset) individual course verification states
         try {
-            if (localStorage.getItem('dccap_claude101_completed') === 'true') {
-                const block = document.getElementById('claude101Block');
-                const success = document.getElementById('claude101Success');
-                if (block) block.classList.add('verified');
-                if (success) success.style.display = 'block';
-            }
-            if (localStorage.getItem('dccap_fluency_completed') === 'true') {
-                const block = document.getElementById('fluencyBlock');
-                const success = document.getElementById('fluencySuccess');
-                if (block) block.classList.add('verified');
-                if (success) success.style.display = 'block';
-            }
-            // Hide entire attestation only if both verified
-            if (localStorage.getItem('dccap_claude101_completed') === 'true' &&
-                localStorage.getItem('dccap_fluency_completed') === 'true') {
-                const attestation = document.getElementById('certificateAttestation');
-                if (attestation) attestation.classList.add('verified');
+            const claude101Done = localStorage.getItem('dccap_claude101_completed') === 'true';
+            const fluencyDone = localStorage.getItem('dccap_fluency_completed') === 'true';
+
+            const claude101Block = document.getElementById('claude101Block');
+            const claude101Success = document.getElementById('claude101Success');
+            if (claude101Block) { claude101Done ? claude101Block.classList.add('verified') : claude101Block.classList.remove('verified'); }
+            if (claude101Success) { claude101Success.style.display = claude101Done ? 'block' : 'none'; }
+
+            const fluencyBlock = document.getElementById('fluencyBlock');
+            const fluencySuccess = document.getElementById('fluencySuccess');
+            if (fluencyBlock) { fluencyDone ? fluencyBlock.classList.add('verified') : fluencyBlock.classList.remove('verified'); }
+            if (fluencySuccess) { fluencySuccess.style.display = fluencyDone ? 'block' : 'none'; }
+
+            // Attestation block: hide only if both verified, show otherwise
+            const attestation = document.getElementById('certificateAttestation');
+            if (attestation) {
+                (claude101Done && fluencyDone) ? attestation.classList.add('verified') : attestation.classList.remove('verified');
             }
         } catch(e) {}
 
