@@ -2535,12 +2535,21 @@
         }
 
         /**
-         * Calls the Apps Script doGet() to look up a participant's progress
+         * Calls the Apps Script to look up a participant's progress
          * and hydrate localStorage so they can resume from any device.
+         * Uses POST (proven CORS-safe) with type:'lookup'.
          */
         function resumeSession(name) {
-            const lookupUrl = SHEET_ENDPOINT + '?participant=' + encodeURIComponent(name);
-            return fetch(lookupUrl, { redirect: 'follow' })
+            const payload = JSON.stringify({
+                type: 'lookup',
+                participant_name: name
+            });
+            return fetch(SHEET_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: payload,
+                redirect: 'follow'
+            })
                 .then(resp => resp.json())
                 .then(data => {
                     if (data.status === 'found' && data.progress) {
@@ -2551,7 +2560,7 @@
                             }
                         });
                         console.log('Session resumed for', data.participant,
-                            '— restored', Object.keys(data.progress).filter(k => data.progress[k] !== 'false').length, 'flags');
+                            'restored', Object.keys(data.progress).filter(k => data.progress[k] !== 'false').length, 'flags');
                     }
                 })
                 .catch(err => {
@@ -2594,69 +2603,112 @@
         })).catch(err => console.error('Analytics error:', err));
     }
 
+    // ==================== SHARED: Checkbox State Restoration ====================
+    // Hoisted to outer scope so both initIdentityGate (session resume) and
+    // initializeCheckboxPersistence can call it.
+
+    const VERIFIED_FLAGS = {
+        check1: 'dccap_survey_completed',
+        check2: 'dccap_starthere_completed'
+    };
+
+    function isAcademyComplete() {
+        try {
+            return localStorage.getItem('dccap_claude101_completed') === 'true' &&
+                   localStorage.getItem('dccap_fluency_completed') === 'true';
+        } catch(e) { return false; }
+    }
+
+    function restoreCheckboxState() {
+        // Checkboxes 1 & 2: auto-populate from verified localStorage flags
+        // Checkbox 3: requires both academy courses verified
+        try {
+            Object.entries(VERIFIED_FLAGS).forEach(([checkId, storageKey]) => {
+                const checkbox = document.getElementById(checkId);
+                const label = document.getElementById(checkId + 'Label');
+                if (checkbox && localStorage.getItem(storageKey) === 'true') {
+                    checkbox.checked = true;
+                    if (label) label.textContent = 'Completed';
+                }
+            });
+
+            // Check3 (Academy): requires both courses
+            if (isAcademyComplete()) {
+                const check3 = document.getElementById('check3');
+                const label3 = document.getElementById('check3Label');
+                if (check3) check3.checked = true;
+                if (label3) label3.textContent = 'Completed';
+            }
+        } catch(e) {}
+
+        // Restore individual course verification states
+        try {
+            if (localStorage.getItem('dccap_claude101_completed') === 'true') {
+                const block = document.getElementById('claude101Block');
+                const success = document.getElementById('claude101Success');
+                if (block) block.classList.add('verified');
+                if (success) success.style.display = 'block';
+            }
+            if (localStorage.getItem('dccap_fluency_completed') === 'true') {
+                const block = document.getElementById('fluencyBlock');
+                const success = document.getElementById('fluencySuccess');
+                if (block) block.classList.add('verified');
+                if (success) success.style.display = 'block';
+            }
+            // Hide entire attestation only if both verified
+            if (localStorage.getItem('dccap_claude101_completed') === 'true' &&
+                localStorage.getItem('dccap_fluency_completed') === 'true') {
+                const attestation = document.getElementById('certificateAttestation');
+                if (attestation) attestation.classList.add('verified');
+            }
+        } catch(e) {}
+
+        checkAllComplete();
+    }
+
+    // Show congratulations message when all checked
+    function checkAllComplete() {
+        const check1 = document.getElementById('check1');
+        const check2 = document.getElementById('check2');
+        const check3 = document.getElementById('check3');
+
+        const allComplete = check1 && check1.checked && check2 && check2.checked && check3 && check3.checked;
+
+        updateFlowDiagram();
+
+        const existingMessage = document.getElementById('completion-message');
+        if (existingMessage) existingMessage.remove();
+
+        if (allComplete) {
+            const participantName = getParticipantName();
+            const message = document.createElement('div');
+            message.id = 'completion-message';
+            message.style.cssText = `
+                margin-top: 1rem;
+                margin-left: 3.5rem;
+                padding: 1rem;
+                background: linear-gradient(135deg, rgba(131, 82, 255, 0.1), rgba(135, 183, 213, 0.1));
+                border-left: 5px solid var(--purple);
+                border-radius: 6px;
+                font-weight: 600;
+                color: var(--navy);
+                display: none;
+            `;
+            const displayName = participantName ? participantName.split(' ')[0] : '';
+            message.textContent = displayName
+                ? '\u2713 All prerequisites complete, ' + displayName + '! Account provisioning is now available.'
+                : '\u2713 All prerequisites complete! Account provisioning is now available.';
+
+            const enforcementNote = document.querySelector('.enforcement-note');
+            if (enforcementNote) {
+                enforcementNote.parentNode.insertBefore(message, enforcementNote);
+            }
+        }
+    }
+
     // Checkbox persistence and analytics
     function initializeCheckboxPersistence() {
         const checkboxes = ['check1', 'check2', 'check3'];
-
-        // Verified completion flags from actual page submissions
-        const VERIFIED_FLAGS = {
-            check1: 'dccap_survey_completed',
-            check2: 'dccap_starthere_completed'
-        };
-
-        function isAcademyComplete() {
-            try {
-                return localStorage.getItem('dccap_claude101_completed') === 'true' &&
-                       localStorage.getItem('dccap_fluency_completed') === 'true';
-            } catch(e) { return false; }
-        }
-
-        function restoreCheckboxState() {
-            // Checkboxes 1 & 2: auto-populate from verified localStorage flags
-            // Checkbox 3: requires both academy courses verified
-            try {
-                Object.entries(VERIFIED_FLAGS).forEach(([checkId, storageKey]) => {
-                    const checkbox = document.getElementById(checkId);
-                    const label = document.getElementById(checkId + 'Label');
-                    if (checkbox && localStorage.getItem(storageKey) === 'true') {
-                        checkbox.checked = true;
-                        if (label) label.textContent = 'Completed';
-                    }
-                });
-
-                // Check3 (Academy): requires both courses
-                if (isAcademyComplete()) {
-                    const check3 = document.getElementById('check3');
-                    const label3 = document.getElementById('check3Label');
-                    if (check3) check3.checked = true;
-                    if (label3) label3.textContent = 'Completed';
-                }
-            } catch(e) {}
-
-            // Restore individual course verification states
-            try {
-                if (localStorage.getItem('dccap_claude101_completed') === 'true') {
-                    const block = document.getElementById('claude101Block');
-                    const success = document.getElementById('claude101Success');
-                    if (block) block.classList.add('verified');
-                    if (success) success.style.display = 'block';
-                }
-                if (localStorage.getItem('dccap_fluency_completed') === 'true') {
-                    const block = document.getElementById('fluencyBlock');
-                    const success = document.getElementById('fluencySuccess');
-                    if (block) block.classList.add('verified');
-                    if (success) success.style.display = 'block';
-                }
-                // Hide entire attestation only if both verified
-                if (localStorage.getItem('dccap_claude101_completed') === 'true' &&
-                    localStorage.getItem('dccap_fluency_completed') === 'true') {
-                    const attestation = document.getElementById('certificateAttestation');
-                    if (attestation) attestation.classList.add('verified');
-                }
-            } catch(e) {}
-
-            checkAllComplete();
-        }
 
         // Certificate attestation handler — dual course verification
         function initCertificateVerification() {
@@ -2811,46 +2863,6 @@
 
             if (allComplete) {
                 sendMilestone(participantName, 'All prerequisites completed', 'Onboarding', 'pilot_hub.html', '');
-            }
-        }
-
-        // Show congratulations message when all checked
-        function checkAllComplete() {
-            const check1 = document.getElementById('check1');
-            const check2 = document.getElementById('check2');
-            const check3 = document.getElementById('check3');
-
-            const allComplete = check1 && check1.checked && check2 && check2.checked && check3 && check3.checked;
-
-            updateFlowDiagram();
-
-            const existingMessage = document.getElementById('completion-message');
-            if (existingMessage) existingMessage.remove();
-
-            if (allComplete) {
-                const participantName = getParticipantName();
-                const message = document.createElement('div');
-                message.id = 'completion-message';
-                message.style.cssText = `
-                    margin-top: 1rem;
-                    margin-left: 3.5rem;
-                    padding: 1rem;
-                    background: linear-gradient(135deg, rgba(131, 82, 255, 0.1), rgba(135, 183, 213, 0.1));
-                    border-left: 5px solid var(--purple);
-                    border-radius: 6px;
-                    font-weight: 600;
-                    color: var(--navy);
-                    display: none;
-                `;
-                const displayName = participantName ? participantName.split(' ')[0] : '';
-                message.textContent = displayName
-                    ? '\u2713 All prerequisites complete, ' + displayName + '! Account provisioning is now available.'
-                    : '\u2713 All prerequisites complete! Account provisioning is now available.';
-
-                const enforcementNote = document.querySelector('.enforcement-note');
-                if (enforcementNote) {
-                    enforcementNote.parentNode.insertBefore(message, enforcementNote);
-                }
             }
         }
 

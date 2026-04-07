@@ -26,6 +26,8 @@ function doPost(e) {
       return handleSurvey(ss, data);
     } else if (data.type === 'milestone') {
       return handleMilestone(ss, data);
+    } else if (data.type === 'lookup') {
+      return lookupParticipantProgress(data.participant_name || '');
     } else {
       return jsonResponse({ status: 'error', message: 'Unknown data type' });
     }
