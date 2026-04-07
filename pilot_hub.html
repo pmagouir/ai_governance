@@ -2575,6 +2575,24 @@
                 nameInput.focus();
                 return;
             }
+
+            // Clear all progress keys before setting the new identity.
+            // This prevents a previous user's localStorage from bleeding
+            // into a different person's session on the same browser.
+            // The cloud lookup will restore the correct state for this person.
+            const progressKeys = [
+                'dccap_survey_completed',
+                'dccap_starthere_completed',
+                'dccap_claude101_completed',
+                'dccap_fluency_completed',
+                'dccap_governance_acknowledged',
+                'dccap_claude101_certificate',
+                'dccap_fluency_certificate'
+            ];
+            try {
+                progressKeys.forEach(k => localStorage.removeItem(k));
+            } catch(e) {}
+
             setParticipantName(name);
             overlay.classList.add('hidden');
             setTimeout(() => { overlay.style.display = 'none'; }, 400);
