@@ -708,7 +708,48 @@ if(localStorage.getItem('dccap_survey_completed')!=='true'){
     </div>
 
     <!-- ============================================================ -->
-    <!-- SLIDE 5: WHAT WE SHOULD BUILD NEXT                           -->
+    <!-- SLIDE 5: WORKED EXAMPLE                                       -->
+    <!-- ============================================================ -->
+    <!-- WORKED EXAMPLE SLIDE -->
+    <div class="slide" style="background: var(--white);">
+        <div class="slide-content" style="max-width: 900px; width: 100%; text-align: left;">
+            <h2 style="color: var(--navy); font-family: var(--font-display); font-size: var(--h2-size); margin-bottom: clamp(0.75rem, 2vw, 1.5rem); text-transform: uppercase; letter-spacing: 0.02em;">Worked Example: What a Completed Module Looks Like</h2>
+            <p style="font-size: var(--small-size); color: #666; margin-bottom: clamp(1rem, 2vw, 1.5rem);">Innovation Hub — Conference Presentation Workflow (Augmentation Mode)</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: clamp(0.5rem, 1.5vw, 1rem); margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);">
+                <div style="padding: clamp(0.6rem, 1.2vw, 1rem); background: rgba(16, 26, 76, 0.04); border-radius: 6px; border-left: 3px solid var(--navy);">
+                    <div style="font-family: var(--font-mono); font-size: clamp(0.6rem, 0.9vw, 0.75rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3em;">Step 1: Brainstorm</div>
+                    <p style="font-size: var(--small-size); line-height: 1.5; margin: 0; color: #555;">Loaded audience context, event goals, and DC CAP's strategic positioning into a Claude Project. Used Chat to generate 8 possible narrative angles. Selected 3 for development.</p>
+                </div>
+                <div style="padding: clamp(0.6rem, 1.2vw, 1rem); background: rgba(131, 82, 255, 0.04); border-radius: 6px; border-left: 3px solid var(--purple);">
+                    <div style="font-family: var(--font-mono); font-size: clamp(0.6rem, 0.9vw, 0.75rem); color: var(--purple); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3em;">Step 2: Research</div>
+                    <p style="font-size: var(--small-size); line-height: 1.5; margin: 0; color: #555;">Used Claude to pull sector benchmarks, failure rate data, and peer organization examples. Verified every statistic independently. Flagged two claims Claude generated that were inaccurate and removed them.</p>
+                </div>
+                <div style="padding: clamp(0.6rem, 1.2vw, 1rem); background: rgba(135, 183, 213, 0.04); border-radius: 6px; border-left: 3px solid var(--blue);">
+                    <div style="font-family: var(--font-mono); font-size: clamp(0.6rem, 0.9vw, 0.75rem); color: var(--blue); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3em;">Step 3: Draft</div>
+                    <p style="font-size: var(--small-size); line-height: 1.5; margin: 0; color: #555;">Built the full slide deck using Cowork with the DC CAP brand skill and presentation skill active. Claude generated initial slide content; human revised every slide for voice, accuracy, and strategic framing.</p>
+                </div>
+                <div style="padding: clamp(0.6rem, 1.2vw, 1rem); background: rgba(252, 176, 23, 0.06); border-radius: 6px; border-left: 3px solid var(--gold);">
+                    <div style="font-family: var(--font-mono); font-size: clamp(0.6rem, 0.9vw, 0.75rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3em;">Step 4: Refine</div>
+                    <p style="font-size: var(--small-size); line-height: 1.5; margin: 0; color: #555;">Ran the adversarial audit skill to stress-test arguments. Caught two logical gaps and one piece of AI-sounding language. Revised, re-audited, finalized. Total time: 4 hours for a deck that would have taken 12+ hours manually.</p>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.5rem, 1vw, 0.75rem); font-size: var(--small-size);">
+                <div style="padding: clamp(0.5rem, 1vw, 0.75rem); background: rgba(16, 26, 76, 0.03); border-radius: 4px;">
+                    <strong style="color: var(--navy);">4D Competencies Used:</strong>
+                    <span style="color: #555;"> Delegation (chose Augmentation over Automation), Description (CTCC prompting throughout), Discernment (verified stats, caught AI voice), Diligence (Tier 3 data only, adversarial audit before send)</span>
+                </div>
+                <div style="padding: clamp(0.5rem, 1vw, 0.75rem); background: rgba(252, 176, 23, 0.06); border-radius: 4px;">
+                    <strong style="color: var(--navy);">Governance Check:</strong>
+                    <span style="color: #555;"> All data used was Tier 3 (internal) or Tier 4 (public). No student PII, no partner-specific financials. Output reviewed by human before external distribution.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SLIDE 6: WHAT WE SHOULD BUILD NEXT                           -->
     <!-- ============================================================ -->
     <div class="slide slide-buildnext" data-slide-index="4">
         <div class="slide-content">
