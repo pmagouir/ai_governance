@@ -1,17 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>
-if(localStorage.getItem('dccap_survey_completed')!=='true'){
-  document.addEventListener('DOMContentLoaded', function(){
-    var banner = document.createElement('div');
-    banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#101A4C;color:#fff;padding:16px 24px;text-align:center;font-family:system-ui,sans-serif;font-size:15px;box-shadow:0 2px 12px rgba(0,0,0,0.2);';
-    banner.innerHTML = 'Complete the <a href="pilot_hub.html" style="color:#FCB017;text-decoration:underline;font-weight:600;">Pre-Launch Assessment</a> to unlock full access to this resource.';
-    document.body.prepend(banner);
-    document.body.style.paddingTop = '56px';
-  });
-}
-</script>
+<script>if(localStorage.getItem('dccap_survey_completed')!=='true'){window.location.href='pilot_hub.html';}</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Framework for AI Fluency — DC CAP Enterprise AI Pilot</title>
@@ -815,107 +805,6 @@ if(localStorage.getItem('dccap_survey_completed')!=='true'){
                         <strong>DC CAP Examples:</strong>
                         Custom Skills in Cowork, Project Instructions, multi-agent workflows built by the Innovation Hub
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 2.5: MODALITY-TO-COMPETENCY MATRIX === -->
-        <section id="matrix" style="padding: var(--slide-padding); background: var(--white);">
-            <div style="max-width: 960px; margin: 0 auto;">
-                <div class="section-header reveal">
-                    <h2>How Modalities and Competencies Connect</h2>
-                    <p>Each interaction modality places different demands on the 4D competencies. The matrix below shows which competencies carry the most weight for each modality.</p>
-                </div>
-
-                <div class="reveal" style="overflow-x: auto; margin-top: clamp(1.5rem, 3vw, 2.5rem);">
-                    <table style="width: 100%; border-collapse: collapse; font-family: var(--font-body); font-size: var(--body-size);">
-                        <thead>
-                            <tr>
-                                <th style="padding: clamp(0.75rem, 1.5vw, 1.25rem); text-align: left; background: var(--navy); color: var(--white); font-family: var(--font-subhead); font-weight: 700; border-radius: 6px 0 0 0; width: 22%;">Modality</th>
-                                <th style="padding: clamp(0.75rem, 1.5vw, 1.25rem); text-align: center; background: var(--delegation); color: var(--white); font-family: var(--font-subhead); font-weight: 700; width: 19.5%;">Delegation</th>
-                                <th style="padding: clamp(0.75rem, 1.5vw, 1.25rem); text-align: center; background: var(--description); color: var(--white); font-family: var(--font-subhead); font-weight: 700; width: 19.5%;">Description</th>
-                                <th style="padding: clamp(0.75rem, 1.5vw, 1.25rem); text-align: center; background: var(--discernment); color: var(--navy); font-family: var(--font-subhead); font-weight: 700; width: 19.5%;">Discernment</th>
-                                <th style="padding: clamp(0.75rem, 1.5vw, 1.25rem); text-align: center; background: var(--diligence); color: var(--navy); font-family: var(--font-subhead); font-weight: 700; border-radius: 0 6px 0 0; width: 19.5%;">Diligence</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- AUTOMATION ROW -->
-                            <tr style="border-bottom: 1px solid #e0e0e0;">
-                                <td style="padding: clamp(0.75rem, 1.5vw, 1.25rem); background: rgba(16, 26, 76, 0.04); font-family: var(--font-subhead); font-weight: 700; color: var(--navy);">
-                                    Automation
-                                    <div style="font-weight: 400; font-size: var(--small-size); color: #666; margin-top: 0.25em;">AI Executes, Human Defines</div>
-                                </td>
-                                <td style="padding: clamp(0.75rem, 1.5vw, 1.25rem); text-align: center; background: rgba(16, 26, 76, 0.12);">
-                                    <div style="font-size: 1.4em; margin-bottom: 0.15em;">&#9679;&#9679;&#9679;</div>
-                                    <div style="font-size: var(--small-size); color: #555;">Essential</div>
-                                </td>
-                                <td style="padding: clamp(0.75rem, 1.5vw, 1.25rem); text-align: center;">
-                                    <div style="font-size: 1.4em; margin-bottom: 0.15em;">&#9679;&#9675;</div>
-                                    <div style="font-size: var(--small-size); color: #555;">Moderate</div>
-                                </td>
-                                <td style="padding: clamp(0.75rem, 1.5vw, 1.25rem); text-align: center;">
-                                    <div style="font-size: 1.4em; margin-bottom: 0.15em;">&#9679;&#9675;</div>
-                                    <div style="font-size: var(--small-size); color: #555;">Moderate</div>
-                                </td>
-                                <td style="padding: clamp(0.75rem, 1.5vw, 1.25rem); text-align: center; background: rgba(252, 176, 23, 0.08);">
-                                    <div style="font-size: 1.4em; margin-bottom: 0.15em;">&#9679;&#9679;&#9679;</div>
-                                    <div style="font-size: var(--small-size); color: #555;">Essential</div>
-                                </td>
-                            </tr>
-                            <!-- AUGMENTATION ROW -->
-                            <tr style="border-bottom: 1px solid #e0e0e0;">
-                                <td style="padding: clamp(0.75rem, 1.5vw, 1.25rem); background: rgba(16, 26, 76, 0.04); font-family: var(--font-subhead); font-weight: 700; color: var(--navy);">
-                                    Augmentation
-                                    <div style="font-weight: 400; font-size: var(--small-size); color: #666; margin-top: 0.25em;">Human Leads, AI Assists</div>
-                                </td>
-                                <td style="padding: clamp(0.75rem, 1.5vw, 1.25rem); text-align: center;">
-                                    <div style="font-size: 1.4em; margin-bottom: 0.15em;">&#9679;&#9679;</div>
-                                    <div style="font-size: var(--small-size); color: #555;">High</div>
-                                </td>
-                                <td style="padding: clamp(0.75rem, 1.5vw, 1.25rem); text-align: center; background: rgba(131, 82, 255, 0.08);">
-                                    <div style="font-size: 1.4em; margin-bottom: 0.15em;">&#9679;&#9679;&#9679;</div>
-                                    <div style="font-size: var(--small-size); color: #555;">Essential</div>
-                                </td>
-                                <td style="padding: clamp(0.75rem, 1.5vw, 1.25rem); text-align: center; background: rgba(135, 183, 213, 0.08);">
-                                    <div style="font-size: 1.4em; margin-bottom: 0.15em;">&#9679;&#9679;&#9679;</div>
-                                    <div style="font-size: var(--small-size); color: #555;">Essential</div>
-                                </td>
-                                <td style="padding: clamp(0.75rem, 1.5vw, 1.25rem); text-align: center;">
-                                    <div style="font-size: 1.4em; margin-bottom: 0.15em;">&#9679;&#9679;</div>
-                                    <div style="font-size: var(--small-size); color: #555;">High</div>
-                                </td>
-                            </tr>
-                            <!-- AGENCY ROW -->
-                            <tr>
-                                <td style="padding: clamp(0.75rem, 1.5vw, 1.25rem); background: rgba(16, 26, 76, 0.04); font-family: var(--font-subhead); font-weight: 700; color: var(--navy); border-radius: 0 0 0 6px;">
-                                    Agency
-                                    <div style="font-weight: 400; font-size: var(--small-size); color: #666; margin-top: 0.25em;">Human Configures, AI Acts Independently</div>
-                                </td>
-                                <td style="padding: clamp(0.75rem, 1.5vw, 1.25rem); text-align: center; background: rgba(16, 26, 76, 0.12);">
-                                    <div style="font-size: 1.4em; margin-bottom: 0.15em;">&#9679;&#9679;&#9679;</div>
-                                    <div style="font-size: var(--small-size); color: #555;">Essential</div>
-                                </td>
-                                <td style="padding: clamp(0.75rem, 1.5vw, 1.25rem); text-align: center;">
-                                    <div style="font-size: 1.4em; margin-bottom: 0.15em;">&#9679;&#9679;</div>
-                                    <div style="font-size: var(--small-size); color: #555;">High</div>
-                                </td>
-                                <td style="padding: clamp(0.75rem, 1.5vw, 1.25rem); text-align: center; background: rgba(135, 183, 213, 0.08);">
-                                    <div style="font-size: 1.4em; margin-bottom: 0.15em;">&#9679;&#9679;&#9679;</div>
-                                    <div style="font-size: var(--small-size); color: #555;">Essential</div>
-                                </td>
-                                <td style="padding: clamp(0.75rem, 1.5vw, 1.25rem); text-align: center; background: rgba(252, 176, 23, 0.12); border-radius: 0 0 6px 0;">
-                                    <div style="font-size: 1.4em; margin-bottom: 0.15em;">&#9679;&#9679;&#9679;</div>
-                                    <div style="font-size: var(--small-size); color: #555;">Essential</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="reveal" style="margin-top: clamp(1.25rem, 2.5vw, 2rem); padding: clamp(1rem, 2vw, 1.5rem); background: rgba(16, 26, 76, 0.03); border-radius: 8px; border-left: 4px solid var(--purple);">
-                    <p style="font-size: var(--body-size); line-height: 1.7; margin: 0; color: var(--dark-gray);">
-                        <strong>Reading the matrix:</strong> Automation demands strong Delegation (choosing the right task to hand off) and Diligence (verifying outputs at scale), while Description and Discernment play supporting roles. Augmentation flips this: because the human stays in the loop, the quality of your prompts (Description) and your ability to evaluate what comes back (Discernment) carry the most weight. Agency requires all four competencies at high levels because you are configuring AI to act independently on behalf of others.
-                    </p>
                 </div>
             </div>
         </section>

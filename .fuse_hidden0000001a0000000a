@@ -1,17 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>
-if(localStorage.getItem('dccap_survey_completed')!=='true'){
-  document.addEventListener('DOMContentLoaded', function(){
-    var banner = document.createElement('div');
-    banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#101A4C;color:#fff;padding:16px 24px;text-align:center;font-family:system-ui,sans-serif;font-size:15px;box-shadow:0 2px 12px rgba(0,0,0,0.2);';
-    banner.innerHTML = 'Complete the <a href="pilot_hub.html" style="color:#FCB017;text-decoration:underline;font-weight:600;">Pre-Launch Assessment</a> to unlock full access to this resource.';
-    document.body.prepend(banner);
-    document.body.style.paddingTop = '56px';
-  });
-}
-</script>
+<script>if(localStorage.getItem('dccap_survey_completed')!=='true'){window.location.href='pilot_hub.html';}</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Session Facilitation Guide — DC CAP Enterprise AI Leadership Pilot</title>
@@ -664,100 +654,6 @@ if(localStorage.getItem('dccap_survey_completed')!=='true'){
             </div>
 
             <button class="print-button" onclick="window.print()">Print Reference Card</button>
-        </section>
-
-        <!-- CHAMPION FACILITATOR PLAYBOOK -->
-        <section style="padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 3rem); background: var(--white); border-top: 4px solid var(--gold);">
-            <div style="max-width: 900px; margin: 0 auto;">
-                <h2 class="reveal" style="color: var(--navy); font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2.25rem); text-align: center; margin-bottom: 0.4em; text-transform: uppercase; letter-spacing: 0.02em;">Champion Facilitator Playbook</h2>
-                <p class="reveal" style="text-align: center; color: #666; font-size: clamp(0.9rem, 1.5vw, 1.05rem); max-width: 700px; margin: 0 auto clamp(1.5rem, 3vw, 2.5rem); line-height: 1.6;">
-                    By Week 5, you are co-facilitating AI Friday sessions. By Week 7, you are leading them. This playbook gives you the structure to do both with confidence.
-                </p>
-
-                <!-- Session Script Template -->
-                <div class="reveal" style="margin-bottom: clamp(1.5rem, 3vw, 2.5rem);">
-                    <h3 style="font-family: var(--font-subhead); color: var(--purple); font-size: clamp(1.1rem, 2.5vw, 1.4rem); margin-bottom: 1em; padding-bottom: 0.5em; border-bottom: 2px solid rgba(131, 82, 255, 0.2);">Session Script: 45-Minute AI Friday</h3>
-                    <div style="display: grid; gap: clamp(0.5rem, 1.5vw, 0.75rem);">
-                        <div style="display: grid; grid-template-columns: auto 1fr; gap: clamp(0.75rem, 1.5vw, 1.25rem); align-items: start; padding: clamp(0.75rem, 1.5vw, 1rem); background: rgba(16, 26, 76, 0.03); border-radius: 6px; border-left: 4px solid var(--navy);">
-                            <div style="font-family: var(--font-mono); font-size: clamp(0.75rem, 1.2vw, 0.85rem); color: var(--navy); font-weight: 700; white-space: nowrap;">0:00 - 0:05</div>
-                            <div>
-                                <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); margin-bottom: 0.25em;">Open with a Win</div>
-                                <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; margin: 0; color: #555;">Ask: "Who used Claude on something real this week? What happened?" Let 2-3 people share. This normalizes experimentation and gives the group social proof.</p>
-                            </div>
-                        </div>
-                        <div style="display: grid; grid-template-columns: auto 1fr; gap: clamp(0.75rem, 1.5vw, 1.25rem); align-items: start; padding: clamp(0.75rem, 1.5vw, 1rem); background: rgba(131, 82, 255, 0.03); border-radius: 6px; border-left: 4px solid var(--purple);">
-                            <div style="font-family: var(--font-mono); font-size: clamp(0.75rem, 1.2vw, 0.85rem); color: var(--purple); font-weight: 700; white-space: nowrap;">0:05 - 0:10</div>
-                            <div>
-                                <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--purple); margin-bottom: 0.25em;">Frame the Activity</div>
-                                <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; margin: 0; color: #555;">Name the activity, state the competency it targets (which of the 4Ds), and explain what participants will walk away with. Keep this under 3 minutes. Read from the activity guide if needed.</p>
-                            </div>
-                        </div>
-                        <div style="display: grid; grid-template-columns: auto 1fr; gap: clamp(0.75rem, 1.5vw, 1.25rem); align-items: start; padding: clamp(0.75rem, 1.5vw, 1rem); background: rgba(135, 183, 213, 0.03); border-radius: 6px; border-left: 4px solid var(--blue);">
-                            <div style="font-family: var(--font-mono); font-size: clamp(0.75rem, 1.2vw, 0.85rem); color: var(--blue); font-weight: 700; white-space: nowrap;">0:10 - 0:35</div>
-                            <div>
-                                <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--blue); margin-bottom: 0.25em;">Run the Activity</div>
-                                <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; margin: 0; color: #555;">Use the activity guide for the specific exercise. Your job is timekeeper and question-router, not lecturer. If someone gets stuck, pair them with someone who figured it out. If the whole group is stuck, model the task live on screen.</p>
-                            </div>
-                        </div>
-                        <div style="display: grid; grid-template-columns: auto 1fr; gap: clamp(0.75rem, 1.5vw, 1.25rem); align-items: start; padding: clamp(0.75rem, 1.5vw, 1rem); background: rgba(252, 176, 23, 0.05); border-radius: 6px; border-left: 4px solid var(--gold);">
-                            <div style="font-family: var(--font-mono); font-size: clamp(0.75rem, 1.2vw, 0.85rem); color: var(--navy); font-weight: 700; white-space: nowrap;">0:35 - 0:45</div>
-                            <div>
-                                <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); margin-bottom: 0.25em;">Close with Reflection</div>
-                                <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; margin: 0; color: #555;">Ask: "What surprised you?" and "What will you try differently next week?" Capture 2-3 responses. Remind participants to complete the weekly check-in. Preview next week's topic.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Common Questions & What To Say -->
-                <div class="reveal" style="margin-bottom: clamp(1.5rem, 3vw, 2.5rem);">
-                    <h3 style="font-family: var(--font-subhead); color: var(--navy); font-size: clamp(1.1rem, 2.5vw, 1.4rem); margin-bottom: 1em; padding-bottom: 0.5em; border-bottom: 2px solid rgba(16, 26, 76, 0.15);">When Someone Asks Something You Cannot Answer</h3>
-                    <div style="display: grid; gap: clamp(0.75rem, 1.5vw, 1rem);">
-                        <div style="padding: clamp(1rem, 2vw, 1.25rem); background: rgba(16, 26, 76, 0.03); border-radius: 6px;">
-                            <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); margin-bottom: 0.4em; font-size: clamp(0.95rem, 1.5vw, 1.05rem);">"Can I put [specific data type] into Claude?"</div>
-                            <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; margin: 0; color: #555;"><strong>Say:</strong> "Great question. Check the data tier classification on the Start Here page. If the data is Tier 1 or Tier 2, the answer is no. If you are unsure which tier, flag it for Preston before using it."</p>
-                        </div>
-                        <div style="padding: clamp(1rem, 2vw, 1.25rem); background: rgba(131, 82, 255, 0.03); border-radius: 6px;">
-                            <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--purple); margin-bottom: 0.4em; font-size: clamp(0.95rem, 1.5vw, 1.05rem);">"Claude gave me something wrong. Is this tool broken?"</div>
-                            <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; margin: 0; color: #555;"><strong>Say:</strong> "This is actually a Discernment moment. Claude produces outputs that look polished but require verification. Walk us through what you asked and what it returned. Let's figure out together where the output went wrong and how to catch it next time."</p>
-                        </div>
-                        <div style="padding: clamp(1rem, 2vw, 1.25rem); background: rgba(135, 183, 213, 0.03); border-radius: 6px;">
-                            <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--blue); margin-bottom: 0.4em; font-size: clamp(0.95rem, 1.5vw, 1.05rem);">"I don't see how this applies to my role."</div>
-                            <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; margin: 0; color: #555;"><strong>Say:</strong> "What is a task you do at least weekly that involves writing, summarizing, or organizing information? Let's try that one live right now." Then help them build a prompt using the Description framework: Context, Task, Content, Constraints.</p>
-                        </div>
-                        <div style="padding: clamp(1rem, 2vw, 1.25rem); background: rgba(252, 176, 23, 0.05); border-radius: 6px;">
-                            <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); margin-bottom: 0.4em; font-size: clamp(0.95rem, 1.5vw, 1.05rem);">"What about [technical question about Claude's architecture/capabilities]?"</div>
-                            <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; margin: 0; color: #555;"><strong>Say:</strong> "I want to make sure I give you the right answer. Let me capture that question and get back to you by end of day. Preston or the Innovation Hub team will have the technical detail." Then message Preston directly.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Facilitation Signals -->
-                <div class="reveal" style="margin-bottom: clamp(1.5rem, 3vw, 2rem);">
-                    <h3 style="font-family: var(--font-subhead); color: var(--purple); font-size: clamp(1.1rem, 2.5vw, 1.4rem); margin-bottom: 1em; padding-bottom: 0.5em; border-bottom: 2px solid rgba(131, 82, 255, 0.2);">Signals to Watch For</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: clamp(0.75rem, 1.5vw, 1.25rem);">
-                        <div style="padding: clamp(1rem, 2vw, 1.25rem); background: rgba(230, 57, 70, 0.06); border-radius: 6px; border-left: 4px solid #E63946;">
-                            <div style="font-family: var(--font-subhead); font-weight: 700; color: #E63946; margin-bottom: 0.4em;">Disengagement</div>
-                            <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; margin: 0; color: #555;">Someone stops attending or goes silent during activities. Follow up 1:1 within 48 hours. Ask what would make the sessions more useful for their specific work. Report to Preston if pattern continues.</p>
-                        </div>
-                        <div style="padding: clamp(1rem, 2vw, 1.25rem); background: rgba(252, 176, 23, 0.06); border-radius: 6px; border-left: 4px solid var(--gold);">
-                            <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); margin-bottom: 0.4em;">Governance Confusion</div>
-                            <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; margin: 0; color: #555;">Multiple people ask the same data classification question. This signals the training material has a gap. Note the specific question and share with Preston for the next weekly check-in review.</p>
-                        </div>
-                        <div style="padding: clamp(1rem, 2vw, 1.25rem); background: rgba(131, 82, 255, 0.06); border-radius: 6px; border-left: 4px solid var(--purple);">
-                            <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--purple); margin-bottom: 0.4em;">Breakout Momentum</div>
-                            <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; margin: 0; color: #555;">Someone builds a workflow that saves real time or improves real output quality. Ask them to present it at the next session. Peer demonstrations accelerate adoption faster than any training material.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Escalation Contact -->
-                <div class="reveal" style="padding: clamp(1rem, 2vw, 1.5rem); background: rgba(16, 26, 76, 0.04); border-radius: 8px; border: 1px solid rgba(16, 26, 76, 0.1); text-align: center;">
-                    <p style="font-size: clamp(0.9rem, 1.4vw, 1rem); color: var(--navy); margin: 0; line-height: 1.6;">
-                        <strong>Questions you cannot resolve in session:</strong> Message Preston Magouirk directly via Teams or email at <a href="mailto:preston.magouirk@dccap.org" style="color: var(--purple); text-decoration: underline;">preston.magouirk@dccap.org</a>. For data security concerns, escalate immediately rather than waiting for the next session.
-                    </p>
-                </div>
-            </div>
         </section>
     </main>
 

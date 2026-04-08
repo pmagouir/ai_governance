@@ -1,17 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>
-if(localStorage.getItem('dccap_survey_completed')!=='true'){
-  document.addEventListener('DOMContentLoaded', function(){
-    var banner = document.createElement('div');
-    banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#101A4C;color:#fff;padding:16px 24px;text-align:center;font-family:system-ui,sans-serif;font-size:15px;box-shadow:0 2px 12px rgba(0,0,0,0.2);';
-    banner.innerHTML = 'Complete the <a href="pilot_hub.html" style="color:#FCB017;text-decoration:underline;font-weight:600;">Pre-Launch Assessment</a> to unlock full access to this resource.';
-    document.body.prepend(banner);
-    document.body.style.paddingTop = '56px';
-  });
-}
-</script>
+<script>if(localStorage.getItem('dccap_survey_completed')!=='true'){window.location.href='pilot_hub.html';}</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DC CAP Enterprise AI Initiative Kickoff Deck</title>
