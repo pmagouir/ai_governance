@@ -2433,7 +2433,7 @@
 </section>
 
 <!-- Section 4: Daily Briefing -->
-<section id="briefing" class="newsletter-section" data-pre-gate="lock">
+<section id="briefing" class="newsletter-section" data-pre-gate="full-lock">
     <div class="section-header">
         <h2 class="section-title reveal">The Daily Briefing</h2>
         <p class="section-subtitle reveal" style="transition-delay: 0.08s;">Small, digestible content to build your AI fluency — one day at a time.</p>
@@ -2446,7 +2446,7 @@
 </section>
 
 <!-- Section 5: External Resources / Field Guide -->
-<section id="external-resources" class="external-resources-section" data-pre-gate="lock">
+<section id="external-resources" class="external-resources-section" data-pre-gate="full-lock">
     <div class="section-header">
         <h2 class="section-title reveal">Your AI Field Guide</h2>
         <p class="section-subtitle reveal" style="transition-delay: 0.08s;">Curated voices, tools, and case studies to keep you sharp between sessions.</p>
@@ -3559,55 +3559,58 @@
     // ── Pre-Assessment Gate ──
     function initPreAssessmentGate() {
         const surveyDone = localStorage.getItem('dccap_survey_completed') === 'true';
+        const allPrereqsDone = surveyDone
+            && localStorage.getItem('dccap_starthere_completed') === 'true'
+            && localStorage.getItem('dccap_claude101_completed') === 'true'
+            && localStorage.getItem('dccap_fluency_completed') === 'true';
+
         const banner = document.getElementById('preGateBanner');
         const gateSections = document.querySelectorAll('[data-pre-gate="lock"]');
+        const fullGateSections = document.querySelectorAll('[data-pre-gate="full-lock"]');
         const partialSections = document.querySelectorAll('[data-pre-gate="lock-partial"]');
 
-        if (surveyDone) {
-            // Unlocked: hide banner, remove any lock classes
-            if (banner) banner.classList.remove('visible');
-            gateSections.forEach(el => {
-                el.classList.remove('pre-gate-locked');
-                const label = el.querySelector('.pre-gate-locked-label');
-                if (label) label.remove();
-            });
-            partialSections.forEach(el => {
-                el.querySelectorAll('.card:not([data-pre-gate-exempt])').forEach(card => {
-                    card.classList.remove('pre-gate-locked');
-                    const label = card.querySelector('.pre-gate-locked-label');
-                    if (label) label.remove();
-                });
-            });
-            return;
+        // Helper: unlock a section
+        function unlockSection(el) {
+            el.classList.remove('pre-gate-locked');
+            const label = el.querySelector('.pre-gate-locked-label');
+            if (label) label.remove();
         }
 
-        // Locked: show banner and apply lock state
-        if (banner) banner.classList.add('visible');
-
-        // Full-lock sections: lock entire container
-        gateSections.forEach(el => {
+        // Helper: lock a section with a message
+        function lockSection(el, message) {
             el.classList.add('pre-gate-locked');
             if (!el.querySelector('.pre-gate-locked-label')) {
                 const label = document.createElement('span');
                 label.className = 'pre-gate-locked-label';
-                label.textContent = 'Available after pre-assessment';
+                label.textContent = message;
                 el.appendChild(label);
             }
-        });
+        }
 
-        // Partial-lock sections: lock individual cards except exempt ones
-        partialSections.forEach(el => {
-            el.querySelectorAll('.card:not([data-pre-gate-exempt])').forEach(card => {
-                card.classList.add('pre-gate-locked');
-                card.style.position = 'relative';
-                if (!card.querySelector('.pre-gate-locked-label')) {
-                    const label = document.createElement('span');
-                    label.className = 'pre-gate-locked-label';
-                    label.textContent = 'Available after pre-assessment';
-                    card.appendChild(label);
-                }
+        // Survey-gated sections (unlock after pre-assessment)
+        if (surveyDone) {
+            if (banner) banner.classList.remove('visible');
+            gateSections.forEach(el => unlockSection(el));
+            partialSections.forEach(el => {
+                el.querySelectorAll('.card:not([data-pre-gate-exempt])').forEach(card => unlockSection(card));
             });
-        });
+        } else {
+            if (banner) banner.classList.add('visible');
+            gateSections.forEach(el => lockSection(el, 'Available after pre-assessment'));
+            partialSections.forEach(el => {
+                el.querySelectorAll('.card:not([data-pre-gate-exempt])').forEach(card => {
+                    card.style.position = 'relative';
+                    lockSection(card, 'Available after pre-assessment');
+                });
+            });
+        }
+
+        // Full-prerequisite-gated sections (unlock only after all 3 steps complete)
+        if (allPrereqsDone) {
+            fullGateSections.forEach(el => unlockSection(el));
+        } else {
+            fullGateSections.forEach(el => lockSection(el, 'Available after completing all prerequisites'));
+        }
     }
 
     // Re-check gate when tab regains focus (catches survey completion in another tab)
