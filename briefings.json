@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "2.0",
-    "lastGenerated": "2026-04-07T08:00:00-04:00",
+    "lastGenerated": "2026-04-08T08:00:00-04:00",
     "lastPublished": "2026-04-07T09:00:00-04:00",
     "categories": {
       "foundational": { "label": "Foundational Learning", "class": "category-foundational" },
@@ -20,6 +20,17 @@
     }
   },
   "drafts": [
+    {
+      "date": "2026-04-08",
+      "category": "governance",
+      "title": "The Five-Second Question That Protects Student Data",
+      "content": "Before you paste anything into Claude, ask one question: what tier is this data? That five-second pause is the most important governance habit you will build during this pilot. DC CAP classifies all organizational data into four tiers. Tier 4 is public: annual reports, website content, published research, IPEDS data. Tier 3 is internal: program models, strategic documents, aggregated and de-identified outcomes like overall retention rates. Tier 2 is sensitive: internal financial records, staff performance data, and small-cell aggregates where fewer than ten individuals could be re-identified. Tier 1 is restricted: individual student records, Social Security numbers, any data protected under FERPA. During the pilot, you are approved to use Tier 3 and Tier 4 data with Claude. Tier 2 requires specific authorization and de-identification verification. Tier 1 data never enters Claude under any circumstances. The governance framework sets a clear target: zero Tier 1 or Tier 2 data incidents during the pilot. This structure matters beyond DC CAP's walls. The 2026 Nonprofit AI Adoption Report from Virtuous and Fundraising.AI found that 47% of nonprofits using AI have no governance policy at all, despite 92% adoption. Organizations without governance frameworks tend to skip outcome measurement, avoid shared workflows, and plateau at marginal efficiency gains. DC CAP's four-tier classification gives every staff member a concrete decision rule for every interaction with Claude. The habit is simple: before you upload, paste, or reference any information, name the tier. When the classification feels ambiguous, treat the data as the higher (more restricted) tier. That default protects students, partners, and the organization.",
+      "tryThis": "Open the Data Classification Practice on the pilot hub site and complete all 10 scenarios. Each one presents a real DC CAP data example and asks you to assign the correct tier. Notice which scenarios trip you up. Those are the edge cases worth discussing with your team.",
+      "resource": "https://onehundrednights.com/article/nonprofit-ai-policy-governance-gap/",
+      "sourceNotes": "Claim: Four-tier classification (Restricted, Sensitive, Internal, Public) with descriptions | Source: GROUNDED (ai_governance_framework.html lines 897-918)\nClaim: Tier 4 includes annual reports, website content, published research, IPEDS | Source: GROUNDED (ai_governance_framework.html lines 916-917)\nClaim: Tier 2 includes internal financials, staff performance, small-cell aggregates <10 | Source: GROUNDED (ai_governance_framework.html lines 904, 925)\nClaim: Tier 1 restricted, FERPA protected | Source: GROUNDED (ai_governance_framework.html line 929)\nClaim: Pilot approves Tiers 3 and 4; Tier 2 requires authorization | Source: GROUNDED (ai_governance_framework.html lines 947-964)\nClaim: Zero Tier 1 or Tier 2 data incidents target | Source: GROUNDED (ai_governance_framework.html line 851)\nClaim: 47% of nonprofits have no AI governance policy | Source: VERIFIED (Virtuous/Fundraising.AI 2026 Nonprofit AI Adoption Report via https://onehundrednights.com/article/nonprofit-ai-policy-governance-gap/ and https://www.nonprofitpro.com/article/nonprofit-ai-adoption-hits-92-but-only-7-see-major-impact/)\nClaim: 92% nonprofit AI adoption | Source: VERIFIED (same report, PR Newswire https://www.prnewswire.com/news-releases/virtuous-and-fundraisingai-release-2026-nonprofit-ai-adoption-report-revealing-gap-between-ai-use-and-real-fundraising-impact-302688325.html)\nAdversarial review: No catches. All claims verified or grounded. Hidden assumption flagged (readers may not know what de-identification means in practice) but mitigated by concrete example in text and tryThis directing to practice exercise.",
+      "validationStatus": "PASSED",
+      "status": "draft"
+    },
     {
       "date": "2026-04-20",
       "category": "foundational",

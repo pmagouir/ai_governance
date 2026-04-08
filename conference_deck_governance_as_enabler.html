@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Governance as Enabler — DC CAP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+
+.slide {
+    width: 100vw; height: 100vh; height: 100dvh;
+    overflow: hidden; scroll-snap-align: start;
+    display: flex; flex-direction: column; position: relative;
+}
+.slide-content {
+    flex: 1; display: flex; flex-direction: column;
+    justify-content: flex-start;
+    max-height: 100%; overflow: hidden;
+    padding: clamp(2.5rem, 7vh, 5rem) var(--slide-padding) clamp(1.5rem, 3vh, 2.5rem);
+}
+.slide-hero .slide-content {
+    justify-content: flex-end;
+    padding-bottom: clamp(2.5rem, 8vh, 5rem);
+    padding-top: var(--slide-padding);
+}
+
+:root {
+    /* DARK THEME: Navy dominant, purple/blue/gold accents */
+    --navy: #101A4C;
+    --navy-deep: #0B1236;
+    --navy-mid: #162060;
+    --purple: #8352FF;
+    --purple-glow: rgba(131, 82, 255, 0.15);
+    --blue: #87B7D5;
+    --blue-glow: rgba(135, 183, 213, 0.12);
+    --gold: #FCB017;
+    --tan: #FFF4ED;
+    --white: #FFFFFF;
+    --dark-gray: #333333;
+    --light-gray: #f5f5f5;
+    --text-main: rgba(255, 255, 255, 0.92);
+    --text-secondary: rgba(255, 255, 255, 0.6);
+    --text-dim: rgba(255, 255, 255, 0.35);
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.08);
+
+    --font-display: 'Noto Serif SemiCondensed', Georgia, serif;
+    --font-body: 'Noto Serif', Georgia, serif;
+    --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --title-size: clamp(2.2rem, 6vw, 4.5rem);
+    --h2-size: clamp(1.8rem, 4.5vw, 3.2rem);
+    --h3-size: clamp(1.3rem, 3vw, 2rem);
+    --body-size: clamp(1rem, 1.8vw, 1.35rem);
+    --body-lg: clamp(1.1rem, 2.2vw, 1.55rem);
+    --small-size: clamp(0.85rem, 1.3vw, 1.05rem);
+    --mono-size: clamp(0.75rem, 1.1vw, 0.9rem);
+
+    --slide-padding: clamp(2rem, 6vw, 6rem);
+    --content-gap: clamp(1rem, 2.5vw, 2.5rem);
+    --card-padding: clamp(1.25rem, 2.5vw, 2rem);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --duration-normal: 0.6s;
+}
+
+@media (max-height: 700px) {
+    :root { --title-size: clamp(1.6rem, 5vw, 3rem); --h2-size: clamp(1.4rem, 3.5vw, 2.2rem); --body-size: clamp(0.85rem, 1.4vw, 1.1rem); --body-lg: clamp(0.95rem, 1.8vw, 1.25rem); }
+    .slide-content { padding-top: clamp(1.5rem, 4vh, 3rem); }
+}
+@media (max-height: 600px) {
+    :root { --title-size: clamp(1.3rem, 4vw, 2.2rem); --h2-size: clamp(1.1rem, 3vw, 1.7rem); --body-size: clamp(0.8rem, 1.2vw, 0.95rem); }
+    .slide-content { padding-top: clamp(1rem, 3vh, 2rem); }
+    .nav-dots { display: none; }
+}
+@media (max-height: 500px) { :root { --title-size: clamp(1.1rem, 3.5vw, 1.8rem); --body-size: clamp(0.7rem, 1vw, 0.85rem); } }
+@media (max-width: 700px) {
+    :root { --title-size: clamp(1.6rem, 8vw, 3rem); }
+    .tier-row, .d-row, .takeaway-grid, .evidence-row, .tension-cols { flex-direction: column !important; }
+    .tension-divider { width: 100% !important; height: 3px !important; }
+    .phase-timeline { flex-direction: column !important; gap: clamp(1.5rem, 3vh, 2rem) !important; }
+    .phase-timeline::before { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+    html { scroll-behavior: auto; }
+    .reveal, .reveal-scale { opacity: 1 !important; transform: none !important; }
+}
+@media print {
+    html { scroll-snap-type: none; }
+    .slide { page-break-after: always; page-break-inside: avoid; scroll-snap-align: unset; height: 100vh; }
+    .slide:last-child { page-break-after: auto; }
+    .nav-dots, .progress-bar { display: none !important; }
+    .reveal, .reveal-scale { opacity: 1 !important; transform: none !important; }
+    .bar-fill { width: var(--target-width) !important; }
+}
+
+/* === TYPOGRAPHY === */
+body { font-family: var(--font-body); font-size: var(--body-size); line-height: 1.6; color: var(--text-main); background: var(--navy-deep); }
+h1 { font-family: var(--font-display); font-size: var(--title-size); font-weight: 900; line-height: 1.05; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); }
+h2 { font-family: var(--font-display); font-size: var(--h2-size); font-weight: 900; line-height: 1.1; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); }
+h3 { font-family: var(--font-subhead); font-size: var(--h3-size); font-weight: 700; line-height: 1.25; color: var(--white); }
+p { font-size: var(--body-size); line-height: 1.55; color: var(--text-main); }
+.eyebrow { font-family: var(--font-mono); font-size: var(--mono-size); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: clamp(0.4rem, 0.8vh, 0.75rem); }
+
+/* === REVEALS === */
+.reveal { opacity: 0; transform: translateY(clamp(15px, 3vh, 30px)); transition: opacity var(--duration-normal) var(--ease-out-expo), transform var(--duration-normal) var(--ease-out-expo); }
+.reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity var(--duration-normal) var(--ease-out-expo), transform var(--duration-normal) var(--ease-spring); }
+.visible .reveal, .visible .reveal-scale { opacity: 1; transform: translateY(0) translateX(0) scale(1); }
+.reveal:nth-child(2) { transition-delay: 0.08s; } .reveal:nth-child(3) { transition-delay: 0.14s; } .reveal:nth-child(4) { transition-delay: 0.2s; }
+.reveal-scale:nth-child(1) { transition-delay: 0s; } .reveal-scale:nth-child(2) { transition-delay: 0.1s; } .reveal-scale:nth-child(3) { transition-delay: 0.2s; } .reveal-scale:nth-child(4) { transition-delay: 0.3s; }
+
+/* === NAV === */
+.progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--purple); z-index: 200; transition: width 0.3s ease; width: 0; }
+.nav-dots { position: fixed; right: clamp(0.75rem, 2vw, 1.5rem); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: clamp(6px, 1vh, 10px); z-index: 100; }
+.nav-dot { width: clamp(8px, 0.8vw, 10px); height: clamp(8px, 0.8vw, 10px); border-radius: 50%; background: rgba(255,255,255,0.15); border: none; cursor: pointer; padding: 0; transition: all 0.3s ease; }
+.nav-dot.active { background: var(--purple); transform: scale(1.5); }
+
+/* ============================================
+   ALL SLIDES: DARK BACKGROUNDS
+   ============================================ */
+
+/* S1: HERO */
+.slide-hero {
+    background: radial-gradient(ellipse at 20% 80%, var(--purple-glow) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, var(--blue-glow) 0%, transparent 50%),
+                var(--navy);
+}
+.slide-hero .subtitle { font-family: var(--font-subhead); font-size: var(--body-lg); font-weight: 300; color: var(--blue); line-height: 1.45; max-width: 36em; }
+.slide-hero .panel-info { font-family: var(--font-body); font-size: var(--small-size); color: var(--text-dim); line-height: 1.6; margin-top: clamp(1.5rem, 3vh, 3rem); }
+.slide-hero .panel-info strong { color: var(--text-main); }
+.accent-bar { width: clamp(4rem, 10vw, 8rem); height: 4px; background: var(--purple); margin-bottom: clamp(0.5rem, 1vh, 1rem); }
+
+/* S2: TENSION */
+.slide-tension {
+    background: radial-gradient(ellipse at 50% 80%, rgba(131,82,255,0.06) 0%, transparent 60%), var(--navy-deep);
+}
+.tension-cols { display: flex; gap: clamp(2rem, 5vw, 4rem); margin-top: clamp(1rem, 2.5vh, 2rem); flex: 1; }
+.tension-col { flex: 1; }
+.tension-col h3 { margin-bottom: clamp(0.5rem, 1vh, 0.75rem); }
+.tension-col p { color: var(--text-secondary); line-height: 1.6; }
+.tension-divider { width: 3px; background: linear-gradient(to bottom, var(--purple), var(--blue)); border-radius: 2px; flex-shrink: 0; }
+.tension-vs { display: flex; align-items: center; margin-top: clamp(0.75rem, 1.5vh, 1.5rem); }
+.vs-badge { font-family: var(--font-mono); font-size: var(--mono-size); background: rgba(131,82,255,0.12); color: var(--blue); font-weight: 500; padding: clamp(0.3rem, 0.6vw, 0.5rem) clamp(0.75rem, 1.5vw, 1.25rem); border-radius: 100px; letter-spacing: 0.04em; }
+
+/* S3: STAKES */
+.slide-stakes {
+    background: radial-gradient(ellipse at 70% 70%, rgba(252,176,23,0.08) 0%, transparent 50%), var(--navy);
+}
+.stakes-text { font-family: var(--font-subhead); font-size: clamp(1.3rem, 2.8vw, 2.2rem); font-weight: 300; line-height: 1.45; color: var(--text-main); max-width: 32em; margin-top: clamp(1rem, 2.5vh, 2rem); }
+.stakes-text em { font-style: normal; color: var(--gold); font-weight: 500; }
+.stakes-sub { font-size: var(--body-size); color: var(--text-secondary); max-width: 36em; margin-top: clamp(1.25rem, 3vh, 2.5rem); line-height: 1.6; }
+
+/* S4: APPROACH */
+.slide-approach {
+    background: radial-gradient(ellipse at 30% 30%, var(--purple-glow) 0%, transparent 50%), var(--navy-deep);
+}
+.approach-text { font-size: var(--body-lg); line-height: 1.6; max-width: 38em; margin-top: clamp(0.75rem, 2vh, 1.5rem); color: var(--text-main); }
+.callout-box {
+    background: rgba(255,255,255,0.04); border-left: 5px solid var(--purple);
+    padding: clamp(1rem, 2vw, 1.75rem) clamp(1.25rem, 2.5vw, 2rem);
+    margin-top: clamp(1rem, 2.5vh, 2rem); max-width: 38em;
+    border-radius: 0 clamp(6px, 1vw, 10px) clamp(6px, 1vw, 10px) 0;
+}
+.callout-box p { font-family: var(--font-subhead); font-size: var(--body-size); font-weight: 500; color: var(--blue); line-height: 1.5; }
+
+/* S5: DATA TIERS */
+.slide-tiers {
+    background: radial-gradient(ellipse at 60% 60%, rgba(131,82,255,0.06) 0%, transparent 50%), var(--navy);
+}
+.tier-row { display: flex; gap: clamp(0.6rem, 1.2vw, 1rem); margin-top: clamp(1rem, 2.5vh, 2rem); flex: 1; }
+.tier-block { flex: 1; border-radius: clamp(8px, 1.2vw, 12px); padding: clamp(1rem, 2vw, 1.75rem); }
+.tier-block .tier-name { font-family: var(--font-display); font-size: clamp(1rem, 1.6vw, 1.3rem); font-weight: 900; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem); }
+.tier-block .tier-rule { font-family: var(--font-mono); font-size: var(--mono-size); font-weight: 500; margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem); }
+.tier-block .tier-examples { font-size: var(--small-size); line-height: 1.5; color: var(--text-secondary); }
+.t-restricted { background: rgba(220,38,38,0.1); border-left: 5px solid #DC2626; }
+.t-restricted .tier-name, .t-restricted .tier-rule { color: #FF6B6B; }
+.t-sensitive { background: rgba(252,176,23,0.08); border-left: 5px solid var(--gold); }
+.t-sensitive .tier-name, .t-sensitive .tier-rule { color: var(--gold); }
+.t-internal { background: rgba(131,82,255,0.08); border-left: 5px solid var(--purple); }
+.t-internal .tier-name, .t-internal .tier-rule { color: var(--purple); }
+.t-public { background: rgba(135,183,213,0.08); border-left: 5px solid var(--blue); }
+.t-public .tier-name, .t-public .tier-rule { color: var(--blue); }
+.tier-caption { font-family: var(--font-subhead); font-size: var(--small-size); color: var(--text-secondary); margin-top: clamp(0.75rem, 1.5vh, 1.25rem); font-weight: 300; font-style: italic; }
+
+/* S6: 4D */
+.slide-4d {
+    background: radial-gradient(ellipse at 80% 20%, var(--blue-glow) 0%, transparent 50%), var(--navy-deep);
+}
+.d-row { display: flex; gap: clamp(0.6rem, 1.2vw, 1rem); margin-top: clamp(1rem, 2.5vh, 2rem); flex: 1; }
+.d-card { flex: 1; padding: clamp(1rem, 2vw, 1.75rem); border-radius: clamp(8px, 1.2vw, 12px); background: var(--card-bg); border-top: 4px solid; }
+.d-card h3 { font-size: clamp(1rem, 1.8vw, 1.4rem); margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem); }
+.d-card p { font-size: var(--small-size); color: var(--text-secondary); line-height: 1.5; }
+.d-card .d-mono { font-family: var(--font-mono); font-size: var(--mono-size); margin-top: clamp(0.5rem, 1vh, 1rem); color: var(--text-dim); }
+.d-delegation { border-color: var(--blue); } .d-delegation h3 { color: var(--blue); }
+.d-description { border-color: var(--purple); } .d-description h3 { color: var(--purple); }
+.d-discernment { border-color: var(--blue); } .d-discernment h3 { color: var(--blue); }
+.d-diligence { border-color: var(--gold); } .d-diligence h3 { color: var(--gold); }
+
+/* S7: EVIDENCE */
+.slide-evidence {
+    background: radial-gradient(ellipse at 40% 60%, var(--purple-glow) 0%, transparent 50%), var(--navy);
+}
+.evidence-row { display: flex; gap: clamp(2rem, 5vw, 4rem); margin-top: clamp(0.75rem, 2vh, 1.5rem); flex: 1; align-items: flex-start; }
+.evidence-left { flex: 1.2; }
+.evidence-right { flex: 0.8; display: flex; flex-direction: column; gap: clamp(0.6rem, 1.2vh, 1rem); }
+.bar-chart { display: flex; flex-direction: column; gap: clamp(8px, 1.8vh, 18px); }
+.bar-row { display: grid; grid-template-columns: clamp(90px, 14vw, 160px) 1fr clamp(45px, 6vw, 65px); align-items: center; gap: clamp(8px, 1.5vw, 16px); }
+.bar-label { font-family: var(--font-subhead); font-size: var(--small-size); color: var(--text-main); text-align: right; font-weight: 600; }
+.bar-track { height: clamp(22px, 4vh, 36px); background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden; }
+.bar-fill { height: 100%; width: 0; border-radius: 999px; transition: width 1.2s var(--ease-out-expo); }
+.bar-fill.purple { background: linear-gradient(90deg, var(--navy-mid), var(--purple)); }
+.bar-fill.gold { background: linear-gradient(90deg, #a07000, var(--gold)); }
+.visible .bar-fill { width: var(--target-width); }
+.bar-value { font-family: var(--font-mono); font-size: var(--mono-size); color: var(--text-secondary); font-weight: 500; }
+.mini-metric { background: rgba(255,255,255,0.04); border: 1px solid var(--card-border); border-radius: clamp(6px, 1vw, 10px); padding: clamp(0.75rem, 1.5vw, 1.25rem); }
+.mini-metric .mm-value { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: var(--purple); line-height: 1; }
+.mini-metric .mm-label { font-family: var(--font-subhead); font-size: var(--mono-size); text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-main); margin-top: 0.2em; }
+.mini-metric .mm-detail { font-size: clamp(0.8rem, 1.2vw, 0.95rem); color: var(--text-secondary); margin-top: clamp(0.2rem, 0.4vh, 0.4rem); line-height: 1.4; }
+
+/* S8: CLOSE */
+.slide-close {
+    background: radial-gradient(ellipse at 80% 80%, var(--purple-glow) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 30%, var(--blue-glow) 0%, transparent 50%),
+                var(--navy-deep);
+}
+.takeaway-grid { display: flex; gap: clamp(0.6rem, 1.5vw, 1.25rem); margin-top: clamp(1rem, 2.5vh, 2rem); flex: 1; }
+.takeaway-card { flex: 1; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: clamp(8px, 1.2vw, 12px); padding: clamp(1rem, 2vw, 1.75rem); }
+.takeaway-card .tk-num { font-family: var(--font-mono); font-size: var(--mono-size); color: var(--purple); margin-bottom: clamp(0.25rem, 0.5vh, 0.4rem); }
+.takeaway-card h3 { font-size: clamp(1rem, 1.6vw, 1.3rem); color: var(--white); margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem); line-height: 1.25; }
+.takeaway-card p { font-size: var(--small-size); color: var(--text-secondary); line-height: 1.5; }
+.contact-bar { display: flex; align-items: center; gap: clamp(1.5rem, 4vw, 3rem); margin-top: clamp(1rem, 2.5vh, 2rem); padding-top: clamp(0.75rem, 1.5vh, 1.25rem); border-top: 1px solid var(--card-border); flex-wrap: wrap; }
+.contact-bar .cn { font-family: var(--font-subhead); font-size: clamp(1rem, 1.5vw, 1.2rem); font-weight: 700; color: var(--white); }
+.contact-bar .ci { font-family: var(--font-subhead); font-size: var(--small-size); font-weight: 300; color: var(--text-dim); }
+.contact-bar a { color: var(--blue); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<nav class="nav-dots" aria-label="Slide navigation" id="navDots"></nav>
+
+<!-- S1: TITLE -->
+<section class="slide slide-hero" id="slide-0">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--blue);">Building Data & AI Foundations</div>
+        <div class="accent-bar reveal"></div>
+        <h1 class="reveal">Governance<br>as Enabler</h1>
+        <p class="subtitle reveal">Data governance, culture change, and what it actually takes to get AI working across an organization</p>
+        <div class="panel-info reveal">
+            <strong>Preston Magouirk</strong>&ensp;·&ensp;Chief Strategy & Analytics Officer, DC College Access Program<br>
+            with Graham MacDonald (Urban Institute) and Andrew Patricio (UnidosUS)
+        </div>
+    </div>
+</section>
+
+<!-- S2: THE TENSION -->
+<section class="slide slide-tension" id="slide-1">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">The Tension Every Leader Feels</div>
+        <h2 class="reveal">Two legitimate priorities<br>pulling in opposite directions</h2>
+        <div class="tension-cols">
+            <div class="tension-col reveal">
+                <h3 style="color: var(--purple);">Governance & Security</h3>
+                <p>We hold FERPA-protected student data. We hold donor financial records. One misuse could undermine years of trust with families, funders, and partners.</p>
+            </div>
+            <div class="tension-divider"></div>
+            <div class="tension-col reveal">
+                <h3 style="color: var(--blue);">Innovation & Confidence</h3>
+                <p>Staff need psychological safety to experiment. They need permission to try, fail, and iterate. Without confidence, adoption stalls and the investment produces nothing.</p>
+            </div>
+        </div>
+        <div class="tension-vs reveal">
+            <span class="vs-badge">The question: how do you do both at once?</span>
+        </div>
+    </div>
+</section>
+
+<!-- S3: THE STAKES -->
+<section class="slide slide-stakes" id="slide-2">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">Why We Can't Wait</div>
+        <h2 class="reveal">The Stakes Are Personal</h2>
+        <p class="stakes-text reveal">
+            AI fluency is becoming a <em>core professional skill</em> for every knowledge worker in the social sector. Our staff need it for their careers. Our students will need it for theirs. If we get this right, we build an organization that can <em>compound its mission impact</em> year over year.
+        </p>
+        <p class="stakes-sub reveal">
+            DC CAP serves 1,290 scholars across 13 university partners. Every hour we free from manual reporting is an hour returned to direct student support. For context, 95% of enterprise AI pilots fail to produce measurable returns. The primary failure mode is adoption.
+        </p>
+    </div>
+</section>
+
+<!-- S4: OUR APPROACH -->
+<section class="slide slide-approach" id="slide-3">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">What We Did</div>
+        <h2 class="reveal">We classified every data type<br>before writing a single prompt</h2>
+        <p class="approach-text reveal">
+            We built a four-tier data classification system and role-specific permission guides so people knew exactly what they could do with AI on Day 1. We trained 10 leaders across 6 functional units before opening access to anyone else. Each leader builds a training module for their own team using real scenarios from their own workflows.
+        </p>
+        <div class="callout-box reveal">
+            <p>Staff moved from "I don't want to get this wrong" to active experimentation within the first week. Clear rules became permission to move.</p>
+        </div>
+    </div>
+</section>
+
+<!-- S5: DATA TIERS -->
+<section class="slide slide-tiers" id="slide-4">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">Data Governance</div>
+        <h2 class="reveal">Four-Tier Data Classification</h2>
+        <div class="tier-row">
+            <div class="tier-block t-restricted reveal-scale">
+                <div class="tier-name">Restricted</div>
+                <div class="tier-rule">Prohibited from AI</div>
+                <div class="tier-examples">Individual PII, FERPA records, SSNs, family income data</div>
+            </div>
+            <div class="tier-block t-sensitive reveal-scale">
+                <div class="tier-name">Sensitive</div>
+                <div class="tier-rule">Role-Based Access Only</div>
+                <div class="tier-examples">Internal financials, small-cell aggregates, embargoed partner data</div>
+            </div>
+            <div class="tier-block t-internal reveal-scale">
+                <div class="tier-name">Internal</div>
+                <div class="tier-rule">Open to Licensed Users</div>
+                <div class="tier-examples">Strategy docs, de-identified outcomes, organizational knowledge</div>
+            </div>
+            <div class="tier-block t-public reveal-scale">
+                <div class="tier-name">Public</div>
+                <div class="tier-rule">Unrestricted Use</div>
+                <div class="tier-examples">Annual reports, published research, marketing materials</div>
+            </div>
+        </div>
+        <p class="tier-caption reveal">This system took two weeks to build. It answered 90% of "can I put this in AI?" questions on Day 1.</p>
+    </div>
+</section>
+
+<!-- S6: 4D FRAMEWORK -->
+<section class="slide slide-4d" id="slide-5">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--blue);">Fluency Model</div>
+        <h2 class="reveal">The 4Ds of AI Fluency</h2>
+        <div class="d-row">
+            <div class="d-card d-delegation reveal-scale">
+                <h3>Delegation</h3>
+                <p>"Should AI do this, or should I?" Task selection and modality choice.</p>
+                <div class="d-mono">automation · augmentation · agency</div>
+            </div>
+            <div class="d-card d-description reveal-scale">
+                <h3>Description</h3>
+                <p>Prompt writing that produces usable, context-rich output on the first try.</p>
+                <div class="d-mono">context · constraints · examples</div>
+            </div>
+            <div class="d-card d-discernment reveal-scale">
+                <h3>Discernment</h3>
+                <p>Catching errors that look professional. Polished outputs hide subtle mistakes.</p>
+                <div class="d-mono">fact-check · tone · policy accuracy</div>
+            </div>
+            <div class="d-card d-diligence reveal-scale">
+                <h3>Diligence</h3>
+                <p>Final accountability lives with the human. Data governance, ethics, sign-off.</p>
+                <div class="d-mono">ownership · compliance · transparency</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S7: EVIDENCE -->
+<section class="slide slide-evidence" id="slide-6">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">Baseline Data</div>
+        <h2 class="reveal">What We're Measuring</h2>
+        <div class="evidence-row">
+            <div class="evidence-left reveal">
+                <div class="bar-chart">
+                    <div class="bar-row">
+                        <span class="bar-label">Learning Readiness</span>
+                        <div class="bar-track"><div class="bar-fill purple" style="--target-width: 79%"></div></div>
+                        <span class="bar-value">79%</span>
+                    </div>
+                    <div class="bar-row">
+                        <span class="bar-label">AI Knowledge</span>
+                        <div class="bar-track"><div class="bar-fill purple" style="--target-width: 68%"></div></div>
+                        <span class="bar-value">68%</span>
+                    </div>
+                    <div class="bar-row">
+                        <span class="bar-label">AI Orientation</span>
+                        <div class="bar-track"><div class="bar-fill purple" style="--target-width: 63%"></div></div>
+                        <span class="bar-value">63%</span>
+                    </div>
+                    <div class="bar-row">
+                        <span class="bar-label">Applied Skills</span>
+                        <div class="bar-track"><div class="bar-fill gold" style="--target-width: 55%"></div></div>
+                        <span class="bar-value">55%</span>
+                    </div>
+                    <div class="bar-row">
+                        <span class="bar-label">Current Use</span>
+                        <div class="bar-track"><div class="bar-fill gold" style="--target-width: 53%"></div></div>
+                        <span class="bar-value">53%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="evidence-right">
+                <div class="mini-metric reveal-scale">
+                    <div class="mm-value">24pt</div>
+                    <div class="mm-label">Knowing-Doing Gap</div>
+                    <div class="mm-detail">Staff know more than they use. The gap is confidence.</div>
+                </div>
+                <div class="mini-metric reveal-scale">
+                    <div class="mm-value">19</div>
+                    <div class="mm-label">Deliverables Shipped</div>
+                    <div class="mm-detail">Built with the same tools we're teaching staff to use.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S8: CLOSE -->
+<section class="slide slide-close" id="slide-7">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--blue);">For Your Organization</div>
+        <h2 class="reveal">Three Things We'd Share</h2>
+        <div class="takeaway-grid">
+            <div class="takeaway-card reveal-scale">
+                <div class="tk-num">01</div>
+                <h3>Classify your data before your use cases</h3>
+                <p>Permission guides that say "here's what you CAN do" build confidence faster than policies that list prohibitions.</p>
+            </div>
+            <div class="takeaway-card reveal-scale">
+                <div class="tk-num">02</div>
+                <h3>Measure fluency, not logins</h3>
+                <p>We built a five-construct instrument that surfaces the knowing-doing gap. It tells us who needs coaching, not just who signed in.</p>
+            </div>
+            <div class="takeaway-card reveal-scale">
+                <div class="tk-num">03</div>
+                <h3>Train leaders first, then let them train their teams</h3>
+                <p>By Week 8, every leader owns their unit's AI onboarding. Role-specific scenarios from their own workflows.</p>
+            </div>
+        </div>
+        <div class="contact-bar reveal">
+            <span class="cn">Preston Magouirk</span>
+            <span class="ci">preston.magouirk@dccap.org</span>
+            <span class="ci"><a href="https://dccapinnovation.org">dccapinnovation.org</a></span>
+            <span class="ci"><a href="https://dccap.org">dccap.org</a></span>
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    const progressBar = document.getElementById('progressBar');
+    const navContainer = document.getElementById('navDots');
+    slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+        dot.addEventListener('click', () => slides[i].scrollIntoView({ behavior: 'smooth' }));
+        navContainer.appendChild(dot);
+    });
+    const dots = navContainer.querySelectorAll('.nav-dot');
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                const idx = Array.from(slides).indexOf(entry.target);
+                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+                progressBar.style.width = ((idx + 1) / totalSlides * 100) + '%';
+            }
+        });
+    }, { threshold: 0.4 });
+    slides.forEach(s => obs.observe(s));
+    document.addEventListener('keydown', (e) => {
+        const ci = Array.from(dots).findIndex(d => d.classList.contains('active'));
+        if (['ArrowDown','ArrowRight',' ','PageDown'].includes(e.key) && ci < totalSlides-1) { e.preventDefault(); slides[ci+1].scrollIntoView({behavior:'smooth'}); }
+        else if (['ArrowUp','ArrowLeft','PageUp'].includes(e.key) && ci > 0) { e.preventDefault(); slides[ci-1].scrollIntoView({behavior:'smooth'}); }
+    });
+})();
+</script>
+</body>
+</html>
