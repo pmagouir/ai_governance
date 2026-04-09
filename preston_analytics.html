@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pilot Analytics | DC CAP AI Leadership</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --navy:      #101A4C;
+      --purple:    #8352FF;
+      --blue:      #87B7D5;
+      --gold:      #FCB017;
+      --tan:       #FFF4ED;
+      --white:     #FFFFFF;
+      --gray:      #666666;
+      --dark-gray: #333333;
+      --red:       #E63946;
+      --green:     #06A77D;
+      --font-body:    'Noto Serif', Georgia, serif;
+      --font-sub:     'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+      --font-mono:    'JetBrains Mono', monospace;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--dark-gray); background: var(--tan); line-height: 1.6; }
+
+    /* ── LOCK SCREEN ── */
+    #lockScreen {
+      position: fixed; inset: 0; z-index: 9999;
+      background: radial-gradient(ellipse at 30% 50%, rgba(131,82,255,0.18) 0%, transparent 60%),
+                  radial-gradient(ellipse at 75% 20%, rgba(135,183,213,0.15) 0%, transparent 55%),
+                  var(--navy);
+      display: flex; align-items: center; justify-content: center;
+    }
+    #lockScreen .lock-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(16px);
+      border-radius: 16px;
+      padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 3rem);
+      width: min(420px, 90vw);
+      text-align: center;
+    }
+    .lock-eyebrow {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em;
+      color: var(--gold); text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .lock-title {
+      font-family: var(--font-sub); font-size: clamp(1.5rem,4vw,2rem);
+      font-weight: 700; color: var(--white); margin-bottom: 0.4rem;
+    }
+    .lock-sub { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-bottom: 2rem; }
+    #passwordInput {
+      width: 100%; padding: 0.85rem 1rem; border-radius: 8px;
+      border: 1.5px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08);
+      color: var(--white); font-family: var(--font-mono); font-size: 1rem;
+      outline: none; text-align: center; letter-spacing: 0.06em;
+      transition: border-color 0.2s;
+    }
+    #passwordInput:focus { border-color: var(--gold); }
+    #passwordInput.error { border-color: var(--red); }
+    #lockError { color: var(--red); font-size: 0.82rem; margin-top: 0.6rem; min-height: 1.2em; }
+    #unlockBtn {
+      margin-top: 1.2rem; width: 100%; padding: 0.9rem;
+      background: var(--gold); color: var(--navy); font-weight: 700;
+      font-family: var(--font-sub); font-size: 1rem; border: none;
+      border-radius: 8px; cursor: pointer; transition: opacity 0.15s, transform 0.1s;
+    }
+    #unlockBtn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .lock-hint { font-size: 0.75rem; color: rgba(255,255,255,0.35); margin-top: 1.2rem; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 500;
+      background: rgba(16,26,76,0.93); backdrop-filter: blur(12px);
+      padding: 0.85rem clamp(1rem,5vw,3rem);
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-left { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-badge {
+      font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em;
+      background: var(--red); color: white; padding: 0.2em 0.6em; border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .nav-title { font-family: var(--font-sub); font-size: 1rem; font-weight: 700; color: var(--white); }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    #lastUpdated { font-family: var(--font-mono); font-size: 0.7rem; color: rgba(255,255,255,0.5); }
+    #refreshBtn {
+      padding: 0.4rem 0.9rem; border-radius: 6px; border: 1.5px solid var(--gold);
+      background: transparent; color: var(--gold); font-size: 0.8rem; font-family: var(--font-sub);
+      font-weight: 600; cursor: pointer; transition: background 0.15s, color 0.15s;
+    }
+    #refreshBtn:hover { background: var(--gold); color: var(--navy); }
+    #refreshBtn:disabled { opacity: 0.4; cursor: default; }
+    #lockBtn {
+      padding: 0.4rem 0.9rem; border-radius: 6px; border: 1.5px solid rgba(255,255,255,0.2);
+      background: transparent; color: rgba(255,255,255,0.6); font-size: 0.8rem;
+      cursor: pointer; font-family: var(--font-sub); transition: border-color 0.15s, color 0.15s;
+    }
+    #lockBtn:hover { border-color: var(--white); color: var(--white); }
+
+    /* ── MAIN CONTENT ── */
+    #dashboard { display: none; }
+    main { max-width: 1200px; margin: 0 auto; padding: clamp(1.5rem,4vw,3rem) clamp(1rem,4vw,2rem); }
+
+    /* ── LOADING STATE ── */
+    #loadingState {
+      text-align: center; padding: 5rem 2rem; display: none;
+    }
+    .spinner {
+      width: 40px; height: 40px; border: 3px solid rgba(131,82,255,0.2);
+      border-top-color: var(--purple); border-radius: 50%;
+      animation: spin 0.8s linear infinite; margin: 0 auto 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #loadingState p { color: var(--gray); font-family: var(--font-mono); font-size: 0.85rem; }
+
+    /* ── ERROR STATE ── */
+    #errorState {
+      display: none; background: rgba(230,57,70,0.08); border: 1px solid var(--red);
+      border-radius: 10px; padding: 1.5rem; margin: 2rem 0; color: var(--red);
+    }
+    #errorState h3 { margin-bottom: 0.5rem; }
+    #errorState p { font-size: 0.9rem; }
+
+    /* ── SECTION LAYOUT ── */
+    .section { margin-bottom: 3rem; }
+    .section-header { margin-bottom: 1.25rem; }
+    .section-eyebrow {
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em;
+      color: var(--purple); text-transform: uppercase; margin-bottom: 0.3rem;
+    }
+    .section-title {
+      font-family: var(--font-sub); font-size: clamp(1.1rem,2.5vw,1.4rem);
+      font-weight: 700; color: var(--navy);
+    }
+    .section-sub { font-size: 0.88rem; color: var(--gray); margin-top: 0.25rem; }
+
+    /* ── KPI ROW ── */
+    .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+    .kpi-card {
+      background: var(--white); border-radius: 12px; padding: 1.25rem 1.5rem;
+      border-left: 5px solid var(--purple); box-shadow: 0 2px 12px rgba(16,26,76,0.07);
+      transition: transform 0.15s;
+    }
+    .kpi-card:hover { transform: translateY(-2px); }
+    .kpi-card.gold  { border-left-color: var(--gold); }
+    .kpi-card.blue  { border-left-color: var(--blue); }
+    .kpi-card.green { border-left-color: var(--green); }
+    .kpi-label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; color: var(--gray); text-transform: uppercase; margin-bottom: 0.4rem; }
+    .kpi-value { font-family: var(--font-sub); font-size: clamp(1.8rem,4vw,2.4rem); font-weight: 900; color: var(--navy); line-height: 1.1; }
+    .kpi-sub   { font-size: 0.78rem; color: var(--gray); margin-top: 0.25rem; }
+    .kpi-value.warn { color: var(--red); }
+    .kpi-value.good { color: var(--green); }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--white); border-radius: 12px; padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(16,26,76,0.07); border: 1px solid rgba(16,26,76,0.06);
+    }
+    .card-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .card-grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+    @media (max-width: 768px) { .card-grid-2, .card-grid-3 { grid-template-columns: 1fr; } }
+
+    /* ── CHART WRAPPERS ── */
+    .chart-wrap { position: relative; width: 100%; }
+    .chart-wrap canvas { max-height: 320px; }
+    .chart-title { font-family: var(--font-sub); font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 1rem; }
+
+    /* ── COMPLETION TABLE ── */
+    .completion-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .completion-table th {
+      font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--gray); background: var(--tan);
+      padding: 0.6rem 0.75rem; text-align: left; border-bottom: 2px solid rgba(16,26,76,0.1);
+    }
+    .completion-table td { padding: 0.65rem 0.75rem; border-bottom: 1px solid rgba(16,26,76,0.06); vertical-align: middle; }
+    .completion-table tr:last-child td { border-bottom: none; }
+    .completion-table tr:hover td { background: rgba(131,82,255,0.04); }
+    .badge {
+      display: inline-block; padding: 0.18em 0.6em; border-radius: 4px;
+      font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.04em;
+    }
+    .badge-done  { background: rgba(6,167,125,0.12); color: var(--green); }
+    .badge-pending { background: rgba(230,57,70,0.1); color: var(--red); }
+    .badge-partial { background: rgba(252,176,23,0.15); color: #B07A00; }
+    .badge-unit { background: rgba(131,82,255,0.1); color: var(--purple); }
+
+    /* ── HEATMAP ── */
+    .heatmap-wrapper { overflow-x: auto; }
+    .heatmap-table { border-collapse: collapse; font-size: 0.78rem; min-width: 600px; width: 100%; }
+    .heatmap-table th {
+      font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.05em;
+      text-transform: uppercase; color: var(--gray); padding: 0.5rem 0.5rem;
+      text-align: center; border-bottom: 2px solid rgba(16,26,76,0.1);
+    }
+    .heatmap-table th.row-header { text-align: left; min-width: 140px; }
+    .heatmap-table td { padding: 0.4rem 0.4rem; text-align: center; }
+    .heatmap-table td.name-cell { text-align: left; font-weight: 600; color: var(--navy); padding-left: 0; }
+    .heat-cell {
+      width: 28px; height: 28px; border-radius: 5px; display: inline-flex;
+      align-items: center; justify-content: center; font-size: 0.75rem;
+    }
+    .heat-yes  { background: rgba(6,167,125,0.15); color: var(--green); }
+    .heat-no   { background: rgba(16,26,76,0.05); color: rgba(16,26,76,0.25); }
+
+    /* ── QUALITATIVE FEED ── */
+    .qual-feed { display: flex; flex-direction: column; gap: 0.75rem; max-height: 360px; overflow-y: auto; padding-right: 0.5rem; }
+    .qual-feed::-webkit-scrollbar { width: 4px; }
+    .qual-feed::-webkit-scrollbar-track { background: transparent; }
+    .qual-feed::-webkit-scrollbar-thumb { background: rgba(131,82,255,0.3); border-radius: 2px; }
+    .qual-item {
+      background: var(--tan); border-radius: 8px; padding: 0.85rem 1rem;
+      border-left: 4px solid var(--purple); font-size: 0.85rem;
+    }
+    .qual-item.win  { border-left-color: var(--green); }
+    .qual-item.struggle { border-left-color: var(--red); }
+    .qual-meta { font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray); margin-bottom: 0.3rem; }
+    .qual-text { color: var(--dark-gray); line-height: 1.5; }
+    .empty-state { text-align: center; padding: 2.5rem; color: var(--gray); font-style: italic; font-size: 0.88rem; }
+
+    /* ── DATA TOGGLE ── */
+    .data-toggle {
+      width: 100%; background: none; border: 1.5px solid rgba(16,26,76,0.12);
+      border-radius: 8px; padding: 0.75rem 1rem; text-align: left;
+      font-family: var(--font-sub); font-size: 0.9rem; font-weight: 600;
+      color: var(--navy); cursor: pointer; display: flex; justify-content: space-between;
+      align-items: center; transition: background 0.15s;
+    }
+    .data-toggle:hover { background: rgba(16,26,76,0.03); }
+    .data-toggle-arrow { transition: transform 0.2s; font-size: 0.75rem; }
+    .data-panel { display: none; overflow-x: auto; margin-top: 0.5rem; }
+    .data-panel.open { display: block; }
+    .raw-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; font-family: var(--font-mono); }
+    .raw-table th { background: var(--navy); color: var(--white); padding: 0.5rem 0.6rem; text-align: left; white-space: nowrap; }
+    .raw-table td { padding: 0.4rem 0.6rem; border-bottom: 1px solid rgba(16,26,76,0.06); max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .raw-table tr:nth-child(even) td { background: var(--tan); }
+
+    /* ── FOOTER ── */
+    footer { text-align: center; padding: 2rem; font-size: 0.78rem; color: var(--gray); border-top: 1px solid rgba(16,26,76,0.08); margin-top: 2rem; }
+    footer a { color: var(--purple); }
+
+    /* ── NO DATA ── */
+    .no-data { color: var(--gray); font-style: italic; font-size: 0.85rem; padding: 1.5rem 0; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ LOCK SCREEN ═══════════════════════════════════════ -->
+<div id="lockScreen">
+  <div class="lock-card">
+    <div class="lock-eyebrow">DC CAP AI Leadership Pilot</div>
+    <div class="lock-title">Pilot Analytics</div>
+    <div class="lock-sub">Administrator access only</div>
+    <input type="password" id="passwordInput" placeholder="Enter access code" autocomplete="off"
+           aria-label="Access code">
+    <div id="lockError" role="alert" aria-live="polite"></div>
+    <button id="unlockBtn">Access Analytics</button>
+    <div class="lock-hint">Preston Magouirk · Chief Strategy &amp; Analytics Officer</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ DASHBOARD ═══════════════════════════════════════ -->
+<div id="dashboard">
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-left">
+      <span class="nav-badge">Admin</span>
+      <span class="nav-title">Pilot Analytics Dashboard</span>
+    </div>
+    <div class="nav-right">
+      <span id="lastUpdated">—</span>
+      <button id="refreshBtn">↻ Refresh</button>
+      <button id="lockBtn">Lock</button>
+    </div>
+  </nav>
+
+  <!-- Loading -->
+  <div id="loadingState">
+    <div class="spinner"></div>
+    <p>Fetching live data from Google Sheets…</p>
+  </div>
+
+  <!-- Error -->
+  <div id="errorState" style="margin: 2rem clamp(1rem,4vw,2rem);">
+    <h3>Data Load Error</h3>
+    <p id="errorMsg">Could not load data from Google Sheets.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.8rem;">
+      Ensure the Apps Script GET handler is deployed. See <code>apps_script_doGet_addition.js</code> in the repo.
+    </p>
+  </div>
+
+  <!-- Main -->
+  <main id="mainContent" style="display:none;">
+
+    <!-- ── KPI ROW ── -->
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-label">Survey Completion</div>
+        <div class="kpi-value" id="kpiSurvey">—</div>
+        <div class="kpi-sub">of 10 pilot leaders</div>
+      </div>
+      <div class="kpi-card gold">
+        <div class="kpi-label">Engagement Events</div>
+        <div class="kpi-value" id="kpiMilestones">—</div>
+        <div class="kpi-sub">milestone records</div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-label">Avg AI Fluency</div>
+        <div class="kpi-value" id="kpiFluecy">—</div>
+        <div class="kpi-sub">baseline overall %</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-label">Avg Confidence</div>
+        <div class="kpi-value" id="kpiConfidence">—</div>
+        <div class="kpi-sub">latest weekly check-in</div>
+      </div>
+    </div>
+
+    <!-- ── SECTION 1: SURVEY COMPLETION ── -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">Participation</div>
+        <div class="section-title">Pre-Launch Survey Completion</div>
+        <div class="section-sub">Who has completed the baseline AI Fluency Assessment. Fake/test accounts excluded.</div>
+      </div>
+      <div class="card">
+        <div id="surveyTable"><div class="empty-state">No survey data yet.</div></div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 2: AI FLUENCY BASELINE ── -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">Baseline Assessment</div>
+        <div class="section-title">AI Fluency Construct Scores</div>
+        <div class="section-sub">Five-construct baseline from the pre-launch survey (% of max possible). Higher is better.</div>
+      </div>
+      <div class="card-grid-2">
+        <div class="card">
+          <div class="chart-title">Construct Averages — Team</div>
+          <div class="chart-wrap"><canvas id="chartConstructs"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="chart-title">Individual Scores by Construct (%)</div>
+          <div class="chart-wrap"><canvas id="chartIndividual"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 3: WEEKLY PULSE ── -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">Weekly Check-Ins</div>
+        <div class="section-title">Pulse Trends</div>
+        <div class="section-sub">Confidence scores and iteration frequency from weekly check-ins over time.</div>
+      </div>
+      <div class="card-grid-2">
+        <div class="card">
+          <div class="chart-title">Avg Confidence Score by Week (1–5)</div>
+          <div class="chart-wrap"><canvas id="chartConfidence"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="chart-title">Iteration Frequency — Week-over-Week</div>
+          <div class="chart-wrap"><canvas id="chartIteration"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 4: ENGAGEMENT HEATMAP ── -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">Activity</div>
+        <div class="section-title">Milestone Engagement Heatmap</div>
+        <div class="section-sub">Which pages and milestones each real participant has hit.</div>
+      </div>
+      <div class="card">
+        <div class="heatmap-wrapper">
+          <div id="heatmapContainer"><div class="empty-state">No milestone data yet.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 5: BY UNIT ── -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">Unit View</div>
+        <div class="section-title">Engagement by Functional Unit</div>
+        <div class="section-sub">Milestone events broken down by the six functional units.</div>
+      </div>
+      <div class="card">
+        <div class="chart-wrap"><canvas id="chartByUnit" style="max-height:260px;"></canvas></div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 6: QUALITATIVE FEED ── -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">Weekly Check-Ins</div>
+        <div class="section-title">Wins &amp; Struggles</div>
+        <div class="section-sub">Open-text responses from the weekly pulse. Most recent first.</div>
+      </div>
+      <div class="card-grid-2">
+        <div class="card">
+          <div class="chart-title" style="color: var(--green);">🏆 Biggest Wins</div>
+          <div class="qual-feed" id="feedWins"><div class="empty-state">No check-ins submitted yet.</div></div>
+        </div>
+        <div class="card">
+          <div class="chart-title" style="color: var(--red);">⚡ Biggest Struggles</div>
+          <div class="qual-feed" id="feedStruggles"><div class="empty-state">No check-ins submitted yet.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 7: RAW DATA ── -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">Raw Records</div>
+        <div class="section-title">Full Data Tables</div>
+        <div class="section-sub">Expand to inspect individual records. Fake participants excluded.</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <div>
+          <button class="data-toggle" onclick="togglePanel('panelSurvey', this)">
+            Survey Responses <span class="data-toggle-arrow">▼</span>
+          </button>
+          <div class="data-panel" id="panelSurvey"><div id="rawSurvey"></div></div>
+        </div>
+        <div>
+          <button class="data-toggle" onclick="togglePanel('panelMilestones', this)">
+            Milestones Log <span class="data-toggle-arrow">▼</span>
+          </button>
+          <div class="data-panel" id="panelMilestones"><div id="rawMilestones"></div></div>
+        </div>
+        <div>
+          <button class="data-toggle" onclick="togglePanel('panelCheckins', this)">
+            Weekly Check-Ins <span class="data-toggle-arrow">▼</span>
+          </button>
+          <div class="data-panel" id="panelCheckins"><div id="rawCheckins"></div></div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- /main -->
+
+  <footer>
+    DC CAP AI Leadership Pilot · Analytics Dashboard ·
+    <a href="pilot_hub.html">← Pilot Hub</a> ·
+    Data via Google Sheets Apps Script
+  </footer>
+
+</div><!-- /dashboard -->
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════════════════════════════
+
+const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx967okB59zHn8xmN3TdOfhxg7EmP0lT6ta7rH_4wBKnno_Zi5iKAjyeziRMDiWNyz9Nw/exec';
+const TOTAL_PARTICIPANTS = 10;
+const FAKE_PARTICIPANTS  = ['Lucas Spielfogel', 'Brian Kim', 'Brian Heseung Kim'];
+const UNITS = ['Development', 'Communications', 'Student Success', 'GEAR UP', 'Operations', 'Executive Office'];
+
+// SHA-256 of 'analytics2026'
+const PASS_HASH = '612ee6e4f47b6d1409df6f064fd4d00c53c2b8b7d3d19950635e1459ba3e0724';
+
+// Session key
+const SESSION_KEY = 'dccap_analytics_unlocked';
+const TOKEN_KEY   = 'dccap_analytics_token';
+
+// ═══════════════════════════════════════════════════════════════
+// AUTH
+// ═══════════════════════════════════════════════════════════════
+
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+async function attemptUnlock() {
+  const input = document.getElementById('passwordInput').value.trim();
+  if (!input) return;
+
+  const hash = await sha256(input);
+  if (hash === PASS_HASH) {
+    sessionStorage.setItem(SESSION_KEY, '1');
+    sessionStorage.setItem(TOKEN_KEY, input); // store plaintext token for API calls
+    showDashboard();
+    loadData();
+  } else {
+    const field = document.getElementById('passwordInput');
+    const err   = document.getElementById('lockError');
+    field.classList.add('error');
+    err.textContent = 'Incorrect access code. Try again.';
+    field.value = '';
+    setTimeout(() => { field.classList.remove('error'); err.textContent = ''; }, 3000);
+  }
+}
+
+function showDashboard() {
+  document.getElementById('lockScreen').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+}
+
+function lockDashboard() {
+  sessionStorage.removeItem(SESSION_KEY);
+  sessionStorage.removeItem(TOKEN_KEY);
+  document.getElementById('lockScreen').style.display = 'flex';
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('passwordInput').value = '';
+}
+
+// Auto-unlock if still in session
+window.addEventListener('DOMContentLoaded', () => {
+  if (sessionStorage.getItem(SESSION_KEY) === '1') {
+    showDashboard();
+    loadData();
+  }
+
+  document.getElementById('passwordInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') attemptUnlock();
+  });
+  document.getElementById('unlockBtn').addEventListener('click', attemptUnlock);
+  document.getElementById('lockBtn').addEventListener('click', lockDashboard);
+  document.getElementById('refreshBtn').addEventListener('click', () => loadData(true));
+});
+
+// ═══════════════════════════════════════════════════════════════
+// DATA LOADING
+// ═══════════════════════════════════════════════════════════════
+
+let chartInstances = {};
+
+async function loadData(forceRefresh = false) {
+  const token = sessionStorage.getItem(TOKEN_KEY) || 'analytics2026';
+  const btn   = document.getElementById('refreshBtn');
+  const loading = document.getElementById('loadingState');
+  const errorEl = document.getElementById('errorState');
+  const mainEl  = document.getElementById('mainContent');
+
+  btn.disabled = true;
+  loading.style.display = 'block';
+  errorEl.style.display = 'none';
+  mainEl.style.display  = 'none';
+
+  try {
+    // Try CORS fetch first, fall back to no-cors (data won't be readable in no-cors)
+    const url = `${SHEET_ENDPOINT}?action=read&token=${encodeURIComponent(token)}`;
+    let data = null;
+
+    try {
+      const resp = await fetch(url, { redirect: 'follow' });
+      data = await resp.json();
+    } catch (corsErr) {
+      // If CORS blocks us, we can't read the response — show helpful message
+      throw new Error('CORS error: The Apps Script may need to be re-deployed with the doGet handler. See apps_script_doGet_addition.js.');
+    }
+
+    if (data.error) throw new Error(`Apps Script returned: ${data.error}`);
+
+    // Filter fakes client-side too (belt + suspenders)
+    data.survey_responses = filterFakes(data.survey_responses || []);
+    data.milestones       = filterFakes(data.milestones || []);
+    data.weekly_checkins  = filterFakes(data.weekly_checkins || []);
+
+    renderDashboard(data);
+
+    const ts = data.generated_at ? new Date(data.generated_at).toLocaleString() : new Date().toLocaleString();
+    document.getElementById('lastUpdated').textContent = `Updated ${ts}`;
+
+    loading.style.display = 'none';
+    mainEl.style.display  = 'block';
+
+  } catch (err) {
+    loading.style.display = 'none';
+    errorEl.style.display = 'block';
+    document.getElementById('errorMsg').textContent = err.message;
+    console.error('Analytics load error:', err);
+  }
+
+  btn.disabled = false;
+}
+
+function filterFakes(rows) {
+  return rows.filter(r => {
+    const name = (r.participant_name || r.name || '').trim();
+    return name && !FAKE_PARTICIPANTS.includes(name);
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════════════════════════
+
+function renderDashboard(data) {
+  const surveys  = data.survey_responses || [];
+  const miles    = data.milestones       || [];
+  const checkins = data.weekly_checkins  || [];
+
+  renderKPIs(surveys, miles, checkins);
+  renderSurveyTable(surveys);
+  renderConstructCharts(surveys);
+  renderPulseCharts(checkins);
+  renderHeatmap(surveys, miles);
+  renderUnitChart(surveys, miles);
+  renderQualFeed(checkins);
+  renderRawTables(surveys, miles, checkins);
+}
+
+// ── KPIs ──────────────────────────────────────────────────────
+function renderKPIs(surveys, miles, checkins) {
+  // Survey completion
+  const surveyCount = surveys.filter(s => s.survey_mode === 'Pre-Launch' || !s.survey_mode).length;
+  const survEl = document.getElementById('kpiSurvey');
+  survEl.textContent = `${surveyCount}/${TOTAL_PARTICIPANTS}`;
+  survEl.className = 'kpi-value ' + (surveyCount >= TOTAL_PARTICIPANTS ? 'good' : surveyCount < 5 ? 'warn' : '');
+
+  // Milestones
+  document.getElementById('kpiMilestones').textContent = miles.length;
+
+  // Avg fluency
+  const pcts = surveys
+    .map(s => parseFloat(s.overall_score_pct || s.overall_pct || s.overall || 0))
+    .filter(n => !isNaN(n) && n > 0);
+  const avgFluency = pcts.length ? Math.round(pcts.reduce((a,b) => a+b, 0) / pcts.length) : null;
+  const fluEl = document.getElementById('kpiFluecy');
+  fluEl.textContent = avgFluency !== null ? `${avgFluency}%` : '—';
+
+  // Avg confidence (latest week)
+  const latestWeek = checkins.length ? Math.max(...checkins.map(c => parseInt(c.week_number) || 0)) : 0;
+  const latestCheckins = checkins.filter(c => parseInt(c.week_number) === latestWeek);
+  const confidences = latestCheckins.map(c => parseFloat(c.q2_usage_confidence)).filter(n => !isNaN(n));
+  const avgConf = confidences.length ? (confidences.reduce((a,b) => a+b, 0) / confidences.length).toFixed(1) : '—';
+  document.getElementById('kpiConfidence').textContent = avgConf + (avgConf !== '—' ? '/5' : '');
+}
+
+// ── SURVEY TABLE ──────────────────────────────────────────────
+function renderSurveyTable(surveys) {
+  const container = document.getElementById('surveyTable');
+  if (!surveys.length) { container.innerHTML = '<div class="empty-state">No survey responses yet.</div>'; return; }
+
+  // Build a set of all participants (surveyed or not) — we don't have the full roster, so show who we have
+  const rows = surveys.map(s => {
+    const name     = s.participant_name || s.name || '—';
+    const unit     = s.unit || '—';
+    const mode     = s.survey_mode || 'Pre-Launch';
+    const date     = s.date || (s.timestamp ? s.timestamp.split('T')[0] : '—');
+    const overall  = s.overall_score_pct ? `${Math.round(s.overall_score_pct)}%` : '—';
+    const fluency  = s.fluency_level || '—';
+    return `<tr>
+      <td><strong>${name}</strong></td>
+      <td><span class="badge badge-unit">${unit}</span></td>
+      <td>${mode}</td>
+      <td>${date}</td>
+      <td><strong>${overall}</strong></td>
+      <td><span class="badge badge-done">${fluency}</span></td>
+    </tr>`;
+  }).join('');
+
+  container.innerHTML = `
+    <table class="completion-table">
+      <thead><tr>
+        <th>Participant</th><th>Unit</th><th>Mode</th><th>Date</th>
+        <th>Overall Score</th><th>Fluency Level</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+// ── CONSTRUCT CHARTS ──────────────────────────────────────────
+function renderConstructCharts(surveys) {
+  const constructs = [
+    { key: 'ai_orientation_pct',        label: 'AI Orientation'     },
+    { key: 'learning_orientation_pct',  label: 'Learning Orientation'},
+    { key: 'current_ai_use_pct',        label: 'Current AI Use'      },
+    { key: 'ai_knowledge_pct',          label: 'AI Knowledge'        },
+    { key: 'applied_skills_pct',        label: 'Applied Skills'      },
+  ];
+
+  // Fallback key patterns from the Apps Script payload
+  const keyMap = {
+    ai_orientation_pct:       ['score_aiOrientation_pct','aiOrientation_pct','ai_orientation_pct'],
+    learning_orientation_pct: ['score_learningOrientation_pct','learningOrientation_pct','learning_orientation_pct'],
+    current_ai_use_pct:       ['score_currentAIUse_pct','currentAIUse_pct','current_ai_use_pct'],
+    ai_knowledge_pct:         ['score_aiKnowledge_pct','aiKnowledge_pct','ai_knowledge_pct'],
+    applied_skills_pct:       ['score_appliedSkills_pct','appliedSkills_pct','applied_skills_pct'],
+  };
+
+  function getVal(row, key) {
+    for (const k of (keyMap[key] || [key])) {
+      if (row[k] !== undefined && row[k] !== '') return parseFloat(row[k]) || 0;
+    }
+    return 0;
+  }
+
+  // Team averages chart
+  const avgData = constructs.map(c => {
+    const vals = surveys.map(s => getVal(s, c.key)).filter(v => v > 0);
+    return vals.length ? Math.round(vals.reduce((a,b)=>a+b,0)/vals.length) : 0;
+  });
+
+  destroyChart('chartConstructs');
+  if (surveys.length) {
+    chartInstances.chartConstructs = new Chart(
+      document.getElementById('chartConstructs').getContext('2d'),
+      { type: 'bar',
+        data: {
+          labels: constructs.map(c => c.label),
+          datasets: [{ label: 'Team Avg (%)', data: avgData,
+            backgroundColor: ['rgba(131,82,255,0.7)','rgba(135,183,213,0.7)','rgba(252,176,23,0.7)','rgba(6,167,125,0.7)','rgba(16,26,76,0.7)'],
+            borderRadius: 6, borderSkipped: false }]
+        },
+        options: { ...defaultBarOptions(), plugins: { legend: { display: false } },
+          scales: { y: { min:0, max:100, ticks: { callback: v => v+'%' } } } }
+      }
+    );
+  }
+
+  // Individual scores grouped bar
+  destroyChart('chartIndividual');
+  if (surveys.length) {
+    const colors = ['#8352FF','#FCB017','#87B7D5','#06A77D','#101A4C','#E63946','#FF8C42','#4ECDC4','#556B8D','#A45EE5'];
+    const datasets = surveys.map((s, i) => ({
+      label: (s.participant_name || s.name || `P${i+1}`).split(' ')[0],
+      data:  constructs.map(c => getVal(s, c.key)),
+      backgroundColor: hexToRgba(colors[i % colors.length], 0.75),
+      borderRadius: 4, borderSkipped: false
+    }));
+    chartInstances.chartIndividual = new Chart(
+      document.getElementById('chartIndividual').getContext('2d'),
+      { type: 'bar',
+        data: { labels: constructs.map(c => c.label), datasets },
+        options: { ...defaultBarOptions(),
+          scales: { y: { min:0, max:100, ticks: { callback: v => v+'%' } },
+                    x: { ticks: { font: { size: 10 } } } },
+          plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 10 } } }
+        }
+      }
+    );
+  }
+}
+
+// ── PULSE CHARTS ──────────────────────────────────────────────
+function renderPulseCharts(checkins) {
+  const weeks = [...new Set(checkins.map(c => parseInt(c.week_number)).filter(n => !isNaN(n)))].sort((a,b)=>a-b);
+
+  // Confidence by week
+  destroyChart('chartConfidence');
+  const confData = weeks.map(w => {
+    const vals = checkins.filter(c => parseInt(c.week_number) === w)
+      .map(c => parseFloat(c.q2_usage_confidence)).filter(v => !isNaN(v));
+    return vals.length ? +(vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(2) : null;
+  });
+  chartInstances.chartConfidence = new Chart(
+    document.getElementById('chartConfidence').getContext('2d'),
+    { type: 'line',
+      data: { labels: weeks.map(w => `Week ${w}`),
+              datasets: [{ label: 'Avg Confidence', data: confData,
+                borderColor: '#8352FF', backgroundColor: 'rgba(131,82,255,0.1)',
+                fill: true, tension: 0.3, pointRadius: 5, pointBackgroundColor: '#8352FF' }] },
+      options: { ...defaultLineOptions(), scales: { y: { min:1, max:5, ticks: { stepSize:1 } } } }
+    }
+  );
+
+  // Iteration frequency distribution (stacked bar by week)
+  const freqOrder = ['Never','Once','A few times','Most sessions','Every session'];
+  destroyChart('chartIteration');
+  const iterDatasets = freqOrder.map((freq, i) => ({
+    label: freq,
+    data: weeks.map(w => checkins.filter(c => parseInt(c.week_number) === w && c.q1_iteration_frequency === freq).length),
+    backgroundColor: ['rgba(230,57,70,0.75)','rgba(252,176,23,0.75)','rgba(135,183,213,0.75)','rgba(131,82,255,0.75)','rgba(6,167,125,0.75)'][i],
+    borderRadius: 4, borderSkipped: false
+  }));
+  chartInstances.chartIteration = new Chart(
+    document.getElementById('chartIteration').getContext('2d'),
+    { type: 'bar',
+      data: { labels: weeks.map(w => `Week ${w}`), datasets: iterDatasets },
+      options: { ...defaultBarOptions(), plugins: { legend: { position: 'bottom', labels: { font:{size:10}, boxWidth:10 } } },
+                 scales: { x: { stacked: true }, y: { stacked: true, ticks: { stepSize: 1 } } } }
+    }
+  );
+}
+
+// ── HEATMAP ───────────────────────────────────────────────────
+function renderHeatmap(surveys, miles) {
+  const container = document.getElementById('heatmapContainer');
+  if (!surveys.length && !miles.length) {
+    container.innerHTML = '<div class="empty-state">No data yet.</div>';
+    return;
+  }
+
+  // Participants from survey + milestone sources
+  const allNames = [...new Set([
+    ...surveys.map(s => s.participant_name || s.name),
+    ...miles.map(m => m.participant_name || m.name)
+  ])].filter(Boolean).sort();
+
+  // Key milestones to track
+  const keyMilestones = [
+    'Pre-launch survey completed',
+    'Pilot Hub first visit',
+    'Start Here page visited',
+    'Phase 1 Activity completed',
+    'Data Tier Game completed',
+    'Weekly check-in Week 1 submitted',
+    'Weekly check-in Week 2 submitted',
+    'Weekly check-in Week 3 submitted',
+    'Weekly check-in Week 4 submitted',
+  ];
+
+  // Build lookup: name → Set of milestone names
+  const milestoneLookup = {};
+  miles.forEach(m => {
+    const name = m.participant_name || m.name;
+    if (!name) return;
+    if (!milestoneLookup[name]) milestoneLookup[name] = new Set();
+    milestoneLookup[name].add(m.milestone_name || m.milestone || '');
+  });
+  surveys.forEach(s => {
+    const name = s.participant_name || s.name;
+    if (!name) return;
+    if (!milestoneLookup[name]) milestoneLookup[name] = new Set();
+    milestoneLookup[name].add('Pre-launch survey completed');
+  });
+
+  const headers = keyMilestones.map((m,i) => `<th title="${m}">${i+1}</th>`).join('');
+  const legend  = keyMilestones.map((m,i) => `<span style="font-size:0.68rem;margin-right:0.75rem;"><strong>${i+1}.</strong> ${m}</span>`).join('');
+
+  const bodyRows = allNames.map(name => {
+    const hits = milestoneLookup[name] || new Set();
+    const cells = keyMilestones.map(m => {
+      const done = hits.has(m);
+      return `<td><div class="heat-cell ${done ? 'heat-yes' : 'heat-no'}">${done ? '✓' : '·'}</div></td>`;
+    }).join('');
+    return `<tr><td class="name-cell">${name}</td>${cells}</tr>`;
+  }).join('');
+
+  container.innerHTML = `
+    <table class="heatmap-table">
+      <thead><tr><th class="row-header">Participant</th>${headers}</tr></thead>
+      <tbody>${bodyRows}</tbody>
+    </table>
+    <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(16,26,76,0.07);font-family:var(--font-mono);">${legend}</div>`;
+}
+
+// ── UNIT CHART ────────────────────────────────────────────────
+function renderUnitChart(surveys, miles) {
+  // Count milestone events per unit (derive unit from survey)
+  const nameToUnit = {};
+  surveys.forEach(s => {
+    const name = s.participant_name || s.name;
+    if (name && s.unit) nameToUnit[name] = s.unit;
+  });
+
+  const unitCounts = {};
+  UNITS.forEach(u => unitCounts[u] = 0);
+
+  miles.forEach(m => {
+    const name = m.participant_name || m.name;
+    const unit = nameToUnit[name] || 'Unknown';
+    unitCounts[unit] = (unitCounts[unit] || 0) + 1;
+  });
+
+  const labels = Object.keys(unitCounts);
+  const counts = labels.map(u => unitCounts[u]);
+
+  destroyChart('chartByUnit');
+  chartInstances.chartByUnit = new Chart(
+    document.getElementById('chartByUnit').getContext('2d'),
+    { type: 'bar',
+      data: { labels,
+              datasets: [{ label: 'Milestone Events', data: counts,
+                backgroundColor: ['rgba(131,82,255,0.7)','rgba(252,176,23,0.7)','rgba(135,183,213,0.7)',
+                                  'rgba(6,167,125,0.7)','rgba(16,26,76,0.7)','rgba(230,57,70,0.7)'],
+                borderRadius: 8, borderSkipped: false }] },
+      options: { ...defaultBarOptions(), plugins: { legend: { display: false } },
+                 indexAxis: 'y', scales: { x: { ticks: { stepSize: 1 } } } }
+    }
+  );
+}
+
+// ── QUALITATIVE FEED ──────────────────────────────────────────
+function renderQualFeed(checkins) {
+  const winsEl     = document.getElementById('feedWins');
+  const struggleEl = document.getElementById('feedStruggles');
+
+  const sorted = [...checkins].sort((a,b) => {
+    const wa = parseInt(a.week_number) || 0;
+    const wb = parseInt(b.week_number) || 0;
+    return wb - wa;
+  });
+
+  const wins = sorted.filter(c => c.q3_biggest_win && c.q3_biggest_win.trim());
+  const struggles = sorted.filter(c => c.q4_biggest_struggle && c.q4_biggest_struggle.trim());
+
+  winsEl.innerHTML = wins.length ? wins.map(c => `
+    <div class="qual-item win">
+      <div class="qual-meta">${c.participant_name || '—'} · Week ${c.week_number || '?'}</div>
+      <div class="qual-text">${escHtml(c.q3_biggest_win)}</div>
+    </div>`).join('') : '<div class="empty-state">No wins submitted yet.</div>';
+
+  struggleEl.innerHTML = struggles.length ? struggles.map(c => `
+    <div class="qual-item struggle">
+      <div class="qual-meta">${c.participant_name || '—'} · Week ${c.week_number || '?'}</div>
+      <div class="qual-text">${escHtml(c.q4_biggest_struggle)}</div>
+    </div>`).join('') : '<div class="empty-state">No struggles submitted yet.</div>';
+}
+
+// ── RAW TABLES ────────────────────────────────────────────────
+function renderRawTables(surveys, miles, checkins) {
+  document.getElementById('rawSurvey').innerHTML     = buildRawTable(surveys);
+  document.getElementById('rawMilestones').innerHTML = buildRawTable(miles);
+  document.getElementById('rawCheckins').innerHTML   = buildRawTable(checkins);
+}
+
+function buildRawTable(rows) {
+  if (!rows.length) return '<div class="empty-state" style="padding:1rem;">No records.</div>';
+  const keys = Object.keys(rows[0]);
+  const header = keys.map(k => `<th>${k}</th>`).join('');
+  const body   = rows.map(r =>
+    `<tr>${keys.map(k => `<td title="${escHtml(String(r[k] ?? ''))}">${escHtml(String(r[k] ?? ''))}</td>`).join('')}</tr>`
+  ).join('');
+  return `<table class="raw-table"><thead><tr>${header}</tr></thead><tbody>${body}</tbody></table>`;
+}
+
+// ── TOGGLE PANELS ─────────────────────────────────────────────
+function togglePanel(panelId, btn) {
+  const panel = document.getElementById(panelId);
+  const open  = panel.classList.toggle('open');
+  const arrow = btn.querySelector('.data-toggle-arrow');
+  if (arrow) arrow.style.transform = open ? 'rotate(180deg)' : '';
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CHART HELPERS
+// ═══════════════════════════════════════════════════════════════
+
+function destroyChart(id) {
+  if (chartInstances[id]) { chartInstances[id].destroy(); delete chartInstances[id]; }
+}
+
+function defaultBarOptions() {
+  return {
+    responsive: true, maintainAspectRatio: true,
+    plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { family: 'Noto Serif SemiCondensed', size: 11 } } },
+      y: { grid: { color: 'rgba(16,26,76,0.06)' }, ticks: { font: { family: 'JetBrains Mono', size: 10 } } }
+    }
+  };
+}
+
+function defaultLineOptions() {
+  return {
+    responsive: true, maintainAspectRatio: true,
+    plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { family: 'Noto Serif SemiCondensed', size: 11 } } },
+      y: { grid: { color: 'rgba(16,26,76,0.06)' }, ticks: { font: { family: 'JetBrains Mono', size: 10 } } }
+    }
+  };
+}
+
+function hexToRgba(hex, alpha) {
+  const r = parseInt(hex.slice(1,3),16);
+  const g = parseInt(hex.slice(3,5),16);
+  const b = parseInt(hex.slice(5,7),16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>
