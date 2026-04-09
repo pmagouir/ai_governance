@@ -625,7 +625,7 @@ function renderKPIs(surveys, miles, checkins) {
 
   // Avg fluency
   const pcts = surveys
-    .map(s => parseFloat(s.overall_score_pct || s.overall_pct || s.overall || 0))
+    .map(s => parseFloat(s.overall_percentage || s.overall_score_pct || s.overall_pct || s.overall || 0))
     .filter(n => !isNaN(n) && n > 0);
   const avgFluency = pcts.length ? Math.round(pcts.reduce((a,b) => a+b, 0) / pcts.length) : null;
   const fluEl = document.getElementById('kpiFluecy');
@@ -650,7 +650,7 @@ function renderSurveyTable(surveys) {
     const unit     = s.unit || '—';
     const mode     = s.survey_mode || 'Pre-Launch';
     const date     = s.date || (s.timestamp ? s.timestamp.split('T')[0] : '—');
-    const overall  = s.overall_score_pct ? `${Math.round(s.overall_score_pct)}%` : '—';
+    const overall  = (s.overall_percentage || s.overall_score_pct) ? `${Math.round(s.overall_percentage || s.overall_score_pct)}%` : '—';
     const fluency  = s.fluency_level || '—';
     return `<tr>
       <td><strong>${name}</strong></td>
