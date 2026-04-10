@@ -1,0 +1,364 @@
+================================================================================
+                    PORTFOLIO FORMAT: BEFORE vs. AFTER
+================================================================================
+
+PROBLEM STATEMENT
+================================================================================
+Original 15-20 page portfolios were comprehensive but rarely read.
+- Participants didn't see peer work (no peer learning)
+- Facilitators couldn't use portfolios to run peer discussions
+- Board/KPMG reviewers couldn't scan to find key insights
+- Nobody celebrated learning because portfolios were buried
+
+Goal: Make portfolios SHORT, CLEAR, and IMPACTFUL for everyone.
+
+
+BEFORE: FULL PORTFOLIO (15-20 PAGES)
+================================================================================
+
+STRUCTURE:
+  1. Task Overview
+     - Success criteria
+     - Competency dimensions
+  
+  2. Initial Submission
+     - Full governance classification work (2-3 pages)
+     - Complete CTCC prompts (1-2 pages)
+     - Skill selection narrative (½ page)
+     - Verbatim Claude output (1-3 pages)
+     - Audit findings narrative (½ page)
+     - Full edit documentation with all tags/rationales (1-2 pages)
+     - Human judgment analysis (½ page)
+  
+  3. Assessment
+     - Complete rubric feedback for each dimension (2-3 pages)
+     - Coaching notes (½ page)
+  
+  4. Revised Submission
+     - Full revised work (2-3 pages, if revision occurred)
+  
+  5. Growth Trajectory
+     - Before/after comparison table (1 page)
+     - Overall readiness summary (½ page)
+  
+  6. Participant Reflection
+     - 3-4 paragraph reflection (1 page)
+  
+  7. Facilitator Notes
+     - Pattern observation
+     - Discussion question
+
+TOTAL: 15-20 pages (varies by task; Tasks 2-3 are longest)
+
+READ TIME: 15-20 minutes per portfolio
+FILE SIZE: 14 KB
+AUDIENCE: Assessors, archive, appeals
+
+USE CASE: "I need to see everything this person did"
+PEER SHARING: Almost never (too long)
+FACILITATOR DISCUSSION: Requires selective excerpting
+
+
+AFTER: PORTFOLIO SUMMARY (1-2 PAGES)
+================================================================================
+
+STRUCTURE:
+  1. Header Block (3 lines)
+     Task | Participant | Unit | Date
+     Competencies
+     Week | Final Assessment Level
+  
+  2. Performance Snapshot (½ page)
+     Table: 4 dimensions × 3 columns
+     Column 1: Dimension name
+     Column 2: Final level (Exceeds/Meets/Approaching/Below)
+     Column 3: 1-sentence key evidence
+  
+  3. Growth Story (½ page)
+     3-5 sentence narrative:
+     - What was the main learning gap?
+     - What improved?
+     - What's transferable?
+     - [For Tasks 2+] How does this compare to prior task?
+  
+  4. Participant Reflection (¼ page)
+     - Data-grounded prompt
+     - 2-3 sentence response
+  
+  5. Facilitator Insight (¼ page)
+     - Pattern observation (1 sentence)
+     - Discussion question (1 sentence)
+  
+  6. Multi-Task Comparison (¼ page, Tasks 2+ only)
+     - Trajectory from prior task(s)
+
+TOTAL: 1-2 pages (Task 1 ~1 page, Task 4 ~2 pages)
+
+READ TIME: 5 minutes per portfolio
+FILE SIZE: 12 KB
+AUDIENCE: Peers, facilitators, board, KPMG
+
+USE CASE: "Tell me what this person learned and why it matters"
+PEER SHARING: Built-in (with discussion question)
+FACILITATOR DISCUSSION: Ready-to-use discussion prompt included
+
+
+DETAILED COMPARISON
+================================================================================
+
+ELEMENT                   BEFORE                           AFTER
+─────────────────────────────────────────────────────────────────────────────
+1. GOVERNANCE WORK
+
+Before:    Full classification work with all evidence    ┐
+           "SCENARIO A: Disbursement amounts..."         │
+           (2-3 pages, verbatim submission)              │
+                                                         ├─→ Evidence: "Correctly 
+After:                                                   │    classified as Tier 2;
+           "Correctly classified as Tier 2; identified   │    identified re-ID risk"
+           re-identification pathway..." (1 sentence)    │   (1 sentence)
+                                                         │
+Full work  available in appendix                         ┘
+
+2. ASSESSMENT FEEDBACK
+
+Before:    Complete rubric feedback for each dimension   ┐
+           "Classification Accuracy: Meets. You correctly  │
+           identified all three scenarios..."            │
+           [Full paragraph per dimension]                │
+           (2-3 pages total)                             ├─→ Level + 1-sentence
+                                                         │    evidence only
+After:     │ Dimension               │ Meets │ Correct  │    (compresses to
+           │                         │       │ all...   │    4 lines of table)
+           │ Classification Accuracy │ Meets │          │
+                                                         │
+Full feedback available in appendix                      ┘
+
+3. REVISION NARRATIVE
+
+Before:    Detailed before-and-after narrative          ┐
+           "INITIAL: 'Tier Assignment: Tier 2'..."      │
+           vs.                                           │ ├─→ "Improved from
+           "REVISED: 'Tier Assignment: Tier 2 with       │ │    Approaching
+           small-cell analysis...'..."                   │ │    to Meets:
+           (1-2 pages showing full deltas)               │ │    traced re-ID
+                                                         │ │    pathways"
+After:     "Improved from Approaching to Meets: traced   │ │
+           re-ID pathways step-by-step..."              │ │
+           (1-2 sentences in growth story)               │ │
+                                                         │ ┘
+Full revision available in appendix
+
+4. PEER LEARNING OPPORTUNITY
+
+Before:    No structured peer discussion prompt          ┐
+           Facilitator must read full portfolio to       │
+           extract meaningful peer discussion            ├─→ Ready-made question:
+           Example: "Tell us about Task 2"              │    "Marcus classified
+                                                         │    real data faster.
+After:     "Marcus classified real data faster than      │    What made it
+           scenario data. What made real data easier?    │    easier? How can
+           Can we build that confidence into how we       │    we build that?"
+           approach new governance challenges?"           │
+                                                         │
+           Ready-to-use, specific, actionable           ┘
+
+5. CELEBRATION READINESS
+
+Before:    Portfolio is a detailed work record           ┐
+           Not designed to be printed/shared             │
+           Difficult to celebrate without context        ├─→ Designed to be
+                                                         │    printed & shared
+After:     Portfolio is a credential                     │    Professional
+           Branded with DC CAP colors                    │    design
+           Print-ready (8.5×11, color or B&W)           │    Celebration-ready
+           Suitable for email or posting                │    1-2 pages
+
+6. READ TIME
+
+Before:    15-20 minutes per portfolio                   ┐
+           (to understand what they did and learned)     │
+                                                         ├─→ 5 minutes
+After:     5 minutes per portfolio                       │    (board member can
+           (complete picture of learning)                │    read in a break)
+                                                         ┘
+
+7. DOCUMENTATION FOR APPEAL/DETAIL
+
+Before:    Everything is in one document                 ┐
+           Long, dense, hard to find specific items     │
+                                                         ├─→ Summary points to
+After:     Summary provides overview                     │    full work in
+           Full work available on request                │    appendix
+           If detail needed: "See attached full          │    Clean separation
+           portfolio for complete assessment..."         │    of levels
+
+METRICS SUMMARY
+================================================================================
+
+                       BEFORE              AFTER           IMPACT
+────────────────────────────────────────────────────────────────────────
+Pages per portfolio    15-20               1-2             ~85% reduction
+Read time              15-20 min           5 min           ~75% savings
+File size              14 KB               12 KB           ~14% smaller
+Peer sharing rate      <10%                ~100%           Enablement
+Board/KPMG review      Sampling            Comprehensive   Full visibility
+Facilitator prep time  30 min (review)     30 min (create) Same workload,
+                                                            different output
+Celebration use        Not designed        Built-in        Structural change
+Multi-audience fit     Assessor-focused    Peer-first      Design shift
+
+
+KEY DESIGN CHANGES
+================================================================================
+
+1. FRONT-LOADING IMPACT
+   Before: Show everything, reader extracts meaning
+   After:  Lead with what was achieved, explain how
+
+2. EVIDENCE-BASED SNAPSHOTS
+   Before: Full narrative for each dimension
+   After:  Level + one specific example per dimension
+
+3. NARRATIVE GROWTH
+   Before: Assessment feedback + revision narrative (separate sections)
+   After:  Integrated growth story (one paragraph)
+
+4. PEER CENTEREDNESS
+   Before: Designed for assessor documentation
+   After:  Designed to enable peer discussion (includes discussion question)
+
+5. VISUAL SCANABILITY
+   Before: Dense paragraphs, hard to skim
+   After:  Tables, short paragraphs, section headers
+
+6. PRESERVATION OF FULL RECORD
+   Before: Everything in one place
+   After:  Summary + appendix approach (summary for sharing, full for record)
+
+
+IMPLEMENTATION IMPACT
+================================================================================
+
+TIMELINE:
+- April 10: Format design complete
+- April 18: Task 2 assessments complete
+- April 19-20: Facilitators create 10 summaries (~30 min each)
+- April 21: Peer summaries shared with cohort
+- April 25: Cohort discussion using summary-based questions
+- May 10: Celebration event with printed summaries
+- June 10: 40 summaries complete (10 participants × 4 tasks)
+
+FACILITATOR WORKFLOW:
+- Step 1: Extract data from assessment (5 min)
+- Step 2: Populate JSON template (10 min)
+- Step 3: Render to .docx (1 min)
+- Step 4: Review (5 min)
+- Step 5: Distribute (batched)
+Total: ~30 min per participant (same as old assessment documentation, different output)
+
+PEER IMPACT:
+- Before: Participants don't see peer work
+- After: Each participant reads 9 peer summaries per task
+- Discussion: Facilitated using summary-based questions
+- Celebration: Printed summaries on display
+
+BOARD/KPMG IMPACT:
+- Before: Reviewers must sample and extract findings
+- After: All summaries available for comprehensive review
+- Evidence: Clear performance levels and learning trajectories
+- Confidence: Sample summaries demonstrate learning rigor
+
+
+WHY THIS MATTERS
+================================================================================
+
+The portfolio summary format creates three new capabilities:
+
+1. PEER LEARNING AT SCALE
+   - 10 people learning from each other's mistakes and insights
+   - Discussion questions facilitate peer teaching
+   - Shared language and patterns across units
+
+2. FACILITATOR EFFICIENCY
+   - Same assessment work, better output
+   - Summary IS the peer discussion material
+   - No separate "write summary for peers" step
+
+3. CELEBRATION + ACCOUNTABILITY
+   - Participants see their work printed and celebrated
+   - Board sees evidence of learning outcomes
+   - KPMG sees rigor and progression
+   - Everyone reads the summaries (before: nobody read the 20-page versions)
+
+
+EXAMPLES
+================================================================================
+
+BEFORE (excerpt from 20-page portfolio):
+
+"REVISED SUBMISSION - SCENARIO C: Board presentation with Ward-level persistence
+
+Tier Assignment: Tier 2 (Sensitive)
+
+Reasoning: While overall persistence rates (87%) are de-identified aggregates 
+that could be Tier 3, the Ward-level breakdown includes one Ward with only 6 
+scholars. This falls below the N<10 small-cell threshold in the aggregation 
+guidance, which makes re-identification possible through cross-referencing with 
+public data about school locations and DC CAP partner lists.
+
+Combination Test: If combined with public information about which schools 
+operate in that specific Ward and DC CAP's published partner school list, the 
+6 scholars in that Ward could potentially be identified. The small cell size 
+is the key trigger that escalates this from aggregated data to re-identifiable 
+aggregate.
+
+Governance Action: Restricted access. The slide could be shared if the 
+small-cell Ward is suppressed or combined with an adjacent Ward to bring N 
+above 10. In current form, requires de-identification verification before use 
+with AI tools."
+
+(This is 1 scenario out of 3; full portfolio has this for every dimension)
+
+
+AFTER (same content, portfolio summary):
+
+│ Dimension                 │ Level │ Key Evidence                          │
+├──────────────────────────┼───────┼────────────────────────────────────────┤
+│ Classification Accuracy  │ Meets │ Correctly identified Tier 2 scenarios;  │
+│                          │       │ applied N<10 threshold for small cells. │
+
+"GROWTH STORY:
+Tasks 1-2 built your governance framework. Task 3 tested it at scale with 
+multi-source data and governance decisions at every step. Your governance 
+moved from binary (Tier 2 or not) to probabilistic (when to suppress vs. 
+aggregate). This threshold of moving from binary rules to judgment calls is 
+what separates individual compliance from systems thinking."
+
+(Clear, scannable, includes growth narrative)
+
+
+CLOSING
+================================================================================
+
+The new portfolio summary format:
+✓ Solves the "nobody reads 20-page portfolios" problem
+✓ Enables peer learning at scale
+✓ Maintains full documentation (summaries + archived full portfolios)
+✓ Celebrates learning visibly (printed, shared, discussed)
+✓ Serves KPMG review needs (comprehensive coverage, clear evidence)
+✓ Fits facilitator workflow (same time investment, better output)
+
+By June 10, 2026:
+- 40 portfolio summaries (10 people × 4 tasks)
+- 100% peer engagement with peer work
+- Facilitator-led discussions using summary-based questions
+- Printed summaries at celebration event
+- Board confidence in learning outcomes
+
+
+================================================================================
+Created: April 10, 2026
+For: DC CAP AI Leadership Training Pilot
+By: Claude Code Agent
+================================================================================

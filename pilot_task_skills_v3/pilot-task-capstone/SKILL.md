@@ -9,6 +9,16 @@
 
 ---
 
+## What This Task Is
+
+This is your final task. You'll look back at everything you've done in Tasks 1-3 and pull it together into a portfolio that shows your growth, your best use case, and what you'll teach your team.
+
+There's no pipeline to run here. Instead, you're reflecting, synthesizing, and planning forward. You'll deliver four things: (1) a summary of your pilot journey, (2) your strongest AI use case with before/after evidence, (3) an honest self-assessment of your growth across the four competencies, and (4) a teaching guide your colleagues can follow plus one idea for what DC CAP should build next.
+
+This draws on work you've already completed. You're not starting from scratch. Plan for about 3 hours.
+
+---
+
 ## STAGE 1: INTRODUCE
 
 ### Overview
@@ -227,6 +237,15 @@ Example: "I'm at Building Confidence. Task 1 was guided, but I got both classifi
 Example: "I rated myself Proficient, not just Building Confidence, because since Task 3, I've reviewed all eight of our recurring workflows with a peer, and she told me my governance classifications were accurate. I found a Tier 1 risk in a new analytics report that the data team had overlooked. That's evidence I can do this work reliably now."
 
 **Calibration Check:** Does your rating align with your Task 1-3 pattern? If not, explain why your supplemental evidence justifies the difference.
+
+---
+
+**Evidence binding rule:** Each self-rating MUST cite at least one specific piece of evidence. Acceptable evidence:
+- A specific Task 1, 2, or 3 performance level on a relevant dimension (e.g., "My governance classification improved from Approaching in Task 1 to Meets in Task 3")
+- A specific work instance from outside the tasks (e.g., "I correctly classified 5 data scenarios in my unit work last month, including 2 with small-cell thresholds")
+- A teaching or coaching moment (e.g., "I helped a colleague classify a data governance tier correctly during a team meeting")
+
+Self-ratings without specific evidence will be flagged for revision. "I feel more confident" is not evidence. "My Task 2 Pipeline Coherence reached Meets, and I've since applied the full pipeline independently to 3 work tasks" is evidence.
 
 ---
 
@@ -530,11 +549,30 @@ A comprehensive portfolio with four sections:
 - Your Teaching Module (Section 4) describes a workflow different from your Use Case
 - **Check:** Read Section 2 and Section 4 back-to-back. Are they about the same workflow?
 
+### Internal Consistency Check
+
+Before submitting, verify these connections:
+- Does your Section 1 impact headline match the impact documented in Section 2?
+- Does your Section 4 teaching module teach the same workflow described in Section 2?
+- Do your Section 3 self-ratings align with the growth story you tell in your composite narrative?
+
+If any of these don't connect, revise to create a coherent throughline. Your portfolio should tell one consistent story about your AI development journey.
+
 ---
 
 ## STAGE 3: ASSESS
 
 ### Pre-Assessment Step: Gather Task 1-3 Performance Levels
+
+### When to Collect Your Task 1-3 Performance Data
+
+Before you begin drafting, gather your assessment results from Tasks 1-3. You'll need:
+- Your final assessment level (Exceeds/Meets/Approaching/Below) on each dimension for each task
+- Any revision deltas (if you revised and improved)
+
+Your facilitator can provide these if you don't have them. Collect this data BEFORE starting Section 3 (My 4D Growth), because your self-assessment ratings must be calibrated against your actual task performance.
+
+---
 
 **Before we assess your capstone, please provide your performance levels from Tasks 1-3:**
 
@@ -555,7 +593,7 @@ For each competency and each task, state your level:
 
 Your capstone is evaluated across 4 dimensions. Each dimension has 4 levels: **Exceeds / Meets / Approaching / Below Standard.**
 
-The readiness threshold: **Most Meets or higher** on all 4 dimensions = capstone-ready for showcase. **Multiple Approaching** = targeted revision. **Any Below** = re-teach and resubmit.
+The readiness threshold: **All or most dimensions at Meets or above (no dimension at Below)** = capstone-ready for showcase. **Multiple dimensions at Approaching, none at Below** = targeted revision. **Any dimension at Below Standard** = re-teach and resubmit.
 
 ---
 
@@ -613,6 +651,10 @@ Example (Meets):
 - **Impact Evidence:** Not calculated or not credible.
 - **Governance Pathway:** Tier is missing or incorrect.
 
+**Calibration Anchor: Approaching → Meets Boundary**
+
+**Use Case Quality:** Approaching looks like—Steps mentioned but not in order; time is guessed ("about an hour"). Workflow called out but roles aren't clear. Meets looks like—Before and After sections are clear with specific steps and measured or reasonable estimates. Roles separated (what Claude does, what human does). Time saved calculated with transparent math.
+
 ---
 
 ### DIMENSION 2: 4D Self-Assessment Calibration
@@ -664,6 +706,10 @@ Example (Meets):
 - Significant misalignment between self-rating and task performance with no explanation
 - No composite narrative
 
+**Calibration Anchor: Approaching → Meets Boundary**
+
+**4D Self-Assessment Calibration:** Approaching looks like—Some ratings cite task evidence, but others are vague. One rating says "I felt more confident" without naming what changed. Meets looks like—All four ratings cite specific Task 1, 2, or 3 evidence. Ratings align with task performance, or divergence is explained by supplemental evidence. Composite narrative shows growth arc.
+
 ---
 
 ### DIMENSION 3: Teaching Module Completeness
@@ -694,6 +740,10 @@ Example (Exceeds):
 - **Governance:** Missing or unclear.
 - **Steps:** Vague or incomplete.
 - **Completion test:** Colleague would likely need clarification to execute.
+
+**Calibration Anchor: Approaching → Meets Boundary**
+
+**Teaching Module Completeness:** Approaching looks like—Governance mentioned but vague ("use the governance framework"). Steps present but don't name specific tools. Verification checklist minimal. Meets looks like—Data, tier, and constraints are explicit. Steps are numbered and each names the tool, the action, and expected output. Verification checklist is specific.
 
 ---
 
@@ -739,6 +789,10 @@ Example (Exceeds):
 - **Expected impact:** Not specified
 - **First steps:** Missing
 
+**Calibration Anchor: Approaching → Meets Boundary**
+
+**Innovation Proposal Quality:** Approaching looks like—Problem statement mentions an idea but doesn't ground it in specific pilot evidence. Proposed solution exists but is vague ("we should build a system"). Expected impact is general ("save time and improve consistency"). Meets looks like—Problem statement names a specific observation from the pilot (e.g., "I reused the same CTCC prompt in Task 2 and Task 3"). Solution is actionable and scoped. Expected impact is named (time, quality, governance, scale). First steps are sequenced.
+
 ---
 
 ### Calibration Check: Self-Assessment Against Task Performance
@@ -761,6 +815,44 @@ The assessment will also document your growth pattern:
 - **Task 1 → Task 2:** What changed in your understanding between guided and supported pipeline work?
 - **Task 2 → Task 3:** What changed between supported and independent work?
 - **Task 3 → Capstone:** What changed in how you think about teaching and multiplying your learning?
+
+---
+
+## What Your Feedback Will Look Like
+
+Here's an example of what feedback on 4D Self-Assessment Calibration at Approaching Standard sounds like:
+
+**EXAMPLE: Feedback on 4D Self-Assessment Calibration (Approaching Standard)**
+
+**Coaching Orientation:** Self-assessment calibration measures whether your ratings of your own growth are grounded in evidence from your actual task performance. Honest, evidence-based self-assessment is one of the most valuable professional skills you can develop — it's what separates reflection from wishful thinking.
+
+**Your Level:** Approaching Standard
+
+**What You Did Well:** You completed self-ratings for all four competencies and your scale choices are reasonable. Your Diligence rating (Building Confidence) and your Description rating (Building Confidence) align with your Task 2-3 performance, which showed consistent Meets-level work.
+
+**What Would Strengthen This:** Your Delegation self-rating is "Proficient," but your Task 3 Strategic Mapping dimension was Approaching Standard. The calibration table suggests that Approaching on Task 3 maps to "Building Awareness — Building Confidence," not Proficient. Your evidence statement says "I feel much more confident choosing the right tools now," but feeling confident and demonstrating proficiency are different things. What specific evidence from your task work supports Proficient? If you tested this with a colleague or applied it successfully outside the pilot tasks, that would count — but you'll need to name the instance.
+
+**Transferable Skill:** You're building "evidence-grounded self-awareness" — the ability to assess your own capabilities honestly using concrete evidence rather than impressions. Leaders who can do this make better hiring, delegation, and development decisions.
+
+**Coaching Question:** Look at your Task 3 Delegation assessment. What specific evidence would you need to see in your own work to justify a Proficient rating? Can you point to that evidence, or does Building Confidence feel more accurate right now?
+
+**Revision Guidance (3 items):**
+1. Revisit your Delegation self-rating. Either adjust it to Building Confidence (which aligns with your task performance), or add supplemental evidence showing Proficient-level work outside the tasks.
+2. Replace "I feel more confident" statements with specific evidence: "In Task 3, I [specific action] which demonstrates [specific competency]."
+3. Check each self-rating against the calibration table. For any rating that exceeds the suggested range, add a supplemental evidence field explaining why.
+
+---
+
+## STAGE 3b: REASSESS (Revision + Delta)
+
+### Reassessment Protocol
+
+When the participant submits a revision, reassess using the SAME rubric dimensions and level definitions from Stage 3. The reassessment:
+
+1. **Re-evaluates each dimension** against the same rubric. A dimension can improve, stay the same, or (rarely) decrease if the revision introduced new issues.
+2. **Produces a delta comparison** showing the level transition and what specifically changed.
+3. **Applies the readiness check** to determine next step: proceed to packaging, another revision cycle, or concept re-introduction.
+4. **Does NOT require the participant to revise all dimensions.** If only 1-2 dimensions need work, they revise only those sections.
 
 ---
 
@@ -820,11 +912,21 @@ The assessment will also document your growth pattern:
 - For each proposal, diagnose the problem explicitly and name where in the pilot you discovered it
 - Add specific first steps (not just "we should build this" but "Step 1: Inventory top 5 workflows")
 
+### Revision Complete — Ready to Package?
+
+After revising, check your work against the readiness threshold:
+
+- **All four dimensions at Meets or above** → Proceed to Stage 5: PACKAGE.
+- **Still have one or more dimensions at Approaching after revision** → Resubmit the revised sections for reassessment. Your facilitator will provide targeted feedback.
+- **Any dimension still at Below after revision** → Schedule a 15-minute facilitator check-in to re-introduce the concept before another revision attempt.
+
+Your portfolio is packaged when all dimensions reach Meets Standard or above.
+
 ---
 
 ## STAGE 5: PACKAGE
 
-### The Flagship Portfolio Format
+### Portfolio Structure
 
 Your capstone is the showcase artifact for KPMG and the June 5-10 celebration. Format it as a polished, branded document (Microsoft Word with DC CAP branding).
 
@@ -832,40 +934,57 @@ Your capstone is the showcase artifact for KPMG and the June 5-10 celebration. F
 
 **Page count:** 8-12 pages
 
-**Sections:**
+---
 
-1. **My Pilot** (1-2 pages)
+#### **TASK OVERVIEW**
+
+[Summary of Capstone focus: Integration of Tasks 1-3, self-assessment with evidence, teaching module design, innovation proposals]
+
+---
+
+#### **INITIAL SUBMISSION**
+
+##### **Section 1: My Pilot** (1-2 pages)
    - Name, unit, impact headline
    - Context (your role)
    - Pilot journey narrative
 
-2. **My Use Case** (2 pages)
+##### **Section 2: My Use Case** (2 pages)
    - Before (specific steps, time, pain points)
    - After (workflow, roles, time)
    - Impact Evidence (time saved, quality gained, documented instance)
    - Governance Pathway
 
-3. **My 4D Growth** (2-3 pages)
+##### **Section 3: My 4D Growth** (2-3 pages)
    - Self-assessment on all four competencies with task evidence
    - Composite narrative showing growth arc
    - Calibration check
 
-4. **What I'm Teaching + What to Build Next** (2-3 pages)
+##### **Section 4: What I'm Teaching + What to Build Next** (2-3 pages)
    - Teaching module (governance + step-by-step + independence test)
    - Innovation proposals (2, grounded in pilot evidence)
 
-**Cover page (optional):**
-- Portfolio title: "[Your Name]'s AI Fluency Pilot Portfolio"
-- Date
-- Unit
-- Impact headline
-- DC CAP logo
+---
+
+#### **ASSESSMENT**
+
+[Your final assessment feedback from Stage 3, including level for each dimension and coaching feedback]
 
 ---
 
-### Full Pilot Journey Section (New for Capstone)
+#### **REVISED SUBMISSION (if applicable)**
+
+[If revision occurred: Updated sections with changes highlighted or noted]
+
+---
+
+#### **GROWTH TRAJECTORY**
+
+##### **PILOT JOURNEY** (Task 1 → Task 2 → Task 3 → Capstone)
 
 Add a 1-page section showing your Task 1 → Task 2 → Task 3 → Capstone trajectory:
+
+**Tracking across tasks:** Dimensions evolve as the pipeline complexity increases. The growth narrative should trace the underlying competency (Diligence, Description, Delegation, Discernment) rather than the specific dimension names, since each task measures the competency at a different level of integration.
 
 **My Pilot Journey: Task 1 → Task 3 → Capstone**
 
@@ -878,7 +997,7 @@ Add a 1-page section showing your Task 1 → Task 2 → Task 3 → Capstone traj
 
 ---
 
-### Growth Pattern Narrative (Qualitative)
+##### **Growth Pattern Narrative** (Qualitative)
 
 Add a 300-400 word reflection on your growth pattern without numerical scores:
 
@@ -893,7 +1012,13 @@ Add a 300-400 word reflection on your growth pattern without numerical scores:
 
 ---
 
-### Reflection Prompt (Capstone Edition)
+#### **OVERALL READINESS**
+
+[Your final readiness assessment for Q3: capstone showcase-ready, roles you're prepared for, next steps]
+
+---
+
+#### **PARTICIPANT REFLECTION**
 
 Answer these 3-4 questions in 2-3 sentences each:
 
@@ -907,7 +1032,7 @@ Answer these 3-4 questions in 2-3 sentences each:
 
 ---
 
-### Facilitator Notes (For Capstone Showcase)
+#### **FACILITATOR NOTES**
 
 Include brief notes for the June celebration facilitators:
 
@@ -947,7 +1072,7 @@ Example:
 
 ## Readiness Threshold
 
-**Most Meets or higher** on all 4 dimensions = **Capstone showcase-ready**
+**All or most dimensions at Meets or above (no dimension at Below)** = **Capstone showcase-ready**
 
 **Multiple Approaching** = Targeted revision on that dimension
 

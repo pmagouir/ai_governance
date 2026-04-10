@@ -19,6 +19,20 @@
 
 ---
 
+## A Word Before You Start
+
+In Task 1, you practiced the AI pipeline on a controlled scenario. Now you'll apply the same four steps to a real task from your own work.
+
+What's different this time: There's no answer key. You'll choose your own task, write your own prompts, and run them for real.
+
+You still have support. You'll have four checkpoints to guide you through each step, plus examples from all six DC CAP units to show you how different work scenarios translate to the pipeline.
+
+Plan for about 2 hours.
+
+And if you completed Task 1, you have everything you need for this. The framework doesn't change; only the stakes get real.
+
+---
+
 ## STAGE 1: INTRODUCE
 
 ### Your Learning Journey in This Skill
@@ -607,6 +621,8 @@ The audit is where you catch errors before they reach your audience. Good edit d
 - Rationales are present but somewhat generic. They reference general issues rather than YOUR specific context.
 - Audit findings exist but may be brief.
 
+**Note on Edit Counts:** These counts are typical indicators, not rigid thresholds. Three deeply specific, context-grounded edits demonstrate stronger audit practice than five generic edits. Assessors evaluate the quality and specificity of edits, with counts as a rough guide.
+
 **Below Standard**
 - Fewer than 2 edits documented or edits are vague.
 - Edit tags are incorrect or missing.
@@ -661,6 +677,18 @@ In Task 1, you learned each stage. In Task 2, you're supposed to prove you under
 
 ---
 
+### What Happens Next
+
+After receiving your feedback, check your results:
+
+- **All four dimensions at Meets or Exceeds** → Skip revision. Proceed directly to Stage 5: PACKAGE.
+- **One or two dimensions at Approaching** → Go to Stage 3b. Revise only the flagged dimensions, then resubmit for reassessment.
+- **Any dimension at Below** → Go to Stage 3b. Your facilitator will re-introduce the concept before you revise.
+
+You do not need to revise dimensions where you scored Meets or above.
+
+---
+
 ### Readiness Check: What's Different in Task 2
 
 This task assesses NOT just what you can do, but what you understand about the system:
@@ -672,11 +700,9 @@ This task assesses NOT just what you can do, but what you understand about the s
 
 **Task 2 Readiness Profile:**
 
-| Profile | Dimensions | Next Steps |
-|---------|-----------|-----------|
-| **Ready to Proceed to Task 3** | All four dimensions at Meets or above | Move to Task 3: Independent Pipeline + Unit Strategy. You're ready to run the full pipeline without checkpoints. |
-| **Ready with Targeted Revision** | 3 dimensions at Meets; 1 at Approaching | Revise the one Approaching dimension (usually Pipeline Coherence if others are strong). One revision cycle should bring you to Meets. |
-| **Revision Needed** | 2+ dimensions Approaching; or any Below | Complete targeted revision on the 1-2 lowest dimensions. Reassess until all reach Meets. |
+- **All or most dimensions at Meets or above (no dimension at Below):** Ready to proceed. Note any Approaching dimensions as stretch goals for the next task.
+- **Multiple dimensions at Approaching, none at Below:** One more targeted revision cycle. Focus on the 1-2 dimensions with the widest gap. The participant can revise just those sections.
+- **Any dimension at Below Standard:** Re-introduce the relevant concept before another revision. Walk through one example together, then revise.
 
 ---
 
@@ -708,9 +734,41 @@ What Shifted from Task 1:
 
 ---
 
+### EXAMPLE: What Your Feedback Will Look Like
+
+**Pipeline Coherence**
+
+Coaching Orientation: Pipeline Coherence measures whether your four checkpoints tell a connected story. The goal is that someone reading your work can see how your governance classification shaped your prompt, your prompt drove your tool choice, and your audit checked whether the prompt worked.
+
+Your Level: Approaching Standard
+
+What You Did Well: You completed all four checkpoints thoroughly. Your governance classification is correct (Tier 2 — scholar names with small-cell risk). Your CTCC prompt is well-structured with all four elements. Your audit identified three meaningful edits.
+
+What Would Strengthen This: The checkpoints feel like four separate exercises rather than a connected pipeline. Your Tier 2 classification identifies small-cell risk, but your CTCC prompt doesn't include an aggregation constraint. Your audit found tone and accuracy edits but didn't check whether Claude respected the governance boundaries you set. The retrospective doesn't connect your edit patterns back to prompt improvements.
+
+Transferable Skill: You're building "pipeline thinking" — the ability to trace a decision from governance through prompt through output through audit. This is how experienced AI practitioners catch problems early instead of fixing them late.
+
+Coaching Question: Read your Checkpoint 1 (governance classification) and Checkpoint 2 (CTCC prompt) side by side. Can you find the sentence in your prompt that reflects the governance constraint you identified? If it's not there, what would you add?
+
+Revision Guidance (3 items):
+1. Add one constraint to your CTCC prompt that directly reflects your Tier 2 classification.
+2. In your audit (Checkpoint 4), add one edit that checks whether Claude respected your governance constraints.
+3. In your retrospective, write 2-3 sentences connecting your edit findings to specific prompt improvements you'd make next time.
+
+---
+
 ---
 
 ## STAGE 3b: REASSESS (Revision + Delta)
+
+### Reassessment Protocol
+
+When the participant submits a revision, reassess using the SAME rubric dimensions and level definitions from Stage 3. The reassessment:
+
+1. **Re-evaluates each dimension** against the same rubric. A dimension can improve, stay the same, or (rarely) decrease if the revision introduced new issues.
+2. **Produces a delta comparison** showing the level transition and what specifically changed.
+3. **Applies the readiness check** to determine next step: proceed to packaging, another revision cycle, or concept re-introduction.
+4. **Does NOT require the participant to revise all dimensions.** If only 1-2 dimensions need work, they revise only those sections.
 
 ### When You're Revising
 
@@ -828,7 +886,7 @@ Once your work reaches Meets Standard or above on all dimensions, you'll assembl
 
 ### Portfolio Structure
 
-#### **Section 1: Task Overview**
+#### **TASK OVERVIEW**
 
 ```
 TASK: The Supported Pipeline (Task 2)
@@ -849,7 +907,7 @@ SUCCESS CRITERIA:
 
 ---
 
-#### **Section 2: Initial Submission**
+#### **INITIAL SUBMISSION**
 
 **CHECKPOINT 1: DILIGENCE**
 - Task description
@@ -875,13 +933,19 @@ SUCCESS CRITERIA:
 
 ---
 
-#### **Section 3: Assessment**
+#### **ASSESSMENT**
 
 [Your final assessment feedback from Stage 3, with level for each of four dimensions and coaching feedback]
 
 ---
 
-#### **Section 4: Growth Trajectory (if Revision Occurred)**
+#### **REVISED SUBMISSION (if applicable)**
+
+[If revision occurred: Updated checkpoints with changes highlighted or noted]
+
+---
+
+#### **GROWTH TRAJECTORY**
 
 **Dimension-by-Dimension Comparison**
 
@@ -894,7 +958,7 @@ SUCCESS CRITERIA:
 
 ---
 
-#### **Section 5: What Shifted from Task 1**
+#### **WHAT SHIFTED**
 
 **Explicit Comparison:**
 
@@ -922,7 +986,7 @@ In Task 1, you had a guided scenario and an answer key. In Task 2, you chose you
 
 ---
 
-#### **Section 6: Overall Readiness**
+#### **OVERALL READINESS**
 
 **Assessment Summary:**
 [Your final level on each of the four dimensions: Exceeds / Meets / Approaching / Below]
@@ -939,7 +1003,7 @@ In Task 1, you had a guided scenario and an answer key. In Task 2, you chose you
 
 ---
 
-#### **Section 7: Participant Reflection**
+#### **PARTICIPANT REFLECTION**
 
 **Reflection Prompt (Data-Grounded):**
 
@@ -958,7 +1022,7 @@ As you move into Task 3, where you'll run the pipeline independently AND think s
 
 ---
 
-#### **Section 8: Facilitator Notes**
+#### **FACILITATOR NOTES**
 
 **Performance Pattern (Facilitator-Populated):**
 [The facilitator will note specific strengths, areas for growth, and what peer learning would be valuable for this participant.]

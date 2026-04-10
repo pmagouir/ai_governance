@@ -1,0 +1,44 @@
+{
+  "taskNumber": 2,
+  "taskName": "The Supported Pipeline: Real Work, Structured Checkpoints",
+  "competency": "Diligence, Description, Delegation, Discernment",
+  "week": "3-4 (April 18-May 1, 2026)",
+  "participantName": "Marcus Chen",
+  "unit": "Data & Technology",
+  "date": "May 1, 2026",
+  "successCriteria": "Apply the 4D pipeline to a real DC CAP task with no answer key. Governance classification, CTCC prompt, skill selection, and output audit documented at Meets Standard or above.",
+  "sections": {
+    "performanceSnapshot": [
+      {
+        "dimension": "Real Governance",
+        "level": "Meets",
+        "evidence": "Correctly classified funder data request as Tier 2 (aggregated outcomes with small-cell risk); identified re-identification pathway between disaggregated demographics and public school data."
+      },
+      {
+        "dimension": "CTCC Prompt Quality",
+        "level": "Meets",
+        "evidence": "Prompt included all four components (Context: funder context and use case; Task: generate aggregated summary; Constraints: Tier 2 handling, flag cells N<10; Content: scholar outcome data parameters). Governance constraints explicitly embedded."
+      },
+      {
+        "dimension": "Modality Judgment",
+        "level": "Exceeds",
+        "evidence": "Selected Automation for data aggregation (Claude handles query framework) + Augmentation for narrative drafting (human adds strategic context). Clear articulation of why data governance verification is human-only."
+      },
+      {
+        "dimension": "Output Audit Rigor",
+        "level": "Meets",
+        "evidence": "Documented six edits with tags (3 Accuracy Fixes, 2 Strategic Additions, 1 Removal). All edits tied back to governance compliance or prompt clarity. Human judgment layer addressed verification steps for small-cell suppression."
+      }
+    ],
+    "growthStory": "Task 1 gave you the framework in a controlled scenario; Task 2 tested it on real work with no answer key. Your governance classification was stronger in Task 2 — you moved faster and caught a Tier 2 edge case (small-cell risk in demographic breakdowns) that the Task 1 scenarios hadn't explicitly emphasized. The prompt design was solid but revealed an opportunity for Task 3: your first-pass prompts work well, but you didn't iterate them based on governance constraints. You know the framework; now the growth edge is treating prompt refinement as a governance exercise, not an afterthought. This is the threshold between correct-once and refined-repeatedly.",
+    "reflection": {
+      "prompt": "Task 1 was theoretical with an answer key; Task 2 was your actual work with no safety net. What was different about classifying real data vs. the scenario data?",
+      "response": "Real data made it concrete. I know our funder relationships, I know the exact fields in our data, I know which partner institutions have small scholar populations. All that context meant I wasn't memorizing tier definitions — I was mapping our actual governance risks. The small-cell issue in the demographics data? That's specific to a funder request I handle quarterly. Task 2 made the framework stick because it was about my real work."
+    },
+    "facilitatorNotes": {
+      "pattern": "Transfers Task 1 framework to real work with confidence and speed. Governance classification remains accurate; prompt design is solid on first pass. Growth edge is iterative refinement — this participant moves to correct, where some others in the cohort iterate once or twice before submitting. Ready to challenge them on prompt refinement in Task 3.",
+      "discussionQuestion": "Marcus classified real funder data faster than the Task 1 scenarios. What made real data easier to classify? Can we build that confidence — the confidence that comes from knowing your actual work — into how we approach new governance challenges we haven't seen before?"
+    },
+    "multiTaskComparison": "Task 1 → Task 2: Classification Accuracy remained Meets; speed improved dramatically. Reasoning Specificity moved from Approaching (vague combination analysis) to Meets (traced re-identification pathways clearly). This is the transfer you'd want to see — theory becomes fast, automatic practice. Modality Judgment jumped from no baseline to Exceeds because Marcus understood why humans handle data governance verification. The cohort should notice this: real work made everything clearer. Auditing is still a growth edge — Marcus's first-pass audit was thorough but didn't identify as many optimization opportunities as peers who iterated more. Ready for Task 3 with recommendation to iterate prompts at least once before submission."
+  }
+}

@@ -21,6 +21,22 @@
 
 ## STAGE 1: INTRODUCE
 
+### What This Is and What You'll Do
+
+**You'll practice using Claude to help with two common DC CAP tasks.** There are correct answers for this task, and you'll get feedback on your work to help you improve.
+
+In this task, you'll practice four things in plain English:
+1. Figure out what kind of data you're working with (and whether it's safe to share with AI)
+2. Write a clear, specific request for Claude that reflects what you know about the data
+3. Pick the right tool and approach for the job (and decide how much Claude should handle versus how much you should)
+4. Check and fix what Claude produces, explaining what you changed and why
+
+**You don't need any prior AI experience. Every step is guided.** You'll have examples, templates, and an answer key to help you along the way.
+
+**Plan for about 2 hours total.** The initial work (reading, thinking, and running prompts) takes 90-120 minutes. If you get feedback on your work and revise, add another 30-45 minutes.
+
+---
+
 ### Your Learning Journey in This Skill
 
 In this task, you'll run the complete 4D AI governance pipeline — Diligence, Description, Delegation, Discernment — on a realistic DC CAP scenario with full scaffolding and an answer key. This isn't a simulation: you'll classify real governance tiers, write CTCC prompts, select the right AI skills, and audit Claude's output exactly as you'll do in your real work. By the end, you'll have a complete, production-ready example to reference for all future AI use at DC CAP.
@@ -47,9 +63,15 @@ Your unit director sends you this message on Monday morning:
 
 You will work through the complete pipeline for BOTH sub-tasks, treating them as integrated examples of how the 4D framework applies to different kinds of requests.
 
+### Why This Scenario Matters for Your Unit
+
+This scenario involves a partner email and a board data summary drawn from a real DC CAP workflow. Your unit may handle very different workflows — you might be focused on counselor outreach, student communications, internal analytics, or something else entirely. The four skills you're practicing here — classifying data, writing prompts, choosing the right tool, and auditing output — transfer directly to any task in any unit. In Task 2 (coming later), you'll apply these exact skills to a real workflow from your own work.
+
 ---
 
 ### The 4D Pipeline Explained
+
+**A quick note on reading this section:** The four stages and frameworks below contain a lot of detail. Don't try to memorize all of this. Each framework is referenced again when you need it in Stage 2 (DRAFT). Think of this section as your reference guide — skim now, return to it when you're working on each step.
 
 Every AI interaction at DC CAP requires all four stages:
 
@@ -331,6 +353,8 @@ In this stage, you'll work through the 4D pipeline step-by-step for both the par
 - **Constraints:** What governance and tone rules apply? (Tier 3 data; no individual student data; maintain strong partnership tone; brief)
 - **Content:** What specific information should Claude use? (Partner names: Trinity, Bowie State, CSU, GW, Howard, UDC; deadline: May 1; context: preference lists haven't been submitted)
 
+**A note on details you don't know:** This is a training exercise, and you won't have every detail about this scenario at your fingertips. For information you don't know — like the exact method partners use to submit their lists, the specific reason the board needs the data by this date, or the contact person at each university — **make up something realistic.** The goal is to practice writing a complete, specific prompt. Plausible details are better than vague placeholders. (In Task 2, you'll use your own real work, so this won't be an issue.)
+
 **Your turn:** Write your complete CTCC prompt. Make sure it reflects the Tier 3 classification from Step 1a. (Don't run it yet — write it first.)
 
 ---
@@ -439,6 +463,8 @@ Write 4-5 sentences answering: "What I'd verify or add before sending this email
 - **Task:** Generate a summary of scholar counts by university and award type
 - **Constraints:** Aggregate safely — minimum N=10 per cell; no individual student data; format for board visibility
 - **Content:** Provide the parameters (universities: Trinity, Bowie State, CSU, GW, Howard, UDC; award types: MSI, SAI, Last Dollar) but NOT the raw student-level data
+
+**Remember:** You can make up realistic details here. You don't need actual scholar counts or real Salesforce field names. The goal is practicing the prompt structure — specifying what you want, how it should be aggregated, and what governance constraints apply.
 
 **Your turn:** Write your complete CTCC prompt. Make sure you're asking Claude for aggregated output, not raw data. Don't paste individual student records; instead, ask Claude to generate the query or analysis.
 
@@ -562,6 +588,49 @@ Governance is the foundation. If you misclassify a tier, everything downstream i
 **Calibration Anchors (Approaching → Meets Boundary)**
 - Meets requires: explicit reference to the re-identification risk (small cells) in the data summary AND a demonstration that your prompts reflect the governance tier (e.g., "I didn't include individual student records because this is Tier 1→2 aggregation").
 - Approaching shows awareness but lacks specificity: "I know this is sensitive data, so I asked Claude to aggregate" (good start, but missing the N ≥ 10 threshold and explicit Tier 2 classification).
+
+---
+
+### EXAMPLE: What Your Feedback Will Look Like
+
+Below is one worked example showing what feedback looks like when a participant scores Approaching Standard on Governance Accuracy. This is an example so you can see what to expect and what it means. This is NOT your actual feedback — your feedback will be personalized to your work.
+
+```
+GOVERNANCE ACCURACY
+
+Coaching Orientation:
+Governance classification is the foundation of the entire pipeline. When you get the tier right, 
+everything downstream — your prompt, your tool choice, your audit — builds on solid ground.
+
+Your Level: Approaching Standard
+
+What You Did Well:
+You correctly identified that the data summary involves scholar data and recognized that partner-level 
+information is involved. Your classification reasoning shows you understand the tier system exists and 
+matters.
+
+What Would Strengthen This:
+Your classification says "Tier 3 — this is internal data" but doesn't address the small-cell risk. The 
+data summary includes scholar counts by partner, and some partners may have fewer than 10 scholars. 
+When cells drop below 10, aggregated data can enable re-identification, which moves the classification 
+to Tier 2. Your CTCC prompt doesn't include any aggregation constraints, which means Claude could 
+produce a summary that exposes small cells.
+
+Transferable Skill:
+You're building "governance-first thinking" — the habit of asking "what could go wrong with this data?" 
+before writing a single prompt. This transfers to every AI task you'll encounter.
+
+Coaching Question:
+If a partner has only 3 scholars in one award type, what would someone need to figure out that person's 
+identity? How does that change what you ask Claude to do?
+
+Revision Guidance (3 items):
+1. Re-read the Tier 2 definition, specifically the small-cell threshold (N < 10). Then re-classify the 
+   data summary with this in mind.
+2. Revise your CTCC prompt to include an explicit constraint about minimum cell sizes.
+3. Add one sentence to your human judgment layer explaining what you'd verify before sharing this 
+   summary with the board.
+```
 
 ---
 
@@ -692,11 +761,11 @@ The irreplaceable human layer is what separates humans from AI. You bring relati
 
 After your work is assessed, you'll be placed in one of these readiness categories:
 
-| Readiness | Profile | Next Steps |
-|-----------|---------|-----------|
-| **Ready to Proceed** | Meets Standard or above on all four dimensions | Proceed directly to Task 2 (Supported Pipeline). You're ready to apply the framework to your own work. |
-| **Ready with Targeted Revision** | Meets Standard on 3 dimensions; Approaching on 1 dimension | Revise the lowest dimension (Stage 4b, below). One focused revision cycle should bring you to Meets across the board. |
-| **Revision Needed** | Approaching on 2+ dimensions; or Below on any dimension | Complete a targeted revision (Stage 4b) addressing the 1-2 lowest dimensions. Reassessment follows. Once you reach Meets on all four, you proceed to Task 2. |
+**All or most dimensions at Meets or above (no dimension at Below):** Ready to proceed. Note any Approaching dimensions as stretch goals for the next task.
+
+**Multiple dimensions at Approaching, none at Below:** One more targeted revision cycle. Focus on the 1-2 dimensions with the widest gap. The participant can revise just those sections.
+
+**Any dimension at Below Standard:** Re-introduce the relevant concept before another revision. Walk through one example together, then revise.
 
 The goal is Meets Standard across all dimensions. This is a learning task; revision is expected and valuable.
 
@@ -733,6 +802,15 @@ Revision Guidance (if Approaching or Below):
 
 If you've been directed to revise, this stage guides your second iteration.
 
+### Reassessment Protocol
+
+When the participant submits a revision, reassess using the SAME rubric dimensions and level definitions from Stage 3. The reassessment:
+
+1. **Re-evaluates each dimension** against the same rubric. A dimension can improve, stay the same, or (rarely) decrease if the revision introduced new issues.
+2. **Produces a delta comparison** showing the level transition and what specifically changed.
+3. **Applies the readiness check** to determine next step: proceed to packaging, another revision cycle, or concept re-introduction.
+4. **Does NOT require the participant to revise all dimensions.** If only 1-2 dimensions need work, they revise only those sections.
+
 ### When You're Revising
 
 You'll receive feedback indicating which dimension(s) to prioritize. Use this framework:
@@ -762,9 +840,11 @@ When you resubmit, your reassessment will include a delta comparison:
 
 This delta shows you exactly what shifted from initial to revised work.
 
-### Readiness Threshold for Moving Forward
+### Readiness Check
 
-Once all four dimensions reach **Meets Standard or above**, you are ready to proceed to Task 2.
+- **All or most dimensions at Meets or above (no dimension at Below):** Ready to proceed. Note any Approaching dimensions as stretch goals for the next task.
+- **Multiple dimensions at Approaching, none at Below:** One more targeted revision cycle. Focus on the 1-2 dimensions with the widest gap. The participant can revise just those sections.
+- **Any dimension at Below Standard:** Re-introduce the relevant concept before another revision. Walk through one example together, then revise.
 
 ---
 
@@ -862,7 +942,7 @@ Once your work reaches Meets Standard or above on all dimensions, you'll assembl
 
 ### Portfolio Structure
 
-#### **Section 1: Task Overview**
+#### **TASK OVERVIEW**
 
 ```
 TASK: The Guided Pipeline (Task 1)
@@ -880,7 +960,7 @@ SUCCESS CRITERIA:
 
 ---
 
-#### **Section 2: Initial Submission**
+#### **INITIAL SUBMISSION**
 
 **SUB-TASK 1: PARTNER REMINDER EMAIL**
 
@@ -932,13 +1012,19 @@ SUCCESS CRITERIA:
 
 ---
 
-#### **Section 3: Assessment**
+#### **ASSESSMENT**
 
 [Your final assessment feedback from Stage 3, including level for each dimension and coaching feedback]
 
 ---
 
-#### **Section 4: Growth Trajectory (if Revision Occurred)**
+#### **REVISED SUBMISSION (if applicable)**
+
+[If revision occurred: Updated work from Stage 4, with changes highlighted or noted]
+
+---
+
+#### **GROWTH TRAJECTORY**
 
 **Dimension-by-Dimension Comparison**
 
@@ -951,7 +1037,7 @@ SUCCESS CRITERIA:
 
 ---
 
-#### **Section 5: Overall Readiness**
+#### **OVERALL READINESS**
 
 **Assessment Summary:**
 [Your final level on each dimension: Exceeds / Meets / Approaching / Below]
@@ -969,7 +1055,7 @@ SUCCESS CRITERIA:
 
 ---
 
-#### **Section 6: Participant Reflection**
+#### **PARTICIPANT REFLECTION**
 
 **Reflection Prompt (Data-Grounded):**
 
@@ -985,7 +1071,7 @@ A question for your reflection: **As you move into Task 2 with your own work, wh
 
 ---
 
-#### **Section 7: Facilitator Notes**
+#### **FACILITATOR NOTES**
 
 **Performance Pattern (Facilitator-Populated):**
 [The facilitator will note: What strengths does this participant demonstrate? Where do they need support? What peer learning could help? What discussion would be valuable in the next cohort session?]

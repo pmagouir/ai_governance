@@ -8,6 +8,18 @@
 
 ---
 
+## Your Starting Point
+
+You've practiced the AI pipeline with guided support (Task 1) and with checkpoints (Task 2). Now you run it on your own. No checkpoints. No answer key. No step-by-step walk-through. You'll decide what to do, how to do it, and whether the result is good enough.
+
+What's new is strategic thinking. You won't just run the pipeline on one task—you'll map your unit's work and answer the big question: Which of your unit's tasks should use AI? Which shouldn't? You'll build a deployment plan for your team based on what you've learned.
+
+The frameworks are the same ones you've used twice already. You're just using them independently now, at scale, for your unit. And you're thinking like a leader about what gets automated, augmented, or kept human—and why.
+
+Plan for about 2-3 hours. You've done this twice already. You know how it works.
+
+---
+
 ## STAGE 1: INTRODUCE
 
 ### Overview
@@ -84,6 +96,12 @@ For each of your 8 tasks, ask three questions. Answer "yes" to all three to move
 - If Claude makes a mistake, can you catch and fix it before harm?
 - Examples: "Draft an email" = Yes (you review before sending). "Route scholar to counselor based on risk score" = No (routing happens before you notice).
 
+### Facilitator Note: Unit Differences in AI-Readiness Profiles
+
+Different units will naturally show different AI-readiness profiles, and this reflects structural reality, not capability gaps. Units that handle sensitive data frequently (Student Success, Operations) will likely have more tasks that fail the 'Recoverable Errors' test because mistakes in student data or compliance carry higher stakes. Units with structured, repeatable data workflows (Data & Technology) will likely have more Deploy Now candidates.
+
+If a participant's deployment map shows mostly Human Core tasks, that may indicate strong governance awareness rather than limited AI readiness. Assess the quality of their reasoning about WHY tasks belong in each quadrant, not the number of tasks in Deploy Now.
+
 ### What You Produce: Part A Deliverable
 
 Create a table with 8 rows (one for each recurring task in your unit):
@@ -111,6 +129,8 @@ Create a table with 8 rows (one for each recurring task in your unit):
 **Development:** Funder update drafts (progress toward outcomes + use-of-funds stories), donor meeting prep (donor-specific giving history + program connection), proposal outcome summaries (results against stated goals)
 
 **Operations:** Budget summaries (line-item overviews, variance analysis), vendor communications (RFP responses, renewal deadlines), compliance checklists (audit-readiness documentation)
+
+**Innovation Hub:** Pilot evaluation summaries (assess whether new initiative met targets; Aggregated pilot outcomes [Tier 3/4], but individual participant feedback may be Tier 2), partnership exploration briefs (research potential partners and draft outreach; Partner organization details [Tier 4—public], but internal strategic positioning [Tier 3]), AI governance documentation (update internal policies and training materials based on pilot learnings; Published policies [Tier 4], but audit findings referencing specific staff performance [Tier 2])
 
 ---
 
@@ -306,7 +326,7 @@ You're creating three complete deliverables:
 
 Your Task 3 work is evaluated across 4 dimensions. Each dimension has 4 levels: **Exceeds / Meets / Approaching / Below Standard.**
 
-The readiness threshold: **Most Meets or higher** on all 4 dimensions = proceed to capstone. **Multiple Approaching** = targeted revision. **Any Below** = re-teach on that competency.
+The readiness threshold: **All or most dimensions at Meets or above (no dimension at Below)** = proceed to capstone. **Multiple dimensions at Approaching, none at Below** = targeted revision. **Any dimension at Below Standard** = re-teach on that competency.
 
 ---
 
@@ -361,6 +381,31 @@ Example (Approaching):
 - Governance tiers are incorrect or absent
 - Missing alignment between stated AI-readiness and quadrant placement (e.g., "fails readiness test but Deploy Now")
 
+**EXAMPLE: What Your Feedback Will Look Like**
+
+**Strategic Mapping Quality**
+
+*Coaching Orientation:* The deployment map is your unit's AI strategy on one page. It should show that you understand which tasks benefit from AI and why, grounded in both how often you do them and whether they're structured enough for Claude to handle well.
+
+*Your Level:* Approaching Standard
+
+*What You Did Well:* You identified 8 recurring tasks and placed each one in the 2x2 matrix. Your frequency estimates look reasonable and several of your AI-readiness classifications are solid—particularly the partner email (Deploy Now: weekly, all three tests pass) and the case review (Human Core: requires counselor judgment).
+
+*What Would Strengthen This:* Four of your eight rationales address frequency but skip the AI-readiness reasoning. For example, your "budget reconciliation" entry says "monthly, moderate complexity" but doesn't address the three AI-readiness questions. Can you reconcile a budget the same way every time? Can you describe exactly what data Claude needs? If Claude makes an error in a budget line, can you catch it before it reaches finance? Without answering these, the quadrant placement is based on intuition rather than structured analysis.
+
+*Transferable Skill:* You're building "structured decision-making"—the ability to evaluate a task against explicit criteria rather than gut feel. This transfers to any resource allocation or prioritization decision.
+
+*Coaching Question:* Pick two of the tasks where you skipped the AI-readiness reasoning. Walk through the three questions for each. Does the quadrant placement change?
+
+*Revision Guidance (3 items):*
+1. For each of the 4 rationales that only address frequency, add explicit answers to all three AI-readiness questions.
+2. Check whether any quadrant placements change after you complete the AI-readiness reasoning.
+3. For your top 2 Deploy Now targets, add one sentence explaining why these are the highest-ROI starting points for your unit.
+
+**Calibration Anchor: Approaching → Meets Boundary**
+
+**Strategic Mapping Quality:** Approaching looks like—6 of 8 tasks have specific deliverables but 3 lack frequency indicators. Rationales address AI-readiness for most tasks but rely on intuition rather than the 3-question test. Meets looks like—All 8 tasks name a deliverable, audience, and frequency. At least 6 of 8 rationales explicitly reference the AI-readiness test (repeatable/describable/recoverable).
+
 ---
 
 ### DIMENSION 2: Independent Pipeline Execution
@@ -410,6 +455,10 @@ Example (Approaching):
 - **Stage 3:** Skill or modality choice is inappropriate; rationale shows misunderstanding of human-AI balance
 - **Stage 4:** Audit is superficial; edits are undocumented; human judgment is absent
 
+**Calibration Anchor: Approaching → Meets Boundary**
+
+**Independent Pipeline Execution:** Approaching looks like—The participant runs all 4 stages but governance classification doesn't visibly shape the prompt. The audit catches surface-level issues but misses the governance compliance check. Meets looks like—Each pipeline stage connects to the next. Governance constraints appear in the prompt's Content or Constraints element. The audit specifically checks governance compliance.
+
 ---
 
 ### DIMENSION 3: Before/After Documentation
@@ -458,6 +507,10 @@ Example (Meets):
 - **Quality gained:** Not specified or not credible.
 - **Documented instance:** None provided.
 
+**Calibration Anchor: Approaching → Meets Boundary**
+
+**Before/After Documentation:** Approaching looks like—"Before: I used to write the email manually. After: Now I use Claude." No time quantification, no specific steps. Meets looks like—"Before: 2–3 hours drafting + 1 hour review across 3 Salesforce reports. After: 45 minutes with Claude handling the initial draft, me editing for tone and verifying partner data." At least one documented instance.
+
 ---
 
 ### DIMENSION 4: Governance + Deployment Integration
@@ -500,6 +553,10 @@ Example (Meets):
 - Human verification layer is absent
 - Teaching pathway is not named
 
+**Calibration Anchor: Approaching → Meets Boundary**
+
+**Governance + Deployment Integration:** Approaching looks like—Governance tiers assigned but reasoning absent. The teaching pathway says "show them how to use Claude" without specifying governance checks. Meets looks like—Governance tiers correct with reasoning tied to specific data types. Teaching pathway names the governance check the learner should run before sending output.
+
 ---
 
 ### Governance-Prompt Consistency Check (Carried Forward from Task 2)
@@ -526,6 +583,21 @@ The assessment will surface your full growth pattern:
 **Task 3 (Independent):** You ran the pipeline with no scaffolding, you classified real unit data correctly, you thought strategically about deployment, you quantified impact.
 
 **The shift:** From "following steps correctly" → "running the system independently" → "thinking strategically about organizational deployment."
+
+**Dimension progression:** Governance Accuracy (Task 1) → Governance Integration (Task 2) → Governance + Deployment Integration (Task 3). Each level adds complexity: classification → pipeline integration → strategic deployment planning. The underlying competency is Diligence (governance discipline), but each task measures it at a different level of integration and organizational scope.
+
+---
+
+## STAGE 3b: REASSESS (Revision + Delta)
+
+### Reassessment Protocol
+
+When the participant submits a revision, reassess using the SAME rubric dimensions and level definitions from Stage 3. The reassessment:
+
+1. **Re-evaluates each dimension** against the same rubric. A dimension can improve, stay the same, or (rarely) decrease if the revision introduced new issues.
+2. **Produces a delta comparison** showing the level transition and what specifically changed.
+3. **Applies the readiness check** to determine next step: proceed to packaging, another revision cycle, or concept re-introduction.
+4. **Does NOT require the participant to revise all dimensions.** If only 1-2 dimensions need work, they revise only those sections.
 
 ---
 
@@ -586,11 +658,19 @@ The assessment will surface your full growth pattern:
 
 ## STAGE 5: PACKAGE
 
-### The Portfolio Format
+### Portfolio Structure
 
-Your Task 3 portfolio includes three sections:
+Your Task 3 portfolio includes the following sections:
 
-#### **SECTION 1: Unit Deployment Map (Part A)**
+#### **TASK OVERVIEW**
+
+[Summary of Task 3 focus: Independent pipeline execution, strategic deployment mapping, quantified impact evidence]
+
+---
+
+#### **INITIAL SUBMISSION**
+
+##### **Part A: Unit Deployment Map (Part A)**
 
 **Format:** Structured table with 8 rows
 
@@ -609,7 +689,7 @@ Your Task 3 portfolio includes three sections:
 
 ---
 
-#### **SECTION 2: Full Independent Pipeline Execution (Part B)**
+##### **Part B: Full Independent Pipeline Execution (Part B)**
 
 **Format:** 4-stage document
 
@@ -666,7 +746,7 @@ Your Task 3 portfolio includes three sections:
 
 ---
 
-#### **SECTION 3: Before/After Documentation (Part C)**
+##### **Part C: Before/After Documentation (Part C)**
 
 **Format:** 300-400 word document with three clear sections
 
@@ -694,7 +774,21 @@ Your Task 3 portfolio includes three sections:
 
 ---
 
-### Growth Trajectory Narrative (Task 1→2→3)
+#### **ASSESSMENT**
+
+[Your final assessment feedback from Stage 3, including level for each dimension and coaching feedback]
+
+---
+
+#### **REVISED SUBMISSION (if applicable)**
+
+[If revision occurred: Updated work from Stage 4, with changes highlighted or noted]
+
+---
+
+#### **GROWTH TRAJECTORY**
+
+##### **Growth Narrative (Task 1→2→3)**
 
 Include a one-page reflection on your growth:
 
@@ -713,7 +807,7 @@ Include a one-page reflection on your growth:
 
 ---
 
-### Reflection Prompt
+#### **PARTICIPANT REFLECTION**
 
 Before you submit, answer these questions in 2-3 sentences each:
 
@@ -727,7 +821,7 @@ Before you submit, answer these questions in 2-3 sentences each:
 
 ---
 
-### Facilitator Notes Guidance
+#### **FACILITATOR NOTES**
 
 When you hand off your Task 3 portfolio, include brief facilitator notes:
 
@@ -757,11 +851,11 @@ When you hand off your Task 3 portfolio, include brief facilitator notes:
 
 ## Readiness Threshold
 
-**Most Meets or higher** on all 4 dimensions = **Proceed to Capstone**
+**All or most dimensions at Meets or above (no dimension at Below):** Ready to proceed to Capstone. Note any Approaching dimensions as stretch goals.
 
-**Multiple Approaching** = Targeted revision on that dimension
+**Multiple dimensions at Approaching, none at Below:** One more targeted revision cycle. Focus on the 1-2 dimensions with the widest gap.
 
-**Any Below Standard** = Re-teach the underlying competency; redo that dimension
+**Any dimension at Below Standard:** Re-introduce the relevant concept before another revision. Walk through one example together, then revise.
 
 ---
 

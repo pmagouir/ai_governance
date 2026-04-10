@@ -72,15 +72,6 @@
       "status": "published"
     },
     {
-      "date": "2026-04-10",
-      "category": "news",
-      "title": "Your Anthropic Academy Certificate Matters",
-      "content": "The AI Fluency for Nonprofits course you're completing this week was built in partnership with GivingTuesday and specifically adapted for organizations like DC CAP — teams with limited resources, multiple stakeholder accountabilities, and mission-driven work. The certificate you earn is recognized by Anthropic and signals that you've completed structured training in the 4D framework. Beyond the credential: the course covers the same competencies we'll practice hands-on during the pilot. Think of it as the conceptual foundation. The pilot activities are where you apply it to DC CAP's actual work.",
-      "tryThis": "When you finish the course, screenshot your certificate and share it in the pilot Slack channel. Seeing your cohort complete the same milestone builds momentum.",
-      "resource": "https://anthropic.skilljar.com",
-      "status": "published"
-    },
-    {
       "date": "2026-04-13",
       "category": "foundational",
       "title": "Discernment Starts With One Question",
@@ -132,5 +123,16 @@
       "status": "published"
     }
   ],
-  "archive": []
+  "archive": [
+    {
+      "date": "2026-04-10",
+      "category": "news",
+      "title": "Your Anthropic Academy Certificate Matters",
+      "content": "The AI Fluency for Nonprofits course you're completing this week was built in partnership with GivingTuesday and specifically adapted for organizations like DC CAP — teams with limited resources, multiple stakeholder accountabilities, and mission-driven work. The certificate you earn is recognized by Anthropic and signals that you've completed structured training in the 4D framework. Beyond the credential: the course covers the same competencies we'll practice hands-on during the pilot. Think of it as the conceptual foundation. The pilot activities are where you apply it to DC CAP's actual work.",
+      "tryThis": "When you finish the course, screenshot your certificate and share it with your pilot cohort. Seeing your team complete the same milestone builds momentum.",
+      "resource": "https://anthropic.skilljar.com",
+      "status": "archived",
+      "archivedReason": "Superseded by Glasswing news entry for April 10"
+    }
+  ]
 }
