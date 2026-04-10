@@ -2730,18 +2730,21 @@
             return entryDate <= today;
         });
 
+        // Sort by date descending so newest entry is always first
+        visibleEntries.sort((a, b) => new Date(b.date + 'T00:00:00') - new Date(a.date + 'T00:00:00'));
+
         if (visibleEntries.length === 0) {
             featuredContainer.innerHTML = '<div class="no-entries-message">The Daily Briefing launches April 6, 2026.</div>';
             archiveContainer.innerHTML = '';
             return;
         }
 
-        // Featured = most recent entry
-        const featured = visibleEntries[visibleEntries.length - 1];
+        // Featured = most recent entry (first after descending sort)
+        const featured = visibleEntries[0];
         featuredContainer.innerHTML = renderFeaturedEntry(featured);
 
-        // Archive = everything else, reverse chronological
-        const archive = visibleEntries.slice(0, -1).reverse();
+        // Archive = everything after featured, already in reverse chronological order
+        const archive = visibleEntries.slice(1);
         if (archive.length === 0) {
             archiveContainer.innerHTML = '';
             return;
