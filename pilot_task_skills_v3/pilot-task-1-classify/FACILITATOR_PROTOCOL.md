@@ -15,6 +15,7 @@
 - [ ] Spot-check 2 participants (20% sample) — compare your assessment to the skill's automated assessment. Note any disagreements for calibration.
 - [ ] Review all Below Standard flags — these participants may need facilitator encouragement alongside the automated reteaching module.
 - [ ] Review all Exceeds Standard — confirm the extension challenge is appropriate and the participant isn't coasting.
+- [ ] **Late / Missed Task:** If no submission by Day 13 (grace period): send final outreach. If still missing, apply the missed-task fallback from the master architecture.
 
 ---
 
@@ -31,6 +32,10 @@
 
 **What NOT to spend time on:** Formatting of the deliverable, exact word count on reasoning sections, whether they used bullet points vs. paragraphs. Focus on classification accuracy and reasoning quality, not presentation.
 
+**If a participant reports the task is taking too long:**
+
+> The task is designed for 2-2.5 hours including reading time. If a participant is past 2 hours and not yet done, the most common cause is spending too long on reasoning for each scenario. Tell them: "Focus on your strongest 4 scenarios and your quick-reference card first. You can refine the remaining 2 scenarios in revision." A partial, high-quality submission is better than an abandoned complete one.
+
 ---
 
 ## Caseload Reality
@@ -44,7 +49,8 @@ You have 10 participants and a full CSAO workload. Here's how to manage this in 
 | Below Standard outreach | 15 min/person | As flagged |
 | Exceeds Standard review | 10 min/person | As flagged |
 | Revision spot-check | 20 min | After revisions |
-| **Total per cycle** | **~2 hours** | |
+| Data entry (spreadsheet) | 5 min/participant | After assessment |
+| **Total per cycle** | **~2.5-3 hours** | |
 
 **Triage rule:** If you can only review 2 participants deeply, choose: (1) the Below Standard participant most likely to disengage, and (2) the Exceeds Standard participant who could become a peer teaching resource.
 

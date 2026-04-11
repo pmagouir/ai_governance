@@ -122,7 +122,7 @@ Each skill (Tasks 2+) opens by referencing the participant's prior task assessme
 **4D Competency:** Diligence (PRIMARY)
 **Cognitive Demand:** Analytical categorization, boundary reasoning, edge-case resolution
 **Scaffolding:** High
-**Skill Name:** `pilot-task-1-guided-pipeline`
+**Skill Name:** `pilot-task-1-classify`
 
 ### Task Description
 
@@ -211,7 +211,7 @@ The skill evaluates the memo by:
 **Cognitive Demand:** Design, execution, plan-vs-reality analysis
 **Scaffolding:** Medium
 **Prerequisite:** Task 1 completed
-**Skill Name:** `pilot-task-2-supported-pipeline`
+**Skill Name:** `pilot-task-2-create`
 
 ### Task Description
 
@@ -294,7 +294,7 @@ The skill evaluates by:
 **Cognitive Demand:** Evaluation, diagnosis, corrective action
 **Scaffolding:** Low
 **Prerequisite:** Tasks 1-2 completed
-**Skill Name:** `pilot-task-3-independent-pipeline`
+**Skill Name:** `pilot-task-3-critique`
 
 ### Task Description
 
@@ -521,7 +521,7 @@ The skill cross-references self-ratings against actual Task 1-4 performance for 
 
 If a participant rates themselves "Proficient" (Meets or above) on a competency but was Approaching on the corresponding task dimensions, the assessment flags the gap and asks for reconciliation.
 
-### Assessment Dimensions (4)
+### Assessment Dimensions (5)
 
 #### Use Case Impact
 
@@ -602,10 +602,10 @@ Each task requires competencies built in prior weeks. The sequence is deliberate
 
 | Task | Estimated Initial Submission | Estimated Revision | Total |
 |------|-------|---------|-------|
-| 1: CLASSIFY | 90-120 min | 30-45 min | ~2-2.5 hrs |
+| 1: CLASSIFY | 2-2.5 hrs (incl. reading) | 30-45 min | ~2.5-3 hrs |
 | 2: CREATE | 60-90 min | 20-30 min | ~1.5-2 hrs |
 | 3: CRITIQUE | 60-90 min | 20-30 min | ~1.5-2 hrs |
-| 4: STRATEGIZE | 90-120 min | 30-45 min | ~2-2.5 hrs |
+| 4: STRATEGIZE | 2-2.5 hrs (incl. thinking) | 30-45 min | ~2.5-3 hrs |
 | Capstone: TEACH + SYNTHESIZE | 2-2.5 hrs | 30-45 min | ~2.5-3 hrs |
 
 **Note:** These are working estimates. Time includes thinking, writing, and running prompts through Claude -- not just typing. Revision time assumes targeted revision (1-2 dimensions), not full rewrite. Differentiated pathways (extension challenges, re-teaching) may add 15-30 minutes. Each task runs across a 2-week window, so participants can spread the work across multiple sessions.
@@ -669,6 +669,33 @@ If docx rendering is not available in the current session, the skill should outp
 
 ## Implementation Notes
 
+### Claude Onboarding (Pre-Task 2)
+
+**Timing:** Delivered during Week 2 (between Task 1 submission and Task 2 start).
+**Format:** Asynchronous -- a 1-page guide emailed to all participants.
+**Purpose:** Ensure every participant can access and use Claude before Task 2 requires them to run a prompt.
+
+**The guide covers:**
+
+1. **Accessing Claude:** Go to claude.ai. Log in with your DC CAP account (credentials provided separately). You should see a chat interface.
+2. **Starting a conversation:** Click "New chat." Type or paste your prompt. Press Enter.
+3. **Running a prompt:** Copy your CTCC prompt from your Workflow Design Document. Paste it into Claude. Press Enter. Wait for the response.
+4. **Saving output:** Select all of Claude's response. Copy it. Paste it into your working document under "Raw Output." Do not edit it yet -- save the raw version first.
+5. **Starting fresh:** If you need to try again, click "New chat" for a clean conversation. Claude does not carry context between conversations unless you tell it to.
+6. **Troubleshooting:** If you cannot log in, email the facilitator. If Claude gives an error, screenshot it and email the facilitator. If the output seems wrong, that is expected -- Task 2 teaches you how to evaluate and edit AI output.
+
+### Pre-Deployment Checklist
+
+Complete these items before Week 1 (pilot orientation):
+
+- [ ] **Google Sheet tracking template** created with data validation (level dropdowns, task/dimension dropdowns, date formatting). Shared with facilitator. *(Owner: Preston, Due: Week 0 minus 5 days)*
+- [ ] **Claude accounts provisioned** for all 10 participants. Login tested by facilitator on at least 2 accounts. *(Owner: Preston, Due: Week 0 minus 3 days)*
+- [ ] **Claude Onboarding Guide** drafted and queued for Week 2 distribution. *(Owner: Preston, Due: Week 1)*
+- [ ] **Shared portfolio folder** created with per-participant subfolders and appropriate permissions. *(Owner: Preston, Due: Week 0 minus 3 days)*
+- [ ] **Task 1 dry run** — facilitator completes Task 1 CLASSIFY end-to-end as a mock participant (classify scenarios, build quick-reference card, receive assessment, test reteaching module). Surface integration issues before live launch. *(Owner: Preston, Due: Week 0 minus 2 days)*
+- [ ] **Communication template** for task distribution ready (email template with task instructions, deadline, Claude access link, and "contact Preston if stuck" line). *(Owner: Preston, Due: Week 1)*
+- [ ] **Baseline survey** distributed and collected during Week 1 orientation. *(Owner: Preston, Due: Week 1)*
+
 ### Skill Deployment Sequence
 
 Skills deploy one week before the task is due. This gives participants time to read the introduction and understand success criteria before starting.
@@ -695,6 +722,45 @@ Every assessment level is structured data that feeds into:
 - The weekly analytics dashboard (`pilot_analytics_dashboard.html`)
 - The KPMG grant reporting dataset
 - Individual growth trajectories for the capstone 4D self-assessment calibration
+
+### Missed-Task and Late Submission Protocol
+
+**Late Submissions (within the 2-week window + 3 business days grace):**
+- Accepted with no penalty. Assessment proceeds normally.
+- Facilitator sends a check-in at Day 10 (already in facilitator protocol) and a final nudge at Day 13.
+
+**Missed Tasks (no submission after grace period):**
+- Participant can still proceed to the next task with a modified pathway.
+- Task-specific fallbacks:
+  - **Missed Task 1 (CLASSIFY):** Task 2 opens with a condensed governance classification exercise (3 scenarios instead of 6) embedded in the INTRODUCE stage. Participant completes this before starting the workflow design.
+  - **Missed Task 2 (CREATE):** Task 3 Part B (self-audit) uses a PROVIDED sample workflow document instead of the participant's own Task 2 work. Self-Audit Depth dimension is assessed but capped at Meets (cannot Exceed without auditing own work). Note: this also affects the Capstone's Best Use Case section since the participant has no Task 2 Before/After.
+  - **Missed Task 3 (CRITIQUE):** Task 4 proceeds normally (no direct dependency). The Capstone's growth narrative has a gap in the Discernment evidence chain -- flagged for the participant to address.
+  - **Missed Task 4 (STRATEGIZE):** Capstone self-assessment for Delegation has no primary evidence -- participant self-assesses based on supporting evidence from Tasks 1-3 and is flagged for facilitator review.
+
+**Capstone with incomplete tasks:**
+- Participants with 3+ completed tasks: full Capstone with gaps acknowledged.
+- Participants with fewer than 3 completed tasks: modified Capstone covering only completed tasks, with the self-assessment calibrating against available evidence. Facilitator schedules a 1:1 to discuss.
+
+**Escalation:** If a participant misses 2 consecutive tasks, the facilitator schedules a private conversation to determine whether to continue, pause, or withdraw from the pilot.
+
+### Assessment Data Persistence
+
+**Tracking Spreadsheet (Google Sheet):**
+The facilitator maintains a single shared spreadsheet with this structure:
+
+| Participant | Task | Dimension | Initial Level | Revised Level | Date | Notes |
+|---|---|---|---|---|---|---|
+| Angela Washington | 1: CLASSIFY | Classification Accuracy | Approaching | Meets | 2026-04-24 | Edge cases improved after reteaching |
+
+**Who enters data:** Facilitator, after spot-checking each participant's automated assessment. The facilitator copies the level from Claude's assessment output into the spreadsheet. This takes ~2 minutes per participant per task.
+
+**When data is entered:** Within 2 business days of each participant's assessment completion.
+
+**How cross-task referencing works:** When a participant starts Task 2+, the facilitator references the spreadsheet and copies the participant's prior-task levels into the skill's opening prompt. Specific step: before a participant begins Task N, open the tracking spreadsheet, find the participant's row for Task N-1, copy their dimension levels, and paste them into the cross-task reference section at the top of the skill. Example: "In Task 1, you reached Meets on Classification Accuracy and Approaching on Boundary Reasoning."
+
+**KPMG reporting:** The spreadsheet feeds directly into the R analytics pipeline (`pilot_analytics.R`). At pilot close, export the sheet as CSV and run the existing analytics script. The script should expect columns: participant, task, dimension, initial_level, revised_level, date.
+
+**Portfolio generation:** The sample_portfolio_summary.json template is populated from this same spreadsheet. The facilitator reads the spreadsheet, fills the JSON, and runs the render script.
 
 ---
 

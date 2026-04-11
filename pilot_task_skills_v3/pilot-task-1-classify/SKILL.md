@@ -13,7 +13,7 @@
 | **Week** | 2-3 (April 13-24, 2026) |
 | **Competencies** | Diligence (PRIMARY), Description (supporting), Discernment (supporting) |
 | **Scaffolding Level** | High — Answer key available, worked examples provided |
-| **Time Estimate** | 90-120 minutes initial; 30-45 minutes revision |
+| **Time Estimate** | 2-2.5 hours initial (including reading time); 30-45 minutes revision |
 | **Prerequisite** | Week 1 onboarding completed (baseline survey, governance acknowledgment, Anthropic Academy courses) |
 | **Target Audience** | DC CAP leadership cohort (10 participants across 6 units) |
 
@@ -37,7 +37,12 @@ Here's what you'll learn:
 
 4. **How to create a governance guide for your unit.** Every unit handles different data. You'll build a quick-reference card that names your unit's specific data types, their tiers, and the AI-handling rules that apply.
 
-**Plan for about 2 hours total.** The initial work (reading, classifying, building your card) takes 90-120 minutes. If you get feedback and revise, add another 30-45 minutes.
+**Plan for about 2-2.5 hours total.** This includes 15-20 minutes of reading the governance framework before you start classifying. The classification work (6 scenarios + your quick-reference card) takes 90-120 minutes. If you get feedback and revise, add another 30-45 minutes.
+
+- **Reading and reflection:** 15-20 minutes (reading the INTRODUCE stage, understanding the tier framework and combination test before classifying)
+- **Part 1 — Scenario classification:** 60-75 minutes
+- **Part 2 — Quick-reference card:** 30-45 minutes
+- **Revision (if needed):** 30-45 minutes
 
 ---
 

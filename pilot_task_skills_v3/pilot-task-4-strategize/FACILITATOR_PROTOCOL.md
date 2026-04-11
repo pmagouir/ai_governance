@@ -15,6 +15,7 @@
 - [ ] Spot-check 2 participants (20% sample) — compare your assessment to the skill's automated assessment. Note any disagreements for calibration.
 - [ ] Review all Below Standard flags — these participants may need facilitator encouragement alongside the automated reteaching module.
 - [ ] Review all Exceeds Standard — confirm the extension challenge is appropriate and the participant isn't coasting.
+- [ ] **Late / Missed Task:** If no submission by Day 13 (grace period): send final outreach. If still missing, apply the missed-task fallback from the master architecture.
 
 ---
 
@@ -31,6 +32,10 @@
 
 **What NOT to spend time on:** Whether the participant's 6-task mapping is exhaustive (it won't be), the exact accuracy of their time estimates, or whether you agree with their triage ranking. Focus on the quality of their reasoning and whether the plan is realistic, not whether it's the plan you would write.
 
+**If a participant reports the task is taking too long:**
+
+> The task is designed for 2-2.5 hours including thinking time. If a participant is past 2 hours and not yet done, the most common cause is overthinking task specificity on the deployment map. Tell them: "Start with your 4 most obvious tasks and add the remaining 2 after. Focus your ROI math on the top 2 — that's where the learning happens." A partial, high-quality submission is better than an abandoned complete one.
+
 ---
 
 ## Caseload Reality
@@ -44,7 +49,8 @@ You have 10 participants and a full CSAO workload. Here's how to manage this in 
 | Below Standard outreach | 15 min/person | As flagged |
 | Exceeds Standard review | 10 min/person | As flagged |
 | Revision spot-check | 20 min | After revisions |
-| **Total per cycle** | **~2 hours** | |
+| Data entry (spreadsheet) | 5 min/participant | After assessment |
+| **Total per cycle** | **~2.5-3 hours** | |
 
 **Triage rule:** If you can only review 2 participants deeply, choose: (1) the Below Standard participant most likely to disengage, and (2) the Exceeds Standard participant who could become a peer teaching resource.
 

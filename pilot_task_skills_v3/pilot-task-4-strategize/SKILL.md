@@ -13,7 +13,7 @@
 | **Week** | 6-7 (May 18-29, 2026) |
 | **Competencies** | Delegation (PRIMARY), Diligence (supporting), Description (supporting), Discernment (supporting) |
 | **Scaffolding Level** | None — participant drives the entire analysis |
-| **Time Estimate** | 90-120 minutes initial; 30-45 minutes revision |
+| **Time Estimate** | 2-2.5 hours initial (including thinking time); 30-45 minutes revision |
 | **Prerequisite** | Tasks 1-3 completed |
 | **Target Audience** | DC CAP leadership cohort (10 participants across 6 units) |
 
@@ -39,7 +39,7 @@ You will do three things:
 
 There are no checkpoints. No answer key. No scaffolding. You know the frameworks. You have practiced them. Now use them to think like a leader about what gets automated, augmented, or kept human — and why.
 
-Plan for about 90-120 minutes.
+Plan for about 2-2.5 hours total. This includes 15-20 minutes of thinking through your unit's recurring tasks before you start mapping. The three deliverables take 80-110 minutes of writing. If you get feedback and revise, add another 30-45 minutes.
 
 ---
 
@@ -860,10 +860,11 @@ Re-introduce the relevant concept before another revision. Walk through one exam
 
 ## Time Estimate
 
+- **Thinking and task inventory:** 15-20 minutes (identifying your unit's 6 most recurring tasks before you start writing)
 - **Deliverable 1 (Deployment Map):** 30-40 minutes
 - **Deliverable 2 (Strategic Triage):** 30-40 minutes
 - **Deliverable 3 (Q3 Rollout Plan):** 20-30 minutes
-- **Total Initial Draft:** 90-120 minutes
+- **Total Initial Draft:** 2-2.5 hours (including thinking time)
 - **Revision (based on feedback):** 30-45 minutes
 - **Portfolio packaging and reflection:** 15-20 minutes
 

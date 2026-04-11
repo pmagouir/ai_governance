@@ -179,6 +179,12 @@ You'll use these tags to categorize your edits during execution. They help you s
 
 ---
 
+### Before You Start
+
+> **If you haven't used Claude before**, review the Claude Onboarding Guide sent during Week 2. It covers how to log in, paste a prompt, and save output. If you have any access issues, contact Preston before proceeding.
+
+---
+
 ## STAGE 2: DRAFT
 
 You'll produce three deliverables in sequence. The order matters: design FIRST, execute SECOND, compare THIRD.
