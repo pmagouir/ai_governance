@@ -1,855 +1,567 @@
-# Capstone: The Pilot Portfolio
-## DC CAP AI Deployment Leadership Training
+# Capstone: The Pilot Portfolio — Synthesize, Calibrate, Teach
 
-**Version:** 3.0  
-**Task Level:** Capstone (Weeks 7-8)  
-**Prerequisite:** Tasks 1-3 completed  
-**Time Estimate:** 2-3 hours initial | 45-60 minutes revision  
-**Showcase Date:** June 5-10, 2026
+**DC CAP AI Leadership Training Pilot — Skill System v3**
 
 ---
 
-## What This Task Is
+## SKILL METADATA
 
-This is your final task. You'll look back at everything you've done in Tasks 1-3 and pull it together into a portfolio that shows your growth, your best use case, and what you'll teach your team.
-
-There's no pipeline to run here. Instead, you're reflecting, synthesizing, and planning forward. You'll deliver four things: (1) a summary of your pilot journey, (2) your strongest AI use case with before/after evidence, (3) an honest self-assessment of your growth across the four competencies, and (4) a teaching guide your colleagues can follow plus one idea for what DC CAP should build next.
-
-This draws on work you've already completed. You're not starting from scratch. Plan for about 3 hours.
+| Field | Value |
+|-------|-------|
+| **Skill Name** | The Pilot Portfolio: Synthesize, Calibrate, Teach |
+| **Task ID** | pilot-task-capstone |
+| **Week** | 7-8 (June 1-12, 2026) |
+| **Competencies** | Diligence & Delegation (deep reflection); Description & Discernment (referenced via task portfolios) |
+| **Scaffolding Level** | None — participant drives the entire process |
+| **Time Estimate** | 2-2.5 hours initial; 30-45 minutes revision |
+| **Prerequisite** | Tasks 1-4 completed |
+| **Target Audience** | DC CAP leadership cohort (10 participants across 6 units) |
+| **Showcase Date** | June 5-10, 2026 |
 
 ---
 
 ## STAGE 1: INTRODUCE
 
-### Overview
+### Your Starting Point (Cross-Task Reference)
 
-The capstone is the flagship artifact of the pilot. You'll synthesize everything you learned across Tasks 1-3 into a single, polished portfolio that tells your AI fluency story. This is both a learning product (it anchors your self-assessment) and a showcase artifact (KPMG and your unit will see it).
+Across four tasks, you classified governance tiers, designed and executed a workflow, audited AI output, and built a deployment strategy for your unit. Your strongest dimension across the pilot was [X] and your widest gap was [Y]. Now the question is: what does that journey add up to? And what will you teach others or propose for Q3?
 
-The capstone has four sections:
+---
 
-1. **My Pilot** — Your name, unit, one-sentence impact headline
-2. **My Use Case** — Before/After documentation (pulled from Task 3 Part C, refined), with governance pathway
-3. **My 4D Growth** — Self-assessment on each competency with evidence from all three tasks
-4. **What I'm Teaching + What to Build Next** — The teaching module you'll lead in Q3, plus innovation proposals
+### What This Is
 
-### The Shift from Task 3 to Capstone
+This is the final task. No pipeline to run. No new frameworks. You are reflecting, synthesizing, and planning forward. You will deliver four things:
 
-**Task 3** was about proving fluency: running the pipeline independently, mapping your unit's deployment strategy, quantifying impact.
+1. **A summary of your pilot journey** — who you are, what you did, and what changed
+2. **Your strongest AI use case** — with before/after evidence and governance pathway
+3. **An honest self-assessment** — your growth on the two bookend competencies (Diligence and Delegation), calibrated against your actual task performance
+4. **A teaching module OR innovation proposals** — your choice: design a step-by-step guide your colleagues can follow, or propose what DC CAP should build next
 
-**Capstone** is about teaching and multiplying: articulating what you learned, honestly assessing your growth, and naming the workflow you'll teach others in Q3.
+This draws on work you have already completed. You are not starting from scratch. Plan for about 2-2.5 hours.
 
-By the time you finish, you'll have:
-- A polished case study ready for KPMG and the June celebration
-- Self-assessed growth across four competencies with evidence
-- A Q3-ready teaching module your colleagues can follow
-- Innovation proposals grounded in pilot evidence
+---
+
+### The Shift from Task 4 to Capstone
+
+Task 4 was about proving strategic thinking. You mapped your unit's tasks, triaged by ROI, and built a Q3 rollout plan. That was deployment strategy for your team.
+
+Capstone is about teaching and multiplying. The pilot succeeds when 10 leaders can each teach at least one workflow to their team or propose what to build next. The work you do here is not just a reflection exercise — it is the bridge between what you learned and what your unit will learn next.
+
+---
 
 ### Learning Objectives
 
 By completing the capstone, you will:
-- Synthesize your growth from Tasks 1-3 into a coherent narrative
+
+- Synthesize your growth from Tasks 1-4 into a coherent narrative
 - Honestly calibrate your self-assessment against your actual task performance
-- Design a teaching module that passes the "independence test" (colleagues can follow it without asking questions)
-- Propose actionable innovations for Q3 rollout based on pilot evidence
-
----
-
-## SECTION 1: My Pilot
-
-### What You're Describing
-
-A one-page introduction to your pilot journey.
-
-**Elements:**
-
-1. **Name & Unit** (1 sentence)
-   - Example: "Sarah Chen, Student Success Unit"
-
-2. **One-Sentence Impact Headline** (your biggest win)
-   - Example: "I reduced our partner update cycle from 6 hours to 90 minutes while strengthening governance compliance."
-   - OR: "I mapped my unit's AI deployment strategy and identified three high-ROI workflows for Q3 automation."
-   - OR: "I built a reusable Salesforce data query that our team will use 50+ times this year."
-
-3. **Context: What You Do** (2-3 sentences)
-   - Describe your role in your unit (what are your main responsibilities?)
-   - Example: "I lead partner communication for our 6 university partners. I draft weekly reminders, coordinate application deadlines, and maintain the roster. This is about 10 hours per month of coordination and communication work."
-
-4. **The Pilot Journey** (3-4 sentences)
-   - What was your starting point? (What did you expect to learn?)
-   - What surprised you? (What shifted in how you think about AI?)
-   - What's your confidence level now? (How ready are you to lead AI adoption in your unit?)
-   - Example: "Before the pilot, I thought AI would just make drafting faster. I learned it's really about understanding governance constraints first—knowing what data is safe to share shapes everything. By Task 3, I mapped eight recurring workflows and identified three for immediate deployment. I'm ready to teach my team how to use Claude safely and strategically."
-
----
-
-## SECTION 2: My Use Case
-
-### What You're Describing
-
-Your before/after documentation from Task 3 Part C, refined and expanded with governance pathway.
-
-**Format:** 600-800 words across three subsections
-
-### Subsection A: The Before
-
-**What was this task like before the pilot?** (200-250 words)
-
-Describe:
-- **The actual workflow:** Step-by-step, as specific as possible. Don't say "I drafted emails"—say "I opened Salesforce, pulled the partner list, composed an individual email for each partner, reviewed for tone and accuracy, proofread, and sent."
-- **Time required:** Measured or careful estimate. For this partner email task: 90 minutes for 6 emails.
-- **The pain points:** What was hard? What was error-prone? What took time without producing value?
-  - Example: "Partner tone was inconsistent depending on the writer and the day. I sometimes missed a partner, which meant a follow-up email (embarrassing). The custom messaging for each relationship meant every cycle felt like starting from scratch—no learning from last month's approach."
-
-**Example Before section:**
-
-> Every Monday during application season, I draft reminder emails to our six university partners about upcoming deadlines. Before the pilot, the process was fully manual:
-> 
-> 1. Open Salesforce and pull the roster of all six partners (names, primary contact emails)
-> 2. Open a blank email, draft a message that's both deadline-focused and relationship-aware (I try to reference past interactions, known sensitivities, or recent conversations)
-> 3. Customize each email slightly: if a partner has been slow before, I might add a line acknowledging the challenge and offering support; if they're on top of it, I keep it brief
-> 4. Draft all 6, proofread, and send
-> 5. Note in my internal tracker which partners responded and which need a follow-up
->
-> This process takes about 90 minutes per cycle, and we run it 14 times during the academic year. Pain points:
-> - **Consistency:** My tone varies. If I'm tired, emails are terse; if I'm caffeinated, they're verbose. Partners likely notice the inconsistency.
-> - **Coverage:** I've missed a partner 1-2 times per year, leading to embarrassing follow-ups.
-> - **Relationship knowledge:** Claude doesn't know that Partner X has a new contact or that Partner Y mentioned a staffing change. I have to manually track all of this.
-> - **No learning:** Each cycle, I start fresh. No template, no memory of what worked last month.
-
----
-
-### Subsection B: The After
-
-**How is this task done now?** (200-250 words)
-
-Describe:
-- **The workflow:** Name the skill. Explain the modality. Step-by-step.
-- **Human role:** What do you do? Where do you add value?
-- **Claude role:** What does Claude produce?
-- **Time required:** How long now?
-
-**Example After section:**
-
-> Now I use the Partner Outreach skill with an Augmentation modality:
->
-> 1. Prepare a CTCC prompt with the deadline, the partner list (names, emails, any notes about recent changes), and specific guardrails for tone (professional, warm, relationship-aware)
-> 2. Run the prompt in Claude. It generates all 6 emails with consistent structure and tone
-> 3. I review Claude's output for:
->    - Accuracy (Is the deadline correct? Are all partner names spelled right?)
->    - Relationship sensitivity (Claude doesn't know the staffing change at Partner X; I add one sentence acknowledging it)
->    - Tone (Claude tends to be formal; I add 2-3 sentences per email that reference past interactions)
-> 4. Send all 6 emails
->
-> Total time: 20 minutes per cycle (vs. 90 minutes before). The workflow uses the Partner Outreach skill, which is about relationship-aware communication. Modality is Augmentation because Claude does 85% of the output generation, but I do 100% of the relationship and tone customization.
-
----
-
-### Subsection C: Impact Evidence
-
-**What changed?** (200-300 words)
-
-State clearly:
-- **Time saved:** Calculated precisely with transparent math
-- **Quality gained:** Specific, measurable improvements
-- **Governance compliant:** How are you handling data safely?
-- **Documented instances:** Show real evidence (screenshot, example, timestamp)
-
-**Example Impact section:**
-
-> **Time Saved:**
-> - Before: 90 minutes per cycle × 14 cycles per year = 1,260 minutes (21 hours) per year
-> - After: 20 minutes per cycle × 14 cycles per year = 280 minutes (4.7 hours) per year
-> - Savings: 980 minutes (16.3 hours) per year in my time alone. If scaled to 10 units with similar partner structures: ~163 hours per year organizational savings.
->
-> **Quality Gained:**
-> 1. **Consistency:** All emails now follow the same professional structure. Partner relationships are acknowledged consistently (no "warm" vs. "terse" variation based on my mood).
-> 2. **Coverage:** Zero missed partners since implementing this workflow. Systematic check for all 6 before sending.
-> 3. **Scalability:** New staff member could run this workflow immediately by following the CTCC prompt and tone guidelines. No onboarding needed on "how do I customize the email for Partner X's personality?"
-> 4. **Governance:** Partner emails are classified as Tier 3 (organizational info, no student data). The workflow respects this tier: partner names and institutional context are safe to share with Claude. Human judgment layer: I verify the deadline is correct and add relationship context Claude couldn't possibly know.
->
-> **Documented Instance:**
-> I've attached the April 10, 2026 email batch. Timestamps in my email client show:
-> - CTCC prompt pasted at 2:05pm
-> - Claude output received and reviewed at 2:15pm
-> - Final emails sent at 2:28pm
-> - Total elapsed time: 23 minutes
->
-> The email batch shows Claude's consistent structure (deadline in opening, clear next step, professional sign-off) with my tone customizations in the body (reference to Partner X's staffing change, acknowledgment of Partner Y's previous response latency).
-
----
-
-## SECTION 3: My 4D Growth
-
-### What You're Describing
-
-A self-assessment on each of the four competencies, with evidence from Tasks 1-3 and calibration against your actual task performance.
-
-### The Self-Assessment Scale
-
-**Still Exploring:** You're new to this competency. You understand the concept but haven't yet applied it independently. You rely on checklists and guidance.
-
-**Building Awareness:** You understand the competency and can apply it with scaffolding (checkpoints, prompts). You're developing consistent judgment.
-
-**Building Confidence:** You apply the competency independently on straightforward tasks. On complex tasks, you might second-guess yourself, but you have a framework to work through uncertainty.
-
-**Proficient:** You apply the competency independently and consistently. You make sound judgments under pressure. You can teach a colleague the basics.
-
-**Leading Practice:** You apply the competency at a high level. You adapt it to complex or novel situations. You innovate within the competency and can mentor others.
-
-### Calibration Rule
-
-Your self-rating should be grounded in your Task 1-3 performance. Here's the mapping:
-
-| Task Performance Pattern | Reasonable Self-Assessment Range |
-|---|---|
-| Most/all Exceeds on Tasks 2-3 | Proficient – Leading Practice |
-| Most Meets on Tasks 2-3 | Building Confidence – Proficient |
-| Most Approaching on Tasks 2-3 | Building Awareness – Building Confidence |
-| Any Below on Tasks 2-3 | Still Exploring – Building Awareness |
-
-**Important:** If your self-rating exceeds your task performance pattern, provide supplemental evidence (specific post-task learning, a recent instance outside the tasks, mentoring you've given).
-
----
-
-### Competency 1: DILIGENCE (Governance Classification)
-
-**What this competency is:** You can identify data types, classify them by governance tier, and articulate the constraints each tier imposes. You embed governance awareness in every AI interaction.
-
-**What you did across the tasks:**
-
-- **Task 1:** You classified two provided scenarios (partner email + data summary). The partner email was Tier 3 (organizational info); the data summary was Tier 2 (scholar counts with re-identification risk). You identified the small-cell threshold (N<10) constraint correctly.
-- **Task 2:** You classified your own work scenario. [Describe the tier you chose and any constraints you identified.]
-- **Task 3:** You classified your deployment targets. [Describe the tiers for your 8 tasks. Did you identify any Tier 1 or 2 data? How did governance affect your deployment decisions?]
-
-**Your Self-Rating: [Choose one]**
-- Still Exploring
-- Building Awareness
-- Building Confidence
-- Proficient
-- Leading Practice
-
-**Your Evidence:** [2-4 sentences grounding your rating in task performance]
-
-Example: "I'm at Building Confidence. Task 1 was guided, but I got both classifications correct independently. Task 2 was straightforward (Tier 3 organizational data). Task 3 was where I proved it: I classified eight recurring workflows, caught that our data summaries are Tier 2 (not Tier 3), and understood that this means I must aggregate cells <10. I caught this governance issue on my own without scaffolding, which means I own the framework, not just the steps."
-
-**Supplemental Evidence (if your rating exceeds task performance):** [If you're rating yourself higher than your task pattern suggests, explain why with specific post-task evidence]
-
-Example: "I rated myself Proficient, not just Building Confidence, because since Task 3, I've reviewed all eight of our recurring workflows with a peer, and she told me my governance classifications were accurate. I found a Tier 1 risk in a new analytics report that the data team had overlooked. That's evidence I can do this work reliably now."
-
-**Calibration Check:** Does your rating align with your Task 1-3 pattern? If not, explain why your supplemental evidence justifies the difference.
-
----
-
-**Evidence binding rule:** Each self-rating MUST cite at least one specific piece of evidence. Acceptable evidence:
-- A specific Task 1, 2, or 3 performance level on a relevant dimension (e.g., "My governance classification improved from Approaching in Task 1 to Meets in Task 3")
-- A specific work instance from outside the tasks (e.g., "I correctly classified 5 data scenarios in my unit work last month, including 2 with small-cell thresholds")
-- A teaching or coaching moment (e.g., "I helped a colleague classify a data governance tier correctly during a team meeting")
-
-Self-ratings without specific evidence will be flagged for revision. "I feel more confident" is not evidence. "My Task 2 Pipeline Coherence reached Meets, and I've since applied the full pipeline independently to 3 work tasks" is evidence.
-
----
-
-### Competency 2: DESCRIPTION (Prompt Engineering & Governance Compliance)
-
-**What this competency is:** You can write complete CTCC prompts that reflect your governance constraints. You understand how to structure prompts so Claude has enough context but no restricted data.
-
-**What you did across the tasks:**
-
-- **Task 1:** You wrote CTCC prompts for two scenarios (partner email + data summary). Both reflected the tier constraints. The data summary prompt asked for aggregation because of Tier 2 risk.
-- **Task 2:** You wrote a CTCC prompt for your own work scenario with a checkpoint validation. You revised your prompt after the governance check.
-- **Task 3:** You wrote a CTCC prompt independently on your Deploy Now target. You verified it respected your governance classification before running it.
-
-**Your Self-Rating: [Choose one]**
-- Still Exploring
-- Building Awareness
-- Building Confidence
-- Proficient
-- Leading Practice
-
-**Your Evidence:** [2-4 sentences grounding your rating in task performance]
-
-Example: "I'm at Building Confidence. Task 1 showed me the CTCC structure with scaffolding. Task 2 I applied it to my own work, and the checkpoint helped me catch a governance issue in my first draft. Task 3, I wrote the prompt cold and had to think through the governance-prompt link myself. I did it correctly, but I spent 10 minutes second-guessing the aggregation rule. So I'm confident I can do it, but it's not yet automatic."
-
-**Supplemental Evidence (if applicable):** [If you've used prompting since the pilot, describe that evidence]
-
-Example: "Since Task 3, I've written three additional prompts for colleagues who asked. Each one reflected the governance tier correctly, and colleagues told me the outputs were immediately usable. That's proof I can do this independent of the framework's scaffolding."
-
-**Calibration Check:** Does your rating align with your Task 1-3 pattern?
-
----
-
-### Competency 3: DELEGATION (Skill Selection & Modality Assignment)
-
-**What this competency is:** You can match work tasks to AI skills and assign the right modality (Automation/Augmentation/Agency) based on understanding of human-AI balance.
-
-**What you did across the tasks:**
-
-- **Task 1:** You selected skills for two scenarios (Partner Outreach for emails, Data Summary for queries). You explained why each modality (Augmentation for emails, Automation for queries) reflected the human-AI split.
-- **Task 2:** You selected a skill and modality for your own work with checkpoint validation.
-- **Task 3:** You selected a skill and modality for your Deploy Now target independently. You explained what the human brings that Claude can't.
-
-**Your Self-Rating: [Choose one]**
-- Still Exploring
-- Building Awareness
-- Building Confidence
-- Proficient
-- Leading Practice
-
-**Your Evidence:** [2-4 sentences grounding your rating in task performance]
-
-Example: "I'm at Proficient. In all three tasks, my skill selections were sound. Task 3 forced me to think deeply about modality: I chose Augmentation for partner emails because Claude can generate the structure, but I must customize tone and relationship context. I can teach that reasoning clearly to someone else."
-
-**Supplemental Evidence (if applicable):** [Post-task evidence of delegation skill]
-
----
-
-### Competency 4: DISCERNMENT (Output Audit & Human Judgment)
-
-**What this competency is:** You can audit AI output for accuracy, governance compliance, and audience fit. You document what you caught that Claude would have shipped. You explain the human judgment layer.
-
-**What you did across the tasks:**
-
-- **Task 1:** You audited two provided outputs, documented edits with types and rationales, and explained what governance checks you performed.
-- **Task 2:** You audited your own Claude output, documented an edit layer, and wrote a retrospective connecting your edits back to your prompting.
-- **Task 3:** You audited your own output independently, documented every edit, and explained what you caught that Claude's output would have missed.
-
-**Your Self-Rating: [Choose one]**
-- Still Exploring
-- Building Awareness
-- Building Confidence
-- Proficient
-- Leading Practice
-
-**Your Evidence:** [2-4 sentences grounding your rating in task performance]
-
-Example: "I'm at Proficient. Task 1, I caught three edits in the provided output. Task 2, I caught five edits and connected my edit pattern to my prompting choices. Task 3, I caught seven edits independently and wrote a thorough human judgment layer explaining what Claude's output would have risked if I hadn't reviewed it. By Task 3, I wasn't following a template anymore; I was thinking critically about what Claude should have known to avoid the error."
-
-**Supplemental Evidence (if applicable):** [Post-task evidence of audit and human judgment skill]
-
----
-
-### Composite Narrative: My 4D Growth
-
-Write a 300-400 word narrative showing how you grew across all four competencies:
-
-**Example narrative:**
-
-> When I started Task 1, I followed explicit steps to classify scenarios and select skills. The answer key validated my work. By Task 2, I applied the framework to my own work, but I still relied on checkpoints to verify my governance classification was right. The checkpoint revealed a gap in my thinking: I'd written a CTCC prompt that included Tier 1 data, even though I'd classified the data as Tier 1. That moment shifted something—I realized governance isn't an abstract concept; it's concrete: "Don't put student names in your prompt if you classified the data as Tier 1."
->
-> In Task 3, I ran the full pipeline with no scaffolding on my Deploy Now target. The governance-prompt connection was now automatic. I classified my data as Tier 2 (scholar names + awards), understood that this meant I had to aggregate cells <10, and wrote my prompt to request aggregation before sending student data to Claude. No checkpoint needed; I owned the logic.
->
-> But the growth wasn't just in getting it right—it was in thinking strategically. When I mapped my eight recurring tasks to the 2x2 matrix, I had to ask: "Not just 'Can AI help?' but 'Should we use AI here, given our governance constraints and unit priorities?'" That strategic layer forced me to think about deployment beyond individual tasks.
->
-> By the capstone, I'm at a different place than I started. Task 1 was "learn the pipeline." Task 2 was "apply the pipeline to my work." Task 3 was "run the pipeline independently AND think strategically." Now I'm ready for Q3: teaching the pipeline to my team, with examples grounded in my actual work.
-
----
-
-## SECTION 4: What I'm Teaching + What to Build Next
-
-### Part A: My Teaching Module (Q3 Workflow)
-
-**What you're describing:** One specific workflow that you'll teach a colleague in Q3. It must pass the "independence test": could a colleague follow the step-by-step instructions without asking you questions?
-
-**Choose a workflow from your pilot work.** This is most likely the same task you documented in your Before/After (Section 2 Use Case). Examples:
-
-- Partner reminder emails (Partner Outreach, Augmentation)
-- Data summary generation (Data Summary, Automation)
-- Compliance report draft (Policy Brief, Augmentation)
-- Eligibility FAQ update (Policy Brief, Augmentation)
-
-### Template for Your Teaching Module
-
-**WORKFLOW NAME & OVERVIEW** (100 words)
-
-Name: [Skill + Modality]
-
-What: Describe what this workflow accomplishes in one sentence.
-
-Who does it: [Your role or similar roles in your unit]
-
-Why it matters: [Why is this workflow worth automating or augmenting? What's the unit's payoff?]
-
-Frequency: [How often does your unit run this workflow?]
-
-Example: "**Workflow Name:** Partner Reminder Emails (Partner Outreach, Augmentation). **What:** Generate consistent, relationship-aware reminder emails to university partners about application deadlines. **Who:** Any staff member managing partner communication (Student Success, Program Strategy). **Why:** Reduces time from 90 min to 20 min per cycle. Improves consistency and coverage. Scales the institutional knowledge about partner relationships. **Frequency:** 14 times per year (weekly during application season)."
-
----
-
-**GOVERNANCE LAYER** (75 words)
-
-Data involved: [What data elements are used?]
-
-Governance tier: [Which tier? Why?]
-
-Constraints: [What specific rules apply to this tier?]
-
-Human verification: [What must the human check before the output leaves the desk?]
-
-Example: "**Data:** Partner names, institutional info, application deadlines, internal notes on past interactions. **Tier:** Tier 3 (organizational info, no student data). **Constraints:** Standard internal handling. Partner names can be used in Claude prompts. No sensitive or restricted data involved. **Human verification:** Check deadline accuracy, verify tone is appropriate for relationships, confirm all six partners are included."
-
----
-
-**STEP-BY-STEP INSTRUCTIONS** (200-250 words)
-
-Write numbered steps that a colleague could follow without asking you questions. Be specific about:
-- What tool or system they're using (Salesforce, email, Claude, etc.)
-- Exactly what they do at each step
-- What they should check or verify
-- What the expected output looks like
-
-Example:
-
-1. **Gather the partner list.** Open Salesforce. Navigate to University Partners view. Note the partner names and primary contact emails. Identify any recent changes (staffing changes, known issues you've documented). Copy this information into your CTCC prompt template.
-
-2. **Prepare your CTCC prompt.** Use the template below, filling in:
-   - Context: The deadline (date, time zone, what's due)
-   - Task: "Generate reminder emails for all six partners"
-   - Criteria: "Professional, warm tone. Acknowledges deadline clearly. Offers support if they need clarification."
-   - Constraints: "Use partner names. Do not include student-specific data. Do not invent details we don't know about each partner."
-
-   **Template CTCC Prompt:**
-   > Context: Our six university partners have a deadline of [DATE] for [DELIVERABLE].
-   > Task: Generate six reminder emails, one for each partner, to notify them of this deadline.
-   > Criteria: Each email should be professional but warm, acknowledge our partnership, state the deadline clearly, and offer support.
-   > Constraints: Use only the partner names and details provided. Do not include student names or numbers. Do not invent relationship details.
-   > 
-   > Partners and internal notes:
-   > - [Partner name]: [any relevant context you have]
-   > ...
-
-3. **Run the prompt in Claude.** Paste the CTCC prompt. Review Claude's output.
-
-4. **Customize for relationships.** Claude generates a professional template. You add 2-3 sentences per email customizing for relationships you know:
-   - If Partner X has been slow before: "I know your team was stretched last month—let me know if you need anything."
-   - If Partner Y is always responsive: Keep it brief.
-   - If Partner Z has a staffing change: "Congratulations to [Name] on the new role—[New Contact] should be the person I follow up with, right?"
-
-5. **Final checks before sending:**
-   - [ ] All six partners are included
-   - [ ] Deadline is correct and in all emails
-   - [ ] Tone is consistent and relationship-aware
-   - [ ] No governance violations (no student data, no invented relationship details)
-   - [ ] Signatures and contact info are correct
-
-6. **Send the emails.** Note in your internal tracker which partners received emails and when.
-
----
-
-**INDEPENDENCE TEST** (50 words)
-
-Answer these questions about your teaching module:
-
-- Could a colleague with similar role follow these steps without asking you clarifying questions? [Yes/No + explanation]
-- Are the steps specific enough that a new team member could execute them on their first try? [Yes/No + explanation]
-- Does the teaching module include everything a colleague needs to run this workflow safely (governance, tool instructions, expected output)? [Yes/No + explanation]
-
-Example: "Yes—I've piloted these steps with a colleague, and she ran her first cycle independently. Yes—the CTCC template removes ambiguity. Yes—the governance layer explains what data is safe to use, and the final checks include a verification checklist."
-
----
-
-### Part B: What to Build Next (Q3 Innovations)
-
-**What you're describing:** 1-2 proposals for innovations or improvements for Q3 rollout, grounded in pilot evidence.
-
-**Focus on:**
-- Problems you encountered in the pilot
-- Gaps you identified
-- Constraints you learned about
-- Opportunities you see for the broader organization
-
-**Format:** For each proposal:
-
-1. **Innovation name** (one sentence)
-2. **Problem or opportunity** (what did you discover in the pilot?)
-3. **Proposed solution** (what should we build for Q3?)
-4. **Evidence from pilot** (cite specific instances from your work or your unit's work)
-5. **Expected impact** (time, quality, governance, or scale)
-6. **First steps** (what would it take to build this in Q3?)
-
----
-
-**Example 1: Unit-Specific CTCC Prompt Library**
-
-**Problem:** Each unit has recurring workflows with stable parameters. Right now, everyone writes their own CTCC prompts. This is inefficient and creates inconsistency.
-
-**Proposed Solution:** Build a unit-specific library of pre-written CTCC prompts for the top 5 workflows in each unit. Partner Outreach creates a Partner Reminder template. Student Success creates a Case Summary template. Data & Technology creates a Data Query template. Each template is pre-vetted for governance compliance and includes variables for customization.
-
-**Pilot Evidence:** In Task 3, I created a CTCC prompt for partner emails. That prompt is now reusable: I change the deadline and add/remove partners, but the structure is stable. When I reviewed my Task 2 prompt vs. my Task 3 prompt, they were nearly identical. This suggests that if we built this template once and vetted it with governance, my entire unit could use it 14 times per year without rewriting.
-
-**Expected Impact:** New staff members can run the workflow on day one (no training needed). Consistency across the unit (all partner emails follow the same structure). Faster execution (run a pre-vetted prompt vs. writing from scratch). Governance compliance is baked in (the template respects Tier 3 constraints).
-
-**First Steps:** Inventory the top 5 recurring workflows per unit. For each, document the CTCC template. Vet with governance. Test with at least one colleague. Roll out in Q3.
-
----
-
-**Example 2: Peer Auditing Protocol for High-Stakes Outputs**
-
-**Problem:** In the pilot, I'm comfortable auditing my own work. But for tasks with higher governance stakes (e.g., anything that includes Tier 2 data, anything for external audiences), a second set of eyes would reduce risk. Right now we don't have a formalized process for peer auditing.
-
-**Proposed Solution:** Create a peer auditing protocol: for any Claude output intended for external use or involving Tier 2 data, the human who runs the prompt submits the output for review by a colleague before it's sent/published. The reviewer uses a checklist: governance compliance, accuracy, tone/audience fit, coverage. The reviewer documents any concerns. Takes ~10 minutes per review.
-
-**Pilot Evidence:** In my Task 3 audit, I documented seven edits. If a peer had reviewed my output before I sent it, they would have caught at least three of them (the governance removal for cell size <10, the tone adjustment for Partner X, and the coverage check for all six partners). This protocol would have taken 10 minutes and prevented governance risk.
-
-**Expected Impact:** Reduced governance risk for high-stakes outputs. Faster learning for new staff (they see how peers audit). Distributed knowledge about what "good" looks like. Minimal time cost (~10 min per review, but prevents costly mistakes).
-
-**First Steps:** Document a peer audit checklist. Identify which workflows trigger peer review (high governance stakes, external audience). Train the unit on the protocol. Start with your own outputs as examples.
+- Design a teaching module that passes the "independence test" OR propose innovations grounded in pilot evidence
 
 ---
 
 ## STAGE 2: DRAFT
 
-### What You're Building
+You are building a portfolio with four sections. Each section builds on your Task 1-4 work.
 
-A comprehensive portfolio with four sections:
+---
 
-1. **My Pilot** (1-2 pages): name, unit, impact headline, context, journey
-2. **My Use Case** (2 pages): Before/After documentation with governance pathway
-3. **My 4D Growth** (2-3 pages): Self-assessment on all four competencies with calibration checks
-4. **What I'm Teaching + What to Build Next** (2-3 pages): Teaching module + innovation proposals
+### Section 1: My Pilot (~150 words)
 
-### Workflow
+Write one paragraph (5-7 sentences) introducing yourself, your unit, your biggest win from the pilot, and how your thinking about AI shifted. Keep it to approximately 150 words.
 
-**Week 1 (Days 1-3):**
-- Draft Section 1 (My Pilot) with your name, unit, impact headline
-- Draft Section 2 (My Use Case) by refining your Task 3 Part C documentation
-- Get feedback: Is your Before/After specific enough? Is the impact evidence credible?
+**Example:**
 
-**Week 1 (Days 4-5):**
-- Draft Section 3 (My 4D Growth): Self-assess on each competency with evidence from Tasks 1-3
-- Run calibration check: Does your rating align with your task performance? If not, provide supplemental evidence or revise your rating.
+> I'm Sarah Chen in the Student Success Unit, where I lead partner communication for our 6 university partners. Before the pilot, I thought AI would just make drafting faster. My biggest win: I reduced our partner update cycle from 6 hours to 90 minutes while strengthening governance compliance. What surprised me most was that governance is not a constraint on AI use — it is the foundation. Knowing what data is safe to share shaped every workflow I built. By Task 4, I had mapped six recurring workflows and identified two for immediate deployment. I'm ready to teach my team how to use Claude safely and strategically.
 
-**Week 2 (Days 1-3):**
-- Draft Section 4 (What I'm Teaching + What to Build Next)
-- Test your teaching module on a colleague: Can they follow the steps?
-- Refine innovation proposals based on pilot evidence
+---
 
-**Week 2 (Days 4-5):**
-- Full portfolio review for internal consistency (does Section 4 teaching module match your Section 2 use case?)
-- Polish all sections for capstone presentation
+### Section 2: My Use Case (2 pages, ~600-800 words)
+
+Pull from your Task 2 execution or Task 4 deployment target. Refine and expand into a polished before/after case study.
+
+---
+
+#### Subsection A: The Before (200-250 words)
+
+**What was this task like before the pilot?**
+
+Describe:
+- **The actual workflow:** Step by step, as specific as possible. Do not say "I drafted emails" — say "I opened Salesforce, pulled the partner list, composed an individual email for each partner, reviewed for tone and accuracy, proofread, and sent."
+- **Time required:** Measured or careful estimate. For the partner email task: 90 minutes for 6 emails.
+- **Pain points:** What was hard? What was error-prone? What took time without producing value?
+
+**Example Before section:**
+
+> Every Monday during application season, I draft reminder emails to our six university partners. Process: Open Salesforce, pull roster, draft 6 individual emails with relationship-aware tone, proofread, send, note responses in tracker. Takes 90 minutes per cycle, 14 cycles per year. Pain points: tone varies by day (consistency), missed a partner 1-2 times per year (coverage), start fresh each cycle (no learning).
+
+---
+
+#### Subsection B: The After (200-250 words)
+
+**How is this task done now?**
+
+Describe:
+- **The AI-assisted workflow:** Step by step. What does the process look like now?
+- **What Claude handles vs. what you handle:** Where does Claude contribute, and where do you add irreplaceable judgment?
+- **Governance pathway:** What tier, what constraints, what human verification is required?
+
+**Example After section:**
+
+> Partner Outreach, "draft together" (Augmentation): (1) Prepare CTCC prompt with deadline, partner list, tone guardrails. (2) Run in Claude — generates all 6 emails with consistent structure. (3) Review for accuracy, relationship sensitivity, tone — add personal touches Claude cannot know. (4) Send. Total: 20 minutes per cycle. Claude generates 85%; I handle 100% of relationship and tone customization.
+>
+> **Governance pathway:** Tier 3 (organizational info, no student data). Partner names safe for Claude. Human verifies deadline accuracy and relationship tone.
+
+---
+
+#### Subsection C: Impact Evidence (200-300 words)
+
+**What changed?** State clearly:
+
+- **Time saved:** Quantified with specific numbers and transparent math. Not "saved a lot of time" — actual numbers.
+- **Quality gained:** Specific improvements (fewer errors, more consistent formatting, better audience targeting)
+- **Governance compliance:** How the new workflow maintains or improves data handling
+
+**Example Impact section:**
+
+> **Time Saved:** 90 min/cycle x 14 = 21 hours/year (before). 20 min/cycle x 14 = 4.7 hours/year (after). Savings: 16.3 hours/year.
+>
+> **Quality Gained:** Consistent structure (no warm-vs-terse variation). Zero missed partners since implementation. New staff can run immediately.
+>
+> **Governance Compliance:** Tier 3. Partner names safe for Claude. Human verifies deadline and adds relationship context.
+>
+> **Documented Instance:** April 10 email batch — prompt at 2:05pm, reviewed at 2:15pm, sent at 2:28pm. 23 minutes total.
+
+---
+
+### Section 3: My 4D Growth (1-2 pages)
+
+A self-assessment on the two competencies that bookend your journey: **Diligence** (the foundation from Task 1) and **Delegation** (the strategic lens from Task 4). Your full 4D assessment is visible in your task portfolios. Here, reflect deeply on the two competencies that bookend your journey.
+
+---
+
+#### The Self-Assessment Scale
+
+| Level | What It Means |
+|---|---|
+| **Still Exploring** | New to this competency; rely on checklists and step-by-step guidance |
+| **Building Awareness** | Understand the concepts; need support to apply them consistently |
+| **Building Confidence** | Apply the competency with moderate independence; occasional gaps |
+| **Proficient** | Apply the competency independently and consistently in your work |
+| **Leading Practice** | Apply at a high level and can teach or mentor others |
+
+---
+
+#### The Calibration Rule
+
+Your self-rating should be grounded in your Task 1-4 performance. Here is the mapping:
+
+| Task Performance Pattern | Reasonable Self-Assessment Range |
+|---|---|
+| Mostly Below/Approaching | Still Exploring - Building Awareness |
+| Mostly Approaching/Meets | Building Awareness - Building Confidence |
+| Mostly Meets | Building Confidence - Proficient |
+| Mostly Meets/Exceeds | Proficient - Leading Practice |
+| Mostly Exceeds | Leading Practice (with strong evidence) |
+
+If a self-rating falls outside the reasonable range (e.g., "Leading Practice" with Approaching task performance), the assessment will flag it for reconciliation. This is not punishment — it is calibration practice. Honest self-assessment IS a competency.
+
+---
+
+#### Competency 1: DILIGENCE (Governance Classification)
+
+**What this competency is:** You can identify data types, classify them by governance tier, and articulate the constraints each tier imposes. You embed governance awareness in every AI interaction.
+
+**For your self-assessment, you MUST provide:**
+
+1. **Your self-rating** on the 5-point scale above
+2. **Task performance evidence (MANDATORY):** Cite your actual performance levels from Task 1 (CLASSIFY), where Diligence was the PRIMARY competency. Name the specific dimensions: Classification Accuracy, Boundary Reasoning, Combination Awareness, Governance Operationalization.
+3. **Supporting evidence from other tasks** (optional but strengthens the case): How did governance show up in your Task 2 workflow design, Task 3 audit, or Task 4 deployment map?
+4. **Evidence alignment narrative** (2-3 sentences): How does your self-rating align with your task performance? If there is a gap, explain it.
+
+**Example:**
+
+> **Self-Rating: Building Confidence**
+>
+> Task 1 (CLASSIFY) performance: Classification Accuracy at Meets, Boundary Reasoning at Meets, Combination Awareness at Approaching, Governance Operationalization at Meets. My primary task performance was mostly Meets, which maps to Building Confidence - Proficient on the calibration table.
+>
+> Supporting evidence: In Task 2, I correctly classified my own workflow as Tier 3 and built the governance constraints into my CTCC prompt. In Task 4, I classified all 6 unit tasks by tier and identified a Tier 2 risk in our data summaries that I had not noticed before.
+>
+> Alignment: My self-rating of Building Confidence fits my Task 1 performance pattern (mostly Meets with one Approaching). I can classify governance tiers independently and correctly, but I occasionally second-guess the Tier 2 aggregation rule. I am not yet at Proficient because I want the classification to feel automatic, not deliberate.
+
+---
+
+#### Competency 2: DELEGATION (Strategic AI Deployment)
+
+**What this competency is:** You can decide the right human-AI balance for work tasks and think strategically about which tasks should use AI, in what order, and with what safeguards.
+
+**For your self-assessment, you MUST provide:**
+
+1. **Your self-rating** on the 5-point scale
+2. **Task performance evidence (MANDATORY):** Cite your actual performance levels from Task 4 (STRATEGIZE), where Delegation was the PRIMARY competency. Name the specific dimensions: Task Mapping Quality, ROI Reasoning, Implementation Feasibility, Cross-Unit Awareness.
+3. **Supporting evidence from other tasks** (optional)
+4. **Evidence alignment narrative** (2-3 sentences)
+
+---
+
+#### Evidence Binding Rule
+
+Each self-rating MUST cite at least one specific piece of evidence. Acceptable evidence:
+
+- A specific Task 1, 2, 3, or 4 performance level on a relevant dimension (e.g., "My Classification Accuracy improved from Approaching in Task 1 to Meets after revision")
+- A specific work instance from outside the tasks (e.g., "I correctly classified 5 data scenarios in my unit work last month, including 2 with small-cell thresholds")
+- A teaching or coaching moment (e.g., "I helped a colleague classify a data governance tier correctly during a team meeting")
+
+Self-ratings without specific evidence will be flagged for revision. "I feel more confident" is not evidence. "My Task 2 Execution Quality reached Meets, and I have since applied the full pipeline independently to 3 work tasks" is evidence.
+
+---
+
+#### Composite Narrative: My Growth Arc (200-300 words)
+
+Write a paragraph synthesizing your growth across the pilot. Use your Diligence and Delegation reflections as anchors, but feel free to reference Description and Discernment growth from your task portfolios. This is not a list of what happened — it is a narrative about what the journey adds up to. What is the overall story? Where did you grow most? What is your growth edge going forward?
+
+**Alternative framing for participants new to DC CAP (< 6 months tenure):** If you are new to DC CAP, your growth narrative may focus on how the pilot accelerated your understanding of the organization rather than how it transformed longstanding practices. That is a valid and valuable narrative. Frame your synthesis around: what did you learn about DC CAP's data landscape, governance needs, and workflow patterns that you would not have learned through onboarding alone? How does the pilot give you a strategic perspective on your unit that most new hires do not develop for 6-12 months?
+
+**Example narrative:**
+
+> When I started Task 1, I followed explicit steps to classify scenarios and select skills. The answer key validated my work. By Task 2, I applied the framework to my own work, but I still relied on checkpoints to verify my governance classification was right. The checkpoint revealed a gap in my thinking: I had written a CTCC prompt that included data I had just classified as Tier 1. That moment shifted something — I realized governance is not an abstract concept. It is concrete: "Do not put student names in your prompt if you classified the data as Tier 1."
+>
+> Task 3 sharpened my critical eye. I found errors in a planted-error funder email, then turned that same lens on my own Task 2 work. The self-audit was humbling — I caught three issues I had missed the first time. But the prompt improvement memo proved I could turn critique into action.
+>
+> Task 4 changed the scale of my thinking. Mapping 6 unit tasks forced me to think strategically: not "Can AI help with this task?" but "Should we deploy AI here, given our governance constraints and unit priorities?" That strategic layer was new. I found it harder than execution — but also more valuable.
+>
+> By the capstone, I am at a different place than I started. Task 1 was "learn the pipeline." Task 2 was "apply it to my work." Task 3 was "evaluate quality critically." Task 4 was "think like a leader about deployment." Now I am ready for Q3: teaching the pipeline to my team, with examples grounded in my actual work.
+
+---
+
+### Section 4: What I'm Teaching OR What to Build Next (1-2 pages)
+
+**Choose ONE:** a Teaching Module (Part A) OR Innovation Proposals (Part B). Both are valued equally.
+
+---
+
+#### Part A: Teaching Module (Q3 Workflow)
+
+Design a step-by-step guide for teaching ONE workflow to a colleague who was not in the pilot. Choose a workflow from your pilot work — most likely the same task documented in your Before/After (Section 2).
+
+**1. WORKFLOW NAME & OVERVIEW** (~100 words): Name [Approach + Human-AI Balance] / What it accomplishes / Who runs it / Why it matters / Frequency.
+
+Example: "Partner Reminder Emails (Partner Outreach, draft together). Generate consistent, relationship-aware reminder emails to university partners. Any staff managing partner communication. Reduces time from 90 to 20 min per cycle. 14 times per year."
+
+**2. GOVERNANCE LAYER** (~75 words): Data involved / Governance tier (with reasoning) / Constraints / Human verification required.
+
+Example: "Data: Partner names, deadlines, interaction notes. Tier 3 (organizational, no student data). Standard internal handling. Human verifies: deadline accuracy, tone, all partners included."
+
+**3. STEP-BY-STEP INSTRUCTIONS** (200-250 words)
+
+Write numbered steps that a colleague could follow without asking you questions. Be specific about:
+- What tool or system they are using (Salesforce, email, Claude, etc.)
+- Exactly what they do at each step
+- What they should check or verify
+- What the expected output looks like
+
+Include these three elements within the instructions:
+
+**CTCC Prompt Template** (with blanks for the colleague to fill in):
+
+```
+[CONTEXT]
+Our [NUMBER] university partners have a deadline of [DATE] for [DELIVERABLE].
+[Any relevant partner notes or context]
+
+[TASK]
+Generate [NUMBER] reminder emails, one for each partner, to notify them of this deadline.
+
+[CONSTRAINTS]
+Professional, warm tone. Acknowledge our partnership. State deadline clearly.
+Use only the partner names and details provided. Do not include student names
+or numbers. Do not invent relationship details.
+Governance: Tier [X] — [state the handling rules].
+
+[CONTENT]
+Partners and notes:
+- [Partner 1]: [context]
+- [Partner 2]: [context]
+...
+```
+
+**Edit Checklist** (what to look for when reviewing Claude's output):
+- [ ] Deadline is correct in every email
+- [ ] All partners are included — none missing
+- [ ] Tone matches DC CAP voice (professional, warm, relationship-aware)
+- [ ] No governance violations (no student data, no invented details)
+- [ ] Relationship context is accurate (add or correct as needed)
+
+**Common Failure Modes** (what Claude gets wrong on this type of task and how to fix it):
+- Claude may be too formal — loosen the tone with personal touches
+- Claude may invent relationship details it does not know — remove anything fabricated
+- Claude may miss a partner if the list is not clearly formatted — double-check coverage
+- Claude may use generic language — customize each email with context you know
+
+---
+
+**4. INDEPENDENCE TEST:** Can a colleague follow this guide and complete the workflow without asking you any questions? If "probably not," the module needs more detail. Answer: (1) Could a colleague follow these steps without clarifying questions? (2) Could a new team member execute on their first try? (3) Does it include everything needed for safe execution?
+
+---
+
+#### Part B: Innovation Proposals (1-2 proposals)
+
+For each proposal, provide: (1) Innovation name, (2) Problem or opportunity grounded in pilot evidence, (3) Proposed solution — specific and actionable, (4) Expected impact — quantified if possible, (5) First steps in the first 30 days.
+
+**Example Proposal 1: Unit-Specific CTCC Prompt Library**
+
+> **Problem:** My CTCC prompt for partner emails was nearly identical across Task 2 and Task 4. The structure was stable; only the deadline and partner list changed. If we built one vetted template, my unit could reuse it 14 times per year.
+>
+> **Solution:** Create unit-specific prompt libraries for the top 5 recurring workflows per unit. Pre-vet for governance compliance; include variables for customization.
+>
+> **Impact:** New staff execute immediately. Consistency across the unit. Governance baked in. Approximately 40 minutes saved per person per year on prompt writing alone.
+>
+> **First steps:** Inventory top 5 workflows. Document CTCC templates. Vet with governance. Test with colleague. Roll out in Q3.
+
+**Example Proposal 2: Peer Auditing Protocol for High-Stakes Outputs**
+
+> **Problem:** In Task 3, my self-audit caught three issues I had originally missed. For Tier 2 data or external-facing outputs, a second set of eyes would reduce risk. No formalized process exists.
+>
+> **Solution:** For any Claude output intended for external use or involving Tier 2 data, submit for 10-minute peer review before shipping. Reviewer uses a checklist: governance compliance, accuracy, tone, coverage.
+>
+> **Impact:** Reduced governance risk. Faster learning for new staff. Minimal time cost (~10 min) that prevents costly mistakes.
+>
+> **First steps:** Document peer audit checklist. Identify trigger workflows. Train unit on protocol. Start with your own outputs as examples.
+
+---
 
 ### Common Traps to Avoid
 
 **Trap 1: Self-assessment not grounded in task evidence**
-- You rate yourself "Proficient" on Diligence, but your Task 3 performance was "Approaching"
-- You include no specific examples from your tasks
-- **Check:** For each competency, cite at least one task moment that justifies your rating
+- You rate yourself "Leading Practice" on Delegation, but your Task 4 performance showed Approaching on ROI Reasoning
+- You include no specific dimension references from your tasks
+- **Fix:** For each competency, cite the PRIMARY task performance levels that justify your rating
 
-**Trap 2: Teaching module that's too vague**
-- Instructions don't specify what tools to use or what the expected output looks like
-- A colleague would need to ask you for clarification
-- **Check:** Could you hand this module to someone who's never done this task and have them succeed?
+**Trap 2: Teaching module that describes rather than instructs**
+- Instructions read as a narrative ("First I usually open Salesforce...") rather than numbered, specific steps
+- No CTCC template, no edit checklist, no failure modes
+- **Fix:** Write numbered steps. Include the template with blanks. Add the checklist and failure modes.
 
-**Trap 3: Innovation proposals that are too generic**
-- "We should build better templates" without explaining what problem this solves
-- No connection to pilot evidence
-- **Check:** For each proposal, name the specific problem or opportunity you discovered in the pilot
+**Trap 3: Use case without quantified impact**
+- "It saved a lot of time" instead of "from 90 minutes to 20 minutes, saving 980 minutes per year"
+- No documented instance
+- **Fix:** Show the math. Reference a specific instance with timestamp or example.
 
-**Trap 4: Inconsistency across sections**
-- Your Use Case (Section 2) describes a Tier 3 workflow, but your 4D Growth (Section 3) talks about Tier 2 governance challenges
-- Your Teaching Module (Section 4) describes a workflow different from your Use Case
-- **Check:** Read Section 2 and Section 4 back-to-back. Are they about the same workflow?
+**Trap 4: Innovation proposals without pilot evidence**
+- "We should use AI more" without citing what you observed during Tasks 1-4
+- **Fix:** For each proposal, name the specific pilot moment that created the idea.
+
+**Trap 5: Growth narrative that lists rather than synthesizes**
+- "In Task 1 I did X. In Task 2 I did Y. In Task 3 I did Z. In Task 4 I did W."
+- **Fix:** Tell a story. What shifted? What surprised you? What is the throughline?
 
 ### Internal Consistency Check
 
 Before submitting, verify these connections:
-- Does your Section 1 impact headline match the impact documented in Section 2?
-- Does your Section 4 teaching module teach the same workflow described in Section 2?
+- Does your Section 1 impact match the impact documented in Section 2?
+- If you chose the teaching module: does it teach the same workflow described in Section 2?
 - Do your Section 3 self-ratings align with the growth story you tell in your composite narrative?
+- Does your growth narrative reference specific dimensions and levels from at least 2 prior tasks?
 
-If any of these don't connect, revise to create a coherent throughline. Your portfolio should tell one consistent story about your AI development journey.
+If any of these do not connect, revise to create a coherent throughline. Your portfolio should tell one consistent story about your AI development journey.
 
 ---
 
 ## STAGE 3: ASSESS
 
-### Pre-Assessment Step: Gather Task 1-3 Performance Levels
+### Pre-Assessment Step: Gather Task 1-4 Performance Levels
 
-### When to Collect Your Task 1-3 Performance Data
+Before scoring the capstone, gather the participant's performance levels from all four prior tasks.
 
-Before you begin drafting, gather your assessment results from Tasks 1-3. You'll need:
-- Your final assessment level (Exceeds/Meets/Approaching/Below) on each dimension for each task
-- Any revision deltas (if you revised and improved)
+**Task 1 (CLASSIFY):**
+| Dimension | Level |
+|---|---|
+| Classification Accuracy | [Exceeds/Meets/Approaching/Below] |
+| Boundary Reasoning | [Exceeds/Meets/Approaching/Below] |
+| Combination Awareness | [Exceeds/Meets/Approaching/Below] |
+| Governance Operationalization | [Exceeds/Meets/Approaching/Below] |
 
-Your facilitator can provide these if you don't have them. Collect this data BEFORE starting Section 3 (My 4D Growth), because your self-assessment ratings must be calibrated against your actual task performance.
+**Task 2 (CREATE):**
+| Dimension | Level |
+|---|---|
+| Design Completeness | [Exceeds/Meets/Approaching/Below] |
+| Execution Quality | [Exceeds/Meets/Approaching/Below] |
+| Edit Layer Rigor | [Exceeds/Meets/Approaching/Below] |
+| Plan-vs-Reality Insight | [Exceeds/Meets/Approaching/Below] |
+
+**Task 3 (CRITIQUE):**
+| Dimension | Level |
+|---|---|
+| Error Detection Accuracy | [Exceeds/Meets/Approaching/Below] |
+| Severity Calibration | [Exceeds/Meets/Approaching/Below] |
+| Self-Audit Depth | [Exceeds/Meets/Approaching/Below] |
+| Corrective Transfer | [Exceeds/Meets/Approaching/Below] |
+
+**Task 4 (STRATEGIZE):**
+| Dimension | Level |
+|---|---|
+| Task Mapping Quality | [Exceeds/Meets/Approaching/Below] |
+| ROI Reasoning | [Exceeds/Meets/Approaching/Below] |
+| Implementation Feasibility | [Exceeds/Meets/Approaching/Below] |
+| Cross-Unit Awareness | [Exceeds/Meets/Approaching/Below] |
+
+These feed the calibration check in Dimension 2.
 
 ---
 
-**Before we assess your capstone, please provide your performance levels from Tasks 1-3:**
+### Assessment Framework: 5 Dimensions
 
-For each competency and each task, state your level:
-
-| Competency | Task 1 Level | Task 2 Level | Task 3 Level |
-|---|---|---|---|
-| Diligence (Governance Classification) | [Exceeds/Meets/Approaching/Below] | [Exceeds/Meets/Approaching/Below] | [Exceeds/Meets/Approaching/Below] |
-| Description (Prompt Writing) | [Exceeds/Meets/Approaching/Below] | [Exceeds/Meets/Approaching/Below] | [Exceeds/Meets/Approaching/Below] |
-| Delegation (Skill Selection) | [Exceeds/Meets/Approaching/Below] | [Exceeds/Meets/Approaching/Below] | [Exceeds/Meets/Approaching/Below] |
-| Discernment (Output Audit) | [Exceeds/Meets/Approaching/Below] | [Exceeds/Meets/Approaching/Below] | [Exceeds/Meets/Approaching/Below] |
-
-**This data helps us validate your capstone self-assessment and identify any patterns in your learning trajectory.**
+The capstone is evaluated across 5 dimensions. Each dimension has 4 levels: Exceeds / Meets / Approaching / Below Standard.
 
 ---
 
-### Assessment Dimensions
-
-Your capstone is evaluated across 4 dimensions. Each dimension has 4 levels: **Exceeds / Meets / Approaching / Below Standard.**
-
-The readiness threshold: **All or most dimensions at Meets or above (no dimension at Below)** = capstone-ready for showcase. **Multiple dimensions at Approaching, none at Below** = targeted revision. **Any dimension at Below Standard** = re-teach and resubmit.
-
----
-
-### DIMENSION 1: Use Case Quality
+#### DIMENSION 1: Use Case Impact
 
 **What this measures:** Is your before/after specific, quantified, and credible? Can someone understand the real impact of your AI workflow?
 
-**EXCEEDS STANDARD**
-- **Before:** Specific steps are named; time is measured or based on careful recent recall; pain points are concrete and quantified. Example: "90 minutes per cycle × 14 cycles/year = 21 hours/year on partner emails" is better than "this task takes a long time."
-- **After:** Workflow is named (skill + modality); human and Claude roles are clearly separated; time is specified.
-- **Impact Evidence:** Time saved is calculated precisely with transparent math. Quality improvements are specific (consistency, accuracy, coverage). At least one documented instance is provided (screenshot, example, timestamp, link).
-- **Governance Pathway:** Tier is correct; data handling is explained; human verification layer is specific.
+| Level | Definition |
+|---|---|
+| **Exceeds** | Before/After is specific, quantified with multiple data points, governance pathway is correct and detailed, could be used as an exemplar for the cohort |
+| **Meets** | Before/After documents a real workflow with quantified time savings and at least one quality improvement, governance pathway present |
+| **Approaching** | Before/After is generic or only one side is specific, or governance pathway is missing/incorrect |
+| **Below** | No real use case, or purely hypothetical without evidence |
 
-Example (Exceeds):
-> Before: 90 minutes per cycle, 14 cycles/year, 21 hours/year. Steps: open Salesforce, draft individual emails, proofread, send. Pain: consistency (tone varies), coverage (dropped CSU once), relationship knowledge (manual tracking).
->
-> After: Partner Outreach (Augmentation). Claude drafts all 6; I customize tone and verify all present. 20 minutes per cycle.
->
-> Time Saved: 70 minutes/cycle × 14/year = 980 minutes/year (16.3 hours).
->
-> Quality: All emails now consistent (same structure, professional tone). Zero missed partners since implementation. New staff can run the workflow immediately.
->
-> Governance: Tier 3 (organizational info). Safe to use partner names with Claude. Human verifies deadline accuracy and relationship tone. No governance risk.
->
-> Documented: April 10 email batch with timestamps showing 23-minute cycle. Emails show Claude's consistent structure + my tone customizations.
+**Bright line:** Are time savings quantified with specific numbers (not "saved a lot of time")? If yes, Meets minimum. If no, Approaching at best.
 
-**MEETS STANDARD**
-- **Before:** Steps are clear; time is specified (measured or reasonable estimate); pain points are named.
-- **After:** Workflow is named; roles are separated; time is specified.
-- **Impact Evidence:** Time saved is calculated; quality improvements are named; at least one example is referenced.
-- **Governance Pathway:** Tier is correct; data handling is explained.
-
-Example (Meets):
-> Before: Partner emails, 90 minutes per cycle, 14 cycles/year. Manual steps. Consistency and coverage issues.
->
-> After: Claude generates emails; I customize tone. 20 minutes per cycle.
->
-> Time Saved: 70 min/cycle × 14/year = ~1,000 minutes/year.
->
-> Quality: Consistent tone and coverage; no missed partners.
->
-> Governance: Tier 3. Partner names are safe to use with Claude. Human verifies accuracy and relationships.
->
-> Documented: April 10 emails show my edits.
-
-**APPROACHING STANDARD**
-- **Before:** Steps are roughly described; time is approximate; pain points are mentioned but not detailed.
-- **After:** Workflow is mentioned but not fully named; roles are somewhat unclear.
-- **Impact Evidence:** Time savings are estimated; quality improvements are mentioned generally.
-- **Governance Pathway:** Tier is identified but data handling is vague.
-
-**BELOW STANDARD**
-- **Before:** Steps are vague or missing; time is not quantified.
-- **After:** Workflow is unclear; roles are not defined.
-- **Impact Evidence:** Not calculated or not credible.
-- **Governance Pathway:** Tier is missing or incorrect.
-
-**Calibration Anchor: Approaching → Meets Boundary**
-
-**Use Case Quality:** Approaching looks like—Steps mentioned but not in order; time is guessed ("about an hour"). Workflow called out but roles aren't clear. Meets looks like—Before and After sections are clear with specific steps and measured or reasonable estimates. Roles separated (what Claude does, what human does). Time saved calculated with transparent math.
+**Calibration Anchor (Approaching to Meets):** Approaching looks like — steps mentioned but not in order; time is guessed ("about an hour"); workflow called out but roles are not clear. Meets looks like — Before and After sections are clear with specific steps and measured or reasonable estimates; roles separated (what Claude does, what human does); time saved calculated with transparent math.
 
 ---
 
-### DIMENSION 2: 4D Self-Assessment Calibration
+#### DIMENSION 2: Self-Assessment Calibration
 
-**What this measures:** Are your self-ratings honest and grounded in task evidence? Do your ratings align with your actual Task 1-3 performance, or if they diverge, is there credible supplemental evidence?
+**What this measures:** Are your self-ratings honest, evidence-based, and aligned with your actual Task 1-4 performance?
 
-**EXCEEDS STANDARD**
-- All four competency ratings have clear evidence from Tasks 1-3
-- Ratings align with task performance pattern (e.g., "Most Meets" on tasks = "Building Confidence–Proficient" on self-assessment)
-- Any rating that diverges from task pattern includes credible supplemental evidence (post-task learning, mentoring, peer feedback)
-- Composite narrative shows clear growth trajectory: Task 1→Task 2→Task 3
-- Calibration checks are documented and transparent
+| Level | Definition |
+|---|---|
+| **Exceeds** | Both self-ratings cite specific task performance evidence, align with the calibration table, and gaps between self-assessment and task performance are acknowledged and explained with insight |
+| **Meets** | Both ratings cite task evidence and fall within the reasonable calibration range; minor gaps are noted |
+| **Approaching** | Ratings provided but evidence is vague or disconnected from actual task performance; or significant miscalibration without acknowledgment |
+| **Below** | Ratings without evidence, or wildly miscalibrated (e.g., "Leading Practice" with Approaching task performance) |
 
-Example (Exceeds):
-> **Diligence Self-Rating: Proficient**
-> 
-> Task 1: Guided classification (correct answers)
-> Task 2: Scenario classification with checkpoint validation (correct)
-> Task 3: Independent classification of 8 workflows; caught a Tier 2 governance issue on my own (Meets on dimension)
-> 
-> Rating justification: Task 3 performance shows I classified real data correctly without scaffolding. I caught a nuanced governance issue (Tier 2 re-identification risk) independently. I can teach this framework to colleagues because I own the logic, not the steps. This justifies "Proficient."
-> 
-> Supplemental evidence: Since Task 3, I reviewed governance classifications with a peer, and she confirmed accuracy. I identified a Tier 1 issue in a new analytics workflow that the data team had missed.
-> 
-> Calibration check: Task 3 was Meets → Proficient is reasonable (task performance + supplemental evidence supports it).
+**Bright line:** Does each self-rating include a mandatory citation of the relevant PRIMARY task's performance level? If either competency is missing the citation, it cannot score above Approaching.
 
-**MEETS STANDARD**
-- All four competencies are rated with task evidence
-- Most ratings align with task performance
-- Any divergence has reasonable explanation or supplemental evidence
-- Composite narrative shows growth arc
+**Calibration Check Protocol:**
 
-Example (Meets):
-> **Diligence Self-Rating: Building Confidence**
-> 
-> Task 1: Guided classification (correct)
-> Task 2: Scenario classification with checkpoint (correct)
-> Task 3: Independent classification, correct, but took 10 minutes of second-guessing on the aggregation rule (Meets on dimension)
-> 
-> Rating: Building Confidence, because I can do it independently and correctly, but it's not yet automatic. I have to think through the Tier 2 aggregation rule each time, rather than it being intuitive.
+For each of the two competencies, compare:
+- The participant's self-rating on the 5-point scale
+- Their actual performance on the PRIMARY task for that competency
 
-**APPROACHING STANDARD**
-- Some ratings lack specific task evidence
-- Some ratings don't align with task performance and lack supplemental evidence
-- Narrative is present but lacks detail
+| Competency | Primary Task | Dimensions to Check |
+|---|---|---|
+| Diligence | Task 1 (CLASSIFY) | Classification Accuracy, Boundary Reasoning, Combination Awareness, Governance Operationalization |
+| Delegation | Task 4 (STRATEGIZE) | Task Mapping Quality, ROI Reasoning, Implementation Feasibility, Cross-Unit Awareness |
 
-**BELOW STANDARD**
-- Ratings are not grounded in task evidence
-- Significant misalignment between self-rating and task performance with no explanation
-- No composite narrative
+Flag any rating that falls outside the reasonable range. In the feedback, frame it as:
 
-**Calibration Anchor: Approaching → Meets Boundary**
+"You rated yourself [X] on [competency]. Your Task [N] performance showed [level pattern]. That is [within/outside] the expected range. [If outside:] This does not mean your self-rating is wrong — you may have evidence beyond the tasks that supports it. But the assessment asks you to reconcile the gap. What evidence supports the higher/lower rating?"
 
-**4D Self-Assessment Calibration:** Approaching looks like—Some ratings cite task evidence, but others are vague. One rating says "I felt more confident" without naming what changed. Meets looks like—All four ratings cite specific Task 1, 2, or 3 evidence. Ratings align with task performance, or divergence is explained by supplemental evidence. Composite narrative shows growth arc.
+**Calibration Anchor (Approaching to Meets):** Approaching looks like — one rating cites task evidence but the other is vague; a rating says "I felt more confident" without naming what changed. Meets looks like — both ratings cite specific Task 1 or Task 4 evidence; ratings align with task performance, or divergence is explained by supplemental evidence; composite narrative shows growth arc.
 
 ---
 
-### DIMENSION 3: Teaching Module Completeness
+#### DIMENSION 3: Teaching Module Completeness
 
 **What this measures:** Is your teaching module specific and detailed enough that a colleague could follow it independently? Does it pass the "independence test"?
 
-**EXCEEDS STANDARD**
-- **Governance layer:** Data, tier, constraints, and human verification are all specific and enforceable.
-- **Step-by-step instructions:** Numbered steps are specific. Each step names the tool (Salesforce, Claude, email), the exact action, what to check, and what the expected output is.
-- **Independence test:** You've piloted this with a colleague, and they could execute it without asking clarifying questions. You explain this explicitly: "I tested these steps with [colleague], and she completed the workflow independently."
-- **Completeness:** The module includes governance, the tool instructions, the expected output, and a verification checklist.
+| Level | Definition |
+|---|---|
+| **Exceeds** | Passes the independence test; includes governance layer, CTCC template with fill-in blanks, edit checklist, common failure modes with corrections; colleague could execute the workflow without asking questions |
+| **Meets** | Most elements present; a colleague would need 1-2 clarifying questions but could largely follow it |
+| **Approaching** | Module is a description rather than instructions; colleague would need significant hand-holding |
+| **Below** | No module, or module is too vague to teach from |
 
-Example (Exceeds):
-> **Independence Test:** I tested this module with [colleague]. She ran her first cycle independently following these steps. She had one question (about which email field to use in Salesforce), which I answered and then added to the "Gather the partner list" step. After that addition, she could run it without asking.
+**Bright line:** Does the module include numbered, specific steps that someone could follow? If yes, Meets minimum. If it reads as a narrative description, Approaching.
 
-**MEETS STANDARD**
-- **Governance:** Data, tier, constraints are explained.
-- **Steps:** Numbered and specific; include tool names and expected outputs.
-- **Independence test:** Module is detailed enough that a colleague could likely follow it; you haven't tested it, but the instructions are clear.
-- **Completeness:** Covers governance, tools, expected output, verification checklist.
-
-**APPROACHING STANDARD**
-- **Governance:** Mentioned but somewhat vague.
-- **Steps:** Present but lack detail (don't specify tools or expected output clearly).
-- **Independence test:** Module might work, but unclear if a colleague could follow it without clarification.
-
-**BELOW STANDARD**
-- **Governance:** Missing or unclear.
-- **Steps:** Vague or incomplete.
-- **Completion test:** Colleague would likely need clarification to execute.
-
-**Calibration Anchor: Approaching → Meets Boundary**
-
-**Teaching Module Completeness:** Approaching looks like—Governance mentioned but vague ("use the governance framework"). Steps present but don't name specific tools. Verification checklist minimal. Meets looks like—Data, tier, and constraints are explicit. Steps are numbered and each names the tool, the action, and expected output. Verification checklist is specific.
+**Calibration Anchor (Approaching to Meets):** Approaching looks like — governance mentioned but vague ("use the governance framework"); steps present but do not name specific tools; verification checklist minimal. Meets looks like — data, tier, and constraints are explicit; steps are numbered and each names the tool, the action, and expected output; verification checklist is specific.
 
 ---
 
-### DIMENSION 4: Innovation Proposal Quality
+#### DIMENSION 4: Teaching Module OR Proposal Quality
 
-**What this measures:** Are your proposals grounded in pilot evidence? Do they diagnose a real problem and propose an actionable solution?
+**What this measures:** Does the participant's chosen deliverable (teaching module or innovation proposals) demonstrate practical skill transfer or strategic vision grounded in pilot evidence? Note: If the participant chose the Teaching Module for Section 4, score it here using the criteria below. Teaching Module Completeness (Dimension 3) then evaluates the same artifact on a different axis — completeness vs. quality/grounding. If the participant chose Innovation Proposals, Dimension 3 is scored N/A and this dimension carries the Section 4 assessment.
 
-**EXCEEDS STANDARD**
-- **Problem statement:** Clear and specific, grounded in pilot evidence. Example: "In the pilot, I created a CTCC prompt that I discovered was nearly identical to my Task 2 prompt. This suggests that prompt reusability is high if we vet the prompt once."
-- **Proposed solution:** Actionable and scoped. Example: "Build unit-specific CTCC prompt libraries for the top 5 recurring workflows per unit."
-- **Expected impact:** Specific (time, quality, governance, scale). Example: "New staff can run the workflow on day one. Consistency across the unit. Governance compliance baked in."
-- **First steps:** Concrete and sequenced. Example: "1) Inventory top 5 workflows. 2) Document CTCC templates. 3) Vet with governance. 4) Test with colleagues. 5) Roll out in Q3."
-- **Multiple proposals (2):** Both are grounded in pilot evidence, addressing different gaps or opportunities.
+| Level | Definition |
+|---|---|
+| **Exceeds** | [If teaching module:] Module is grounded in real pilot work, governance is accurate, and a colleague could realistically execute independently; [If proposals:] Both proposals cite specific pilot evidence, diagnose root causes, and propose solutions with implementation detail |
+| **Meets** | [If teaching module:] Module covers a real workflow with accurate governance and clear steps; [If proposals:] At least 1 proposal cites pilot evidence with actionable solution |
+| **Approaching** | [If teaching module:] Module covers a real workflow but governance or steps are vague; [If proposals:] Proposals are generic without pilot evidence |
+| **Below** | No deliverable, or content does not connect to pilot experience |
 
-Example (Exceeds):
-> **Proposal 1: Unit-Specific CTCC Prompt Library**
-> 
-> Problem: In the pilot, I noticed my CTCC prompt for partner emails was nearly identical across Task 2 and Task 3. The structure was stable; only the deadline and partner list changed. This suggests that if we built, vetted, and documented one prompt template, my entire unit could reuse it 14 times per year.
-> 
-> Solution: Create unit-specific prompt libraries. Start with the top 5 recurring workflows per unit.
-> 
-> Impact: New staff can execute immediately. Consistency across the unit. Governance compliance is baked in. My unit saves ~40 minutes per person per year on prompt writing. If all 6 units do this: ~240 person-hours saved per year.
-> 
-> First steps: Inventory top 5 workflows. Document CTCC templates. Vet with governance. Test with colleagues.
-
-**MEETS STANDARD**
-- **Problem statement:** Clear, grounded in evidence
-- **Proposed solution:** Actionable
-- **Expected impact:** Named
-- **First steps:** Identified
-- **Proposals (1-2):** Both grounded in evidence
-
-**APPROACHING STANDARD**
-- **Problem statement:** Mentioned but lacks specific pilot evidence
-- **Proposed solution:** Present but vague
-- **Expected impact:** General
-- **First steps:** Not clearly sequenced
-- **Proposals:** May be based on intuition rather than pilot evidence
-
-**BELOW STANDARD**
-- **Problem statement:** Missing or unsupported
-- **Proposed solution:** Too vague
-- **Expected impact:** Not specified
-- **First steps:** Missing
-
-**Calibration Anchor: Approaching → Meets Boundary**
-
-**Innovation Proposal Quality:** Approaching looks like—Problem statement mentions an idea but doesn't ground it in specific pilot evidence. Proposed solution exists but is vague ("we should build a system"). Expected impact is general ("save time and improve consistency"). Meets looks like—Problem statement names a specific observation from the pilot (e.g., "I reused the same CTCC prompt in Task 2 and Task 3"). Solution is actionable and scoped. Expected impact is named (time, quality, governance, scale). First steps are sequenced.
+**Calibration Anchor (Approaching to Meets):** Approaching looks like — proposal mentions an idea but does not ground it in specific pilot evidence; solution exists but is vague ("we should build a system"); or teaching module describes rather than instructs. Meets looks like — problem statement names a specific observation from the pilot; solution is actionable and scoped; expected impact is named; first steps are sequenced; or teaching module has numbered steps with governance layer.
 
 ---
 
-### Calibration Check: Self-Assessment Against Task Performance
+#### DIMENSION 5: Growth Narrative Coherence
 
-As part of the assessment, we will compare your capstone self-ratings against your Task 1-3 performance levels using this grid:
+**What this measures:** Does the portfolio tell a coherent story from Task 1 through Capstone?
 
-| Competency | Task 3 Level | Capstone Self-Rating | Alignment | Evidence of Alignment |
-|---|---|---|---|---|
-| Diligence | Meets | Building Confidence | Aligned | Task 3 was Meets; Building Confidence is in the right range |
-| ... | ... | ... | ... | ... |
+| Level | Definition |
+|---|---|
+| **Exceeds** | Portfolio tells a coherent story from Task 1 through Capstone; cross-task references are accurate, specific, and insightful; the composite narrative shows genuine synthesis (not just listing what happened) |
+| **Meets** | Portfolio references prior tasks accurately; growth story has a clear arc; composite narrative connects competencies |
+| **Approaching** | Portfolio mentions prior tasks but references are vague or inaccurate; growth story is a chronological list rather than a synthesis |
+| **Below** | No cross-task references; portfolio reads as if Tasks 1-4 did not happen |
 
-If there's misalignment (e.g., Task 3 was Below, but you rate yourself Proficient), we'll flag it for discussion and ask for supplemental evidence.
-
----
-
-### The Full Growth Trajectory Across All 4 Tasks
-
-The assessment will also document your growth pattern:
-
-- **Task 1 → Task 2:** What changed in your understanding between guided and supported pipeline work?
-- **Task 2 → Task 3:** What changed between supported and independent work?
-- **Task 3 → Capstone:** What changed in how you think about teaching and multiplying your learning?
+**Bright line:** Does the growth narrative reference specific dimensions and levels from at least 2 prior tasks? If yes, Meets minimum. If no, Approaching at best.
 
 ---
 
-## What Your Feedback Will Look Like
+### Assessment Output Format
 
-Here's an example of what feedback on 4D Self-Assessment Calibration at Approaching Standard sounds like:
+Structure feedback in this order:
 
-**EXAMPLE: Feedback on 4D Self-Assessment Calibration (Approaching Standard)**
-
-**Coaching Orientation:** Self-assessment calibration measures whether your ratings of your own growth are grounded in evidence from your actual task performance. Honest, evidence-based self-assessment is one of the most valuable professional skills you can develop — it's what separates reflection from wishful thinking.
-
-**Your Level:** Approaching Standard
-
-**What You Did Well:** You completed self-ratings for all four competencies and your scale choices are reasonable. Your Diligence rating (Building Confidence) and your Description rating (Building Confidence) align with your Task 2-3 performance, which showed consistent Meets-level work.
-
-**What Would Strengthen This:** Your Delegation self-rating is "Proficient," but your Task 3 Strategic Mapping dimension was Approaching Standard. The calibration table suggests that Approaching on Task 3 maps to "Building Awareness — Building Confidence," not Proficient. Your evidence statement says "I feel much more confident choosing the right tools now," but feeling confident and demonstrating proficiency are different things. What specific evidence from your task work supports Proficient? If you tested this with a colleague or applied it successfully outside the pilot tasks, that would count — but you'll need to name the instance.
-
-**Transferable Skill:** You're building "evidence-grounded self-awareness" — the ability to assess your own capabilities honestly using concrete evidence rather than impressions. Leaders who can do this make better hiring, delegation, and development decisions.
-
-**Coaching Question:** Look at your Task 3 Delegation assessment. What specific evidence would you need to see in your own work to justify a Proficient rating? Can you point to that evidence, or does Building Confidence feel more accurate right now?
-
-**Revision Guidance (3 items):**
-1. Revisit your Delegation self-rating. Either adjust it to Building Confidence (which aligns with your task performance), or add supplemental evidence showing Proficient-level work outside the tasks.
-2. Replace "I feel more confident" statements with specific evidence: "In Task 3, I [specific action] which demonstrates [specific competency]."
-3. Check each self-rating against the calibration table. For any rating that exceeds the suggested range, add a supplemental evidence field explaining why.
+1. **Cross-task trajectory summary:** Open with the full trajectory from Task 1 through Capstone. Name the participant's strongest dimension across the pilot and their widest gap.
+2. **Calibration check results:** Self-ratings vs. task performance for both competencies (Diligence and Delegation). Flag any that fall outside the reasonable range.
+3. **Dimension-by-dimension scoring:** Each of the 5 dimensions scored with evidence, gap identification, and revision direction.
+4. **Overall pilot assessment:** Readiness to teach in Q3. Where is this participant's greatest leverage for their unit?
+5. **Coaching question:** A question connecting synthesis to multiplication. Example: "You rated yourself Proficient on Delegation but Building Confidence on Diligence. In Q3, when your colleagues start using AI workflows, which competency will be most critical for THEM to develop first — and how does that connect to where you started?"
 
 ---
 
-## STAGE 3b: REASSESS (Revision + Delta)
+### What Feedback Sounds Like
 
-### Reassessment Protocol
+**Example: Feedback on Self-Assessment Calibration (Approaching Standard)**
 
-When the participant submits a revision, reassess using the SAME rubric dimensions and level definitions from Stage 3. The reassessment:
+> **Your Level:** Approaching Standard
+>
+> **What You Did Well:** Self-ratings for both competencies are complete. Your Diligence rating (Building Confidence) aligns with your Task 1 performance (consistent Meets across CLASSIFY dimensions).
+>
+> **What Would Strengthen This:** Your Delegation self-rating is "Proficient," but Task 4 (STRATEGIZE) showed Approaching on ROI Reasoning and Implementation Feasibility. The calibration table maps a mixed Approaching/Meets pattern to "Building Awareness - Building Confidence," not Proficient. Your evidence says "I feel much more confident" — but feeling confident and demonstrating proficiency are different. What specific evidence supports Proficient?
+>
+> **Transferable Skill:** You are building "evidence-grounded self-awareness." Leaders who assess their own capabilities honestly make better delegation and development decisions.
+>
+> **Coaching Question:** What specific evidence would you need to see in your own work to justify a Proficient rating on Delegation? Can you point to that evidence, or does Building Confidence feel more accurate?
+>
+> **Revision Guidance:** (1) Revisit your Delegation rating — either adjust to Building Confidence or add supplemental evidence. (2) Replace "I feel more confident" with specific evidence from tasks. (3) Check each self-rating against the calibration table.
 
-1. **Re-evaluates each dimension** against the same rubric. A dimension can improve, stay the same, or (rarely) decrease if the revision introduced new issues.
+---
+
+### Readiness Check (Differentiated Pathways)
+
+After assessment, route the participant based on their results:
+
+- **Exceeds all/most dimensions:** Extension challenge — write a 1-paragraph pitch for how the pilot model could be adapted for another nonprofit
+- **All/most Meets:** Standard revision on 1-2 dimensions where gaps exist
+- **Multiple Approaching:** Targeted revision, especially on calibration or teaching module specificity
+- **Any Below:**
+
+> **A note before we continue:** Scoring Below Standard on a dimension does not mean your entire journey was wrong. You have completed four tasks and built real skills. A Below on a capstone dimension usually means one specific piece did not land, not a fundamental gap. Let's identify the specific issue and address it together.
+
+Re-teaching focused on the specific weak deliverable; schedule facilitator check-in
+
+---
+
+## STAGE 3b: REASSESS
+
+When the participant submits a revision, reassess using the SAME 5 dimensions and level definitions from Stage 3.
+
+The reassessment:
+
+1. **Re-evaluates each revised dimension** against the same rubric. A dimension can improve, stay the same, or (rarely) decrease if the revision introduced new issues.
 2. **Produces a delta comparison** showing the level transition and what specifically changed.
 3. **Applies the readiness check** to determine next step: proceed to packaging, another revision cycle, or concept re-introduction.
 4. **Does NOT require the participant to revise all dimensions.** If only 1-2 dimensions need work, they revise only those sections.
@@ -858,69 +570,75 @@ When the participant submits a revision, reassess using the SAME rubric dimensio
 
 ## STAGE 4: REVISE
 
-### Before You Submit
+### Targeted Revision Guidance by Dimension
 
-**Self-Check: Section 1 (My Pilot)**
-- [ ] Name and unit are clear
-- [ ] Impact headline is one specific sentence (not generic)
-- [ ] Context explains your role in the unit
-- [ ] Journey narrative answers: What did you expect? What surprised you? What's your confidence now?
+**If Use Case Impact is Approaching:**
+- Add quantified time savings with transparent math (before time - after time = savings per cycle x cycles per year)
+- Specify the governance pathway: tier, constraints, human verification
+- Include a documented instance with timestamp or concrete example
+- Make the Before section step-by-step, not narrative
 
-**Self-Check: Section 2 (My Use Case)**
+**If Self-Assessment Calibration is Approaching:**
+- Add mandatory task performance citations for both competencies (Diligence and Delegation). Name the PRIMARY task and the specific dimension levels.
+- Reconcile any gaps: if your self-rating exceeds the calibration table range, provide supplemental evidence or adjust the rating
+- Replace feeling-based statements ("I feel more confident") with evidence-based statements ("My Task 3 Error Detection Accuracy was Meets, and I have since identified similar issues in 2 real work tasks")
+
+**If Teaching Module Completeness is Approaching:**
+- Convert narrative descriptions to numbered, specific steps
+- Add the CTCC template with fill-in blanks
+- Add the edit checklist (what to look for when reviewing Claude's output)
+- Add common failure modes with corrections
+- Test: read the module as if you have never done this workflow. Could you follow it?
+
+**If Teaching Module/Proposal Quality is Approaching:**
+- If you chose a teaching module: ensure governance layer is explicit, steps are numbered, and CTCC template is included
+- If you chose proposals: ground each proposal in specific pilot evidence — name the task and the moment
+- Add implementation detail: not "we should build this" but "Step 1: Inventory top 5 workflows. Step 2: Document CTCC templates..."
+
+**If Growth Narrative Coherence is Approaching:**
+- Add specific dimension and level references from at least 2 prior tasks
+- Transform the chronological list into a synthesis: what is the throughline? What shifted?
+- Connect competencies to each other: how did growth in one area enable growth in another?
+
+---
+
+### Self-Check Before Submitting
+
+**Section 1 (My Pilot):**
+- [ ] One paragraph (~150 words) covering name, unit, biggest win, and how your thinking shifted
+- [ ] Impact is specific (not generic)
+
+**Section 2 (My Use Case):**
 - [ ] Before: Steps are specific, time is quantified, pain points are concrete
-- [ ] After: Workflow is named (skill + modality), roles are separated, time is specified
+- [ ] After: Workflow is named, roles are separated (Claude vs. human), time is specified
 - [ ] Impact Evidence: Time saved has transparent math; quality gains are specific; at least one documented instance
-- [ ] Governance: Tier is correct, data handling is explained, human verification layer is specific
+- [ ] Governance: Tier is correct, data handling is explained, human verification is specific
 
-**Self-Check: Section 3 (My 4D Growth)**
-- [ ] All four competencies are self-rated
-- [ ] Each rating has specific evidence from Tasks 1-3
-- [ ] Ratings align with task performance, or divergence is supported by supplemental evidence
-- [ ] Composite narrative shows clear growth arc (Task 1→2→3)
-- [ ] Calibration checks are documented
+**Section 3 (My 4D Growth):**
+- [ ] Diligence and Delegation are self-rated on the 5-point scale
+- [ ] Each rating cites the PRIMARY task performance levels (MANDATORY)
+- [ ] Ratings fall within the reasonable calibration range, or gaps are acknowledged with supplemental evidence
+- [ ] Composite narrative synthesizes (not lists) growth across the pilot
+- [ ] Growth narrative references specific dimensions and levels from at least 2 prior tasks
 
-**Self-Check: Section 4 (What I'm Teaching + What to Build Next)**
-- [ ] Teaching module has governance layer (data, tier, constraints, human verification)
-- [ ] Step-by-step instructions are numbered and specific (tool names, expected outputs, verification checklist)
-- [ ] Independence test is answered explicitly (can a colleague follow this?)
-- [ ] Innovation proposals are grounded in pilot evidence (2 proposals, each with problem → solution → impact → first steps)
+**Section 4 (What I'm Teaching OR What to Build Next) — complete ONE:**
+- [ ] *If Teaching Module:* Governance layer, numbered steps, CTCC template, edit checklist, failure modes, independence test
+- [ ] *If Innovation Proposals:* 1-2 proposals grounded in pilot evidence with actionable solutions
 
-**Self-Check: Consistency Across All Sections**
-- [ ] Section 2 use case matches Section 4 teaching module (same workflow)
-- [ ] Section 3 self-assessment is consistent with Section 2 evidence (e.g., if you rate Diligence highly, Section 2 should show strong governance work)
-- [ ] Impact evidence in Section 2 is grounded in the workflow you'll teach in Section 4
+**Cross-Section Consistency:**
+- [ ] If you chose the teaching module: Section 2 use case matches Section 4 teaching module (same workflow)
+- [ ] Section 1 impact matches the impact documented in Section 2
+- [ ] Section 3 self-ratings are consistent with Section 2 and Section 4 evidence
 
-### Common Revision Triggers
-
-**If Dimension 1 feedback is "Approaching":**
-- Make your Before section more specific (list actual steps in order, include a measured time)
-- Quantify your impact evidence with transparent math (before time − after time = savings)
-- Add a concrete documented instance (screenshot, example, timestamp)
-
-**If Dimension 2 feedback is "Approaching":**
-- Rewrite each competency rating to include specific task evidence (cite a Task 1, 2, or 3 moment)
-- If your rating diverges from task pattern, add supplemental evidence (post-task learning, peer feedback, mentoring)
-- Expand composite narrative to show the trajectory: how did your thinking change from Task 1 → Task 3?
-
-**If Dimension 3 feedback is "Approaching":**
-- Expand step-by-step instructions to include tool names, expected outputs, and verification checklists
-- Rewrite governance layer to be specific and enforceable
-- Test the module with a colleague and report what happened
-
-**If Dimension 4 feedback is "Approaching":**
-- Rewrite innovation proposals to ground each one in specific pilot evidence
-- For each proposal, diagnose the problem explicitly and name where in the pilot you discovered it
-- Add specific first steps (not just "we should build this" but "Step 1: Inventory top 5 workflows")
+---
 
 ### Revision Complete — Ready to Package?
 
-After revising, check your work against the readiness threshold:
+After revising, check against the readiness threshold:
 
-- **All four dimensions at Meets or above** → Proceed to Stage 5: PACKAGE.
-- **Still have one or more dimensions at Approaching after revision** → Resubmit the revised sections for reassessment. Your facilitator will provide targeted feedback.
-- **Any dimension still at Below after revision** → Schedule a 15-minute facilitator check-in to re-introduce the concept before another revision attempt.
-
-Your portfolio is packaged when all dimensions reach Meets Standard or above.
+- **All scored dimensions at Meets or above** (Dimension 3 is N/A if participant chose proposals) — proceed to Stage 5: PACKAGE.
+- **Still have one or more dimensions at Approaching after revision** — resubmit the revised sections for reassessment.
+- **Any dimension still at Below after revision** — schedule a 15-minute facilitator check-in to re-introduce the concept before another revision attempt.
 
 ---
 
@@ -928,199 +646,351 @@ Your portfolio is packaged when all dimensions reach Meets Standard or above.
 
 ### Portfolio Structure
 
-Your capstone is the showcase artifact for KPMG and the June 5-10 celebration. Format it as a polished, branded document (Microsoft Word with DC CAP branding).
-
-**File format:** .docx (rendered from markdown via render_portfolio.js with DC CAP branding)
-
-**Page count:** 8-12 pages
+Your capstone is the showcase artifact for the June 5-10 celebration. Format it as a polished, branded document using the DC CAP brand system.
 
 ---
 
-#### **TASK OVERVIEW**
+#### 1. HEADER BLOCK
 
-[Summary of Capstone focus: Integration of Tasks 1-3, self-assessment with evidence, teaching module design, innovation proposals]
-
----
-
-#### **INITIAL SUBMISSION**
-
-##### **Section 1: My Pilot** (1-2 pages)
-   - Name, unit, impact headline
-   - Context (your role)
-   - Pilot journey narrative
-
-##### **Section 2: My Use Case** (2 pages)
-   - Before (specific steps, time, pain points)
-   - After (workflow, roles, time)
-   - Impact Evidence (time saved, quality gained, documented instance)
-   - Governance Pathway
-
-##### **Section 3: My 4D Growth** (2-3 pages)
-   - Self-assessment on all four competencies with task evidence
-   - Composite narrative showing growth arc
-   - Calibration check
-
-##### **Section 4: What I'm Teaching + What to Build Next** (2-3 pages)
-   - Teaching module (governance + step-by-step + independence test)
-   - Innovation proposals (2, grounded in pilot evidence)
+| Field | Value |
+|---|---|
+| **Task** | Capstone: The Pilot Portfolio |
+| **Participant** | [Name] |
+| **Unit** | [Unit] |
+| **Date** | [Date] |
+| **Competencies** | Diligence & Delegation (deep reflection); Description & Discernment (via task portfolios) |
+| **Final Level** | [Overall readiness determination] |
 
 ---
 
-#### **ASSESSMENT**
+#### 2. PERFORMANCE SNAPSHOT
 
-[Your final assessment feedback from Stage 3, including level for each dimension and coaching feedback]
+| Dimension | Level | Key Evidence |
+|---|---|---|
+| Use Case Impact | [Level] | [1-sentence summary] |
+| Self-Assessment Calibration | [Level] | [1-sentence summary] |
+| Teaching Module Completeness | [Level] | [1-sentence summary] |
+| Teaching Module/Proposal Quality | [Level] | [1-sentence summary] |
+| Growth Narrative Coherence | [Level] | [1-sentence summary] |
 
 ---
 
-#### **REVISED SUBMISSION (if applicable)**
+#### 3. INITIAL SUBMISSION
 
-[If revision occurred: Updated sections with changes highlighted or noted]
+##### Section 1: My Pilot (1 page)
+- Name, unit, impact headline
+- Context (your role)
+- Pilot journey narrative
+
+##### Section 2: My Use Case (2 pages)
+- Before (specific steps, time, pain points)
+- After (workflow, roles, time)
+- Impact Evidence (time saved, quality gained, documented instance)
+- Governance Pathway
+
+##### Section 3: My 4D Growth (1-2 pages)
+- Self-assessment on Diligence and Delegation with task evidence
+- Composite narrative showing growth arc
+- Calibration checks
+
+##### Section 4: What I'm Teaching OR What to Build Next (1-2 pages)
+- *If Teaching Module:* governance + step-by-step + CTCC template + edit checklist + failure modes + independence test
+- *If Innovation Proposals:* 1-2 proposals grounded in pilot evidence
 
 ---
 
-#### **GROWTH TRAJECTORY**
+#### 4. ASSESSMENT
 
-##### **PILOT JOURNEY** (Task 1 → Task 2 → Task 3 → Capstone)
+[Assessment feedback from Stage 3, including level for each dimension, calibration check results, and coaching feedback]
 
-Add a 1-page section showing your Task 1 → Task 2 → Task 3 → Capstone trajectory:
+---
 
-**Tracking across tasks:** Dimensions evolve as the pipeline complexity increases. The growth narrative should trace the underlying competency (Diligence, Description, Delegation, Discernment) rather than the specific dimension names, since each task measures the competency at a different level of integration.
+#### 5. REVISED SUBMISSION (if applicable)
 
-**My Pilot Journey: Task 1 → Task 3 → Capstone**
+[Updated sections with changes noted. Delta comparison per dimension.]
 
-| Task | What I Did | What I Learned | Evidence of Growth |
+---
+
+#### 6. GROWTH STORY: Full Trajectory Task 1 through Capstone
+
+**Growth Trajectory Table:**
+
+| Task | What You Did | What You Learned | Evidence of Growth |
 |---|---|---|---|
-| **Task 1: Guided Pipeline** (Week 1-2) | Classified two provided scenarios (partner email + data summary). Wrote CTCC prompts with scaffolding. Selected skills with answer key. Documented edits with types and rationales. | I learned the 4D pipeline framework by following explicit steps. I understood how governance classification shapes the prompt. | Task 1 demonstrated competency execution with scaffolding. |
-| **Task 2: Supported Pipeline** (Week 3-4) | Applied pipeline to my own work (partner emails). Used checkpoints at each stage. Documented an edit layer and retrospective. Connected my edits back to my CTCC prompt improvements. | I learned that governance is concrete, not abstract. My governance classification actually shapes what I can safely ask Claude. The edit retrospective taught me how to improve my prompting for next time. | Task 2 showed I could apply the framework to my own work with structural support. |
-| **Task 3: Independent Pipeline** (Week 5-6) | Ran the full pipeline with no scaffolding on one Deploy Now target. Mapped my unit's 8 recurring tasks to the 2x2 matrix. Quantified impact evidence. Created Before/After documentation. | I learned to run the pipeline independently. I learned strategic thinking: not "can we use AI" but "should we use AI." I experienced concrete impact: [X hours saved, quality improvements]. | Task 3 showed independence + strategic thinking. |
-| **Capstone** (Week 7-8) | Synthesized Tasks 1-3. Self-assessed on four competencies with task evidence. Designed a teaching module for Q3. Proposed innovations grounded in pilot evidence. | I'm ready to teach my team. I own the logic, not just the steps. I can articulate how governance enables, not constrains, AI deployment. | Capstone shows I can integrate learning, teach others, and propose organizational improvements. |
+| **1: CLASSIFY** (Weeks 1-2) | Classified 6 governance scenarios, built unit-specific quick-reference card | [from their work] | [from their Task 1 dimension levels] |
+| **2: CREATE** (Weeks 3-4) | Designed + executed an AI workflow on real work, did plan-vs-reality comparison | [from their work] | [from their Task 2 dimension levels] |
+| **3: CRITIQUE** (Weeks 5-6) | Audited planted-error funder email, self-audited Task 2, wrote prompt improvement memo | [from their work] | [from their Task 3 dimension levels] |
+| **4: STRATEGIZE** (Weeks 6-7) | Mapped 6 unit tasks on 2x2 delegation matrix, triaged top 2 by ROI, wrote Q3 rollout plan | [from their work] | [from their Task 4 dimension levels] |
+| **Capstone** (Weeks 7-8) | Synthesized, self-assessed with calibration, designed teaching module or proposed innovations | [from their work] | [from their Capstone dimension levels] |
 
 ---
 
-##### **Growth Pattern Narrative** (Qualitative)
+#### 7. GROWTH PATTERN NARRATIVE (300-400 words)
 
-Add a 300-400 word reflection on your growth pattern without numerical scores:
+A qualitative reflection on the full trajectory. Not a score report — a story.
 
-**How I Grew Across the Pilot**
-
-[Describe your trajectory in narrative form. Focus on:]
-- How your understanding shifted from Task 1 → Task 3
-- What surprised you about the learning arc
-- How you moved from "following steps" to "understanding the system" to "thinking strategically"
-- What you learned about governance that changed how you think about AI
-- Your confidence level now for Q3
+Focus on:
+- How understanding shifted from Task 1 through Capstone
+- What surprised the participant about the learning arc
+- How they moved from "following steps" to "understanding the system" to "thinking strategically" to "teaching others"
+- What they learned about governance that changed how they think about AI
+- Their confidence level for Q3
 
 ---
 
-#### **OVERALL READINESS**
+#### 8. OVERALL READINESS STATEMENT
 
-[Your final readiness assessment for Q3: capstone showcase-ready, roles you're prepared for, next steps]
-
----
-
-#### **PARTICIPANT REFLECTION**
-
-Answer these 3-4 questions in 2-3 sentences each:
-
-1. **Calibration Check:** Looking back at how you self-rated in Section 3, how do those ratings feel now that you're at the end of the pilot? Are there any competencies where your self-awareness has shifted?
-
-2. **Teaching Readiness:** You designed a teaching module in Section 4. When you imagine teaching this to your team in Q3, what are you confident about? What would you want to practice first?
-
-3. **Organizational Impact:** Your innovation proposals in Section 4 are grounded in pilot evidence. If one of them gets built for Q3, what would that mean for your unit?
-
-4. **Multiplier Mindset:** What's one thing a colleague should know about AI fluency that the pilot taught you? (This might become part of your Q3 messaging.)
+[Readiness assessment for Q3: showcase-ready, roles prepared for, recommended next steps]
 
 ---
 
-#### **FACILITATOR NOTES**
+#### 9. PARTICIPANT REFLECTION
 
-Include brief notes for the June celebration facilitators:
+"Your Diligence and Delegation self-ratings were [levels]. Your task performance across the pilot showed [pattern]. Where was the biggest gap between how you rated yourself and what the assessments showed? What accounts for that gap? And: which of your colleagues would benefit MOST from your Section 4 deliverable, and why?"
+
+---
+
+#### 10. FACILITATOR QUICK-HIT
 
 **For the June 5-10 celebration:**
 
 - **Key strength:** [Which dimension is this participant strongest on? Leverage this in group discussion.]
-- **Q3 role:** [What role is this participant ready for in Q3? (e.g., teaching workflow, leading governance conversations, pilot new skills)]
-- **Organizational leverage point:** [What innovation proposal should we prioritize for this person's unit?]
-- **Growth arc to highlight:** [What's the most dramatic shift in this person's learning trajectory?]
+- **Growth pattern:** [What is the most dramatic shift in this person's learning trajectory?]
+- **Q3 role:** [What role is this participant ready for in Q3? (e.g., teaching a specific workflow, leading governance conversations, piloting new skills)]
+- **Discussion question:** [A question to pose to this participant during the celebration that surfaces their growth]
 
 Example:
-> **Key strength:** Strategic Mapping (Dimension 1 in Task 3). This participant thinks systematically about deployment priorities. They'll be valuable in unit-level Q3 planning.
+> **Key strength:** Teaching Module Completeness (Exceeds). This participant designed a module that a colleague successfully ran independently. They will be valuable leading Q3 training.
 >
-> **Q3 role:** Teach the Partner Outreach workflow to Student Success team. Lead governance conversations about Tier 2 data handling in data workflows.
+> **Growth pattern:** From "I thought AI would just make drafting faster" (Task 1) to "I now understand that governance enables, not constrains, AI deployment" (Capstone). This mindset shift is exactly the pilot outcome.
 >
-> **Organizational leverage:** Innovation Proposal 1 (CTCC Prompt Library) should be piloted with Student Success first—this participant has already drafted the Partner Reminder template.
+> **Q3 role:** Teach the Partner Outreach workflow to Student Success team. Lead governance conversations about Tier 2 data handling for the data workflows.
 >
-> **Growth arc to highlight:** From "I thought AI would just make drafting faster" (Task 1) to "I now understand that governance enables, not constrains, AI deployment" (Capstone). This shift in mindset is exactly what we're going for.
+> **Discussion question:** "You identified that your teaching module works for partner emails. What would need to change if you adapted it for a Tier 2 workflow — and who in your unit should be involved in that conversation?"
 
 ---
 
-### Final Checklist Before Handoff
+#### 11. FACILITATOR NOTES FOR JUNE CELEBRATION
 
-- [ ] Section 1 (My Pilot): Name, unit, impact headline, context, journey narrative
-- [ ] Section 2 (My Use Case): Before, After, Impact Evidence, Governance Pathway—all specific and quantified
-- [ ] Section 3 (My 4D Growth): All four competencies self-rated with task evidence; ratings aligned with performance or supported by supplemental evidence
-- [ ] Section 4 (What I'm Teaching + What to Build Next): Teaching module with governance + step-by-step + independence test; 2 innovation proposals grounded in evidence
-- [ ] Task 1 → Task 3 → Capstone trajectory visible throughout
-- [ ] Internal consistency across all sections (Section 2 use case matches Section 4 teaching module, etc.)
-- [ ] Growth pattern narrative included (qualitative, no numerical scores)
-- [ ] Reflection prompt answered (3-4 questions)
-- [ ] Facilitator notes included for June celebration
-- [ ] Branded .docx format (DC CAP branding via render_portfolio.js)
-- [ ] Portfolio is ready for showcase (June 5-10)
+**Common patterns to watch for across the cohort:**
+
+- **Inflated self-assessment without evidence:** Participants who rate themselves high without citing task performance. Use the calibration table in group discussion to normalize honest self-assessment as a strength, not a weakness.
+- **Teaching modules that describe rather than instruct:** Many first drafts read as narratives. During the celebration, have participants swap modules and attempt to follow each other's instructions — this surfaces gaps immediately.
+- **Use cases without quantified impact:** "It saved time" is not evidence. Challenge participants to name the number. If they cannot, help them estimate it transparently.
+- **Growth narratives that list rather than synthesize:** The difference between "I did Task 1, then Task 2, then Task 3, then Task 4" and "The biggest shift happened between Task 3 and Task 4, when I went from evaluating individual outputs to thinking about my entire unit's workflow portfolio."
+- **Proposals without pilot evidence:** Encourage participants to ground every proposal in something they actually observed during Tasks 1-4. The strongest proposals diagnose a problem the participant encountered firsthand.
 
 ---
 
-## Readiness Threshold
+### Final Checklist
 
-**All or most dimensions at Meets or above (no dimension at Below)** = **Capstone showcase-ready**
-
-**Multiple Approaching** = Targeted revision on that dimension
-
-**Any Below Standard** = Re-teach the underlying competency; redo that dimension
-
----
-
-## Time Estimate
-
-- **Initial Capstone (Draft):** 2-3 hours
-  - Section 1 (My Pilot): 20-30 minutes
-  - Section 2 (Use Case): 45-60 minutes
-  - Section 3 (4D Growth + narrative): 45-60 minutes
-  - Section 4 (Teaching Module + Innovations): 45-60 minutes
-  - Portfolio packaging & reflection: 30-45 minutes
-- **Revision (based on feedback):** 45-60 minutes
-- **Branding & final polish:** 20-30 minutes
-
-**Total:** ~3.5-4.5 hours from start to showcase-ready
+- [ ] Section 1 (My Pilot): One paragraph (~150 words) with name, unit, biggest win, and mindset shift
+- [ ] Section 2 (My Use Case): Before, After, Impact Evidence with quantified time savings
+- [ ] Section 3 (My 4D Growth): Self-rating for Diligence and Delegation with mandatory task performance citations
+- [ ] Section 4 (Teaching Module OR Innovation Proposals): One deliverable completed
+- [ ] Growth narrative references specific dimensions and levels from Tasks 1-4
+- [ ] Self-assessment falls within reasonable calibration range or gaps are acknowledged
+- [ ] Cross-section consistency verified (impact matches use case; if teaching module, it matches use case workflow)
+- [ ] Portfolio formatted in DC CAP brand system
 
 ---
 
-## Resources & References
+## APPENDICES
 
-- **Task 1-3 Performance Data:** [Provide your levels from pre-assessment step]
-- **AI-Readiness Test** [from Task 3]
-- **2x2 Delegation Matrix** [from Task 3]
-- **Governance Tier Framework** [Tiers 1-4]
-- **Modality Definitions** [Automation, Augmentation, Agency]
-- **DC CAP Skill Inventory** [Partner Outreach, Data Summary, Policy Brief, Proposal/Report, Process Documentation]
-- **CTCC Prompt Template** [from Task 2]
-- **Edit Type Tags** [from Tasks 1-2-3]
-- **Self-Assessment Scale** [Still Exploring → Leading Practice]
-- **Calibration Grounding Rule** [Task performance → reasonable self-assessment range]
+### Appendix A: Self-Assessment Scale Definitions
+
+| Level | Definition |
+|---|---|
+| **Still Exploring** | New to this competency. Need explicit instructions; cannot yet adapt the framework to new scenarios. |
+| **Building Awareness** | Understand the concepts. Can explain the framework but need scaffolding to apply it consistently. |
+| **Building Confidence** | Apply independently on straightforward tasks. Second-guess yourself on edge cases but have a method for working through uncertainty. |
+| **Proficient** | Apply independently and consistently. Make sound judgments on edge cases. Can teach a colleague the basics. |
+| **Leading Practice** | Adapt to novel situations. Innovate within the competency. Mentor others through complex applications. |
 
 ---
 
-## The Capstone Marks Q3 Readiness
+### Appendix B: Calibration Table
 
-By the time you hand off your capstone portfolio, you will have:
+| Task Performance Pattern | Reasonable Self-Assessment Range |
+|---|---|
+| Mostly Below/Approaching | Still Exploring - Building Awareness |
+| Mostly Approaching/Meets | Building Awareness - Building Confidence |
+| Mostly Meets | Building Confidence - Proficient |
+| Mostly Meets/Exceeds | Proficient - Leading Practice |
+| Mostly Exceeds | Leading Practice (with strong evidence) |
 
-- ✓ Mastered the 4D pipeline (learned it, applied it, proved it, will teach it)
-- ✓ Understood governance as enabler, not constraint
-- ✓ Quantified real impact in your work
-- ✓ Designed a teaching workflow for Q3
-- ✓ Proposed innovations grounded in pilot evidence
-- ✓ Honestly calibrated your growth
+Look at your performance levels on the PRIMARY task for each competency. Find the pattern that best describes your levels. Your self-rating should fall within the corresponding range. If it does not, provide supplemental evidence or adjust your rating.
 
-You're ready to multiply. Your unit's Q3 success depends on leaders like you who own the logic and can teach it credibly to colleagues.
+---
+
+### Appendix C: Teaching Module Template (Fillable)
+
+Copy this template and fill in each section for your workflow.
+
+**WORKFLOW NAME & OVERVIEW:** Name / What it accomplishes / Who runs it / Why it matters / Frequency
+
+**GOVERNANCE LAYER:** Data involved / Tier (with reasoning) / Constraints / Human verification required
+
+**STEP-BY-STEP INSTRUCTIONS:** Numbered steps (add as many as needed). Each step names the tool, the action, and the expected output.
+
+**CTCC PROMPT TEMPLATE:**
+```
+[CONTEXT] ___
+[TASK] ___
+[CONSTRAINTS] ___
+[CONTENT] ___
+```
+
+**EDIT CHECKLIST:** After Claude generates output, check for: (list 4-6 items)
+
+**COMMON FAILURE MODES:** What Claude gets wrong on this task type / How to fix it (list 2-4 patterns)
+
+**INDEPENDENCE TEST:** Could a colleague follow these steps without asking questions? [Yes/No] If No, what needs to be added?
+
+---
+
+### Appendix D: Innovation Proposal Template
+
+Copy this template for each proposal.
+
+**Innovation Name:** ___
+
+**Problem or Opportunity:** What did you observe during Tasks 1-4 that created this idea? Name the task and the moment.
+
+**Proposed Solution:** What would you build? Be specific and actionable.
+
+**Expected Impact:** Quantify if possible (time, quality, governance risk, scale).
+
+**First Steps (First 30 Days):** List 3-5 sequenced actions.
+
+---
+
+### Appendix E: Governance Tier Quick Reference
+
+| Tier | Name | Identifiable? | Examples | AI Handling Rules |
+|---|---|---|---|---|
+| **1** | Restricted | Yes (student-level PII) | Student names, SSN, family income, FAFSA data | DO NOT paste into Claude. Summarize conceptually only. |
+| **2** | Sensitive | Potentially (small cells leak identity) | Scholar counts by [university x award] with N<10 cells | Aggregate to N >= 10. Remove small cells. Check before publishing. |
+| **3** | Internal | No (no individual identifiers) | Partner names, program deadlines, submission counts | OK for Claude. Confirm: no student data included. |
+| **4** | Public | No (already public) | Published outcomes, program descriptions | Use freely. No special constraints. |
+
+---
+
+### Appendix F: CTCC Template
+
+Use this structure for every prompt you write:
+
+```
+[CONTEXT]
+Background about the request, the audience, the use.
+
+[TASK]
+What specifically should Claude do? Be precise.
+
+[CONSTRAINTS]
+Governance tier and handling rules; tone; length; format; what data to exclude.
+
+[CONTENT]
+The specific information, data, or examples Claude should use.
+Include: [list the specific items]
+```
+
+---
+
+### Appendix G: Edit Type Tags
+
+Use these tags when documenting edits to Claude's output:
+
+| Tag | Definition | When to Use | Example |
+|---|---|---|---|
+| **Accuracy Fix** | Claude made a factual error or missed a requirement | Date is wrong, name is misspelled, deadline is missing | Claude wrote "May 15"; correct to "May 1" |
+| **Tone Adjustment** | Claude's voice does not match the audience or context | Email is too formal/casual, message is too urgent/gentle | Claude: "Kindly remit preference list." Change to: "We'd love to get your preferences by May 1." |
+| **Strategic Addition** | You add information or context that only you know | Relationship history, organizational context, specific knowledge | Add note that Trinity has a new contact person |
+| **Removal** | Claude included content that should not be there | Off-topic advice, unnecessary explanation, data that should not be shared | Claude added generic scholarship info; remove because off-topic |
+
+---
+
+### Appendix H: Facilitator Notes on Common Patterns in Capstone
+
+These patterns appear frequently. Knowing them in advance helps facilitators provide targeted feedback efficiently.
+
+**Pattern 1: Inflated Self-Assessment Without Evidence**
+Participant rates themselves Proficient or Leading Practice but task performance was primarily Approaching. Use the calibration table directly: "Your Task 4 performance maps to Building Awareness - Building Confidence. Your self-rating of Proficient is outside that range. What specific evidence supports it? If you have it, add it. If not, Building Confidence is an honest and strong rating." Honest self-assessment is a leadership competency — normalize it as a strength.
+
+**Pattern 2: Teaching Modules That Describe Rather Than Instruct**
+Module reads as narrative ("First I usually open Salesforce...") rather than numbered steps. Have participants swap modules and try to follow each other's instructions — the questions they ask reveal the gaps. The teaching module IS the Q3 rollout mechanism. If it cannot stand alone, the pilot's impact stays with 10 people.
+
+**Pattern 3: Use Cases Without Quantified Impact**
+"It saved a lot of time" without numbers. Ask: "How long before? How long now? How many times per year? Show me the math." Quantified impact is what makes the case for Q3 expansion. "It's faster" does not get budget approval. "It saves 16 hours per year per person" does.
+
+**Pattern 4: Growth Narratives That List Rather Than Synthesize**
+"In Task 1, I did X. In Task 2, I did Y..." Ask: "What is the ONE biggest shift in how you think about AI? Can you trace that shift through specific moments across the tasks?" Find the throughline that connects classification to strategy to teaching.
+
+**Pattern 5: Proposals Without Pilot Evidence**
+"We should use AI more broadly" without citing what experience triggered the idea. Ask: "When during the pilot did you first think of this? What task or frustration triggered it?" Every strong proposal traces back to something the participant actually experienced.
+
+---
+
+## TIME ESTIMATE
+
+- **Initial Capstone (Draft):** 2-2.5 hours (Section 1: 10-15 min; Section 2: 45-60 min; Section 3: 20-30 min; Section 4: 30-45 min)
+- **Revision:** 30-45 minutes
+- **Total:** approximately 2.5-3 hours from start to showcase-ready
+
+---
+
+## THE CAPSTONE MARKS Q3 READINESS
+
+By the time you hand off your capstone portfolio, you will have mastered the 4D competency framework (classified it, designed with it, critiqued through it, strategized with it, and now reflected on it), understood governance as enabler not constraint, quantified real impact, designed a teaching workflow or proposed evidence-grounded innovations, and honestly calibrated your growth.
+
+You are ready to multiply. Your unit's Q3 success depends on leaders like you who own the logic and can teach it credibly to colleagues.
 
 **This capstone portfolio is your credential, your teaching asset, and your foundation for Q3 leadership.**
+
+---
+
+### Appendix I: Reteaching Module — Evidence-Based Self-Assessment
+
+This module is used when a participant scores Below Standard on any dimension. It provides a step-by-step worked example followed by a fill-in template the participant applies to their own work.
+
+---
+
+#### Part 1: Worked Example (Diligence Self-Assessment)
+
+Walk through this example together, step by step:
+
+**Step 1: Self-rating**
+"Building Confidence."
+
+**Step 2: Task 1 evidence**
+"Classification Accuracy reached Meets Standard; Boundary Reasoning was Approaching — I got the tiers right but struggled to explain why small cells matter."
+
+**Step 3: Other task evidence**
+"In Task 2, my governance classification held up correctly, confirming my Diligence growth."
+
+**Step 4: Alignment narrative**
+"I rate myself Building Confidence because I can classify correctly and explain most reasoning, but edge cases with combination risk still require me to slow down and think step by step."
+
+Notice how each claim is grounded in a specific dimension and level from actual task performance. The narrative connects the evidence to the self-rating and honestly names the remaining gap.
+
+---
+
+#### Part 2: Fill-In Template
+
+Apply this to a competency where your self-rating was flagged.
+
+```
+Competency: ___
+
+(1) Your self-rating:
+___
+
+(2) Task performance evidence (cite specific dimensions and levels):
+___
+
+(3) Supporting evidence from other tasks:
+___
+
+(4) Alignment narrative — does your rating match the evidence? If there's a gap, explain it:
+___
+```

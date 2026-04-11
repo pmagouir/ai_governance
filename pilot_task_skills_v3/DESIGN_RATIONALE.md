@@ -1,350 +1,263 @@
-# Portfolio Summary Design Rationale
+# Design Rationale: Cognitive-Demand-Type Architecture
 
-**Purpose:** Explain the design decisions behind the new 1-2 page portfolio summary format.
+**Purpose:** Explain why the v3 task architecture was restructured around cognitive demand types instead of scaffolding levels, what changed, and what was preserved.
 
-**Audience:** Facilitators, KPMG reviewers, board members evaluating the pilot's assessment approach.
-
----
-
-## THE PROBLEM WE SOLVED
-
-**Original Issue:** Portfolio could reach 15-20 pages per participant per task.
-
-For a 10-person cohort completing 4 tasks each:
-- **Total pages:** 10 × 4 × 15-20 = 600-800 pages of portfolio material
-- **Who reads it?** Facilitator (in full), participant (maybe skims), KPMG reviewer (samples), peers (almost nobody)
-- **Time to read one portfolio:** 15-20 minutes
-- **Actual time cohort spent reading peer portfolios:** ~0 minutes
-
-**Result:** Beautiful, thorough assessment work; minimal peer visibility or learning from others' work.
+**Audience:** Facilitators, KPMG reviewers, board members evaluating the pilot's assessment architecture.
 
 ---
 
-## DESIGN PRINCIPLES
+## 1. THE PROBLEM WE SOLVED
 
-### 1. Scannability
-The summary must be readable in **5 minutes by someone who's never seen the assessment rubric.** No jargon without explanation. Section headers and tables allow rapid navigation.
+### What v3 Originally Did
 
-**How we achieved this:**
-- 3-line header block (task, name, unit, competencies, level)
-- 4-row performance snapshot table (no more than 2 sentences per row)
-- 3-5 sentence growth story (one paragraph, no subsections)
-- 2-3 sentence reflection (brief response to data-grounded prompt)
-- 2-line facilitator insight (pattern + discussion question)
+The original v3 architecture ran the same 4D pipeline (Diligence, Description, Delegation, Discernment) at decreasing scaffolding levels across three tasks plus a capstone:
 
-**Test:** Can a board member read this in 5 minutes? Yes.
+| Task | Name | Scaffolding | Cognitive Demand |
+|------|------|-------------|------------------|
+| 1 | The Guided Pipeline | High — answer key, worked examples | Run the 4D pipeline with help |
+| 2 | The Supported Pipeline | Medium — checkpoints, some structure | Run the 4D pipeline with less help |
+| 3 | The Independent Pipeline | Low — minimal scaffolding | Run the 4D pipeline alone |
+| 4 | The Capstone | None — fully self-directed | Reflect on having run the pipeline |
 
----
+### Why This Was a Problem
 
-### 2. Impact-First Structure
-Lead with **what was achieved** (performance snapshot), then explain **how it was achieved** (growth story). Save detailed evidence for appendix.
+**Structural repetition.** All three pre-capstone tasks asked the same cognitive question: "Can you run the 4D pipeline?" The only variable was how much hand-holding the participant received. This created three issues:
 
-**Why this order?**
-- Peer readers want to know: "Did they meet the standard?"
-- Facilitators want to know: "What did they learn?"
-- Board members want to know: "Is the pilot producing competency?"
-- Researchers want to know: "What's the evidence?"
+1. **Same cognitive demand, different hand-holding.** A participant who could classify data in Task 1 was classifying data again in Task 2 and again in Task 3. The work got harder operationally (real data instead of scenarios, less scaffolding), but the underlying mental act was the same.
 
-All four questions are answered, but **impact comes first**.
+2. **Participants with different strengths couldn't demonstrate them.** Someone who excels at evaluation and diagnosis had no dedicated space to show that skill until the pipeline happened to require it. Someone who thinks strategically about deployment had to wait for the capstone to think at the organizational level. The architecture treated all participants as if they had the same cognitive profile.
+
+3. **Assessment dimensions were renamed pipeline checks.** Across three tasks, the "Diligence" dimension measured the same thing at increasing difficulty. "Description" measured the same thing. The 4D framework was technically present in every task, but the rubric categories didn't reveal genuinely different capabilities — they tracked the same capability at different support levels.
+
+**The result:** A pilot that could tell you whether a participant improved at running the pipeline with less help, but couldn't tell you whether they were a strong classifier, a natural auditor, a creative designer, or a strategic thinker. The architecture masked differences instead of revealing them.
 
 ---
 
-### 3. Celebration Over Deficit
-The summary format is designed to be **proud to share**. Peer portfolios are a credential, not a report card.
+## 2. THE NEW ARCHITECTURE
 
-**How:**
-- Start with competencies achieved, not gaps
-- Growth narrative focuses on learning, not correction
-- Facilitator insight identifies strengths and peer learning value
-- Design is professional and branded (not generic document template)
+### Organizing Principle: Cognitive Demand Type
 
-**Cultural shift:** "This is what we're learning together" instead of "Here's how you fell short."
+The restructured architecture organizes tasks by the type of thinking they require, not the amount of support they provide. Each task asks a fundamentally different question, produces a fundamentally different deliverable, and assesses genuinely different dimensions.
 
----
+### The Five Tasks
 
-### 4. Peer Conversation, Not Broadcast
-The summary exists to enable **5-minute peer discussions**, not to replace them.
+| Task | Verb | Cognitive Demand Type | Primary 4D Competency | Week |
+|------|------|-----------------------|----------------------|------|
+| **1: CLASSIFY** | Categorize | Analytical categorization | Diligence | 2-3 |
+| **2: CREATE** | Design + Execute | Design thinking + metacognition | Description + Delegation | 3-4 |
+| **3: CRITIQUE** | Evaluate + Diagnose | Evaluative judgment + correction | Discernment | 5-6 |
+| **4: STRATEGIZE** | Analyze + Plan | Strategic analysis + organizational planning | Delegation | 6-7 |
+| **Capstone: TEACH** | Synthesize + Multiply | Synthesis + calibration + multiplication | All | 7-8 |
 
-Each summary includes a **facilitator discussion question** designed to:
-1. Reference something specific from the participant's work
-2. Invite others to reflect on their own practice
-3. Point to a learning edge the cohort shares
-4. Be answerable in 5 minutes of group conversation
+### What Each Task Asks
 
-**Example discussion question (from sample portfolio):**
-> "Marcus classified real data faster than scenario data. What made real data easier? Can we build that confidence — the confidence that comes from knowing your actual work — into how we approach governance challenges we've never seen before?"
+**Task 1 — CLASSIFY: "Can you identify governance boundaries and reason about edge cases?"**
+Participants classify data scenarios against DC CAP's 4-tier governance framework, reason about boundary cases where the right answer isn't obvious, analyze how data combinations escalate risk, and build a unit-specific quick-reference card. This is analytical categorization — the cognitive demand is sorting, reasoning about boundaries, and translating categories into operational rules.
 
-This is **not** "Tell us about your Task 2." It's a specific, actionable peer learning prompt.
+**Task 2 — CREATE: "Can you design and execute an AI-assisted workflow?"**
+Participants design a complete workflow before touching Claude, execute it on a real task from their own work, and then compare what they planned to what actually happened. This is design thinking plus metacognitive analysis — the cognitive demand is planning, building, and honestly reflecting on the gap between intention and reality.
 
----
+**Task 3 — CRITIQUE: "Can you evaluate AI output, diagnose failures, and improve systems?"**
+Participants audit a document with planted errors, then audit their own Task 2 work for errors they missed the first time, then turn their findings into prompt improvements. This is evaluative judgment and corrective reasoning — the cognitive demand is spotting problems, calibrating their severity, and translating critique into design improvements.
 
-## SECTION-BY-SECTION DESIGN DECISIONS
+**Task 4 — STRATEGIZE: "What is the strategic plan for AI in your unit?"**
+Participants map their unit's 6 most recurring tasks, triage the top 2 by ROI, and build a half-page Q3 rollout plan. This is strategic analysis and organizational planning — the cognitive demand is systems thinking, resource allocation, and implementation feasibility across a portfolio of work.
 
-### Section 1: Header Block (3 lines)
-**Why 3 lines?**
-- Line 1 (task + name + unit + date): Identity and context
-- Line 2 (competencies): What was assessed
-- Line 3 (week + final level): Timeline and verdict
+**Capstone — TEACH: "What does your journey add up to, and what will you teach others?"**
+Participants synthesize their pilot journey into a portfolio, demonstrate their strongest use case, calibrate their self-assessment on Diligence and Delegation against actual performance, and choose between building a teaching module for colleagues or proposing innovations. This is synthesis and multiplication — the cognitive demand is integrating everything learned and packaging it for others.
 
-**Why not include success criteria?**
-- Saves space; success criteria live in the full portfolio
-- Readers care about whether the participant met the standard, not the detailed criteria
+### Assessment Dimensions by Task
 
-**Why prominently display final level?**
-- Answers the first question: "Did they meet the standard?"
-- Peer readers need this immediately to contextualize the growth story
+Each task has four dimensions that measure the specific cognitive demand of that task:
 
----
+| Task | Dim 1 | Dim 2 | Dim 3 | Dim 4 |
+|------|-------|-------|-------|-------|
+| **1: CLASSIFY** | Classification Accuracy | Boundary Reasoning | Combination Awareness | Governance Operationalization |
+| **2: CREATE** | Design Completeness | Execution Quality | Edit Layer Rigor | Plan-vs-Reality Insight |
+| **3: CRITIQUE** | Error Detection Accuracy | Severity Calibration | Self-Audit Depth | Corrective Transfer |
+| **4: STRATEGIZE** | Task Mapping Quality | ROI Reasoning | Implementation Feasibility | Cross-Unit Awareness |
+| **Capstone** | Use Case Impact | Self-Assessment Calibration | Teaching Module Completeness | Demo/Proposal Quality + Growth Narrative Coherence |
 
-### Section 2: Performance Snapshot (4-row table)
-**Why a table?**
-- **Scannability:** Table structure lets readers scan down and find specific dimensions
-- **Consistency:** Same format across all 40 portfolios (4 tasks × 10 participants)
-- **Comparability:** Facilitators and KPMG can quickly compare performance across participants
-
-**Why 4 rows (one per dimension)?**
-- Captures the core rubric structure
-- Mirrors the 4D framework (Tasks 1-3) or 4-dimension task rubrics
-- Short enough to fit one page; long enough to be meaningful
-
-**Why 1-2 sentence evidence?**
-- Temptation: Include full rubric feedback (5-10 sentences)
-- Decision: Extract ONE specific example or artifact that demonstrates the level
-- Benefit: Readers understand not just the level, but why the participant achieved it
-
-**Example of strong evidence:**
-> "Correctly classified funder data request as Tier 2 (aggregated outcomes with small-cell risk); identified re-identification pathway between disaggregated demographics and public school data."
-
-This is **not:**
-> "Classification accuracy was at Meets level. The participant showed understanding of the Tier 2 classification framework by correctly identifying small-cell risks..."
+These are not renamed versions of the same dimension. Classification Accuracy measures a fundamentally different skill than Error Detection Accuracy. Design Completeness measures a fundamentally different skill than Task Mapping Quality. The rubric categories now reveal genuinely different capabilities.
 
 ---
 
-### Section 3: Growth Story (3-5 sentences)
-**Why a narrative instead of bullet points?**
-- **Storytelling:** Growth has a trajectory. Bullets flatten it.
-- **Connection:** A narrative explains how prior learning enabled current achievement
-- **Transfer:** A good growth story identifies what's transferable to future tasks
+## 3. WHY COGNITIVE DEMAND TYPE > SCAFFOLDING LEVEL
 
-**What the growth story answers:**
-1. What was the main learning gap at the start?
-2. What improved after revision (or what did real work reveal)?
-3. What's the transferable insight?
-4. [For Tasks 2+] How does this compare to the prior task?
+### Different Questions, Different Deliverables, Different Dimensions
 
-**Example growth story (Task 2):**
-> "Task 1 gave you the framework in a controlled scenario; Task 2 tested it on real work with no answer key. Your governance classification was stronger in Task 2 — you moved faster and caught a Tier 2 edge case (small-cell risk in demographic breakdowns) that the Task 1 scenarios hadn't emphasized. The prompt design was solid but revealed an opportunity for Task 3: your first-pass prompts work well, but you didn't iterate them based on governance constraints. You know the framework; now the growth edge is treating prompt refinement as a governance exercise, not an afterthought. This is the threshold between correct-once and refined-repeatedly."
+The old architecture asked one question at three difficulty levels. The new architecture asks four different questions, each producing a different deliverable:
 
-**Why this works:**
-- Explains Task 1 → Task 2 transfer explicitly
-- Identifies a specific achievement (caught Tier 2 edge case)
-- Identifies a specific growth edge (iterative prompt design)
-- Frames the next task's challenge (refinement discipline)
+| Task | Deliverable | What It Reveals |
+|------|-------------|-----------------|
+| **CLASSIFY** | Classification Memo + Quick-Reference Card | Can they sort and reason? |
+| **CREATE** | Workflow Design + Execution Record + Plan-vs-Reality | Can they plan, build, and reflect? |
+| **CRITIQUE** | Planted Error Audit + Self-Audit + Prompt Improvement Memo | Can they evaluate, diagnose, and improve? |
+| **STRATEGIZE** | Deployment Map + Strategic Triage + Q3 Rollout Plan | Can they think organizationally? |
+| **TEACH** | Portfolio + Use Case + Self-Assessment + Teaching Module + Demo/Proposals | Can they synthesize and multiply? |
 
----
+### Revealing Individual Profiles
 
-### Section 4: Participant Reflection (2-3 sentences)
-**Why include the participant's voice?**
-- **Ownership:** Participants see their own insight in the summary
-- **Metacognition:** Reflecting on their learning deepens it
-- **Equity:** Participant voice is centered, not just facilitator observation
+A participant who excels at classification may struggle with critique. Someone who finds design challenging may turn out to be a natural strategic thinker. A participant who breezes through Tasks 1-2 may discover that evaluating quality is harder than creating it.
 
-**Why a data-grounded prompt?**
-- Reflection without context can be generic
-- A prompt tied to specific evidence grounds the reflection
-- Example prompt: "Task 1 was theoretical; Task 2 was real work. What was different?"
+The old architecture couldn't reveal these differences. If a participant scored "Meets" on all three tasks, you knew they could run the pipeline. You didn't know where their distinctive strength was.
 
-**Why 2-3 sentences?**
-- Long enough to be substantive
-- Short enough to read in 10 seconds
-- Balanced with other sections
+The new architecture produces a profile. After four tasks, you know:
+- Whether they're a strong classifier (analytical precision)
+- Whether they're a strong designer (creative planning + metacognition)
+- Whether they're a strong auditor (evaluative judgment + correction)
+- Whether they're a strong strategist (organizational thinking + systems analysis)
 
-**Example reflection (from sample):**
-> "Real data made it concrete. I know our funder relationships, I know which partner institutions have small scholar populations. All that context meant I wasn't memorizing tier definitions — I was mapping our actual governance risks. The small-cell issue in the demographics data? That's specific to a funder request I handle quarterly. Task 2 made the framework stick because it was about my real work."
+This is not just better assessment — it's better development. Participants can see where they're strong and where they need growth, and those insights map to genuine cognitive differences, not just "needed more scaffolding."
+
+### Genuine Progression Without Repetition
+
+Each task still builds on the previous one:
+- Task 2 uses the governance fluency built in Task 1
+- Task 3 audits the work produced in Task 2
+- Task 4 synthesizes the individual competencies from Tasks 1-3 into organizational strategy
+- The Capstone integrates all four into a teaching portfolio
+
+But the progression is cumulative, not repetitive. You never do the same thing twice. You use what you learned in a fundamentally different way each time.
 
 ---
 
-### Section 5: Facilitator Insight (2 lines)
-**Why separate facilitator observation from participant reflection?**
-- **Perspective:** Participant sees their learning; facilitator sees the pattern
-- **Peer Learning:** Facilitator's pattern observation and discussion question enable peer learning
-- **Accountability:** Facilitator's insight ensures the summary isn't just celebration; it identifies growth edges
+## 4. WHAT WE PRESERVED
 
-**What the pattern captures:**
-- A sentence or two observing what you notice about this participant's learning
-- Not diagnosis, but observation
-- Example: "Transfers Task 1 framework to real work with confidence and speed. Governance classification remains accurate; prompt design is solid on first pass. Growth edge is iterative refinement."
+The restructuring preserved every structural element that was working:
 
-**What the discussion question does:**
-- Launches a 5-minute peer conversation
-- References something specific from the participant's work
-- Invites others to reflect on their own practice
-- Points to a learning edge relevant to the whole cohort
-- Example: "Marcus classified real data faster than scenario data. What made real data easier? Can we build that confidence into how we approach governance challenges we've never seen before?"
+### Skill Loop (5 Stages)
+Every task still follows the same 5-stage cycle:
+1. **Introduce** — what you'll learn and why it matters
+2. **Demonstrate** — worked examples and models
+3. **Practice** — do the work
+4. **Assess** — facilitator evaluation against rubric
+5. **Reflect** — participant self-assessment and growth narrative
 
----
+### Assessment Scale (4 Points)
+All tasks use the same four-point scale:
+- **Exceeds Standard** — sophisticated, specific, connected
+- **Meets Standard** — correct, specific, clearly reasoned
+- **Approaching Standard** — on track but missing specificity or connections
+- **Below Standard** — missing, incorrect, or too vague to assess
 
-## MULTI-TASK COMPARISON (Tasks 2, 3, 4)
+### Coaching Voice Principles
+The facilitation tone remains consistent across all tasks:
+- Coach, don't grade
+- Name what's strong before naming what's missing
+- Ask questions that help participants see their own gaps
+- Frame revision as learning, not correction
 
-**Added Section for Tasks 2+:** Learning trajectory across tasks.
+### Governance Framework
+DC CAP's 4-tier data governance framework remains the foundation:
+- Tier 1 (Restricted), Tier 2 (Sensitive), Tier 3 (Internal), Tier 4 (Public)
+- Governance classification is a prerequisite for every task that touches data
 
-**Why include it?**
-- Task 1 is a baseline; Tasks 2-4 show growth
-- Peers want to know: "Did they get better?" "How?"
-- Board members want to see: "Is the pilot producing cumulative learning?"
+### CTCC Prompt Structure
+The Context-Task-Constraints-Content framework for prompt design carries through Tasks 2-4 and the Capstone.
 
-**What it captures:**
-For Task 2:
-- Task 1 → Task 2 comparison on key dimensions
-- What transferred successfully
-- What's new in Task 2
-- Readiness for Task 3
+### Edit Type Tags
+The categorization system for documenting human edits to AI output (factual correction, governance edit, tone adjustment, scope narrowing, etc.) remains consistent.
 
-For Task 3:
-- Task 1 → Task 2 → Task 3 trajectory
-- Points where acceleration happens (e.g., Task 2 → Task 3 jump in audit depth)
-- Cumulative competency
+### Portfolio Packaging
+The 1-2 page portfolio summary format, designed for 5-minute peer reading, applies to all tasks.
 
-For Task 4:
-- Full trajectory from Task 1 through capstone
-- Synthesis: how individual competencies became systems thinking
-
-**Design note:** This section is optional and only appears in Task 2+ summaries. It adds ~½ page, pushing Task 2 to 1-1.5 pages and Task 4 to 2 pages. This is intentional: the more complex tasks deserve more narrative space.
+### Peer Exchange
+Every task cycle includes peer sharing and facilitated discussion using portfolio summaries.
 
 ---
 
-## WHAT WE LEFT OUT (AND WHY)
+## 5. WHAT WE ADDED
 
-### Full Initial Submission
-**Original included:** Verbatim participant submission (3-5 pages)
-**New format:** References the submission via evidence sentences, but doesn't reproduce it
-**Rationale:** Peers don't need to re-read the submission; they need to know what the participant learned. Full submissions are in the appendix if needed.
+### Differentiated Pathways
 
-### Full Assessment Rubric Feedback
-**Original included:** Complete rubric feedback for each dimension (5-10 sentences per dimension)
-**New format:** One evidence sentence per dimension
-**Rationale:** The evidence sentence IS the rubric feedback, distilled. It's what matters most. Detailed feedback lives in the full portfolio.
+Each task now includes differentiated pathways based on assessment level:
 
-### Full Revision Narrative
-**Original included:** Detailed before-and-after of what changed
-**New format:** Summary: "Initial: [X] → Revised: [Y]"
-**Rationale:** Peers want to know the delta, not the blow-by-blow. Detailed revision history is in the appendix.
+- **Exceeds Standard** — Extension challenge that deepens the cognitive demand (e.g., in Task 1, an Exceeds participant gets a novel scenario with no correct answer to reason through; in Task 3, they design a quality assurance framework for their unit)
+- **Below Standard** — Re-teaching sequence that addresses the specific gap, not just "do it again with more scaffolding"
 
-### Detailed Coaching Notes
-**Original included:** Facilitator coaching for next steps (5-10 sentences)
-**New format:** Facilitator insight distills this into a pattern observation + discussion question
-**Rationale:** Coaching is personal; it lives between participant and facilitator. What peers care about is the pattern others can learn from.
+This replaces the old model where the only differentiation was scaffolding level across tasks.
 
----
+### Cross-Task Growth Tracking
 
-## DESIGN METRICS
+The 4D competency mapping allows facilitators to track how each core competency develops across tasks:
 
-| Metric | Target | Achieved |
-|--------|--------|----------|
-| **Read time per portfolio** | 5 minutes | Yes (verified on sample) |
-| **Page length** | 1-2 pages | Yes (sample is 2 pages, Task 1 summaries ~1 page) |
-| **File size** | <15 KB | Yes (sample is 12 KB) |
-| **Scannability** | Headers + tables + short paragraphs | Yes |
-| **Accessibility** | Plain language, no undefined jargon | Yes |
-| **Celebration-ready** | Professional design, brandable | Yes (branded Word document) |
-| **Peer engagement** | Invites discussion, not lectures | Yes (discussion question is specific and actionable) |
+- **Diligence** is primarily assessed in Task 1, with supporting evidence from governance classification in Tasks 2-4
+- **Description** is primarily assessed in Task 2, with supporting evidence from prompt improvement in Task 3 and teaching module design in the Capstone
+- **Discernment** is primarily assessed in Task 3, with supporting evidence from edit layer rigor in Task 2 and self-assessment calibration in the Capstone
+- **Delegation** is primarily assessed in Task 4, with supporting evidence from modality selection in Task 2 and deployment recommendations in the Capstone
 
----
+This creates a richer growth narrative than "they improved at the pipeline."
 
-## COMPARING TO ALTERNATIVES
+### Written Memo Format (Task 3)
 
-### Alternative 1: Narrative Summary (No Table)
-**Approach:** Replace performance snapshot table with paragraph describing performance across dimensions.
+Task 3 uses a single written memo format (200-300 words) for the Prompt Improvement Memo (Part C). This standardizes the deliverable for consistent assessment while keeping the focus on content quality rather than format selection.
 
-**Why we didn't do this:**
-- Paragraphs are harder to scan than tables
-- Harder to compare across multiple participants
-- No standard structure for facilitators creating summaries
+### Unit-Specific Deliverables (Task 1)
 
-### Alternative 2: One-Page Summary (Aggressive Compression)
-**Approach:** Force everything into one page; remove multi-task comparison entirely.
+Task 1 produces a governance quick-reference card specific to each participant's unit. This is not a generic exercise — it's an immediately useful operational tool. A Student Success leader's card looks different from a Development leader's card because their data types and edge cases are different.
 
-**Why we didn't do this:**
-- Tasks 2-4 benefit from comparison context
-- One page feels rushed and cuts valuable growth narrative
-- 1-2 pages is reasonable and achieves the goal
+### Plan-vs-Reality Comparison (Task 2)
 
-### Alternative 3: Modular Summaries (Different Sections for Different Audiences)
-**Approach:** Create separate summaries for peers vs. facilitators vs. board members.
+Task 2 requires participants to document their workflow design BEFORE execution, then compare it to what actually happened AFTER execution. The plan-vs-reality gap is where metacognitive learning happens. This is a structural innovation — most AI training has participants execute and reflect, but doesn't capture the prediction that makes reflection meaningful.
 
-**Why we didn't do this:**
-- Complexity: 40 summaries become 120 documents
-- Redundancy: Most content is the same across versions
-- One unified format is easier to produce and maintain
+### Severity Calibration Framework (Task 3)
+
+Task 3 introduces a severity framework for classifying errors: Critical (could cause harm), Significant (would undermine credibility), Minor (worth fixing but not urgent), and Stylistic (preference, not error). This teaches participants that not all errors are equal — a governance violation in a funder report is fundamentally different from an awkward phrase in an internal email.
+
+### Self-Assessment Calibration Check (Capstone)
+
+The Capstone requires participants to self-assess across two bookend competencies (Diligence and Delegation) using a 5-point growth scale, then checks that self-assessment against their actual task performance. If a participant rates themselves "Proficient" on a competency where their task performance was "Approaching," the facilitator surfaces that gap. This builds honest self-awareness — a leadership competency that extends well beyond AI governance.
 
 ---
 
-## IMPACT ON PILOT PARTICIPANTS
+## 6. DESIGN METRICS
 
-### Expected Benefit: Peer Learning
-**Current state:** Participants work in isolation; they see each other's faces in Zoom calls but don't see each other's work.
+The portfolio summary format targets remain unchanged:
 
-**After portfolio summary rollout:** Participants read 9 peer summaries per task. They see:
-- How others approached governance
-- What others learned from revision
-- Facilitator patterns across different units
-- Discussion questions about their own practice
+| Metric | Target | Status |
+|--------|--------|--------|
+| **Read time per portfolio** | 5 minutes | Maintained |
+| **Page length** | 1-2 pages | Maintained |
+| **File size** | < 15 KB | Maintained |
+| **Scannability** | Headers + tables + short paragraphs | Maintained |
+| **Accessibility** | Plain language, no undefined jargon | Maintained |
+| **Celebration-ready** | Professional design, brandable | Maintained |
+| **Peer engagement** | Invites discussion, not lectures | Maintained |
 
-**Expected outcome:** Peer accountability, mutual learning, shared language around the 4D framework.
-
-### Expected Benefit: Facilitator Efficiency
-**Current state:** Facilitators spend 15-20 minutes per participant reviewing and documenting full portfolio.
-
-**After rollout:** Facilitators spend 25-30 minutes per participant on assessment and summary creation (including facilitation time and rendering).
-
-**Trade-off:** Small net increase in time upfront, but the summary is reusable for peer discussion, celebration, board briefing, and KPMG review.
-
-### Expected Benefit: Motivation
-**Current state:** Detailed assessment feedback goes to each participant; peers don't see it.
-
-**After rollout:** Participants know their summary will be printed and discussed at the celebration event. Motivation to do good work; celebration of learning.
+The restructuring changes what goes into the portfolio (task-specific dimensions instead of renamed pipeline checks) but not how the portfolio is designed or delivered.
 
 ---
 
-## FUTURE ITERATIONS
+## 7. IMPACT ON ASSESSMENT QUALITY
 
-### Possible Enhancements (Not Included in v1.0)
+### Before: Same Dimension, Different Scaffolding
 
-1. **Interactive Portfolio Dashboard**
-   - Digital portal where participants can browse all 40 summaries
-   - Filter by task, unit, competency
-   - Read-time statistics across cohort
+A facilitator assessing "Diligence" across three tasks was answering the same question three times:
+- Task 1: "Did they classify correctly with an answer key?"
+- Task 2: "Did they classify correctly with some help?"
+- Task 3: "Did they classify correctly independently?"
 
-2. **Comparative Rubric View**
-   - Show how a participant's dimensions compare to cohort average
-   - Identify cohort strengths and growth edges
-   - Aggregate learning patterns
+Growth looked like: "They can do it with less help now." True, but limited.
 
-3. **Capstone Synthesis Deck**
-   - Extract capstone summaries into a 10-slide deck
-   - Show pilot impact via participant leadership initiatives
-   - Use for board update or funder communication
+### After: Different Dimensions, Cumulative Competency
 
-4. **Mobile-Friendly PDF Export**
-   - Current output is .docx (prints well, opens in Google Docs)
-   - Could add PDF export with mobile optimization
+A facilitator assessing across four tasks now answers four different questions:
+- Task 1: "Can they classify accurately and reason about boundaries?" (Classification Accuracy, Boundary Reasoning)
+- Task 2: "Can they design a workflow and reflect on the gap between plan and reality?" (Design Completeness, Plan-vs-Reality Insight)
+- Task 3: "Can they detect errors, calibrate severity, and transfer critique into improvement?" (Error Detection Accuracy, Corrective Transfer)
+- Task 4: "Can they map tasks strategically and build a feasible deployment plan?" (Task Mapping Quality, Implementation Feasibility)
 
-5. **Accessible Formats**
-   - Current: .docx with semantic structure
-   - Could add: Screen-reader optimized HTML, large-print PDF
+Growth now looks like: "They started as a strong classifier, became a competent designer, discovered they're a natural auditor, and translated all of that into a strategic deployment plan." That is a profile, not a progress bar.
 
 ---
 
-## EVALUATION CRITERIA
+## 8. SUMMARY
 
-We'll know the portfolio summary format is working if:
+The cognitive-demand-type architecture replaces structural repetition with genuine differentiation. Each task asks a different question, produces a different deliverable, assesses different dimensions, and reveals different strengths. The progression is cumulative — each task builds on the last — but never repetitive. Participants who excel in different areas can demonstrate competency differently, and the assessment system captures those differences instead of masking them.
 
-1. **Peer engagement:** 100% of participants read all 9 peer summaries (Track during cohort discussions)
-2. **Discussion quality:** Facilitators report that peer discussions using the summary question framework are richer than they would be without them (Facilitator feedback survey)
-3. **Time value:** Summary creation takes <30 minutes per participant (Time-tracking by facilitators)
-4. **Celebration impact:** Participants report that seeing printed summaries at celebration event was meaningful (Post-pilot survey)
-5. **KPMG confidence:** Reviewers report that summaries provide clear evidence of learning outcomes (KPMG feedback after review)
+Everything that was working — the 5-stage skill loop, the 4-point scale, the coaching voice, the governance framework, the portfolio format, the peer exchange — is preserved. What changed is the engine underneath: tasks now differentiate by cognitive demand type, not scaffolding level.
 
 ---
 
-**Design completed by:** Claude Code Agent | **For:** DC CAP AI Leadership Training Pilot | **Date:** April 10, 2026
+**Design completed by:** Claude Code Agent | **For:** DC CAP AI Leadership Training Pilot | **Date:** April 11, 2026

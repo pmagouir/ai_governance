@@ -1,6 +1,6 @@
 # Portfolio Summary Format — DC CAP AI Governance Pilot
 
-**Version:** 1.0 | **Date:** April 9, 2026
+**Version:** 2.0 | **Date:** April 11, 2026
 
 ---
 
@@ -27,18 +27,18 @@ COMPETENCIES: [4D Framework dimensions or task-specific skills]
 WEEK: [Week Range] | ASSESSMENT LEVEL: [Final Level: Exceeds / Meets / Approaching / Below]
 ```
 
-**Example (Task 1):**
+**Example (Task 1 — CLASSIFY):**
 ```
-TASK: The Guided Pipeline | PARTICIPANT: Keisha Williams | UNIT: Student Success | DATE: April 9, 2026
-COMPETENCIES: Diligence, Description, Delegation, Discernment
-WEEK: 1-2 (April 6-17) | ASSESSMENT LEVEL: Meets
+TASK: The Governance Classifier | PARTICIPANT: Keisha Williams | UNIT: Student Success | DATE: April 24, 2026
+COMPETENCIES: Classification Accuracy, Boundary Reasoning, Combination Awareness, Governance Operationalization
+WEEK: 2-3 (April 13-24) | ASSESSMENT LEVEL: Meets
 ```
 
-**Example (Task 3):**
+**Example (Task 3 — CRITIQUE):**
 ```
-TASK: The Independent Pipeline | PARTICIPANT: Marcus Chen | UNIT: Development & Fundraising | DATE: May 8, 2026
-COMPETENCIES: Diligence, Description, Delegation, Discernment
-WEEK: 5-6 (May 2-15) | ASSESSMENT LEVEL: Exceeds
+TASK: The Quality Auditor | PARTICIPANT: Marcus Chen | UNIT: Development & Fundraising | DATE: May 15, 2026
+COMPETENCIES: Error Detection Accuracy, Severity Calibration, Self-Audit Depth, Corrective Transfer
+WEEK: 5-6 (May 4-15) | ASSESSMENT LEVEL: Exceeds
 ```
 
 ---
@@ -58,41 +58,50 @@ WEEK: 5-6 (May 2-15) | ASSESSMENT LEVEL: Exceeds
 
 **Examples:**
 
-*Task 1 — Keisha Williams*
+*Task 1 CLASSIFY — Keisha Williams (Student Success)*
 
 | Dimension | Final Level | Key Evidence |
 |-----------|-------------|--------------|
 | **Classification Accuracy** | Meets | Correctly identified all three scenarios (Tier 1, Tier 2, Tier 2) with reasoning tied to specific data elements. |
-| **Reasoning Specificity** | Exceeds | Traced re-identification pathways step-by-step, moving from abstract risk awareness ("could enable inference") to concrete mechanism ("small denominator + public data = identification"). |
+| **Boundary Reasoning** | Exceeds | Traced re-identification pathways step-by-step, moving from abstract risk awareness ("could enable inference") to concrete mechanism ("small denominator + public data = identification"). |
 | **Combination Awareness** | Meets | Demonstrated understanding that aggregates become risky at small cell sizes; explained why Ward-level data with N=6 escalates to Tier 2. |
-| **Governance Application** | Meets | Mapped all three scenarios to correct handling requirements (access restrictions, de-identification, prohibition with legal review). |
+| **Governance Operationalization** | Meets | Mapped all three scenarios to correct handling requirements (access restrictions, de-identification, prohibition with legal review); quick-reference card covers Student Success data types. |
 
-*Task 2 — Samuel Okafor (Partner Outreach)*
-
-| Dimension | Final Level | Key Evidence |
-|-----------|-------------|--------------|
-| **Real Governance** | Exceeds | Correctly classified partner communications using Tier 2/3 boundaries; identified small-cell risk in disaggregated partner performance data. |
-| **CTCC Prompt Quality** | Meets | Prompts included all four components (Context, Task, Constraints, Content); constraints explicitly reflected Tier 2 handling rules. |
-| **Modality Judgment** | Meets | Selected Augmentation (Claude drafts, human adds relationship context); rationale shows understanding of why relationship knowledge is non-delegable. |
-| **Output Audit Rigor** | Approaching | Edits were accurate but documentation lacked specificity; tagged edits but didn't always tie them back to prompt improvements. |
-
-*Task 3 — Sophia Rodriguez (Data & Technology)*
+*Task 2 CREATE — Samuel Okafor (Partner Outreach)*
 
 | Dimension | Final Level | Key Evidence |
 |-----------|-------------|--------------|
-| **Governance at Scale** | Exceeds | Managed complex, multi-dataset governance; correctly identified Tier 2 aggregate with small cells; proposed suppression remedy. |
-| **Prompt Evolution** | Exceeds | Iterated prompts three times, each refinement tied to governance constraint or output clarity; final prompt was production-ready. |
-| **Modality at Scale** | Meets | Selected Agency (iterative human-AI collaboration); justified why repeated judgment was needed; maintained human control over data decision-making. |
-| **Documentation Depth** | Exceeds | Every edit tagged with type, rationale, and governance impact; reflected on human judgment layer with confidence and specificity. |
+| **Design Completeness** | Exceeds | Workflow design document covered governance classification, CTCC prompt, modality selection, and predicted outcomes before execution began. |
+| **Execution Quality** | Meets | Prompts included all four CTCC components; constraints explicitly reflected Tier 2 handling rules; output was usable with minor edits. |
+| **Edit Layer Rigor** | Approaching | Edits were accurate but documentation lacked specificity; tagged edits but didn't always tie them back to prompt improvements. |
+| **Plan-vs-Reality Insight** | Meets | Identified that governance classification was faster than predicted but prompt iteration took longer; honest about what the gap revealed. |
 
-*Task 4 (Capstone) — James Washington*
+*Task 3 CRITIQUE — Sophia Rodriguez (Data & Technology)*
 
 | Dimension | Final Level | Key Evidence |
 |-----------|-------------|--------------|
-| **Pipeline Integration** | Exceeds | Designed a complete 4D workflow for a new initiative; showed how governance constraints shaped prompt design, which shaped skill selection, which shaped audit depth. |
-| **Leadership Application** | Exceeds | Proposed governance review protocol for partner-facing AI use; includes checkpoints, escalation pathways, and team training plan. |
-| **Peer Mentoring** | Meets | Facilitated peer discussion on governance; helped two participants resolve Tier 2 edge cases. |
-| **Strategic Vision** | Exceeds | Articulated why the 4D framework scales beyond individual tasks to organizational practice; tied learning to DC CAP's mission and funder expectations. |
+| **Error Detection Accuracy** | Exceeds | Found 6 of 7 planted errors including the governance violation; correctly identified the fabricated statistic that other participants missed. |
+| **Severity Calibration** | Exceeds | Classified the governance error as Critical and the tone error as Minor; severity reasoning tied to specific harm pathways, not just gut feeling. |
+| **Self-Audit Depth** | Meets | Identified two errors in her own Task 2 work; diagnosed why she missed them (over-reliance on first-pass accuracy; didn't re-read with governance lens). |
+| **Corrective Transfer** | Exceeds | Prompt Improvement Memo redesigned three prompt elements to prevent the error types she found; before/after comparison shows measurable improvement. |
+
+*Task 4 STRATEGIZE — James Washington (Programs)*
+
+| Dimension | Final Level | Key Evidence |
+|-----------|-------------|--------------|
+| **Task Mapping Quality** | Exceeds | Mapped 12 recurring tasks with accurate governance tier, time estimate, and AI-readiness rating; distinguished between tasks that need automation vs. augmentation vs. human-only. |
+| **ROI Reasoning** | Exceeds | Ranked top 2 by hours saved per month, governance risk level, and implementation complexity; ROI calculation included training time, not just execution time. |
+| **Implementation Feasibility** | Meets | Q3 rollout plan includes timeline, training steps, and governance checkpoints; would benefit from more detail on change management. |
+| **Cross-Unit Awareness** | Meets | Identified two cross-unit dependencies (shared data with Student Success, shared funder reporting with Development); proposed coordination mechanism. |
+
+*Capstone TEACH — Marcus Chen (Development & Fundraising)*
+
+| Dimension | Final Level | Key Evidence |
+|-----------|-------------|--------------|
+| **Use Case Impact** | Exceeds | Demonstrated funder report workflow with before/after; reduced draft time from 4 hours to 90 minutes while maintaining governance compliance. |
+| **Self-Assessment Calibration** | Meets | Self-assessed Diligence as Proficient and Discernment as Building Confidence; facilitator check confirmed alignment with task performance data. |
+| **Teaching Module Completeness** | Exceeds | Step-by-step guide passes the independence test; a colleague could follow it without asking questions; includes governance decision tree and common pitfalls. |
+| **Teaching Module/Proposal Quality** | Meets | Teaching module showed clear step-by-step instructions; governance section was strong but edge case guidance for other units could be more detailed. |
 
 ---
 
@@ -108,17 +117,20 @@ WEEK: 5-6 (May 2-15) | ASSESSMENT LEVEL: Exceeds
 
 **Examples:**
 
-*Task 1 — Keisha Williams:*
-"Your initial work correctly identified governance tiers but treated combination analysis as abstract — you named risks without tracing how they'd actually occur. In revision, you systematized this thinking: small denominators + public reference data = re-identification risk. This is the pattern that connects Scenarios A and C, and it's now part of your operational toolkit. As you move to Task 2, this same logic will help you classify real data you handle daily."
+*Task 1 CLASSIFY — Keisha Williams:*
+"Your initial work correctly identified governance tiers but treated combination analysis as abstract — you named risks without tracing how they'd actually occur. In revision, you systematized this thinking: small denominators + public reference data = re-identification risk. This is the pattern that connects Scenarios A and C, and it's now part of your operational toolkit. Your quick-reference card for Student Success is strong — it names the specific data types you handle and maps them to handling rules. As you move to Task 2 CREATE, this governance fluency becomes the foundation for designing a real workflow."
 
-*Task 2 — Samuel Okafor (Building on Task 1):*
-"Task 1 gave you the governance framework; Task 2 tested whether you could apply it to real work with no answer key. You did. Your governance classification of the partner performance data was stronger than Task 1 — you moved faster, with more confidence, and caught a Tier 2 edge case you might have missed before. The prompt design was solid but your audit documentation was less detailed than your classification. That's a specific area to tighten for Task 3."
+*Task 2 CREATE — Samuel Okafor (Building on CLASSIFY):*
+"Task 1 CLASSIFY gave you governance fluency; Task 2 CREATE tested whether you could design a complete workflow around it. You did. Your workflow design document was thorough — governance classification, CTCC prompt, modality selection, predicted outcomes — all before you opened Claude. Where the learning deepened was in the plan-vs-reality comparison: you predicted the governance classification would be the hard part, but the hard part was actually iterating your prompt when the first output missed the tone for partner communications. That gap between prediction and reality is exactly what this task is designed to surface."
 
-*Task 3 — Sophia Rodriguez (Building on Tasks 1-2):*
-"Tasks 1 and 2 built your governance and prompt discipline. Task 3 tested you at scale — a multi-source analysis with governance decisions at every step. Your governance moved from binary (Tier 2 or not) to probabilistic (when to suppress vs. when to aggregate). Your prompts evolved across iterations; you weren't satisfied with the first pass. That iteration habit is what turns single-task mastery into systems thinking. This is the threshold of strategic AI deployment."
+*Task 3 CRITIQUE — Sophia Rodriguez (Building on CLASSIFY and CREATE):*
+"Tasks 1 and 2 built your governance and design discipline. Task 3 CRITIQUE asked a fundamentally different question: can you tear apart someone else's work, then your own, and then improve the system? Your error detection was sharp — you caught the governance violation that 60% of the cohort missed. More importantly, your severity calibration was precise: you didn't treat all errors as equal. The real breakthrough was the self-audit. Going back to your own Task 2 work and finding errors you missed the first time takes intellectual honesty. Your Prompt Improvement Memo closed the loop — you didn't just find problems, you redesigned prompts to prevent them."
 
-*Task 4 (Capstone) — James Washington:*
-"Tasks 1-3 gave you individual competency. The capstone invited you to think about the 4D framework as an organizational practice, not just a personal workflow. Your proposal for a governance review protocol shows you've moved from practitioner to architect. You're not just doing the work right; you're building the system that enables others to do it right. This is exactly where we hoped the pilot would lead: individual learning becoming collective capability."
+*Task 4 STRATEGIZE — James Washington (Building on CLASSIFY, CREATE, CRITIQUE):*
+"Tasks 1-3 gave you individual competency — you can classify, design, and evaluate. Task 4 STRATEGIZE asked the leadership question: given everything you know, what should your unit deploy, in what order, with what safeguards? Your deployment map was comprehensive — 12 tasks mapped with governance tiers and AI-readiness ratings. The ROI reasoning was where you stood out: you included training time in the cost calculation, which most participants didn't. Your cross-unit awareness identified the shared data dependency with Student Success that could accelerate or block deployment. This is systems thinking."
+
+*Capstone TEACH — Marcus Chen (Full Trajectory):*
+"CLASSIFY built your governance foundation. CREATE proved you could design and execute. CRITIQUE sharpened your evaluative judgment. STRATEGIZE gave you the organizational lens. Now the Capstone asks: what does it all add up to, and can you teach it? Your funder report use case is compelling — 4 hours to 90 minutes with governance compliance maintained. Your self-assessment was well-calibrated against your actual performance. The teaching module is the strongest deliverable: a colleague in Development could follow it without asking you a single question. That's the test of whether learning has become transferable."
 
 ---
 
@@ -132,23 +144,23 @@ WEEK: 5-6 (May 2-15) | ASSESSMENT LEVEL: Exceeds
 
 **Examples:**
 
-*Task 1 — Keisha Williams:*
+*Task 1 CLASSIFY — Keisha Williams:*
 
 **Prompt:** "Your strongest dimension was Classification Accuracy. Your widest growth area was Combination Awareness. What made combination analysis harder than straight tier classification?"
 
 **Response:** "Tier classification felt straightforward because the framework definitions are clear — I can check off criteria. But combination analysis required me to imagine attack vectors. For Scenario A, I knew the university breakdown was risky, but I had to think through why small universities made it worse. Once I mapped out the steps someone would take to re-identify people, the risk became concrete."
 
-*Task 2 — Samuel Okafor:*
+*Task 2 CREATE — Samuel Okafor:*
 
-**Prompt:** "In Task 1, you struggled with reasoning specificity; in Task 2, you got faster and more confident. What changed?"
+**Prompt:** "Your Plan-vs-Reality comparison showed that governance classification was easier than you expected, but prompt iteration was harder. What surprised you?"
 
-**Response:** "Repetition. Task 1 was theoretical; Task 2 was my actual work. Using the framework on partner data that I touch every week made the tiers stick. I wasn't memorizing rules; I was solving real problems. That stickiness is why I'm more confident now."
+**Response:** "I thought the governance piece would be the challenge — it was in Task 1 CLASSIFY. But by Task 2, that part was automatic. What surprised me was how much the prompt needed to change when Claude's first draft missed the tone for partner communications. I hadn't predicted that the human-judgment piece would be about relationship nuance, not governance rules."
 
-*Task 3 — Sophia Rodriguez:*
+*Task 3 CRITIQUE — Sophia Rodriguez:*
 
-**Prompt:** "Your audit documentation jumped in detail from Task 2 to Task 3. You also iterated your prompts three times instead of submitting once. Tell us about that iteration habit."
+**Prompt:** "You found 6 of 7 planted errors in the external audit. Then you went back to your own Task 2 work and found two errors you'd missed. What was different about auditing your own work?"
 
-**Response:** "I realized in Task 2 that my first-pass prompts were lazy. I wasn't pushing them hard enough. In Task 3, I told myself to treat the prompt like code — if it doesn't work the first time, refine it. That's how I write database queries, and I should apply the same discipline to AI prompts. The iteration showed me things about the governance constraints I'd missed the first time."
+**Response:** "Auditing someone else's work is easier because you have distance. With my own Task 2 output, I remembered being satisfied with it. Going back with the severity framework changed my lens — I found a framing error I'd accepted because it sounded right. The self-audit taught me that confidence in your own work is actually a risk factor. I need to build in a delay before I review my own AI output."
 
 ---
 
@@ -162,29 +174,35 @@ WEEK: 5-6 (May 2-15) | ASSESSMENT LEVEL: Exceeds
 
 **Examples:**
 
-*Task 1 — Keisha Williams:*
+*Task 1 CLASSIFY — Keisha Williams:*
 
-**Pattern:** Moves from abstract risk awareness to mechanistic re-identification reasoning; initial work shows correct tier choices but vague combination analysis; revision traces specific pathways.
+**Pattern:** Moves from abstract risk awareness to mechanistic re-identification reasoning; initial work shows correct tier choices but vague combination analysis; revision traces specific pathways. Quick-reference card is operationally useful for Student Success.
 
 **Discussion Question:** "When you're looking at your own data, how do you decide whether combining two pieces of information creates risk? Keisha's reasoning walks through a specific pathway: know the total, know the count, estimate individual values. What other combination patterns exist at DC CAP?"
 
-*Task 2 — Samuel Okafor:*
+*Task 2 CREATE — Samuel Okafor:*
 
-**Pattern:** Transfers Task 1 theory to real work with confidence; governance classification is strong; audit documentation is a growth edge.
+**Pattern:** Design document was thorough; governance classification transferred cleanly from CLASSIFY. Plan-vs-reality comparison revealed that prompt iteration, not governance, was the real challenge. Edit layer rigor is a growth edge.
 
-**Discussion Question:** "Samuel classified real partner data faster than the Task 1 scenario. What made real data easier to classify than hypothetical data? Can we build that confidence into our approaches to new governance challenges?"
+**Discussion Question:** "Samuel's plan predicted governance would be the hard part, but the hard part was actually iterating his prompt for tone. How many of you have been surprised by WHAT was hard vs. what you expected? What does that tell us about planning AI workflows?"
 
-*Task 3 — Sophia Rodriguez:*
+*Task 3 CRITIQUE — Sophia Rodriguez:*
 
-**Pattern:** Demonstrates iterative prompt design; treats each prompt iteration as hypothesis-testing; audit depth increases with each iteration.
+**Pattern:** Strong error detection with precise severity calibration; treats each error type differently based on potential harm. Self-audit showed intellectual honesty — went back to her own Task 2 CREATE work and found errors she'd originally accepted.
 
-**Discussion Question:** "Sophia revised her prompts three times before landing on the final version. How many of you submit first-pass prompts, and how many iterate? What would happen if we treated every governance decision like software development — expecting the first draft to be incomplete?"
+**Discussion Question:** "Sophia found errors in her own Task 2 work that she missed the first time. She says confidence in your own output is a risk factor. Do you agree? What would it look like to build a 'cooling off period' into your AI workflow — time between generating output and auditing it?"
 
-*Task 4 (Capstone) — James Washington:*
+*Task 4 STRATEGIZE — James Washington:*
 
-**Pattern:** Moves from individual practitioner to systems architect; uses capstone to design organizational infrastructure for 4D framework adoption.
+**Pattern:** Deployment map is comprehensive; ROI reasoning includes training costs, not just execution savings. Cross-unit awareness identifies dependencies that could accelerate or block rollout.
 
-**Discussion Question:** "James proposes a governance review protocol for partner-facing AI. What would it take to roll this out across DC CAP? What's the minimum viable governance protocol we'd need to say 'Yes, go use AI' vs. 'No, hold'?"
+**Discussion Question:** "James included training time in his ROI calculation, which changed the ranking of his top 2 deployment targets. How many of us are calculating AI ROI based only on execution time saved? What other hidden costs should we include?"
+
+*Capstone TEACH — Marcus Chen:*
+
+**Pattern:** Strong use case with measurable impact (4 hours to 90 minutes). Self-assessment is well-calibrated. Teaching module passes the independence test — a colleague can follow it without asking questions.
+
+**Discussion Question:** "Marcus's teaching module is designed so a colleague can follow it independently. What would it take for each of us to build one teaching module for our unit by the end of Q3? What's the minimum a colleague needs to get started safely?"
 
 ---
 
@@ -194,92 +212,104 @@ WEEK: 5-6 (May 2-15) | ASSESSMENT LEVEL: Exceeds
 
 ---
 
-## MULTI-TASK SUMMARY (For Tasks 2, 3, 4 Only)
+## MULTI-TASK SUMMARY (For Tasks 2, 3, 4, Capstone Only)
 
-**Purpose:** Show growth trajectory across tasks and identify thresholds.
+**Purpose:** Show growth trajectory across tasks and identify thresholds. Because each task measures different dimensions (different cognitive demand types), the comparison tracks the PRIMARY 4D competency across tasks, not the same dimension names.
 
-**Format:** Add this section to Task 2, 3, and 4 summaries. Compare to prior task(s).
+**Format:** Add this section to Task 2, 3, 4, and Capstone summaries. Compare to prior task(s) using 4D competency threading.
 
-**Example (Task 2 — Samuel Okafor):**
+**Example (Task 2 CREATE — Samuel Okafor):**
 
-**Growth from Task 1 to Task 2:**
+**Growth from CLASSIFY to CREATE:**
 
-| Dimension | Task 1 | Task 2 | Delta |
-|-----------|--------|--------|-------|
-| **Classification Accuracy** | Meets | Meets | No change — both correct, but Task 2 was faster. |
-| **Reasoning Specificity** | Approaching | Meets | Strengthened significantly; moved from naming data elements to explaining mechanisms. |
-| **Application Confidence** | Approaching | Meets | Real data boosted confidence; theoretical scenarios remain harder. |
-| **Prompt Quality** | — | Meets | New in Task 2; CTCC structure present; governance constraints reflected. |
+| 4D Competency | Task 1 CLASSIFY | Task 2 CREATE | Trajectory |
+|---------------|-----------------|---------------|------------|
+| **Diligence** | Classification Accuracy: Meets | Governance in workflow design: Strong | Task 1 built the foundation; Task 2 applied it automatically. |
+| **Description** | — | Design Completeness: Exceeds | New focus area; workflow design document was thorough and complete. |
+| **Discernment** | — | Edit Layer Rigor: Approaching | Growth edge identified; edits were accurate but documentation was thin. |
+| **Delegation** | — | Modality selection in workflow: Meets | Chose "draft together" with clear rationale for partner communications. |
 
-**Pattern:** Task 1 built theory; Task 2 applied it. Transfer was direct. Ready for Task 3 with confidence, but would benefit from peer discussion on prompt iteration (other participants iterated more; Samuel's first pass was strong but not challenged).
+**Pattern:** CLASSIFY built governance fluency that transferred directly to CREATE. The new cognitive demands — designing before executing, and comparing plan to reality — revealed that prompt iteration, not governance, is the growth edge. Ready for CRITIQUE with a specific question: can he evaluate quality as well as he creates it?
 
 ---
 
-**Example (Task 3 — Sophia Rodriguez):**
+**Example (Task 3 CRITIQUE — Sophia Rodriguez):**
 
-**Growth from Task 1 → Task 2 → Task 3:**
+**Growth from CLASSIFY → CREATE → CRITIQUE:**
 
-| Dimension | Task 1 | Task 2 | Task 3 | Trajectory |
-|-----------|--------|--------|--------|-----------|
-| **Governance** | Meets | Meets | Exceeds | Moved from binary to probabilistic thinking; Tier 2 edge cases now clear. |
-| **Prompt Design** | — | Meets | Exceeds | Single-iteration → iterative refinement; now treats prompts as hypothesis-testing. |
-| **Audit Depth** | — | Approaching | Exceeds | Documentation jumped in specificity and governance tie-back. |
-| **Modality Judgment** | — | Meets | Meets | Consistent; Task 3 justified Agency (iterative) more explicitly. |
+| 4D Competency | Task 1 CLASSIFY | Task 2 CREATE | Task 3 CRITIQUE | Trajectory |
+|---------------|-----------------|---------------|-----------------|-----------|
+| **Diligence** | Classification Accuracy: Meets | Governance in design: Meets | Governance error detection: Exceeds | Governance fluency deepened at each stage; now catches governance violations others miss. |
+| **Description** | — | Execution Quality: Meets | Corrective Transfer: Exceeds | Moved from writing prompts to redesigning prompts based on error analysis. |
+| **Discernment** | — | Edit Layer Rigor: Approaching | Error Detection + Severity Calibration: Exceeds | Biggest leap; moved from thin edit documentation to precise error classification with severity reasoning. |
 
-**Pattern:** Steady growth with acceleration in Tasks 2 → 3. The leap from Meets to Exceeds corresponds to adopting iterative prompt design. Sophia's learning edge is moving from "correct once" to "refined repeatedly." This is a critical threshold for governance at scale.
+**Pattern:** Steady growth with acceleration from CREATE to CRITIQUE. The shift from creating to evaluating unlocked Sophia's strongest cognitive mode — she's a natural auditor. Severity calibration was the standout skill: she doesn't just find errors, she classifies their impact. This precision will serve her well in STRATEGIZE, where she'll need to triage by ROI.
 
 ---
 
 ## FORMAT EXAMPLES BY TASK TYPE
 
-### Task 1: The Guided Pipeline (Scaffolded, Two Sub-Tasks)
+### Task 1: CLASSIFY — The Governance Classifier (Analytical Categorization)
 
 - Header Block (3 lines)
-- Performance Snapshot (4 dimensions, 1-2 sentences each)
-- Growth Story (3-5 sentences explaining tier classification reasoning + combination analysis)
+- Performance Snapshot (4 dimensions: Classification Accuracy, Boundary Reasoning, Combination Awareness, Governance Operationalization)
+- Growth Story (3-5 sentences explaining tier classification reasoning + combination analysis + quick-reference card)
 - Participant Reflection (2-3 sentences on their biggest insight)
 - Facilitator Quick-Hit (Pattern + Discussion Question)
-- [Optional] Multi-task comparison: N/A for Task 1 (first task)
+- Multi-task comparison: N/A for Task 1 (first task)
+
+**Estimated Length:** 1 page
+
+---
+
+### Task 2: CREATE — The Workflow Designer (Design + Execution + Metacognition)
+
+- Header Block (3 lines)
+- Performance Snapshot (4 dimensions: Design Completeness, Execution Quality, Edit Layer Rigor, Plan-vs-Reality Insight)
+- Growth Story (5-7 sentences: how CLASSIFY governance fluency enabled workflow design, what the plan-vs-reality gap revealed, what's different about designing vs. classifying)
+- Participant Reflection (2-3 sentences)
+- Facilitator Quick-Hit (Pattern + Discussion Question)
+- Multi-Task Comparison: CLASSIFY -> CREATE (what transferred, what's new, what the different cognitive demand revealed)
 
 **Estimated Length:** 1-1.5 pages
 
 ---
 
-### Task 2: The Supported Pipeline (Real Work, Scaffolded)
+### Task 3: CRITIQUE — The Quality Auditor (Evaluation + Diagnosis + Correction)
 
 - Header Block (3 lines)
-- Performance Snapshot (4 dimensions reflecting governance + prompt quality + modality judgment + audit rigor)
-- Growth Story (5-7 sentences: what they learned in Task 1, how Task 2 applied/challenged it, what's different about real work)
+- Performance Snapshot (4 dimensions: Error Detection Accuracy, Severity Calibration, Self-Audit Depth, Corrective Transfer)
+- Growth Story (5-7 sentences: how CLASSIFY and CREATE skills enabled evaluation, what self-audit revealed, how critique differs from creation as a cognitive demand)
 - Participant Reflection (2-3 sentences)
 - Facilitator Quick-Hit (Pattern + Discussion Question)
-- Multi-Task Comparison: Task 1 → Task 2 (what transferred, what's new)
-
-**Estimated Length:** 1-1.5 pages (same as Task 1, despite more complex work)
-
----
-
-### Task 3: The Independent Pipeline (Real Work, Minimal Scaffolding)
-
-- Header Block (3 lines)
-- Performance Snapshot (4 dimensions: governance at scale, prompt evolution, modality at scale, documentation depth)
-- Growth Story (5-7 sentences: trajectory from Tasks 1-2, what independent work revealed, what's now systematic)
-- Participant Reflection (2-3 sentences)
-- Facilitator Quick-Hit (Pattern + Discussion Question)
-- Multi-Task Comparison: Task 1 → Task 2 → Task 3 (learning trajectory across tasks)
+- Multi-Task Comparison: CLASSIFY -> CREATE -> CRITIQUE (learning trajectory across cognitive demand types)
 
 **Estimated Length:** 1.5-2 pages (slightly longer to accommodate trajectory comparison)
 
 ---
 
-### Task 4: The Capstone (Strategic, Self-Directed)
+### Task 4: STRATEGIZE — The Deployment Strategist (Strategic Analysis + Organizational Planning)
 
 - Header Block (3 lines)
-- Performance Snapshot (4 dimensions: pipeline integration, leadership application, peer mentoring, strategic vision)
-- Growth Story (5-7 sentences: how individual competency became organizational vision; how Tasks 1-3 enabled this strategic work)
+- Performance Snapshot (4 dimensions: Task Mapping Quality, ROI Reasoning, Implementation Feasibility, Cross-Unit Awareness)
+- Growth Story (5-7 sentences: how individual competency from Tasks 1-3 enabled strategic thinking; what's different about planning for a unit vs. doing the work yourself)
 - Participant Reflection (2-3 sentences)
 - Facilitator Quick-Hit (Pattern + Discussion Question)
-- Multi-Task Comparison: Task 1 → Task 2 → Task 3 → Task 4 (capstone as synthesis)
-- [Optional] Capstone Proposal Summary (1 paragraph on the governance protocol, infrastructure, or initiative they designed)
+- Multi-Task Comparison: CLASSIFY -> CREATE -> CRITIQUE -> STRATEGIZE (how individual skills became organizational thinking)
+
+**Estimated Length:** 2 pages
+
+---
+
+### Capstone: TEACH — The Pilot Portfolio (Synthesis + Calibration + Multiplication)
+
+- Header Block (3 lines)
+- Performance Snapshot (4-5 dimensions: Use Case Impact, Self-Assessment Calibration, Teaching Module Completeness, Demo/Proposal Quality + Growth Narrative Coherence)
+- Growth Story (5-7 sentences: how CLASSIFY -> CREATE -> CRITIQUE -> STRATEGIZE trajectory led to synthesis; what the teaching module represents; how individual learning becomes collective capability)
+- Participant Reflection (2-3 sentences)
+- Facilitator Quick-Hit (Pattern + Discussion Question)
+- Multi-Task Comparison: CLASSIFY -> CREATE -> CRITIQUE -> STRATEGIZE -> TEACH (full pilot trajectory with 4D competency threading)
+- [Optional] Use Case Summary (1 paragraph on the strongest workflow demonstrated) + Teaching Module Summary (1 paragraph on what colleagues will be able to do)
 
 **Estimated Length:** 2-2.5 pages
 
@@ -315,4 +345,5 @@ The portfolio summary is rendered as a **branded Word document (.docx)** using t
 | Version | Date | Changes |
 |---------|------|---------|
 | 1.0 | April 9, 2026 | Initial format design for pilot; 4-section structure (Header + Snapshot + Story + Reflection) + Facilitator Notes. |
+| 2.0 | April 11, 2026 | Updated for cognitive-demand-type architecture. Task names, dimension names, examples, and multi-task comparison updated to reflect CLASSIFY/CREATE/CRITIQUE/STRATEGIZE/TEACH structure. Design principles and format structure unchanged. |
 
