@@ -623,12 +623,6 @@
         .stat-card:nth-child(3) { border-left-color: var(--blue); }
         .stat-card:nth-child(4) { border-left-color: var(--navy); }
 
-        .stat-label {
-            font-family: var(--font-subhead);
-            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-            color: var(--dark-gray);
-        }
-
         /* Section Headers */
         .section-header {
             text-align: center;
@@ -1841,8 +1835,8 @@
                 <div style="font-size: clamp(0.8rem, 1.2vw, 0.9rem); opacity: 0.9;">Units</div>
             </div>
             <div style="text-align: center; padding: 0.75rem; border-radius: 6px; background: rgba(255,255,255,0.1);">
-                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--gold);">4</div>
-                <div style="font-size: clamp(0.8rem, 1.2vw, 0.9rem); opacity: 0.9;">Phases</div>
+                <div style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--gold);">5</div>
+                <div style="font-size: clamp(0.8rem, 1.2vw, 0.9rem); opacity: 0.9;">Tasks</div>
             </div>
         </div>
         <div class="reveal psychological-safety-callout" style="transition-delay: 0.8s; background: rgba(255, 244, 237, 0.8); backdrop-filter: blur(10px); border-left: 5px solid var(--gold); padding: clamp(1.5rem, 3vw, 2rem); border-radius: 8px; margin-top: clamp(1.5rem, 3vw, 2.5rem); max-width: 600px; margin-left: auto; margin-right: auto;">
@@ -1982,7 +1976,7 @@
                     <div class="timeline-progress" style="--target-width: 0%;"></div>
                     <div class="timeline-marker" id="timeline-marker"></div>
                 </div>
-                <div class="timeline-day-counter" id="day-counter">Day 0 of 60</div>
+                <div class="timeline-day-counter" id="day-counter">Day 0 of 65</div>
                 <div class="timeline-phases" data-pre-gate="lock">
                     <div class="timeline-phase phase-1" data-phase="1">
                         <div class="phase-color-bar phase-1"></div>
@@ -1993,10 +1987,8 @@
                             <div class="phase-details-content">
                                 <div class="phase-deliverables-label">Key Deliverables</div>
                                 <div class="phase-deliverables">
-                                    • Onboarding<br>
-                                    • Prerequisites<br>
-                                    • First Claude Session<br>
-                                    • Governance Walk
+                                    • Onboarding &amp; Prerequisites<br>
+                                    • Task 1: CLASSIFY — Governance Scenarios
                                 </div>
                             </div>
                         </div>
@@ -2010,9 +2002,8 @@
                             <div class="phase-details-content">
                                 <div class="phase-deliverables-label">Key Deliverables</div>
                                 <div class="phase-deliverables">
-                                    • Skill Building<br>
-                                    • Real Workflow Integration<br>
-                                    • Activity Cards 1-2
+                                    • Task 2: CREATE — Workflow Design<br>
+                                    • Task 3: CRITIQUE — Quality Audit
                                 </div>
                             </div>
                         </div>
@@ -2020,15 +2011,14 @@
                     <div class="timeline-phase phase-3" data-phase="3">
                         <div class="phase-color-bar phase-3"></div>
                         <div class="phase-label">Phase 3</div>
-                        <div class="phase-name">Capstone</div>
-                        <div class="phase-dates">May 19 – Jun 5</div>
+                        <div class="phase-name">Mastery &amp; Capstone</div>
+                        <div class="phase-dates">May 19 – Jun 10</div>
                         <div class="phase-details">
                             <div class="phase-details-content">
                                 <div class="phase-deliverables-label">Key Deliverables</div>
                                 <div class="phase-deliverables">
-                                    • Capstone Presentation<br>
-                                    • Post-Assessment<br>
-                                    • Reflection
+                                    • Task 4: STRATEGIZE — Deployment Planning<br>
+                                    • Capstone: TEACH — Portfolio &amp; Showcase
                                 </div>
                             </div>
                         </div>
@@ -2361,7 +2351,7 @@
                     <div class="card purple-accent reveal-scale">
                         <span class="status-badge status-coming">Opens Phase 3</span>
                         <h4 class="card-title">Capstone Template</h4>
-                        <p class="card-description">Your 5-slide showcase with worked example and 4D self-assessment</p>
+                        <p class="card-description">Your 5-slide showcase with worked example and 2D self-assessment (Diligence &amp; Delegation)</p>
                         <p class="card-link" style="color: #999; cursor: default;">Available May 19</p>
                     </div>
                 </div>
@@ -2848,7 +2838,7 @@
     // Update timeline progress
     function updateTimelineProgress() {
         const pilotStart = new Date('2026-04-06');
-        const pilotEnd = new Date('2026-06-05');
+        const pilotEnd = new Date('2026-06-10');
         const today = new Date();
 
         const totalMs = pilotEnd - pilotStart;
@@ -2867,7 +2857,7 @@
         }
 
         // Update day counter
-        const totalDays = 60;
+        const totalDays = 65;
         const elapsedDays = Math.max(0, Math.floor(elapsedMs / (1000 * 60 * 60 * 24)));
         const dayCounter = document.getElementById('day-counter');
         if (dayCounter) {
