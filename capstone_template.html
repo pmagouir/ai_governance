@@ -14,30 +14,13 @@ if(localStorage.getItem('dccap_survey_completed')!=='true'){
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DC CAP AI Pilot — Capstone Showcase</title>
+    <title>DC CAP AI Pilot — Capstone: Your Team's AI Project</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
-        /* === RESET & BASE === */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* === VIEWPORT FITTING: MANDATORY === */
-        html, body { height: 100%; overflow-x: hidden; }
-        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
-        .slide {
-            width: 100vw; height: 100vh; height: 100dvh;
-            overflow: hidden; scroll-snap-align: start;
-            display: flex; flex-direction: column; position: relative;
-        }
-        .slide-content {
-            flex: 1; display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            max-height: 100%; overflow: hidden;
-            padding: var(--slide-padding);
-        }
-
         :root {
-            /* DC CAP Brand Colors */
             --navy: #101A4C;
             --purple: #8352FF;
             --blue: #87B7D5;
@@ -45,908 +28,757 @@ if(localStorage.getItem('dccap_survey_completed')!=='true'){
             --tan: #FFF4ED;
             --white: #FFFFFF;
             --dark-gray: #333333;
-
-            /* DC CAP Brand Typography */
             --font-display: 'Akkordeon Ten', 'Noto Serif SemiCondensed', Georgia, serif;
             --font-body: 'Noto Serif', Georgia, serif;
             --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
             --font-mono: 'JetBrains Mono', monospace;
-
-            /* Responsive Sizing */
-            --title-size: clamp(1.5rem, 5vw, 4rem);
-            --h2-size: clamp(1.25rem, 3.5vw, 2.5rem);
-            --h3-size: clamp(1rem, 2.5vw, 1.75rem);
-            --body-size: clamp(0.75rem, 1.5vw, 1.125rem);
-            --small-size: clamp(0.65rem, 1vw, 0.875rem);
-            --slide-padding: clamp(1.5rem, 5vw, 5rem);
-            --content-gap: clamp(0.5rem, 2vw, 2rem);
-
-            /* Animation */
-            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-            --duration-normal: 0.6s;
         }
 
-        @media (max-height: 700px) {
-            :root {
-                --slide-padding: clamp(1rem, 3vw, 2.5rem);
-                --content-gap: clamp(0.4rem, 1.5vw, 1rem);
-                --title-size: clamp(1.25rem, 4.5vw, 2.5rem);
-                --h2-size: clamp(1rem, 3vw, 1.75rem);
-            }
-        }
-        @media (max-height: 600px) {
-            :root {
-                --slide-padding: clamp(0.75rem, 2.5vw, 1.5rem);
-                --content-gap: clamp(0.3rem, 1vw, 0.75rem);
-                --title-size: clamp(1.1rem, 4vw, 2rem);
-                --body-size: clamp(0.7rem, 1.2vw, 0.95rem);
-            }
-        }
-        @media (max-height: 500px) {
-            :root {
-                --slide-padding: clamp(0.5rem, 2vw, 1rem);
-                --title-size: clamp(1rem, 3.5vw, 1.5rem);
-                --h2-size: clamp(0.9rem, 2.5vw, 1.25rem);
-                --body-size: clamp(0.65rem, 1vw, 0.85rem);
-            }
-        }
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
                 transition-duration: 0.2s !important;
             }
-            html { scroll-behavior: auto; }
         }
 
-        /* === GLOBAL TYPOGRAPHY === */
         body {
             font-family: var(--font-body);
-            font-size: var(--body-size);
-            line-height: 1.6;
             color: var(--dark-gray);
             background: var(--white);
+            line-height: 1.6;
         }
-        h1 {
+
+        /* Header */
+        .capstone-header {
+            background: linear-gradient(135deg, var(--navy) 0%, #1a2666 100%);
+            color: var(--white);
+            padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3rem);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .capstone-header::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .capstone-header h1 {
             font-family: var(--font-display);
-            font-size: var(--title-size);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
         }
-        h2 {
-            font-family: var(--font-display);
-            font-size: var(--h2-size);
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
+
+        .capstone-header p {
+            font-size: clamp(1rem, 1.8vw, 1.2rem);
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
         }
-        h3 {
+
+        .capstone-header .participant-name {
+            display: inline-block;
+            border-bottom: 2px dashed var(--gold);
+            padding: 0.1em 0.5em;
+            min-width: 200px;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        /* Navigation */
+        .capstone-nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--navy);
+            z-index: 100;
+            padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 3vw, 2rem);
+        }
+
+        .capstone-nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: clamp(1rem, 3vw, 2.5rem);
+            flex-wrap: wrap;
+        }
+
+        .capstone-nav a {
             font-family: var(--font-subhead);
-            font-size: var(--h3-size);
-            font-weight: 300;
-            line-height: 1.4;
+            font-weight: 600;
+            color: var(--dark-gray);
+            text-decoration: none;
+            font-size: clamp(0.85rem, 1.3vw, 1rem);
+            padding: 0.25rem 0;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
         }
 
-        /* === REVEAL ANIMATION === */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity var(--duration-normal) var(--ease-out-expo),
-                        transform var(--duration-normal) var(--ease-out-expo);
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .reveal-delay-1 { transition-delay: 0.15s; }
-        .reveal-delay-2 { transition-delay: 0.3s; }
-        .reveal-delay-3 { transition-delay: 0.45s; }
+        .capstone-nav a:hover { color: var(--purple); border-bottom-color: var(--purple); }
 
-        /* === EDITABLE FIELDS === */
+        /* Sections */
+        .capstone-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 3rem);
+            scroll-margin-top: 60px;
+        }
+
+        .section-number {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            font-weight: 700;
+            font-family: var(--font-subhead);
+            margin-right: 0.75rem;
+            vertical-align: middle;
+        }
+
+        .capstone-section h2 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.4rem, 3vw, 1.9rem);
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-description {
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            color: var(--dark-gray);
+            line-height: 1.7;
+            margin-bottom: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        /* Editable fields */
         .editable {
             border: 2px dashed rgba(131, 82, 255, 0.3);
             border-radius: 8px;
-            padding: clamp(0.75rem, 2vw, 1.5rem);
-            min-height: 2.5em;
-            cursor: text;
-            transition: border-color 0.3s ease, background 0.3s ease;
-            position: relative;
-        }
-        .editable:hover {
-            border-color: var(--purple);
-            background: rgba(131, 82, 255, 0.03);
-        }
-        .editable:focus {
+            padding: clamp(0.75rem, 1.5vw, 1rem);
+            min-height: 80px;
+            font-family: var(--font-body);
+            font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+            line-height: 1.7;
+            transition: border-color 0.2s;
             outline: none;
-            border-color: var(--purple);
-            border-style: solid;
-            background: rgba(131, 82, 255, 0.05);
-        }
-        .editable:empty::before {
-            content: attr(data-placeholder);
-            color: rgba(0, 0, 0, 0.3);
-            font-style: italic;
-            pointer-events: none;
-        }
-        .edit-hint {
-            position: absolute;
-            top: clamp(0.5rem, 1vw, 0.75rem);
-            right: clamp(0.5rem, 1vw, 0.75rem);
-            font-family: var(--font-mono);
-            font-size: clamp(0.55rem, 0.8vw, 0.7rem);
-            color: rgba(131, 82, 255, 0.5);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            pointer-events: none;
         }
 
-        /* === NAV DOTS === */
-        .nav-dots {
-            position: fixed;
-            right: clamp(0.75rem, 2vw, 1.5rem);
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: clamp(0.4rem, 1vh, 0.75rem);
-            z-index: 100;
+        .editable:focus {
+            border-color: var(--purple);
+            box-shadow: 0 0 0 3px rgba(131, 82, 255, 0.1);
         }
-        .nav-dot {
-            width: clamp(8px, 1vw, 12px);
-            height: clamp(8px, 1vw, 12px);
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+
+        .editable:empty::before {
+            content: attr(data-placeholder);
+            color: #767676;
+            font-style: italic;
+        }
+
+        .field-label {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .field-group {
+            margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+        }
+
+        /* Accent borders */
+        .accent-purple { border-left: 5px solid var(--purple); }
+        .accent-gold { border-left: 5px solid var(--gold); }
+        .accent-blue { border-left: 5px solid var(--blue); }
+        .accent-navy { border-left: 5px solid var(--navy); }
+
+        /* Section dividers */
+        .section-divider {
+            border: none;
+            height: 3px;
+            background: linear-gradient(90deg, var(--purple), var(--blue), var(--gold));
+            margin: 0;
+        }
+
+        /* Modality tags */
+        .modality-tags {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .modality-tag {
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-family: var(--font-subhead);
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 0.875rem;
+            border: 2px solid;
+            transition: all 0.2s;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .modality-tag.automation { border-color: var(--navy); color: var(--navy); }
+        .modality-tag.augmentation { border-color: var(--purple); color: var(--purple); }
+        .modality-tag.agency { border-color: var(--gold); color: var(--gold); }
+
+        .modality-tag.selected {
+            color: var(--white);
+        }
+        .modality-tag.automation.selected { background: var(--navy); }
+        .modality-tag.augmentation.selected { background: var(--purple); }
+        .modality-tag.agency.selected { background: var(--gold); color: var(--navy); }
+
+        /* 4D Rating */
+        .assessment-row {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 1rem;
+            align-items: center;
+            padding: clamp(0.75rem, 1.5vw, 1rem);
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+        }
+
+        .assessment-label {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+        }
+
+        .rating-dots {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .rating-dot {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: var(--font-subhead);
+            transition: all 0.2s;
             min-width: 44px;
             min-height: 44px;
+        }
+
+        .rating-dot.filled {
+            background: currentColor;
+            color: var(--white) !important;
+        }
+
+        .rating-dot.filled span { color: var(--white); }
+
+        .rating-scale {
+            display: flex;
+            justify-content: space-between;
+            font-size: clamp(0.75rem, 1vw, 0.85rem);
+            color: #999;
+            margin-top: 0.5rem;
+            padding: 0 0.25rem;
+        }
+
+        /* Governance config */
+        .tier-select {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .tier-option {
+            padding: 0.5rem 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: var(--font-subhead);
+            font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+            font-weight: 600;
+            transition: all 0.2s;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .tier-option.selected { border-color: var(--purple); background: rgba(131, 82, 255, 0.08); color: var(--purple); }
+
+        /* Worked example */
+        .worked-example {
+            background: var(--tan);
+            border-radius: 12px;
+            padding: clamp(1.5rem, 3vw, 2rem);
+            margin-top: clamp(2rem, 4vw, 3rem);
+        }
+
+        .worked-example h3 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .example-step {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            background: var(--purple);
+            color: var(--white);
+            border-radius: 50%;
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: 0.8rem;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        .nav-dot.active {
-            background: var(--gold);
-            border-color: var(--gold);
-            transform: scale(1.3);
-        }
-        .nav-dot.dark { background: rgba(0, 0, 0, 0.15); border-color: rgba(0, 0, 0, 0.3); }
-        .nav-dot.dark.active { background: var(--purple); border-color: var(--purple); }
 
-        /* === SLIDE 1: TITLE === */
-        .slide-title {
-            background: linear-gradient(135deg, var(--navy) 0%, #0d0f2d 100%);
-            color: var(--white);
-            text-align: center;
-        }
-        .slide-title .slide-content {
-            gap: var(--content-gap);
-            max-width: min(90vw, 800px);
-        }
-        .participant-name {
-            font-family: var(--font-display);
-            font-size: var(--title-size);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-            color: var(--white);
-        }
-        .pilot-sentence {
-            font-family: var(--font-subhead);
-            font-size: var(--h3-size);
-            font-weight: 300;
-            color: var(--tan);
-            line-height: 1.5;
-            max-width: 700px;
-        }
-        .pilot-sentence.editable {
-            border-color: rgba(255, 244, 237, 0.3);
-        }
-        .pilot-sentence.editable:hover {
-            border-color: var(--tan);
-            background: rgba(255, 244, 237, 0.05);
-        }
-        .pilot-sentence.editable:focus {
-            border-color: var(--tan);
-            background: rgba(255, 244, 237, 0.08);
-        }
-        .pilot-sentence.editable:empty::before { color: rgba(255, 244, 237, 0.4); }
-        .title-meta {
-            font-size: var(--small-size);
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: var(--content-gap);
-        }
-        .quadrant-badge-small {
-            display: inline-grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3px;
-            width: clamp(40px, 5vw, 60px);
-            height: clamp(40px, 5vw, 60px);
-            vertical-align: middle;
-            margin-left: calc(var(--content-gap) * 0.5);
-        }
-        .quadrant-badge-small div { border-radius: 3px; }
-        .qb-navy { background: var(--navy); border: 1px solid rgba(255,255,255,0.2); }
-        .qb-purple { background: var(--purple); }
-        .qb-blue { background: var(--blue); }
-        .qb-gold { background: var(--gold); }
-
-        /* === SLIDE 2: USE CASE === */
-        .slide-usecase {
-            background: var(--white);
-            color: var(--dark-gray);
-        }
-        .slide-usecase .slide-content {
-            max-width: min(90vw, 900px);
-            align-items: stretch;
-            gap: var(--content-gap);
-        }
-        .usecase-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--content-gap);
-            flex: 1;
-            max-height: 60vh;
-        }
-        @media (max-width: 700px) { .usecase-grid { grid-template-columns: 1fr; } }
-        .usecase-panel {
-            border-radius: 8px;
-            padding: clamp(1rem, 2.5vw, 2rem);
-            display: flex;
-            flex-direction: column;
-            gap: calc(var(--content-gap) * 0.75);
-        }
-        .usecase-before {
-            background: var(--tan);
-            border: 2px solid rgba(16, 26, 76, 0.15);
-        }
-        .usecase-after {
-            background: rgba(131, 82, 255, 0.06);
-            border: 2px solid var(--purple);
-        }
-        .usecase-panel-label {
-            font-family: var(--font-display);
-            font-size: var(--small-size);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .usecase-before .usecase-panel-label { color: var(--navy); }
-        .usecase-after .usecase-panel-label { color: var(--purple); }
-        .usecase-impact {
-            display: flex;
-            gap: var(--content-gap);
-            justify-content: center;
-            margin-top: auto;
-        }
-        .impact-stat {
-            text-align: center;
-            padding: calc(var(--content-gap) * 0.5) var(--content-gap);
+        /* Footer */
+        .capstone-footer {
             background: var(--navy);
-            color: var(--white);
-            border-radius: 6px;
-            flex: 1;
-            max-width: 280px;
-        }
-        .impact-stat-label {
-            font-size: var(--small-size);
-            color: var(--blue);
-            font-weight: 600;
-        }
-        .impact-stat-value {
-            font-family: var(--font-display);
-            font-size: var(--h3-size);
-            font-weight: 800;
-            color: var(--gold);
-        }
-        .impact-stat-value.editable {
-            border-color: rgba(252, 176, 23, 0.3);
-            color: var(--gold);
-        }
-
-        /* === SLIDE 3: 4D ASSESSMENT === */
-        .slide-assessment {
-            background: var(--navy);
-            color: var(--white);
-        }
-        .slide-assessment .slide-content {
-            max-width: min(90vw, 900px);
-            align-items: stretch;
-            gap: var(--content-gap);
-        }
-        .assessment-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: calc(var(--content-gap) * 0.75);
-            flex: 1;
-            max-height: 55vh;
-        }
-        @media (max-width: 700px) {
-            .assessment-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        .assessment-card {
-            border-radius: 8px;
-            padding: clamp(0.75rem, 2vw, 1.5rem);
-            display: flex;
-            flex-direction: column;
-            gap: calc(var(--content-gap) * 0.5);
-            transition: transform 0.3s var(--ease-out-expo);
-        }
-        .assessment-card:hover { transform: translateY(-4px); }
-        .assessment-card.card-delegation { background: rgba(255,255,255,0.1); border-left: 5px solid var(--white); }
-        .assessment-card.card-description { background: rgba(131,82,255,0.2); border-left: 5px solid var(--purple); }
-        .assessment-card.card-discernment { background: rgba(135,183,213,0.2); border-left: 5px solid var(--blue); }
-        .assessment-card.card-diligence { background: rgba(252,176,23,0.2); border-left: 5px solid var(--gold); }
-        .assessment-d-name {
-            font-family: var(--font-display);
-            font-size: var(--body-size);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-        }
-        .card-delegation .assessment-d-name { color: var(--white); }
-        .card-description .assessment-d-name { color: var(--purple); }
-        .card-discernment .assessment-d-name { color: var(--blue); }
-        .card-diligence .assessment-d-name { color: var(--gold); }
-        .assessment-rating {
-            display: flex;
-            gap: 4px;
-        }
-        .rating-dot {
-            width: clamp(10px, 1.5vw, 16px);
-            height: clamp(10px, 1.5vw, 16px);
-            border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.4);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .rating-dot.filled { background: var(--gold); border-color: var(--gold); }
-        .rating-dot:hover { border-color: var(--gold); transform: scale(1.2); }
-        .assessment-note {
-            font-size: var(--small-size);
             color: rgba(255,255,255,0.7);
-            line-height: 1.5;
-        }
-        .assessment-note.editable {
-            border-color: rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.9);
-        }
-        .assessment-note.editable:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05); }
-        .assessment-note.editable:focus { border-color: var(--gold); background: rgba(255,255,255,0.08); }
-        .assessment-note.editable:empty::before { color: rgba(255,255,255,0.3); }
-        .hardest-d {
             text-align: center;
-            margin-top: auto;
-            padding-top: var(--content-gap);
-        }
-        .hardest-d-label {
-            font-size: var(--small-size);
-            color: rgba(255,255,255,0.5);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 4px;
+            padding: clamp(1.5rem, 3vw, 2rem);
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
         }
 
-        /* === SLIDE 4: WHAT I'M TEACHING === */
-        .slide-teaching {
-            background: var(--tan);
-            color: var(--dark-gray);
-        }
-        .slide-teaching .slide-content {
-            max-width: min(90vw, 800px);
-            gap: var(--content-gap);
-        }
-        .teaching-card {
-            background: var(--white);
-            border: 2px solid var(--purple);
-            border-radius: 12px;
-            padding: clamp(1.5rem, 3vw, 2.5rem);
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: var(--content-gap);
-        }
-        .teaching-label {
-            font-family: var(--font-subhead);
-            font-size: var(--small-size);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--purple);
-        }
-        .teaching-modality-tags {
-            display: flex;
-            gap: calc(var(--content-gap) * 0.5);
-            flex-wrap: wrap;
-        }
-        .modality-tag {
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-family: var(--font-subhead);
-            font-size: var(--small-size);
-            font-weight: 700;
-            cursor: pointer;
-            border: 2px solid;
-            transition: all 0.2s ease;
-            user-select: none;
-        }
-        .modality-tag.tag-auto { border-color: var(--navy); color: var(--navy); }
-        .modality-tag.tag-aug { border-color: var(--purple); color: var(--purple); }
-        .modality-tag.tag-agency { border-color: var(--gold); color: var(--gold); }
-        .modality-tag.selected {
-            color: var(--white);
-        }
-        .modality-tag.tag-auto.selected { background: var(--navy); }
-        .modality-tag.tag-aug.selected { background: var(--purple); }
-        .modality-tag.tag-agency.selected { background: var(--gold); color: var(--dark-gray); }
+        .capstone-footer a { color: var(--gold); }
 
-        /* === SLIDE 5: BUILD NEXT === */
-        .slide-buildnext {
-            background: linear-gradient(135deg, var(--purple) 0%, #8352FF 100%);
-            color: var(--white);
-            text-align: center;
-        }
-        .slide-buildnext .slide-content {
-            max-width: min(90vw, 750px);
-            gap: var(--content-gap);
-        }
-        .buildnext-card {
-            background: rgba(255,255,255,0.15);
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 12px;
-            padding: clamp(1.5rem, 3vw, 2.5rem);
-            width: 100%;
-            backdrop-filter: blur(10px);
-        }
-        .buildnext-card .editable {
-            border-color: rgba(255,255,255,0.3);
-            color: var(--white);
-        }
-        .buildnext-card .editable:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
-        .buildnext-card .editable:focus { border-color: var(--gold); background: rgba(255,255,255,0.08); }
-        .buildnext-card .editable:empty::before { color: rgba(255,255,255,0.4); }
-        .buildnext-footer {
-            font-size: var(--small-size);
-            color: rgba(255,255,255,0.6);
-            margin-top: var(--content-gap);
-        }
-
-        /* === SLIDE FOOTER === */
-        .slide-footer {
-            position: absolute;
-            bottom: clamp(0.5rem, 1.5vw, 1rem);
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: var(--small-size);
-            color: rgba(255,255,255,0.5);
-            text-align: center;
-            font-family: var(--font-subhead);
-        }
-        .slide.light-footer .slide-footer { color: rgba(0,0,0,0.3); }
-
-        /* === PRINT STYLES === */
-        @media print {
-            html { scroll-snap-type: none; }
-            .slide { height: auto; min-height: 100vh; page-break-after: always; overflow: visible; }
-            .nav-dots { display: none; }
-            .reveal { opacity: 1 !important; transform: none !important; }
-            .editable { border-style: solid; border-color: #ccc; }
+        @media (max-width: 768px) {
+            .assessment-row {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- === NAV DOTS === -->
-    <div class="nav-dots" id="navDots">
-        <div class="nav-dot active" data-slide="0" title="My Pilot"></div>
-        <div class="nav-dot" data-slide="1" title="Use Case"></div>
-        <div class="nav-dot" data-slide="2" title="4D Assessment"></div>
-        <div class="nav-dot dark" data-slide="3" title="Teaching"></div>
-        <div class="nav-dot" data-slide="4" title="Build Next"></div>
+<!-- Header -->
+<header class="capstone-header">
+    <p style="font-family: var(--font-mono); font-size: clamp(0.7rem, 1vw, 0.8rem); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; opacity: 0.7;">DC CAP Enterprise AI Pilot — Capstone</p>
+    <h1>Your Team's AI Project</h1>
+    <p style="margin-bottom: 1rem;">A working Claude Project, at least one documented workflow, and a governance configuration your team inherits.</p>
+    <p><span class="participant-name editable" contenteditable="true" data-placeholder="Your Name"></span></p>
+    <p style="font-size: clamp(0.8rem, 1.2vw, 0.9rem); opacity: 0.6; margin-top: 0.5rem;">June 2026</p>
+</header>
+
+<!-- Navigation -->
+<nav class="capstone-nav">
+    <ul>
+        <li><a href="#project">Project</a></li>
+        <li><a href="#workflow">Workflow</a></li>
+        <li><a href="#governance">Governance</a></li>
+        <li><a href="#reflection">Reflection</a></li>
+    </ul>
+</nav>
+
+<!-- Section 1: Your Team's Claude Project -->
+<section id="project" class="capstone-section">
+    <h2><span class="section-number">1</span>Your Team's Claude Project</h2>
+    <p class="section-description">Describe the Claude Project you configured for your team. What organizational knowledge does it contain? What is it designed to help your team do?</p>
+
+    <div class="field-group">
+        <p class="field-label">Project Name</p>
+        <div class="editable" role="textbox" aria-label="Project name" contenteditable="true" data-placeholder="e.g., Student Success Coaching Assistant"></div>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- SLIDE 1: MY PILOT IN A SENTENCE                              -->
-    <!-- ============================================================ -->
-    <div class="slide slide-title" data-slide-index="0">
-        <div class="slide-content">
-            <div class="reveal">
-                <div class="participant-name editable" contenteditable="true" data-placeholder="Your Name"></div>
-            </div>
-            <div class="reveal reveal-delay-1">
-                <h3 style="color: rgba(255,255,255,0.5); margin-bottom: calc(var(--content-gap) * 0.5);">My pilot in a sentence:</h3>
-                <div class="pilot-sentence editable" contenteditable="true" data-placeholder="Write your one-sentence summary of what these 60 days meant for your work..."></div>
-            </div>
-            <div class="reveal reveal-delay-2 title-meta">
-                DC CAP Enterprise AI Pilot · Capstone Showcase · June 2026
-                <div class="quadrant-badge-small">
-                    <div class="qb-navy"></div>
-                    <div class="qb-purple"></div>
-                    <div class="qb-blue"></div>
-                    <div class="qb-gold"></div>
-                </div>
-            </div>
-        </div>
-        <div class="slide-footer">1 / 5</div>
+    <div class="field-group">
+        <p class="field-label">Who Uses This <span style="font-weight: 400; font-size: 0.85em; color: #666;">(1-2 sentences)</span></p>
+        <div class="editable" role="textbox" aria-label="Who uses this project" contenteditable="true" data-placeholder="Which team members or roles will use this project? What does their work look like today without it?"></div>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- SLIDE 2: THE USE CASE                                        -->
-    <!-- ============================================================ -->
-    <div class="slide slide-usecase light-footer" data-slide-index="1">
-        <div class="slide-content">
-            <h2 class="reveal" style="text-align: center; margin-bottom: var(--content-gap);">The Use Case</h2>
-            <div class="usecase-grid">
-                <div class="usecase-panel usecase-before reveal reveal-delay-1">
-                    <div class="usecase-panel-label">Before Claude</div>
-                    <div class="editable" contenteditable="true" data-placeholder="Describe the task and how you used to do it. How long did it take? What was the pain point?" style="flex: 1; font-size: var(--body-size); line-height: 1.6;"></div>
-                </div>
-                <div class="usecase-panel usecase-after reveal reveal-delay-2">
-                    <div class="usecase-panel-label">After Claude</div>
-                    <div class="editable" contenteditable="true" data-placeholder="Describe the same task with Claude. What changed? What's the workflow now?" style="flex: 1; font-size: var(--body-size); line-height: 1.6;"></div>
-                </div>
-            </div>
-            <div class="usecase-impact reveal reveal-delay-3">
-                <div class="impact-stat">
-                    <div class="impact-stat-label">Time Saved</div>
-                    <div class="impact-stat-value editable" contenteditable="true" data-placeholder="e.g., 2 hrs/week" style="min-height: 1.5em;"></div>
-                </div>
-                <div class="impact-stat">
-                    <div class="impact-stat-label">Quality Gained</div>
-                    <div class="impact-stat-value editable" contenteditable="true" data-placeholder="e.g., Consistency" style="min-height: 1.5em;"></div>
-                </div>
-            </div>
-        </div>
-        <div class="slide-footer">2 / 5</div>
+    <div class="field-group">
+        <p class="field-label">Project Instructions (What You Wrote in Claude)</p>
+        <p style="font-size: clamp(0.8rem, 1.1vw, 0.9rem); color: #666; margin-bottom: 0.5rem;">Answer these three questions:</p>
+        <div class="editable" role="textbox" aria-label="Project instructions - role Claude plays" contenteditable="true" data-placeholder="1. What role does Claude play in this project?" style="font-family: var(--font-mono); font-size: clamp(0.8rem, 1.2vw, 0.9rem); min-height: 50px;"></div>
+        <div class="editable" role="textbox" aria-label="Project instructions - constraints" contenteditable="true" data-placeholder="2. What constraints or guardrails did you set?" style="font-family: var(--font-mono); font-size: clamp(0.8rem, 1.2vw, 0.9rem); min-height: 50px; margin-top: 0.5rem;"></div>
+        <div class="editable" role="textbox" aria-label="Project instructions - reference files" contenteditable="true" data-placeholder="3. What reference files did you upload?" style="font-family: var(--font-mono); font-size: clamp(0.8rem, 1.2vw, 0.9rem); min-height: 50px; margin-top: 0.5rem;"></div>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- SLIDE 3: MY 4D ASSESSMENT                                    -->
-    <!-- ============================================================ -->
-    <div class="slide slide-assessment" data-slide-index="2">
-        <div class="slide-content">
-            <h2 class="reveal" style="text-align: center; color: var(--white); margin-bottom: var(--content-gap);">My 4D Assessment</h2>
-            <div style="background: rgba(131, 82, 255, 0.08); border-left: 5px solid var(--purple); padding: 1.5rem; border-radius: 4px; margin-bottom: 2rem; font-size: 0.85rem; line-height: 1.6;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
-                    <div>
-                        <strong style="color: var(--navy); display: block; margin-bottom: 0.4em;">1 — Still Exploring</strong>
-                        <p style="margin: 0; font-size: 0.8rem;">"I'm still figuring out what this looks like in my work"</p>
-                    </div>
-                    <div>
-                        <strong style="color: var(--navy); display: block; margin-bottom: 0.4em;">3 — Building Confidence</strong>
-                        <p style="margin: 0; font-size: 0.8rem;">"I can do this with some support and reference materials"</p>
-                    </div>
-                    <div>
-                        <strong style="color: var(--navy); display: block; margin-bottom: 0.4em;">5 — Leading Practice</strong>
-                        <p style="margin: 0; font-size: 0.8rem;">"I do this independently and could coach a colleague"</p>
-                    </div>
-                </div>
-            </div>
-            <div class="assessment-grid">
-                <div class="assessment-card card-delegation reveal reveal-delay-1">
-                    <div class="assessment-d-name">Delegation</div>
-                    <div class="assessment-rating" data-d="delegation">
-                        <div class="rating-dot" data-rating="1"></div>
-                        <div class="rating-dot" data-rating="2"></div>
-                        <div class="rating-dot" data-rating="3"></div>
-                        <div class="rating-dot" data-rating="4"></div>
-                        <div class="rating-dot" data-rating="5"></div>
-                    </div>
-                    <div class="assessment-note editable" contenteditable="true" data-placeholder="How did your delegation instincts change?"></div>
-                </div>
-                <div class="assessment-card card-description reveal reveal-delay-1">
-                    <div class="assessment-d-name">Description</div>
-                    <div class="assessment-rating" data-d="description">
-                        <div class="rating-dot" data-rating="1"></div>
-                        <div class="rating-dot" data-rating="2"></div>
-                        <div class="rating-dot" data-rating="3"></div>
-                        <div class="rating-dot" data-rating="4"></div>
-                        <div class="rating-dot" data-rating="5"></div>
-                    </div>
-                    <div class="assessment-note editable" contenteditable="true" data-placeholder="How did your prompting improve?"></div>
-                </div>
-                <div class="assessment-card card-discernment reveal reveal-delay-2">
-                    <div class="assessment-d-name">Discernment</div>
-                    <div class="assessment-rating" data-d="discernment">
-                        <div class="rating-dot" data-rating="1"></div>
-                        <div class="rating-dot" data-rating="2"></div>
-                        <div class="rating-dot" data-rating="3"></div>
-                        <div class="rating-dot" data-rating="4"></div>
-                        <div class="rating-dot" data-rating="5"></div>
-                    </div>
-                    <div class="assessment-note editable" contenteditable="true" data-placeholder="How did your output evaluation sharpen?"></div>
-                </div>
-                <div class="assessment-card card-diligence reveal reveal-delay-2">
-                    <div class="assessment-d-name">Diligence</div>
-                    <div class="assessment-rating" data-d="diligence">
-                        <div class="rating-dot" data-rating="1"></div>
-                        <div class="rating-dot" data-rating="2"></div>
-                        <div class="rating-dot" data-rating="3"></div>
-                        <div class="rating-dot" data-rating="4"></div>
-                        <div class="rating-dot" data-rating="5"></div>
-                    </div>
-                    <div class="assessment-note editable" contenteditable="true" data-placeholder="How consistent is your governance practice?"></div>
-                </div>
-            </div>
-            <div class="hardest-d reveal reveal-delay-3">
-                <div class="hardest-d-label">Which D was hardest?</div>
-                <div class="editable" contenteditable="true" data-placeholder="Name it and explain why" style="color: var(--tan); font-family: var(--font-subhead); font-size: var(--h3-size); font-weight: 300; border-color: rgba(255,255,255,0.2); max-width: 600px; margin: 0 auto;"></div>
-            </div>
-        </div>
-        <div class="slide-footer">3 / 5</div>
+    <div class="field-group">
+        <p class="field-label">What Problem Does This Solve <span style="font-weight: 400; font-size: 0.85em; color: #666;">(2-3 sentences)</span></p>
+        <div class="editable" role="textbox" aria-label="Problem this project solves" contenteditable="true" data-placeholder="What was the pain point, bottleneck, or gap? How does this project address it? Be specific about the before and after."></div>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- Section 2: Documented Workflow -->
+<section id="workflow" class="capstone-section">
+    <h2><span class="section-number" style="background: var(--purple);">2</span>Documented Workflow</h2>
+    <p class="section-description">Document at least one workflow your team can follow. Step by step: what triggers it, what goes to Claude, what the human reviews, what goes out.</p>
+
+    <div class="field-group">
+        <p class="field-label">Workflow Name</p>
+        <div class="editable" role="textbox" aria-label="Workflow name" contenteditable="true" data-placeholder="e.g., Weekly Coach Debrief Summary"></div>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- SLIDE 4: WHAT I'M TEACHING                                   -->
-    <!-- ============================================================ -->
-    <div class="slide slide-teaching light-footer" data-slide-index="3">
-        <div class="slide-content">
-            <h2 class="reveal" style="text-align: center;">What I'm Teaching in Q3</h2>
-            <div class="teaching-card reveal reveal-delay-1">
-                <div>
-                    <div class="teaching-label">The Workflow, Skill, or Prompt Pattern</div>
-                    <div class="editable" contenteditable="true" data-placeholder="Describe the one thing you commit to teaching a colleague. Be specific enough that someone could follow your instructions." style="font-size: var(--body-size); line-height: 1.6; min-height: 4em;"></div>
-                </div>
-                <div>
-                    <div class="teaching-label">Who Benefits Most</div>
-                    <div class="editable" contenteditable="true" data-placeholder="Which role or unit would gain the most from this?" style="font-size: var(--body-size); line-height: 1.6;"></div>
-                </div>
-                <div>
-                    <div class="teaching-label">Modality</div>
-                    <div class="teaching-modality-tags">
-                        <span class="modality-tag tag-auto" onclick="toggleTag(this)">Automation</span>
-                        <span class="modality-tag tag-aug" onclick="toggleTag(this)">Augmentation</span>
-                        <span class="modality-tag tag-agency" onclick="toggleTag(this)">Agency</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="slide-footer">4 / 5</div>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- SLIDE 5: WORKED EXAMPLE                                       -->
-    <!-- ============================================================ -->
-    <!-- WORKED EXAMPLE SLIDE -->
-    <div class="slide" style="background: var(--white);">
-        <div class="slide-content" style="max-width: 900px; width: 100%; text-align: left;">
-            <h2 style="color: var(--navy); font-family: var(--font-display); font-size: var(--h2-size); margin-bottom: clamp(0.75rem, 2vw, 1.5rem); text-transform: uppercase; letter-spacing: 0.02em;">Worked Example: What a Completed Module Looks Like</h2>
-            <p style="font-size: var(--small-size); color: #666; margin-bottom: clamp(1rem, 2vw, 1.5rem);">Innovation Hub — Conference Presentation Workflow (Augmentation Mode)</p>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: clamp(0.5rem, 1.5vw, 1rem); margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);">
-                <div style="padding: clamp(0.6rem, 1.2vw, 1rem); background: rgba(16, 26, 76, 0.04); border-radius: 6px; border-left: 3px solid var(--navy);">
-                    <div style="font-family: var(--font-mono); font-size: clamp(0.6rem, 0.9vw, 0.75rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3em;">Step 1: Brainstorm</div>
-                    <p style="font-size: var(--small-size); line-height: 1.5; margin: 0; color: #555;">Loaded audience context, event goals, and DC CAP's strategic positioning into a Claude Project. Used Chat to generate 8 possible narrative angles. Selected 3 for development.</p>
-                </div>
-                <div style="padding: clamp(0.6rem, 1.2vw, 1rem); background: rgba(131, 82, 255, 0.04); border-radius: 6px; border-left: 3px solid var(--purple);">
-                    <div style="font-family: var(--font-mono); font-size: clamp(0.6rem, 0.9vw, 0.75rem); color: var(--purple); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3em;">Step 2: Research</div>
-                    <p style="font-size: var(--small-size); line-height: 1.5; margin: 0; color: #555;">Used Claude to pull sector benchmarks, failure rate data, and peer organization examples. Verified every statistic independently. Flagged two claims Claude generated that were inaccurate and removed them.</p>
-                </div>
-                <div style="padding: clamp(0.6rem, 1.2vw, 1rem); background: rgba(135, 183, 213, 0.04); border-radius: 6px; border-left: 3px solid var(--blue);">
-                    <div style="font-family: var(--font-mono); font-size: clamp(0.6rem, 0.9vw, 0.75rem); color: var(--blue); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3em;">Step 3: Draft</div>
-                    <p style="font-size: var(--small-size); line-height: 1.5; margin: 0; color: #555;">Built the full slide deck using Cowork with the DC CAP brand skill and presentation skill active. Claude generated initial slide content; human revised every slide for voice, accuracy, and strategic framing.</p>
-                </div>
-                <div style="padding: clamp(0.6rem, 1.2vw, 1rem); background: rgba(252, 176, 23, 0.06); border-radius: 6px; border-left: 3px solid var(--gold);">
-                    <div style="font-family: var(--font-mono); font-size: clamp(0.6rem, 0.9vw, 0.75rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3em;">Step 4: Refine</div>
-                    <p style="font-size: var(--small-size); line-height: 1.5; margin: 0; color: #555;">Ran the adversarial audit skill to stress-test arguments. Caught two logical gaps and one piece of AI-sounding language. Revised, re-audited, finalized. Total time: 4 hours for a deck that would have taken 12+ hours manually.</p>
-                </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.5rem, 1vw, 0.75rem); font-size: var(--small-size);">
-                <div style="padding: clamp(0.5rem, 1vw, 0.75rem); background: rgba(16, 26, 76, 0.03); border-radius: 4px;">
-                    <strong style="color: var(--navy);">4D Competencies Used:</strong>
-                    <span style="color: #555;"> Delegation (chose Augmentation over Automation), Description (CTCC prompting throughout), Discernment (verified stats, caught AI voice), Diligence (Tier 3 data only, adversarial audit before send)</span>
-                </div>
-                <div style="padding: clamp(0.5rem, 1vw, 0.75rem); background: rgba(252, 176, 23, 0.06); border-radius: 4px;">
-                    <strong style="color: var(--navy);">Governance Check:</strong>
-                    <span style="color: #555;"> All data used was Tier 3 (internal) or Tier 4 (public). No student PII, no partner-specific financials. Output reviewed by human before external distribution.</span>
-                </div>
-            </div>
+    <div class="field-group">
+        <p class="field-label">Modality</p>
+        <div class="modality-tags" role="group" aria-label="Workflow modality">
+            <span class="modality-tag automation" role="button" tabindex="0" onclick="toggleTag(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTag(this)}" title="Claude does it with your specific instructions">Automation</span>
+            <span class="modality-tag augmentation" role="button" tabindex="0" onclick="toggleTag(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTag(this)}" title="You and Claude collaborate as thinking partners">Augmentation</span>
+            <span class="modality-tag agency" role="button" tabindex="0" onclick="toggleTag(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTag(this)}" title="Claude works independently based on your configuration">Agency</span>
         </div>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- SLIDE 6: WHAT WE SHOULD BUILD NEXT                           -->
-    <!-- ============================================================ -->
-    <div class="slide slide-buildnext" data-slide-index="4">
-        <div class="slide-content">
-            <h2 class="reveal" style="color: var(--white);">What We Should Build Next</h2>
-            <div class="buildnext-card reveal reveal-delay-1">
-                <div style="margin-bottom: var(--content-gap);">
-                    <div style="font-family: var(--font-subhead); font-size: var(--small-size); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold); margin-bottom: 6px;">What Didn't Work</div>
-                    <div class="editable" contenteditable="true" data-placeholder="Be direct. What task did Claude handle poorly? Where did you revert to doing it yourself? What workflow felt slower with AI than without it? The pilot was designed to surface these findings." style="font-size: var(--body-size); line-height: 1.6; min-height: 3em;"></div>
-                </div>
-                <div style="margin-bottom: var(--content-gap);">
-                    <div style="font-family: var(--font-subhead); font-size: var(--small-size); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold); margin-bottom: 6px;">The Gap</div>
-                    <div class="editable" contenteditable="true" data-placeholder="Name one gap in our current AI tooling. What's missing? What broke? What would make the biggest difference for your unit?" style="font-size: var(--body-size); line-height: 1.6; min-height: 3em;"></div>
-                </div>
-                <div>
-                    <div style="font-family: var(--font-subhead); font-size: var(--small-size); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold); margin-bottom: 6px;">The Proposed Solution</div>
-                    <div class="editable" contenteditable="true" data-placeholder="A new skill? A workflow change? A data connection? Be concrete." style="font-size: var(--body-size); line-height: 1.6; min-height: 3em;"></div>
-                </div>
-            </div>
-            <div class="buildnext-footer reveal reveal-delay-2">
-                These proposals feed directly into the Q3 AI roadmap and the June board briefing.
-            </div>
-        </div>
-        <div class="slide-footer" style="color: rgba(255,255,255,0.4);">5 / 5</div>
+    <div class="field-group">
+        <p class="field-label">Step 1: Trigger</p>
+        <div class="editable" role="textbox" contenteditable="true" data-placeholder="What initiates this workflow? (e.g., 'After each Friday coaching session...' or 'When a funder meeting is scheduled...')"></div>
     </div>
 
-    <script>
-        /* === INTERSECTION OBSERVER === */
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.2 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    <div class="field-group">
+        <p class="field-label">Step 2: What Goes to Claude</p>
+        <div class="editable" role="textbox" contenteditable="true" data-placeholder="What information or instructions does the user provide? What prompt pattern do they follow?"></div>
+    </div>
 
-        /* === NAV DOTS === */
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.nav-dot');
+    <div class="field-group">
+        <p class="field-label">Step 3: Human Review</p>
+        <div class="editable" role="textbox" contenteditable="true" data-placeholder="What does the person check before using the output? What are the quality criteria? What would make them iterate?"></div>
+    </div>
 
-        const slideObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const idx = parseInt(entry.target.dataset.slideIndex);
-                    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-                }
-            });
-        }, { threshold: 0.5 });
-        slides.forEach(s => slideObserver.observe(s));
+    <div class="field-group">
+        <p class="field-label">Step 4: What Goes Out</p>
+        <div class="editable" role="textbox" contenteditable="true" data-placeholder="What is the final output? Who receives it? How is it delivered?"></div>
+    </div>
+</section>
 
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                slides[parseInt(dot.dataset.slide)].scrollIntoView({ behavior: 'smooth' });
-            });
+<hr class="section-divider">
+
+<!-- Section 3: Governance Configuration -->
+<section id="governance" class="capstone-section">
+    <h2><span class="section-number" style="background: var(--gold); color: var(--navy);">3</span>Governance Configuration</h2>
+    <p class="section-description">Define the governance guardrails for your project. This is a scored deliverable — your team needs to know what data they can use, what's restricted, and what to do when something goes wrong.</p>
+
+    <div class="field-group">
+        <p class="field-label">Primary Data Tier for This Project</p>
+        <p style="font-size: clamp(0.8rem, 1.1vw, 0.9rem); color: #666; margin-bottom: 0.5rem;">Select the highest sensitivity tier your project touches.</p>
+        <div class="tier-select" role="radiogroup" aria-label="Data tier classification">
+            <span class="tier-option" role="radio" tabindex="0" aria-checked="false" onclick="selectTier(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectTier(this)}" data-tier="1">Tier 1 — Prohibited</span>
+            <span class="tier-option" role="radio" tabindex="0" aria-checked="false" onclick="selectTier(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectTier(this)}" data-tier="2">Tier 2 — Restricted</span>
+            <span class="tier-option" role="radio" tabindex="0" aria-checked="false" onclick="selectTier(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectTier(this)}" data-tier="3">Tier 3 — Open to Licensed Users</span>
+            <span class="tier-option" role="radio" tabindex="0" aria-checked="false" onclick="selectTier(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectTier(this)}" data-tier="4">Tier 4 — Unrestricted</span>
+        </div>
+    </div>
+
+    <div class="field-group">
+        <p class="field-label">What's Allowed</p>
+        <div class="editable" role="textbox" contenteditable="true" data-placeholder="What types of data and tasks are approved for this project? Be specific."></div>
+    </div>
+
+    <div class="field-group">
+        <p class="field-label">What's Restricted</p>
+        <div class="editable" role="textbox" contenteditable="true" data-placeholder="What must NOT go into this project? Student PII? Financial details? Partner-specific terms? Name it explicitly."></div>
+    </div>
+
+    <div class="field-group">
+        <p class="field-label">Escalation Path</p>
+        <div class="editable" role="textbox" contenteditable="true" data-placeholder="If someone on your team encounters a data incident or is unsure about a classification, what do they do? Who do they contact? Within what timeframe?"></div>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- Section 4: 4D Reflection + Next Steps -->
+<section id="reflection" class="capstone-section">
+    <h2><span class="section-number" style="background: var(--blue); color: var(--navy);">4</span>4D Reflection + Next Steps</h2>
+    <p class="section-description">Rate yourself on each of the 4Ds. Be honest — this is about growth, not performance. Then tell us what didn't work and what should come next.</p>
+
+    <!-- 4D Self-Assessment -->
+    <div style="margin-bottom: clamp(1.5rem, 3vw, 2rem);">
+        <div class="assessment-row" style="background: rgba(131, 82, 255, 0.06);">
+            <div class="assessment-label" style="color: var(--purple);">Delegation</div>
+            <div class="assessment-rating" data-d="delegation">
+                <div class="rating-dots" style="color: var(--purple);">
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="1" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>1</span></span>
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="2" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>2</span></span>
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="3" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>3</span></span>
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="4" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>4</span></span>
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="5" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>5</span></span>
+                </div>
+            </div>
+        </div>
+        <div class="assessment-row" style="background: rgba(135, 183, 213, 0.1);">
+            <div class="assessment-label" style="color: var(--blue);">Description</div>
+            <div class="assessment-rating" data-d="description">
+                <div class="rating-dots" style="color: var(--blue);">
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="1" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>1</span></span>
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="2" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>2</span></span>
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="3" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>3</span></span>
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="4" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>4</span></span>
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="5" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>5</span></span>
+                </div>
+            </div>
+        </div>
+        <div class="assessment-row" style="background: rgba(252, 176, 23, 0.08);">
+            <div class="assessment-label" style="color: var(--gold);">Discernment</div>
+            <div class="assessment-rating" data-d="discernment">
+                <div class="rating-dots" style="color: var(--gold);">
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="1" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>1</span></span>
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="2" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>2</span></span>
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="3" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>3</span></span>
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="4" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>4</span></span>
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="5" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>5</span></span>
+                </div>
+            </div>
+        </div>
+        <div class="assessment-row" style="background: rgba(16, 26, 76, 0.05);">
+            <div class="assessment-label" style="color: var(--navy);">Diligence</div>
+            <div class="assessment-rating" data-d="diligence">
+                <div class="rating-dots" style="color: var(--navy);">
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="1" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>1</span></span>
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="2" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>2</span></span>
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="3" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>3</span></span>
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="4" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>4</span></span>
+                    <span class="rating-dot" role="radio" tabindex="0" aria-checked="false" data-rating="5" onclick="setRating(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setRating(this)}"><span>5</span></span>
+                </div>
+            </div>
+        </div>
+        <div class="rating-scale" style="max-width: 500px; margin-left: 132px;">
+            <span>1 = Still Exploring</span>
+            <span>2 = Gaining Awareness</span>
+            <span>3 = Building Confidence</span>
+            <span>4 = Practicing Consistently</span>
+            <span>5 = Leading Practice</span>
+        </div>
+        <style>@media (max-width: 768px) { .rating-scale { margin-left: 0 !important; } }</style>
+    </div>
+
+    <div class="field-group">
+        <p class="field-label">Which D Was Hardest? Why?</p>
+        <div class="editable" role="textbox" contenteditable="true" data-placeholder="Be direct. Where did you struggle most? What made it hard?"></div>
+    </div>
+
+    <div class="field-group">
+        <p class="field-label">What Didn't Work</p>
+        <div class="editable" role="textbox" contenteditable="true" data-placeholder="Where did Claude fall short? What tasks didn't translate well? What governance challenges did you encounter? Directness is valued here."></div>
+    </div>
+
+    <div class="field-group">
+        <p class="field-label">What We Should Build Next</p>
+        <div class="editable" role="textbox" contenteditable="true" data-placeholder="What's the next capability, workflow, or integration that would make the biggest difference? These proposals feed directly into the Q3 AI roadmap."></div>
+    </div>
+
+    <div class="field-group">
+        <p class="field-label">One KPI to Track for 90 Days Post-Pilot <span style="font-weight: 400; font-size: 0.85em;">(<a href="kpi_framework.html" style="color: var(--purple);">View KPI Framework</a>)</span></p>
+        <div class="editable" role="textbox" aria-label="KPI to track post-pilot" contenteditable="true" data-placeholder="Pick one measurable indicator you'll track for 90 days after the pilot ends. (e.g., 'Hours saved on weekly report prep' or 'Number of workflows using Claude per month')"></div>
+    </div>
+</section>
+
+<!-- Worked Example -->
+<section class="worked-example" style="max-width: 900px; margin: 0 auto clamp(2rem, 4vw, 3rem);">
+    <h3>Worked Example: Student Success Coaching Project</h3>
+    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); color: var(--dark-gray); margin-bottom: 1.25rem; line-height: 1.7;"><strong>Unit:</strong> Student Success &nbsp;|&nbsp; <strong>Modality:</strong> Augmentation &nbsp;|&nbsp; <strong>Data Tier:</strong> Tier 3 (de-identified aggregates, strategy docs)</p>
+
+    <div class="example-step">
+        <div class="step-number">1</div>
+        <div>
+            <p style="font-weight: 700; font-family: var(--font-subhead); margin-bottom: 0.25rem;">Project: Coach Prep Assistant</p>
+            <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6;">Project instructions tell Claude to act as a coaching preparation partner familiar with DC CAP's success model, retention benchmarks, and intervention playbook. Uploaded: partner retention summary (Tier 3), intervention decision tree, coaching session template. Governance guardrail: "Never generate content that includes or infers individual student identities. Always reference aggregate data."</p>
+        </div>
+    </div>
+
+    <div class="example-step">
+        <div class="step-number">2</div>
+        <div>
+            <p style="font-weight: 700; font-family: var(--font-subhead); margin-bottom: 0.25rem;">Workflow: Weekly Cohort Check-In Prep</p>
+            <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6;"><strong>Trigger:</strong> Monday morning before campus visits. <strong>Input:</strong> Coach pastes de-identified cohort snapshot (engagement flags, GPA band, last-contact date). <strong>Claude produces:</strong> prioritized outreach list with suggested talking points. <strong>Human review:</strong> Coach validates against personal knowledge, adjusts priorities, removes anything that feels off. <strong>Output:</strong> finalized prep sheet the coach takes to campus.</p>
+        </div>
+    </div>
+
+    <div class="example-step">
+        <div class="step-number">3</div>
+        <div>
+            <p style="font-weight: 700; font-family: var(--font-subhead); margin-bottom: 0.25rem;">Governance Config</p>
+            <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6;"><strong>Allowed:</strong> De-identified aggregate data, retention benchmarks, coaching templates, intervention frameworks. <strong>Restricted:</strong> Individual student names, SSNs, financial aid details, partner-specific MOU terms. <strong>Escalation:</strong> Data question → Stephanie Gardner (same day). Suspected Tier 1 exposure → Preston Magouirk within 2 hours per incident protocol.</p>
+        </div>
+    </div>
+
+    <div class="example-step">
+        <div class="step-number">4</div>
+        <div>
+            <p style="font-weight: 700; font-family: var(--font-subhead); margin-bottom: 0.25rem;">4D Reflection</p>
+            <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6;">Delegation: 4 (confident choosing Augmentation for this task). Description: 3 (still refining prompt structure for cohort data). Discernment: 4 (strong at catching over-generalizations). Diligence: 5 (governance is second nature now). Hardest D: Description — getting Claude to produce the right level of specificity without over-prompting.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="capstone-footer">
+    <p><strong>DC CAP Enterprise AI Leadership Pilot</strong> — Capstone Template</p>
+    <p>Your draft auto-saves locally. Present at the capstone session: 3 slides max.</p>
+    <p style="margin-top: 0.5rem;"><a href="pilot_hub.html">Back to Pilot Hub</a></p>
+</footer>
+
+<script>
+    // Modality tag toggle
+    function toggleTag(tag) {
+        tag.classList.toggle('selected');
+    }
+
+    // Rating dots
+    function setRating(dot) {
+        const rating = parseInt(dot.dataset.rating);
+        const container = dot.closest('.assessment-rating');
+        container.querySelectorAll('.rating-dot').forEach((d, i) => {
+            d.classList.toggle('filled', i < rating);
+            d.setAttribute('aria-checked', i < rating ? 'true' : 'false');
         });
+    }
 
-        /* === RATING DOTS === */
-        document.querySelectorAll('.rating-dot').forEach(dot => {
-            dot.addEventListener('click', () => {
-                const rating = parseInt(dot.dataset.rating);
-                const container = dot.parentElement;
-                container.querySelectorAll('.rating-dot').forEach((d, i) => {
-                    d.classList.toggle('filled', i < rating);
-                });
-            });
+    // Tier select
+    function selectTier(option) {
+        option.parentElement.querySelectorAll('.tier-option').forEach(o => {
+            o.classList.remove('selected');
+            o.setAttribute('aria-checked', 'false');
         });
+        option.classList.add('selected');
+        option.setAttribute('aria-checked', 'true');
+    }
 
-        /* === MODALITY TAG TOGGLE === */
-        function toggleTag(tag) {
-            tag.classList.toggle('selected');
-        }
+    // ==================== LOCAL STORAGE PERSISTENCE ====================
+    const STORAGE_KEY = 'dccap_capstone_v2';
 
-        /* === KEYBOARD NAVIGATION === */
-        document.addEventListener('keydown', (e) => {
-            if (e.target.isContentEditable) return;
-            const current = Array.from(slides).findIndex(s => {
-                const rect = s.getBoundingClientRect();
-                return rect.top >= -100 && rect.top < window.innerHeight / 2;
-            });
-            if (e.key === 'ArrowDown' || e.key === ' ') {
-                e.preventDefault();
-                if (current < slides.length - 1) slides[current + 1].scrollIntoView({ behavior: 'smooth' });
-            } else if (e.key === 'ArrowUp') {
-                e.preventDefault();
-                if (current > 0) slides[current - 1].scrollIntoView({ behavior: 'smooth' });
+    function getStorageData() {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+        catch(e) { return {}; }
+    }
+
+    function saveStorageData(data) {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}
+    }
+
+    // Assign stable IDs to each editable field
+    const editables = document.querySelectorAll('.editable[contenteditable="true"]');
+    editables.forEach((el, i) => {
+        el.dataset.fieldId = 'field_' + i;
+    });
+
+    // Restore saved content
+    (function restoreState() {
+        const data = getStorageData();
+
+        editables.forEach(el => {
+            const key = el.dataset.fieldId;
+            if (data[key] && data[key].trim()) {
+                el.innerHTML = data[key];
             }
         });
 
-        /* === LOCAL STORAGE PERSISTENCE === */
-        const STORAGE_KEY = 'dccap_capstone_data';
-
-        function getStorageData() {
-            try {
-                const raw = localStorage.getItem(STORAGE_KEY);
-                return raw ? JSON.parse(raw) : {};
-            } catch (e) { return {}; }
-        }
-
-        function saveStorageData(data) {
-            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
-        }
-
-        // Assign stable IDs to each editable field based on position
-        const editables = document.querySelectorAll('.editable[contenteditable="true"]');
-        editables.forEach((el, i) => {
-            el.dataset.fieldId = 'field_' + i;
-        });
-
-        // Restore saved content on page load
-        (function restoreState() {
-            const data = getStorageData();
-
-            // Restore editable text fields
-            editables.forEach(el => {
-                const key = el.dataset.fieldId;
-                if (data[key] && data[key].trim()) {
-                    el.innerHTML = data[key];
-                }
-            });
-
-            // Restore rating dots
-            if (data.ratings) {
-                document.querySelectorAll('.assessment-rating').forEach(container => {
-                    const d = container.dataset.d;
-                    if (data.ratings[d]) {
-                        const rating = data.ratings[d];
-                        container.querySelectorAll('.rating-dot').forEach((dot, i) => {
-                            dot.classList.toggle('filled', i < rating);
-                        });
-                    }
-                });
-            }
-
-            // Restore modality tags
-            if (data.modalities) {
-                document.querySelectorAll('.modality-tag').forEach(tag => {
-                    const label = tag.textContent.trim();
-                    if (data.modalities.includes(label)) {
-                        tag.classList.add('selected');
-                    }
-                });
-            }
-        })();
-
-        // Save editable fields on input (debounced)
-        let saveTimeout;
-        function debouncedSave() {
-            clearTimeout(saveTimeout);
-            saveTimeout = setTimeout(() => {
-                const data = getStorageData();
-                editables.forEach(el => {
-                    data[el.dataset.fieldId] = el.innerHTML;
-                });
-                saveStorageData(data);
-            }, 400);
-        }
-        editables.forEach(el => el.addEventListener('input', debouncedSave));
-
-        // Save ratings on click
-        document.querySelectorAll('.rating-dot').forEach(dot => {
-            dot.addEventListener('click', () => {
-                const data = getStorageData();
-                if (!data.ratings) data.ratings = {};
-                const container = dot.parentElement;
+        if (data.ratings) {
+            document.querySelectorAll('.assessment-rating').forEach(container => {
                 const d = container.dataset.d;
-                data.ratings[d] = parseInt(dot.dataset.rating);
-                saveStorageData(data);
+                if (data.ratings[d]) {
+                    container.querySelectorAll('.rating-dot').forEach((dot, i) => {
+                        dot.classList.toggle('filled', i < data.ratings[d]);
+                    });
+                }
             });
-        });
+        }
 
-        // Save modality tags on toggle
-        const originalToggleTag = toggleTag;
-        toggleTag = function(tag) {
-            originalToggleTag(tag);
+        if (data.modalities) {
+            document.querySelectorAll('.modality-tag').forEach(tag => {
+                const label = tag.textContent.trim();
+                if (data.modalities.includes(label)) {
+                    tag.classList.add('selected');
+                }
+            });
+        }
+
+        if (data.tier) {
+            document.querySelectorAll('.tier-option').forEach(opt => {
+                if (opt.dataset.tier === data.tier) opt.classList.add('selected');
+            });
+        }
+    })();
+
+    // Debounced save for editable fields
+    let saveTimeout;
+    function debouncedSave() {
+        clearTimeout(saveTimeout);
+        saveTimeout = setTimeout(() => {
             const data = getStorageData();
-            const selected = [];
-            document.querySelectorAll('.modality-tag.selected').forEach(t => {
-                selected.push(t.textContent.trim());
+            editables.forEach(el => {
+                data[el.dataset.fieldId] = el.innerHTML;
             });
-            data.modalities = selected;
             saveStorageData(data);
-        };
+        }, 400);
+    }
+    editables.forEach(el => el.addEventListener('input', debouncedSave));
 
-        // Auto-save indicator
-        const savedBanner = document.createElement('div');
-        savedBanner.id = 'save-status';
-        savedBanner.style.cssText = 'position:fixed;top:1rem;right:1rem;font-family:var(--font-mono);font-size:0.7rem;color:rgba(255,255,255,0.4);z-index:9999;opacity:0;transition:opacity 0.3s ease;pointer-events:none;';
-        document.body.appendChild(savedBanner);
+    // Save ratings
+    const origSetRating = setRating;
+    setRating = function(dot) {
+        origSetRating(dot);
+        const data = getStorageData();
+        if (!data.ratings) data.ratings = {};
+        const container = dot.closest('.assessment-rating');
+        data.ratings[container.dataset.d] = parseInt(dot.dataset.rating);
+        saveStorageData(data);
+    };
 
-        const origSave = saveStorageData;
-        saveStorageData = function(data) {
-            origSave(data);
-            savedBanner.textContent = 'Draft saved';
-            savedBanner.style.opacity = '1';
-            setTimeout(() => { savedBanner.style.opacity = '0'; }, 1500);
-        };
-    </script>
-    <a href="pilot_hub.html" style="position:fixed;bottom:1rem;left:1rem;background:rgba(16,26,76,0.85);color:#fff;padding:0.5rem 1rem;border-radius:6px;font-family:'Noto Serif SemiCondensed',Georgia,serif;font-size:0.85rem;font-weight:600;text-decoration:none;z-index:9999;backdrop-filter:blur(8px);transition:background 0.2s;" onmouseover="this.style.background='rgba(131,82,255,0.9)'" onmouseout="this.style.background='rgba(16,26,76,0.85)'">← Pilot Hub</a>
+    // Save modality tags
+    const origToggleTag = toggleTag;
+    toggleTag = function(tag) {
+        origToggleTag(tag);
+        const data = getStorageData();
+        const selected = [];
+        document.querySelectorAll('.modality-tag.selected').forEach(t => selected.push(t.textContent.trim()));
+        data.modalities = selected;
+        saveStorageData(data);
+    };
+
+    // Save tier selection
+    const origSelectTier = selectTier;
+    selectTier = function(option) {
+        origSelectTier(option);
+        const data = getStorageData();
+        data.tier = option.dataset.tier;
+        saveStorageData(data);
+    };
+
+    // Auto-save indicator
+    const savedBanner = document.createElement('div');
+    savedBanner.setAttribute('role', 'status');
+    savedBanner.setAttribute('aria-live', 'polite');
+    savedBanner.style.cssText = 'position:fixed;top:1rem;right:1rem;font-family:var(--font-mono);font-size:0.75rem;color:rgba(0,0,0,0.5);z-index:9999;opacity:0;transition:opacity 0.3s ease;pointer-events:none;';
+    document.body.appendChild(savedBanner);
+
+    const origSave = saveStorageData;
+    saveStorageData = function(data) {
+        origSave(data);
+        savedBanner.textContent = 'Draft saved';
+        savedBanner.style.opacity = '1';
+        setTimeout(() => { savedBanner.style.opacity = '0'; }, 1500);
+    };
+</script>
+
 </body>
 </html>

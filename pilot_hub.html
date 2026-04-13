@@ -1763,6 +1763,11 @@
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
+
+            /* Stack challenge/pulse grids on mobile */
+            [style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
         }
     </style>
 </head>
@@ -1807,7 +1812,7 @@
         <li><a href="#hero" class="nav-link active">Overview</a></li>
         <li><a href="#purpose-goals" class="nav-link">Goals</a></li>
         <li><a href="#getting-started" class="nav-link">Getting Started</a></li>
-        <li><a href="#leadership" class="nav-link">Your Module</a></li>
+        <li><a href="#capstone" class="nav-link">Capstone</a></li>
         <li><a href="#resources" class="nav-link">Resources</a></li>
         <li><a href="#briefing" class="nav-link">Daily Briefing</a></li>
         <li><a href="#external-resources" class="nav-link">Field Guide</a></li>
@@ -1988,7 +1993,7 @@
                                 <div class="phase-deliverables-label">Key Deliverables</div>
                                 <div class="phase-deliverables">
                                     • Onboarding &amp; Prerequisites<br>
-                                    • Task 1: CLASSIFY — Governance Scenarios
+                                    • Governance &amp; Delegation Fundamentals
                                 </div>
                             </div>
                         </div>
@@ -2002,8 +2007,8 @@
                             <div class="phase-details-content">
                                 <div class="phase-deliverables-label">Key Deliverables</div>
                                 <div class="phase-deliverables">
-                                    • Task 2: CREATE — Workflow Design<br>
-                                    • Task 3: CRITIQUE — Quality Audit
+                                    • Description, Discernment &amp; Diligence in Practice<br>
+                                    • Capstone Project Design
                                 </div>
                             </div>
                         </div>
@@ -2017,8 +2022,8 @@
                             <div class="phase-details-content">
                                 <div class="phase-deliverables-label">Key Deliverables</div>
                                 <div class="phase-deliverables">
-                                    • Task 4: STRATEGIZE — Deployment Planning<br>
-                                    • Capstone: TEACH — Portfolio &amp; Showcase
+                                    • Team Project Delivery<br>
+                                    • Capstone Presentations
                                 </div>
                             </div>
                         </div>
@@ -2142,28 +2147,28 @@
     </div>
 </section>
 
-<!-- Section: Leadership Module Accountability -->
-<section id="leadership" style="padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3rem); background: linear-gradient(135deg, var(--navy) 0%, #1a2666 100%);">
+<!-- Section: Capstone -->
+<section id="capstone" style="padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3rem); background: linear-gradient(135deg, var(--navy) 0%, #1a2666 100%);">
     <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-        <h2 class="reveal" style="color: var(--white); font-family: var(--font-subhead); font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: clamp(0.75rem, 2vw, 1rem);">Department / Team Leaders: Build Your Team Environment For Your Team and the Organization to Use</h2>
-        <p class="reveal" style="color: rgba(255,255,255,0.85); font-size: clamp(1rem, 1.6vw, 1.15rem); line-height: 1.7; margin-bottom: clamp(1.5rem, 3vw, 2rem);">This pilot produces leaders who shape the AI environment for their department. By Week 8, each leader defines what goes into their unit's Claude workspace: which organizational knowledge to load, which skills and projects are worth implementing, and which practices are worth streamlining. That environment becomes the foundation for how your team works with AI during Q1 rollout. First, you become a fluent user. Then, you build the intelligence layer for your unit and the organization.</p>
+        <h2 class="reveal" style="color: var(--white); font-family: var(--font-subhead); font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: clamp(0.75rem, 2vw, 1rem);">Your Capstone: Build Something Your Team Will Use</h2>
+        <p class="reveal" style="color: rgba(255,255,255,0.85); font-size: clamp(1rem, 1.6vw, 1.15rem); line-height: 1.7; margin-bottom: clamp(1.5rem, 3vw, 2rem);">By Week 8, each leader delivers a working Claude Project configured for their team — with at least one documented workflow and a governance configuration that fits their unit's data. First, you become a fluent user. Then, you build the tool your team inherits.</p>
     </div>
     <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(1rem, 2vw, 1.5rem);">
         <div class="reveal-scale" style="background: rgba(255,255,255,0.08); border-left: 5px solid var(--gold); border-radius: 12px; padding: clamp(1.25rem, 2.5vw, 1.75rem);">
-            <h4 style="color: var(--gold); font-family: var(--font-subhead); font-size: clamp(1rem, 1.5vw, 1.15rem); margin-bottom: 0.75rem;">Weeks 1–3: Use It Yourself</h4>
-            <p style="color: rgba(255,255,255,0.8); font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6;">Build your own fluency. Complete activities. Practice with real work. You can't teach what you haven't practiced.</p>
+            <h4 style="color: var(--gold); font-family: var(--font-subhead); font-size: clamp(1rem, 1.5vw, 1.15rem); margin-bottom: 0.75rem;">Weeks 1–3: Build Your Fluency</h4>
+            <p style="color: rgba(255,255,255,0.8); font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6;">Complete the weekly focus areas. Practice delegation, description, and governance with real work. You can't build for your team what you haven't practiced yourself.</p>
         </div>
         <div class="reveal-scale" style="background: rgba(255,255,255,0.08); border-left: 5px solid var(--purple); border-radius: 12px; padding: clamp(1.25rem, 2.5vw, 1.75rem);">
-            <h4 style="color: var(--purple); font-family: var(--font-subhead); font-size: clamp(1rem, 1.5vw, 1.15rem); margin-bottom: 0.75rem;">Weeks 4–5: Design Your Unit's Environment</h4>
-            <p style="color: rgba(255,255,255,0.8); font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6;">Identify the organizational knowledge, skills, and projects your unit needs. Define which workflows benefit most from AI, what governance considerations apply, and how your team's environment should be structured. Bring questions to sessions.</p>
+            <h4 style="color: var(--purple); font-family: var(--font-subhead); font-size: clamp(1rem, 1.5vw, 1.15rem); margin-bottom: 0.75rem;">Weeks 4–5: Identify and Design</h4>
+            <p style="color: rgba(255,255,255,0.8); font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6;">Identify your team's highest-value workflows. Build your first Claude Project. Start defining the project instructions, reference files, and governance guardrails your unit needs.</p>
         </div>
         <div class="reveal-scale" style="background: rgba(255,255,255,0.08); border-left: 5px solid var(--blue); border-radius: 12px; padding: clamp(1.25rem, 2.5vw, 1.75rem);">
             <h4 style="color: var(--blue); font-family: var(--font-subhead); font-size: clamp(1rem, 1.5vw, 1.15rem); margin-bottom: 0.75rem;">Weeks 6–7: Peer Review</h4>
-            <p style="color: rgba(255,255,255,0.8); font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6;">Present your environment design to the cohort. Get feedback on what to include, what to cut, and where cross-unit connections strengthen the whole system. The cohort's collective judgment makes every unit's setup stronger than any one leader could build alone.</p>
+            <p style="color: rgba(255,255,255,0.8); font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6;">Present your project design to the cohort. Cross-unit reviewers evaluate governance compliance, workflow completeness, and team readiness. The cohort's collective judgment makes every project stronger.</p>
         </div>
         <div class="reveal-scale" style="background: rgba(255,255,255,0.08); border-left: 5px solid var(--gold); border-radius: 12px; padding: clamp(1.25rem, 2.5vw, 1.75rem);">
             <h4 style="color: var(--gold); font-family: var(--font-subhead); font-size: clamp(1rem, 1.5vw, 1.15rem); margin-bottom: 0.75rem;">Week 8: Ship It</h4>
-            <p style="color: rgba(255,255,255,0.8); font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6;">Finalize your unit's AI environment. Present it at the capstone. Your team inherits the intelligence layer you designed during Q1 rollout. You built it. You own it. You lead the adoption in your unit.</p>
+            <p style="color: rgba(255,255,255,0.8); font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6;">Finalize your Claude Project, workflow documentation, and governance configuration. Present at the capstone session. Your team inherits what you built.</p>
         </div>
     </div>
 </section>
@@ -2187,6 +2192,71 @@
             </div>
         </div>
         <p class="reveal" style="margin-top: clamp(0.75rem, 1.5vw, 1rem); font-size: clamp(0.85rem, 1.3vw, 0.95rem); color: var(--dark-gray);">Check your calendar for the recurring invite. Week 1 is asynchronous onboarding; AI Fridays begin Week 2.</p>
+
+        <!-- Inline Session Structure -->
+        <details class="reveal" style="margin-top: clamp(1rem, 2vw, 1.5rem); text-align: left; background: var(--white); border: 1px solid rgba(16, 26, 76, 0.1); border-radius: 8px;">
+            <summary style="padding: clamp(0.75rem, 1.5vw, 1rem); cursor: pointer; font-family: var(--font-subhead); font-weight: 600; font-size: clamp(0.9rem, 1.3vw, 1rem); color: var(--navy); list-style: none; text-align: center;">Session Structure ▾</summary>
+            <div style="padding: 0 clamp(1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.5rem);">
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(0.75rem, 1.5vw, 1rem);">
+                    <div style="text-align: center; padding: clamp(0.75rem, 1.5vw, 1rem); background: rgba(252, 176, 23, 0.06); border-radius: 6px;">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; color: var(--gold); font-size: clamp(0.85rem, 1.2vw, 0.95rem); margin-bottom: 0.3rem;">Opening (5 min)</p>
+                        <p style="font-size: clamp(0.8rem, 1.1vw, 0.9rem); color: var(--dark-gray); margin: 0; line-height: 1.5;">One question from this week's challenge: "What did you try? What happened?"</p>
+                    </div>
+                    <div style="text-align: center; padding: clamp(0.75rem, 1.5vw, 1rem); background: rgba(131, 82, 255, 0.04); border-radius: 6px;">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; color: var(--purple); font-size: clamp(0.85rem, 1.2vw, 0.95rem); margin-bottom: 0.3rem;">Core (20 min)</p>
+                        <p style="font-size: clamp(0.8rem, 1.1vw, 0.9rem); color: var(--dark-gray); margin: 0; line-height: 1.5;">Show and share: demo what you built or tried. Peer feedback and cross-unit learning.</p>
+                    </div>
+                    <div style="text-align: center; padding: clamp(0.75rem, 1.5vw, 1rem); background: rgba(135, 183, 213, 0.08); border-radius: 6px;">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; color: var(--blue); font-size: clamp(0.85rem, 1.2vw, 0.95rem); margin-bottom: 0.3rem;">Close (10 min)</p>
+                        <p style="font-size: clamp(0.8rem, 1.1vw, 0.9rem); color: var(--dark-gray); margin: 0; line-height: 1.5;">Governance pulse check + preview of next week's challenge.</p>
+                    </div>
+                </div>
+
+                <!-- Week-by-Week Discussion Prompts -->
+                <div style="margin-top: clamp(1rem, 2vw, 1.5rem); border-top: 1px solid rgba(16, 26, 76, 0.08); padding-top: clamp(1rem, 2vw, 1.5rem);">
+                    <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.9rem, 1.3vw, 1rem); color: var(--navy); margin-bottom: 0.75rem; text-align: center;">Discussion Prompts by Week</p>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(0.75rem, 1.5vw, 1rem);">
+
+                        <div style="padding: clamp(0.5rem, 1vw, 0.75rem); border-left: 3px solid var(--navy); background: rgba(16, 26, 76, 0.02); border-radius: 0 6px 6px 0;">
+                            <p style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.75rem); color: var(--navy); font-weight: 600; margin-bottom: 0.3rem;">WEEK 2 — DELEGATION</p>
+                            <p style="font-size: clamp(0.8rem, 1.1vw, 0.88rem); color: var(--dark-gray); line-height: 1.5; margin: 0;">What task did you try in Claude? Was it Automation or Augmentation — and how did you decide?<br>Where did you hesitate about whether to use Claude at all? What stopped you?</p>
+                        </div>
+
+                        <div style="padding: clamp(0.5rem, 1vw, 0.75rem); border-left: 3px solid var(--purple); background: rgba(131, 82, 255, 0.02); border-radius: 0 6px 6px 0;">
+                            <p style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.75rem); color: var(--purple); font-weight: 600; margin-bottom: 0.3rem;">WEEK 3 — DESCRIPTION</p>
+                            <p style="font-size: clamp(0.8rem, 1.1vw, 0.88rem); color: var(--dark-gray); line-height: 1.5; margin: 0;">Show your three prompt versions (vague, specific, structured). What changed in the output?<br>What surprised you about how Claude interpreted your instructions?<br>Where did data classification come up in your prompting this week?</p>
+                        </div>
+
+                        <div style="padding: clamp(0.5rem, 1vw, 0.75rem); border-left: 3px solid var(--blue); background: rgba(135, 183, 213, 0.03); border-radius: 0 6px 6px 0;">
+                            <p style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.75rem); color: var(--blue); font-weight: 600; margin-bottom: 0.3rem;">WEEK 4 — DISCERNMENT (Part 1)</p>
+                            <p style="font-size: clamp(0.8rem, 1.1vw, 0.88rem); color: var(--dark-gray); line-height: 1.5; margin: 0;">What three things did you check before using a Claude output? Walk us through your checklist.<br>Did Claude produce anything this week that looked right but wasn't? How did you catch it?</p>
+                        </div>
+
+                        <div style="padding: clamp(0.5rem, 1vw, 0.75rem); border-left: 3px solid var(--blue); background: rgba(135, 183, 213, 0.03); border-radius: 0 6px 6px 0;">
+                            <p style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.75rem); color: var(--blue); font-weight: 600; margin-bottom: 0.3rem;">WEEK 5 — DISCERNMENT (Part 2)</p>
+                            <p style="font-size: clamp(0.8rem, 1.1vw, 0.88rem); color: var(--dark-gray); line-height: 1.5; margin: 0;">Show your Claude Project. What custom instructions did you write? What file did you upload?<br>What's the hardest part about building a Project vs. just using Chat?<br>What workflow are you thinking about for your capstone?</p>
+                        </div>
+
+                        <div style="padding: clamp(0.5rem, 1vw, 0.75rem); border-left: 3px solid var(--gold); background: rgba(252, 176, 23, 0.03); border-radius: 0 6px 6px 0;">
+                            <p style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.75rem); color: var(--gold); font-weight: 600; margin-bottom: 0.3rem;">WEEK 6 — DILIGENCE (Part 1)</p>
+                            <p style="font-size: clamp(0.8rem, 1.1vw, 0.88rem); color: var(--dark-gray); line-height: 1.5; margin: 0;">Walk us through your output trace: what did Claude produce, what did you change, and why?<br>Has anyone had a moment where they almost sent something without reviewing it? What happened?</p>
+                        </div>
+
+                        <div style="padding: clamp(0.5rem, 1vw, 0.75rem); border-left: 3px solid var(--gold); background: rgba(252, 176, 23, 0.03); border-radius: 0 6px 6px 0;">
+                            <p style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.75rem); color: var(--gold); font-weight: 600; margin-bottom: 0.3rem;">WEEK 7 — DILIGENCE (Part 2) + PEER REVIEW</p>
+                            <p style="font-size: clamp(0.8rem, 1.1vw, 0.88rem); color: var(--dark-gray); line-height: 1.5; margin: 0;">Present your capstone draft. Peer reviewers: Is the governance config specific enough? Is the workflow complete? Would you know how to follow it?<br>What cross-unit connections do you see?</p>
+                        </div>
+
+                        <div style="padding: clamp(0.5rem, 1vw, 0.75rem); border-left: 3px solid var(--navy); background: rgba(16, 26, 76, 0.02); border-radius: 0 6px 6px 0;">
+                            <p style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.75rem); color: var(--navy); font-weight: 600; margin-bottom: 0.3rem;">WEEK 8 — CAPSTONE</p>
+                            <p style="font-size: clamp(0.8rem, 1.1vw, 0.88rem); color: var(--dark-gray); line-height: 1.5; margin: 0;">Capstone presentations (3 slides max). After each: What would you steal from this project for your unit?<br>Closing round: What's one thing you know now that you didn't know 8 weeks ago?</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </details>
     </div>
 </section>
 
@@ -2244,117 +2314,347 @@
 
             <!-- WEEK 2: DELEGATION -->
             <div class="reveal" style="margin-bottom: clamp(1.5rem, 3vw, 2.5rem);">
-                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);">
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: clamp(0.5rem, 1vw, 0.75rem);">
                     <div style="background: var(--navy); color: var(--white); font-family: var(--font-mono); font-size: clamp(0.7rem, 1vw, 0.8rem); padding: 4px 12px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap;">Week 2</div>
-                    <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1.1rem, 2vw, 1.3rem);">Delegation — When to Use Claude</div>
+                    <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1.1rem, 2vw, 1.3rem);">Delegation — Agency, Automation, Augmentation</div>
                     <div style="flex: 1; height: 2px; background: rgba(16, 26, 76, 0.12);"></div>
                 </div>
+                <p style="font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: var(--dark-gray); line-height: 1.6; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem); max-width: 800px;">Learn what to hand to Claude and which modality fits. Every delegation decision answers one question: Am I automating, augmenting, or configuring agency?</p>
+
                 <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-                    <div class="card purple-accent reveal-scale">
-                        <span class="status-badge status-available">Available</span>
-                        <h4 class="card-title">AI Governance Framework</h4>
-                        <p class="card-description">Data classification, responsible use, incident response</p>
-                        <a href="ai_governance_framework.html" class="card-link">View Framework →</a>
-                    </div>
                     <div class="card gold-accent reveal-scale">
                         <span class="status-badge status-available">Available</span>
                         <h4 class="card-title">AI Fluency Framework</h4>
-                        <p class="card-description">The 4Ds, three modalities, and the competency-to-modality matrix</p>
+                        <p class="card-description">The 4D model, three modalities (Automation, Augmentation, Agency), and the competency-to-modality matrix</p>
                         <a href="ai_fluency_framework.html" class="card-link">View Framework →</a>
                     </div>
-                    <div class="card gold-accent reveal-scale">
-                        <span class="status-badge status-available">Available</span>
-                        <h4 class="card-title">Weekly Pulse Check-In</h4>
-                        <p class="card-description">30-second weekly check-in. Tracks iteration, confidence, wins, and struggles.</p>
-                        <a href="weekly_checkin.html" class="card-link">Submit Check-In →</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- WEEK 3: DESCRIPTION + GOVERNANCE -->
-            <div class="reveal" style="margin-bottom: clamp(1.5rem, 3vw, 2.5rem);">
-                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);">
-                    <div style="background: var(--purple); color: var(--white); font-family: var(--font-mono); font-size: clamp(0.7rem, 1vw, 0.8rem); padding: 4px 12px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap;">Week 3</div>
-                    <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--purple); font-size: clamp(1.1rem, 2vw, 1.3rem);">Description + Governance</div>
-                    <div style="flex: 1; height: 2px; background: rgba(131, 82, 255, 0.15);"></div>
-                </div>
-                <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
                     <div class="card purple-accent reveal-scale">
                         <span class="status-badge status-available">Available</span>
-                        <h4 class="card-title">Phase 1 Activity Guide</h4>
-                        <p class="card-description">Prompt Lab + Governance Walk. Learn to communicate with Claude and classify data.</p>
-                        <a href="phase1_activity_guide.html" class="card-link">View Activities →</a>
+                        <h4 class="card-title">AI Governance Framework</h4>
+                        <p class="card-description">Data classification is the first delegation filter. Know what you can and can't hand to Claude.</p>
+                        <a href="ai_governance_framework.html" class="card-link">View Framework →</a>
                     </div>
+                </div>
+
+                <!-- Worked Example -->
+                <div style="margin-top: clamp(1rem, 2vw, 1.5rem); background: rgba(252, 176, 23, 0.06); border: 1px solid rgba(252, 176, 23, 0.2); border-left: 4px solid var(--gold); border-radius: 8px; padding: clamp(1rem, 2vw, 1.5rem);">
+                    <h4 style="font-family: var(--font-subhead); font-size: clamp(0.95rem, 1.5vw, 1.1rem); color: var(--navy); margin-bottom: 0.75rem;">Worked Example: Same Task, Different Modalities</h4>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.75rem;"><strong>Task:</strong> Prepare a funder update for a quarterly meeting.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.75rem;"><strong>As Automation:</strong> "Draft a one-page funder update using these three bullet points: [retention at 85%, new KPMG partnership, pilot launched April 6]. Use a professional tone. Include a subject line." Claude executes a defined task. You review and send.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0rem;"><strong>As Augmentation:</strong> "I'm preparing a quarterly update for [funder]. They care most about student outcomes and innovation. Help me think through what they need to hear this quarter, then let's build the narrative together." Claude becomes a thinking partner. You shape the strategy; Claude helps you build it. The difference is where your judgment enters: Automation puts it at the end (review). Augmentation puts it throughout (co-creation).</p>
+                </div>
+
+                <!-- Challenge + Governance Pulse -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.75rem, 1.5vw, 1rem); margin-top: clamp(1rem, 2vw, 1.5rem);">
+                    <div style="background: rgba(131, 82, 255, 0.05); border: 1px solid rgba(131, 82, 255, 0.15); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--purple); margin-bottom: 0.4rem;">This Week's Challenge</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Pick one task you did this week. Classify it: Automation, Augmentation, or Agency. Try it in Claude. Bring the result to Friday.</p>
+                    </div>
+                    <div style="background: rgba(252, 176, 23, 0.05); border: 1px solid rgba(252, 176, 23, 0.2); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--gold); margin-bottom: 0.4rem;">Governance Pulse</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Before you start, check: what data tier does this task involve? If Tier 1 or 2, stop and consult the framework.</p>
+                    </div>
+                </div>
+
+                <!-- Weekly Reflection -->
+                <details style="margin-top: clamp(1rem, 2vw, 1.5rem); background: rgba(16, 26, 76, 0.03); border: 1px solid rgba(16, 26, 76, 0.08); border-radius: 8px;">
+                    <summary style="padding: clamp(0.75rem, 1.5vw, 1rem); cursor: pointer; font-family: var(--font-subhead); font-weight: 600; font-size: clamp(0.85rem, 1.3vw, 0.95rem); color: var(--navy); list-style: none;">Weekly Reflection ▾</summary>
+                    <div style="padding: 0 clamp(0.75rem, 1.5vw, 1rem) clamp(0.75rem, 1.5vw, 1rem);">
+                        <form class="weekly-reflection-form" data-week="2" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div>
+                                <label for="" style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">What did you try with Claude this week?</label>
+                                <textarea aria-label="What did you try with Claude this week" style="width: 100%; min-height: 60px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; font-family: var(--font-body); font-size: 0.9rem; resize: vertical;" placeholder="Describe what you tried..."></textarea>
+                            </div>
+                            <fieldset style="border: none; padding: 0;">
+                                <legend style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">Confidence level (1-5)</legend>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w2" value="1"> 1</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w2" value="2"> 2</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w2" value="3"> 3</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w2" value="4"> 4</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w2" value="5"> 5</label>
+                                </div>
+                            </fieldset>
+                            <button type="submit" style="align-self: flex-start; padding: 0.5rem 1.25rem; background: var(--purple); color: var(--white); border: none; border-radius: 6px; font-family: var(--font-subhead); font-weight: 600; font-size: 0.9rem; cursor: pointer; min-height: 44px;">Submit Reflection</button>
+                        </form>
+                    </div>
+                </details>
+            </div>
+
+            <!-- WEEK 3: DESCRIPTION -->
+            <div class="reveal" style="margin-bottom: clamp(1.5rem, 3vw, 2.5rem);">
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: clamp(0.5rem, 1vw, 0.75rem);">
+                    <div style="background: var(--purple); color: var(--white); font-family: var(--font-mono); font-size: clamp(0.7rem, 1vw, 0.8rem); padding: 4px 12px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap;">Week 3</div>
+                    <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--purple); font-size: clamp(1.1rem, 2vw, 1.3rem);">Description</div>
+                    <div style="flex: 1; height: 2px; background: rgba(131, 82, 255, 0.15);"></div>
+                </div>
+                <p style="font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: var(--dark-gray); line-height: 1.6; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem); max-width: 800px;">How you communicate with Claude determines what you get back. Prompting, structuring instructions, setting context.</p>
+
+                <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
                     <div class="card purple-accent reveal-scale">
                         <span class="status-badge status-available">Available</span>
                         <h4 class="card-title">Data Classification Practice</h4>
-                        <p class="card-description">Interactive drag-and-drop exercise for the 4-tier governance system</p>
+                        <p class="card-description">Interactive drag-and-drop exercise for the 4-tier governance system. Builds the instinct to describe data correctly.</p>
                         <a href="data_tier_practice.html" class="card-link">Start Practice →</a>
                     </div>
+                    <div class="card blue-accent reveal-scale">
+                        <span class="status-badge" style="background: var(--blue); color: var(--white);">External</span>
+                        <h4 class="card-title">Prompt Engineering Guide</h4>
+                        <p class="card-description">Anthropic's official guide to writing effective prompts. The single best reference for improving your Claude outputs.</p>
+                        <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener" class="card-link">Open Guide →</a>
+                    </div>
                 </div>
+
+                <!-- Prompt Practice Card -->
+                <div style="margin-top: clamp(1rem, 2vw, 1.5rem); background: rgba(131, 82, 255, 0.04); border: 1px solid rgba(131, 82, 255, 0.15); border-left: 4px solid var(--purple); border-radius: 8px; padding: clamp(1rem, 2vw, 1.5rem);">
+                    <h4 style="font-family: var(--font-subhead); font-size: clamp(0.95rem, 1.5vw, 1.1rem); color: var(--navy); margin-bottom: 0.75rem;">Prompt Practice: Good → Better</h4>
+                    <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--dark-gray); margin-bottom: 0.75rem; font-weight: 600;">Structure: Role → Context → Task → Constraints → Format</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.75rem, 1.5vw, 1rem);">
+                        <div style="background: rgba(16, 26, 76, 0.04); border-radius: 6px; padding: clamp(0.75rem, 1.5vw, 1rem);">
+                            <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.1vw, 0.85rem); color: #999; margin-bottom: 0.4rem;">Vague</p>
+                            <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0; font-style: italic;">"Write an email to our funder about the program."</p>
+                        </div>
+                        <div style="background: rgba(131, 82, 255, 0.06); border-radius: 6px; padding: clamp(0.75rem, 1.5vw, 1rem);">
+                            <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.1vw, 0.85rem); color: var(--purple); margin-bottom: 0.4rem;">Structured</p>
+                            <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0; font-style: italic;">"You are a college access nonprofit communications lead. Our quarterly funder meeting is next Tuesday. Draft a one-page update covering: 85% retention rate, new KPMG AI grant, and pilot launch. Tone: professional, evidence-forward. Format: 3 paragraphs with a subject line."</p>
+                        </div>
+                    </div>
+                    <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--dark-gray); margin-top: 0.75rem; margin-bottom: 0;"><strong>Try this pattern with:</strong> Drafting a funder email, summarizing a partner report, preparing a coaching session agenda, writing a board memo.</p>
+                </div>
+
+                <!-- Challenge + Governance Pulse -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.75rem, 1.5vw, 1rem); margin-top: clamp(1rem, 2vw, 1.5rem);">
+                    <div style="background: rgba(131, 82, 255, 0.05); border: 1px solid rgba(131, 82, 255, 0.15); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--purple); margin-bottom: 0.4rem;">This Week's Challenge</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Write the same prompt three different ways — vague, specific, and structured. Compare Claude's outputs. Bring the best version to Friday.</p>
+                    </div>
+                    <div style="background: rgba(252, 176, 23, 0.05); border: 1px solid rgba(252, 176, 23, 0.2); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--gold); margin-bottom: 0.4rem;">Governance Pulse</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Practice classifying data before uploading. When in doubt, treat data as one tier more restrictive.</p>
+                    </div>
+                </div>
+
+                <!-- Weekly Reflection -->
+                <details style="margin-top: clamp(1rem, 2vw, 1.5rem); background: rgba(16, 26, 76, 0.03); border: 1px solid rgba(16, 26, 76, 0.08); border-radius: 8px;">
+                    <summary style="padding: clamp(0.75rem, 1.5vw, 1rem); cursor: pointer; font-family: var(--font-subhead); font-weight: 600; font-size: clamp(0.85rem, 1.3vw, 0.95rem); color: var(--navy); list-style: none;">Weekly Reflection ▾</summary>
+                    <div style="padding: 0 clamp(0.75rem, 1.5vw, 1rem) clamp(0.75rem, 1.5vw, 1rem);">
+                        <form class="weekly-reflection-form" data-week="3" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div>
+                                <label for="" style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">What did you try with Claude this week?</label>
+                                <textarea aria-label="What did you try with Claude this week" style="width: 100%; min-height: 60px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; font-family: var(--font-body); font-size: 0.9rem; resize: vertical;" placeholder="Describe what you tried..."></textarea>
+                            </div>
+                            <fieldset style="border: none; padding: 0;">
+                                <legend style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">Confidence level (1-5)</legend>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w3" value="1"> 1</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w3" value="2"> 2</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w3" value="3"> 3</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w3" value="4"> 4</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w3" value="5"> 5</label>
+                                </div>
+                            </fieldset>
+                            <button type="submit" style="align-self: flex-start; padding: 0.5rem 1.25rem; background: var(--purple); color: var(--white); border: none; border-radius: 6px; font-family: var(--font-subhead); font-weight: 600; font-size: 0.9rem; cursor: pointer; min-height: 44px;">Submit Reflection</button>
+                        </form>
+                    </div>
+                </details>
             </div>
 
-            <!-- WEEKS 4-5: SKILL BUILDING -->
+            <!-- WEEKS 4-5: DISCERNMENT -->
             <div class="reveal" style="margin-bottom: clamp(1.5rem, 3vw, 2.5rem);">
-                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);">
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: clamp(0.5rem, 1vw, 0.75rem);">
                     <div style="background: var(--blue); color: var(--navy); font-family: var(--font-mono); font-size: clamp(0.7rem, 1vw, 0.8rem); padding: 4px 12px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap;">Weeks 4-5</div>
-                    <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--blue); font-size: clamp(1.1rem, 2vw, 1.3rem);">Skill Building + Module Design</div>
+                    <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--blue); font-size: clamp(1.1rem, 2vw, 1.3rem);">Discernment</div>
                     <div style="flex: 1; height: 2px; background: rgba(135, 183, 213, 0.25);"></div>
                 </div>
-                <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-                    <div class="card blue-accent reveal-scale">
-                        <span class="status-badge" style="background: var(--gold); color: var(--navy);">Opens Week 4</span>
-                        <h4 class="card-title">Phase 2 Activity Cards</h4>
-                        <p class="card-description">Skill Trigger Challenge, Data Tier deep practice, real-world workflows with modality frameworks</p>
-                        <p class="card-link" style="color: #999; cursor: default;">Available April 21</p>
-                    </div>
-                    <div class="card navy-accent reveal-scale">
-                        <span class="status-badge status-available">Available</span>
-                        <h4 class="card-title">Session Facilitation Guide</h4>
-                        <p class="card-description">Opening rituals, activity map, champion playbook, and governance reinforcement</p>
-                        <a href="session_facilitation_guide.html" class="card-link">View Guide →</a>
-                    </div>
-                </div>
-            </div>
+                <p style="font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: var(--dark-gray); line-height: 1.6; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem); max-width: 800px;">Evaluate what Claude produces. Learn to assess quality, spot gaps and bias, and iterate until the output meets your standard.</p>
 
-            <!-- WEEKS 6-7: DISCERNMENT + PEER REVIEW -->
-            <div class="reveal" style="margin-bottom: clamp(1.5rem, 3vw, 2.5rem);">
-                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);">
-                    <div style="background: var(--gold); color: var(--navy); font-family: var(--font-mono); font-size: clamp(0.7rem, 1vw, 0.8rem); padding: 4px 12px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap;">Weeks 6-7</div>
-                    <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1.1rem, 2vw, 1.3rem);">Discernment + Module Peer Review</div>
-                    <div style="flex: 1; height: 2px; background: rgba(252, 176, 23, 0.3);"></div>
-                </div>
                 <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-                    <div class="card navy-accent reveal-scale">
-                        <span class="status-badge status-coming">May 9</span>
-                        <h4 class="card-title">Train-the-Trainer Toolkit</h4>
-                        <p class="card-description">Everything champions need to train the org in Q1</p>
-                        <p class="card-link" style="color: #999; cursor: default;">Coming May 9</p>
-                    </div>
                     <div class="card blue-accent reveal-scale">
                         <span class="status-badge status-available">Available</span>
                         <h4 class="card-title">KPI Framework</h4>
-                        <p class="card-description">Three-tier measurement and SCALE/PAUSE/PIVOT decision gates</p>
+                        <p class="card-description">Three-tier measurement (Engagement, Proficiency, Impact) and SCALE/PAUSE/PIVOT decision gates</p>
                         <a href="kpi_framework.html" class="card-link">View Framework →</a>
                     </div>
+                    <div class="card blue-accent reveal-scale">
+                        <span class="status-badge" style="background: var(--blue); color: var(--white);">External</span>
+                        <h4 class="card-title">Prompt Engineering Guide</h4>
+                        <p class="card-description">Reference back: iteration and refinement techniques for improving Claude outputs through feedback loops</p>
+                        <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener" class="card-link">Open Guide →</a>
+                    </div>
                 </div>
+
+                <!-- Challenges + Governance Pulse -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.75rem, 1.5vw, 1rem); margin-top: clamp(1rem, 2vw, 1.5rem);">
+                    <div style="background: rgba(135, 183, 213, 0.08); border: 1px solid rgba(135, 183, 213, 0.2); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--blue); margin-bottom: 0.4rem;">Week 4 Challenge</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Take one Claude output from this week. Before using it, write down three things you would check for. Bring your checklist to Friday.</p>
+                    </div>
+                    <div style="background: rgba(135, 183, 213, 0.08); border: 1px solid rgba(135, 183, 213, 0.2); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--blue); margin-bottom: 0.4rem;">Week 5 Challenge</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin-bottom: 0.5rem;">Build your first Claude Project. This is the foundation for your capstone.</p>
+                        <p style="font-size: clamp(0.8rem, 1.1vw, 0.9rem); line-height: 1.6; color: var(--dark-gray); margin: 0;"><strong>How:</strong> In Claude, click "New Project." Name it after a task your team does regularly. Write 3 sentences of custom instructions (what role Claude should play, what constraints apply, what the output should look like). Upload one reference file your team uses. Bring it to Friday.</p>
+                    </div>
+                </div>
+                <div style="margin-top: clamp(0.75rem, 1.5vw, 1rem); background: rgba(252, 176, 23, 0.05); border: 1px solid rgba(252, 176, 23, 0.2); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
+                    <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--gold); margin-bottom: 0.4rem;">Governance Pulse</p>
+                    <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Before sending any Claude output externally this week, write one sentence documenting what you changed and why. Bring your documentation to Friday.</p>
+                </div>
+
+                <!-- Weekly Reflection -->
+                <details style="margin-top: clamp(1rem, 2vw, 1.5rem); background: rgba(16, 26, 76, 0.03); border: 1px solid rgba(16, 26, 76, 0.08); border-radius: 8px;">
+                    <summary style="padding: clamp(0.75rem, 1.5vw, 1rem); cursor: pointer; font-family: var(--font-subhead); font-weight: 600; font-size: clamp(0.85rem, 1.3vw, 0.95rem); color: var(--navy); list-style: none;">Weekly Reflection ▾</summary>
+                    <div style="padding: 0 clamp(0.75rem, 1.5vw, 1rem) clamp(0.75rem, 1.5vw, 1rem);">
+                        <form class="weekly-reflection-form" data-week="4-5" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div>
+                                <label for="" style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">What did you try with Claude this week?</label>
+                                <textarea aria-label="What did you try with Claude this week" style="width: 100%; min-height: 60px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; font-family: var(--font-body); font-size: 0.9rem; resize: vertical;" placeholder="Describe what you tried..."></textarea>
+                            </div>
+                            <fieldset style="border: none; padding: 0;">
+                                <legend style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">Confidence level (1-5)</legend>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w45" value="1"> 1</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w45" value="2"> 2</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w45" value="3"> 3</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w45" value="4"> 4</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w45" value="5"> 5</label>
+                                </div>
+                            </fieldset>
+                            <button type="submit" style="align-self: flex-start; padding: 0.5rem 1.25rem; background: var(--purple); color: var(--white); border: none; border-radius: 6px; font-family: var(--font-subhead); font-weight: 600; font-size: 0.9rem; cursor: pointer; min-height: 44px;">Submit Reflection</button>
+                        </form>
+                    </div>
+                </details>
+            </div>
+
+            <!-- WEEKS 6-7: DILIGENCE -->
+            <div class="reveal" style="margin-bottom: clamp(1.5rem, 3vw, 2.5rem);">
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: clamp(0.5rem, 1vw, 0.75rem);">
+                    <div style="background: var(--gold); color: var(--navy); font-family: var(--font-mono); font-size: clamp(0.7rem, 1vw, 0.8rem); padding: 4px 12px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap;">Weeks 6-7</div>
+                    <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1.1rem, 2vw, 1.3rem);">Diligence</div>
+                    <div style="flex: 1; height: 2px; background: rgba(252, 176, 23, 0.3);"></div>
+                </div>
+                <p style="font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: var(--dark-gray); line-height: 1.6; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem); max-width: 800px;">Own what goes out. Governance in practice — verification, attribution, and accountability for every AI-assisted output.</p>
+
+                <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+                    <div class="card gold-accent reveal-scale">
+                        <span class="status-badge status-available">Available</span>
+                        <h4 class="card-title">AI Governance Framework</h4>
+                        <p class="card-description">Reference back: incident response protocols, attribution norms, and data handling responsibilities</p>
+                        <a href="ai_governance_framework.html" class="card-link">View Framework →</a>
+                    </div>
+                    <div class="card purple-accent reveal-scale">
+                        <span class="status-badge status-coming">Opens Week 6</span>
+                        <h4 class="card-title">Capstone Template</h4>
+                        <p class="card-description">Begin your capstone: Project Scope (Section 1) and Workflow Draft (Section 2). Bring your draft to Week 7 for peer review.</p>
+                        <a href="capstone_template.html" class="card-link">Open Template →</a>
+                    </div>
+                </div>
+
+                <!-- Challenges + Governance Pulse -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.75rem, 1.5vw, 1rem); margin-top: clamp(1rem, 2vw, 1.5rem);">
+                    <div style="background: rgba(252, 176, 23, 0.06); border: 1px solid rgba(252, 176, 23, 0.2); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--gold); margin-bottom: 0.4rem;">Week 6 Challenge</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Find one output you sent externally this week. Trace backward: what did Claude produce, what did you change, and why? Bring the trace to Friday.</p>
+                    </div>
+                    <div style="background: rgba(252, 176, 23, 0.06); border: 1px solid rgba(252, 176, 23, 0.2); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--gold); margin-bottom: 0.4rem;">Week 7 Challenge</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Complete your Capstone Project Scope and Workflow Draft (Sections 1-2). Bring your draft to Friday for peer review.</p>
+                    </div>
+                </div>
+                <div style="margin-top: clamp(0.75rem, 1.5vw, 1rem); background: rgba(252, 176, 23, 0.05); border: 1px solid rgba(252, 176, 23, 0.2); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
+                    <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--gold); margin-bottom: 0.4rem;">Governance Pulse</p>
+                    <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Teach-back: explain the 4-tier data classification to a colleague who is not in the pilot. If you can't explain it clearly, revisit the framework.</p>
+                </div>
+
+                <!-- Weekly Reflection -->
+                <details style="margin-top: clamp(1rem, 2vw, 1.5rem); background: rgba(16, 26, 76, 0.03); border: 1px solid rgba(16, 26, 76, 0.08); border-radius: 8px;">
+                    <summary style="padding: clamp(0.75rem, 1.5vw, 1rem); cursor: pointer; font-family: var(--font-subhead); font-weight: 600; font-size: clamp(0.85rem, 1.3vw, 0.95rem); color: var(--navy); list-style: none;">Weekly Reflection ▾</summary>
+                    <div style="padding: 0 clamp(0.75rem, 1.5vw, 1rem) clamp(0.75rem, 1.5vw, 1rem);">
+                        <form class="weekly-reflection-form" data-week="6-7" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div>
+                                <label for="" style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">What did you try with Claude this week?</label>
+                                <textarea aria-label="What did you try with Claude this week" style="width: 100%; min-height: 60px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; font-family: var(--font-body); font-size: 0.9rem; resize: vertical;" placeholder="Describe what you tried..."></textarea>
+                            </div>
+                            <fieldset style="border: none; padding: 0;">
+                                <legend style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">Confidence level (1-5)</legend>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w67" value="1"> 1</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w67" value="2"> 2</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w67" value="3"> 3</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w67" value="4"> 4</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w67" value="5"> 5</label>
+                                </div>
+                            </fieldset>
+                            <button type="submit" style="align-self: flex-start; padding: 0.5rem 1.25rem; background: var(--purple); color: var(--white); border: none; border-radius: 6px; font-family: var(--font-subhead); font-weight: 600; font-size: 0.9rem; cursor: pointer; min-height: 44px;">Submit Reflection</button>
+                        </form>
+                    </div>
+                </details>
             </div>
 
             <!-- WEEK 8: CAPSTONE -->
             <div class="reveal" style="margin-bottom: clamp(1.5rem, 3vw, 2rem);">
-                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);">
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: clamp(0.5rem, 1vw, 0.75rem);">
                     <div style="background: var(--navy); color: var(--gold); font-family: var(--font-mono); font-size: clamp(0.7rem, 1vw, 0.8rem); padding: 4px 12px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap;">Week 8</div>
-                    <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1.1rem, 2vw, 1.3rem);">Capstone + Ship It</div>
+                    <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1.1rem, 2vw, 1.3rem);">Capstone — Your Team's AI Project</div>
                     <div style="flex: 1; height: 2px; background: rgba(16, 26, 76, 0.12);"></div>
                 </div>
+                <p style="font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: var(--dark-gray); line-height: 1.6; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem); max-width: 800px;">Deliver a working Claude project for your team with at least one documented workflow. This is what your unit inherits.</p>
+
                 <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
                     <div class="card purple-accent reveal-scale">
                         <span class="status-badge status-coming">Opens Phase 3</span>
                         <h4 class="card-title">Capstone Template</h4>
-                        <p class="card-description">Your 5-slide showcase with worked example and 2D self-assessment (Diligence &amp; Delegation)</p>
-                        <p class="card-link" style="color: #999; cursor: default;">Available May 19</p>
+                        <p class="card-description">Your deliverable: a configured Claude Project for your team, at least one documented workflow, governance configuration, and 4D reflection.</p>
+                        <a href="capstone_template.html" class="card-link">Open Template →</a>
+                    </div>
+                    <div class="card navy-accent reveal-scale">
+                        <span class="status-badge status-coming">Week 8</span>
+                        <h4 class="card-title">Post-Pilot Assessment</h4>
+                        <p class="card-description">Same 5-construct instrument you took in Week 1. Retake it to measure your growth across the 60 days. Your pre-launch baseline is already saved.</p>
+                        <a href="ai_fluency_prelaunch_survey.html" class="card-link">Retake Assessment →</a>
+                    </div>
+                    <div class="card gold-accent reveal-scale">
+                        <span class="status-badge status-coming">Week 8</span>
+                        <h4 class="card-title">Talking to Your Team</h4>
+                        <p class="card-description">A one-page template for introducing AI to your broader unit: what the pilot was, what you built, what it means for their work, and how to get started.</p>
+                        <p class="card-link" style="color: #999; cursor: default;">Available Week 8</p>
                     </div>
                 </div>
+
+                <!-- Challenge + Governance Pulse -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.75rem, 1.5vw, 1rem); margin-top: clamp(1rem, 2vw, 1.5rem);">
+                    <div style="background: rgba(16, 26, 76, 0.05); border: 1px solid rgba(16, 26, 76, 0.12); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--navy); margin-bottom: 0.4rem;">This Week's Challenge</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Finalize your Claude Project, workflow documentation, and governance configuration. Present at the capstone session. 3 slides max: what you built, why, and what your team inherits.</p>
+                    </div>
+                    <div style="background: rgba(252, 176, 23, 0.05); border: 1px solid rgba(252, 176, 23, 0.2); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--gold); margin-bottom: 0.4rem;">Governance Pulse</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Final check: Does your project's governance configuration match the data tiers your team handles? Is the escalation path clear?</p>
+                    </div>
+                </div>
+
+                <!-- Weekly Reflection -->
+                <details style="margin-top: clamp(1rem, 2vw, 1.5rem); background: rgba(16, 26, 76, 0.03); border: 1px solid rgba(16, 26, 76, 0.08); border-radius: 8px;">
+                    <summary style="padding: clamp(0.75rem, 1.5vw, 1rem); cursor: pointer; font-family: var(--font-subhead); font-weight: 600; font-size: clamp(0.85rem, 1.3vw, 0.95rem); color: var(--navy); list-style: none;">Weekly Reflection ▾</summary>
+                    <div style="padding: 0 clamp(0.75rem, 1.5vw, 1rem) clamp(0.75rem, 1.5vw, 1rem);">
+                        <form class="weekly-reflection-form" data-week="8" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div>
+                                <label for="" style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">What did you try with Claude this week?</label>
+                                <textarea aria-label="What did you try with Claude this week" style="width: 100%; min-height: 60px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; font-family: var(--font-body); font-size: 0.9rem; resize: vertical;" placeholder="Describe what you tried..."></textarea>
+                            </div>
+                            <fieldset style="border: none; padding: 0;">
+                                <legend style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">Confidence level (1-5)</legend>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w8" value="1"> 1</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w8" value="2"> 2</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w8" value="3"> 3</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w8" value="4"> 4</label>
+                                    <label style="cursor:pointer;"><input type="radio" name="confidence-w8" value="5"> 5</label>
+                                </div>
+                            </fieldset>
+                            <button type="submit" style="align-self: flex-start; padding: 0.5rem 1.25rem; background: var(--purple); color: var(--white); border: none; border-radius: 6px; font-family: var(--font-subhead); font-weight: 600; font-size: 0.9rem; cursor: pointer; min-height: 44px;">Submit Reflection</button>
+                        </form>
+                    </div>
+                </details>
             </div>
         </div>
     </div>
@@ -3615,6 +3915,58 @@
         }
     });
 
+    // ==================== WEEKLY REFLECTION FORMS ====================
+    function initWeeklyReflections() {
+        document.querySelectorAll('.weekly-reflection-form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const week = this.dataset.week;
+                const textarea = this.querySelector('textarea');
+                const checked = this.querySelector('input[type="radio"]:checked');
+                const text = textarea ? textarea.value.trim() : '';
+                const confidence = checked ? checked.value : '';
+                const name = getParticipantName();
+
+                if (!text && !confidence) return;
+
+                const btn = this.querySelector('button[type="submit"]');
+                const origText = btn.textContent;
+                btn.textContent = 'Submitting...';
+                btn.disabled = true;
+
+                const payload = new URLSearchParams({
+                    type: 'reflection',
+                    participant: name,
+                    week: week,
+                    reflection: text,
+                    confidence: confidence,
+                    timestamp: new Date().toISOString()
+                });
+
+                fetch(SHEET_ENDPOINT, { method: 'POST', body: payload })
+                    .then(() => {
+                        btn.textContent = 'Submitted';
+                        btn.style.background = '#27AE60';
+                        if (textarea) textarea.value = '';
+                        setTimeout(() => {
+                            btn.textContent = origText;
+                            btn.style.background = '';
+                            btn.disabled = false;
+                        }, 3000);
+                    })
+                    .catch(() => {
+                        btn.textContent = 'Error — try again';
+                        btn.style.background = '#E63946';
+                        btn.disabled = false;
+                        setTimeout(() => {
+                            btn.textContent = origText;
+                            btn.style.background = '';
+                        }, 3000);
+                    });
+            });
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         initIdentityGate();
         initPreAssessmentGate();
@@ -3626,6 +3978,7 @@
         initializeCompetencyWheel();
         initializePhaseExpansion();
         initializeCheckboxPersistence();
+        initWeeklyReflections();
     });
 </script>
 
