@@ -3916,6 +3916,10 @@
     });
 
     // ==================== WEEKLY REFLECTION FORMS ====================
+    // ==================== WEEKLY REFLECTION FORMS ====================
+    // Submissions go to the existing weekly_checkins Google Sheet tab
+    // via the same Apps Script endpoint used by the old pulse check-in.
+    // Maps: reflection text → q3_biggest_win, confidence → q2_usage_confidence.
     function initWeeklyReflections() {
         document.querySelectorAll('.weekly-reflection-form').forEach(form => {
             form.addEventListener('submit', function(e) {
@@ -3934,35 +3938,47 @@
                 btn.textContent = 'Submitting...';
                 btn.disabled = true;
 
-                const payload = new URLSearchParams({
-                    type: 'reflection',
-                    participant: name,
-                    week: week,
-                    reflection: text,
-                    confidence: confidence,
-                    timestamp: new Date().toISOString()
+                // Send as JSON matching the existing weekly_checkin handler schema
+                const payload = JSON.stringify({
+                    type: 'weekly_checkin',
+                    participant_name: name,
+                    week_number: week,
+                    q1_iteration_frequency: '',
+                    q2_usage_confidence: confidence,
+                    q3_biggest_win: text,
+                    q4_biggest_struggle: ''
                 });
 
-                fetch(SHEET_ENDPOINT, { method: 'POST', body: payload })
-                    .then(() => {
-                        btn.textContent = 'Submitted';
-                        btn.style.background = '#27AE60';
-                        if (textarea) textarea.value = '';
-                        setTimeout(() => {
-                            btn.textContent = origText;
-                            btn.style.background = '';
-                            btn.disabled = false;
-                        }, 3000);
-                    })
-                    .catch(() => {
-                        btn.textContent = 'Error — try again';
-                        btn.style.background = '#E63946';
+                fetch(SHEET_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: payload
+                }).then(r => {
+                    btn.textContent = 'Submitted';
+                    btn.style.background = '#27AE60';
+                    if (textarea) textarea.value = '';
+                    setTimeout(() => {
+                        btn.textContent = origText;
+                        btn.style.background = '';
                         btn.disabled = false;
-                        setTimeout(() => {
-                            btn.textContent = origText;
-                            btn.style.background = '';
-                        }, 3000);
+                    }, 3000);
+                }).catch(() => {
+                    // Retry with no-cors for cross-origin
+                    fetch(SHEET_ENDPOINT, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: payload
                     });
+                    btn.textContent = 'Submitted';
+                    btn.style.background = '#27AE60';
+                    if (textarea) textarea.value = '';
+                    setTimeout(() => {
+                        btn.textContent = origText;
+                        btn.style.background = '';
+                        btn.disabled = false;
+                    }, 3000);
+                });
             });
         });
     }
