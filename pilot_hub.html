@@ -2220,7 +2220,7 @@
 
                         <div style="padding: clamp(0.5rem, 1vw, 0.75rem); border-left: 3px solid var(--navy); background: rgba(16, 26, 76, 0.02); border-radius: 0 6px 6px 0;">
                             <p style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.75rem); color: var(--navy); font-weight: 600; margin-bottom: 0.3rem;">WEEK 2 — DELEGATION</p>
-                            <p style="font-size: clamp(0.8rem, 1.1vw, 0.88rem); color: var(--dark-gray); line-height: 1.5; margin: 0;"><strong>H1 —</strong> What real deliverable did you try with Claude this week? What worked, what did you have to fix? Automation or Augmentation — and how did you decide?<br><strong>H2 —</strong> Was what you tried a one-off, or a pattern? If pattern — whose work on your team does it also fit? Bring one candidate team workflow.<br><strong>H3 —</strong> If three other units had this same pattern, what would DC CAP want to standardize?</p>
+                            <p style="font-size: clamp(0.8rem, 1.1vw, 0.88rem); color: var(--dark-gray); line-height: 1.5; margin: 0;"><strong>Personal output (H1) —</strong> What is something you did with AI this week to strengthen your own work output? What worked, what did you have to fix?<br><strong>Delegation —</strong> Was it Automation or Augmentation? How did you decide? Where did you hesitate?<br><strong>Team &amp; enterprise (H2 / H3) —</strong> Did this also create something your team could use or benefit from? Did it make possible an organization-wide skill or capability DC CAP doesn't have today? If not, could it have — and how?</p>
                         </div>
 
                         <!-- WEEKS 3-8 DISCUSSION PROMPTS — HIDDEN (unhide when ready) -->
@@ -2363,11 +2363,16 @@
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.75rem, 1.5vw, 1rem); margin-top: clamp(1rem, 2vw, 1.5rem);">
                     <div style="background: rgba(131, 82, 255, 0.05); border: 1px solid rgba(131, 82, 255, 0.15); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
                         <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--purple); margin-bottom: 0.4rem;">This Week's Challenge</p>
-                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Take a real deliverable from your week — an email you need to send, a summary someone is waiting on, a plan you're drafting. Try completing it with Claude (H1). <strong>Then answer one H2 question:</strong> where else on your team does this shape of work happen? Bring one candidate to Friday. On Friday, share: What worked? What did you have to fix? What surprised you?</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0 0 0.5rem 0;">Take a real deliverable from your week and run it through Claude. Then bring three answers to Friday:</p>
+                        <ol style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0; padding-left: 1.15rem;">
+                            <li><strong>Personal output (H1):</strong> What is something you did with AI this week to strengthen your own work output?</li>
+                            <li><strong>Delegation:</strong> Was this Automation or Augmentation — and how did you decide?</li>
+                            <li><strong>Team &amp; enterprise (H2/H3):</strong> Did this also create something your team could use or benefit from? Did it make possible an organization-wide skill or capability DC CAP doesn't have today? If not, could it have — and how?</li>
+                        </ol>
                     </div>
                     <div style="background: rgba(252, 176, 23, 0.05); border: 1px solid rgba(252, 176, 23, 0.2); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
                         <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--gold); margin-bottom: 0.4rem;">Governance Pulse</p>
-                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Before you start, check: what data tier does this task involve? If Tier 1 or 2, stop and consult the framework. <strong>Leader scope:</strong> what tier does most of your team's recurring work sit in — and which tier is your biggest unlock?</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Before you start, check: what data tier does this task involve? If Tier 1 or 2, stop and consult the framework. <strong>Leader scope:</strong> what tier does most of your team's recurring work sit in — and where's the biggest gain if you handle that tier well?</p>
                     </div>
                 </div>
 
@@ -2377,8 +2382,16 @@
                     <div style="padding: 0 clamp(0.75rem, 1.5vw, 1rem) clamp(0.75rem, 1.5vw, 1rem);">
                         <form class="weekly-reflection-form" data-week="2" style="display: flex; flex-direction: column; gap: 0.75rem;">
                             <div>
-                                <label for="" style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">H1: What real deliverable did you try with Claude? What surprised you? &nbsp;·&nbsp; H2: Where else on your team does this shape of work happen?</label>
-                                <textarea aria-label="What real deliverable did you try with Claude and where else on your team does this work happen" style="width: 100%; min-height: 80px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; font-family: var(--font-body); font-size: 0.9rem; resize: vertical;" placeholder="The task, what happened, what you didn't expect — and one candidate team workflow this pattern could fit..."></textarea>
+                                <label for="reflect-w2-personal" style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">Personal output (H1): What is something you did with AI this week to strengthen your own work output?</label>
+                                <textarea id="reflect-w2-personal" aria-label="What you did with AI this week to strengthen your own work output" style="width: 100%; min-height: 60px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; font-family: var(--font-body); font-size: 0.9rem; resize: vertical;" placeholder="The task, what happened, what you didn't expect..."></textarea>
+                            </div>
+                            <div>
+                                <label for="reflect-w2-delegation" style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">Delegation: Was it Automation or Augmentation — and how did you decide?</label>
+                                <textarea id="reflect-w2-delegation" aria-label="Automation or Augmentation and how you decided" style="width: 100%; min-height: 50px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; font-family: var(--font-body); font-size: 0.9rem; resize: vertical;" placeholder="Which mode, and the call you made..."></textarea>
+                            </div>
+                            <div>
+                                <label for="reflect-w2-team-org" style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">Team &amp; enterprise (H2/H3): Did this also create something your team could use or benefit from? Did it make possible an organization-wide skill or capability DC CAP doesn't have today? If not, could it have — and how?</label>
+                                <textarea id="reflect-w2-team-org" aria-label="Did this create something your team or the organization could benefit from" style="width: 100%; min-height: 70px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; font-family: var(--font-body); font-size: 0.9rem; resize: vertical;" placeholder="What your team could inherit, what DC CAP could standardize, or what it would take to get there..."></textarea>
                             </div>
                             <fieldset style="border: none; padding: 0;">
                                 <legend style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">Confidence level (1-5)</legend>
