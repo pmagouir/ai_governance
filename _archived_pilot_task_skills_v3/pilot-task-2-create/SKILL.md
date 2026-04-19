@@ -65,12 +65,6 @@ The third deliverable is the most important. Anyone can run a prompt. The skill 
 
 ---
 
-### One Note on Where You Are
-
-Task 2 is about *you* getting fluent — designing a workflow for a real task from your own work. That's the right focus right now. Later tasks will open up what it looks like to lift a teammate, and eventually to template something across your unit. For now, keep the attention on your own practice. If you notice moments where what you're building might help a teammate or become a unit-level template, make a quick mental note — you'll have a chance to use it. But your job today is individual fluency.
-
----
-
 ### The Setup: Choosing Your Real Work Task
 
 You will select ONE task from your current responsibilities that meets all four criteria:
@@ -79,8 +73,6 @@ You will select ONE task from your current responsibilities that meets all four 
 2. **Creates a deliverable for someone** — Email, report, analysis, brief, summary (something tangible)
 3. **Involves data or information with governance considerations** — Not every task qualifies; you need something that requires thinking about data handling
 4. **Would benefit from AI assistance** — You can see how Claude could help (you're not forcing AI into a task where it doesn't belong)
-
-**A quick reflection as you choose (not a criterion):** Who else might do a version of this task — just you, one or two teammates, or multiple units? You're still building for your own workflow; noticing the answer just makes Deliverable 3 sharper.
 
 ---
 
@@ -402,7 +394,7 @@ Final Version:
 
 ### Deliverable 3: Plan-vs-Reality Comparison (AFTER Execution)
 
-Take your Workflow Design Document (Deliverable 1) and your Execution Record (Deliverable 2). Put them side by side. Answer these four questions honestly.
+Take your Workflow Design Document (Deliverable 1) and your Execution Record (Deliverable 2). Put them side by side. Answer these three questions honestly.
 
 ---
 
@@ -426,12 +418,6 @@ If you were doing this task again tomorrow, what ONE thing would you change in y
 
 ---
 
-#### Question 4: The Ripple
-
-If your redesign worked, what's the smallest next step to share it? With a teammate trying the same kind of task? As a starting template for your unit? Or does it stay with you for now? Any of these is a valid answer — name the one that fits. (2 sentences)
-
----
-
 #### Your Deliverable 3 Output
 
 ```
@@ -440,7 +426,6 @@ DELIVERABLE 3: PLAN-VS-REALITY COMPARISON
 1. Governance: [2-3 sentences]
 2. The Diagnosis: [3-5 sentences naming specific design element + causal mechanism]
 3. The Redesign: [2-3 sentences with specific change + rationale]
-4. The Ripple: [2 sentences naming the smallest next step, or that it stays with you]
 ```
 
 ---
@@ -562,8 +547,7 @@ Do the rationales reference the specific audience, context, or risk that require
 - Governance check (Q1) identifies any complications or confirms classification with specificity
 - Diagnosis (Q2) names the specific design element causing the biggest gap, explains the causal mechanism (WHY, not just that it happened), and integrates sub-considerations (prompt design, modality, edit patterns) into the analysis
 - Redesign (Q3) proposes a concrete change that directly addresses the diagnosed cause
-- Ripple (Q4) names a concrete, specific next step — whether that is keeping the redesign individual, handing it to a named teammate, or turning it into a unit-level template. Staying individual is a valid answer; the Exceeds bar is specificity, not scope.
-- The four questions connect into a coherent story across all deliverables
+- The three questions connect into a coherent story across all deliverables
 
 **Meets Standard**
 - Governance check (Q1) addresses whether classification held up
