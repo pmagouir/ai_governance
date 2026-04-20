@@ -2349,15 +2349,33 @@
                     </div>
                 </div>
 
-                <!-- Worked Example -->
-                <div style="margin-top: clamp(1rem, 2vw, 1.5rem); background: rgba(252, 176, 23, 0.06); border: 1px solid rgba(252, 176, 23, 0.2); border-left: 4px solid var(--gold); border-radius: 8px; padding: clamp(1rem, 2vw, 1.5rem);">
-                    <h4 style="font-family: var(--font-subhead); font-size: clamp(0.95rem, 1.5vw, 1.1rem); color: var(--navy); margin-bottom: 0.75rem;">Worked Example: Same Task, Different Modalities</h4>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.75rem;"><strong>Task:</strong> Prepare a funder update for a quarterly meeting.</p>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.75rem;"><strong>As Automation:</strong> "Draft a one-page funder update using these three bullet points: [retention at 85%, new KPMG partnership, pilot launched April 6]. Use a professional tone. Include a subject line." Claude executes a defined task. You review and send.</p>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0rem;"><strong>As Augmentation:</strong> "I'm preparing a quarterly update for KPMG. They funded our Innovation Hub and care most about student outcomes and whether we're building toward scale. Help me think through what they need to hear this quarter — retention results, the AI pilot, the partnership portfolio — then let's build the narrative together." Claude becomes a thinking partner. You shape the strategy; Claude helps you build it. The difference is where your judgment enters: Automation puts it at the end (review). Augmentation puts it throughout (co-creation).
-                    </p>
-                    <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin-bottom: 0rem; margin-top: 0.75rem;"><strong>Read this through the horizons:</strong> Automation gives you a faster draft this week (H1). Augmentation starts producing a repeatable move your team could inherit (H2). Agency — a Claude Project with guardrails — is how that move scales across DC CAP (H3). That's the ladder the capstone climbs. For now, start with Automation and Augmentation.</p>
-                </div>
+                <!-- Worked Example (accordion) -->
+                <details style="margin-top: clamp(1rem, 2vw, 1.5rem); background: rgba(252, 176, 23, 0.06); border: 1px solid rgba(252, 176, 23, 0.2); border-left: 4px solid var(--gold); border-radius: 8px;">
+                    <summary style="padding: clamp(1rem, 2vw, 1.25rem); cursor: pointer; font-family: var(--font-subhead); font-weight: 600; font-size: clamp(0.95rem, 1.5vw, 1.1rem); color: var(--navy); list-style: none;">Worked Example — One Task, Three Horizons ▾</summary>
+                    <div style="padding: 0 clamp(1rem, 2vw, 1.25rem) clamp(1rem, 2vw, 1.25rem);">
+                        <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 1rem 0;"><strong>Task:</strong> Prepare DC CAP's quarterly funder update for KPMG.</p>
+
+                        <div style="background: rgba(16, 26, 76, 0.04); border-left: 3px solid var(--navy); border-radius: 0 6px 6px 0; padding: clamp(0.75rem, 1.5vw, 1rem); margin-bottom: 0.75rem;">
+                            <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--navy); margin: 0 0 0.4rem 0;">H1 · Personal (this week)</p>
+                            <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 0.4rem 0;">Paste this quarter's three data points — retention at 85%, the April 6 pilot launch, the new partnership — into Claude: <em>"Draft a one-page KPMG update. Professional tone. Include a subject line."</em> You review, edit, send. The draft is faster. The judgment stays yours.</p>
+                            <p style="font-size: clamp(0.85rem, 1.2vw, 0.9rem); line-height: 1.5; color: var(--dark-gray); margin: 0;"><strong>Delegation:</strong> Automation. Your review is where judgment enters.</p>
+                        </div>
+
+                        <div style="background: rgba(131, 82, 255, 0.05); border-left: 3px solid var(--purple); border-radius: 0 6px 6px 0; padding: clamp(0.75rem, 1.5vw, 1rem); margin-bottom: 0.75rem;">
+                            <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--purple); margin: 0 0 0.4rem 0;">H2 · Team (within 4–6 weeks)</p>
+                            <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 0.4rem 0;">You notice every funder update your team writes follows the same shape. You turn the prompt into a Claude Project: system instructions that name KPMG's priorities, the quarterly cadence, DC CAP's tone, and a link to the latest retention data. Anyone on the development team now produces a funder-ready first draft in ten minutes.</p>
+                            <p style="font-size: clamp(0.85rem, 1.2vw, 0.9rem); line-height: 1.5; color: var(--dark-gray); margin: 0;"><strong>Delegation:</strong> Augmentation. Your judgment shapes the Project so the team inherits a pattern, not a one-off.</p>
+                        </div>
+
+                        <div style="background: rgba(252, 176, 23, 0.07); border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0; padding: clamp(0.75rem, 1.5vw, 1rem); margin-bottom: 0.75rem;">
+                            <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--gold); margin: 0 0 0.4rem 0;">H3 · Enterprise (this pilot cycle)</p>
+                            <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 0.4rem 0;">Three units surface the same pattern — development, academic affairs, operations. DC CAP stands up one external-update engine: a shared Claude Project with governance-tier rules, voice calibration, and required review steps. The whole organization produces on-brand external communications at speed.</p>
+                            <p style="font-size: clamp(0.85rem, 1.2vw, 0.9rem); line-height: 1.5; color: var(--dark-gray); margin: 0;"><strong>Delegation:</strong> Agency. Claude operates inside guardrails leadership sets. This is what the capstone climbs toward.</p>
+                        </div>
+
+                        <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--navy); margin: 0; padding-top: 0.5rem; border-top: 1px solid rgba(16, 26, 76, 0.08);"><strong>Takeaway:</strong> The same task lives at three horizons. Week 2 is H1 reps. The H2 moment is when your own work starts looking like a pattern. Notice it — that's the capstone signal.</p>
+                    </div>
+                </details>
 
                 <!-- Challenge + Governance Pulse -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.75rem, 1.5vw, 1rem); margin-top: clamp(1rem, 2vw, 1.5rem);">
