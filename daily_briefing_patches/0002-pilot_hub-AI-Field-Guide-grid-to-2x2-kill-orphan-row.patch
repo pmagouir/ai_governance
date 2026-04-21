@@ -1,0 +1,40 @@
+From 664773f52c3c159501d17a947e929aa13bc0e27d Mon Sep 17 00:00:00 2001
+From: Preston Magouirk <preston.magouirk@dccap.org>
+Date: Tue, 21 Apr 2026 09:56:53 -0400
+Subject: [PATCH 2/2] pilot_hub: AI Field Guide grid to 2x2 (kill orphan row)
+
+Four resource cards on auto-fit grid were rendering as 3 across plus
+one orphan. Forced 2x2 layout at viewport widths above 720px, single
+column below. Each card now gets ~500px at 1100px max width, which
+fits the 3-5 resource items per card comfortably.
+
+Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>
+---
+ pilot_hub.html | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/pilot_hub.html b/pilot_hub.html
+index d651c4f..d7b8ed5 100644
+--- a/pilot_hub.html
++++ b/pilot_hub.html
+@@ -1659,10 +1659,16 @@
+             max-width: 1100px;
+             margin: 0 auto;
+             display: grid;
+-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
++            grid-template-columns: repeat(2, 1fr);
+             gap: clamp(1.5rem, 2.5vw, 2rem);
+         }
+ 
++        @media (max-width: 720px) {
++            .resources-grid {
++                grid-template-columns: 1fr;
++            }
++        }
++
+         .resource-category-card {
+             background-color: var(--white);
+             border-radius: 6px;
+-- 
+2.34.1
+

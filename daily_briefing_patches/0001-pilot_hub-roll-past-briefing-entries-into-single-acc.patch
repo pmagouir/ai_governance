@@ -1,0 +1,139 @@
+From 1da35841ee18491040768c695d409278f86ec2b6 Mon Sep 17 00:00:00 2001
+From: Preston Magouirk <preston.magouirk@dccap.org>
+Date: Tue, 21 Apr 2026 08:34:56 -0400
+Subject: [PATCH 1/2] pilot_hub: roll past briefing entries into single
+ accordion
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Yesterday's layout listed every past daily briefing open, creating
+heavy scroll on the pilot hub. Now the featured (today) entry stays
+visible up top, and everything else collapses behind a single
+'Past Entries (N) ▼' toggle. Click to reveal the list; each archived
+entry still expands individually on click.
+
+Changes: added .archive-toggle / .archive-collapsible CSS, modified
+initializeNewsletter() to wrap archive markup, added
+toggleArchiveSection() handler with keyboard (Enter/Space) + ARIA
+support. Removed .archive-entries grid class from outer container so
+layout no longer double-spaces.
+
+Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>
+---
+ pilot_hub.html | 77 ++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 75 insertions(+), 2 deletions(-)
+
+diff --git a/pilot_hub.html b/pilot_hub.html
+index 5b58a5d..d651c4f 100644
+--- a/pilot_hub.html
++++ b/pilot_hub.html
+@@ -1597,6 +1597,58 @@
+             font-style: italic;
+         }
+ 
++        /* Past Entries: outer accordion toggle */
++        .archive-toggle {
++            background-color: var(--white);
++            border: 1px solid rgba(16, 26, 76, 0.12);
++            border-radius: 6px;
++            padding: 1rem 1.5rem;
++            cursor: pointer;
++            display: flex;
++            justify-content: space-between;
++            align-items: center;
++            font-family: var(--font-subhead);
++            font-weight: 700;
++            color: var(--navy);
++            font-size: clamp(0.95rem, 1.4vw, 1.05rem);
++            transition: all 0.2s ease;
++            user-select: none;
++        }
++
++        .archive-toggle:hover {
++            border-color: var(--purple);
++            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
++        }
++
++        .archive-toggle-count {
++            color: #999;
++            font-weight: 400;
++            font-size: 0.9em;
++            margin-left: 0.4rem;
++        }
++
++        .archive-toggle-chevron {
++            color: var(--purple);
++            font-size: 1rem;
++            transition: transform 0.25s ease;
++            margin-left: 1rem;
++        }
++
++        .archive-toggle.expanded .archive-toggle-chevron {
++            transform: rotate(180deg);
++        }
++
++        .archive-collapsible {
++            max-height: 0;
++            overflow: hidden;
++            transition: max-height 0.4s ease;
++        }
++
++        .archive-collapsible.expanded {
++            max-height: 10000px;
++            margin-top: clamp(1.5rem, 2vw, 2rem);
++        }
++
+         /* External Resources Section */
+         .external-resources-section {
+             background-color: var(--white);
+@@ -2783,7 +2835,7 @@
+ 
+     <div class="newsletter-container">
+         <div id="featured-entry-container"></div>
+-        <div id="archive-entries-container" class="archive-entries"></div>
++        <div id="archive-entries-container" style="margin-top: clamp(1.5rem, 2.5vw, 2rem);"></div>
+     </div>
+ </section>
+ 
+@@ -3092,8 +3144,22 @@
+             return;
+         }
+ 
+-        let archiveHTML = '<h3 style="color: var(--navy); margin-bottom: 1.5rem; font-family: var(--font-subhead); text-align: center;">Past Entries</h3>';
++        // Outer accordion: collapses all past entries behind a single toggle.
++        // User sees the featured (today) entry plus a "Past Entries (N)" toggle.
++        // Click to reveal the archive list; each archived entry still expands individually on click.
++        let archiveHTML = `
++            <div class="archive-toggle" onclick="toggleArchiveSection(this)" role="button" tabindex="0"
++                 aria-expanded="false" aria-controls="archive-list"
++                 onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleArchiveSection(this);}">
++                <span>Past Entries <span class="archive-toggle-count">(${archive.length})</span></span>
++                <span class="archive-toggle-chevron" aria-hidden="true">▼</span>
++            </div>
++            <div id="archive-list" class="archive-collapsible">
++                <div class="archive-entries">`;
+         archive.forEach(entry => { archiveHTML += renderArchiveEntry(entry); });
++        archiveHTML += `
++                </div>
++            </div>`;
+         archiveContainer.innerHTML = archiveHTML;
+     }
+ 
+@@ -3101,6 +3167,13 @@
+         element.classList.toggle('expanded');
+     }
+ 
++    function toggleArchiveSection(toggleEl) {
++        const expanded = toggleEl.classList.toggle('expanded');
++        const list = document.getElementById('archive-list');
++        if (list) list.classList.toggle('expanded', expanded);
++        toggleEl.setAttribute('aria-expanded', expanded ? 'true' : 'false');
++    }
++
+     // Navigation highlighting
+     function setupNavigation() {
+         const sections = document.querySelectorAll('section[id]');
+-- 
+2.34.1
+
