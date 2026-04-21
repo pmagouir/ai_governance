@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Ladder. Two Examples. — DC CAP AI Pilot Week 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+
+.slide {
+    width: 100vw; height: 100vh; height: 100dvh;
+    overflow: hidden; scroll-snap-align: start;
+    display: flex; flex-direction: column; position: relative;
+}
+.slide-content {
+    flex: 1; display: flex; flex-direction: column;
+    justify-content: flex-start;
+    max-height: 100%; overflow: hidden;
+    padding: clamp(2.5rem, 7vh, 5rem) var(--slide-padding) clamp(1.5rem, 3vh, 2.5rem);
+}
+.slide-hero .slide-content {
+    justify-content: flex-end;
+    padding-bottom: clamp(2.5rem, 8vh, 5rem);
+    padding-top: var(--slide-padding);
+}
+
+:root {
+    --navy: #101A4C;
+    --navy-deep: #0B1236;
+    --navy-mid: #162060;
+    --purple: #8352FF;
+    --purple-glow: rgba(131, 82, 255, 0.15);
+    --blue: #87B7D5;
+    --blue-glow: rgba(135, 183, 213, 0.12);
+    --gold: #FCB017;
+    --gold-glow: rgba(252, 176, 23, 0.12);
+    --tan: #FFF4ED;
+    --white: #FFFFFF;
+    --text-main: rgba(255, 255, 255, 0.92);
+    --text-secondary: rgba(255, 255, 255, 0.65);
+    --text-dim: rgba(255, 255, 255, 0.38);
+    --card-bg: rgba(255, 255, 255, 0.045);
+    --card-border: rgba(255, 255, 255, 0.09);
+
+    --font-display: 'Noto Serif SemiCondensed', Georgia, serif;
+    --font-body: 'Noto Serif', Georgia, serif;
+    --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --title-size: clamp(2.2rem, 6vw, 4.5rem);
+    --h2-size: clamp(1.7rem, 4.2vw, 3rem);
+    --h3-size: clamp(1.2rem, 2.6vw, 1.8rem);
+    --body-size: clamp(1rem, 1.55vw, 1.25rem);
+    --body-lg: clamp(1.1rem, 2vw, 1.5rem);
+    --small-size: clamp(0.85rem, 1.25vw, 1.05rem);
+    --mono-size: clamp(0.72rem, 1.05vw, 0.88rem);
+
+    --slide-padding: clamp(2rem, 6vw, 6rem);
+    --content-gap: clamp(1rem, 2.5vw, 2.5rem);
+    --card-padding: clamp(1.1rem, 2.2vw, 1.75rem);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --duration-normal: 0.6s;
+}
+
+@media (max-height: 700px) {
+    :root { --title-size: clamp(1.6rem, 5vw, 3rem); --h2-size: clamp(1.3rem, 3.5vw, 2.2rem); --body-size: clamp(0.85rem, 1.35vw, 1.05rem); --body-lg: clamp(0.95rem, 1.75vw, 1.25rem); --h3-size: clamp(1rem, 2.2vw, 1.45rem); }
+    .slide-content { padding-top: clamp(1.5rem, 4vh, 3rem); }
+}
+@media (max-height: 600px) {
+    :root { --title-size: clamp(1.3rem, 4vw, 2.2rem); --h2-size: clamp(1.05rem, 2.8vw, 1.6rem); --body-size: clamp(0.78rem, 1.2vw, 0.95rem); --h3-size: clamp(0.9rem, 1.8vw, 1.2rem); }
+    .slide-content { padding-top: clamp(1rem, 3vh, 2rem); }
+    .nav-dots { display: none; }
+}
+@media (max-height: 500px) {
+    :root { --title-size: clamp(1.1rem, 3.5vw, 1.8rem); --body-size: clamp(0.7rem, 1vw, 0.85rem); }
+}
+@media (max-width: 780px) {
+    .ladder-row, .chain-row, .skills-grid, .takeaway-grid { flex-direction: column !important; }
+    .ladder-arrow, .chain-arrow { transform: rotate(90deg); margin: 0 auto !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+    html { scroll-behavior: auto; }
+    .reveal, .reveal-scale { opacity: 1 !important; transform: none !important; }
+}
+@media print {
+    html { scroll-snap-type: none; }
+    .slide { page-break-after: always; page-break-inside: avoid; scroll-snap-align: unset; height: 100vh; }
+    .slide:last-child { page-break-after: auto; }
+    .nav-dots, .progress-bar { display: none !important; }
+    .reveal, .reveal-scale { opacity: 1 !important; transform: none !important; }
+}
+
+/* === TYPOGRAPHY === */
+body { font-family: var(--font-body); font-size: var(--body-size); line-height: 1.6; color: var(--text-main); background: var(--navy-deep); }
+h1 { font-family: var(--font-display); font-size: var(--title-size); font-weight: 900; line-height: 1.04; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); }
+h2 { font-family: var(--font-display); font-size: var(--h2-size); font-weight: 900; line-height: 1.08; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); }
+h3 { font-family: var(--font-subhead); font-size: var(--h3-size); font-weight: 700; line-height: 1.25; color: var(--white); }
+p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
+.eyebrow { font-family: var(--font-mono); font-size: var(--mono-size); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: clamp(0.5rem, 1vh, 0.9rem); }
+.accent-bar { width: clamp(3rem, 8vw, 6rem); height: 4px; background: var(--purple); margin-bottom: clamp(0.5rem, 1vh, 1rem); }
+
+/* === REVEALS === */
+.reveal { opacity: 0; transform: translateY(clamp(15px, 3vh, 30px)); transition: opacity var(--duration-normal) var(--ease-out-expo), transform var(--duration-normal) var(--ease-out-expo); }
+.reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity var(--duration-normal) var(--ease-out-expo), transform var(--duration-normal) var(--ease-spring); }
+.visible .reveal, .visible .reveal-scale { opacity: 1; transform: translateY(0) translateX(0) scale(1); }
+.reveal:nth-child(1) { transition-delay: 0s; }
+.reveal:nth-child(2) { transition-delay: 0.08s; }
+.reveal:nth-child(3) { transition-delay: 0.16s; }
+.reveal:nth-child(4) { transition-delay: 0.24s; }
+.reveal:nth-child(5) { transition-delay: 0.32s; }
+.reveal:nth-child(6) { transition-delay: 0.4s; }
+.reveal-scale:nth-child(1) { transition-delay: 0s; }
+.reveal-scale:nth-child(2) { transition-delay: 0.08s; }
+.reveal-scale:nth-child(3) { transition-delay: 0.16s; }
+.reveal-scale:nth-child(4) { transition-delay: 0.24s; }
+.reveal-scale:nth-child(5) { transition-delay: 0.32s; }
+
+/* === NAV === */
+.progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--purple); z-index: 200; transition: width 0.3s ease; width: 0; }
+.nav-dots { position: fixed; right: clamp(0.75rem, 2vw, 1.5rem); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: clamp(6px, 1vh, 10px); z-index: 100; }
+.nav-dot { width: clamp(8px, 0.8vw, 10px); height: clamp(8px, 0.8vw, 10px); border-radius: 50%; background: rgba(255,255,255,0.15); border: none; cursor: pointer; padding: 0; transition: all 0.3s ease; }
+.nav-dot.active { background: var(--purple); transform: scale(1.5); }
+
+/* === SLIDE BACKGROUNDS === */
+.slide-hero {
+    background: radial-gradient(ellipse at 20% 80%, var(--purple-glow) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 20%, var(--blue-glow) 0%, transparent 55%),
+                var(--navy);
+}
+.slide-ladder { background: radial-gradient(ellipse at 50% 40%, var(--purple-glow) 0%, transparent 60%), var(--navy-deep); }
+.slide-section-email { background: radial-gradient(ellipse at 30% 70%, var(--blue-glow) 0%, transparent 55%), var(--navy); }
+.slide-section-grant { background: radial-gradient(ellipse at 70% 30%, var(--gold-glow) 0%, transparent 55%), var(--navy); }
+.slide-horizon-1 { background: radial-gradient(ellipse at 20% 70%, rgba(135,183,213,0.07) 0%, transparent 55%), var(--navy-deep); }
+.slide-horizon-2 { background: radial-gradient(ellipse at 80% 70%, var(--purple-glow) 0%, transparent 55%), var(--navy-deep); }
+.slide-horizon-3 { background: radial-gradient(ellipse at 50% 80%, var(--gold-glow) 0%, transparent 55%), var(--navy-deep); }
+.slide-close { background: radial-gradient(ellipse at 80% 80%, var(--purple-glow) 0%, transparent 50%), radial-gradient(ellipse at 20% 30%, var(--blue-glow) 0%, transparent 50%), var(--navy-deep); }
+
+/* === HERO === */
+.slide-hero .subtitle { font-family: var(--font-subhead); font-size: var(--body-lg); font-weight: 300; color: var(--blue); line-height: 1.4; max-width: 34em; }
+.slide-hero .panel-info { font-family: var(--font-body); font-size: var(--small-size); color: var(--text-dim); line-height: 1.6; margin-top: clamp(1.5rem, 3vh, 3rem); }
+.slide-hero .panel-info strong { color: var(--text-main); }
+
+/* === LADDER SLIDE === */
+.ladder-row { display: flex; gap: clamp(0.8rem, 1.5vw, 1.25rem); margin-top: clamp(1rem, 2.5vh, 2rem); flex: 1; align-items: stretch; }
+.ladder-card { flex: 1; padding: var(--card-padding); border-radius: clamp(8px, 1.2vw, 12px); background: var(--card-bg); border-top: 4px solid; display: flex; flex-direction: column; }
+.ladder-card .lc-eyebrow { font-family: var(--font-mono); font-size: var(--mono-size); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem); }
+.ladder-card h3 { font-size: clamp(1.05rem, 1.9vw, 1.5rem); margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem); }
+.ladder-card .lc-sub { font-family: var(--font-subhead); font-size: var(--small-size); color: var(--text-secondary); line-height: 1.5; margin-bottom: clamp(0.6rem, 1.2vh, 0.9rem); }
+.ladder-card .lc-body { font-size: var(--small-size); color: var(--text-main); line-height: 1.55; flex: 1; }
+.lc-h1 { border-color: var(--blue); } .lc-h1 .lc-eyebrow, .lc-h1 h3 { color: var(--blue); }
+.lc-h2 { border-color: var(--purple); } .lc-h2 .lc-eyebrow, .lc-h2 h3 { color: var(--purple); }
+.lc-h3 { border-color: var(--gold); } .lc-h3 .lc-eyebrow, .lc-h3 h3 { color: var(--gold); }
+.ladder-caption { font-family: var(--font-subhead); font-size: var(--small-size); color: var(--text-secondary); margin-top: clamp(0.8rem, 1.5vh, 1.25rem); font-weight: 300; font-style: italic; max-width: 42em; }
+
+/* === SECTION DIVIDER === */
+.section-number { font-family: var(--font-mono); font-size: clamp(0.85rem, 1.3vw, 1.05rem); letter-spacing: 0.15em; color: var(--blue); margin-bottom: clamp(0.5rem, 1vh, 0.8rem); }
+.section-lead { font-family: var(--font-subhead); font-size: var(--body-lg); font-weight: 300; color: var(--text-main); line-height: 1.5; max-width: 34em; margin-top: clamp(1rem, 2.2vh, 1.8rem); }
+.section-note { font-family: var(--font-mono); font-size: var(--mono-size); color: var(--text-dim); letter-spacing: 0.05em; margin-top: clamp(1rem, 2vh, 1.6rem); }
+
+/* === HORIZON SLIDE LAYOUT === */
+.horizon-layout { display: flex; gap: clamp(1.5rem, 3vw, 3rem); margin-top: clamp(0.75rem, 2vh, 1.5rem); flex: 1; align-items: flex-start; }
+.horizon-main { flex: 1.5; display: flex; flex-direction: column; gap: clamp(0.8rem, 1.5vh, 1.2rem); }
+.horizon-aside { flex: 1; display: flex; flex-direction: column; gap: clamp(0.6rem, 1.2vh, 1rem); }
+.horizon-prose { font-size: var(--body-size); line-height: 1.65; color: var(--text-main); max-width: 34em; }
+.horizon-callout {
+    background: rgba(255,255,255,0.04); border-left: 4px solid;
+    padding: clamp(0.8rem, 1.6vw, 1.25rem) clamp(1rem, 2vw, 1.5rem);
+    border-radius: 0 clamp(6px, 1vw, 10px) clamp(6px, 1vw, 10px) 0;
+}
+.horizon-callout .hc-label { font-family: var(--font-mono); font-size: var(--mono-size); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3em; }
+.horizon-callout p { font-family: var(--font-subhead); font-size: var(--small-size); font-weight: 500; color: var(--text-main); line-height: 1.5; }
+.hc-h1 { border-color: var(--blue); } .hc-h1 .hc-label { color: var(--blue); }
+.hc-h2 { border-color: var(--purple); } .hc-h2 .hc-label { color: var(--purple); }
+.hc-h3 { border-color: var(--gold); } .hc-h3 .hc-label { color: var(--gold); }
+.horizon-detail { font-size: var(--small-size); color: var(--text-secondary); line-height: 1.55; max-width: 34em; }
+
+/* === CHAIN (Grant H2) === */
+.chain-row { display: flex; gap: clamp(0.5rem, 1vw, 0.8rem); margin-top: clamp(0.75rem, 1.8vh, 1.4rem); align-items: stretch; }
+.chain-step { flex: 1; background: var(--card-bg); border: 1px solid var(--card-border); border-top: 3px solid var(--purple); border-radius: clamp(6px, 1vw, 10px); padding: clamp(0.7rem, 1.4vw, 1.1rem); display: flex; flex-direction: column; }
+.chain-step .cs-num { font-family: var(--font-mono); font-size: var(--mono-size); color: var(--purple); letter-spacing: 0.1em; margin-bottom: 0.3em; }
+.chain-step .cs-name { font-family: var(--font-subhead); font-size: clamp(0.95rem, 1.6vw, 1.2rem); font-weight: 700; color: var(--white); margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem); line-height: 1.2; }
+.chain-step .cs-what { font-size: clamp(0.78rem, 1.15vw, 0.95rem); color: var(--text-secondary); line-height: 1.45; }
+
+/* === SKILLS GRID (Email H3) === */
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(0.5rem, 1vw, 0.85rem); margin-top: clamp(0.75rem, 1.6vh, 1.2rem); }
+@media (max-width: 780px) { .skills-grid { grid-template-columns: 1fr; } }
+.skill-chip { background: var(--card-bg); border: 1px solid var(--card-border); border-left: 3px solid var(--gold); border-radius: clamp(6px, 1vw, 10px); padding: clamp(0.7rem, 1.3vw, 1rem); }
+.skill-chip .sc-name { font-family: var(--font-mono); font-size: clamp(0.78rem, 1.15vw, 0.92rem); font-weight: 500; color: var(--gold); letter-spacing: 0.02em; margin-bottom: clamp(0.25rem, 0.5vh, 0.4rem); }
+.skill-chip .sc-what { font-size: clamp(0.78rem, 1.1vw, 0.92rem); color: var(--text-secondary); line-height: 1.45; }
+
+/* === FRIDAY PROMPT === */
+.friday-prompt { display: flex; flex-direction: column; gap: clamp(0.75rem, 1.5vh, 1.2rem); margin-top: clamp(1rem, 2vh, 1.75rem); flex: 1; }
+.fp-item { display: flex; gap: clamp(0.75rem, 1.5vw, 1.25rem); background: var(--card-bg); border: 1px solid var(--card-border); border-left: 4px solid; border-radius: clamp(6px, 1vw, 10px); padding: clamp(0.9rem, 1.7vw, 1.3rem); }
+.fp-num { font-family: var(--font-display); font-size: clamp(1.3rem, 2.6vw, 2rem); font-weight: 900; line-height: 1; flex-shrink: 0; min-width: clamp(2rem, 3.5vw, 3rem); }
+.fp-text { flex: 1; }
+.fp-text .fp-label { font-family: var(--font-mono); font-size: var(--mono-size); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: clamp(0.2rem, 0.4vh, 0.35rem); }
+.fp-text p { font-size: var(--body-size); color: var(--text-main); line-height: 1.5; }
+.fp-1 { border-color: var(--blue); } .fp-1 .fp-num, .fp-1 .fp-label { color: var(--blue); }
+.fp-2 { border-color: var(--purple); } .fp-2 .fp-num, .fp-2 .fp-label { color: var(--purple); }
+.fp-3 { border-color: var(--gold); } .fp-3 .fp-num, .fp-3 .fp-label { color: var(--gold); }
+
+/* === CONTACT BAR === */
+.contact-bar { display: flex; align-items: center; gap: clamp(1.25rem, 3vw, 2.5rem); margin-top: clamp(1rem, 2vh, 1.5rem); padding-top: clamp(0.75rem, 1.5vh, 1.25rem); border-top: 1px solid var(--card-border); flex-wrap: wrap; }
+.contact-bar .cn { font-family: var(--font-subhead); font-size: clamp(0.95rem, 1.4vw, 1.15rem); font-weight: 700; color: var(--white); }
+.contact-bar .ci { font-family: var(--font-subhead); font-size: var(--small-size); font-weight: 300; color: var(--text-dim); }
+.contact-bar a { color: var(--blue); text-decoration: none; }
+
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<nav class="nav-dots" aria-label="Slide navigation" id="navDots"></nav>
+
+<!-- S1: TITLE -->
+<section class="slide slide-hero" id="slide-0">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--blue);">Week 2 · Delegation</div>
+        <div class="accent-bar reveal"></div>
+        <h1 class="reveal">One Ladder.<br>Two Examples.</h1>
+        <p class="subtitle reveal">How the delegation ladder runs on work DC CAP already does.</p>
+        <div class="panel-info reveal">
+            <strong>Preston Magouirk</strong> · Chief Strategy &amp; Analytics Officer<br>
+            DC CAP AI Leadership Pilot · April 2026
+        </div>
+    </div>
+</section>
+
+<!-- S2: THE LADDER -->
+<section class="slide slide-ladder" id="slide-1">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">The Delegation Ladder</div>
+        <h2 class="reveal">Three horizons.<br>One climb.</h2>
+        <div class="ladder-row">
+            <div class="ladder-card lc-h1 reveal-scale">
+                <div class="lc-eyebrow">H1 · Personal</div>
+                <h3>Automation</h3>
+                <p class="lc-sub">Claude performs a defined task. You review.</p>
+                <p class="lc-body">Faster, better drafts for the work on your own plate. Your judgment enters at the review.</p>
+            </div>
+            <div class="ladder-card lc-h2 reveal-scale">
+                <div class="lc-eyebrow">H2 · Team</div>
+                <h3>Augmentation</h3>
+                <p class="lc-sub">Your judgment shapes a Project the team inherits.</p>
+                <p class="lc-body">A pattern, not a one-off. The team produces the same quality of first draft you would.</p>
+            </div>
+            <div class="ladder-card lc-h3 reveal-scale">
+                <div class="lc-eyebrow">H3 · Enterprise</div>
+                <h3>Agency</h3>
+                <p class="lc-sub">Claude operates inside guardrails leadership set.</p>
+                <p class="lc-body">The move is available to every unit. Agents act inside rules the leader wrote.</p>
+            </div>
+        </div>
+        <p class="ladder-caption reveal">Week 2 is H1 by design. H2 arrives at capstone design in Week 5. H3 is the capstone itself. Today we look at what all three already look like in practice.</p>
+    </div>
+</section>
+
+<!-- S3: EXAMPLE 1 — EMAIL INTRO -->
+<section class="slide slide-section-email" id="slide-2">
+    <div class="slide-content">
+        <div class="section-number reveal">Example 01</div>
+        <h2 class="reveal">Email.</h2>
+        <p class="section-lead reveal">Most of us write the kind of email where policy, tone, and boundaries all have to be right. Family escalations. Student outreach. Counselor updates. Partner follow-up.</p>
+        <p class="section-note reveal">Worked example: a family pushing back on a declined renewal.</p>
+    </div>
+</section>
+
+<!-- S4: EMAIL · H1 -->
+<section class="slide slide-horizon-1" id="slide-3">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--blue);">H1 · Personal</div>
+        <h2 class="reveal">Draft one escalation.</h2>
+        <div class="horizon-layout">
+            <div class="horizon-main">
+                <p class="horizon-prose reveal">A parent emails pushing back on a declined renewal. You redact the family's identifiers, paste the message and the renewal policy into Claude, and ask for a draft that holds the decision and acknowledges the parent's position. You read it, fix two sentences, send.</p>
+                <p class="horizon-detail reveal">Fifteen minutes became five. Policy was right. Tone was close to where you would have landed. Governance first, speed second.</p>
+            </div>
+            <div class="horizon-aside">
+                <div class="horizon-callout hc-h1 reveal">
+                    <div class="hc-label">Delegation</div>
+                    <p><strong>Automation.</strong> Claude performs. You review. Your judgment is the last word.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S5: EMAIL · H2 -->
+<section class="slide slide-horizon-2" id="slide-4">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">H2 · Team</div>
+        <h2 class="reveal">Build a Project the team inherits.</h2>
+        <div class="horizon-layout">
+            <div class="horizon-main">
+                <p class="horizon-prose reveal">You notice every escalation follows the same shape. Acknowledge, restate policy, offer the Tier 1 path, close firmly. You open a Claude Project, paste the escalation ladder, the Tier 1/2/3 language, and three redacted responses you already approved. Anyone on the student services team now produces a first draft the way you would.</p>
+                <p class="horizon-detail reveal">The Project carries the policy. The person adds the context.</p>
+            </div>
+            <div class="horizon-aside">
+                <div class="horizon-callout hc-h2 reveal">
+                    <div class="hc-label">Delegation</div>
+                    <p><strong>Augmentation.</strong> Your judgment shapes the Project so the team inherits a pattern, not a one-off.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S6: EMAIL · H3 -->
+<section class="slide slide-horizon-3" id="slide-5">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">H3 · Enterprise</div>
+        <h2 class="reveal">A skill library, already shipped.</h2>
+        <p class="horizon-prose reveal" style="max-width: 42em;">The Project becomes a skill. Six now ship across DC CAP. Claude produces net-new email in the correct register for the audience, inside rules leadership wrote.</p>
+        <div class="skills-grid">
+            <div class="skill-chip reveal-scale">
+                <div class="sc-name">dc-cap-escalation</div>
+                <div class="sc-what">Family pushback, council inquiries, Tier 1/2/3 routing.</div>
+            </div>
+            <div class="skill-chip reveal-scale">
+                <div class="sc-name">dc-cap-situational-email</div>
+                <div class="sc-what">Inbound student or family situational inquiries.</div>
+            </div>
+            <div class="skill-chip reveal-scale">
+                <div class="sc-name">dc-cap-student-outreach</div>
+                <div class="sc-what">The 18 touchpoints of the scholarship journey.</div>
+            </div>
+            <div class="skill-chip reveal-scale">
+                <div class="sc-name">dc-cap-counselor-outreach</div>
+                <div class="sc-what">The 5 touchpoints of the counselor series.</div>
+            </div>
+            <div class="skill-chip reveal-scale">
+                <div class="sc-name">dc-cap-partner-outreach</div>
+                <div class="sc-what">The 7 touchpoints of the 14 university partners.</div>
+            </div>
+            <div class="skill-chip reveal-scale">
+                <div class="sc-name">checking-communications</div>
+                <div class="sc-what">Policy, voice, and brand check before send.</div>
+            </div>
+        </div>
+        <div class="horizon-callout hc-h3 reveal" style="margin-top: clamp(0.75rem, 1.5vh, 1.25rem); max-width: 42em;">
+            <div class="hc-label">Delegation</div>
+            <p><strong>Agency.</strong> Claude operates inside guardrails leadership set. This H3 is not aspirational. It is running.</p>
+        </div>
+    </div>
+</section>
+
+<!-- S7: EXAMPLE 2 — GRANT INTRO -->
+<section class="slide slide-section-grant" id="slide-6">
+    <div class="slide-content">
+        <div class="section-number reveal" style="color: var(--gold);">Example 02</div>
+        <h2 class="reveal">Grant writing.</h2>
+        <p class="section-lead reveal">Every nonprofit writes grants. The development office writes more than most. The second example sits on top of a working system, not a hypothetical one.</p>
+        <p class="section-note reveal">The watchlist scan runs Monday. The CEO briefing ships Friday. Both are live.</p>
+    </div>
+</section>
+
+<!-- S8: GRANT · H1 -->
+<section class="slide slide-horizon-1" id="slide-7">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--blue);">H1 · Personal</div>
+        <h2 class="reveal">Draft one LOI.</h2>
+        <div class="horizon-layout">
+            <div class="horizon-main">
+                <p class="horizon-prose reveal">Earlier this quarter the development team drafted a Gates Foundation LOI. We loaded our retention data, the three strategic lanes, and the funder's stated priorities into Claude and asked for three opening paragraphs, each with a different angle. We picked one, revised the rest by hand, and sent.</p>
+                <p class="horizon-detail reveal">Three angles in thirty minutes. Revising and landing the voice took the rest of the afternoon. The LOI went in on time.</p>
+            </div>
+            <div class="horizon-aside">
+                <div class="horizon-callout hc-h1 reveal">
+                    <div class="hc-label">Delegation</div>
+                    <p><strong>Automation.</strong> Claude performs. The judgment stays human.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S9: GRANT · H2 -->
+<section class="slide slide-horizon-2" id="slide-8">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">H2 · Team</div>
+        <h2 class="reveal">Five agents, running now.</h2>
+        <div class="chain-row">
+            <div class="chain-step reveal-scale">
+                <div class="cs-num">01</div>
+                <div class="cs-name">Scout</div>
+                <div class="cs-what">Scans the funder watchlist Monday morning.</div>
+            </div>
+            <div class="chain-step reveal-scale">
+                <div class="cs-num">02</div>
+                <div class="cs-name">Fit Analyst</div>
+                <div class="cs-what">Scores every lead against the three strategic lanes.</div>
+            </div>
+            <div class="chain-step reveal-scale">
+                <div class="cs-num">03</div>
+                <div class="cs-name">Writer</div>
+                <div class="cs-what">Drafts in Preston's voice, register matched to funder type.</div>
+            </div>
+            <div class="chain-step reveal-scale">
+                <div class="cs-num">04</div>
+                <div class="cs-name">Auditor</div>
+                <div class="cs-what">Tears the draft apart across four adversarial lenses.</div>
+            </div>
+            <div class="chain-step reveal-scale">
+                <div class="cs-num">05</div>
+                <div class="cs-name">Director</div>
+                <div class="cs-what">Compiles Friday's CEO briefing for Eric.</div>
+            </div>
+        </div>
+        <div class="horizon-layout" style="margin-top: clamp(0.75rem, 1.6vh, 1.25rem);">
+            <div class="horizon-main">
+                <p class="horizon-prose reveal">Each agent is a skill in the library. Each pulls in its own kit as it works, preston-writing, funder-framing, dc-cap-org-intelligence. The single move became an agent chain the development team inherits.</p>
+            </div>
+            <div class="horizon-aside">
+                <div class="horizon-callout hc-h2 reveal">
+                    <div class="hc-label">Delegation</div>
+                    <p><strong>Augmentation, reaching toward Agency.</strong> Judgment shapes every step. The chain carries the policy.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S10: GRANT · H3 -->
+<section class="slide slide-horizon-3" id="slide-9">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">H3 · Enterprise</div>
+        <h2 class="reveal">Not yet. But the shape generalizes.</h2>
+        <div class="horizon-layout">
+            <div class="horizon-main">
+                <p class="horizon-prose reveal">The agent-chain shape is not running in any other unit. Yet. It would fit a Student Scout, Fit Analyst, Response Writer, Auditor, and Director for family escalations. It would fit an Operations Scout, Compliance Analyst, and Auditor for recurring filings. That is what a capstone looks like.</p>
+                <p class="horizon-detail reveal">Honest read: H3 has shipped on email, as a skill library any unit can call. H2 has shipped on grants, as a five-agent chain. H3 on grants, cloning the chain into other units, is the question we are asking each of you to answer in Week 8.</p>
+            </div>
+            <div class="horizon-aside">
+                <div class="horizon-callout hc-h3 reveal">
+                    <div class="hc-label">Delegation</div>
+                    <p><strong>Agency.</strong> Agents act inside guardrails each unit leader sets. The deliverable you ship in Week 8 is a candidate.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S11: FRIDAY PROMPT -->
+<section class="slide slide-close" id="slide-10">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--blue);">For Friday</div>
+        <h2 class="reveal">Bring your own.</h2>
+        <div class="friday-prompt">
+            <div class="fp-item fp-1 reveal">
+                <div class="fp-num">01</div>
+                <div class="fp-text">
+                    <div class="fp-label">Personal output · H1</div>
+                    <p>What did you do with AI this week to strengthen your own work output? What worked, what did you have to fix?</p>
+                </div>
+            </div>
+            <div class="fp-item fp-2 reveal">
+                <div class="fp-num">02</div>
+                <div class="fp-text">
+                    <div class="fp-label">Delegation</div>
+                    <p>Was this Automation or Augmentation? How did you decide? Where did you hesitate?</p>
+                </div>
+            </div>
+            <div class="fp-item fp-3 reveal">
+                <div class="fp-num">03</div>
+                <div class="fp-text">
+                    <div class="fp-label">Team and enterprise · H2 / H3</div>
+                    <p>Did this create something your team could use? Did it make possible an org-wide skill DC CAP does not have today? If not, could it have, and how?</p>
+                </div>
+            </div>
+        </div>
+        <div class="contact-bar reveal">
+            <span class="cn">Preston Magouirk</span>
+            <span class="ci">preston.magouirk@dccap.org</span>
+            <span class="ci"><a href="https://dccapinnovation.org">dccapinnovation.org</a></span>
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    const progressBar = document.getElementById('progressBar');
+    const navContainer = document.getElementById('navDots');
+    slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+        dot.addEventListener('click', () => slides[i].scrollIntoView({ behavior: 'smooth' }));
+        navContainer.appendChild(dot);
+    });
+    const dots = navContainer.querySelectorAll('.nav-dot');
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                const idx = Array.from(slides).indexOf(entry.target);
+                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+                progressBar.style.width = ((idx + 1) / totalSlides * 100) + '%';
+            }
+        });
+    }, { threshold: 0.4 });
+    slides.forEach(s => obs.observe(s));
+    document.addEventListener('keydown', (e) => {
+        const ci = Array.from(dots).findIndex(d => d.classList.contains('active'));
+        if (['ArrowDown','ArrowRight',' ','PageDown'].includes(e.key) && ci < totalSlides - 1) {
+            e.preventDefault(); slides[ci + 1].scrollIntoView({ behavior: 'smooth' });
+        } else if (['ArrowUp','ArrowLeft','PageUp'].includes(e.key) && ci > 0) {
+            e.preventDefault(); slides[ci - 1].scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+})();
+</script>
+</body>
+</html>
