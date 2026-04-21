@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": "2.0",
-    "lastGenerated": "2026-04-20T07:00:00-04:00",
-    "lastPublished": "2026-04-20T07:05:00-04:00",
+    "lastGenerated": "2026-04-21T08:10:00-04:00",
+    "lastPublished": "2026-04-21T08:15:00-04:00",
     "categories": {
       "foundational": { "label": "Foundational Learning", "class": "category-foundational" },
       "tips": { "label": "Tips & Tricks", "class": "category-tips" },
@@ -21,6 +21,17 @@
   },
   "drafts": [],
   "published": [
+    {
+      "date": "2026-04-21",
+      "category": "tips",
+      "title": "Automation or Augmentation: Name the Mode Before You Prompt",
+      "content": "Every time you open Claude, you make a choice about mode. You are either asking Claude to do the task (automation) or asking it to help you think through it (augmentation). The shape of a good prompt changes based on the answer. Week 2 of the pilot frames this as the difference between Automation and Augmentation, two of the three interaction modalities in DC CAP's AI Fluency Framework. Each mode is valid. Each requires different prompt habits. Automation works when the task is well-defined and the output pattern is clear. Drafting a templated partner reminder email, formatting meeting notes into a summary, or converting a CSV into a budget table are automation prompts. You specify what you want, Claude produces it, you review and send. Augmentation works when the task requires judgment and you benefit from a thinking partner. Structuring an argument for a board memo, stress-testing a strategic decision, or diagnosing why a student retention pattern looks strange are augmentation prompts. You describe the problem, Claude offers frames and options, and you decide what holds. The one-minute test before each Claude session: name what kind of help you need before you type. If you want output, lead with the output specification. If you want thinking, lead with the problem and invite frames before answers. Confusion between these two modes is a common source of friction in early Claude use. A prompt written as automation when you needed augmentation produces a polished document you then have to rebuild anyway. Name the mode first, then write the prompt.",
+      "tryThis": "Before your next Claude session, write one sentence in your notebook: 'I need output' or 'I need to think.' Run the session. Then check: did the prompt shape match what you actually needed? Do this three times this week and note the ones where the mode was wrong.",
+      "resource": "https://dccapinnovation.org/ai_fluency_framework.html",
+      "sourceNotes": "Claim: DC CAP AI Fluency Framework includes three interaction modalities (Automation, Augmentation, Agency) | Source: GROUNDED (ai_fluency_framework.html lines 779, 793, 807; Framework_for_AI_Fluency_v1.5.md)\nClaim: Week 2 of the pilot is 'Delegation — Automation and Augmentation' | Source: GROUNDED (pilot_hub.html line 2320)\nClaim: Automation suits well-defined tasks with clear output patterns; Augmentation suits tasks requiring judgment | Source: GROUNDED (Framework_for_AI_Fluency_v1.5.md modality definitions; ai_fluency_framework.html lines 779-810)\nEditorial: 'Confusion between these two modes is a common source of friction in early Claude use' is an experiential observation from pilot design, not a cited statistic.\nAdversarial review 20260421: Zero forbidden phrases (no leverage/navigate/landscape/robust/holistic/foster/align/showcase/delve/empower). Zero em-dashes. Zero contrastive 'not X, but Y' constructions. Removed opening rhetorical question from v1 draft. Replaced mild cliche 'even if you do not notice' with 'about mode' for specificity. Word count 257 (in 240-280 band matching prior tips entries). Declarative close, not TED-talk.",
+      "validationStatus": "PASSED",
+      "status": "published"
+    },
     {
       "date": "2026-04-20",
       "category": "foundational",
