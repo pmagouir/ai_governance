@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From H1 to H3 — The Development Office System</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+
+:root {
+    --navy: #101A4C;
+    --navy-deep: #0B1236;
+    --navy-mid: #162060;
+    --purple: #8352FF;
+    --purple-glow: rgba(131, 82, 255, 0.18);
+    --blue: #87B7D5;
+    --blue-glow: rgba(135, 183, 213, 0.14);
+    --gold: #FCB017;
+    --gold-glow: rgba(252, 176, 23, 0.14);
+    --tan: #FFF4ED;
+    --white: #FFFFFF;
+    --text-main: rgba(255, 255, 255, 0.93);
+    --text-secondary: rgba(255, 255, 255, 0.68);
+    --text-dim: rgba(255, 255, 255, 0.42);
+    --card-bg: rgba(255, 255, 255, 0.045);
+    --card-bg-strong: rgba(255, 255, 255, 0.075);
+    --card-border: rgba(255, 255, 255, 0.09);
+    --card-border-strong: rgba(255, 255, 255, 0.16);
+
+    --font-display: 'Noto Serif SemiCondensed', Georgia, serif;
+    --font-body: 'Noto Serif', Georgia, serif;
+    --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --title-size: clamp(2.2rem, 6vw, 4.5rem);
+    --h2-size: clamp(1.7rem, 4.2vw, 3rem);
+    --h3-size: clamp(1.2rem, 2.6vw, 1.8rem);
+    --body-size: clamp(1rem, 1.55vw, 1.25rem);
+    --body-lg: clamp(1.1rem, 2vw, 1.5rem);
+    --small-size: clamp(0.85rem, 1.25vw, 1.05rem);
+    --mono-size: clamp(0.72rem, 1.05vw, 0.88rem);
+
+    --slide-padding: clamp(2rem, 6vw, 6rem);
+    --content-gap: clamp(1rem, 2.5vw, 2.5rem);
+    --card-padding: clamp(1.1rem, 2.2vw, 1.75rem);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --duration-normal: 0.6s;
+    --duration-slow: 1s;
+}
+
+@media (max-height: 700px) {
+    :root { --title-size: clamp(1.6rem, 5vw, 3rem); --h2-size: clamp(1.3rem, 3.5vw, 2.2rem); --body-size: clamp(0.85rem, 1.35vw, 1.05rem); --body-lg: clamp(0.95rem, 1.75vw, 1.25rem); --h3-size: clamp(1rem, 2.2vw, 1.45rem); }
+}
+@media (max-height: 600px) {
+    :root { --title-size: clamp(1.3rem, 4vw, 2.2rem); --h2-size: clamp(1.05rem, 2.8vw, 1.6rem); --body-size: clamp(0.78rem, 1.2vw, 0.95rem); --h3-size: clamp(0.9rem, 1.8vw, 1.2rem); }
+    .nav-dots { display: none; }
+}
+@media (max-height: 500px) {
+    :root { --title-size: clamp(1.1rem, 3.5vw, 1.8rem); --body-size: clamp(0.7rem, 1vw, 0.85rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+    html { scroll-behavior: auto; }
+    .reveal, .reveal-scale, .stagger > * { opacity: 1 !important; transform: none !important; }
+}
+@media print {
+    html { scroll-snap-type: none; }
+    .slide { page-break-after: always; page-break-inside: avoid; scroll-snap-align: unset; height: 100vh; }
+    .slide:last-child { page-break-after: auto; }
+    .nav-dots, .progress-bar { display: none !important; }
+    .reveal, .reveal-scale, .stagger > * { opacity: 1 !important; transform: none !important; }
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--body-size);
+    line-height: 1.6;
+    color: var(--text-main);
+    background: var(--navy-deep);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* === SLIDE FRAME === */
+.slide {
+    width: 100vw; height: 100vh; height: 100dvh;
+    overflow: hidden; scroll-snap-align: start;
+    display: flex; flex-direction: column; position: relative;
+}
+.slide-content {
+    flex: 1; display: flex; flex-direction: column;
+    justify-content: flex-start;
+    max-height: 100%; overflow: hidden;
+    padding: clamp(2.5rem, 7vh, 5rem) var(--slide-padding) clamp(1.5rem, 3vh, 2.5rem);
+    position: relative; z-index: 2;
+}
+
+/* === ATMOSPHERE (per-slide gradient meshes) === */
+.atmosphere {
+    position: absolute; inset: 0; overflow: hidden; z-index: 1;
+    pointer-events: none;
+}
+.atmosphere::before, .atmosphere::after {
+    content: ''; position: absolute; border-radius: 50%;
+    filter: blur(90px); opacity: 0.65;
+}
+.atmos-purple::before { width: 55%; height: 55%; top: -15%; right: -10%; background: var(--purple); opacity: 0.18; }
+.atmos-purple::after { width: 45%; height: 45%; bottom: -20%; left: -10%; background: var(--navy); opacity: 0.5; }
+.atmos-gold::before { width: 50%; height: 50%; top: -10%; left: -15%; background: var(--gold); opacity: 0.12; }
+.atmos-gold::after { width: 40%; height: 40%; bottom: -20%; right: -10%; background: var(--purple); opacity: 0.18; }
+.atmos-blue::before { width: 60%; height: 60%; top: -20%; left: 30%; background: var(--blue); opacity: 0.12; }
+.atmos-blue::after { width: 35%; height: 35%; bottom: -10%; left: -5%; background: var(--purple); opacity: 0.15; }
+
+/* === TYPOGRAPHY === */
+h1 { font-family: var(--font-display); font-size: var(--title-size); font-weight: 900; line-height: 1.04; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); }
+h2 { font-family: var(--font-display); font-size: var(--h2-size); font-weight: 900; line-height: 1.08; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); }
+h3 { font-family: var(--font-subhead); font-size: var(--h3-size); font-weight: 700; line-height: 1.25; color: var(--white); }
+p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
+.eyebrow { font-family: var(--font-mono); font-size: var(--mono-size); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: clamp(0.5rem, 1vh, 0.9rem); }
+.accent-bar { width: clamp(3rem, 8vw, 6rem); height: 3px; background: var(--purple); margin-bottom: clamp(0.75rem, 1.5vh, 1.25rem); }
+.subhead-big { font-family: var(--font-subhead); font-size: var(--body-lg); font-weight: 300; color: var(--text-secondary); line-height: 1.5; max-width: 70ch; }
+
+/* Slide meta */
+.slide-meta {
+    position: absolute;
+    top: clamp(1rem, 2.5vh, 2rem);
+    left: var(--slide-padding);
+    right: var(--slide-padding);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    z-index: 3;
+}
+.slide-meta .label { color: var(--text-secondary); }
+.slide-meta .num { color: var(--purple); font-weight: 500; }
+
+/* === HORIZONS ROW === */
+.horizons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: clamp(1rem, 2.5vw, 2.5rem);
+    margin-top: clamp(1rem, 2vh, 1.5rem);
+}
+@media (max-width: 780px) { .horizons { grid-template-columns: 1fr; } }
+
+.horizon {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-top: 4px solid var(--purple);
+    padding: var(--card-padding);
+    display: flex; flex-direction: column;
+    gap: clamp(0.5rem, 1vh, 0.75rem);
+    position: relative;
+    transition: background var(--duration-normal) var(--ease-out-expo), transform var(--duration-normal) var(--ease-out-expo);
+}
+.horizon:hover { background: var(--card-bg-strong); transform: translateY(-3px); }
+.horizon.h1 { border-top-color: var(--blue); }
+.horizon.h2 { border-top-color: var(--purple); }
+.horizon.h3 { border-top-color: var(--gold); }
+
+.horizon .h-tag {
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    letter-spacing: 0.12em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.horizon.h1 .h-tag { color: var(--blue); }
+.horizon.h2 .h-tag { color: var(--purple); }
+.horizon.h3 .h-tag { color: var(--gold); }
+
+.horizon h3 {
+    font-size: var(--h3-size);
+    margin-top: 0.25rem;
+}
+.horizon .body {
+    font-size: var(--body-size);
+    color: var(--text-main);
+    line-height: 1.55;
+}
+.horizon .hit {
+    margin-top: auto;
+    padding-top: clamp(0.5rem, 1vh, 0.75rem);
+    border-top: 1px dashed var(--card-border-strong);
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+/* === PIPELINE FLOW === */
+.pipeline-flow {
+    display: flex;
+    align-items: stretch;
+    gap: clamp(0.5rem, 1vw, 1rem);
+    margin-top: clamp(1rem, 2.5vh, 2rem);
+    flex-wrap: wrap;
+}
+.pipe-node {
+    flex: 1; min-width: clamp(100px, 14vw, 160px);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-top: 3px solid var(--purple);
+    padding: clamp(0.85rem, 1.75vw, 1.25rem);
+    display: flex; flex-direction: column;
+    gap: 0.4rem;
+}
+.pipe-node .role {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    color: var(--white);
+    font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+.pipe-node .out {
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    color: var(--text-secondary);
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+}
+.pipe-node:nth-child(1) { border-top-color: var(--blue); }
+.pipe-node:nth-child(3) { border-top-color: var(--purple); }
+.pipe-node:nth-child(5) { border-top-color: var(--gold); }
+.pipe-node:nth-child(7) { border-top-color: #5cd3c6; }
+.pipe-node:nth-child(9) { border-top-color: var(--purple); }
+
+.pipe-arrow {
+    align-self: center;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 500;
+}
+
+/* === GATES === */
+.gates {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, clamp(180px, 22vw, 240px)), 1fr));
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
+    margin-top: clamp(1rem, 2vh, 1.5rem);
+}
+.gate {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-left: 3px solid var(--gold);
+    padding: clamp(0.75rem, 1.5vw, 1.1rem) clamp(1rem, 2vw, 1.5rem);
+    display: flex; flex-direction: column; gap: 0.4rem;
+}
+.gate .g-num {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    color: var(--gold);
+    font-size: var(--mono-size);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+.gate .g-title {
+    font-family: var(--font-subhead);
+    font-weight: 500;
+    color: var(--white);
+    font-size: var(--body-size);
+    letter-spacing: 0.01em;
+}
+.gate .g-desc {
+    font-size: var(--small-size);
+    color: var(--text-secondary);
+    line-height: 1.45;
+}
+
+/* === STORY BLOCKS === */
+.story-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, clamp(220px, 28vw, 320px)), 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
+    margin-top: clamp(1rem, 2vh, 1.5rem);
+}
+.story-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: var(--card-padding);
+    display: flex; flex-direction: column;
+    gap: clamp(0.5rem, 1vh, 0.75rem);
+    position: relative;
+}
+.story-card .stage {
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    color: var(--purple);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.story-card .what {
+    font-family: var(--font-subhead);
+    font-weight: 500;
+    color: var(--white);
+    font-size: var(--body-lg);
+    line-height: 1.3;
+}
+.story-card .how {
+    font-size: var(--small-size);
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+.story-card.catch { border-left: 3px solid var(--gold); }
+.story-card.catch .stage { color: var(--gold); }
+
+/* === CALLOUT === */
+.callout {
+    background: rgba(131, 82, 255, 0.1);
+    border-left: 3px solid var(--purple);
+    padding: var(--card-padding);
+    display: flex; flex-direction: column; gap: 0.5rem;
+    margin-top: clamp(1rem, 2vh, 1.5rem);
+}
+.callout.gold { background: rgba(252, 176, 23, 0.1); border-left-color: var(--gold); }
+.callout .tag {
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--purple);
+    font-weight: 500;
+}
+.callout.gold .tag { color: var(--gold); }
+.callout .body {
+    font-size: var(--body-size);
+    color: var(--text-main);
+    line-height: 1.55;
+}
+
+/* === LIST === */
+.clean-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: clamp(0.5rem, 1vh, 0.85rem); }
+.clean-list li {
+    padding-left: clamp(1.25rem, 2vw, 1.75rem);
+    position: relative;
+    font-size: var(--body-size);
+    line-height: 1.55;
+    color: var(--text-main);
+}
+.clean-list li::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+}
+.clean-list li strong { color: var(--white); font-weight: 500; }
+
+/* === ANIMATION === */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity var(--duration-slow) var(--ease-out-expo), transform var(--duration-slow) var(--ease-out-expo); }
+.visible .reveal, .reveal.visible { opacity: 1; transform: translateY(0); }
+.stagger > * { opacity: 0; transform: translateY(20px); transition: opacity var(--duration-slow) var(--ease-out-expo), transform var(--duration-slow) var(--ease-out-expo); }
+.stagger.visible > * { opacity: 1; transform: translateY(0); }
+.stagger.visible > *:nth-child(1) { transition-delay: 0.05s; }
+.stagger.visible > *:nth-child(2) { transition-delay: 0.15s; }
+.stagger.visible > *:nth-child(3) { transition-delay: 0.25s; }
+.stagger.visible > *:nth-child(4) { transition-delay: 0.35s; }
+.stagger.visible > *:nth-child(5) { transition-delay: 0.45s; }
+.stagger.visible > *:nth-child(6) { transition-delay: 0.55s; }
+.stagger.visible > *:nth-child(7) { transition-delay: 0.65s; }
+.stagger.visible > *:nth-child(8) { transition-delay: 0.75s; }
+.stagger.visible > *:nth-child(9) { transition-delay: 0.85s; }
+
+/* === NAV === */
+.progress-bar { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 100; background: transparent; }
+.progress-bar-fill { height: 100%; background: var(--purple); width: 0%; transition: width 0.25s ease-out; }
+.nav-dots { position: fixed; right: clamp(1rem, 2vw, 1.5rem); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 0.5rem; z-index: 90; }
+.nav-dots a { display: block; width: clamp(8px, 0.9vw, 10px); height: clamp(8px, 0.9vw, 10px); border-radius: 50%; background: rgba(255,255,255,0.18); transition: all 0.3s ease; border: none; cursor: pointer; }
+.nav-dots a.active { background: var(--purple); transform: scale(1.4); }
+.nav-dots a:hover { background: var(--white); }
+
+/* === TITLE SLIDE === */
+.slide-title .slide-content { justify-content: center; }
+.slide-title h1 {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    letter-spacing: 0.01em;
+}
+.slide-title .h-label {
+    font-family: var(--font-mono);
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    color: var(--gold);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin-bottom: clamp(1.5rem, 3vh, 2.5rem);
+}
+.slide-title .h-arrow {
+    color: var(--purple);
+    margin: 0 0.5em;
+}
+.slide-title .subtitle {
+    color: var(--text-secondary);
+    font-family: var(--font-subhead);
+    font-size: var(--body-lg);
+    font-weight: 300;
+    margin-top: clamp(1.25rem, 2.5vh, 2rem);
+    max-width: 60ch;
+}
+.slide-title .context-row {
+    margin-top: clamp(2rem, 4vh, 3rem);
+    display: flex; gap: clamp(1.5rem, 3vw, 3rem);
+    font-family: var(--font-mono);
+    font-size: var(--small-size);
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+.slide-title .context-row span { display: flex; align-items: center; gap: 0.5em; }
+.slide-title .context-row span::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); display: inline-block; }
+
+/* Moments list (H1 current example) */
+.moment {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: var(--card-padding);
+    margin-top: clamp(0.75rem, 1.5vh, 1.25rem);
+    display: grid;
+    grid-template-columns: clamp(50px, 8vw, 80px) 1fr;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    align-items: start;
+}
+.moment .stamp {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    color: var(--purple);
+    font-size: var(--small-size);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+.moment .body {
+    font-size: var(--body-size);
+    color: var(--text-main);
+    line-height: 1.55;
+}
+.moment .body strong { color: var(--white); font-family: var(--font-subhead); font-weight: 500; }
+
+/* Two-column generic */
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    margin-top: clamp(1rem, 2vh, 1.5rem);
+}
+@media (max-width: 780px) { .two-col { grid-template-columns: 1fr; } }
+
+.col-label {
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    color: var(--purple);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: clamp(0.5rem, 1vh, 0.75rem);
+    padding-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+    border-bottom: 1px solid var(--card-border-strong);
+}
+.col-label.blue { color: var(--blue); }
+.col-label.gold { color: var(--gold); }
+
+/* Scaffold list — H3 applications */
+.scaffold-list {
+    list-style: none; padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, clamp(220px, 26vw, 280px)), 1fr));
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
+    margin-top: clamp(1rem, 2vh, 1.5rem);
+}
+.scaffold-list li {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-left: 3px solid var(--gold);
+    padding: clamp(0.85rem, 1.75vw, 1.25rem);
+    font-family: var(--font-subhead);
+    font-weight: 400;
+    color: var(--white);
+    font-size: var(--body-size);
+    line-height: 1.4;
+    display: flex; flex-direction: column; gap: 0.35rem;
+}
+.scaffold-list li .where {
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* Memory triad */
+.triad {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    margin-top: clamp(1.5rem, 3vh, 2.5rem);
+}
+@media (max-width: 780px) { .triad { grid-template-columns: 1fr; } }
+.mem {
+    background: var(--card-bg-strong);
+    border: 1px solid var(--card-border-strong);
+    padding: var(--card-padding);
+    display: flex; flex-direction: column;
+    gap: clamp(0.5rem, 1vh, 0.75rem);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+.mem::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--purple), var(--gold));
+}
+.mem .file {
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    color: var(--purple);
+    letter-spacing: 0.06em;
+}
+.mem .what {
+    font-family: var(--font-subhead);
+    font-weight: 500;
+    color: var(--white);
+    font-size: var(--body-lg);
+    line-height: 1.25;
+}
+.mem .role {
+    font-size: var(--small-size);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar"><div class="progress-bar-fill" id="progressBarFill"></div></div>
+<nav class="nav-dots" id="navDots"></nav>
+
+<!-- SLIDE 1: TITLE -->
+<section class="slide slide-title" data-title="Cover">
+    <div class="atmosphere atmos-purple"></div>
+    <div class="slide-meta">
+        <span class="label">DC CAP · AI Pilot Internal</span>
+        <span class="num">01 / 08</span>
+    </div>
+    <div class="slide-content">
+        <div class="reveal">
+            <div class="h-label">H1 <span class="h-arrow">→</span> H2 <span class="h-arrow">→</span> H3</div>
+            <h1>Personal. Team.<br/>Organization.</h1>
+            <div class="subtitle">How the Development Office agent system moved up the three horizons.</div>
+            <div class="context-row">
+                <span>Preston Magouirk</span>
+                <span>Week 17, 2026</span>
+                <span>AI Pilot team briefing</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SLIDE 2: THREE HORIZONS RECAP -->
+<section class="slide" data-title="Three Horizons">
+    <div class="atmosphere atmos-blue"></div>
+    <div class="slide-meta">
+        <span class="label">The framework</span>
+        <span class="num">02 / 08</span>
+    </div>
+    <div class="slide-content">
+        <div class="eyebrow reveal">A quick reminder</div>
+        <div class="accent-bar reveal"></div>
+        <h2 class="reveal">Three horizons of gain</h2>
+        <p class="subhead-big reveal">Personal, team, organization. That's the whole idea. H1 helps one person. H2 helps a team. H3 changes how we work.</p>
+
+        <div class="horizons stagger">
+            <div class="horizon h1">
+                <div class="h-tag">H1 — Personal</div>
+                <h3>Faster drafts for the work on your plate</h3>
+                <div class="body">One person, one tool, one task. A better first pass. Time returned to the individual.</div>
+                <div class="hit">Gain: minutes / hours</div>
+            </div>
+            <div class="horizon h2">
+                <div class="h-tag">H2 — Team</div>
+                <h3>Patterns your team inherits</h3>
+                <div class="body">A shared workflow, shared sources, shared language. The next person does not start from scratch.</div>
+                <div class="hit">Gain: days / cycles</div>
+            </div>
+            <div class="horizon h3">
+                <div class="h-tag">H3 — Enterprise</div>
+                <h3>Moves that become how we operate</h3>
+                <div class="body">The pattern gets portable. Same scaffold, different domain. The system improves itself across quarters.</div>
+                <div class="hit">Gain: quarters / years</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SLIDE 3: WHERE WE STARTED (H1) -->
+<section class="slide" data-title="H1 Start">
+    <div class="atmosphere atmos-blue"></div>
+    <div class="slide-meta">
+        <span class="label">Horizon 1 — where we started</span>
+        <span class="num">03 / 08</span>
+    </div>
+    <div class="slide-content">
+        <div class="eyebrow reveal">Four months ago</div>
+        <div class="accent-bar reveal"></div>
+        <h2 class="reveal">One person drafting one letter</h2>
+        <p class="subhead-big reveal">A grant letter that used to take me two days of staring at a blank page became a one-hour working draft. Real gain. Contained gain.</p>
+
+        <div class="moment reveal">
+            <div class="stamp">Day 1</div>
+            <div class="body"><strong>Cafritz LOI, first attempt.</strong> I pasted our last proposal into Claude and asked for a draft against the current RFP. It came back better than my cold draft. I edited. I sent a version to Eric. He liked it.</div>
+        </div>
+        <div class="moment reveal">
+            <div class="stamp">Day 14</div>
+            <div class="body"><strong>Second letter, same pattern.</strong> Open file, paste context, ask for draft, edit. Each letter still required me, alone, holding every fact, every phrase, every funder's priorities in my own head.</div>
+        </div>
+        <div class="moment reveal">
+            <div class="stamp">Limit</div>
+            <div class="body"><strong>What H1 could not do.</strong> Remember our numbers. Remember the rules. Catch me when I drifted. Teach the next teammate. One more letter meant one more tired evening.</div>
+        </div>
+    </div>
+</section>
+
+<!-- SLIDE 4: THE TURN — SHARED MEMORY -->
+<section class="slide" data-title="Shared Memory">
+    <div class="atmosphere atmos-gold"></div>
+    <div class="slide-meta">
+        <span class="label">The turn into H2</span>
+        <span class="num">04 / 08</span>
+    </div>
+    <div class="slide-content">
+        <div class="eyebrow reveal">The shift from personal to team</div>
+        <div class="accent-bar reveal"></div>
+        <h2 class="reveal">Three files the whole team reads</h2>
+        <p class="subhead-big reveal">We wrote down our facts, our phrases, and our mistakes. Every agent reads all three before starting any work.</p>
+
+        <div class="triad stagger">
+            <div class="mem">
+                <div class="file">canonical.md</div>
+                <div class="what">The single source of truth for every number</div>
+                <div class="role">800 scholars. 13 partners. 50% from Wards 7 and 8. Retention above 85%. If the number is not in canonical.md, no agent uses it.</div>
+            </div>
+            <div class="mem">
+                <div class="file">glossary.md</div>
+                <div class="what">The phrases that carry weight</div>
+                <div class="role">Debt caps. Renewable up to 5 years. Wraparound coaching. FGLI. Career Pathway Intelligence Platform. Load-bearing phrases, written once, reused verbatim.</div>
+            </div>
+            <div class="mem">
+                <div class="file">errors.md</div>
+                <div class="what">Every mistake, caught and kept</div>
+                <div class="role">Append-only log of every framing error, stale figure, and tier-confusion slip. The next session starts by reading this. The system gets smarter.</div>
+            </div>
+        </div>
+
+        <div class="callout reveal">
+            <div class="tag">Why it matters</div>
+            <div class="body">Three text files. That is the difference between what one person knows and what the whole team can use. Any of you could set this up for your own domain in a week.</div>
+        </div>
+    </div>
+</section>
+
+<!-- SLIDE 5: H2 — FIVE AGENTS, ONE PIPELINE -->
+<section class="slide" data-title="H2 Pipeline">
+    <div class="atmosphere atmos-purple"></div>
+    <div class="slide-meta">
+        <span class="label">Horizon 2 — team pattern</span>
+        <span class="num">05 / 08</span>
+    </div>
+    <div class="slide-content">
+        <div class="eyebrow reveal">What replaced the blank page</div>
+        <div class="accent-bar reveal"></div>
+        <h2 class="reveal">Five roles. One handoff chain.</h2>
+        <p class="subhead-big reveal">Each role is a skill. Each handoff is a gate. Nobody holds the whole thing in their head. The pipeline does.</p>
+
+        <div class="pipeline-flow stagger">
+            <div class="pipe-node">
+                <div class="role">Scout</div>
+                <div class="out">Finds new RFPs. Labels source tiers.</div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-node">
+                <div class="role">Analyst</div>
+                <div class="out">Scores fit. Builds dossiers. Flags risks.</div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-node">
+                <div class="role">Writer</div>
+                <div class="out">Drafts against canonical + glossary.</div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-node">
+                <div class="role">Auditor</div>
+                <div class="out">Runs four verification gates.</div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-node">
+                <div class="role">Director</div>
+                <div class="out">Routes to Eric for CEO approval.</div>
+            </div>
+        </div>
+
+        <h3 class="reveal" style="margin-top: clamp(1.25rem, 2.5vh, 2rem);">Four gates, one at each handoff</h3>
+        <div class="gates stagger">
+            <div class="gate">
+                <div class="g-num">Gate 1</div>
+                <div class="g-title">Every claim has a link</div>
+                <div class="g-desc">Scout cannot surface a funder without a citable URL.</div>
+            </div>
+            <div class="gate">
+                <div class="g-num">Gate 2</div>
+                <div class="g-title">Tier 5 gets re-verified</div>
+                <div class="g-desc">Indexer data cannot drive dossiers unless confirmed against the funder's own site.</div>
+            </div>
+            <div class="gate">
+                <div class="g-num">Gate 3</div>
+                <div class="g-title">Canonical before copy</div>
+                <div class="g-desc">Writer uses no DC CAP figure that is not in canonical.md.</div>
+            </div>
+            <div class="gate">
+                <div class="g-num">Gate 4</div>
+                <div class="g-title">Cross-document alignment</div>
+                <div class="g-desc">Auditor checks proposal, budget, partner letters, and cover for the same facts and phrases.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SLIDE 6: MOMENT OF TRUTH — THIS WEEK -->
+<section class="slide" data-title="W17 Example">
+    <div class="atmosphere atmos-gold"></div>
+    <div class="slide-meta">
+        <span class="label">The system, actually working · Week 17</span>
+        <span class="num">06 / 08</span>
+    </div>
+    <div class="slide-content">
+        <div class="eyebrow reveal">Proof this week</div>
+        <div class="accent-bar reveal"></div>
+        <h2 class="reveal">Two errors caught before a funder saw them</h2>
+        <p class="subhead-big reveal">Both came from the same old failure mode: indexer data leaking into external-facing copy. The gates did what they exist to do.</p>
+
+        <div class="story-grid stagger">
+            <div class="story-card catch">
+                <div class="stage">Catch 01 · Gate 2</div>
+                <div class="what">McGovern program specifics were indexer-sourced</div>
+                <div class="how">Dossier had a name, a deadline, and a dollar figure pulled from Instrumentl. Re-verification against mcgovern.org would not confirm them. Targeted search then found the real block: the program is invitation-only. We moved from a false Pursue to a cold intro asking for a path to invitation — a truthful move, not a blind application.</div>
+            </div>
+            <div class="story-card catch">
+                <div class="stage">Catch 02 · Human gate</div>
+                <div class="what">deLaski intro named a relationship we do not have</div>
+                <div class="how">The dossier suggested Eric open with "Education Design Lab grant precedent." Preston confirmed DC CAP has no connection to Education Design Lab. The phrase came from a Kindera tag on the funder profile, not from any DC CAP record. Intro redrafted without the fabricated hook.</div>
+            </div>
+            <div class="story-card catch">
+                <div class="stage">Logged · errors.md</div>
+                <div class="what">Both errors written into the append-only log</div>
+                <div class="how">Rows 11 and 12 added to errors.md the same day. Next session's agents read those rows first. The same mistake costs us once. It does not cost us twice.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SLIDE 7: H3 — PORTABLE SCAFFOLD -->
+<section class="slide" data-title="H3 Portable">
+    <div class="atmosphere atmos-purple"></div>
+    <div class="slide-meta">
+        <span class="label">Horizon 3 — enterprise shape</span>
+        <span class="num">07 / 08</span>
+    </div>
+    <div class="slide-content">
+        <div class="eyebrow reveal">From team to organization</div>
+        <div class="accent-bar reveal"></div>
+        <h2 class="reveal">The same setup fits other work</h2>
+        <p class="subhead-big reveal">Grants is the first domain. The same three files plus the same five roles plus the same four checks work anywhere DC CAP needs one voice, one set of facts, and no drift between documents.</p>
+
+        <ul class="scaffold-list stagger">
+            <li>
+                Counselor + parent communications
+                <span class="where">Same discipline, student-facing voice</span>
+            </li>
+            <li>
+                Board and committee decks
+                <span class="where">Executive summary + canonical figures</span>
+            </li>
+            <li>
+                Program design and pilot evaluation
+                <span class="where">Research tier + verification gates</span>
+            </li>
+            <li>
+                Partner university relationship management
+                <span class="where">Shared facts, shared phrases, shared asks</span>
+            </li>
+            <li>
+                Press, LinkedIn, public-facing writing
+                <span class="where">Glossary + voice skill + audit</span>
+            </li>
+            <li>
+                CPIP product documentation
+                <span class="where">Data tier rules + canonical specs</span>
+            </li>
+        </ul>
+
+        <div class="callout gold reveal">
+            <div class="tag">The claim</div>
+            <div class="body">Building this once was slow. Building the second version in a new domain is a weekend. That is what H3 looks like.</div>
+        </div>
+    </div>
+</section>
+
+<!-- SLIDE 8: CLOSE -->
+<section class="slide" data-title="Close">
+    <div class="atmosphere atmos-blue"></div>
+    <div class="slide-meta">
+        <span class="label">Close</span>
+        <span class="num">08 / 08</span>
+    </div>
+    <div class="slide-content">
+        <div class="eyebrow reveal">What I want you to take away</div>
+        <div class="accent-bar reveal"></div>
+        <h2 class="reveal">Three asks for the next four weeks</h2>
+
+        <div class="two-col stagger">
+            <div class="col">
+                <div class="col-label">For your own work</div>
+                <ul class="clean-list">
+                    <li><strong>Pick one recurring task.</strong> Something you draft, review, or prospect weekly.</li>
+                    <li><strong>Write down three facts you always reach for.</strong> That is the start of your canonical file.</li>
+                    <li><strong>Keep an errors log.</strong> One row per caught mistake. Append only. Read it at session start.</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="col-label blue">For the pilot cohort</div>
+                <ul class="clean-list">
+                    <li><strong>Capstone design in Weeks 4-5 is H2.</strong> A pattern your team can use, not a solo productivity win.</li>
+                    <li><strong>Capstone delivery in Week 8 is H3.</strong> Something the organization can keep using after you ship.</li>
+                    <li><strong>Build for what your team does next month.</strong> Not just for the thing you hand in.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="callout reveal" style="margin-top: clamp(1.25rem, 2.5vh, 2rem);">
+            <div class="tag">One sentence</div>
+            <div class="body">H1 is what AI does for one person today. H3 is how DC CAP operates a year from now. Moving between them is ordinary work: write the facts down, agree on the handoffs, log the mistakes, read them at the start of every session.</div>
+        </div>
+    </div>
+</section>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('section, .reveal, .stagger, .horizons, .pipeline-flow, .gates, .story-grid, .scaffold-list, .triad').forEach(el => observer.observe(el));
+
+const slides = document.querySelectorAll('.slide');
+const navDots = document.getElementById('navDots');
+slides.forEach((slide, i) => {
+    const dot = document.createElement('a');
+    dot.href = '#';
+    dot.title = slide.dataset.title || `Slide ${i+1}`;
+    dot.addEventListener('click', (e) => { e.preventDefault(); slide.scrollIntoView({ behavior: 'smooth' }); });
+    navDots.appendChild(dot);
+});
+
+const progressFill = document.getElementById('progressBarFill');
+function updateProgress() {
+    const scrolled = window.scrollY;
+    const total = document.body.scrollHeight - window.innerHeight;
+    progressFill.style.width = total > 0 ? (scrolled / total * 100) + '%' : '0%';
+    const viewportMid = window.scrollY + window.innerHeight / 2;
+    slides.forEach((slide, i) => {
+        const top = slide.offsetTop;
+        const bottom = top + slide.offsetHeight;
+        navDots.children[i].classList.toggle('active', viewportMid >= top && viewportMid < bottom);
+    });
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+updateProgress();
+
+let currentSlide = 0;
+function goToSlide(n) {
+    currentSlide = Math.max(0, Math.min(slides.length - 1, n));
+    slides[currentSlide].scrollIntoView({ behavior: 'smooth' });
+}
+document.addEventListener('keydown', (e) => {
+    const viewportMid = window.scrollY + window.innerHeight / 2;
+    slides.forEach((slide, i) => {
+        if (viewportMid >= slide.offsetTop && viewportMid < slide.offsetTop + slide.offsetHeight) currentSlide = i;
+    });
+    switch (e.key) {
+        case 'ArrowDown': case 'ArrowRight': case ' ': case 'PageDown': e.preventDefault(); goToSlide(currentSlide + 1); break;
+        case 'ArrowUp': case 'ArrowLeft': case 'PageUp': e.preventDefault(); goToSlide(currentSlide - 1); break;
+        case 'Home': e.preventDefault(); goToSlide(0); break;
+        case 'End': e.preventDefault(); goToSlide(slides.length - 1); break;
+    }
+});
+</script>
+</body>
+</html>
