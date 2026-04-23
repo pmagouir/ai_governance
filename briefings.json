@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": "2.0",
-    "lastGenerated": "2026-04-21T08:10:00-04:00",
-    "lastPublished": "2026-04-21T08:15:00-04:00",
+    "lastGenerated": "2026-04-23T06:55:00-04:00",
+    "lastPublished": "2026-04-23T07:00:00-04:00",
     "categories": {
       "foundational": { "label": "Foundational Learning", "class": "category-foundational" },
       "tips": { "label": "Tips & Tricks", "class": "category-tips" },
@@ -21,6 +21,17 @@
   },
   "drafts": [],
   "published": [
+    {
+      "date": "2026-04-23",
+      "category": "trends",
+      "title": "25% Faster or 19% More Errors: What Delegation Actually Costs",
+      "content": "In a 2023 field study, Harvard and BCG researchers gave GPT-4 to 758 BCG consultants working on 18 realistic business tasks. Two results anchor Week 2 of this pilot. On tasks inside AI's capability frontier, consultants using AI finished 25% faster and produced output rated 40% higher in quality. On tasks outside AI's frontier, the same consultants using AI were 19 percentage points more likely to produce incorrect answers than the control group that did not use AI. The pattern applies directly to DC CAP work. Claude accelerates tasks where the pattern is clear and the standard is well-defined: formatting enrollment data into a briefing, drafting a partner reminder email from a template, restructuring meeting notes into action items. Claude degrades output on tasks where the judgment belongs to you: whether a scholar's documented circumstances warrant a policy exception, whether a partnership shift is worth its political cost, how a contested decision should land with a specific donor. Every team in this pilot sits where those 758 consultants did. You have a tool that accelerates work and can also quietly degrade it. The variable is Delegation judgment. Naming whether a task sits inside or outside Claude's reliable frontier before you open a session is the move that separates the 25% speed gain from the 19% error rate. Week 2 makes this the central question. The BCG study gives the pilot a quantitative anchor. Good Delegation compounds. Bad Delegation produces polished errors.",
+      "tryThis": "Pick one task you gave to Claude this week. Was it inside Claude's reliable frontier or outside it? If outside, did you use Claude to think with (augmentation) or to answer for you (automation)? Note the outcome and bring it to Friday.",
+      "resource": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321",
+      "sourceNotes": "Claim: Harvard and BCG researchers gave GPT-4 to 758 BCG consultants across 18 realistic business tasks | Source: VERIFIED (Dell'Acqua, McFowland, Mollick, Lifshitz-Assaf, Kellogg, Rajendran, Krayer, Candelon, Lakhani. 'Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality.' Harvard Business School Working Paper 24-013, Sept 2023.)\nClaim: Inside-frontier tasks with AI: 25% faster, 40% higher quality rating | Source: VERIFIED (same paper, abstract — actual numbers: 25.1% faster, 40% higher quality)\nClaim: Outside-frontier tasks with AI: 19 percentage points more likely to produce incorrect answers than control group | Source: VERIFIED (same paper — headline finding, outside-frontier task analysis)\nClaim: Week 2 of the pilot is Delegation (Automation vs. Augmentation) | Source: GROUNDED (pilot_hub.html Week 2 section)\nClaim: Automation and Augmentation as modality choices | Source: GROUNDED (ai_fluency_framework.html; Framework_for_AI_Fluency_v1.5.md)\nEditorial: The three task categories in paragraph 2 (formatting enrollment data, partner reminder emails, meeting notes) are illustrative DC CAP examples, not cited from the Dell'Acqua paper. Same for the three judgment-heavy cases (policy exception, partnership shift, donor-facing decisions).\nAdversarial review 20260423: Zero forbidden phrases scanned (leverage/navigate/landscape/robust/holistic/foster/align/showcase/delve/empower/unpack/enhance/underscore/utilize/stakeholders/transformative/ecosystem/synergy). Zero em-dashes. Zero contrastive 'not X, but Y' constructions. Zero rhetorical questions in body (two in Try This as task prompt, consistent with prior entries). Removed 'The difference is Delegation judgment, not technical skill' from v1 draft — replaced with 'The variable is Delegation judgment.' Zero TED-talk closes; final sentences tie to specific quantitative findings. Two functional triple-lists retained (formatting/drafting/restructuring and whether/whether/how) as genuine task enumerations, consistent with prior entries. Word count 245 (in 240-280 band). Avoided 'navigate' in body; paper title 'Navigating the Jagged Technological Frontier' appears only in source notes.",
+      "validationStatus": "PASSED",
+      "status": "published"
+    },
     {
       "date": "2026-04-21",
       "category": "tips",
