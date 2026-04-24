@@ -1,26 +1,58 @@
 {
   "meta": {
     "version": "2.0",
-    "lastGenerated": "2026-04-23T06:55:00-04:00",
-    "lastPublished": "2026-04-23T07:00:00-04:00",
+    "lastGenerated": "2026-04-24T07:00:00-04:00",
+    "lastPublished": "2026-04-24T07:00:00-04:00",
     "categories": {
-      "foundational": { "label": "Foundational Learning", "class": "category-foundational" },
-      "tips": { "label": "Tips & Tricks", "class": "category-tips" },
-      "governance": { "label": "Governance", "class": "category-governance" },
-      "trends": { "label": "Emerging Trends", "class": "category-trends" },
-      "advanced": { "label": "Advanced Topics", "class": "category-advanced" },
-      "news": { "label": "News & Extra", "class": "category-news" }
+      "foundational": {
+        "label": "Foundational Learning",
+        "class": "category-foundational"
+      },
+      "tips": {
+        "label": "Tips & Tricks",
+        "class": "category-tips"
+      },
+      "governance": {
+        "label": "Governance",
+        "class": "category-governance"
+      },
+      "trends": {
+        "label": "Emerging Trends",
+        "class": "category-trends"
+      },
+      "advanced": {
+        "label": "Advanced Topics",
+        "class": "category-advanced"
+      },
+      "news": {
+        "label": "News & Extra",
+        "class": "category-news"
+      }
     },
     "rotation": {
       "monday": "foundational",
       "tuesday": "tips",
       "wednesday": "governance",
       "thursday": "trends",
-      "friday": ["news", "rotating"]
+      "friday": [
+        "news",
+        "rotating"
+      ]
     }
   },
   "drafts": [],
   "published": [
+    {
+      "date": "2026-04-24",
+      "category": "news",
+      "title": "75% and 78%: Why the Pilot Exists",
+      "content": "Three out of four knowledge workers now use AI at work. Seventy-eight percent of them bring their own tools to the job, without telling their employer. Those are two anchor findings in the Microsoft and LinkedIn 2024 Work Trend Index, which surveyed 31,000 workers across 31 countries.\n\nThe 75% says the adoption question is settled at the population level. The workforce did not wait for a policy. People found tools that make their work faster and started using them. DC CAP's decision to build a structured governance framework answers a real behavioral trend, which means your participation anchors that trend inside an organization that still protects scholars, partners, and organizational trust.\n\nThe 78% says where the risk lives. When three in four staff will use AI regardless, and four in five of those will bring personal tools if the organization does not sanction any, the governance question shifts. Every AI interaction sits somewhere. Either inside a data classification and consent model you can see, or inside a personal ChatGPT tab nobody has audited. \"Shadow AI\" is the industry term for the second category, and it is the predictable outcome of a governance vacuum.\n\nThe pilot's design responds to this research directly. The 4-tier data classification, the governance pulse questions, and the sanctioned Claude workspace give staff a clean path. When a colleague asks why DC CAP is running this pilot now, the Microsoft numbers are the answer. The adoption is already happening. The pilot gives it structure.",
+      "tryThis": "Count every AI tool you or a team member has touched in the last two weeks. Count the ones DC CAP has approved. The gap between those two numbers is the governance gap the pilot exists to close. Bring one example to AI Friday.",
+      "resource": "https://www.microsoft.com/en-us/worklab/work-trend-index/ai-at-work-is-here-now-comes-the-hard-part",
+      "sourceNotes": "Claim: Three out of four (75%) global knowledge workers use AI at work | Source: VERIFIED (Microsoft & LinkedIn, 2024 Work Trend Index Annual Report, \"AI at Work Is Here. Now Comes the Hard Part,\" May 8, 2024 — headline finding)\nClaim: 78% of AI users bring their own AI tools to work (BYOAI) | Source: VERIFIED (same report — BYOAI is the report's coined term)\nClaim: 31,000 workers surveyed across 31 countries | Source: VERIFIED (same report, methodology — full sample characteristics)\nClaim: DC CAP pilot includes 4-tier data classification, governance pulse questions, sanctioned Claude workspace | Source: GROUNDED (pilot_hub.html; Framework_for_AI_Fluency_v1.5.md; ai_governance/AI_Initiative_Deliverables_Plan.md)\nClaim: Pilot is currently running (launched April 6, 2026; Phase 2 Cards started April 23) | Source: GROUNDED (strategy.md current strategic posture section)\nEditorial: \"Shadow AI\" framing is standard enterprise-security terminology for unsanctioned AI usage. The characterization of BYOAI as the predictable outcome of a governance vacuum is Preston's synthesis of the Microsoft finding applied to DC CAP's pilot context, not a direct quote from the report.\nEditorial: \"Governance gap\" in Try This is Preston's framing, not a Microsoft-report term.\nAdversarial review 20260424: Zero em-dashes. Zero forbidden phrases scanned (leverage/utilize/delve/navigate/landscape/ecosystem/synergy/robust/holistic/stakeholders/foster/enhance/align/transformative/empower/myriad/multifaceted/pivotal/spearhead/showcase/underscore). Zero contrastive \"not X, but Y\" constructions. Zero rhetorical questions. \"Either inside... or inside...\" is a parallel enumeration of two concrete options, not a Preston-forbidden negation. Opens with a concrete fact (75%). Closes with two short declaratives (\"The adoption is already happening. The pilot gives it structure.\") — direct, not TED-talk inflation. Word count main body: 247 words (inside 240–280 band). Try This: 44 words (inside 40–80 band). \"We\" used zero times in main body — intentional for this news/framing category; \"your\" and \"staff\" hold the collective register. One concrete quantitative anchor in every paragraph. No superlatives used as emphasis.",
+      "validationStatus": "PASSED",
+      "status": "published"
+    },
     {
       "date": "2026-04-23",
       "category": "trends",
