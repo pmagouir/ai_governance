@@ -179,6 +179,15 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
 .hc-h3 { border-color: var(--gold); } .hc-h3 .hc-label { color: var(--gold); }
 .horizon-detail { font-size: var(--small-size); color: var(--text-secondary); line-height: 1.55; max-width: 34em; }
 
+/* === GATES (four-question filter) === */
+.gates-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(0.5rem, 1vw, 0.85rem); margin-top: clamp(0.75rem, 1.6vh, 1.4rem); }
+.gate-card { background: var(--card-bg); border: 1px solid var(--card-border); border-top: 3px solid var(--blue); border-radius: clamp(6px, 1vw, 10px); padding: clamp(0.8rem, 1.5vw, 1.2rem); display: flex; flex-direction: column; }
+.gate-card .gc-num { font-family: var(--font-mono); font-size: var(--mono-size); color: var(--blue); letter-spacing: 0.12em; margin-bottom: clamp(0.3rem, 0.5vh, 0.4rem); }
+.gate-card .gc-q { font-family: var(--font-subhead); font-size: clamp(0.95rem, 1.55vw, 1.2rem); font-weight: 700; color: var(--white); line-height: 1.25; margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem); }
+.gate-card .gc-body { font-size: clamp(0.8rem, 1.15vw, 0.95rem); color: var(--text-secondary); line-height: 1.5; }
+.gates-caption { font-family: var(--font-subhead); font-size: var(--small-size); color: var(--text-secondary); margin-top: clamp(0.8rem, 1.5vh, 1.25rem); font-weight: 300; font-style: italic; max-width: 42em; }
+@media (max-width: 780px) { .gates-row { grid-template-columns: 1fr 1fr; } }
+
 /* === CHAIN (Grant H2) === */
 .chain-row { display: flex; gap: clamp(0.5rem, 1vw, 0.8rem); margin-top: clamp(0.75rem, 1.8vh, 1.4rem); align-items: stretch; }
 .chain-step { flex: 1; background: var(--card-bg); border: 1px solid var(--card-border); border-top: 3px solid var(--purple); border-radius: clamp(6px, 1vw, 10px); padding: clamp(0.7rem, 1.4vw, 1.1rem); display: flex; flex-direction: column; }
@@ -220,19 +229,50 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
 <!-- S1: TITLE -->
 <section class="slide slide-hero" id="slide-0">
     <div class="slide-content">
-        <div class="eyebrow reveal" style="color: var(--blue);">Week 2 · Delegation</div>
+        <div class="eyebrow reveal" style="color: var(--blue);">DC CAP AI Leadership Pilot</div>
         <div class="accent-bar reveal"></div>
-        <h1 class="reveal">One Ladder.<br>Two Examples.</h1>
-        <p class="subtitle reveal">How the delegation ladder runs on work DC CAP already does.</p>
+        <h1 class="reveal">AI Fridays.</h1>
+        <p class="subtitle reveal">Week 2 · Friday, April 24 · 12 PM</p>
         <div class="panel-info reveal">
-            <strong>Preston Magouirk</strong> · Chief Strategy &amp; Analytics Officer<br>
-            DC CAP AI Leadership Pilot · April 2026
+            <strong>Preston Magouirk</strong> · Chief Strategy &amp; Analytics Officer
         </div>
     </div>
 </section>
 
-<!-- S2: THE LADDER -->
-<section class="slide slide-ladder" id="slide-1">
+<!-- S2: THREE QUESTIONS (agenda) -->
+<section class="slide slide-close" id="slide-1">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--blue);">Today's conversation</div>
+        <h2 class="reveal">Three questions.</h2>
+        <p class="horizon-prose reveal" style="max-width: 38em; margin-top: clamp(0.5rem, 1vh, 0.9rem);">Each of us answers these in the room today. The examples that follow show what answering them looks like in real DC CAP work.</p>
+        <div class="friday-prompt">
+            <div class="fp-item fp-1 reveal">
+                <div class="fp-num">01</div>
+                <div class="fp-text">
+                    <div class="fp-label">Personal output · H1</div>
+                    <p>What did you do with AI this week to strengthen your own work output? What worked, what did you have to fix?</p>
+                </div>
+            </div>
+            <div class="fp-item fp-2 reveal">
+                <div class="fp-num">02</div>
+                <div class="fp-text">
+                    <div class="fp-label">Delegation</div>
+                    <p>Was this Automation or Augmentation? How did you decide? Where did you hesitate?</p>
+                </div>
+            </div>
+            <div class="fp-item fp-3 reveal">
+                <div class="fp-num">03</div>
+                <div class="fp-text">
+                    <div class="fp-label">Team and enterprise · H2 / H3</div>
+                    <p>Did this create something your team could use? Did it make possible an org-wide skill DC CAP does not have today? If not, could it have, and how?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S3: THE LADDER -->
+<section class="slide slide-ladder" id="slide-2">
     <div class="slide-content">
         <div class="eyebrow reveal" style="color: var(--purple);">The Delegation Ladder</div>
         <h2 class="reveal">Three horizons.<br>One climb.</h2>
@@ -260,8 +300,72 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
     </div>
 </section>
 
-<!-- S3: EXAMPLE 1 — EMAIL INTRO -->
-<section class="slide slide-section-email" id="slide-2">
+<!-- S4: FOUR GATES -->
+<section class="slide slide-ladder" id="slide-3">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--blue);">Before you delegate</div>
+        <h2 class="reveal">Four gates.</h2>
+        <p class="horizon-prose reveal" style="max-width: 40em; margin-top: clamp(0.5rem, 1vh, 0.9rem);">Run any task through these four before handing it to Claude. Yes on all four is the signal.</p>
+        <div class="gates-row">
+            <div class="gate-card reveal-scale">
+                <div class="gc-num">01 · Safety</div>
+                <div class="gc-q">Is it safe to hand off?</div>
+                <div class="gc-body">Data tier check. Restricted or Sensitive data is a stop. Redact, de-identify, or use the right workspace first.</div>
+            </div>
+            <div class="gate-card reveal-scale">
+                <div class="gc-num">02 · Time</div>
+                <div class="gc-q">Is it time-intensive for humans?</div>
+                <div class="gc-body">The bigger the human time cost, the more value Claude creates. Minute-long tasks usually do not justify the prompt.</div>
+            </div>
+            <div class="gate-card reveal-scale">
+                <div class="gc-num">03 · Cadence</div>
+                <div class="gc-q">Is it performed regularly?</div>
+                <div class="gc-body">Recurring tasks compound. A one-off rarely justifies the setup. The real gain shows up on repetition four.</div>
+            </div>
+            <div class="gate-card reveal-scale">
+                <div class="gc-num">04 · Fit</div>
+                <div class="gc-q">Is AI effective at it?</div>
+                <div class="gc-body">Claude is strong on drafting, summarizing, pattern matching. It is weak on novel judgment and relational calls.</div>
+            </div>
+        </div>
+        <p class="gates-caption reveal">A no is a pause. Ask what would have to change before you try again.</p>
+    </div>
+</section>
+
+<!-- S5: VOLUNTEER RUBRIC -->
+<section class="slide slide-close" id="slide-4">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">When you share</div>
+        <h2 class="reveal">Walk us through your thinking.</h2>
+        <p class="horizon-prose reveal" style="max-width: 38em; margin-top: clamp(0.5rem, 1vh, 0.9rem);">Three moves to hit when it is your turn. The thinking counts more than the polish.</p>
+        <div class="friday-prompt">
+            <div class="fp-item fp-1 reveal">
+                <div class="fp-num">01</div>
+                <div class="fp-text">
+                    <div class="fp-label">Delegation</div>
+                    <p>How did you decide what to give Claude and what to keep yourself? Where did you hesitate?</p>
+                </div>
+            </div>
+            <div class="fp-item fp-2 reveal">
+                <div class="fp-num">02</div>
+                <div class="fp-text">
+                    <div class="fp-label">Modality</div>
+                    <p>Was this Automation, Augmentation, or Agency? Why that one for this task?</p>
+                </div>
+            </div>
+            <div class="fp-item fp-3 reveal">
+                <div class="fp-num">03</div>
+                <div class="fp-text">
+                    <div class="fp-label">Horizon</div>
+                    <p>Did this live at H1 on your own plate? Did you catch a move your team could inherit at H2? Could anything about it reach H3 for DC CAP?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S5: EXAMPLE 1 — EMAIL INTRO -->
+<section class="slide slide-section-email" id="slide-5">
     <div class="slide-content">
         <div class="section-number reveal">Example 01</div>
         <h2 class="reveal">Email.</h2>
@@ -271,7 +375,7 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
 </section>
 
 <!-- S4: EMAIL · H1 -->
-<section class="slide slide-horizon-1" id="slide-3">
+<section class="slide slide-horizon-1" id="slide-6">
     <div class="slide-content">
         <div class="eyebrow reveal" style="color: var(--blue);">H1 · Personal</div>
         <h2 class="reveal">Draft one escalation.</h2>
@@ -291,7 +395,7 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
 </section>
 
 <!-- S5: EMAIL · H2 -->
-<section class="slide slide-horizon-2" id="slide-4">
+<section class="slide slide-horizon-2" id="slide-7">
     <div class="slide-content">
         <div class="eyebrow reveal" style="color: var(--purple);">H2 · Team</div>
         <h2 class="reveal">Build a Project the team inherits.</h2>
@@ -311,7 +415,7 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
 </section>
 
 <!-- S6: EMAIL · H3 -->
-<section class="slide slide-horizon-3" id="slide-5">
+<section class="slide slide-horizon-3" id="slide-8">
     <div class="slide-content">
         <div class="eyebrow reveal" style="color: var(--gold);">H3 · Enterprise</div>
         <h2 class="reveal">A skill library, already shipped.</h2>
@@ -350,7 +454,7 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
 </section>
 
 <!-- S7: EXAMPLE 2 — GRANT INTRO -->
-<section class="slide slide-section-grant" id="slide-6">
+<section class="slide slide-section-grant" id="slide-9">
     <div class="slide-content">
         <div class="section-number reveal" style="color: var(--gold);">Example 02</div>
         <h2 class="reveal">Grant writing.</h2>
@@ -360,7 +464,7 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
 </section>
 
 <!-- S8: GRANT · H1 -->
-<section class="slide slide-horizon-1" id="slide-7">
+<section class="slide slide-horizon-1" id="slide-10">
     <div class="slide-content">
         <div class="eyebrow reveal" style="color: var(--blue);">H1 · Personal</div>
         <h2 class="reveal">Draft one LOI.</h2>
@@ -380,7 +484,7 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
 </section>
 
 <!-- S9: GRANT · H2 -->
-<section class="slide slide-horizon-2" id="slide-8">
+<section class="slide slide-horizon-2" id="slide-11">
     <div class="slide-content">
         <div class="eyebrow reveal" style="color: var(--purple);">H2 · Team</div>
         <h2 class="reveal">Five agents, running now.</h2>
@@ -426,7 +530,7 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
 </section>
 
 <!-- S10: GRANT · H3 -->
-<section class="slide slide-horizon-3" id="slide-9">
+<section class="slide slide-horizon-3" id="slide-12">
     <div class="slide-content">
         <div class="eyebrow reveal" style="color: var(--gold);">H3 · Enterprise</div>
         <h2 class="reveal">Not yet. But the shape generalizes.</h2>
@@ -445,35 +549,13 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
     </div>
 </section>
 
-<!-- S11: FRIDAY PROMPT -->
-<section class="slide slide-close" id="slide-10">
+<!-- S12: CLOSER -->
+<section class="slide slide-close" id="slide-13">
     <div class="slide-content">
-        <div class="eyebrow reveal" style="color: var(--blue);">For Friday</div>
-        <h2 class="reveal">Bring your own.</h2>
-        <div class="friday-prompt">
-            <div class="fp-item fp-1 reveal">
-                <div class="fp-num">01</div>
-                <div class="fp-text">
-                    <div class="fp-label">Personal output · H1</div>
-                    <p>What did you do with AI this week to strengthen your own work output? What worked, what did you have to fix?</p>
-                </div>
-            </div>
-            <div class="fp-item fp-2 reveal">
-                <div class="fp-num">02</div>
-                <div class="fp-text">
-                    <div class="fp-label">Delegation</div>
-                    <p>Was this Automation or Augmentation? How did you decide? Where did you hesitate?</p>
-                </div>
-            </div>
-            <div class="fp-item fp-3 reveal">
-                <div class="fp-num">03</div>
-                <div class="fp-text">
-                    <div class="fp-label">Team and enterprise · H2 / H3</div>
-                    <p>Did this create something your team could use? Did it make possible an org-wide skill DC CAP does not have today? If not, could it have, and how?</p>
-                </div>
-            </div>
-        </div>
-        <div class="contact-bar reveal">
+        <div class="eyebrow reveal" style="color: var(--blue);">Your turn</div>
+        <h2 class="reveal">Bring yours.</h2>
+        <p class="horizon-prose reveal" style="max-width: 34em; margin-top: clamp(0.75rem, 2vh, 1.5rem);">A real deliverable from your week. Working or broken, bring it. We will go around from here.</p>
+        <div class="contact-bar reveal" style="margin-top: auto;">
             <span class="cn">Preston Magouirk</span>
             <span class="ci">preston.magouirk@dccap.org</span>
             <span class="ci"><a href="https://dccapinnovation.org">dccapinnovation.org</a></span>
