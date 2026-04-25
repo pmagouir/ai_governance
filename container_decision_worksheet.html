@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+if(localStorage.getItem('dccap_survey_completed')!=='true'){
+  document.addEventListener('DOMContentLoaded', function(){
+    var banner = document.createElement('div');
+    banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#101A4C;color:#fff;padding:16px 24px;text-align:center;font-family:system-ui,sans-serif;font-size:15px;box-shadow:0 2px 12px rgba(0,0,0,0.2);';
+    banner.innerHTML = 'Complete the <a href="pilot_hub.html" style="color:#FCB017;text-decoration:underline;font-weight:600;">Pre-Launch Assessment</a> to unlock full access to this resource.';
+    document.body.prepend(banner);
+    document.body.style.paddingTop = '56px';
+  });
+}
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Container Decision Worksheet — DC CAP AI Pilot Week 3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #101A4C;
+            --purple: #8352FF;
+            --blue: #87B7D5;
+            --gold: #FCB017;
+            --tan: #FFF4ED;
+            --white: #FFFFFF;
+            --dark-gray: #333333;
+            --font-display: 'Noto Serif SemiCondensed', Georgia, serif;
+            --font-body: 'Noto Serif', Georgia, serif;
+            --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--dark-gray);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .ws-header {
+            background: linear-gradient(135deg, var(--navy) 0%, #1a2666 100%);
+            color: var(--white);
+            padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3rem);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ws-header::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .ws-header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ws-header p {
+            font-size: clamp(1rem, 1.8vw, 1.2rem);
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .ws-header .week-tag {
+            display: inline-block;
+            background: rgba(131, 82, 255, 0.25);
+            color: #d9c8ff;
+            font-family: var(--font-mono);
+            font-size: clamp(0.7rem, 1vw, 0.8rem);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Nav */
+        .ws-nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--navy);
+            z-index: 100;
+            padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 3vw, 2rem);
+        }
+
+        .ws-nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: clamp(1rem, 3vw, 2.5rem);
+            flex-wrap: wrap;
+        }
+
+        .ws-nav a {
+            font-family: var(--font-subhead);
+            font-weight: 600;
+            color: var(--dark-gray);
+            text-decoration: none;
+            font-size: clamp(0.85rem, 1.3vw, 1rem);
+            padding: 0.25rem 0;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .ws-nav a:hover { color: var(--purple); border-bottom-color: var(--purple); }
+
+        /* Sections */
+        .ws-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 3rem);
+            scroll-margin-top: 60px;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            font-weight: 700;
+            font-family: var(--font-subhead);
+            margin-right: 0.75rem;
+            vertical-align: middle;
+        }
+
+        .ws-section h2 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.4rem, 3vw, 1.9rem);
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .section-description {
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            color: var(--dark-gray);
+            line-height: 1.7;
+            margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+        }
+
+        /* Editable fields */
+        .editable {
+            display: block;
+            border: 2px dashed rgba(131, 82, 255, 0.3);
+            border-radius: 8px;
+            padding: clamp(0.75rem, 1.5vw, 1rem);
+            min-height: 80px;
+            font-family: var(--font-body);
+            font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+            line-height: 1.7;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+
+        .editable:focus {
+            border-color: var(--purple);
+            box-shadow: 0 0 0 3px rgba(131, 82, 255, 0.1);
+        }
+
+        .editable:empty::before {
+            content: attr(data-placeholder);
+            color: #767676;
+            font-style: italic;
+        }
+
+        .field-label {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .field-hint {
+            font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+            color: #666;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .field-group {
+            margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+        }
+
+        /* Container picker */
+        .container-picker {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: clamp(0.75rem, 1.5vw, 1rem);
+            margin-top: 0.75rem;
+        }
+
+        .container-card {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: clamp(1rem, 2vw, 1.25rem);
+            cursor: pointer;
+            transition: all 0.2s;
+            background: var(--white);
+            text-align: left;
+            font-family: inherit;
+        }
+
+        .container-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+
+        .container-card .label {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: clamp(1rem, 1.5vw, 1.15rem);
+            margin-bottom: 0.4rem;
+            display: block;
+        }
+
+        .container-card .reuse {
+            font-size: clamp(0.8rem, 1.1vw, 0.88rem);
+            color: #666;
+            font-style: italic;
+            margin-bottom: 0.4rem;
+        }
+
+        .container-card .desc {
+            font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+            color: var(--dark-gray);
+            line-height: 1.5;
+        }
+
+        .container-card.oneshot { border-left: 5px solid var(--navy); }
+        .container-card.oneshot .label { color: var(--navy); }
+        .container-card.project { border-left: 5px solid var(--purple); }
+        .container-card.project .label { color: var(--purple); }
+        .container-card.skill { border-left: 5px solid var(--blue); }
+        .container-card.skill .label { color: var(--blue); }
+        .container-card.automation { border-left: 5px solid var(--gold); }
+        .container-card.automation .label { color: var(--gold); }
+
+        .container-card.selected {
+            border-width: 3px;
+            box-shadow: 0 0 0 3px rgba(131, 82, 255, 0.15);
+        }
+        .container-card.oneshot.selected { background: rgba(16, 26, 76, 0.04); }
+        .container-card.project.selected { background: rgba(131, 82, 255, 0.06); }
+        .container-card.skill.selected { background: rgba(135, 183, 213, 0.1); }
+        .container-card.automation.selected { background: rgba(252, 176, 23, 0.07); }
+
+        /* Build panel — shown based on container choice */
+        .build-panel {
+            display: none;
+            border-radius: 10px;
+            padding: clamp(1rem, 2vw, 1.5rem);
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
+        }
+        .build-panel.active { display: block; }
+        .build-panel.oneshot { background: rgba(16, 26, 76, 0.04); border-left: 4px solid var(--navy); }
+        .build-panel.project { background: rgba(131, 82, 255, 0.05); border-left: 4px solid var(--purple); }
+        .build-panel.skill { background: rgba(135, 183, 213, 0.1); border-left: 4px solid var(--blue); }
+        .build-panel.automation { background: rgba(252, 176, 23, 0.06); border-left: 4px solid var(--gold); }
+
+        .build-panel h3 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+            margin-bottom: 0.4rem;
+        }
+
+        .build-panel.oneshot h3 { color: var(--navy); }
+        .build-panel.project h3 { color: var(--purple); }
+        .build-panel.skill h3 { color: var(--blue); }
+        .build-panel.automation h3 { color: var(--gold); }
+
+        .build-intro {
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Pre-decision panel */
+        .pre-decision {
+            text-align: center;
+            padding: clamp(1.5rem, 3vw, 2rem);
+            background: rgba(16, 26, 76, 0.03);
+            border: 2px dashed rgba(16, 26, 76, 0.15);
+            border-radius: 10px;
+            color: #666;
+            font-style: italic;
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+        }
+        .pre-decision.hidden { display: none; }
+
+        /* Worked example */
+        .worked-example {
+            background: var(--tan);
+            border-radius: 12px;
+            padding: clamp(1.5rem, 3vw, 2rem);
+            margin-top: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .worked-example h3 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+        }
+
+        .worked-example p {
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+            margin-bottom: 0.6rem;
+            line-height: 1.7;
+        }
+
+        /* Section divider */
+        .section-divider {
+            border: none;
+            height: 3px;
+            background: linear-gradient(90deg, var(--navy), var(--purple), var(--blue), var(--gold));
+            margin: 0;
+        }
+
+        /* Print actions */
+        .actions-bar {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 clamp(1.5rem, 5vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .action-btn {
+            padding: 0.6rem 1.25rem;
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-family: var(--font-subhead);
+            font-weight: 600;
+            font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+            cursor: pointer;
+            min-height: 44px;
+            transition: background 0.2s;
+        }
+        .action-btn:hover { background: var(--purple); }
+
+        /* Footer */
+        .ws-footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: clamp(1.5rem, 3vw, 2rem);
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+        }
+
+        .ws-footer a { color: var(--gold); }
+
+        @media print {
+            .ws-nav, .actions-bar, .pre-decision { display: none; }
+            .build-panel { display: block !important; page-break-inside: avoid; }
+            body { background: white; }
+            .ws-header { background: var(--navy) !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="ws-header">
+    <span class="week-tag">Week 3 · From Reps to Patterns</span>
+    <h1>Container Decision Worksheet</h1>
+    <p>Before you build, decide what you're building. Four steps: describe the work, name what's reusable, pick the container, draft the artifact.</p>
+</header>
+
+<nav class="ws-nav">
+    <ul>
+        <li><a href="#step-1">1. Describe</a></li>
+        <li><a href="#step-2">2. Reusable</a></li>
+        <li><a href="#step-3">3. Container</a></li>
+        <li><a href="#step-4">4. Build</a></li>
+        <li><a href="pilot_hub.html">← Hub</a></li>
+    </ul>
+</nav>
+
+<!-- Step 1: Describe the work -->
+<section class="ws-section" id="step-1">
+    <h2><span class="step-number">1</span>Describe the work</h2>
+    <p class="section-description">Pick one Claude move from the last two weeks. Before you can pick the right container, you have to describe the work precisely. Vague descriptions produce mis-built containers.</p>
+
+    <div class="field-group">
+        <label class="field-label" for="f-task">What's the task, in one sentence?</label>
+        <p class="field-hint">A specific deliverable, not a category. "Draft a partner email about the deadline shift" — not "partner communications."</p>
+        <div class="editable" id="f-task" contenteditable="true" data-placeholder="The work, in one sentence..."></div>
+    </div>
+
+    <div class="field-group">
+        <label class="field-label" for="f-audience">Who is it for?</label>
+        <p class="field-hint">Internal team, named stakeholder, partner, funder, scholar, family. The audience shapes everything downstream.</p>
+        <div class="editable" id="f-audience" contenteditable="true" data-placeholder="The audience and the relationship..."></div>
+    </div>
+
+    <div class="field-group">
+        <label class="field-label" for="f-frequency">How often does this happen?</label>
+        <p class="field-hint">Once. Once a quarter. Once a week. Every time a partner emails. This is the question that decides one-shot vs. pattern.</p>
+        <div class="editable" id="f-frequency" contenteditable="true" data-placeholder="The cadence — be honest..."></div>
+    </div>
+
+    <div class="field-group">
+        <label class="field-label" for="f-good">What does good look like?</label>
+        <p class="field-hint">The standard. What separates a draft you'd send from one you'd rewrite. Be concrete.</p>
+        <div class="editable" id="f-good" contenteditable="true" data-placeholder="The standard the work has to meet..."></div>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- Step 2: Name what's reusable -->
+<section class="ws-section" id="step-2">
+    <h2><span class="step-number">2</span>Name what's reusable</h2>
+    <p class="section-description">Re-read your Step 1 answers. The container you build depends on what — if anything — you'd reuse. Pick the one that fits best.</p>
+
+    <div class="field-group">
+        <label class="field-label">What's the reusable thing here?</label>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 0.5rem; margin-top: 0.5rem;">
+            <label style="display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 6px; cursor: pointer;"><input type="radio" name="reusable" value="nothing" style="margin-top: 0.25rem;"><span><strong>Nothing.</strong> This is a one-off. Different audience, different stakes, different shape next time.</span></label>
+            <label style="display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 6px; cursor: pointer;"><input type="radio" name="reusable" value="context" style="margin-top: 0.25rem;"><span><strong>The context.</strong> Same body of knowledge — files, people, history, voice — supports many different asks for weeks.</span></label>
+            <label style="display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 6px; cursor: pointer;"><input type="radio" name="reusable" value="move" style="margin-top: 0.25rem;"><span><strong>The move.</strong> Same procedure runs against varied inputs. Anyone on the team should be able to execute it the same way.</span></label>
+            <label style="display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 6px; cursor: pointer;"><input type="radio" name="reusable" value="trigger" style="margin-top: 0.25rem;"><span><strong>The trigger.</strong> The work happens on a cadence or in response to an event — and no human should have to remember.</span></label>
+        </div>
+    </div>
+
+    <div class="field-group">
+        <label class="field-label" for="f-why-reusable">Why this one?</label>
+        <p class="field-hint">One or two sentences. "Same partner list and history, varied asks" → context. "Standard email shape, varied recipients" → move. If you picked "nothing," say <em>why</em> in one sentence — that's the discipline of the deliberate one-shot.</p>
+        <div class="editable" id="f-why-reusable" contenteditable="true" data-placeholder="The reasoning behind the choice..."></div>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- Step 3: Pick the container -->
+<section class="ws-section" id="step-3">
+    <h2><span class="step-number">3</span>Pick the container</h2>
+    <p class="section-description">Each reusable thing maps to one container. Click your choice — Step 4 will show only the artifact template you need.</p>
+
+    <div class="container-picker" role="radiogroup" aria-label="Container choice">
+        <button type="button" class="container-card oneshot" data-container="oneshot" role="radio" aria-checked="false">
+            <span class="label">One-shot</span>
+            <span class="reuse">Reuses: nothing</span>
+            <span class="desc">A deliberate exception. You'll never do this again — and you can say why in one sentence.</span>
+        </button>
+        <button type="button" class="container-card project" data-container="project" role="radio" aria-checked="false">
+            <span class="label">Project</span>
+            <span class="reuse">Reuses: context</span>
+            <span class="desc">A workspace loaded with the knowledge that supports many different asks for weeks.</span>
+        </button>
+        <button type="button" class="container-card skill" data-container="skill" role="radio" aria-checked="false">
+            <span class="label">Skill</span>
+            <span class="reuse">Reuses: move</span>
+            <span class="desc">A short written procedure anyone on the team can run against varied inputs.</span>
+        </button>
+        <button type="button" class="container-card automation" data-container="automation" role="radio" aria-checked="false">
+            <span class="label">Automation</span>
+            <span class="reuse">Reuses: trigger</span>
+            <span class="desc">Runs on a cadence or event. No human has to remember to start it.</span>
+        </button>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- Step 4: Build the artifact -->
+<section class="ws-section" id="step-4">
+    <h2><span class="step-number">4</span>Build the artifact</h2>
+    <p class="section-description">Fill in the panel for the container you picked. Bring the result to AI Friday.</p>
+
+    <div class="pre-decision" id="pre-decision">Pick a container in Step 3 to see the matching artifact template.</div>
+
+    <!-- One-shot -->
+    <div class="build-panel oneshot" data-panel="oneshot">
+        <h3>The Deliberate One-Shot</h3>
+        <p class="build-intro">No artifact to build — but write the one sentence that proves you considered the alternatives. This is what stops your team from rebuilding the same prompt every Tuesday.</p>
+        <div class="field-group">
+            <label class="field-label" for="f-oneshot-why">Why is this a one-shot?</label>
+            <p class="field-hint">One sentence. What makes this work different enough that turning it into a Project or Skill would be over-engineering? Name the variable that won't repeat.</p>
+            <div class="editable" id="f-oneshot-why" contenteditable="true" data-placeholder="The reason this work won't repeat..."></div>
+        </div>
+        <div class="field-group">
+            <label class="field-label" for="f-oneshot-prompt">The prompt you'll actually use</label>
+            <p class="field-hint">Including the context you'd otherwise lose: audience, standard, stakes, timing.</p>
+            <div class="editable" id="f-oneshot-prompt" contenteditable="true" data-placeholder="The prompt, in full..."></div>
+        </div>
+    </div>
+
+    <!-- Project -->
+    <div class="build-panel project" data-panel="project">
+        <h3>The Project</h3>
+        <p class="build-intro">A Claude Project is a workspace with a system prompt and reference files. The same context supports many different asks. Sketch it here, then build it in Claude.</p>
+        <div class="field-group">
+            <label class="field-label" for="f-project-name">Project name</label>
+            <p class="field-hint">Short, clear, names what it's for. "Partner Engagement," "FY26 Board Materials," "Scholar Disbursement Reporting."</p>
+            <div class="editable" id="f-project-name" contenteditable="true" data-placeholder="The name on the workspace..." style="min-height: 50px;"></div>
+        </div>
+        <div class="field-group">
+            <label class="field-label" for="f-project-system">System prompt</label>
+            <p class="field-hint">Who Claude is in this Project. The voice, the standards, the recurring rules. ("You're a development associate at DC CAP. The voice is warm and direct. Never reuse phrases from the AI tell-tale list...")</p>
+            <div class="editable" id="f-project-system" contenteditable="true" data-placeholder="The system prompt..."></div>
+        </div>
+        <div class="field-group">
+            <label class="field-label" for="f-project-files">Reference files to load</label>
+            <p class="field-hint">Bullet list. The knowledge that makes the Project useful — and the data tier of each one. (Partner contact list — Tier 2. Prior emails — Tier 2. Voice guide — Tier 4.)</p>
+            <div class="editable" id="f-project-files" contenteditable="true" data-placeholder="The files, with tiers..."></div>
+        </div>
+        <div class="field-group">
+            <label class="field-label" for="f-project-asks">Three different asks this Project will handle</label>
+            <p class="field-hint">If you can't list three, it's probably a Skill, not a Project.</p>
+            <div class="editable" id="f-project-asks" contenteditable="true" data-placeholder="Three asks, varied in shape..."></div>
+        </div>
+    </div>
+
+    <!-- Skill -->
+    <div class="build-panel skill" data-panel="skill">
+        <h3>The Skill</h3>
+        <p class="build-intro">A Skill is a short written procedure — a SKILL.md — that anyone on the team can run against varied inputs. The move stays the same; the inputs change.</p>
+        <div class="field-group">
+            <label class="field-label" for="f-skill-name">Skill name</label>
+            <p class="field-hint">Action-shaped. "Draft a Partner Email in DC CAP Voice." "Summarize a Funder Update for the Board."</p>
+            <div class="editable" id="f-skill-name" contenteditable="true" data-placeholder="The skill name..." style="min-height: 50px;"></div>
+        </div>
+        <div class="field-group">
+            <label class="field-label" for="f-skill-trigger">When to trigger it</label>
+            <p class="field-hint">The condition that should make a teammate reach for this Skill instead of starting from scratch.</p>
+            <div class="editable" id="f-skill-trigger" contenteditable="true" data-placeholder="When to use it..."></div>
+        </div>
+        <div class="field-group">
+            <label class="field-label" for="f-skill-good">What good looks like</label>
+            <p class="field-hint">The output standard. Tone, length, structure, things it must include.</p>
+            <div class="editable" id="f-skill-good" contenteditable="true" data-placeholder="The standard..."></div>
+        </div>
+        <div class="field-group">
+            <label class="field-label" for="f-skill-avoid">What to avoid</label>
+            <p class="field-hint">The failure modes. The AI tell-tale words. The tones that don't fit DC CAP. The shortcuts that look right but aren't.</p>
+            <div class="editable" id="f-skill-avoid" contenteditable="true" data-placeholder="The traps..."></div>
+        </div>
+        <div class="field-group">
+            <label class="field-label" for="f-skill-inputs">What inputs the user supplies inline</label>
+            <p class="field-hint">If the partner's name, the topic, and the deadline change every time — list them here. That's how a Skill differs from a Project: nothing is preloaded.</p>
+            <div class="editable" id="f-skill-inputs" contenteditable="true" data-placeholder="The variable inputs..."></div>
+        </div>
+    </div>
+
+    <!-- Automation -->
+    <div class="build-panel automation" data-panel="automation">
+        <h3>The Automation</h3>
+        <p class="build-intro">An Automation runs on a cadence or an event. No human has to remember. Most DC CAP automations should keep a human checkpoint before anything goes out the door.</p>
+        <div class="field-group">
+            <label class="field-label" for="f-auto-name">Automation name</label>
+            <p class="field-hint">Names the cadence or trigger. "Quiet Partner Watch." "Monday Funder Pulse."</p>
+            <div class="editable" id="f-auto-name" contenteditable="true" data-placeholder="The name..." style="min-height: 50px;"></div>
+        </div>
+        <div class="field-group">
+            <label class="field-label" for="f-auto-trigger">Trigger</label>
+            <p class="field-hint">When does this run? "Every Monday at 8am." "Whenever a partner reply lands in the dev inbox."</p>
+            <div class="editable" id="f-auto-trigger" contenteditable="true" data-placeholder="The trigger..."></div>
+        </div>
+        <div class="field-group">
+            <label class="field-label" for="f-auto-input">Input</label>
+            <p class="field-hint">What does the automation read each time it fires? A list, a calendar, an inbox, a folder.</p>
+            <div class="editable" id="f-auto-input" contenteditable="true" data-placeholder="The input..."></div>
+        </div>
+        <div class="field-group">
+            <label class="field-label" for="f-auto-output">Output</label>
+            <p class="field-hint">What does the automation produce? A digest, a draft, a notification, a row in a sheet.</p>
+            <div class="editable" id="f-auto-output" contenteditable="true" data-placeholder="The output..."></div>
+        </div>
+        <div class="field-group">
+            <label class="field-label" for="f-auto-checkpoint">Human checkpoint</label>
+            <p class="field-hint">Where does a human review before anything external happens? If the answer is "nowhere," reconsider — that's an Agency-mode delegation and warrants a leadership conversation first.</p>
+            <div class="editable" id="f-auto-checkpoint" contenteditable="true" data-placeholder="The review step..."></div>
+        </div>
+        <div class="field-group">
+            <label class="field-label" for="f-auto-tier">Data tier of the input</label>
+            <p class="field-hint">Automations that touch Tier 1 or 2 data require explicit governance review before standing up. What tier is yours?</p>
+            <div class="editable" id="f-auto-tier" contenteditable="true" data-placeholder="The tier..."></div>
+        </div>
+    </div>
+
+    <div class="worked-example">
+        <h3>Worked example — partner outreach, all four shapes</h3>
+        <p><strong>One-shot:</strong> "Draft a note to Georgetown's interim dean explaining why our timeline shifted." The dean is interim. The shift was a one-time event. <em>Why one-shot:</em> the variable that won't repeat is the interim dean herself.</p>
+        <p><strong>Project — Partner Engagement:</strong> system prompt names the 13 partners and DC CAP voice; files include partner contact list (Tier 2), MOU terms (Tier 3), prior emails (Tier 2), voice guide (Tier 4). Asks: draft an email, write a meeting brief, compare three partners' responses.</p>
+        <p><strong>Skill — Draft a Partner Email in DC CAP Voice:</strong> trigger on any partner email; good = warm, professional, names the relationship; avoid = generic openers, formal closers; inputs supplied inline = partner name, topic, deadline.</p>
+        <p><strong>Automation — Quiet Partner Watch:</strong> trigger every Monday 8am; input = partner contact list + email log; output = list of partners untouched 30+ days with one-line suggested reach-outs; human checkpoint = development associate reviews before any reach-out goes out; tier = 2.</p>
+    </div>
+</section>
+
+<div class="actions-bar">
+    <button class="action-btn" onclick="window.print()">Print / Save PDF</button>
+    <a class="action-btn" href="pilot_hub.html" style="text-decoration: none; display: inline-flex; align-items: center;">Back to Hub</a>
+</div>
+
+<footer class="ws-footer">
+    <p>DC CAP Enterprise AI Pilot · Week 3 — From Reps to Patterns · <a href="pilot_hub.html">Pilot Hub</a></p>
+</footer>
+
+<script>
+    (function() {
+        var cards = document.querySelectorAll('.container-card');
+        var panels = document.querySelectorAll('.build-panel');
+        var preDecision = document.getElementById('pre-decision');
+
+        function selectContainer(name) {
+            cards.forEach(function(c) {
+                var match = c.dataset.container === name;
+                c.classList.toggle('selected', match);
+                c.setAttribute('aria-checked', match ? 'true' : 'false');
+            });
+            panels.forEach(function(p) {
+                p.classList.toggle('active', p.dataset.panel === name);
+            });
+            preDecision.classList.add('hidden');
+        }
+
+        cards.forEach(function(card) {
+            card.addEventListener('click', function() {
+                selectContainer(card.dataset.container);
+            });
+        });
+    })();
+</script>
+
+</body>
+</html>

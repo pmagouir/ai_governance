@@ -2454,58 +2454,98 @@
 
             </div>
 
-            <!-- WEEK 3: DESCRIPTION — HIDDEN (unhide when ready) -->
+            <!-- WEEK 3: FROM REPS TO PATTERNS — HIDDEN (unhide when ready: remove display:none from the line below) -->
             <div class="reveal" style="display:none; margin-bottom: clamp(1.5rem, 3vw, 2.5rem);">
                 <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: clamp(0.5rem, 1vw, 0.75rem);">
                     <div style="background: var(--purple); color: var(--white); font-family: var(--font-mono); font-size: clamp(0.7rem, 1vw, 0.8rem); padding: 4px 12px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap;">Week 3</div>
-                    <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--purple); font-size: clamp(1.1rem, 2vw, 1.3rem);">Description</div>
+                    <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--purple); font-size: clamp(1.1rem, 2vw, 1.3rem);">From Reps to Patterns</div>
                     <div style="flex: 1; height: 2px; background: rgba(131, 82, 255, 0.15);"></div>
                 </div>
-                <p style="font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: var(--dark-gray); line-height: 1.6; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem); max-width: 800px;">Claude's usefulness depends on what you bring to it — not prompt formulas, but the context only you have: who this is for, what good looks like, and what's at stake.</p>
+                <p style="font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: var(--dark-gray); line-height: 1.6; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem); max-width: 800px;">Week 2 was reps. By now you've seen Claude help with real work — and you've also seen drafts that fell flat. This week is the move that turns reps into patterns: describing the unit of work precisely enough to know <em>what kind of thing you're building</em>. A one-shot? A Project? A Skill? An automation? Each one reuses something different — the context, the move, or the trigger. Naming what's reusable is how your H1 reps become H2 inheritance.</p>
+
+                <!-- Leadership Lens: The Four Containers -->
+                <div style="margin-bottom: clamp(1rem, 2vw, 1.5rem); background: linear-gradient(135deg, rgba(131, 82, 255, 0.05) 0%, rgba(135, 183, 213, 0.05) 100%); border: 1px solid rgba(131, 82, 255, 0.15); border-left: 4px solid var(--purple); border-radius: 8px; padding: clamp(1rem, 2vw, 1.5rem);">
+                    <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--purple); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.04em;">Leadership Lens — The Four Containers</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.75rem;">Every Claude move you make falls into one of four containers. The container is defined by <strong>what gets reused</strong>:</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(0.5rem, 1vw, 0.75rem); margin-bottom: 0.5rem;">
+                        <div style="padding: 0.7rem 0.85rem; background: rgba(16, 26, 76, 0.05); border-radius: 6px;"><strong style="color: var(--navy); font-family: var(--font-subhead);">One-shot</strong><br><span style="font-size: 0.9rem; color: var(--dark-gray);">Nothing reusable. You won't do this again — and you can say <em>why</em> in one sentence.</span></div>
+                        <div style="padding: 0.7rem 0.85rem; background: rgba(131, 82, 255, 0.06); border-radius: 6px;"><strong style="color: var(--purple); font-family: var(--font-subhead);">Project</strong><br><span style="font-size: 0.9rem; color: var(--dark-gray);">The <em>context</em> is reused. Same body of knowledge, many different asks, for weeks.</span></div>
+                        <div style="padding: 0.7rem 0.85rem; background: rgba(135, 183, 213, 0.12); border-radius: 6px;"><strong style="color: var(--blue); font-family: var(--font-subhead);">Skill</strong> <span style="font-size: 0.78rem; color: #777; font-style: italic;">(the artifact, not the human capability)</span><br><span style="font-size: 0.9rem; color: var(--dark-gray);">The <em>move</em> is reused. A short written procedure — when to trigger it, what good looks like, what to avoid — that anyone on the team can run.</span></div>
+                        <div style="padding: 0.7rem 0.85rem; background: rgba(252, 176, 23, 0.08); border-radius: 6px;"><strong style="color: var(--gold); font-family: var(--font-subhead);">Automation</strong><br><span style="font-size: 0.9rem; color: var(--dark-gray);">The <em>trigger</em> is reused. Runs on a cadence or an event — no human has to remember.</span></div>
+                    </div>
+                    <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;"><strong>The Description sub-skill:</strong> you can't pick the right container until you describe the unit of work precisely. What is the work? Who's it for? How often does it happen? What does good look like? Description is the design step that comes before container choice.</p>
+                </div>
 
                 <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
                     <div class="card purple-accent reveal-scale">
                         <span class="status-badge status-available">Available</span>
-                        <h4 class="card-title">Data Classification Practice</h4>
-                        <p class="card-description">Interactive drag-and-drop exercise for the 4-tier governance system. Builds the instinct to describe data correctly.</p>
-                        <a href="data_tier_practice.html" class="card-link">Start Practice →</a>
+                        <h4 class="card-title">Container Decision Worksheet</h4>
+                        <p class="card-description">A four-step decision tool for this week's challenge. Describe the work, name what's reusable, pick the container, draft the artifact. Print or fill in the browser.</p>
+                        <a href="container_decision_worksheet.html" class="card-link">Start Worksheet →</a>
                     </div>
                     <div class="card blue-accent reveal-scale">
                         <span class="status-badge status-available">Available</span>
+                        <h4 class="card-title">AI Fluency Framework</h4>
+                        <p class="card-description">The 4D model and three modalities. Container choice maps directly onto Automation, Augmentation, and Agency.</p>
+                        <a href="ai_fluency_framework.html" class="card-link">View Framework →</a>
+                    </div>
+                    <div class="card gold-accent reveal-scale">
+                        <span class="status-badge status-available">Available</span>
                         <h4 class="card-title">AI Governance Framework</h4>
-                        <p class="card-description">Reference back: the data classification tiers that determine what context you can and can't share with Claude.</p>
+                        <p class="card-description">Containers bake governance in. A Project's reference files carry the data tier of whatever you load. Know the rules before you build.</p>
                         <a href="ai_governance_framework.html" class="card-link">View Framework →</a>
                     </div>
                 </div>
 
-                <!-- Worked Example: Context Changes the Output -->
-                <div style="margin-top: clamp(1rem, 2vw, 1.5rem); background: rgba(131, 82, 255, 0.04); border: 1px solid rgba(131, 82, 255, 0.15); border-left: 4px solid var(--purple); border-radius: 8px; padding: clamp(1rem, 2vw, 1.5rem);">
-                    <h4 style="font-family: var(--font-subhead); font-size: clamp(0.95rem, 1.5vw, 1.1rem); color: var(--navy); margin-bottom: 0.75rem;">Worked Example: Context Changes the Output</h4>
-                    <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--dark-gray); margin-bottom: 0.75rem;">Before you open Claude, spend two minutes with this question: what would a new colleague need to know to do this task well? The audience, the relationship, the standard it has to meet. That's the context Claude needs from you — and it changes everything.</p>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.75rem, 1.5vw, 1rem);">
-                        <div style="background: rgba(16, 26, 76, 0.04); border-radius: 6px; padding: clamp(0.75rem, 1.5vw, 1rem);">
-                            <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.1vw, 0.85rem); color: #999; margin-bottom: 0.4rem;">Without Context</p>
-                            <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0; font-style: italic;">"Draft an email to our university partners about the upcoming deadline."</p>
-                            <p style="font-size: clamp(0.8rem, 1.1vw, 0.88rem); line-height: 1.5; color: #999; margin: 0.5rem 0 0 0;">Claude gives you something generic. You spend 15 minutes rewriting it.</p>
+                <!-- Worked Example (accordion) -->
+                <details style="margin-top: clamp(1rem, 2vw, 1.5rem); background: rgba(131, 82, 255, 0.05); border: 1px solid rgba(131, 82, 255, 0.2); border-left: 4px solid var(--purple); border-radius: 8px;">
+                    <summary style="padding: clamp(1rem, 2vw, 1.25rem); cursor: pointer; font-family: var(--font-subhead); font-weight: 600; font-size: clamp(0.95rem, 1.5vw, 1.1rem); color: var(--navy); list-style: none;">Worked Example — One Job, Four Containers ▾</summary>
+                    <div style="padding: 0 clamp(1rem, 2vw, 1.25rem) clamp(1rem, 2vw, 1.25rem);">
+                        <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 1rem 0;"><strong>The job:</strong> Stay in genuine, on-brand contact with DC CAP's 13 university partners.</p>
+
+                        <div style="background: rgba(16, 26, 76, 0.04); border-left: 3px solid var(--navy); border-radius: 0 6px 6px 0; padding: clamp(0.75rem, 1.5vw, 1rem); margin-bottom: 0.75rem;">
+                            <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--navy); margin: 0 0 0.4rem 0;">One-shot</p>
+                            <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 0.4rem 0;"><em>"Draft a note to Georgetown's interim dean explaining why our timeline shifted this cycle."</em> The dean is interim. The timeline shift was a one-time event. You'll never write this exact note again.</p>
+                            <p style="font-size: clamp(0.85rem, 1.2vw, 0.9rem); line-height: 1.5; color: var(--dark-gray); margin: 0;"><strong>What's reused:</strong> nothing. <strong>The discipline:</strong> name <em>why</em> it's a one-shot, so you don't accidentally rebuild it next week.</p>
                         </div>
-                        <div style="background: rgba(131, 82, 255, 0.06); border-radius: 6px; padding: clamp(0.75rem, 1.5vw, 1rem);">
-                            <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.1vw, 0.85rem); color: var(--purple); margin-bottom: 0.4rem;">With Your Context</p>
-                            <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0; font-style: italic;">"The acceptance deadline is April 15. Our 13 university partners have students who haven't confirmed yet. The tone needs to be supportive, not pressuring — these are admissions contacts we work with year-round. Remind them of the waitlist timeline so they understand urgency."</p>
-                            <p style="font-size: clamp(0.8rem, 1.1vw, 0.88rem); line-height: 1.5; color: var(--purple); margin: 0.5rem 0 0 0;">Claude gives you a draft that understands the relationship dynamics. You spend 2 minutes polishing.</p>
+
+                        <div style="background: rgba(131, 82, 255, 0.06); border-left: 3px solid var(--purple); border-radius: 0 6px 6px 0; padding: clamp(0.75rem, 1.5vw, 1rem); margin-bottom: 0.75rem;">
+                            <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--purple); margin: 0 0 0.4rem 0;">Project — "Partner Engagement"</p>
+                            <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 0.4rem 0;">Stand up a Claude Project loaded with the partner contact list, MOU terms, every email sent in the last year, the DC CAP voice guide, and current cycle dates. Now any partner-related ask runs against the same body of knowledge: a draft email, a meeting brief, "what did Howard say in February?", a side-by-side of how three partners responded to the same ask.</p>
+                            <p style="font-size: clamp(0.85rem, 1.2vw, 0.9rem); line-height: 1.5; color: var(--dark-gray); margin: 0;"><strong>What's reused:</strong> the <em>context</em>, across many different tasks, for weeks.</p>
                         </div>
+
+                        <div style="background: rgba(135, 183, 213, 0.1); border-left: 3px solid var(--blue); border-radius: 0 6px 6px 0; padding: clamp(0.75rem, 1.5vw, 1rem); margin-bottom: 0.75rem;">
+                            <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--blue); margin: 0 0 0.4rem 0;">Skill — "Draft a Partner Email in DC CAP Voice"</p>
+                            <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 0.4rem 0;">Write the move down once. When to trigger it (any partner email, any topic). What good looks like (warm, professional, names the relationship, never asks twice). What to avoid (generic openers, formal closers that read cold). Now any teammate can run the same move for any partner — they describe the partner and the topic inline; the procedure stays consistent.</p>
+                            <p style="font-size: clamp(0.85rem, 1.2vw, 0.9rem); line-height: 1.5; color: var(--dark-gray); margin: 0;"><strong>What's reused:</strong> the <em>move</em>, across all 13 partners and every topic.</p>
+                        </div>
+
+                        <div style="background: rgba(252, 176, 23, 0.07); border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0; padding: clamp(0.75rem, 1.5vw, 1rem); margin-bottom: 0.75rem;">
+                            <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--gold); margin: 0 0 0.4rem 0;">Automation — "Quiet Partner Watch"</p>
+                            <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 0.4rem 0;">Every Monday morning, surface partners DC CAP hasn't touched in 30 days, with a one-line suggested reach-out for each. The trigger fires on its own. The reach-outs still pass through a human — but no one has to remember to look.</p>
+                            <p style="font-size: clamp(0.85rem, 1.2vw, 0.9rem); line-height: 1.5; color: var(--dark-gray); margin: 0;"><strong>What's reused:</strong> the <em>trigger</em>. The work runs on a cadence, not on memory.</p>
+                        </div>
+
+                        <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--navy); margin: 0; padding-top: 0.5rem; border-top: 1px solid rgba(16, 26, 76, 0.08);"><strong>Takeaway:</strong> Same job, four shapes. The Project is the workspace. The Skill is the move. The Automation is the trigger. The one-shot is the deliberate exception. Picking the wrong container is how teams end up rebuilding the same prompt every Tuesday.</p>
                     </div>
-                    <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--dark-gray); margin-top: 0.75rem; margin-bottom: 0;"><strong>The difference wasn't a better "prompt."</strong> It was sharing what you already know about the task — the audience, the relationship, the stakes, the timing. That's Description.</p>
-                </div>
+                </details>
 
                 <!-- Challenge + Governance Pulse -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.75rem, 1.5vw, 1rem); margin-top: clamp(1rem, 2vw, 1.5rem);">
                     <div style="background: rgba(131, 82, 255, 0.05); border: 1px solid rgba(131, 82, 255, 0.15); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
-                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--purple); margin-bottom: 0.4rem;">This Week's Challenge</p>
-                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Pick a real task from your week. Before opening Claude, write down three things only you know — the audience, the backstory, the standard it needs to meet. Share that context with Claude and try the task. On Friday, share: how did bringing your context change what came back?</p>
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--purple); margin-bottom: 0.4rem;">This Week's Challenge — Container Design</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0 0 0.5rem 0;">Pick one Claude move from your last two weeks. Answer in three steps:</p>
+                        <ol style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0 0 0.5rem 0; padding-left: 1.15rem;">
+                            <li><strong>Describe the work.</strong> What's the unit? Who's it for? How often does it happen?</li>
+                            <li><strong>Name the reusable thing.</strong> Context, move, trigger, or nothing?</li>
+                            <li><strong>Build the matching artifact.</strong> Project → set up the workspace with system prompt and reference files. Skill → write a short SKILL.md (when to trigger, what good looks like, what to avoid). Automation → sketch trigger, input, output, human checkpoint. One-shot → write the one sentence that says <em>why</em> it's a one-shot.</li>
+                        </ol>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Bring the artifact to AI Friday. Friday's question: <em>whose Skill should we steal? Whose Project should be a Skill? What did someone automate that the rest of us are still doing by hand?</em></p>
                     </div>
                     <div style="background: rgba(252, 176, 23, 0.05); border: 1px solid rgba(252, 176, 23, 0.2); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
                         <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--gold); margin-bottom: 0.4rem;">Governance Pulse</p>
-                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Practice classifying data before uploading. When in doubt, treat data as one tier more restrictive.</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Containers bake data classification in. The reference files in your Project carry their tier with them — anyone with Project access has access to that data. Before you build, ask: what tier is the most sensitive thing I'm about to load? Who should and shouldn't be in this Project? <strong>Leader scope:</strong> if your team builds three Projects this month, that's three governance decisions you own.</p>
                     </div>
                 </div>
 
@@ -2515,8 +2555,8 @@
                     <div style="padding: 0 clamp(0.75rem, 1.5vw, 1rem) clamp(0.75rem, 1.5vw, 1rem);">
                         <form class="weekly-reflection-form" data-week="3" style="display: flex; flex-direction: column; gap: 0.75rem;">
                             <div>
-                                <label for="" style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">What context did you bring this week that changed Claude's output? What did you learn about what Claude needs from you?</label>
-                                <textarea aria-label="What context changed Claude's output" style="width: 100%; min-height: 60px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; font-family: var(--font-body); font-size: 0.9rem; resize: vertical;" placeholder="The context you shared, how it changed the result..."></textarea>
+                                <label for="" style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">What pattern did you find in your work this week? Which container did you build — Project, Skill, Automation — or did you decide it was a deliberate one-shot, and why?</label>
+                                <textarea aria-label="What pattern did you find and what container did you build" style="width: 100%; min-height: 60px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; font-family: var(--font-body); font-size: 0.9rem; resize: vertical;" placeholder="The pattern, the container, what's reusable in it..."></textarea>
                             </div>
                             <fieldset style="border: none; padding: 0;">
                                 <legend style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">Confidence level (1-5)</legend>
