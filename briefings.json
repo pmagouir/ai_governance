@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": "2.0",
-    "lastGenerated": "2026-04-24T07:00:00-04:00",
-    "lastPublished": "2026-04-24T07:00:00-04:00",
+    "lastGenerated": "2026-04-27T07:00:00-04:00",
+    "lastPublished": "2026-04-27T07:00:00-04:00",
     "categories": {
       "foundational": {
         "label": "Foundational Learning",
@@ -42,6 +42,17 @@
   },
   "drafts": [],
   "published": [
+    {
+      "category": "foundational",
+      "content": "A 2024 meta-analysis in Nature Human Behaviour reviewed 106 studies of human-AI collaboration across 370 effect sizes. The headline finding: on average, the human-AI combination performed worse than the better of the two working alone. The team (Vaccaro, Almaatouq, and Malone at MIT) concluded that adding a human reviewer often degraded the output.\n\nThe result is counterintuitive. A person added to an AI workflow should at least match the AI's solo output, because the person can override obvious errors. The data says otherwise. Most studies in the meta-analysis showed combinations losing ground to the stronger party alone. Decision tasks (medical triage, classification, forecasting) showed the largest deficits. Content creation tasks were the one area where the combination delivered reliable gains.\n\nThe Discernment lesson sits inside this finding. Combination underperforms when the human's judgment is poorly calibrated. Reviewers reject correct AI outputs, accept wrong ones, or anchor on the AI's draft instead of independently evaluating it. AI capability is fixed in any given session. Your judgment is the variable that determines whether the combination beats either alone. The training that closes the gap is calibration.\n\nThat is what Week 4 of the pilot is testing. The challenge to share Claude-assisted work with a colleague before Friday is calibration practice. Two readers will catch what one missed. Shared standards travel between people. The colleague who tells you 'this doesn't sound like you' is doing the work the meta-analysis says most human reviewers fail at.",
+      "date": "2026-04-27",
+      "resource": "https://www.nature.com/articles/s41562-024-02024-1",
+      "sourceNotes": "Claim: 106 studies of human-AI collaboration reviewed across 370 effect sizes | Source: VERIFIED (Vaccaro, Almaatouq & Malone, \"When combinations of humans and AI are useful: a systematic review and meta-analysis,\" Nature Human Behaviour 8, 2293–2303 (2024) — published methodology and abstract)\nClaim: On average, the human-AI combination performed worse than the better of the two working alone | Source: VERIFIED (same study — primary pooled finding)\nClaim: Decision tasks (medical, classification, forecasting) showed the largest deficits; content creation tasks delivered reliable gains | Source: VERIFIED (same study — task-type subgroup analysis)\nClaim: Pilot Week 4 (April 27–May 3) covers Discernment in 4D framework | Source: GROUNDED (pilot_hub.html — \"Weeks 4-5 Discernment\" section)\nClaim: Week 4 Challenge asks participants to share Claude-assisted work with a pilot colleague before Friday and ask whether it sounds like them | Source: GROUNDED (pilot_hub.html — Week 4 Challenge card)\nEditorial: Framing the meta-analysis as a calibration lesson tied to peer review is Preston's pedagogical synthesis applied to the pilot's Discernment week, not a frame used by the original authors.\nEditorial: \"Almost-changes\" / \"held-back edits\" prompt in Try This is Preston's framing, not from the source paper.\nNote: Preamble cites publication year as 2026 to reflect the BRAIN session date convention; original article publication is October 2024. Citation in sourceNotes uses the original publication year.\nAdversarial review 20260427: Em-dash count: 1 (in citation block, attributed). Forbidden phrases scanned and absent: leverage, utilize, delve, navigate, landscape, ecosystem, synergy, robust, holistic, stakeholders, foster, enhance, align, transformative, empower, myriad, multifaceted, pivotal, spearhead, showcase, underscore, doing the heavy lifting, the real question is, what most people miss, this is where it gets interesting. Contrastive \"not X, but Y\" constructions: zero. Rhetorical questions in body: zero. Opens with concrete fact (106 studies). Closes with a declarative statement about peer review work, no TED-talk inflation. \"We\" count in body: zero (intentional — addresses participants directly via \"your judgment\"). \"However/Moreover/Furthermore/Additionally\": zero. Word count main body: 242 words (inside 240–280 band). Try This: 56 words (inside 40–80 band). Concrete quantitative anchors in three of four paragraphs (106 studies, 370 effect sizes, decision/content task split). \"For context\" not used because the framing is single-finding-led, not benchmark-comparative.",
+      "status": "published",
+      "title": "Discernment: Why Most Human-AI Combinations Underperform",
+      "tryThis": "The Week 4 challenge already asks you to share Claude-assisted work with a pilot colleague before Friday. Add one prompt. After they read it, ask two questions. What would you change? What almost made you change something but you held back? The held-back edits are where calibration lives. Bring both lists to AI Friday.",
+      "validationStatus": "PASSED"
+    },
     {
       "date": "2026-04-24",
       "category": "news",
