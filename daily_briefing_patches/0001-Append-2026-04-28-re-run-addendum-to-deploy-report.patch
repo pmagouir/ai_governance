@@ -1,0 +1,31 @@
+From b7d3120360e641c11240cae346068c6de4f3351e Mon Sep 17 00:00:00 2001
+From: Preston Magouirk <preston.magouirk@dccap.org>
+Date: Tue, 28 Apr 2026 10:26:05 -0400
+Subject: [PATCH] Append 2026-04-28 re-run addendum to deploy report
+
+---
+ DAILY_BRIEFING_DEPLOY_20260428.md | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/DAILY_BRIEFING_DEPLOY_20260428.md b/DAILY_BRIEFING_DEPLOY_20260428.md
+index 3786bbf..1b3bbdf 100644
+--- a/DAILY_BRIEFING_DEPLOY_20260428.md
++++ b/DAILY_BRIEFING_DEPLOY_20260428.md
+@@ -60,3 +60,14 @@ Wednesday 2026-04-29, governance slot.
+ 
+ - Active-week derivation: prefer `pilot_hub.html` visibility flags over calendar math.
+ - `git push origin main` continues to fail under the sandbox; OAuth/SSH credentials are not configured. Patch-save fallback is operating as designed.
++
++## Re-run addendum (10:24 EDT)
++
++Scheduled task fired again on the same calendar date. Idempotency check passed:
++
++- `briefings.json` already contains the 2026-04-28 tips entry at `published[0]` with `validationStatus: PASSED` (committed in `3f8a4ef`).
++- Today's deploy report already on disk and committed in `eca1eef`.
++- Pre-run lock sweep cleared a stale `.git/index.lock` from the prior run; renamed to `.git/index.lock.stale.<ts>`. No working-tree corruption.
++- Local `HEAD` and local `origin/main` ref both at `eca1eef`; remote push attempted and failed with the expected `could not read Username for 'https://github.com'`. No new commits to ship — Preston's GitHub Desktop push from earlier this morning is presumed to have synced the remote, which is consistent with the local ref state.
++- No regeneration performed (per workflow step 3: skip when entry is present and validated).
++- Working tree remains clean except for `.claude/settings.local.json` and `daily_briefing_patches/0001-Create-DAILY_BRIEFING_DEPLOY_20260428.md.patch` (untracked, expected).
+-- 
+2.34.1
+
