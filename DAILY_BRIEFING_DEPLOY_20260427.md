@@ -2,59 +2,68 @@
 
 **Run by:** scheduled-task `daily-briefing-ai-pilot` (autonomous)
 **Day/slot:** Monday, foundational
-**Pilot context:** Week 4 (Discernment, Weeks 4-5 in 4D framework). Phase 2 Cards Day 5 of pilot.
+**Pilot context:** Week 3 (Description, in the active-week count that skips Spring Break April 13–17). Phase 2 Cards Day 5 of pilot.
 
 ## Today's entry
 
-- **Title:** Discernment: Why Most Human-AI Combinations Underperform
+- **Title:** Description: What You Encode Is What Scales
 - **Category:** foundational
-- **Word count (main body):** 242 (inside 240–280 band)
-- **Word count (Try This):** 54 (inside 40–80 band)
-- **Resource:** Vaccaro, Almaatouq & Malone, "When combinations of humans and AI are useful: a systematic review and meta-analysis," *Nature Human Behaviour* 8, 2293–2303 (2024). https://www.nature.com/articles/s41562-024-02024-1
+- **Word count (main body):** 241 (inside 240–280 band)
+- **Word count (Try This):** 55 (inside 40–80 band)
+- **Resource:** Brynjolfsson, Li, Raymond, "Generative AI at Work," NBER Working Paper 31161 (April 2023). https://www.nber.org/papers/w31161
 
 ## Anchor claims
 
-- 106 studies of human-AI collaboration reviewed across 370 effect sizes — VERIFIED (Nature Human Behaviour 2024 meta-analysis, abstract and methodology)
-- On average, the human-AI combination performed worse than the better of the two working alone — VERIFIED (same study, primary pooled finding)
-- Decision tasks showed the largest deficits; content creation tasks delivered reliable gains — VERIFIED (same study, task-type subgroup analysis)
-- Pilot Week 4 (April 27 – May 3) covers Discernment in the 4D framework — GROUNDED (`pilot_hub.html`, "Weeks 4-5 Discernment" section)
-- Week 4 Challenge: share Claude-assisted work with a pilot colleague before Friday and ask whether it sounds like them — GROUNDED (`pilot_hub.html`, Week 4 Challenge card)
+- 5,179 customer support agents tracked over a year — VERIFIED (Brynjolfsson et al. 2023, methodology section)
+- 14% average productivity lift — VERIFIED (same paper, headline finding)
+- Novice agents +34%, top performers little change — VERIFIED (same paper, heterogeneity analysis)
+- AI tool encoded patterns top agents already used — VERIFIED (same paper, mechanism analysis)
+- Pilot Week 3 covers Description in the 4D framework — GROUNDED (`pilot_hub.html`, Week 3 section)
+- Four containers (one-shot, Claude Project, Skill, automation) — GROUNDED (`pilot_hub.html`, Week 3 narrative)
 
 ## Audit findings
 
-- Em-dashes in body and Try This combined: 0
+- Em-dashes in body: 1 (closing paragraph, attaching a clarifying clause)
+- Em-dashes in Try This: 0
 - Forbidden phrases (full scan: leverage, utilize, delve, navigate, landscape, ecosystem, synergy, robust, holistic, stakeholders, foster, enhance, align, transformative, empower, myriad, multifaceted, pivotal, spearhead, showcase, underscore, doing the heavy lifting, the real question is, what most people miss, this is where it gets interesting): 0 hits
-- Contrastive "not X, but Y" constructions: 0 (verified by manual scan; "instead of independently evaluating it" is a single-clause alternative, not the AI-tell pattern)
+- Contrastive "not X, but Y" constructions: 0
 - Rhetorical questions in body: 0
 - Explicit transitions (However, Moreover, Furthermore, Additionally): 0
-- TED-talk closes: 0 (final sentence is a concrete declarative tying the meta-analysis to the colleague-feedback challenge)
-- "We" count in body: 0 (intentional — addresses participants directly via "your judgment"; matches register used on 2026-04-24 entry)
-- Superlatives used as emphasis: 0
-- Concrete quantitative anchors: 3 of 4 paragraphs (106 studies, 370 effect sizes, decision-vs-content task split)
-- Opens with concrete fact: yes (106 studies in Nature Human Behaviour)
+- TED-talk closes: 0 (final sentence ties Description to H1→H2 inheritance, the pilot's own framework)
+- "We" count in body: 0 (intentional — addresses participants directly via "your")
+- Concrete quantitative anchors: paragraph 1 (5,179 agents, 14%, 34%); paragraph 3 (four containers enumerated); paragraph 4 (H1→H2 framing)
+- Opens with concrete fact: yes (the Brynjolfsson study and its three headline numbers)
 
 Validation set to PASSED.
 
+## Correction note
+
+The first commit (`8fef91c`) for this date drafted a **Discernment** entry tied to the **Week 4 Challenge** content in `pilot_hub.html`. That was wrong. The pilot's active-week count skips Spring Break (April 13–17), so today is the start of **Week 3 (Description)**, not Week 4. Calendar-week math from the April 6 launch landed me on Week 4, but the pilot operates on active weeks, not calendar weeks.
+
+Preston caught this in chat. This run replaces the entry in place: same date, same `published[0]` slot, new content aligned to Week 3 Description and the "name what kind of thing you're building" challenge that Week 3 actually centers on.
+
 ## Deploy status
 
-- **Commit:** `8fef91c` — "Publish 2026-04-27 daily briefing: Discernment: Why Most Human-AI Combinations Underperform (foundational)"
-- **Push to origin/main:** FAILED (expected sandbox limitation) — `fatal: could not read Username for 'https://github.com': No such device or address`
-- **Patch saved:** `daily_briefing_patches/0001-Publish-2026-04-27-daily-briefing-Discernment-Why-Mo.patch` (5,918 bytes)
-- **Action required (Preston):** Pull this commit locally and push via GitHub Desktop (same pattern as prior scheduled runs).
+- **Replacement commit:** to be created in this run
+- **Prior commit on this date:** `8fef91c` (Week 4 Discernment — superseded; never pushed to origin)
+- **Push to origin/main:** sandbox cannot authenticate to GitHub HTTPS; commits ship locally and Preston pushes via GitHub Desktop. Patch saved in `daily_briefing_patches/`.
 
 ## Anomalies / environment
 
-- **Pre-run lock cleanup:** No stale `.lock` files present on entry. Confirmed via `find .git -maxdepth 3 -name "*.lock" ! -name "*.stale*"` returning empty before the work began.
-- **Post-commit unlink warnings:** Standard sandbox constraint. `git commit` emitted `Operation not permitted` warnings on `.git/objects/c1/tmp_obj_*`, `.git/objects/8f/tmp_obj_*`, `.git/HEAD.lock`, and `.git/objects/maintenance.lock`. The commit completed and the SHA registered in `git log`. Post-commit cleanup re-ran the rename-to-`.stale` pattern; `find` confirms zero remaining non-stale locks.
-- **Working tree:** Clean except for the same `.claude/settings.local.json` untracked file noted in prior reports. Out of scope for the briefing workflow.
+- **Pre-run lock cleanup:** No stale `.lock` files on entry. Standard `mv`-to-`.stale` cleanup ran post-commit on `.git/HEAD.lock` and `.git/objects/maintenance.lock` warnings.
+- **Working tree:** Clean except for the same `.claude/settings.local.json` untracked file noted in prior reports. Out of scope.
 
 ## Outstanding anomaly carried forward
 
-The Wednesday 2026-04-22 governance slot remains unfilled. First flagged on 2026-04-23, carried in 2026-04-25 and 2026-04-26 reports. Not back-filling autonomously because the topic should align with the live pilot week's governance focus and Preston should make that call. Flagging again.
+The Wednesday 2026-04-22 governance slot remains unfilled. First flagged on 2026-04-23, carried in 2026-04-25 and 2026-04-26 reports. Not back-filling autonomously because the topic should align with the live pilot week's governance focus. Flagging again.
 
 ## Pilot-week alignment notes
 
-Today's entry intentionally aligns with the Week 4 Challenge in `pilot_hub.html`. The Vaccaro et al. (2024) meta-analysis gives the foundational research basis for why Week 4's peer-review challenge matters: human-AI combinations underperform when reviewer judgment is poorly calibrated, and shared standards built through peer feedback are the calibration mechanism. The Try This action plugs directly into the existing Week 4 Challenge prompt (share with a pilot colleague before Friday) and adds a calibration-specific question.
+The replacement entry anchors to the Brynjolfsson, Li, Raymond (2023) NBER paper on generative AI in a 5,179-agent customer support setting. The mechanism finding — that the AI tool encoded patterns top agents already used — maps directly to the Week 3 Description challenge: whatever you describe well becomes the part that scales. The Try This action plugs into the Week 3 reading by asking participants to write three sentences describing one task and decide which container (one-shot, Project, Skill, or automation) those sentences belong in.
+
+## Lesson logged for self-improvement
+
+The pilot calendar skips Spring Break in its week count. Future scheduled runs should derive `active_week` from `pilot_hub.html` directly (e.g., parse the live `Week N` section for the current date) rather than computing `(today - launch).days // 7 + 1`. Adding a single source-of-truth function to the briefing skill would have prevented this misalignment.
 
 ## Next scheduled publication
 
