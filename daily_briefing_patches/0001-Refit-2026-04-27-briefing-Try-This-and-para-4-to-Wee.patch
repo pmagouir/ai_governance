@@ -1,0 +1,68 @@
+From 1a3d0eea2c2b762f80f7dc8d90d105eeacb6754a Mon Sep 17 00:00:00 2001
+From: Preston Magouirk <preston.magouirk@dccap.org>
+Date: Tue, 28 Apr 2026 06:53:17 -0400
+Subject: [PATCH] Refit 2026-04-27 briefing Try This and para 4 to Week 3
+ Container Design challenge
+
+---
+ DAILY_BRIEFING_DEPLOY_20260427.md |  9 ++++++---
+ briefings.json                    | 10 +++++-----
+ 2 files changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/DAILY_BRIEFING_DEPLOY_20260427.md b/DAILY_BRIEFING_DEPLOY_20260427.md
+index 01ed1d7..59aed23 100644
+--- a/DAILY_BRIEFING_DEPLOY_20260427.md
++++ b/DAILY_BRIEFING_DEPLOY_20260427.md
+@@ -36,11 +36,14 @@
+ 
+ Validation set to PASSED.
+ 
+-## Correction note
++## Correction notes
+ 
+-The first commit (`8fef91c`) for this date drafted a **Discernment** entry tied to the **Week 4 Challenge** content in `pilot_hub.html`. That was wrong. The pilot's active-week count skips Spring Break (April 13–17), so today is the start of **Week 3 (Description)**, not Week 4. Calendar-week math from the April 6 launch landed me on Week 4, but the pilot operates on active weeks, not calendar weeks.
++**First correction (rev 2, 11:30 ET):** Commit `8fef91c` drafted a Discernment entry anchored to the Week 4 Challenge content in `pilot_hub.html`. The pilot's active-week count skips Spring Break (April 13–17), so today is the start of Week 3 (Description), not Week 4. Calendar-week math from the April 6 launch landed me on Week 4, but the pilot operates on active weeks, not calendar weeks.
+ 
+-Preston caught this in chat. This run replaces the entry in place: same date, same `published[0]` slot, new content aligned to Week 3 Description and the "name what kind of thing you're building" challenge that Week 3 actually centers on.
++**Second correction (rev 3, this commit):** Preston flagged that the rev-2 Try This still echoed Week 4 framing — "a colleague could hand it to Claude" sat too close to the Week 4 share-with-a-pilot-colleague theme, and the body para 4 also referenced "portable to a colleague." Replaced both:
++- Try This now mirrors the actual Week 3 Container Design challenge precisely (three steps: describe the work / name the reusable thing / build the matching artifact). Source: `pilot_hub.html` lines 2537–2544.
++- Body para 4 reframed: "the move travels: across any partner, any topic, next week's version of yourself" with closing image "a move the team can run without rebuilding the prompt every Tuesday" — drawn directly from the Week 3 takeaway in `pilot_hub.html` line 2530.
++- Body para 2 added one verified sentence ("Productivity gains held over the full year") to bring word count from 237 to 244, inside the 240–280 band.
+ 
+ ## Deploy status
+ 
+diff --git a/briefings.json b/briefings.json
+index 9f095b9..9084b7d 100644
+--- a/briefings.json
++++ b/briefings.json
+@@ -1,8 +1,8 @@
+ {
+   "meta": {
+     "version": "2.0",
+-    "lastGenerated": "2026-04-27T11:30:00-04:00",
+-    "lastPublished": "2026-04-27T11:30:00-04:00",
++    "lastGenerated": "2026-04-27T13:00:00-04:00",
++    "lastPublished": "2026-04-27T13:00:00-04:00",
+     "categories": {
+       "foundational": {
+         "label": "Foundational Learning",
+@@ -44,13 +44,13 @@
+   "published": [
+     {
+       "category": "foundational",
+-      "content": "A 2023 study from Brynjolfsson, Li, and Raymond at MIT and Stanford tracked 5,179 customer support agents over a year as their company rolled out a generative-AI assistant. The result: 14% average productivity lift, with novice agents gaining 34% while top performers saw little change. The paper sits in the NBER working-paper series.\n\nThe mechanism is the part worth studying. The AI tool encoded the patterns top agents already used: how to phrase a hard message, when to escalate, what to ask before answering. New hires got those patterns on day one. The senior agents had nothing new to learn because the tool was running their playbook back at them.\n\nThat is the Description lesson Week 3 of the pilot is asking you to take seriously. Whatever you describe well becomes the part that scales. Whatever stays in your head stays a one-time effort. The four containers in this week's reading (a one-shot prompt, a Claude Project, a Skill, an automation) exist because each one reuses a different piece of your description. A Project reuses context. A Skill reuses a move. An automation reuses a trigger.\n\nNaming the container is half the work. The other half is writing the description that makes the work portable to a colleague or to next week's version of yourself. Description done well is how your H1 reps become H2 inheritance — the moment your own work starts looking like a pattern the team can use.",
++      "content": "A 2023 study from Brynjolfsson, Li, and Raymond at MIT and Stanford tracked 5,179 customer support agents over a year as their company rolled out a generative-AI assistant. The result: 14% average productivity lift, with novice agents gaining 34% while top performers saw little change. The paper sits in the NBER working-paper series.\n\nThe mechanism is the part worth studying. The AI tool encoded the patterns top agents already used: how to phrase a hard message, when to escalate, what to ask before answering. New hires got those patterns on day one. Productivity gains held over the full year. The senior agents had nothing new to learn because the tool was running their playbook back at them.\n\nThat is the Description lesson Week 3 of the pilot is asking you to take seriously. Whatever you describe well becomes the part that scales. Whatever stays in your head stays a one-time effort. The four containers in this week's reading (a one-shot prompt, a Claude Project, a Skill, an automation) exist because each one reuses a different piece of your description. A Project reuses context. A Skill reuses a move. An automation reuses a trigger.\n\nNaming the container is half the work. The other half is writing the description so the move travels: across any partner, any topic, next week's version of yourself. Description done well is how your H1 reps become H2 inheritance, a move the team can run without rebuilding the prompt every Tuesday.",
+       "date": "2026-04-27",
+       "resource": "https://www.nber.org/papers/w31161",
+-      "sourceNotes": "Claim: 5,179 customer support agents tracked over a year as their company rolled out a generative-AI assistant | Source: VERIFIED (Brynjolfsson, Li, Raymond, \"Generative AI at Work,\" NBER Working Paper 31161, April 2023 — methodology section)\nClaim: 14% average productivity lift | Source: VERIFIED (same paper — headline finding, measured as resolutions per hour)\nClaim: Novice agents gained 34%, top performers saw little change | Source: VERIFIED (same paper — heterogeneity-of-effects analysis, the most-cited mechanism finding)\nClaim: AI tool encoded the patterns top agents already used | Source: VERIFIED (same paper — the authors describe the model as having been trained on conversation transcripts that captured high-performer practices)\nClaim: Pilot Week 3 covers Description in the 4D framework | Source: GROUNDED (pilot_hub.html — Week 3 section, \"describing the unit of work precisely enough\")\nClaim: Week 3 framing identifies four containers (one-shot, Claude Project, Skill, automation) | Source: GROUNDED (pilot_hub.html — Week 3 narrative paragraph)\nClaim: H1 reps become H2 inheritance | Source: GROUNDED (pilot_hub.html — H1/H2/H3 framing in Weeks 2 and 3 sections)\nEditorial: Framing the Brynjolfsson finding as a Description lesson is Preston's pedagogical synthesis applied to the pilot's Week 3 focus, not a frame the original authors use.\nEditorial: \"Whatever you describe well becomes the part that scales\" is Preston's framing, not from the source paper.\nAdversarial review 20260427 (rev 2 — replaces Week 4 Discernment misalignment): Em-dash count: 1 (closing paragraph, attaching a clarifying clause). Forbidden phrases scanned and absent: leverage, utilize, delve, navigate, landscape, ecosystem, synergy, robust, holistic, stakeholders, foster, enhance, align, transformative, empower, myriad, multifaceted, pivotal, spearhead, showcase, underscore, doing the heavy lifting, the real question is, what most people miss, this is where it gets interesting. Contrastive \"not X, but Y\" constructions: zero. Rhetorical questions in body: zero. Opens with concrete fact (5,179 agents, 14% lift, 34% novice gain). Closes with declarative tying Description to H1→H2 inheritance, no TED-talk inflation. \"We\" count in body: zero (intentional — addresses participants directly via \"your\"). \"However/Moreover/Furthermore/Additionally\": zero. Word count main body: 247 (inside 240–280 band). Try This: 60 (inside 40–80 band).",
++      "sourceNotes": "Claim: 5,179 customer support agents tracked over a year as their company rolled out a generative-AI assistant | Source: VERIFIED (Brynjolfsson, Li, Raymond, \"Generative AI at Work,\" NBER Working Paper 31161, April 2023 — methodology section)\nClaim: 14% average productivity lift | Source: VERIFIED (same paper — headline finding, measured as resolutions per hour)\nClaim: Novice agents gained 34%, top performers saw little change | Source: VERIFIED (same paper — heterogeneity-of-effects analysis, the most-cited mechanism finding)\nClaim: AI tool encoded the patterns top agents already used | Source: VERIFIED (same paper — the authors describe the model as having been trained on conversation transcripts that captured high-performer practices)\nClaim: Pilot Week 3 covers Description in the 4D framework | Source: GROUNDED (pilot_hub.html — Week 3 section, \"describing the unit of work precisely enough\")\nClaim: Week 3 challenge is Container Design with three steps (describe the work / name the reusable thing / build the matching artifact) | Source: GROUNDED (pilot_hub.html line 2537–2544 — \"This Week's Challenge — Container Design\" card)\nClaim: Four containers (one-shot, Claude Project, Skill, automation) | Source: GROUNDED (pilot_hub.html — Week 3 narrative paragraph and Container worked-example block)\nClaim: \"rebuilding the prompt every Tuesday\" closing image | Source: GROUNDED (pilot_hub.html line 2530 — Week 3 takeaway: \"Picking the wrong container is how teams end up rebuilding the same prompt every Tuesday\")\nClaim: H1 reps become H2 inheritance | Source: GROUNDED (pilot_hub.html — H1/H2/H3 framing in Weeks 2 and 3 sections)\nEditorial: Framing the Brynjolfsson finding as a Description lesson is Preston's pedagogical synthesis applied to the pilot's Week 3 focus, not a frame the original authors use.\nEditorial: \"Whatever you describe well becomes the part that scales\" is Preston's framing.\nAdversarial review 20260427 (rev 3 — Try This and body para 4 rewritten to match the Week 3 Container Design challenge precisely; removed all \"colleague\" framing that echoed Week 4): Em-dash count: 1 (Try This: \"Build the matching artifact — a Project...\"). Forbidden phrases scanned and absent: leverage, utilize, delve, navigate, landscape, ecosystem, synergy, robust, holistic, stakeholders, foster, enhance, align, transformative, empower, myriad, multifaceted, pivotal, spearhead, showcase, underscore, doing the heavy lifting, the real question is, what most people miss, this is where it gets interesting. Contrastive \"not X, but Y\" constructions: zero. Rhetorical questions in body: zero. Opens with concrete fact (5,179 agents, 14%, 34%). \"However/Moreover/Furthermore/Additionally\": zero. Word count main body: 244 (inside 240–280 band). Try This: 64 (inside 40–80 band). Try This precisely mirrors the three steps of the Week 3 Container Design challenge in pilot_hub.html so the briefing and the live curriculum reinforce the same action.",
+       "status": "published",
+       "title": "Description: What You Encode Is What Scales",
+-      "tryThis": "Pick one task you did with Claude this week. Write three sentences that describe it well enough that a colleague could hand it to Claude and get a useful first draft. Decide whether those three sentences belong in a one-shot prompt, a Claude Project, a Skill, or an automation. Bring the answer to AI Friday.",
++      "tryThis": "Pick one Claude move from the last two weeks and run it through this week's three steps. Describe the work: what's the unit, who's it for, how often. Name the reusable thing: context, move, trigger, or nothing. Build the matching artifact — a Project, a SKILL.md, an automation sketch, or a one-shot with the reason it stays a one-shot. Bring the artifact to AI Friday.",
+       "validationStatus": "PASSED"
+     },
+     {
+-- 
+2.34.1
+

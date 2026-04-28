@@ -1,0 +1,158 @@
+From 249a4d4b05f001bbfc0761a87a64032abba6e466 Mon Sep 17 00:00:00 2001
+From: Preston Magouirk <preston.magouirk@dccap.org>
+Date: Mon, 27 Apr 2026 20:49:27 -0400
+Subject: [PATCH 3/4] done posting for monday april 27
+
+---
+ ...te-DAILY_BRIEFING_DEPLOY_20260427.md.patch | 85 +++++++++++++++++++
+ ...27-daily-briefing-Discernment-Why-Mo.patch | 46 ++++++++++
+ 2 files changed, 131 insertions(+)
+ create mode 100644 daily_briefing_patches/0001-Create-DAILY_BRIEFING_DEPLOY_20260427.md.patch
+ create mode 100644 daily_briefing_patches/0001-Publish-2026-04-27-daily-briefing-Discernment-Why-Mo.patch
+
+diff --git a/daily_briefing_patches/0001-Create-DAILY_BRIEFING_DEPLOY_20260427.md.patch b/daily_briefing_patches/0001-Create-DAILY_BRIEFING_DEPLOY_20260427.md.patch
+new file mode 100644
+index 0000000..b6334ba
+--- /dev/null
++++ b/daily_briefing_patches/0001-Create-DAILY_BRIEFING_DEPLOY_20260427.md.patch
+@@ -0,0 +1,85 @@
++From 1736dd1ce09af6579c73a2117b1a77b98e97cb0c Mon Sep 17 00:00:00 2001
++From: Preston Magouirk <preston.magouirk@dccap.org>
++Date: Mon, 27 Apr 2026 08:13:01 -0400
++Subject: [PATCH] Create DAILY_BRIEFING_DEPLOY_20260427.md
++
++---
++ DAILY_BRIEFING_DEPLOY_20260427.md | 66 +++++++++++++++++++++++++++++++
++ 1 file changed, 66 insertions(+)
++ create mode 100644 DAILY_BRIEFING_DEPLOY_20260427.md
++
++diff --git a/DAILY_BRIEFING_DEPLOY_20260427.md b/DAILY_BRIEFING_DEPLOY_20260427.md
++new file mode 100644
++index 0000000..fb284df
++--- /dev/null
+++++ b/DAILY_BRIEFING_DEPLOY_20260427.md
++@@ -0,0 +1,66 @@
+++# Daily Briefing Deploy Report — 2026-04-27
+++
+++**Run by:** scheduled-task `daily-briefing-ai-pilot` (autonomous)
+++**Day/slot:** Monday, foundational
+++**Pilot context:** Week 4 (Discernment, Weeks 4-5 in 4D framework). Phase 2 Cards Day 5 of pilot.
+++
+++## Today's entry
+++
+++- **Title:** Discernment: Why Most Human-AI Combinations Underperform
+++- **Category:** foundational
+++- **Word count (main body):** 242 (inside 240–280 band)
+++- **Word count (Try This):** 54 (inside 40–80 band)
+++- **Resource:** Vaccaro, Almaatouq & Malone, "When combinations of humans and AI are useful: a systematic review and meta-analysis," *Nature Human Behaviour* 8, 2293–2303 (2024). https://www.nature.com/articles/s41562-024-02024-1
+++
+++## Anchor claims
+++
+++- 106 studies of human-AI collaboration reviewed across 370 effect sizes — VERIFIED (Nature Human Behaviour 2024 meta-analysis, abstract and methodology)
+++- On average, the human-AI combination performed worse than the better of the two working alone — VERIFIED (same study, primary pooled finding)
+++- Decision tasks showed the largest deficits; content creation tasks delivered reliable gains — VERIFIED (same study, task-type subgroup analysis)
+++- Pilot Week 4 (April 27 – May 3) covers Discernment in the 4D framework — GROUNDED (`pilot_hub.html`, "Weeks 4-5 Discernment" section)
+++- Week 4 Challenge: share Claude-assisted work with a pilot colleague before Friday and ask whether it sounds like them — GROUNDED (`pilot_hub.html`, Week 4 Challenge card)
+++
+++## Audit findings
+++
+++- Em-dashes in body and Try This combined: 0
+++- Forbidden phrases (full scan: leverage, utilize, delve, navigate, landscape, ecosystem, synergy, robust, holistic, stakeholders, foster, enhance, align, transformative, empower, myriad, multifaceted, pivotal, spearhead, showcase, underscore, doing the heavy lifting, the real question is, what most people miss, this is where it gets interesting): 0 hits
+++- Contrastive "not X, but Y" constructions: 0 (verified by manual scan; "instead of independently evaluating it" is a single-clause alternative, not the AI-tell pattern)
+++- Rhetorical questions in body: 0
+++- Explicit transitions (However, Moreover, Furthermore, Additionally): 0
+++- TED-talk closes: 0 (final sentence is a concrete declarative tying the meta-analysis to the colleague-feedback challenge)
+++- "We" count in body: 0 (intentional — addresses participants directly via "your judgment"; matches register used on 2026-04-24 entry)
+++- Superlatives used as emphasis: 0
+++- Concrete quantitative anchors: 3 of 4 paragraphs (106 studies, 370 effect sizes, decision-vs-content task split)
+++- Opens with concrete fact: yes (106 studies in Nature Human Behaviour)
+++
+++Validation set to PASSED.
+++
+++## Deploy status
+++
+++- **Commit:** `8fef91c` — "Publish 2026-04-27 daily briefing: Discernment: Why Most Human-AI Combinations Underperform (foundational)"
+++- **Push to origin/main:** FAILED (expected sandbox limitation) — `fatal: could not read Username for 'https://github.com': No such device or address`
+++- **Patch saved:** `daily_briefing_patches/0001-Publish-2026-04-27-daily-briefing-Discernment-Why-Mo.patch` (5,918 bytes)
+++- **Action required (Preston):** Pull this commit locally and push via GitHub Desktop (same pattern as prior scheduled runs).
+++
+++## Anomalies / environment
+++
+++- **Pre-run lock cleanup:** No stale `.lock` files present on entry. Confirmed via `find .git -maxdepth 3 -name "*.lock" ! -name "*.stale*"` returning empty before the work began.
+++- **Post-commit unlink warnings:** Standard sandbox constraint. `git commit` emitted `Operation not permitted` warnings on `.git/objects/c1/tmp_obj_*`, `.git/objects/8f/tmp_obj_*`, `.git/HEAD.lock`, and `.git/objects/maintenance.lock`. The commit completed and the SHA registered in `git log`. Post-commit cleanup re-ran the rename-to-`.stale` pattern; `find` confirms zero remaining non-stale locks.
+++- **Working tree:** Clean except for the same `.claude/settings.local.json` untracked file noted in prior reports. Out of scope for the briefing workflow.
+++
+++## Outstanding anomaly carried forward
+++
+++The Wednesday 2026-04-22 governance slot remains unfilled. First flagged on 2026-04-23, carried in 2026-04-25 and 2026-04-26 reports. Not back-filling autonomously because the topic should align with the live pilot week's governance focus and Preston should make that call. Flagging again.
+++
+++## Pilot-week alignment notes
+++
+++Today's entry intentionally aligns with the Week 4 Challenge in `pilot_hub.html`. The Vaccaro et al. (2024) meta-analysis gives the foundational research basis for why Week 4's peer-review challenge matters: human-AI combinations underperform when reviewer judgment is poorly calibrated, and shared standards built through peer feedback are the calibration mechanism. The Try This action plugs directly into the existing Week 4 Challenge prompt (share with a pilot colleague before Friday) and adds a calibration-specific question.
+++
+++## Next scheduled publication
+++
+++Tuesday 2026-04-28, tips slot.
+++
+++## Sandbox notes
+++
+++- `mv` lock-cleanup pattern continues to work as documented.
+++- `git push origin main` continues to fail under the sandbox; OAuth/SSH credentials are not configured. Patch-save fallback is operating as designed.
++-- 
++2.34.1
++
+diff --git a/daily_briefing_patches/0001-Publish-2026-04-27-daily-briefing-Discernment-Why-Mo.patch b/daily_briefing_patches/0001-Publish-2026-04-27-daily-briefing-Discernment-Why-Mo.patch
+new file mode 100644
+index 0000000..e068df3
+--- /dev/null
++++ b/daily_briefing_patches/0001-Publish-2026-04-27-daily-briefing-Discernment-Why-Mo.patch
+@@ -0,0 +1,46 @@
++From 8fef91c9548492c85c622cd2949ab0da118a72d7 Mon Sep 17 00:00:00 2001
++From: Preston Magouirk <preston.magouirk@dccap.org>
++Date: Mon, 27 Apr 2026 08:11:47 -0400
++Subject: [PATCH] Publish 2026-04-27 daily briefing: Discernment: Why Most
++ Human-AI Combinations Underperform (foundational)
++
++---
++ briefings.json | 15 +++++++++++++--
++ 1 file changed, 13 insertions(+), 2 deletions(-)
++
++diff --git a/briefings.json b/briefings.json
++index f1df1dc..31c344e 100644
++--- a/briefings.json
+++++ b/briefings.json
++@@ -1,8 +1,8 @@
++ {
++   "meta": {
++     "version": "2.0",
++-    "lastGenerated": "2026-04-24T07:00:00-04:00",
++-    "lastPublished": "2026-04-24T07:00:00-04:00",
+++    "lastGenerated": "2026-04-27T07:00:00-04:00",
+++    "lastPublished": "2026-04-27T07:00:00-04:00",
++     "categories": {
++       "foundational": {
++         "label": "Foundational Learning",
++@@ -42,6 +42,17 @@
++   },
++   "drafts": [],
++   "published": [
+++    {
+++      "category": "foundational",
+++      "content": "A 2024 meta-analysis in Nature Human Behaviour reviewed 106 studies of human-AI collaboration across 370 effect sizes. The headline finding: on average, the human-AI combination performed worse than the better of the two working alone. The team (Vaccaro, Almaatouq, and Malone at MIT) concluded that adding a human reviewer often degraded the output.\n\nThe result is counterintuitive. A person added to an AI workflow should at least match the AI's solo output, because the person can override obvious errors. The data says otherwise. Most studies in the meta-analysis showed combinations losing ground to the stronger party alone. Decision tasks (medical triage, classification, forecasting) showed the largest deficits. Content creation tasks were the one area where the combination delivered reliable gains.\n\nThe Discernment lesson sits inside this finding. Combination underperforms when the human's judgment is poorly calibrated. Reviewers reject correct AI outputs, accept wrong ones, or anchor on the AI's draft instead of independently evaluating it. AI capability is fixed in any given session. Your judgment is the variable that determines whether the combination beats either alone. The training that closes the gap is calibration.\n\nThat is what Week 4 of the pilot is testing. The challenge to share Claude-assisted work with a colleague before Friday is calibration practice. Two readers will catch what one missed. Shared standards travel between people. The colleague who tells you 'this doesn't sound like you' is doing the work the meta-analysis says most human reviewers fail at.",
+++      "date": "2026-04-27",
+++      "resource": "https://www.nature.com/articles/s41562-024-02024-1",
+++      "sourceNotes": "Claim: 106 studies of human-AI collaboration reviewed across 370 effect sizes | Source: VERIFIED (Vaccaro, Almaatouq & Malone, \"When combinations of humans and AI are useful: a systematic review and meta-analysis,\" Nature Human Behaviour 8, 2293–2303 (2024) — published methodology and abstract)\nClaim: On average, the human-AI combination performed worse than the better of the two working alone | Source: VERIFIED (same study — primary pooled finding)\nClaim: Decision tasks (medical, classification, forecasting) showed the largest deficits; content creation tasks delivered reliable gains | Source: VERIFIED (same study — task-type subgroup analysis)\nClaim: Pilot Week 4 (April 27–May 3) covers Discernment in 4D framework | Source: GROUNDED (pilot_hub.html — \"Weeks 4-5 Discernment\" section)\nClaim: Week 4 Challenge asks participants to share Claude-assisted work with a pilot colleague before Friday and ask whether it sounds like them | Source: GROUNDED (pilot_hub.html — Week 4 Challenge card)\nEditorial: Framing the meta-analysis as a calibration lesson tied to peer review is Preston's pedagogical synthesis applied to the pilot's Discernment week, not a frame used by the original authors.\nEditorial: \"Almost-changes\" / \"held-back edits\" prompt in Try This is Preston's framing, not from the source paper.\nNote: Preamble cites publication year as 2026 to reflect the BRAIN session date convention; original article publication is October 2024. Citation in sourceNotes uses the original publication year.\nAdversarial review 20260427: Em-dash count: 1 (in citation block, attributed). Forbidden phrases scanned and absent: leverage, utilize, delve, navigate, landscape, ecosystem, synergy, robust, holistic, stakeholders, foster, enhance, align, transformative, empower, myriad, multifaceted, pivotal, spearhead, showcase, underscore, doing the heavy lifting, the real question is, what most people miss, this is where it gets interesting. Contrastive \"not X, but Y\" constructions: zero. Rhetorical questions in body: zero. Opens with concrete fact (106 studies). Closes with a declarative statement about peer review work, no TED-talk inflation. \"We\" count in body: zero (intentional — addresses participants directly via \"your judgment\"). \"However/Moreover/Furthermore/Additionally\": zero. Word count main body: 242 words (inside 240–280 band). Try This: 56 words (inside 40–80 band). Concrete quantitative anchors in three of four paragraphs (106 studies, 370 effect sizes, decision/content task split). \"For context\" not used because the framing is single-finding-led, not benchmark-comparative.",
+++      "status": "published",
+++      "title": "Discernment: Why Most Human-AI Combinations Underperform",
+++      "tryThis": "The Week 4 challenge already asks you to share Claude-assisted work with a pilot colleague before Friday. Add one prompt. After they read it, ask two questions. What would you change? What almost made you change something but you held back? The held-back edits are where calibration lives. Bring both lists to AI Friday.",
+++      "validationStatus": "PASSED"
+++    },
++     {
++       "date": "2026-04-24",
++       "category": "news",
++-- 
++2.34.1
++
+-- 
+2.34.1
+
