@@ -36,11 +36,14 @@
 
 Validation set to PASSED.
 
-## Correction note
+## Correction notes
 
-The first commit (`8fef91c`) for this date drafted a **Discernment** entry tied to the **Week 4 Challenge** content in `pilot_hub.html`. That was wrong. The pilot's active-week count skips Spring Break (April 13–17), so today is the start of **Week 3 (Description)**, not Week 4. Calendar-week math from the April 6 launch landed me on Week 4, but the pilot operates on active weeks, not calendar weeks.
+**First correction (rev 2, 11:30 ET):** Commit `8fef91c` drafted a Discernment entry anchored to the Week 4 Challenge content in `pilot_hub.html`. The pilot's active-week count skips Spring Break (April 13–17), so today is the start of Week 3 (Description), not Week 4. Calendar-week math from the April 6 launch landed me on Week 4, but the pilot operates on active weeks, not calendar weeks.
 
-Preston caught this in chat. This run replaces the entry in place: same date, same `published[0]` slot, new content aligned to Week 3 Description and the "name what kind of thing you're building" challenge that Week 3 actually centers on.
+**Second correction (rev 3, this commit):** Preston flagged that the rev-2 Try This still echoed Week 4 framing — "a colleague could hand it to Claude" sat too close to the Week 4 share-with-a-pilot-colleague theme, and the body para 4 also referenced "portable to a colleague." Replaced both:
+- Try This now mirrors the actual Week 3 Container Design challenge precisely (three steps: describe the work / name the reusable thing / build the matching artifact). Source: `pilot_hub.html` lines 2537–2544.
+- Body para 4 reframed: "the move travels: across any partner, any topic, next week's version of yourself" with closing image "a move the team can run without rebuilding the prompt every Tuesday" — drawn directly from the Week 3 takeaway in `pilot_hub.html` line 2530.
+- Body para 2 added one verified sentence ("Productivity gains held over the full year") to bring word count from 237 to 244, inside the 240–280 band.
 
 ## Deploy status
 
