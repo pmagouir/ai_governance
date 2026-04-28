@@ -1,0 +1,62 @@
+# Daily Briefing Deploy Report — 2026-04-28
+
+**Run by:** scheduled-task `daily-briefing-ai-pilot` (autonomous)
+**Day/slot:** Tuesday, tips
+**Pilot context:** Week 3 (Description / Container Design). Active week locked from `pilot_hub.html` directly — only the Week 3 block is visible; Weeks 4-5, 6-7, and 8 all sit behind `display:none` until leadership unhides them.
+
+## Today's entry
+
+- **Title:** Three Sentences That Turn a Claude Project Into a Teammate
+- **Category:** tips
+- **Word count (main body):** 241 (inside 240–280 band)
+- **Word count (Try This):** 64 (inside 40–80 band)
+- **Resource:** `pilot_hub.html` — Week 3 worked example (Partner University Updates Project), https://dccapinnovation.org/pilot_hub.html
+
+## Anchor claims
+
+- Pilot hub Week 3 worked example, verbatim three-sentence custom-instructions block — GROUNDED (`pilot_hub.html` lines 2602–2611)
+- 13 university partner institutions — VERIFIED (DC CAP `org_intelligence/`)
+- Tier 3 data classification covers institutions and contact names — GROUNDED (`pilot_hub.html` worked-example reference-file line)
+- Pilot Week 3 covers Description and Container Design — GROUNDED (`pilot_hub.html` Week 3 section)
+
+## Audit findings
+
+- Em-dashes in body: 1 (inside the verbatim quote of the pilot hub worked example — attributed)
+- Em-dashes in Try This: 0
+- Forbidden phrases (full scan: leverage, utilize, delve, navigate, landscape, ecosystem, synergy, robust, holistic, stakeholders, foster, enhance, align, transformative, empower, myriad, multifaceted, pivotal, spearhead, showcase, underscore, doing the heavy lifting, the real question is, what most people miss, this is where it gets interesting): 0 hits
+- Contrastive "not X, but Y" constructions: 0
+- Rhetorical questions in body: 0
+- Explicit transitions (However, Moreover, Furthermore, Additionally): 0
+- Inactive-week references (Week 4, 5, 6 content): 0
+- TED-talk closes: 0 (final sentence ties three sentences to time saved on context re-explanation)
+- "We" count in body: 0 (intentional for tips register — addresses participants directly via "your team")
+- Opens with concrete fact: yes (the custom-instructions box is three short fields most people leave near-empty)
+
+Validation set to PASSED.
+
+## Lesson applied from yesterday
+
+Active week derived directly from `pilot_hub.html` visibility (`display:none` flags on Weeks 4-5/6-7/8) instead of calendar math from the April 6 launch. This corrects the Spring Break offset that misaligned yesterday's first draft. Today's body and Try This both anchor only to Week 3 content; example Projects (Cohort Check-In, Funder Update) are tagged Editorial in `sourceNotes` since they are illustrative rather than live workspace artifacts.
+
+## Deploy status
+
+- **Commit:** to be created in this run
+- **Push to origin/main:** sandbox cannot authenticate to GitHub HTTPS; commit ships locally and Preston pushes via GitHub Desktop. Patch saved in `daily_briefing_patches/`.
+
+## Anomalies / environment
+
+- **Pre-run lock cleanup:** Standard `mv`-to-`.stale` sweep ran clean. The `index.lock` race condition that surfaced yesterday during back-to-back commits is a known sandbox artifact; mitigated by a multi-pass loop with sub-second sleeps if it recurs.
+- **Working tree:** Clean except for the same `.claude/settings.local.json` and `daily_briefing_patches/` untracked files noted in prior reports. Out of scope.
+
+## Outstanding anomaly carried forward
+
+The Wednesday 2026-04-22 governance slot remains unfilled. Carried in every deploy report since 2026-04-23. Not back-filling autonomously because the topic should align with the live pilot week's governance focus and Preston should make that call.
+
+## Next scheduled publication
+
+Wednesday 2026-04-29, governance slot.
+
+## Sandbox notes
+
+- Active-week derivation: prefer `pilot_hub.html` visibility flags over calendar math.
+- `git push origin main` continues to fail under the sandbox; OAuth/SSH credentials are not configured. Patch-save fallback is operating as designed.
