@@ -60,3 +60,14 @@ Wednesday 2026-04-29, governance slot.
 
 - Active-week derivation: prefer `pilot_hub.html` visibility flags over calendar math.
 - `git push origin main` continues to fail under the sandbox; OAuth/SSH credentials are not configured. Patch-save fallback is operating as designed.
+
+## Re-run addendum (10:24 EDT)
+
+Scheduled task fired again on the same calendar date. Idempotency check passed:
+
+- `briefings.json` already contains the 2026-04-28 tips entry at `published[0]` with `validationStatus: PASSED` (committed in `3f8a4ef`).
+- Today's deploy report already on disk and committed in `eca1eef`.
+- Pre-run lock sweep cleared a stale `.git/index.lock` from the prior run; renamed to `.git/index.lock.stale.<ts>`. No working-tree corruption.
+- Local `HEAD` and local `origin/main` ref both at `eca1eef`; remote push attempted and failed with the expected `could not read Username for 'https://github.com'`. No new commits to ship — Preston's GitHub Desktop push from earlier this morning is presumed to have synced the remote, which is consistent with the local ref state.
+- No regeneration performed (per workflow step 3: skip when entry is present and validated).
+- Working tree remains clean except for `.claude/settings.local.json` and `daily_briefing_patches/0001-Create-DAILY_BRIEFING_DEPLOY_20260428.md.patch` (untracked, expected).
