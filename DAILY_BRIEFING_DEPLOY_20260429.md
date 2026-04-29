@@ -61,3 +61,16 @@ Note on section numbering: the source `.docx` of the framework labels Required P
 1. Open GitHub Desktop and pull the local commit on `pmagouir/ai_governance` `main`.
 2. Push commit fafbaed to origin.
 3. Confirm dccapinnovation.org reflects today's briefing within ~2 minutes of GitHub Pages rebuild.
+
+## Re-run addendum — 2026-04-29 (later)
+
+Scheduled task re-ran. Today's entry already present at top of `published[]` with `validationStatus: PASSED` (250 content words, 64 tryThis words, 2 sourceNotes), so generation was skipped per workflow step 3.
+
+Deploy state on re-run:
+- Local HEAD: a39c057 (deploy report + patch) on top of fafbaed (briefing publish)
+- `git fetch origin main` confirms origin/main now points at a39c057. Both fafbaed and a39c057 are live on GitHub. The earlier push gap closed (manual GitHub Desktop push by Preston is the most likely cause).
+- `git status` reports branch up to date with origin/main. No new commits needed.
+- Pre-run lock cleanup ran clean on entry; post-fetch the sandbox left `.git/index.lock` and `.git/objects/maintenance.lock` again, both `mv`-renamed to `.stale.<ts>` so the next run starts clean.
+- Patch file `daily_briefing_patches/2026-04-29_governance.patch` retained for audit.
+
+No action required. Today's briefing is published and live.
