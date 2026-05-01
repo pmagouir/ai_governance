@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+if(localStorage.getItem('dccap_survey_completed')!=='true'){
+  document.addEventListener('DOMContentLoaded', function(){
+    var banner = document.createElement('div');
+    banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#101A4C;color:#fff;padding:16px 24px;text-align:center;font-family:system-ui,sans-serif;font-size:15px;box-shadow:0 2px 12px rgba(0,0,0,0.2);';
+    banner.innerHTML = 'Complete the <a href="pilot_hub.html" style="color:#FCB017;text-decoration:underline;font-weight:600;">Pre-Launch Assessment</a> to unlock full access to this resource.';
+    document.body.prepend(banner);
+    document.body.style.paddingTop = '56px';
+  });
+}
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Builds You Can Steal — DC CAP AI Pilot Week 4</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #101A4C;
+            --purple: #8352FF;
+            --blue: #87B7D5;
+            --gold: #FCB017;
+            --tan: #FFF4ED;
+            --white: #FFFFFF;
+            --dark-gray: #333333;
+            --code-bg: #f4f5f8;
+            --font-display: 'Noto Serif SemiCondensed', Georgia, serif;
+            --font-body: 'Noto Serif', Georgia, serif;
+            --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+        }
+
+        body { font-family: var(--font-body); color: var(--dark-gray); background: var(--white); line-height: 1.6; }
+
+        /* Header */
+        .ws-header {
+            background: linear-gradient(135deg, var(--navy) 0%, #1a2666 100%);
+            color: var(--white);
+            padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3rem);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .ws-header::after {
+            content: ''; position: absolute; inset: 0; opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .ws-header h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem); margin-bottom: 0.5rem; position: relative; z-index: 1; }
+        .ws-header p { font-size: clamp(1rem, 1.8vw, 1.2rem); opacity: 0.9; position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+        .ws-header .week-tag {
+            display: inline-block;
+            background: rgba(131, 82, 255, 0.25);
+            color: #d9c8ff;
+            font-family: var(--font-mono);
+            font-size: clamp(0.7rem, 1vw, 0.8rem);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Nav */
+        .ws-nav {
+            position: sticky; top: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--navy);
+            z-index: 100;
+            padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 3vw, 2rem);
+        }
+        .ws-nav ul { list-style: none; display: flex; justify-content: center; gap: clamp(1rem, 3vw, 2.5rem); flex-wrap: wrap; }
+        .ws-nav a {
+            font-family: var(--font-subhead);
+            font-weight: 600;
+            color: var(--dark-gray);
+            text-decoration: none;
+            font-size: clamp(0.85rem, 1.3vw, 1rem);
+            padding: 0.25rem 0;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+        .ws-nav a:hover { color: var(--purple); border-bottom-color: var(--purple); }
+
+        .intro-band {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 5vw, 3rem) clamp(1rem, 2vw, 1.5rem);
+        }
+        .intro-band p {
+            font-size: clamp(1rem, 1.5vw, 1.15rem);
+            color: var(--dark-gray);
+            line-height: 1.7;
+        }
+
+        /* Build card */
+        .build-section {
+            max-width: 1080px;
+            margin: 0 auto clamp(2rem, 4vw, 3rem);
+            padding: 0 clamp(1.5rem, 5vw, 3rem);
+            scroll-margin-top: 60px;
+        }
+        .build-card {
+            border: 1px solid #e5e8ee;
+            border-radius: 12px;
+            background: var(--white);
+            box-shadow: 0 2px 12px rgba(16, 26, 76, 0.04);
+            overflow: hidden;
+        }
+        .build-header {
+            padding: clamp(1.25rem, 2.5vw, 1.75rem) clamp(1.5rem, 3vw, 2rem);
+            border-bottom: 1px solid #eee;
+            border-top: 5px solid;
+        }
+        .build-card.project .build-header { border-top-color: var(--purple); background: rgba(131, 82, 255, 0.04); }
+        .build-card.skill .build-header { border-top-color: var(--blue); background: rgba(135, 183, 213, 0.08); }
+        .build-card.deep-skill .build-header { border-top-color: var(--gold); background: rgba(252, 176, 23, 0.05); }
+
+        .build-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+        .build-card.project .build-eyebrow { color: var(--purple); }
+        .build-card.skill .build-eyebrow { color: var(--blue); }
+        .build-card.deep-skill .build-eyebrow { color: var(--gold); }
+
+        .build-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+            color: var(--navy);
+            margin-bottom: 0.4rem;
+            line-height: 1.2;
+        }
+        .build-summary {
+            font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+            color: var(--dark-gray);
+            line-height: 1.65;
+            max-width: 56em;
+        }
+        .build-meta {
+            display: flex;
+            gap: clamp(0.75rem, 1.5vw, 1.25rem);
+            flex-wrap: wrap;
+            margin-top: 0.85rem;
+        }
+        .meta-pill {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.05em;
+            background: rgba(16, 26, 76, 0.06);
+            color: var(--navy);
+            padding: 0.25rem 0.65rem;
+            border-radius: 4px;
+        }
+        .meta-pill strong { color: var(--navy); margin-right: 0.4rem; font-weight: 700; }
+
+        .build-body {
+            padding: clamp(1.25rem, 2.5vw, 1.75rem) clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .anatomy-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: clamp(0.85rem, 1.8vw, 1.25rem);
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
+        }
+        @media (max-width: 720px) { .anatomy-grid { grid-template-columns: 1fr; } }
+
+        .anatomy-block {
+            border-radius: 8px;
+            background: #fafbfd;
+            padding: clamp(0.85rem, 1.5vw, 1.1rem);
+            border-left: 3px solid var(--navy);
+        }
+        .anatomy-block.full-width { grid-column: 1 / -1; }
+        .anatomy-block .a-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 0.4rem;
+        }
+        .anatomy-block .a-content {
+            font-size: clamp(0.88rem, 1.25vw, 0.97rem);
+            color: var(--dark-gray);
+            line-height: 1.65;
+        }
+        .anatomy-block .a-content ul { padding-left: 1.15rem; margin: 0.3rem 0; }
+        .anatomy-block .a-content li { margin-bottom: 0.25rem; }
+
+        .code-block {
+            background: var(--code-bg);
+            border: 1px solid #e0e3ea;
+            border-radius: 6px;
+            padding: clamp(0.75rem, 1.5vw, 1rem);
+            font-family: var(--font-mono);
+            font-size: clamp(0.78rem, 1.05vw, 0.86rem);
+            line-height: 1.65;
+            color: var(--navy);
+            white-space: pre-wrap;
+            overflow-x: auto;
+            margin: 0.4rem 0;
+        }
+        .code-block .comment { color: #6b7280; font-style: italic; }
+        .code-block .header { color: var(--purple); font-weight: 600; }
+        .code-block .key { color: var(--navy); font-weight: 700; }
+
+        .data-tier-badge {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.06em;
+            padding: 0.2rem 0.55rem;
+            border-radius: 3px;
+            margin-left: 0.4rem;
+            vertical-align: middle;
+        }
+        .tier-2 { background: rgba(252, 176, 23, 0.15); color: #8a5a00; }
+        .tier-3 { background: rgba(135, 183, 213, 0.2); color: #1a4060; }
+        .tier-4 { background: rgba(44, 138, 74, 0.12); color: #1f5a31; }
+
+        .steal-this {
+            margin-top: clamp(1rem, 2vw, 1.5rem);
+            padding: clamp(1rem, 2vw, 1.25rem);
+            border-radius: 8px;
+            background: rgba(131, 82, 255, 0.05);
+            border-left: 4px solid var(--purple);
+        }
+        .build-card.skill .steal-this { background: rgba(135, 183, 213, 0.08); border-left-color: var(--blue); }
+        .build-card.deep-skill .steal-this { background: rgba(252, 176, 23, 0.06); border-left-color: var(--gold); }
+
+        .steal-this .s-label {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--purple);
+            margin-bottom: 0.4rem;
+        }
+        .build-card.skill .steal-this .s-label { color: var(--blue); }
+        .build-card.deep-skill .steal-this .s-label { color: var(--gold); }
+        .steal-this .s-headline {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: clamp(1rem, 1.4vw, 1.1rem);
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .steal-this .s-body {
+            font-size: clamp(0.9rem, 1.25vw, 0.98rem);
+            color: var(--dark-gray);
+            line-height: 1.65;
+        }
+
+        /* Compare table at end */
+        .compare-section {
+            max-width: 1080px;
+            margin: clamp(2rem, 4vw, 3rem) auto;
+            padding: 0 clamp(1.5rem, 5vw, 3rem);
+        }
+        .compare-section h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 2.8vw, 2rem);
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+        .compare-section .compare-lead {
+            text-align: center;
+            font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+            color: var(--dark-gray);
+            margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+            max-width: 60em;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.65;
+        }
+        .compare-grid {
+            display: grid;
+            grid-template-columns: minmax(140px, 180px) repeat(3, 1fr);
+            gap: 0;
+            border: 1px solid #e5e8ee;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .compare-grid > div {
+            padding: clamp(0.75rem, 1.4vw, 1rem);
+            border-bottom: 1px solid #eef0f4;
+            font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+            line-height: 1.55;
+        }
+        .compare-grid > div:nth-child(-n+4) {
+            background: var(--navy);
+            color: var(--white);
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: clamp(0.85rem, 1.2vw, 1rem);
+            text-align: center;
+        }
+        .compare-grid .row-label {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            color: var(--navy);
+            background: rgba(16, 26, 76, 0.04);
+            border-right: 1px solid #eef0f4;
+        }
+        .compare-grid .col-project { background: rgba(131, 82, 255, 0.025); }
+        .compare-grid .col-skill { background: rgba(135, 183, 213, 0.05); }
+        .compare-grid .col-deep { background: rgba(252, 176, 23, 0.04); }
+        @media (max-width: 720px) {
+            .compare-grid { grid-template-columns: 1fr; }
+            .compare-grid .row-label { border-right: none; border-bottom: 2px solid var(--navy); }
+        }
+
+        .takeaway-band {
+            max-width: 900px;
+            margin: clamp(2rem, 4vw, 3rem) auto clamp(3rem, 6vw, 5rem);
+            padding: clamp(1.5rem, 3vw, 2.25rem);
+            background: linear-gradient(135deg, var(--navy) 0%, #1a2666 100%);
+            color: var(--white);
+            border-radius: 12px;
+            margin-left: clamp(1.5rem, 5vw, 3rem);
+            margin-right: clamp(1.5rem, 5vw, 3rem);
+        }
+        .takeaway-band h3 {
+            font-family: var(--font-display);
+            font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+            margin-bottom: 0.6rem;
+            color: var(--white);
+        }
+        .takeaway-band p {
+            font-size: clamp(0.95rem, 1.35vw, 1.05rem);
+            line-height: 1.7;
+            color: rgba(255,255,255,0.9);
+        }
+        .takeaway-band a { color: var(--gold); font-weight: 600; text-decoration: none; }
+        .takeaway-band a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<header class="ws-header">
+    <span class="week-tag">DC CAP AI Pilot · Week 4</span>
+    <h1>Three Builds You Can Steal</h1>
+    <p>Three real anatomies. A team Project, a team Skill, and a deeply customized Skill — each one written so you can lift the structure into your own work. The depth of customization is the difference between a build that saves five minutes and one that replaces a whole layer of tribal knowledge.</p>
+</header>
+
+<nav class="ws-nav" aria-label="Build sections">
+    <ul>
+        <li><a href="#build-1">01. Project</a></li>
+        <li><a href="#build-2">02. Skill</a></li>
+        <li><a href="#build-3">03. Deep Skill</a></li>
+        <li><a href="#compare">Compare</a></li>
+    </ul>
+</nav>
+
+<div class="intro-band">
+    <p>Each build below shows the same anatomy in four parts: <strong>setup</strong> (what gets configured), <strong>customization vectors</strong> (org context, outside authority, workflow shape), <strong>governance</strong> (who inherits what tier of data), and <strong>steal this</strong> (the structural move you can lift). Read in order — depth grows from the first build to the third.</p>
+</div>
+
+<!-- BUILD 1: A TEAM PROJECT -->
+<section class="build-section" id="build-1">
+    <div class="build-card project">
+        <div class="build-header">
+            <div class="build-eyebrow">Build 01 · Project · Reuses context</div>
+            <h2 class="build-title">Partner Engagement Workspace</h2>
+            <p class="build-summary">A Claude Project loaded with everything Student Success needs to draft, summarize, compare, and brief on the 13 university partner relationships. One workspace, many asks, for months.</p>
+            <div class="build-meta">
+                <span class="meta-pill"><strong>Container:</strong> Project</span>
+                <span class="meta-pill"><strong>Owner:</strong> Stephanie · Student Success</span>
+                <span class="meta-pill"><strong>Inheritance:</strong> Coaches + leadership</span>
+                <span class="meta-pill"><strong>Highest tier:</strong> Tier 3</span>
+            </div>
+        </div>
+        <div class="build-body">
+
+            <div class="anatomy-grid">
+                <div class="anatomy-block">
+                    <div class="a-label">Setup · Custom instructions</div>
+                    <div class="a-content">
+                        <div class="code-block"><span class="comment"># Custom instructions (paste into Claude Project)</span>
+
+You help DC CAP's Student Success team manage year-round
+relationships with 13 university partner admissions and
+financial aid contacts.
+
+Tone: collegial, professional, warm. These are people we
+will work with for years.
+
+Always: name the relationship history when relevant;
+include specific dates and named next steps; check the
+verified DC CAP numbers in the reference doc before
+quoting impact data.
+
+Never: include individual student names, financial aid
+amounts, or anything beyond Tier 3 governance unless I
+explicitly load it for a single conversation.</div>
+                    </div>
+                </div>
+
+                <div class="anatomy-block">
+                    <div class="a-label">Setup · Reference files loaded</div>
+                    <div class="a-content">
+                        <ul>
+                            <li><code>partners_2026.md</code> — 13 partners, primary contact, MOU renewal date, last 3 touchpoints <span class="data-tier-badge tier-3">Tier 3</span></li>
+                            <li><code>dccap_voice_oneliner.md</code> — voice and tone rules from the brand guide <span class="data-tier-badge tier-4">Tier 4</span></li>
+                            <li><code>verified_numbers_FY25.md</code> — completion %, retention %, scholar count, $ awarded <span class="data-tier-badge tier-3">Tier 3</span></li>
+                            <li><code>moil_calendar_2026.md</code> — when each partner expects what kind of touchpoint <span class="data-tier-badge tier-3">Tier 3</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="anatomy-block">
+                    <div class="a-label">Customization · Org context</div>
+                    <div class="a-content">DC CAP voice rules. Verified FY25 numbers. The 13-partner roster with relationship history. Internal calendar of who expects what when.</div>
+                </div>
+
+                <div class="anatomy-block">
+                    <div class="a-label">Customization · Outside authority</div>
+                    <div class="a-content">Two peer-org partner-engagement playbooks loaded as PDFs. National FGLI completion baselines (federal data) for any comparative framing.</div>
+                </div>
+
+                <div class="anatomy-block">
+                    <div class="a-label">Customization · Workflow shape</div>
+                    <div class="a-content"><em>Project-level, not per-task.</em> The instructions encode the standing rules; each conversation supplies the new ask. The shape lives in the kinds of asks the Project handles cleanly: drafts, summaries, comparisons, briefings.</div>
+                </div>
+
+                <div class="anatomy-block">
+                    <div class="a-label">What it answers</div>
+                    <div class="a-content">
+                        <ul>
+                            <li>"Draft a Q3 update note to the Howard contact."</li>
+                            <li>"What did Georgetown say about timing in February?"</li>
+                            <li>"Compare how three partners responded to the cycle delay ask."</li>
+                            <li>"Give me a 4-bullet brief for Eric on the Trinity relationship before Friday's call."</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="steal-this">
+                <div class="s-label">Steal this</div>
+                <div class="s-headline">A Project earns its keep when one workspace handles four shapes of ask without re-loading context.</div>
+                <div class="s-body">If your candidate answers <em>just one</em> kind of question — say, only "draft an email" — it's probably a Skill. A Project is justified when the same body of knowledge supports drafts, summaries, comparisons, and briefings. Watch what kinds of asks you're naturally typing into Chat against your team's work over a week. If three or more shapes show up, build the Project.</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- BUILD 2: A TEAM SKILL -->
+<section class="build-section" id="build-2">
+    <div class="build-card skill">
+        <div class="build-header">
+            <div class="build-eyebrow">Build 02 · Skill · Reuses the move</div>
+            <h2 class="build-title">Counselor Cycle Update Email</h2>
+            <p class="build-summary">A Skill the Student Success team can run any time DC CAP needs to send a high school counselor a cycle update — application open, deadline preview, decision notification. Same procedure, different cycle moment.</p>
+            <div class="build-meta">
+                <span class="meta-pill"><strong>Container:</strong> Skill</span>
+                <span class="meta-pill"><strong>Owner:</strong> Stephanie</span>
+                <span class="meta-pill"><strong>Inheritance:</strong> Any pilot member writing to counselors</span>
+                <span class="meta-pill"><strong>Highest tier:</strong> Tier 4</span>
+            </div>
+        </div>
+        <div class="build-body">
+
+            <div class="anatomy-grid">
+                <div class="anatomy-block full-width">
+                    <div class="a-label">The SKILL.md (paste this — adapt the body)</div>
+                    <div class="a-content">
+                        <div class="code-block"><span class="header">---
+name: counselor-cycle-update-email
+description: Drafts a DC CAP cycle update email to a high school
+  counselor — application open, deadline preview, or decision
+  notification. Use whenever you need to write a cycle email
+  any counselor across DC's high schools.
+---</span>
+
+<span class="key">## When to trigger</span>
+Any of: application open, T-2 weeks deadline, T-3 days deadline,
+decision notification, partnership thank-you. Counselor audience.
+
+<span class="key">## What good looks like</span>
+- Opens with the relationship — "thanks for the partnership," not
+  "I am writing to inform you."
+- Names the cycle moment in the first sentence (open, deadline,
+  decision) so a busy counselor can triage in 5 seconds.
+- One specific date. One specific next action. No "soon."
+- 4-6 sentences. Always.
+- Closes with a way to ask follow-up that doesn't require a meeting.
+
+<span class="key">## What to avoid</span>
+- Equity framing. We frame as accessibility and impact.
+- Words: unlock, leverage, seamless, robust, journey, elevate.
+- Plural CTAs. One ask per email.
+- "Per our records" / "I am reaching out to" / boilerplate openers.
+
+<span class="key">## Inputs the user supplies</span>
+- Cycle moment (open / deadline preview / decision / thank-you)
+- Counselor name + high school
+- Anything specific to this school or counselor (optional)
+
+<span class="key">## Reference</span>
+DC CAP voice rules: `dccap_voice_oneliner.md`
+Counselor list + tone notes: `counselor_directory_2026.md`</div>
+                    </div>
+                </div>
+
+                <div class="anatomy-block">
+                    <div class="a-label">Customization · Org context</div>
+                    <div class="a-content">DC CAP voice rules baked into the "what good looks like" and "what to avoid" sections. The counselor directory loaded as a reference, so the Skill knows which schools have multi-year history.</div>
+                </div>
+
+                <div class="anatomy-block">
+                    <div class="a-label">Customization · Outside authority</div>
+                    <div class="a-content">One source: a published nonprofit communications style guide on counselor-facing tone. Cited in the procedure rather than loaded as a file — it is reference material, not active context.</div>
+                </div>
+
+                <div class="anatomy-block">
+                    <div class="a-label">Customization · Workflow shape</div>
+                    <div class="a-content"><em>The procedural spine.</em> Five cycle moments. Three rules each for "good" and "avoid." A specific length. One human checkpoint (the sender reviews before send). Anyone can run it; the move stays consistent.</div>
+                </div>
+
+                <div class="anatomy-block">
+                    <div class="a-label">What it produces</div>
+                    <div class="a-content">A 4-6 sentence email that sounds like DC CAP, names the cycle moment in the opener, gives one date and one action, and closes warm. The team gets identical structure across all 50+ counselors and across the entire cycle.</div>
+                </div>
+            </div>
+
+            <div class="steal-this">
+                <div class="s-label">Steal this</div>
+                <div class="s-headline">A Skill earns its keep when "what to avoid" is as specific as "what good looks like."</div>
+                <div class="s-body">Most weak Skills define the positive ("warm, professional, clear") without defining the failure modes ("never use 'unlock,' never plural CTAs, never 'per our records'"). The negative space is what makes the move repeatable. Write the avoid list before you write the good list — that is where your tribal knowledge actually lives.</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- BUILD 3: DEEPLY CUSTOMIZED SKILL -->
+<section class="build-section" id="build-3">
+    <div class="build-card deep-skill">
+        <div class="build-header">
+            <div class="build-eyebrow">Build 03 · Deeply customized Skill · Reuses the move with depth</div>
+            <h2 class="build-title">Funder-Framing Paragraph Drafter</h2>
+            <p class="build-summary">A Skill for the Development team that drafts funder-facing program-impact paragraphs. Verified DC CAP numbers, funder-type register matched (Foundation / Corporate / Government / Individual), outside research baked in. Replaces the layer of implicit knowledge that used to live only in the people who had been writing grants for three years.</p>
+            <div class="build-meta">
+                <span class="meta-pill"><strong>Container:</strong> Skill</span>
+                <span class="meta-pill"><strong>Owner:</strong> Sashia + Anna · Development</span>
+                <span class="meta-pill"><strong>Inheritance:</strong> All proposal writers, plus any future hire</span>
+                <span class="meta-pill"><strong>Highest tier:</strong> Tier 3</span>
+            </div>
+        </div>
+        <div class="build-body">
+
+            <div class="anatomy-grid">
+                <div class="anatomy-block full-width">
+                    <div class="a-label">The SKILL.md (the procedural spine)</div>
+                    <div class="a-content">
+                        <div class="code-block"><span class="header">---
+name: funder-framing-paragraph
+description: Drafts program-impact paragraphs for grant proposals, LOIs,
+  and funder briefs. Detects funder type and matches the register.
+  Always uses verified DC CAP numbers. Use whenever responding to a
+  proposal question about scholar outcomes or program impact.
+---</span>
+
+<span class="key">## When to trigger</span>
+Any RFP question that asks about: scholar outcomes, program impact,
+the FGLI completion gap, the DC CAP model, why this works, evidence
+base, retention or completion data.
+
+<span class="key">## Funder-type register</span>
+Foundation: methodology rigor, theory of change, evaluation framing.
+Corporate: scale, business case, partnership leverage.
+Government: compliance lineage, federal data alignment, replicability.
+Individual: human stakes, named scholar arcs, local relevance.
+
+<span class="key">## What good looks like</span>
+- Opens with the field-wide problem (FGLI 20-25% completion baseline,
+  cite federal data source).
+- Frames the DC CAP model in one sentence.
+- Quotes verified numbers ONLY from `verified_numbers_FY25.md`.
+- Closes by tying the ask to the funder's stated priorities.
+
+<span class="key">## What to avoid</span>
+- Voice: unlock, leverage, seamless, journey, elevate, foster, vibrant.
+- Equity framing → use accessibility and impact instead.
+- Any number not in the verified file. Plausible-but-wrong is the
+  worst failure mode here.
+- Generic nonprofit language that could describe any college access org.
+
+<span class="key">## The Diligence step</span>
+Before the paragraph leaves this Skill: verify every number against
+`verified_numbers_FY25.md`. If the funder asks something the verified
+doc doesn't cover, say so and route to the development director — do
+not estimate.
+
+<span class="key">## References loaded</span>
+- `verified_numbers_FY25.md` (org context, Tier 3)
+- `dccap_voice_oneliner.md` (org context, Tier 4)
+- `mathematica_REL_2025_010.pdf` (outside research, Tier 4)
+- `dccap_program_model_brief.md` (org context, Tier 3)
+- `funder_taxonomy_with_examples.md` (workflow shape, Tier 4)</div>
+                    </div>
+                </div>
+
+                <div class="anatomy-block">
+                    <div class="a-label">Customization · Org context (depth)</div>
+                    <div class="a-content">Verified FY25 numbers. DC CAP voice rules. The full program model brief that explains <em>why</em> the model works. Three years of internally-archived approved language that was actually accepted by funders.</div>
+                </div>
+
+                <div class="anatomy-block">
+                    <div class="a-label">Customization · Outside authority (depth)</div>
+                    <div class="a-content">The Mathematica/IES research the program leans on. Federal FGLI completion baselines (NCES). A Council on Foundations RFP-language reference. Two recent peer-org grant narratives selected by Eric and Sashia as exemplars of how funders read.</div>
+                </div>
+
+                <div class="anatomy-block full-width">
+                    <div class="a-label">Customization · Workflow shape (depth)</div>
+                    <div class="a-content">Funder-type detection happens first — the register changes everything. The Diligence step is named explicitly inside the procedure ("verify every number against the verified file"). The escape hatch is named ("if not in verified, route to director — do not estimate"). The avoid list names voice, framing, AND specific failure modes that have happened before. This is what depth looks like — every layer the team learned the hard way is in the file.</div>
+                </div>
+
+                <div class="anatomy-block full-width">
+                    <div class="a-label">What the team inherits</div>
+                    <div class="a-content">Anyone on Development can run the Skill on a new RFP question. Numbers are right. The voice sounds like DC CAP. The framing matches the funder type. The diligence step ("verify the metric") is built into the procedure — not someone's habit. A new hire can produce a defensible draft on day three. The Skill replaces the implicit knowledge that used to live in two people's heads.</div>
+                </div>
+            </div>
+
+            <div class="steal-this">
+                <div class="s-label">Steal this</div>
+                <div class="s-headline">Depth means every layer of tribal knowledge has a named home in the file.</div>
+                <div class="s-body">Funder-type register goes in workflow shape. Verified numbers go in org context. Outside research goes in references. The Diligence step goes in the procedure body. The "things we learned the hard way" go in avoid. Walk through your build and ask: where does this layer live? If the answer is "in someone's head," that is the layer to encode next. The depth of customization is what makes a Skill a team asset rather than a personal speed-up.</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- COMPARE -->
+<section class="compare-section" id="compare">
+    <h2>Side by side</h2>
+    <p class="compare-lead">The same anatomy, three depths. Use the table to figure out which build your candidate becomes — and where you should invest the customization effort.</p>
+    <div class="compare-grid">
+        <div></div>
+        <div>Project</div>
+        <div>Skill</div>
+        <div>Deep Skill</div>
+
+        <div class="row-label">What's reused</div>
+        <div class="col-project">Context — many shapes of ask against one body of knowledge</div>
+        <div class="col-skill">The move — a single procedure with varying inputs</div>
+        <div class="col-deep">The move + every learned layer encoded</div>
+
+        <div class="row-label">Customization depth</div>
+        <div class="col-project">Org context heavy. Outside authority light. Workflow at the project level.</div>
+        <div class="col-skill">Org context modest. One outside source. Workflow tightly defined.</div>
+        <div class="col-deep">All three vectors deep. Multiple outside sources. Diligence step embedded.</div>
+
+        <div class="row-label">Build time</div>
+        <div class="col-project">~1 hour to set up + ongoing reference-file maintenance</div>
+        <div class="col-skill">~1-2 hours to write the SKILL.md cleanly</div>
+        <div class="col-deep">~half-day. Often a multi-iteration build.</div>
+
+        <div class="row-label">When it pays off</div>
+        <div class="col-project">When you'd otherwise paste the same context into Chat 5+ times a week</div>
+        <div class="col-skill">When the same move runs across many inputs and people</div>
+        <div class="col-deep">When the move has high stakes and the team currently leans on one or two experts</div>
+
+        <div class="row-label">Failure mode</div>
+        <div class="col-project">Becomes a junk drawer of files no one trusts</div>
+        <div class="col-skill">Avoid list is too short — drift creeps in</div>
+        <div class="col-deep">Maintenance lapses; references go stale; outputs quietly drift</div>
+
+        <div class="row-label">Governance lens</div>
+        <div class="col-project">Tier of the highest reference file = tier of the Project</div>
+        <div class="col-skill">Procedure usually Tier 4; references can pull it up</div>
+        <div class="col-deep">Audit references quarterly. Tier creeps as the build matures.</div>
+    </div>
+</section>
+
+<div class="takeaway-band">
+    <h3>The point of the gallery</h3>
+    <p>You are not looking at three exemplars to admire. You are looking at three shapes you can adapt. Pick the one that matches your candidate's depth and lift the structure. Then run it through the <a href="week4_build_filter.html">Build Filter</a> and bring the v1 to AI Friday.</p>
+</div>
+
+<script>
+document.querySelectorAll('.ws-nav a').forEach(a => {
+    a.addEventListener('click', e => {
+        e.preventDefault();
+        const id = a.getAttribute('href');
+        const target = document.querySelector(id);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+</script>
+</body>
+</html>

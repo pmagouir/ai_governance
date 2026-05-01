@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+if(localStorage.getItem('dccap_survey_completed')!=='true'){
+  document.addEventListener('DOMContentLoaded', function(){
+    var banner = document.createElement('div');
+    banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#101A4C;color:#fff;padding:16px 24px;text-align:center;font-family:system-ui,sans-serif;font-size:15px;box-shadow:0 2px 12px rgba(0,0,0,0.2);';
+    banner.innerHTML = 'Complete the <a href="pilot_hub.html" style="color:#FCB017;text-decoration:underline;font-weight:600;">Pre-Launch Assessment</a> to unlock full access to this resource.';
+    document.body.prepend(banner);
+    document.body.style.paddingTop = '56px';
+  });
+}
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Filter Worksheet — DC CAP AI Pilot Week 4</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #101A4C;
+            --purple: #8352FF;
+            --blue: #87B7D5;
+            --gold: #FCB017;
+            --tan: #FFF4ED;
+            --white: #FFFFFF;
+            --dark-gray: #333333;
+            --pass: #2C8A4A;
+            --pause: #C97C1A;
+            --fail: #B33A3A;
+            --font-display: 'Noto Serif SemiCondensed', Georgia, serif;
+            --font-body: 'Noto Serif', Georgia, serif;
+            --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+        }
+
+        body { font-family: var(--font-body); color: var(--dark-gray); background: var(--white); line-height: 1.6; }
+
+        /* Header */
+        .ws-header {
+            background: linear-gradient(135deg, var(--navy) 0%, #1a2666 100%);
+            color: var(--white);
+            padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3rem);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .ws-header::after {
+            content: ''; position: absolute; inset: 0; opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .ws-header h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem); margin-bottom: 0.5rem; position: relative; z-index: 1; }
+        .ws-header p { font-size: clamp(1rem, 1.8vw, 1.2rem); opacity: 0.9; position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+        .ws-header .week-tag {
+            display: inline-block;
+            background: rgba(135, 183, 213, 0.25);
+            color: #d3e6f3;
+            font-family: var(--font-mono);
+            font-size: clamp(0.7rem, 1vw, 0.8rem);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Nav */
+        .ws-nav {
+            position: sticky; top: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--navy);
+            z-index: 100;
+            padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 3vw, 2rem);
+        }
+        .ws-nav ul { list-style: none; display: flex; justify-content: center; gap: clamp(1rem, 3vw, 2.5rem); flex-wrap: wrap; }
+        .ws-nav a {
+            font-family: var(--font-subhead);
+            font-weight: 600;
+            color: var(--dark-gray);
+            text-decoration: none;
+            font-size: clamp(0.85rem, 1.3vw, 1rem);
+            padding: 0.25rem 0;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+        .ws-nav a:hover { color: var(--blue); border-bottom-color: var(--blue); }
+
+        .ws-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 3rem);
+            scroll-margin-top: 60px;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 36px; height: 36px;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            font-weight: 700;
+            font-family: var(--font-subhead);
+            margin-right: 0.75rem;
+            vertical-align: middle;
+        }
+
+        .ws-section h2 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.4rem, 3vw, 1.9rem);
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .section-description {
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            color: var(--dark-gray);
+            line-height: 1.7;
+            margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+        }
+
+        .editable {
+            display: block;
+            border: 2px dashed rgba(135, 183, 213, 0.4);
+            border-radius: 8px;
+            padding: clamp(0.75rem, 1.5vw, 1rem);
+            min-height: 70px;
+            font-family: var(--font-body);
+            font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+            line-height: 1.7;
+            transition: border-color 0.2s;
+            outline: none;
+            background: #fafbfd;
+        }
+        .editable:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(135, 183, 213, 0.18); }
+        .editable:empty::before { content: attr(data-placeholder); color: #767676; font-style: italic; }
+
+        .field-label {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .field-hint { font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: #666; font-style: italic; margin-bottom: 0.5rem; line-height: 1.5; }
+        .field-group { margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem); }
+
+        /* Filter rows */
+        .filter-row {
+            display: grid;
+            grid-template-columns: minmax(140px, 200px) 1fr auto;
+            gap: clamp(0.75rem, 1.5vw, 1.25rem);
+            align-items: start;
+            padding: clamp(1rem, 2vw, 1.25rem);
+            border: 1px solid #e5e8ee;
+            border-left: 4px solid var(--blue);
+            border-radius: 8px;
+            background: #fafbfd;
+            margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .filter-row.passed { border-left-color: var(--pass); background: rgba(44, 138, 74, 0.04); }
+        .filter-row.failed { border-left-color: var(--fail); background: rgba(179, 58, 58, 0.04); }
+
+        .filter-name {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            color: var(--navy);
+        }
+        .filter-name .num {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            color: var(--blue);
+            margin-bottom: 0.2rem;
+        }
+        .filter-name .label { font-size: clamp(1rem, 1.4vw, 1.1rem); }
+
+        .filter-prompt {
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+            color: var(--dark-gray);
+            line-height: 1.55;
+        }
+        .filter-prompt .ask {
+            font-family: var(--font-subhead);
+            font-weight: 600;
+            color: var(--navy);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .filter-prompt .threshold {
+            font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+            color: #666;
+            font-style: italic;
+            margin-top: 0.4rem;
+        }
+
+        .yn-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            min-width: 88px;
+        }
+        .yn-toggle button {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 0.5rem 0.85rem;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            background: var(--white);
+            cursor: pointer;
+            transition: all 0.15s;
+            min-height: 38px;
+        }
+        .yn-toggle button:hover { transform: translateY(-1px); }
+        .yn-toggle .yes.active { background: var(--pass); border-color: var(--pass); color: var(--white); }
+        .yn-toggle .no.active { background: var(--fail); border-color: var(--fail); color: var(--white); }
+        .yn-toggle .maybe.active { background: var(--pause); border-color: var(--pause); color: var(--white); }
+
+        @media (max-width: 720px) {
+            .filter-row { grid-template-columns: 1fr; }
+            .yn-toggle { flex-direction: row; }
+        }
+
+        /* Verdict */
+        .verdict-panel {
+            margin-top: clamp(1.5rem, 3vw, 2rem);
+            border-radius: 10px;
+            padding: clamp(1.25rem, 2.5vw, 1.75rem);
+            border: 2px solid #ddd;
+            background: #f7f8fa;
+            transition: all 0.3s;
+        }
+        .verdict-panel.build { border-color: var(--pass); background: rgba(44, 138, 74, 0.06); }
+        .verdict-panel.pause { border-color: var(--pause); background: rgba(201, 124, 26, 0.06); }
+        .verdict-panel.pass { border-color: var(--fail); background: rgba(179, 58, 58, 0.06); }
+
+        .verdict-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 0.4rem;
+        }
+        .verdict-headline {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            color: var(--navy);
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .verdict-body {
+            font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+            color: var(--dark-gray);
+            line-height: 1.7;
+        }
+        .verdict-score {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            background: rgba(16, 26, 76, 0.08);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+
+        /* Customization plan section */
+        .vector-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: clamp(0.75rem, 1.5vw, 1rem);
+            margin-bottom: clamp(1rem, 2vw, 1.25rem);
+        }
+        .vector-card {
+            padding: clamp(0.85rem, 1.5vw, 1rem);
+            border-radius: 8px;
+            border-top: 3px solid;
+            background: var(--white);
+            border: 1px solid #e5e8ee;
+        }
+        .vector-card.org { border-top-color: var(--navy); }
+        .vector-card.outside { border-top-color: var(--purple); }
+        .vector-card.workflow { border-top-color: var(--blue); }
+        .vector-card .v-label {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+        }
+        .vector-card.org .v-label { color: var(--navy); }
+        .vector-card.outside .v-label { color: var(--purple); }
+        .vector-card.workflow .v-label { color: var(--blue); }
+        .vector-card .v-name {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+            color: var(--navy);
+            margin-bottom: 0.4rem;
+        }
+        .vector-card .v-prompt {
+            font-size: clamp(0.85rem, 1.2vw, 0.92rem);
+            color: var(--dark-gray);
+            line-height: 1.55;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Print + Reset */
+        .ws-actions {
+            max-width: 900px;
+            margin: 0 auto clamp(2rem, 4vw, 3rem);
+            padding: 0 clamp(1.5rem, 5vw, 3rem);
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .ws-actions button {
+            font-family: var(--font-subhead);
+            font-weight: 600;
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+            padding: 0.7rem 1.4rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            min-height: 44px;
+            transition: all 0.15s;
+        }
+        .btn-print { background: var(--navy); color: var(--white); }
+        .btn-print:hover { background: #1a2666; }
+        .btn-reset { background: var(--white); color: var(--navy); border: 2px solid var(--navy); }
+        .btn-reset:hover { background: var(--tan); }
+
+        @media print {
+            .ws-nav, .ws-actions, .yn-toggle button:not(.active) { display: none !important; }
+            .filter-row { break-inside: avoid; }
+            .verdict-panel { break-inside: avoid; }
+            body { background: var(--white); }
+        }
+    </style>
+</head>
+<body>
+
+<header class="ws-header">
+    <span class="week-tag">DC CAP AI Pilot · Week 4</span>
+    <h1>The Build Filter</h1>
+    <p>Five questions decide whether the work in front of you deserves a Project or Skill. Score honestly. Three "yes" or more, you build. Fewer, you put it down — pick a different candidate.</p>
+</header>
+
+<nav class="ws-nav" aria-label="Worksheet sections">
+    <ul>
+        <li><a href="#step1">1. Candidate</a></li>
+        <li><a href="#step2">2. Filter</a></li>
+        <li><a href="#step3">3. Verdict</a></li>
+        <li><a href="#step4">4. Customize</a></li>
+        <li><a href="#step5">5. Hand-off</a></li>
+    </ul>
+</nav>
+
+<!-- STEP 1: NAME THE CANDIDATE -->
+<section class="ws-section" id="step1">
+    <h2><span class="step-number">1</span>Name the candidate</h2>
+    <p class="section-description">From last week's Container Decision Worksheet, you have a candidate Project or Skill in mind. Describe it here in three short fields. Be specific — this is the artifact you're scoring.</p>
+
+    <div class="field-group">
+        <div class="field-label">The work, in one sentence</div>
+        <div class="field-hint">What does this Project or Skill do? Audience, output, cadence.</div>
+        <div class="editable" contenteditable="true" data-placeholder="e.g., Drafts funder-facing program-impact paragraphs for development team RFPs and LOIs, with verified DC CAP numbers."></div>
+    </div>
+
+    <div class="field-group">
+        <div class="field-label">Container</div>
+        <div class="field-hint">Project (reuses context), Skill (reuses the move), or Automation (reuses the trigger).</div>
+        <div class="editable" contenteditable="true" data-placeholder="e.g., Skill — the procedure repeats across funders; the inputs change."></div>
+    </div>
+
+    <div class="field-group">
+        <div class="field-label">Who inherits it</div>
+        <div class="field-hint">Just you? Your team? A specific role? The whole pilot cohort?</div>
+        <div class="editable" contenteditable="true" data-placeholder="e.g., Sashia, Anna, and any future development hire."></div>
+    </div>
+</section>
+
+<!-- STEP 2: RUN THE FILTER -->
+<section class="ws-section" id="step2" style="background: rgba(135, 183, 213, 0.04);">
+    <h2><span class="step-number">2</span>Run the filter</h2>
+    <p class="section-description">Score each criterion. Yes / No / Maybe. The verdict updates as you click. The questions are deliberately blunt — vague candidates fail vague questions.</p>
+
+    <div class="filter-row" data-criterion="frequency">
+        <div class="filter-name">
+            <span class="num">01</span>
+            <span class="label">Frequency</span>
+        </div>
+        <div class="filter-prompt">
+            <span class="ask">Does this work happen often enough to justify the build?</span>
+            Count the last 90 days. If you wouldn't run this build at least three or four times a quarter, the maintenance cost outweighs the time saved.
+            <div class="threshold">Yes if: 3+ times per quarter, ongoing.</div>
+        </div>
+        <div class="yn-toggle" role="group" aria-label="Frequency score">
+            <button type="button" class="yes" data-val="yes">Yes</button>
+            <button type="button" class="maybe" data-val="maybe">Maybe</button>
+            <button type="button" class="no" data-val="no">No</button>
+        </div>
+    </div>
+
+    <div class="filter-row" data-criterion="variability">
+        <div class="filter-name">
+            <span class="num">02</span>
+            <span class="label">Variability</span>
+        </div>
+        <div class="filter-prompt">
+            <span class="ask">Does the move repeat with new inputs, or is each instance genuinely different?</span>
+            If the procedure is identical and only the inputs change, you have a Skill. If every instance demands new context but the same body of knowledge, you have a Project. If neither shape fits, the work might still be a one-shot.
+            <div class="threshold">Yes if: the shape of the work is stable, even if the inputs vary.</div>
+        </div>
+        <div class="yn-toggle" role="group" aria-label="Variability score">
+            <button type="button" class="yes" data-val="yes">Yes</button>
+            <button type="button" class="maybe" data-val="maybe">Maybe</button>
+            <button type="button" class="no" data-val="no">No</button>
+        </div>
+    </div>
+
+    <div class="filter-row" data-criterion="inheritance">
+        <div class="filter-name">
+            <span class="num">03</span>
+            <span class="label">Inheritance</span>
+        </div>
+        <div class="filter-prompt">
+            <span class="ask">Will the team actually use this — or is it a private convenience?</span>
+            Private convenience is fine. The honest answer is the leadership move. If only you will run it, build a Project for yourself. Don't sell it as a team asset until a teammate has actually run it cold.
+            <div class="threshold">Yes if: at least one specific named person other than you will use it.</div>
+        </div>
+        <div class="yn-toggle" role="group" aria-label="Inheritance score">
+            <button type="button" class="yes" data-val="yes">Yes</button>
+            <button type="button" class="maybe" data-val="maybe">Maybe</button>
+            <button type="button" class="no" data-val="no">No</button>
+        </div>
+    </div>
+
+    <div class="filter-row" data-criterion="stakes">
+        <div class="filter-name">
+            <span class="num">04</span>
+            <span class="label">Stakes</span>
+        </div>
+        <div class="filter-prompt">
+            <span class="ask">What does getting this wrong cost?</span>
+            High stakes earn deeper customization investment, tighter governance, and a real human checkpoint. Low stakes can stay rough. If the cost of an error is "we redo a draft," you don't need much. If the cost is "we damage a partner relationship" or "we publish a wrong number," you do.
+            <div class="threshold">Yes if: an error reaches a stakeholder before a human catches it.</div>
+        </div>
+        <div class="yn-toggle" role="group" aria-label="Stakes score">
+            <button type="button" class="yes" data-val="yes">Yes</button>
+            <button type="button" class="maybe" data-val="maybe">Maybe</button>
+            <button type="button" class="no" data-val="no">No</button>
+        </div>
+    </div>
+
+    <div class="filter-row" data-criterion="substitution">
+        <div class="filter-name">
+            <span class="num">05</span>
+            <span class="label">Substitution</span>
+        </div>
+        <div class="filter-prompt">
+            <span class="ask">Does a better tool already do this?</span>
+            Salesforce, the Common App, the budget system, an existing template, a colleague who already runs this manually well. If the answer is yes and the existing tool is good, don't build a Claude version of it. The right answer here is sometimes "no build."
+            <div class="threshold">Yes (build) if: no existing tool, or the existing tool is genuinely worse than what Claude can produce with custom context.</div>
+        </div>
+        <div class="yn-toggle" role="group" aria-label="Substitution score">
+            <button type="button" class="yes" data-val="yes">Yes</button>
+            <button type="button" class="maybe" data-val="maybe">Maybe</button>
+            <button type="button" class="no" data-val="no">No</button>
+        </div>
+    </div>
+</section>
+
+<!-- STEP 3: VERDICT -->
+<section class="ws-section" id="step3">
+    <h2><span class="step-number">3</span>Read the verdict</h2>
+    <p class="section-description">The score updates as you click. <strong>3+ yes = Build.</strong> <strong>1-2 yes = Pause and reframe.</strong> <strong>0 yes = Pass</strong> — this isn't the right candidate. The deliberate "no" is leadership, not a failure.</p>
+
+    <div class="verdict-panel" id="verdict">
+        <div class="verdict-eyebrow">Verdict <span class="verdict-score" id="verdictScore">0 yes · 0 maybe · 0 no</span></div>
+        <div class="verdict-headline" id="verdictHeadline">Score the filter to see the verdict</div>
+        <div class="verdict-body" id="verdictBody">Click yes / maybe / no on each criterion above. The verdict updates in real time. There is no minimum number of "no" answers required to pass — the goal is honesty, not consensus with yourself.</div>
+    </div>
+</section>
+
+<!-- STEP 4: CUSTOMIZATION PLAN -->
+<section class="ws-section" id="step4" style="background: rgba(131, 82, 255, 0.04);">
+    <h2><span class="step-number">4</span>Plan the customization</h2>
+    <p class="section-description">If the verdict says build, the next question is depth. A team build is only worth keeping if it carries something Claude doesn't already know. Three vectors decide depth — load at least one source against each before you ship v1.</p>
+
+    <div class="vector-grid">
+        <div class="vector-card org">
+            <div class="v-label">Vector 01</div>
+            <div class="v-name">Org context</div>
+            <div class="v-prompt">DC CAP voice. Verified ground-truth metrics. Partner list. Family- and counselor-facing tone rules. Governance constraints.</div>
+            <div class="editable" contenteditable="true" data-placeholder="What org context will you load? e.g., DC CAP voice rules, FY25 verified numbers from skills/README.md, partner list."></div>
+        </div>
+        <div class="vector-card outside">
+            <div class="v-label">Vector 02</div>
+            <div class="v-name">Outside authority</div>
+            <div class="v-prompt">Research papers. Federal datasets. Peer-org playbooks. Brand guides. Anthropic skill docs. Anything that raises the floor on what Claude can do for this task.</div>
+            <div class="editable" contenteditable="true" data-placeholder="What outside source will you load? e.g., Mathematica/IES REL 2025-010 on FGLI completion baselines, Anthropic skill-creator docs, the Council on Foundations RFP standards."></div>
+        </div>
+        <div class="vector-card workflow">
+            <div class="v-label">Vector 03</div>
+            <div class="v-name">Workflow shape</div>
+            <div class="v-prompt">When to trigger. What good looks like. What to avoid. Where the human checkpoint sits.</div>
+            <div class="editable" contenteditable="true" data-placeholder="Sketch the procedural spine. e.g., Trigger: any new RFP question. Good looks like: paragraph in DC CAP voice with verified numbers, funder-type register matched. Avoid: generic nonprofit language, unverified metrics. Human check: development director reviews before submission."></div>
+        </div>
+    </div>
+
+    <div class="field-group">
+        <div class="field-label">Data tier check</div>
+        <div class="field-hint">What is the highest data tier (1-4) that any reference file or context you're loading carries? Anyone with access to this build inherits access to the references.</div>
+        <div class="editable" contenteditable="true" data-placeholder="e.g., Tier 3 (org strategy): the program model brief and verified metrics. No Tier 1 or Tier 2 in this build. Access scoped to development team."></div>
+    </div>
+</section>
+
+<!-- STEP 5: HAND-OFF PLAN -->
+<section class="ws-section" id="step5">
+    <h2><span class="step-number">5</span>Plan the hand-off</h2>
+    <p class="section-description">A build only earns the "team-level" label after a teammate has actually run it. Decide who, when, and how you'll watch.</p>
+
+    <div class="field-group">
+        <div class="field-label">The teammate</div>
+        <div class="field-hint">Specific name. Pilot cohort preferred — they speak the same vocabulary.</div>
+        <div class="editable" contenteditable="true" data-placeholder="e.g., Anna H. — she runs proposals and will catch any framing that drifts from how funders actually read."></div>
+    </div>
+
+    <div class="field-group">
+        <div class="field-label">What you'll watch for</div>
+        <div class="field-hint">Where it broke is where your customization is thin. Name the failure modes you expect before you watch.</div>
+        <div class="editable" contenteditable="true" data-placeholder="e.g., Does she know which RFP question to plug in? Does the verbatim DC CAP language read as warm or as boilerplate? Does the funder-type detection actually fire?"></div>
+    </div>
+
+    <div class="field-group">
+        <div class="field-label">Bring to AI Friday</div>
+        <div class="field-hint">One sentence on what you'd cut, sharpen, or rename in v2 — based on the hand-off, not your own taste.</div>
+        <div class="editable" contenteditable="true" data-placeholder="e.g., Cut the funder-type taxonomy down to three; she only needed Foundation, Corporate, Government. Rename 'voice constraints' to 'phrases to never use' — clearer."></div>
+    </div>
+</section>
+
+<div class="ws-actions">
+    <button class="btn-print" onclick="window.print()">Print Worksheet</button>
+    <button class="btn-reset" onclick="resetFilter()">Reset Scores</button>
+</div>
+
+<script>
+(function(){
+    const rows = document.querySelectorAll('.filter-row');
+    const scoreEl = document.getElementById('verdictScore');
+    const headlineEl = document.getElementById('verdictHeadline');
+    const bodyEl = document.getElementById('verdictBody');
+    const verdictPanel = document.getElementById('verdict');
+
+    function updateVerdict(){
+        let yes = 0, no = 0, maybe = 0;
+        rows.forEach(r => {
+            const active = r.querySelector('.yn-toggle button.active');
+            if (!active) return;
+            const v = active.dataset.val;
+            if (v === 'yes') yes++;
+            else if (v === 'no') no++;
+            else if (v === 'maybe') maybe++;
+            r.classList.toggle('passed', v === 'yes');
+            r.classList.toggle('failed', v === 'no');
+        });
+        scoreEl.textContent = yes + ' yes · ' + maybe + ' maybe · ' + no + ' no';
+        verdictPanel.classList.remove('build', 'pause', 'pass');
+        const totalScored = yes + no + maybe;
+        if (totalScored === 0) {
+            headlineEl.textContent = 'Score the filter to see the verdict';
+            bodyEl.textContent = 'Click yes / maybe / no on each criterion above. The verdict updates in real time. There is no minimum number of "no" answers required to pass — the goal is honesty, not consensus with yourself.';
+            return;
+        }
+        if (yes >= 3) {
+            verdictPanel.classList.add('build');
+            headlineEl.textContent = 'Build it.';
+            bodyEl.innerHTML = 'Three or more clear yes answers. The candidate earns the build investment. <strong>Move to Step 4</strong> — plan the three customization vectors and the data tier of every source you load. Do not skip the hand-off in Step 5.';
+        } else if (yes >= 1) {
+            verdictPanel.classList.add('pause');
+            headlineEl.textContent = 'Pause. Reframe.';
+            bodyEl.innerHTML = 'Fewer than three clear yes answers. Two paths: (a) reframe the candidate so a "maybe" or "no" becomes a clear "yes" — usually by narrowing the audience or sharpening the workflow shape. (b) Build it private first, on a small scope, and revisit the filter once you have run it three or four times yourself. <strong>Don\'t over-promise the team a build that hasn\'t earned the label.</strong>';
+        } else {
+            verdictPanel.classList.add('pass');
+            headlineEl.textContent = 'Pass. Pick again.';
+            bodyEl.innerHTML = 'Zero clear yes answers. This is not the right candidate for a team-level build. <strong>Calling it a pass is the leadership move.</strong> Pick a different candidate from your last two weeks of work, or stay in one-shot mode for now. The discipline to put a build down is what protects the team\'s time when you do ship one.';
+        }
+    }
+
+    document.querySelectorAll('.yn-toggle button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const group = btn.parentElement;
+            group.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            updateVerdict();
+        });
+    });
+
+    window.resetFilter = function(){
+        document.querySelectorAll('.yn-toggle button.active').forEach(b => b.classList.remove('active'));
+        rows.forEach(r => { r.classList.remove('passed', 'failed'); });
+        document.querySelectorAll('.editable').forEach(e => e.textContent = '');
+        updateVerdict();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // Smooth scroll for nav
+    document.querySelectorAll('.ws-nav a').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            const id = a.getAttribute('href');
+            const target = document.querySelector(id);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+})();
+</script>
+</body>
+</html>

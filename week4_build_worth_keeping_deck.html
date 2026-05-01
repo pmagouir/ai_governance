@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Worth Keeping. — DC CAP AI Pilot Week 4</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+
+.slide {
+    width: 100vw; height: 100vh; height: 100dvh;
+    overflow: hidden; scroll-snap-align: start;
+    display: flex; flex-direction: column; position: relative;
+}
+.slide-content {
+    flex: 1; display: flex; flex-direction: column;
+    justify-content: flex-start;
+    max-height: 100%; overflow: hidden;
+    padding: clamp(2.5rem, 7vh, 5rem) var(--slide-padding) clamp(1.5rem, 3vh, 2.5rem);
+}
+.slide-hero .slide-content {
+    justify-content: flex-end;
+    padding-bottom: clamp(2.5rem, 8vh, 5rem);
+    padding-top: var(--slide-padding);
+}
+
+:root {
+    --navy: #101A4C;
+    --navy-deep: #0B1236;
+    --navy-mid: #162060;
+    --purple: #8352FF;
+    --purple-glow: rgba(131, 82, 255, 0.15);
+    --blue: #87B7D5;
+    --blue-glow: rgba(135, 183, 213, 0.12);
+    --gold: #FCB017;
+    --gold-glow: rgba(252, 176, 23, 0.12);
+    --tan: #FFF4ED;
+    --white: #FFFFFF;
+    --pass: #5BC57A;
+    --fail: #E27575;
+    --pause: #F0B860;
+    --text-main: rgba(255, 255, 255, 0.92);
+    --text-secondary: rgba(255, 255, 255, 0.65);
+    --text-dim: rgba(255, 255, 255, 0.38);
+    --card-bg: rgba(255, 255, 255, 0.045);
+    --card-border: rgba(255, 255, 255, 0.09);
+
+    --font-display: 'Noto Serif SemiCondensed', Georgia, serif;
+    --font-body: 'Noto Serif', Georgia, serif;
+    --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --title-size: clamp(2.2rem, 6vw, 4.5rem);
+    --h2-size: clamp(1.7rem, 4.2vw, 3rem);
+    --h3-size: clamp(1.2rem, 2.6vw, 1.8rem);
+    --body-size: clamp(1rem, 1.55vw, 1.25rem);
+    --body-lg: clamp(1.1rem, 2vw, 1.5rem);
+    --small-size: clamp(0.85rem, 1.25vw, 1.05rem);
+    --mono-size: clamp(0.72rem, 1.05vw, 0.88rem);
+
+    --slide-padding: clamp(2rem, 6vw, 6rem);
+    --content-gap: clamp(1rem, 2.5vw, 2.5rem);
+    --card-padding: clamp(1.1rem, 2.2vw, 1.75rem);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --duration-normal: 0.6s;
+}
+
+@media (max-height: 700px) {
+    :root { --title-size: clamp(1.6rem, 5vw, 3rem); --h2-size: clamp(1.3rem, 3.5vw, 2.2rem); --body-size: clamp(0.85rem, 1.35vw, 1.05rem); --body-lg: clamp(0.95rem, 1.75vw, 1.25rem); --h3-size: clamp(1rem, 2.2vw, 1.45rem); }
+    .slide-content { padding-top: clamp(1.5rem, 4vh, 3rem); }
+}
+@media (max-height: 600px) {
+    :root { --title-size: clamp(1.3rem, 4vw, 2.2rem); --h2-size: clamp(1.05rem, 2.8vw, 1.6rem); --body-size: clamp(0.78rem, 1.2vw, 0.95rem); --h3-size: clamp(0.9rem, 1.8vw, 1.2rem); }
+    .slide-content { padding-top: clamp(1rem, 3vh, 2rem); }
+    .nav-dots { display: none; }
+}
+@media (max-width: 780px) {
+    .filter-row, .vector-row, .build-row, .horizon-layout, .shift-row { flex-direction: column !important; grid-template-columns: 1fr !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+    html { scroll-behavior: auto; }
+    .reveal, .reveal-scale { opacity: 1 !important; transform: none !important; }
+}
+@media print {
+    html { scroll-snap-type: none; }
+    .slide { page-break-after: always; page-break-inside: avoid; scroll-snap-align: unset; height: 100vh; }
+    .slide:last-child { page-break-after: auto; }
+    .nav-dots, .progress-bar { display: none !important; }
+    .reveal, .reveal-scale { opacity: 1 !important; transform: none !important; }
+}
+
+body { font-family: var(--font-body); font-size: var(--body-size); line-height: 1.6; color: var(--text-main); background: var(--navy-deep); }
+h1 { font-family: var(--font-display); font-size: var(--title-size); font-weight: 900; line-height: 1.04; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); }
+h2 { font-family: var(--font-display); font-size: var(--h2-size); font-weight: 900; line-height: 1.08; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); }
+h3 { font-family: var(--font-subhead); font-size: var(--h3-size); font-weight: 700; line-height: 1.25; color: var(--white); }
+p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
+.eyebrow { font-family: var(--font-mono); font-size: var(--mono-size); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: clamp(0.5rem, 1vh, 0.9rem); }
+.accent-bar { width: clamp(3rem, 8vw, 6rem); height: 4px; background: var(--blue); margin-bottom: clamp(0.5rem, 1vh, 1rem); }
+.horizon-prose { font-size: var(--body-size); line-height: 1.65; color: var(--text-main); max-width: 38em; }
+.horizon-prose em { color: var(--blue); font-style: italic; }
+
+.reveal { opacity: 0; transform: translateY(clamp(15px, 3vh, 30px)); transition: opacity var(--duration-normal) var(--ease-out-expo), transform var(--duration-normal) var(--ease-out-expo); }
+.reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity var(--duration-normal) var(--ease-out-expo), transform var(--duration-normal) var(--ease-spring); }
+.visible .reveal, .visible .reveal-scale { opacity: 1; transform: translateY(0) translateX(0) scale(1); }
+.reveal:nth-child(1), .reveal-scale:nth-child(1) { transition-delay: 0s; }
+.reveal:nth-child(2), .reveal-scale:nth-child(2) { transition-delay: 0.08s; }
+.reveal:nth-child(3), .reveal-scale:nth-child(3) { transition-delay: 0.16s; }
+.reveal:nth-child(4), .reveal-scale:nth-child(4) { transition-delay: 0.24s; }
+.reveal:nth-child(5), .reveal-scale:nth-child(5) { transition-delay: 0.32s; }
+.reveal:nth-child(6), .reveal-scale:nth-child(6) { transition-delay: 0.4s; }
+
+.progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--blue); z-index: 200; transition: width 0.3s ease; width: 0; }
+.nav-dots { position: fixed; right: clamp(0.75rem, 2vw, 1.5rem); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: clamp(6px, 1vh, 10px); z-index: 100; }
+.nav-dot { width: clamp(8px, 0.8vw, 10px); height: clamp(8px, 0.8vw, 10px); border-radius: 50%; background: rgba(255,255,255,0.15); border: none; cursor: pointer; padding: 0; transition: all 0.3s ease; }
+.nav-dot.active { background: var(--blue); transform: scale(1.5); }
+
+/* Backgrounds */
+.slide-hero { background: radial-gradient(ellipse at 20% 80%, var(--blue-glow) 0%, transparent 55%), radial-gradient(ellipse at 80% 20%, var(--purple-glow) 0%, transparent 55%), var(--navy); }
+.slide-shift { background: radial-gradient(ellipse at 70% 50%, var(--blue-glow) 0%, transparent 60%), var(--navy-deep); }
+.slide-filter { background: radial-gradient(ellipse at 50% 40%, var(--blue-glow) 0%, transparent 60%), var(--navy-deep); }
+.slide-verdict { background: radial-gradient(ellipse at 50% 60%, var(--purple-glow) 0%, transparent 55%), var(--navy-deep); }
+.slide-customize { background: radial-gradient(ellipse at 30% 70%, var(--purple-glow) 0%, transparent 55%), var(--navy); }
+.slide-build-project { background: radial-gradient(ellipse at 70% 30%, var(--purple-glow) 0%, transparent 55%), var(--navy-deep); }
+.slide-build-skill { background: radial-gradient(ellipse at 30% 30%, var(--blue-glow) 0%, transparent 55%), var(--navy-deep); }
+.slide-build-deep { background: radial-gradient(ellipse at 70% 70%, var(--gold-glow) 0%, transparent 55%), var(--navy-deep); }
+.slide-outside { background: radial-gradient(ellipse at 30% 50%, var(--gold-glow) 0%, transparent 55%), var(--navy); }
+.slide-close { background: radial-gradient(ellipse at 80% 80%, var(--blue-glow) 0%, transparent 50%), radial-gradient(ellipse at 20% 30%, var(--purple-glow) 0%, transparent 50%), var(--navy-deep); }
+
+/* Hero */
+.slide-hero .subtitle { font-family: var(--font-subhead); font-size: var(--body-lg); font-weight: 300; color: var(--blue); line-height: 1.4; max-width: 34em; }
+.slide-hero .panel-info { font-family: var(--font-body); font-size: var(--small-size); color: var(--text-dim); line-height: 1.6; margin-top: clamp(1.5rem, 3vh, 3rem); }
+.slide-hero .panel-info strong { color: var(--text-main); }
+
+/* Shift */
+.shift-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: clamp(1rem, 2.5vw, 2.5rem); margin-top: clamp(1.25rem, 3vh, 2.5rem); align-items: stretch; }
+.shift-card { background: var(--card-bg); border: 1px solid var(--card-border); border-top: 4px solid; border-radius: clamp(8px, 1.2vw, 12px); padding: var(--card-padding); display: flex; flex-direction: column; }
+.shift-card .sc-eyebrow { font-family: var(--font-mono); font-size: var(--mono-size); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem); }
+.shift-card h3 { font-size: clamp(1.1rem, 2vw, 1.6rem); margin-bottom: clamp(0.5rem, 1vh, 0.75rem); }
+.shift-card p { font-size: var(--small-size); color: var(--text-main); line-height: 1.55; }
+.shift-card.from { border-color: var(--purple); }
+.shift-card.from .sc-eyebrow, .shift-card.from h3 { color: var(--purple); }
+.shift-card.to { border-color: var(--blue); }
+.shift-card.to .sc-eyebrow, .shift-card.to h3 { color: var(--blue); }
+.shift-arrow { display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 900; color: var(--blue); }
+
+/* Filter row (5 criteria) */
+.filter-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(0.5rem, 1vw, 0.85rem); margin-top: clamp(0.75rem, 1.6vh, 1.4rem); flex: 1; align-items: stretch; }
+.filter-card { background: var(--card-bg); border: 1px solid var(--card-border); border-top: 3px solid var(--blue); border-radius: clamp(6px, 1vw, 10px); padding: clamp(0.8rem, 1.5vw, 1.2rem); display: flex; flex-direction: column; }
+.filter-card .fc-num { font-family: var(--font-mono); font-size: var(--mono-size); color: var(--blue); letter-spacing: 0.12em; margin-bottom: clamp(0.3rem, 0.5vh, 0.4rem); }
+.filter-card .fc-name { font-family: var(--font-subhead); font-size: clamp(0.95rem, 1.4vw, 1.15rem); font-weight: 700; color: var(--white); line-height: 1.25; margin-bottom: clamp(0.4rem, 0.8vh, 0.55rem); }
+.filter-card .fc-q { font-size: clamp(0.8rem, 1.15vw, 0.95rem); color: var(--text-secondary); line-height: 1.5; flex: 1; }
+.filter-caption { font-family: var(--font-subhead); font-size: var(--small-size); color: var(--text-secondary); margin-top: clamp(0.8rem, 1.5vh, 1.25rem); font-weight: 300; font-style: italic; max-width: 50em; }
+@media (max-width: 980px) { .filter-row { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 580px) { .filter-row { grid-template-columns: 1fr; } }
+
+/* Verdict */
+.verdict-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(0.6rem, 1.2vw, 1rem); margin-top: clamp(1rem, 2vh, 1.6rem); flex: 1; }
+.verdict-card { background: var(--card-bg); border: 1px solid var(--card-border); border-left: 4px solid; border-radius: clamp(6px, 1vw, 10px); padding: clamp(1rem, 1.8vw, 1.4rem); display: flex; flex-direction: column; }
+.verdict-card .v-score { font-family: var(--font-mono); font-size: var(--mono-size); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem); }
+.verdict-card h3 { font-size: clamp(1.05rem, 1.8vw, 1.4rem); margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem); }
+.verdict-card p { font-size: var(--small-size); color: var(--text-secondary); line-height: 1.55; }
+.verdict-card.build { border-color: var(--pass); }
+.verdict-card.build .v-score, .verdict-card.build h3 { color: var(--pass); }
+.verdict-card.pause { border-color: var(--pause); }
+.verdict-card.pause .v-score, .verdict-card.pause h3 { color: var(--pause); }
+.verdict-card.pass { border-color: var(--fail); }
+.verdict-card.pass .v-score, .verdict-card.pass h3 { color: var(--fail); }
+
+/* Customization vectors */
+.vector-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(0.7rem, 1.4vw, 1.1rem); margin-top: clamp(1rem, 2vh, 1.6rem); flex: 1; }
+.vector-card { background: var(--card-bg); border: 1px solid var(--card-border); border-top: 4px solid; border-radius: clamp(8px, 1.2vw, 12px); padding: var(--card-padding); display: flex; flex-direction: column; }
+.vector-card.org { border-color: var(--white); }
+.vector-card.org .vc-label { color: var(--white); }
+.vector-card.outside { border-color: var(--purple); }
+.vector-card.outside .vc-label { color: var(--purple); }
+.vector-card.workflow { border-color: var(--blue); }
+.vector-card.workflow .vc-label { color: var(--blue); }
+.vector-card .vc-label { font-family: var(--font-mono); font-size: var(--mono-size); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem); }
+.vector-card h3 { font-size: clamp(1.05rem, 1.8vw, 1.4rem); margin-bottom: clamp(0.5rem, 1vh, 0.7rem); }
+.vector-card .vc-body { font-size: var(--small-size); color: var(--text-main); line-height: 1.55; flex: 1; }
+.vector-card .vc-example { font-family: var(--font-mono); font-size: clamp(0.72rem, 1vw, 0.85rem); color: var(--text-dim); line-height: 1.5; margin-top: clamp(0.5rem, 1vh, 0.75rem); padding-top: clamp(0.5rem, 1vh, 0.75rem); border-top: 1px solid var(--card-border); }
+
+/* Build slide layout */
+.build-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2.5vw, 2rem); margin-top: clamp(1rem, 2vh, 1.5rem); flex: 1; }
+.build-col { display: flex; flex-direction: column; gap: clamp(0.6rem, 1.2vh, 1rem); }
+.build-col h3 { font-size: clamp(1.05rem, 1.7vw, 1.3rem); }
+.build-col .bc-eyebrow { font-family: var(--font-mono); font-size: var(--mono-size); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem); }
+.build-col .bc-body { font-size: var(--small-size); color: var(--text-main); line-height: 1.6; max-width: 32em; }
+.build-col .bc-body em { color: var(--blue); font-style: italic; }
+
+.code-card {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid var(--card-border);
+    border-radius: clamp(6px, 1vw, 10px);
+    padding: clamp(0.85rem, 1.5vw, 1.2rem);
+    font-family: var(--font-mono);
+    font-size: clamp(0.7rem, 0.95vw, 0.82rem);
+    line-height: 1.6;
+    color: var(--text-main);
+    white-space: pre-wrap;
+    overflow: auto;
+    max-height: 100%;
+}
+.code-card .header { color: var(--blue); }
+.code-card .key { color: var(--gold); font-weight: 700; }
+.code-card .comment { color: var(--text-dim); font-style: italic; }
+
+.steal-block {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-left: 4px solid var(--blue);
+    border-radius: 0 clamp(6px, 1vw, 10px) clamp(6px, 1vw, 10px) 0;
+    padding: clamp(0.85rem, 1.5vw, 1.15rem);
+    margin-top: auto;
+}
+.steal-block .s-label { font-family: var(--font-mono); font-size: var(--mono-size); letter-spacing: 0.1em; color: var(--blue); margin-bottom: 0.3em; }
+.steal-block p { font-size: var(--small-size); color: var(--text-main); line-height: 1.55; }
+
+/* Outside sources slide */
+.outside-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(0.7rem, 1.4vw, 1.1rem); margin-top: clamp(1rem, 2vh, 1.6rem); flex: 1; }
+.outside-card { background: var(--card-bg); border: 1px solid var(--card-border); border-left: 4px solid var(--gold); border-radius: clamp(6px, 1vw, 10px); padding: clamp(0.9rem, 1.5vw, 1.25rem); }
+.outside-card .o-label { font-family: var(--font-mono); font-size: var(--mono-size); color: var(--gold); letter-spacing: 0.1em; margin-bottom: 0.3em; }
+.outside-card h4 { font-family: var(--font-subhead); font-size: clamp(1rem, 1.5vw, 1.2rem); color: var(--white); margin-bottom: 0.4rem; line-height: 1.25; }
+.outside-card p { font-size: var(--small-size); color: var(--text-secondary); line-height: 1.55; }
+
+/* Friday prompt items */
+.friday-prompt { display: flex; flex-direction: column; gap: clamp(0.75rem, 1.5vh, 1.2rem); margin-top: clamp(1rem, 2vh, 1.75rem); flex: 1; }
+.fp-item { display: flex; gap: clamp(0.75rem, 1.5vw, 1.25rem); background: var(--card-bg); border: 1px solid var(--card-border); border-left: 4px solid; border-radius: clamp(6px, 1vw, 10px); padding: clamp(0.9rem, 1.7vw, 1.3rem); }
+.fp-num { font-family: var(--font-display); font-size: clamp(1.3rem, 2.6vw, 2rem); font-weight: 900; line-height: 1; flex-shrink: 0; min-width: clamp(2rem, 3.5vw, 3rem); }
+.fp-text { flex: 1; }
+.fp-text .fp-label { font-family: var(--font-mono); font-size: var(--mono-size); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: clamp(0.2rem, 0.4vh, 0.35rem); }
+.fp-text p { font-size: var(--body-size); color: var(--text-main); line-height: 1.5; }
+.fp-1 { border-color: var(--blue); } .fp-1 .fp-num, .fp-1 .fp-label { color: var(--blue); }
+.fp-2 { border-color: var(--purple); } .fp-2 .fp-num, .fp-2 .fp-label { color: var(--purple); }
+.fp-3 { border-color: var(--gold); } .fp-3 .fp-num, .fp-3 .fp-label { color: var(--gold); }
+
+/* Contact */
+.contact-bar { display: flex; align-items: center; gap: clamp(1.25rem, 3vw, 2.5rem); margin-top: clamp(1rem, 2vh, 1.5rem); padding-top: clamp(0.75rem, 1.5vh, 1.25rem); border-top: 1px solid var(--card-border); flex-wrap: wrap; }
+.contact-bar .cn { font-family: var(--font-subhead); font-size: clamp(0.95rem, 1.4vw, 1.15rem); font-weight: 700; color: var(--white); }
+.contact-bar .ci { font-family: var(--font-subhead); font-size: var(--small-size); font-weight: 300; color: var(--text-dim); }
+.contact-bar a { color: var(--blue); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<nav class="nav-dots" aria-label="Slide navigation" id="navDots"></nav>
+
+<!-- S1: TITLE -->
+<section class="slide slide-hero" id="slide-0">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--blue);">DC CAP AI Leadership Pilot</div>
+        <div class="accent-bar reveal"></div>
+        <h1 class="reveal">Build worth keeping.</h1>
+        <p class="subtitle reveal">Week 4 · Friday · 12 PM</p>
+        <div class="panel-info reveal">
+            <strong>Preston Magouirk</strong> · Chief Strategy &amp; Analytics Officer
+        </div>
+    </div>
+</section>
+
+<!-- S2: THE SHIFT -->
+<section class="slide slide-shift" id="slide-1">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--blue);">What changed since Week 3</div>
+        <h2 class="reveal">The leap.</h2>
+        <p class="horizon-prose reveal" style="margin-top: clamp(0.5rem, 1vh, 0.9rem);">Week 3 named four containers. We picked the right shape for the work in front of us. This week is the harder cut: <em>not everything that could be a Project should be a Project.</em> We decide what passes the bar. Then we build one thing that earns its keep.</p>
+        <div class="shift-row">
+            <div class="shift-card from reveal-scale">
+                <div class="sc-eyebrow">Week 3 · H2 design</div>
+                <h3>What kind of thing am I building?</h3>
+                <p>Container choice. Project, Skill, automation, deliberate one-shot. The shape was the answer.</p>
+            </div>
+            <div class="shift-arrow reveal">→</div>
+            <div class="shift-card to reveal-scale">
+                <div class="sc-eyebrow">Week 4 · H2 build</div>
+                <h3>Is this worth building, and how deep do I go?</h3>
+                <p>Discernment at the design layer. The wrong build wastes the team's time. The right one replaces a layer of tribal knowledge.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S3: TODAY'S THREE QUESTIONS -->
+<section class="slide slide-close" id="slide-2">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--blue);">Today's conversation</div>
+        <h2 class="reveal">Three questions.</h2>
+        <p class="horizon-prose reveal" style="margin-top: clamp(0.5rem, 1vh, 0.9rem);">Each of us answers these in the room. The frameworks and the three example builds that follow give the vocabulary.</p>
+        <div class="friday-prompt">
+            <div class="fp-item fp-1 reveal">
+                <div class="fp-num">01</div>
+                <div class="fp-text">
+                    <div class="fp-label">The filter</div>
+                    <p>Walk us through your five scores. Which criterion almost killed the build, and why did you build anyway?</p>
+                </div>
+            </div>
+            <div class="fp-item fp-2 reveal">
+                <div class="fp-num">02</div>
+                <div class="fp-text">
+                    <div class="fp-label">The customization</div>
+                    <p>What outside source did you load? Where did it raise the floor on what Claude could do for the team?</p>
+                </div>
+            </div>
+            <div class="fp-item fp-3 reveal">
+                <div class="fp-num">03</div>
+                <div class="fp-text">
+                    <div class="fp-label">The hand-off</div>
+                    <p>Where did your teammate get confused? What does that tell you about what is still tribal knowledge?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S4: THE BUILD FILTER -->
+<section class="slide slide-filter" id="slide-3">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--blue);">Before you build</div>
+        <h2 class="reveal">Five questions.<br>Three "yes" or you put it down.</h2>
+        <div class="filter-row">
+            <div class="filter-card reveal-scale">
+                <div class="fc-num">01</div>
+                <div class="fc-name">Frequency</div>
+                <p class="fc-q">3+ times per quarter, ongoing? Less than monthly is a one-shot.</p>
+            </div>
+            <div class="filter-card reveal-scale">
+                <div class="fc-num">02</div>
+                <div class="fc-name">Variability</div>
+                <p class="fc-q">Stable shape, varying inputs? Or genuinely different every time?</p>
+            </div>
+            <div class="filter-card reveal-scale">
+                <div class="fc-num">03</div>
+                <div class="fc-name">Inheritance</div>
+                <p class="fc-q">A specific named teammate other than you? Or a private speed-up?</p>
+            </div>
+            <div class="filter-card reveal-scale">
+                <div class="fc-num">04</div>
+                <div class="fc-name">Stakes</div>
+                <p class="fc-q">Could an error reach a stakeholder before a human catches it?</p>
+            </div>
+            <div class="filter-card reveal-scale">
+                <div class="fc-num">05</div>
+                <div class="fc-name">Substitution</div>
+                <p class="fc-q">Better tool already exists? Don't build a Claude version of Salesforce.</p>
+            </div>
+        </div>
+        <p class="filter-caption reveal">The deliberate "no" is leadership, not failure. The wrong build wastes the team's time worse than no build at all.</p>
+    </div>
+</section>
+
+<!-- S5: VERDICT -->
+<section class="slide slide-verdict" id="slide-4">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">Read the score</div>
+        <h2 class="reveal">Build · Pause · Pass.</h2>
+        <p class="horizon-prose reveal" style="margin-top: clamp(0.5rem, 1vh, 0.9rem);">Three verdicts. Each one is a real choice. Calling it a pass is the same kind of leadership move as shipping a build.</p>
+        <div class="verdict-row">
+            <div class="verdict-card build reveal-scale">
+                <div class="v-score">3+ yes</div>
+                <h3>Build it.</h3>
+                <p>The candidate earns the investment. Move to the customization plan. Three vectors. Ship v1. Watch a teammate run it.</p>
+            </div>
+            <div class="verdict-card pause reveal-scale">
+                <div class="v-score">1-2 yes</div>
+                <h3>Pause. Reframe.</h3>
+                <p>Either narrow the audience until inheritance is a clear yes, or build private and revisit. Don't sell the team a build that hasn't earned the label.</p>
+            </div>
+            <div class="verdict-card pass reveal-scale">
+                <div class="v-score">0 yes</div>
+                <h3>Pass. Pick again.</h3>
+                <p>Not the right candidate. Calling pass protects the team's time when you do ship one. Pick a different candidate from the last two weeks.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S6: THE CUSTOMIZATION PLAY -->
+<section class="slide slide-customize" id="slide-5">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">If the verdict says build</div>
+        <h2 class="reveal">Make it the team's,<br>not Claude's.</h2>
+        <p class="horizon-prose reveal" style="margin-top: clamp(0.5rem, 1vh, 0.9rem);">A team build is only worth keeping if it carries something Claude doesn't already know. Three vectors decide depth.</p>
+        <div class="vector-row">
+            <div class="vector-card org reveal-scale">
+                <div class="vc-label">Vector 01</div>
+                <h3>Org context</h3>
+                <p class="vc-body">DC CAP voice. Verified ground-truth metrics. The 13 partners. Family- and counselor-facing tone rules. The way <em>we</em> talk.</p>
+                <p class="vc-example">verified_numbers_FY25.md · dccap_voice.md · partners_2026.md</p>
+            </div>
+            <div class="vector-card outside reveal-scale">
+                <div class="vc-label">Vector 02</div>
+                <h3>Outside authority</h3>
+                <p class="vc-body">Research papers. Federal datasets. Peer-org playbooks. Brand guides. Anthropic skill docs. Anything that raises the floor on what Claude can do here.</p>
+                <p class="vc-example">mathematica_REL_2025_010.pdf · NCES baselines · Anthropic skill-creator</p>
+            </div>
+            <div class="vector-card workflow reveal-scale">
+                <div class="vc-label">Vector 03</div>
+                <h3>Workflow shape</h3>
+                <p class="vc-body">When to trigger. What good looks like. What to avoid. Where the human checkpoint sits. The procedural spine.</p>
+                <p class="vc-example">SKILL.md sections · Diligence step · escape hatch named</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S7: BUILD 01 — PROJECT -->
+<section class="slide slide-build-project" id="slide-6">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">Build 01 · Project · reuses context</div>
+        <h2 class="reveal">Partner Engagement.</h2>
+        <div class="build-row">
+            <div class="build-col reveal">
+                <div class="bc-eyebrow" style="color: var(--purple);">Setup · custom instructions</div>
+                <p class="bc-body">A workspace loaded with the 13-partner roster, voice rules, verified numbers, and the calendar of who expects what when. <em>Same body of knowledge, many shapes of ask, for months.</em></p>
+                <div class="bc-eyebrow" style="color: var(--purple); margin-top: clamp(0.5rem, 1vh, 0.75rem);">What it answers</div>
+                <p class="bc-body">Drafts. Summaries. Comparisons. Briefings. Four shapes against one workspace.</p>
+                <div class="steal-block" style="border-left-color: var(--purple);">
+                    <div class="s-label" style="color: var(--purple);">Steal this</div>
+                    <p>A Project is justified when one workspace handles three or more shapes of ask. If your candidate answers just one shape, it's a Skill.</p>
+                </div>
+            </div>
+            <div class="build-col reveal">
+                <div class="code-card"><span class="comment"># Custom instructions (paste into Claude Project)</span>
+
+You help DC CAP's Student Success team manage year-round
+relationships with 13 university partner contacts.
+
+<span class="key">Tone:</span> collegial, professional, warm. These are
+people we will work with for years.
+
+<span class="key">Always:</span> name relationship history when relevant;
+include specific dates and named next steps; check
+verified DC CAP numbers before quoting impact data.
+
+<span class="key">Never:</span> include individual student names, financial
+aid amounts, or anything beyond Tier 3 unless I
+load it for a single conversation.
+
+<span class="comment"># References loaded</span>
+- partners_2026.md       (Tier 3)
+- dccap_voice.md         (Tier 4)
+- verified_numbers_FY25  (Tier 3)
+- moil_calendar_2026.md  (Tier 3)</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S8: BUILD 02 — SKILL -->
+<section class="slide slide-build-skill" id="slide-7">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--blue);">Build 02 · Skill · reuses the move</div>
+        <h2 class="reveal">Counselor Cycle Update.</h2>
+        <div class="build-row">
+            <div class="build-col reveal">
+                <div class="bc-eyebrow" style="color: var(--blue);">The procedural spine</div>
+                <p class="bc-body">A SKILL.md anyone can run when DC CAP needs to send a counselor a cycle update — application open, deadline, decision, thank-you. Five cycle moments. Three rules each for "good" and "avoid." One length.</p>
+                <div class="bc-eyebrow" style="color: var(--blue); margin-top: clamp(0.5rem, 1vh, 0.75rem);">What it produces</div>
+                <p class="bc-body">A 4-6 sentence email. Names the cycle moment in the opener. One date. One action. Closes warm.</p>
+                <div class="steal-block">
+                    <div class="s-label">Steal this</div>
+                    <p>Write the <em>avoid list</em> before the good list. The negative space is where your tribal knowledge actually lives — "never use 'unlock,' never plural CTAs, never 'per our records.'"</p>
+                </div>
+            </div>
+            <div class="build-col reveal">
+                <div class="code-card"><span class="header">---
+name: counselor-cycle-update-email
+description: Drafts a DC CAP cycle update email
+  to a high school counselor.
+---</span>
+
+<span class="key">## When to trigger</span>
+Application open · T-2 weeks · T-3 days ·
+decision · partnership thank-you.
+
+<span class="key">## What good looks like</span>
+- Opens with the relationship.
+- Names the cycle moment in sentence 1.
+- One specific date. One specific action.
+- 4-6 sentences. Always.
+- Closes warm; doesn't require a meeting.
+
+<span class="key">## What to avoid</span>
+- Equity framing → use accessibility/impact.
+- Banned words: unlock, leverage, seamless,
+  journey, elevate, foster, vibrant.
+- Plural CTAs.
+- "Per our records" / "I am reaching out to."</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S9: BUILD 03 — DEEP SKILL -->
+<section class="slide slide-build-deep" id="slide-8">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">Build 03 · Deep Skill · reuses the move with depth</div>
+        <h2 class="reveal">Funder-Framing Drafter.</h2>
+        <div class="build-row">
+            <div class="build-col reveal">
+                <div class="bc-eyebrow" style="color: var(--gold);">Depth means every layer has a home</div>
+                <p class="bc-body">Funder-type register goes in <em>workflow shape.</em> Verified numbers go in <em>org context.</em> Outside research goes in <em>references.</em> The Diligence step ("verify every metric") goes in the procedure body. The "things we learned the hard way" go in <em>avoid.</em></p>
+                <div class="bc-eyebrow" style="color: var(--gold); margin-top: clamp(0.5rem, 1vh, 0.75rem);">What the team inherits</div>
+                <p class="bc-body">A new hire produces a defensible draft on day three. Numbers right. Voice right. Funder register matched. The implicit knowledge that used to live in two heads is in the file.</p>
+                <div class="steal-block" style="border-left-color: var(--gold);">
+                    <div class="s-label" style="color: var(--gold);">Steal this</div>
+                    <p>Walk through your build and ask: where does this layer live? If the answer is "in someone's head," that is the layer to encode next.</p>
+                </div>
+            </div>
+            <div class="build-col reveal">
+                <div class="code-card"><span class="header">---
+name: funder-framing-paragraph
+description: Drafts program-impact paragraphs
+  for grant proposals. Detects funder type and
+  matches register. Uses verified numbers only.
+---</span>
+
+<span class="key">## Funder-type register</span>
+Foundation: methodology + theory of change.
+Corporate: scale + business case.
+Government: compliance + federal data alignment.
+Individual: human stakes + named scholar arcs.
+
+<span class="key">## The Diligence step</span>
+Before the paragraph leaves the Skill: verify
+every number against verified_numbers_FY25.md.
+If asked something not in the verified file,
+say so and route to director — do not estimate.
+
+<span class="key">## References loaded</span>
+- verified_numbers_FY25.md   (Tier 3)
+- dccap_voice.md             (Tier 4)
+- mathematica_REL_2025_010   (Tier 4)
+- dccap_program_model_brief  (Tier 3)
+- funder_taxonomy_examples   (Tier 4)</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S10: OUTSIDE SOURCES -->
+<section class="slide slide-outside" id="slide-9">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">Where the floor gets raised</div>
+        <h2 class="reveal">Outside sources<br>are the customization multiplier.</h2>
+        <p class="horizon-prose reveal" style="margin-top: clamp(0.5rem, 1vh, 0.9rem);">The difference between a Skill that saves five minutes and one that replaces a whole layer of tribal knowledge is almost always the outside source you loaded.</p>
+        <div class="outside-grid">
+            <div class="outside-card reveal-scale">
+                <div class="o-label">Research &amp; data</div>
+                <h4>Federal datasets, peer-reviewed papers, evaluation reports.</h4>
+                <p>Mathematica, IES, NCES, the Brookings reports we cite. Loaded as PDFs or summarized into a reference doc. Raises the floor on accuracy and citation discipline.</p>
+            </div>
+            <div class="outside-card reveal-scale">
+                <div class="o-label">Peer-org playbooks</div>
+                <h4>How comparable orgs handle the same move.</h4>
+                <p>Two grant narratives, three counselor email exemplars, a partner-engagement playbook from a bigger college access org. Loaded as reference. Anchors the voice and structure.</p>
+            </div>
+            <div class="outside-card reveal-scale">
+                <div class="o-label">Authoritative style</div>
+                <h4>Brand guides, voice docs, Anthropic skill-creator standards.</h4>
+                <p>The dccap-brand voice rules. Council on Foundations RFP language standards. Anthropic's own skill-authoring guidance. Loaded as references; cited inside the procedure.</p>
+            </div>
+            <div class="outside-card reveal-scale">
+                <div class="o-label">Internal corpus</div>
+                <h4>What we have already approved.</h4>
+                <p>Three years of grant narratives that won. The board memos that landed. The student emails that generated the warmest replies. Outside the build itself, but inside the org. Loaded as exemplars.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S11: VOLUNTEER RUBRIC -->
+<section class="slide slide-close" id="slide-10">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">When you share</div>
+        <h2 class="reveal">Walk us through your build.</h2>
+        <p class="horizon-prose reveal" style="margin-top: clamp(0.5rem, 1vh, 0.9rem);">Three moves to hit when it is your turn. The reasoning counts more than the polish.</p>
+        <div class="friday-prompt">
+            <div class="fp-item fp-1 reveal">
+                <div class="fp-num">01</div>
+                <div class="fp-text">
+                    <div class="fp-label">Score</div>
+                    <p>The five filter criteria. Where you scored "yes," where you scored "no," and the one that almost killed the build.</p>
+                </div>
+            </div>
+            <div class="fp-item fp-2 reveal">
+                <div class="fp-num">02</div>
+                <div class="fp-text">
+                    <div class="fp-label">Source</div>
+                    <p>The outside thing you loaded. Why that one. What it specifically does for the build that DC CAP context alone couldn't.</p>
+                </div>
+            </div>
+            <div class="fp-item fp-3 reveal">
+                <div class="fp-num">03</div>
+                <div class="fp-text">
+                    <div class="fp-label">Stumble</div>
+                    <p>The teammate hand-off. Where they got confused. What that revealed about what is still tribal knowledge — and what v2 will fix.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S12: CLOSER -->
+<section class="slide slide-close" id="slide-11">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--blue);">Your turn</div>
+        <h2 class="reveal">Bring yours.</h2>
+        <p class="horizon-prose reveal" style="margin-top: clamp(0.75rem, 2vh, 1.5rem);">Your candidate from Week 3. The five scores. The build — Project or Skill — with at least one outside source loaded. The teammate's hand-off notes. Working or rough. We will go around from here, and we will critique the customization choices.</p>
+        <div class="contact-bar reveal" style="margin-top: auto;">
+            <span class="cn">Preston Magouirk</span>
+            <span class="ci">preston.magouirk@dccap.org</span>
+            <span class="ci"><a href="https://dccapinnovation.org">dccapinnovation.org</a></span>
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    const progressBar = document.getElementById('progressBar');
+    const navContainer = document.getElementById('navDots');
+    slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+        dot.addEventListener('click', () => slides[i].scrollIntoView({ behavior: 'smooth' }));
+        navContainer.appendChild(dot);
+    });
+    const dots = navContainer.querySelectorAll('.nav-dot');
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                const idx = Array.from(slides).indexOf(entry.target);
+                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+                progressBar.style.width = ((idx + 1) / totalSlides * 100) + '%';
+            }
+        });
+    }, { threshold: 0.4 });
+    slides.forEach(s => obs.observe(s));
+    document.addEventListener('keydown', (e) => {
+        const ci = Array.from(dots).findIndex(d => d.classList.contains('active'));
+        if (['ArrowDown','ArrowRight',' ','PageDown'].includes(e.key) && ci < totalSlides - 1) {
+            e.preventDefault(); slides[ci + 1].scrollIntoView({ behavior: 'smooth' });
+        } else if (['ArrowUp','ArrowLeft','PageUp'].includes(e.key) && ci > 0) {
+            e.preventDefault(); slides[ci - 1].scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+})();
+</script>
+</body>
+</html>
