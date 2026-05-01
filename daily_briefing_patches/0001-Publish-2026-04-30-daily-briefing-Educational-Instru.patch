@@ -1,0 +1,46 @@
+From 243d1a124236c807d61d515c1fd3e7ef645ff76f Mon Sep 17 00:00:00 2001
+From: Preston Magouirk <preston.magouirk@dccap.org>
+Date: Thu, 30 Apr 2026 08:11:33 -0400
+Subject: [PATCH] Publish 2026-04-30 daily briefing: Educational Instruction Is
+ Claude's Fastest-Growing Use Case (trends)
+
+---
+ briefings.json | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/briefings.json b/briefings.json
+index 1a29f1b..11d3110 100644
+--- a/briefings.json
++++ b/briefings.json
+@@ -1,8 +1,8 @@
+ {
+   "meta": {
+     "version": "2.0",
+-    "lastGenerated": "2026-04-29T07:15:00-04:00",
+-    "lastPublished": "2026-04-29T07:15:00-04:00",
++    "lastGenerated": "2026-04-30T07:15:00-04:00",
++    "lastPublished": "2026-04-30T07:15:00-04:00",
+     "categories": {
+       "foundational": {
+         "label": "Foundational Learning",
+@@ -42,6 +42,17 @@
+   },
+   "drafts": [],
+   "published": [
++    {
++      "category": "trends",
++      "content": "Anthropic released its March 2026 Economic Index report this spring, the third large-scale dataset on how Claude actually gets used. One finding sits directly in DC CAP's lane. Educational instruction tasks (coursework support, tutoring, instructional material development) rose from 9% to 13% of all Claude conversations. That is the fastest-growing task category in the Index. On Claude.ai specifically, educational instruction now accounts for 16% of conversations, four times the rate seen on the API. Education has moved into Claude's mainstream.\n\nThe augmentation share moved with it. 57% of conversations were augmentation in the current Index, where the user iterates with Claude through multiple turns of refinement. 43% were automation, where the user delegates a task and accepts the output. This is up from a 52/45 split in the prior Index, a meaningful shift in the direction of collaboration.\n\nTwo implications for the pilot. First, the kind of work DC CAP staff do (coaching, communication, instruction, family-facing explanation) is the work Claude is being adopted for fastest in the wild. The pilot is running with that trend. Second, the augmentation share rising is consistent with what the pilot has been teaching. Multi-turn collaboration produces better output on tasks where the standard depends on judgment.\n\nThe Economic Index gives the pilot a market check. The same job-shaped tasks DC CAP is bringing into Claude (drafting, explanation, structured feedback) are the ones the broader user base is converging on. The strategic question for Week 4 is what your team's split looks like, and whether it should.",
++      "date": "2026-04-30",
++      "resource": "https://www.anthropic.com/research/economic-index-march-2026-report",
++      "sourceNotes": "Claim: Anthropic released the March 2026 Economic Index report, the third large-scale dataset on Claude usage | Source: VERIFIED (Anthropic, Economic Index report: Learning curves, March 2026, https://www.anthropic.com/research/economic-index-march-2026-report)\nClaim: Educational instruction tasks rose from 9% to 13% of all Claude conversations, the fastest-growing category | Source: VERIFIED (March 2026 Anthropic Economic Index: \"Educational instruction tasks have risen by more than 40 percent (from 9% to 13% of all conversations)\")\nClaim: Educational instruction tasks comprise 16% of Claude.ai conversations vs. 4% on the API | Source: VERIFIED (March 2026 Anthropic Economic Index: \"Claude.ai sees substantially more Educational Instruction tasks (16% vs. 4% on the API)\")\nClaim: 57% augmentation / 43% automation split in current Anthropic Economic Index | Source: VERIFIED (Anthropic Economic Index, March 2026 report, Claude.ai conversation sample, predominantly Claude Sonnet 4.5)\nClaim: Prior Index reported a 52% augmentation / 45% automation split | Source: VERIFIED (Earlier Anthropic Economic Index report: \"Augmentation (52% of conversations) has overtaken automation (45%)\")\nClaim: Week 4 of the pilot is the Discernment week | Source: GROUNDED (pilot_hub.html Week 4 section: \"You've used Claude for real tasks. Some outputs worked. Some needed significant rework. This is where you develop judgment.\")\nEditorial: Framing educational instruction as \"DC CAP's lane\" is Preston's synthesis tying the Index findings to the pilot's audience.\nEditorial: The phrase \"Education has moved into Claude's mainstream\" is Preston's framing.\nEditorial: The two-implication structure (sector-fit + augmentation rising) is Preston's pedagogical move, derived from the Index data.\nEditorial: \"Market check\" framing for what the Economic Index does for the pilot is Preston's.\nEditorial: The closing question \"what your team's split looks like, and whether it should\" is Preston's pedagogical close.\nAdversarial review 20260430: Em-dash count: 0. Banned phrases scanned and absent: leverage, utilize, delve, navigate, landscape, ecosystem, synergy, robust, holistic, stakeholders, foster, enhance, align, transformative, empower, spearhead, myriad, multifaceted, nuanced, pivotal, unpack, deep dive, however, moreover, furthermore, additionally, serves as, stands as, represents, functions as, at the end of the day, move the needle, to be clear, make no mistake, doing the heavy lifting, the real question, what most people miss, groundbreaking, game-changing, revolutionary, showcase, underscore. Contrastive \"not X, but Y\" constructions: 0. Rhetorical questions in body: 0. Declarative open: yes (cites Anthropic March 2026 Index release). Word count: 253.",
++      "status": "published",
++      "title": "9 to 13: Educational Instruction Is Claude's Fastest-Growing Use Case",
++      "tryThis": "Open Claude and look at your last five sessions. Tag each one as Augmentation (multi-turn refinement) or Automation (one prompt, one output). Calculate your split. Compare it to the 57/43 Index average. Bring your number to AI Friday with one sentence about whether the split matches the work you were doing.",
++      "validationStatus": "PASSED"
++    },
+     {
+       "category": "governance",
+       "content": "Section 7.3 of DC CAP's AI Governance Framework names the line every pilot member is accountable to: \"All external communications remain staff-authored; Claude is a tool in the drafting process.\" Section 7.2 backs it: \"Staff remain accountable for the quality and accuracy of all work product.\" Those two sentences carry the pilot's deepest expectation. The author is the person whose name appears on the email, the proposal, the report. Claude drafts. The author signs.\n\nThe expectation becomes operational this week. In Week 4 you trade work with a colleague. They will read what you sent and tell you what they noticed. The feedback runs deeper when the draft already passed through your hands. A forwarded first output makes your colleague your QA layer. The peer review collapses into proofreading.\n\nThe verification pass has three checks. Check the facts first. Every claim about scholar outcomes, partner counts, deadlines, or policy must trace to a source you can cite. Check the voice second. Claude can match a tone and also smooth your edges into someone else's. Check the standard third. Read each sentence as if you were defending it in a board meeting or in a parent conversation. That is the bar the framework sets when it puts staff signatures on work product.\n\nThe framework treats Claude as a drafting accelerant. The deliverable carries your signature. Walk every output through the verification pass before it leaves your screen. That makes the peer feedback you get this week an audit of your judgment.",
+-- 
+2.34.1
+
