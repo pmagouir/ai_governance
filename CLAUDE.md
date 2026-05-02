@@ -17,7 +17,7 @@ These live on Preston's local Desktop at `~/Desktop/BRAIN/skills/` and are **not
 - `frontend-slides.skill` — zipped skill for slide decks.
 
 ## Writing standards
-- No AI tell-tale words: unlock, leverage, seamless, robust, tapestry, journey, elevate, streamline, optimize, holistic, delve, foster, vibrant, navigate, empower, utilize, realm, landscape, pivotal, paramount, cutting-edge, synergy, ecosystem.
+- No AI tell-tale words: unlock, leverage, seamless, robust, tapestry, journey, elevate, streamline, optimize, holistic, delve, foster, vibrant, navigate, empower, utilize, realm, landscape, pivotal, paramount, cutting-edge, synergy, ecosystem, load-bearing.
 - Short, active, direct sentences. Make claims.
 - Ground copy in real DC CAP context (named funders, units, dates, metrics) rather than generic examples.
 - For leader-audience copy (pilot site, board materials): strategic, concise, data-grounded.

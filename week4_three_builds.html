@@ -432,7 +432,7 @@ explicitly load it for a single conversation.</div>
 
                 <div class="anatomy-block">
                     <div class="a-label">Customization · Outside authority</div>
-                    <div class="a-content">Two peer-org partner-engagement playbooks loaded as PDFs. National FGLI completion baselines (federal data) for any comparative framing.</div>
+                    <div class="a-content">Two peer-org partner-engagement playbooks, translated from their published PDFs into <code>peer_playbooks_summarized.md</code>. National FGLI completion baselines transcribed from federal data into <code>fgli_baselines.md</code>. References live as Markdown, never as raw PDFs.</div>
                 </div>
 
                 <div class="anatomy-block">
@@ -557,12 +557,12 @@ Counselor list + tone notes: `counselor_directory_2026.md`</div>
     <div class="build-card deep-skill">
         <div class="build-header">
             <div class="build-eyebrow">Build 03 · Deeply customized Skill · Reuses the move with depth</div>
-            <h2 class="build-title">Funder-Framing Paragraph Drafter</h2>
-            <p class="build-summary">A Skill for the Development team that drafts funder-facing program-impact paragraphs. Verified DC CAP numbers, funder-type register matched (Foundation / Corporate / Government / Individual), outside research baked in. Replaces the layer of implicit knowledge that used to live only in the people who had been writing grants for three years.</p>
+            <h2 class="build-title">Preston Writing Voice</h2>
+            <p class="build-summary">A Skill that drafts and edits anything Preston will sign — board memos, LinkedIn posts, donor briefs, policy comments, conference remarks. BLUF structure, banned-word list, banned constructions, voice rules, and a curated archive of Preston's own published writing as outside reference. Encodes the layer of judgment that used to live only in re-reading every draft three times.</p>
             <div class="build-meta">
                 <span class="meta-pill"><strong>Container:</strong> Skill</span>
-                <span class="meta-pill"><strong>Owner:</strong> Sashia + Anna · Development</span>
-                <span class="meta-pill"><strong>Inheritance:</strong> All proposal writers, plus any future hire</span>
+                <span class="meta-pill"><strong>Owner:</strong> Preston</span>
+                <span class="meta-pill"><strong>Inheritance:</strong> Anyone drafting in Preston's voice; pattern usable by any DC CAP author</span>
                 <span class="meta-pill"><strong>Highest tier:</strong> Tier 3</span>
             </div>
         </div>
@@ -573,78 +573,91 @@ Counselor list + tone notes: `counselor_directory_2026.md`</div>
                     <div class="a-label">The SKILL.md (the procedural spine)</div>
                     <div class="a-content">
                         <div class="code-block"><span class="header">---
-name: funder-framing-paragraph
-description: Drafts program-impact paragraphs for grant proposals, LOIs,
-  and funder briefs. Detects funder type and matches the register.
-  Always uses verified DC CAP numbers. Use whenever responding to a
-  proposal question about scholar outcomes or program impact.
+name: preston-writing
+description: Drafts and edits any written content in Preston Magouirk's
+  voice — LinkedIn posts, grant narratives, board memos, donor briefs,
+  policy comments, conference remarks. Use whenever Preston will sign
+  or speak the words.
 ---</span>
 
 <span class="key">## When to trigger</span>
-Any RFP question that asks about: scholar outcomes, program impact,
-the FGLI completion gap, the DC CAP model, why this works, evidence
-base, retention or completion data.
+Anything Preston will sign. Memos to Eric. Board materials. Funder
+briefs. LinkedIn drafts. Conference abstracts. Policy comments.
+Donor thank-yous.
 
-<span class="key">## Funder-type register</span>
-Foundation: methodology rigor, theory of change, evaluation framing.
-Corporate: scale, business case, partnership leverage.
-Government: compliance lineage, federal data alignment, replicability.
-Individual: human stakes, named scholar arcs, local relevance.
+<span class="key">## Structure — BLUF, every time</span>
+1. Direct answer first.
+2. Strategic context second.
+3. Next move third.
+
+That order. Even in a three-sentence email.
+
+<span class="key">## Voice rules</span>
+- Active voice. Make claims.
+- Evidence-grounded. Every claim that supports the argument names a source.
+- Short sentences. Period.
+- The reader can stop after sentence one and still have the point.
+
+<span class="key">## Banned words (no exceptions)</span>
+unlock, leverage, seamless, robust, tapestry, journey, elevate,
+streamline, optimize, holistic, delve, foster, vibrant, navigate,
+empower, utilize, realm, landscape, pivotal, paramount,
+cutting-edge, synergy, ecosystem, load-bearing.
+
+<span class="key">## Banned constructions</span>
+- "This isn't X — it's Y." Forbidden.
+- "Not X, but Y." Forbidden.
+- Em-dash chains. One per paragraph, max.
+- Bullet-point prose pretending to be a sentence.
+- "Genuinely," "honestly," "straightforward."
+- Equity framing. Frame as accessibility and impact instead.
 
 <span class="key">## What good looks like</span>
-- Opens with the field-wide problem (FGLI 20-25% completion baseline,
-  cite federal data source).
-- Frames the DC CAP model in one sentence.
-- Quotes verified numbers ONLY from `verified_numbers_FY25.md`.
-- Closes by tying the ask to the funder's stated priorities.
+- The reader can stop after sentence 1 and know the point.
+- Every number has a source within reach.
+- The voice is recognizable as Preston's with the byline removed.
+- No AI tell-tale openers ("Here's a...", "I'd be happy to...").
+- No hedging close ("Hope this helps", "Let me know").
 
 <span class="key">## What to avoid</span>
-- Voice: unlock, leverage, seamless, journey, elevate, foster, vibrant.
-- Equity framing → use accessibility and impact instead.
-- Any number not in the verified file. Plausible-but-wrong is the
-  worst failure mode here.
-- Generic nonprofit language that could describe any college access org.
-
-<span class="key">## The Diligence step</span>
-Before the paragraph leaves this Skill: verify every number against
-`verified_numbers_FY25.md`. If the funder asks something the verified
-doc doesn't cover, say so and route to the development director — do
-not estimate.
+- Paragraphs that explain what the next paragraph will say.
+- Throat-clearing before the actual answer.
+- Filler adverbs and hedges that soften a real claim.
+- Borrowed framings from other people's voices.
 
 <span class="key">## References loaded</span>
-- `verified_numbers_FY25.md` (org context, Tier 3)
-- `dccap_voice_oneliner.md` (org context, Tier 4)
-- `mathematica_REL_2025_010.pdf` (outside research, Tier 4)
-- `dccap_program_model_brief.md` (org context, Tier 3)
-- `funder_taxonomy_with_examples.md` (workflow shape, Tier 4)</div>
+- `preston_published_writing.md`  (50 paragraphs from prior work, Tier 3)
+- `dccap_voice_oneliner.md`        (org voice rules, Tier 4)
+- `banned_words.md`                (the list, kept current, Tier 4)
+- `BLUF_examples.md`               (5 worked examples of the structure, Tier 4)</div>
                     </div>
                 </div>
 
                 <div class="anatomy-block">
                     <div class="a-label">Customization · Org context (depth)</div>
-                    <div class="a-content">Verified FY25 numbers. DC CAP voice rules. The full program model brief that explains <em>why</em> the model works. Three years of internally-archived approved language that was actually accepted by funders.</div>
+                    <div class="a-content">DC CAP voice rules. Banned-word list maintained as Preston catches new ones in the wild. The accessibility-and-impact framing rule that replaces equity language. The hedging-and-hedging-close failure modes specific to how AI drafts come back.</div>
                 </div>
 
                 <div class="anatomy-block">
                     <div class="a-label">Customization · Outside authority (depth)</div>
-                    <div class="a-content">The Mathematica/IES research the program leans on. Federal FGLI completion baselines (NCES). A Council on Foundations RFP-language reference. Two recent peer-org grant narratives selected by Eric and Sashia as exemplars of how funders read.</div>
+                    <div class="a-content">A curated archive of fifty paragraphs from Preston's own published writing — the corpus the voice was actually built on. Strunk &amp; White's economy rules. The BLUF structural pattern adapted from executive-communication standards. Every reference traces to a real source you can read.</div>
                 </div>
 
                 <div class="anatomy-block full-width">
                     <div class="a-label">Customization · Workflow shape (depth)</div>
-                    <div class="a-content">Funder-type detection happens first — the register changes everything. The Diligence step is named explicitly inside the procedure ("verify every number against the verified file"). The escape hatch is named ("if not in verified, route to director — do not estimate"). The avoid list names voice, framing, AND specific failure modes that have happened before. This is what depth looks like — every layer the team learned the hard way is in the file.</div>
+                    <div class="a-content">BLUF order is enforced at the structural layer — direct answer, then strategic context, then next move, every time. Banned constructions are named precisely (the "not X but Y" rhetorical move that AI drafts love is forbidden by name). The avoid list catches both content failures (filler, hedging) and AI-tell failures (boilerplate openers, throat-clearing closes). This is what depth looks like — failure modes that took a year to notice each get a named home in the file.</div>
                 </div>
 
                 <div class="anatomy-block full-width">
                     <div class="a-label">What the team inherits</div>
-                    <div class="a-content">Anyone on Development can run the Skill on a new RFP question. Numbers are right. The voice sounds like DC CAP. The framing matches the funder type. The diligence step ("verify the metric") is built into the procedure — not someone's habit. A new hire can produce a defensible draft on day three. The Skill replaces the implicit knowledge that used to live in two people's heads.</div>
+                    <div class="a-content">Preston runs the Skill on every draft Claude returns. The voice arrives consistent on the first pass. Anyone Preston routes the Skill to (Cowork, a teammate co-drafting a memo) produces output that survives Preston's review with light edits instead of structural rewrites. The structural pattern — BLUF, banned-words list, banned-constructions list, archive of own work as reference — is portable. Any DC CAP author can lift the shape and fill it with their own voice.</div>
                 </div>
             </div>
 
             <div class="steal-this">
                 <div class="s-label">Steal this</div>
-                <div class="s-headline">Depth means every layer of tribal knowledge has a named home in the file.</div>
-                <div class="s-body">Funder-type register goes in workflow shape. Verified numbers go in org context. Outside research goes in references. The Diligence step goes in the procedure body. The "things we learned the hard way" go in avoid. Walk through your build and ask: where does this layer live? If the answer is "in someone's head," that is the layer to encode next. The depth of customization is what makes a Skill a team asset rather than a personal speed-up.</div>
+                <div class="s-headline">Depth means every failure mode you have ever fixed by hand has a named home in the file.</div>
+                <div class="s-body">Banned words go in <em>their own list.</em> Banned constructions go in <em>their own list</em> — separate, because they fail differently. The structural rule (BLUF) is named at the top, not buried in prose. The reference archive is curated, not dumped. Walk through your last ten edits to AI drafts and ask: which of those corrections is in the file, and which is still in your head? The corrections still in your head are the next layer to encode.</div>
             </div>
 
         </div>

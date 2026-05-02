@@ -397,7 +397,7 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
                 <div class="vc-label">Vector 02</div>
                 <h3>Outside authority</h3>
                 <p class="vc-body">Research papers. Federal datasets. Peer-org playbooks. Brand guides. Anthropic skill docs. Anything that raises the floor on what Claude can do here.</p>
-                <p class="vc-example">mathematica_REL_2025_010.pdf · NCES baselines · Anthropic skill-creator</p>
+                <p class="vc-example">mathematica_REL_2025_010.md · nces_baselines.md · anthropic_skill_creator.md</p>
             </div>
             <div class="vector-card workflow reveal-scale">
                 <div class="vc-label">Vector 03</div>
@@ -501,44 +501,49 @@ decision · partnership thank-you.
 <section class="slide slide-build-deep" id="slide-8">
     <div class="slide-content">
         <div class="eyebrow reveal" style="color: var(--gold);">Build 03 · Deep Skill · reuses the move with depth</div>
-        <h2 class="reveal">Funder-Framing Drafter.</h2>
+        <h2 class="reveal">Preston Writing Voice.</h2>
         <div class="build-row">
             <div class="build-col reveal">
-                <div class="bc-eyebrow" style="color: var(--gold);">Depth means every layer has a home</div>
-                <p class="bc-body">Funder-type register goes in <em>workflow shape.</em> Verified numbers go in <em>org context.</em> Outside research goes in <em>references.</em> The Diligence step ("verify every metric") goes in the procedure body. The "things we learned the hard way" go in <em>avoid.</em></p>
+                <div class="bc-eyebrow" style="color: var(--gold);">Depth means every failure mode has a named home</div>
+                <p class="bc-body">BLUF order goes at the top, not buried in prose. Banned words and banned constructions are <em>separate lists</em> — they fail differently. The reference archive is <em>curated</em>, not dumped. A year of corrections you used to make by hand each gets a named home in the file.</p>
                 <div class="bc-eyebrow" style="color: var(--gold); margin-top: clamp(0.5rem, 1vh, 0.75rem);">What the team inherits</div>
-                <p class="bc-body">A new hire produces a defensible draft on day three. Numbers right. Voice right. Funder register matched. The implicit knowledge that used to live in two heads is in the file.</p>
+                <p class="bc-body">First-pass drafts arrive consistent. The voice survives review with light edits instead of structural rewrites. The structural pattern — BLUF, banned-words list, banned-constructions list, curated archive — is portable. Any DC CAP author can lift the shape.</p>
                 <div class="steal-block" style="border-left-color: var(--gold);">
                     <div class="s-label" style="color: var(--gold);">Steal this</div>
-                    <p>Walk through your build and ask: where does this layer live? If the answer is "in someone's head," that is the layer to encode next.</p>
+                    <p>Walk through your last ten edits to AI drafts. Which corrections are in the file, and which are still in your head? The ones still in your head are the next layer to encode.</p>
                 </div>
             </div>
             <div class="build-col reveal">
                 <div class="code-card"><span class="header">---
-name: funder-framing-paragraph
-description: Drafts program-impact paragraphs
-  for grant proposals. Detects funder type and
-  matches register. Uses verified numbers only.
+name: preston-writing
+description: Drafts and edits in Preston's voice —
+  memos, briefs, posts, remarks. Use whenever
+  Preston will sign or speak the words.
 ---</span>
 
-<span class="key">## Funder-type register</span>
-Foundation: methodology + theory of change.
-Corporate: scale + business case.
-Government: compliance + federal data alignment.
-Individual: human stakes + named scholar arcs.
+<span class="key">## Structure — BLUF, every time</span>
+1. Direct answer first.
+2. Strategic context second.
+3. Next move third.
 
-<span class="key">## The Diligence step</span>
-Before the paragraph leaves the Skill: verify
-every number against verified_numbers_FY25.md.
-If asked something not in the verified file,
-say so and route to director — do not estimate.
+<span class="key">## Banned words (no exceptions)</span>
+unlock, leverage, seamless, robust, tapestry,
+journey, elevate, streamline, optimize, holistic,
+delve, foster, vibrant, navigate, empower,
+utilize, realm, landscape, pivotal, paramount,
+cutting-edge, synergy, ecosystem, load-bearing.
+
+<span class="key">## Banned constructions</span>
+- "This isn't X — it's Y." Forbidden.
+- "Not X, but Y." Forbidden.
+- Em-dash chains. One per paragraph, max.
+- Equity framing → accessibility and impact.
 
 <span class="key">## References loaded</span>
-- verified_numbers_FY25.md   (Tier 3)
-- dccap_voice.md             (Tier 4)
-- mathematica_REL_2025_010   (Tier 4)
-- dccap_program_model_brief  (Tier 3)
-- funder_taxonomy_examples   (Tier 4)</div>
+- preston_published_writing.md  (Tier 3)
+- dccap_voice.md                (Tier 4)
+- banned_words.md               (Tier 4)
+- BLUF_examples.md              (Tier 4)</div>
             </div>
         </div>
     </div>
@@ -554,7 +559,7 @@ say so and route to director — do not estimate.
             <div class="outside-card reveal-scale">
                 <div class="o-label">Research &amp; data</div>
                 <h4>Federal datasets, peer-reviewed papers, evaluation reports.</h4>
-                <p>Mathematica, IES, NCES, the Brookings reports we cite. Loaded as PDFs or summarized into a reference doc. Raises the floor on accuracy and citation discipline.</p>
+                <p>Mathematica, IES, NCES, the Brookings reports we cite. Translate the PDF into a clean <code>.md</code> reference — never load the raw PDF. Markdown is legible, diffable, and the model can actually read it. Raises the floor on accuracy and citation discipline.</p>
             </div>
             <div class="outside-card reveal-scale">
                 <div class="o-label">Peer-org playbooks</div>
