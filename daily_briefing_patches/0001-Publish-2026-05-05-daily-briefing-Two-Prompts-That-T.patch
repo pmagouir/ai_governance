@@ -1,0 +1,53 @@
+From 7157199914e20f7741c61dfcf13148c92f5132a9 Mon Sep 17 00:00:00 2001
+From: Preston Magouirk <preston.magouirk@dccap.org>
+Date: Tue, 5 May 2026 08:10:56 -0400
+Subject: [PATCH] Publish 2026-05-05 daily briefing: Two Prompts That Turn
+ Teammate Feedback Into a v2 (tips)
+
+---
+ briefings.json | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/briefings.json b/briefings.json
+index b383319..918e3ba 100644
+--- a/briefings.json
++++ b/briefings.json
+@@ -1,8 +1,8 @@
+ {
+   "meta": {
+     "version": "2.0",
+-    "lastGenerated": "2026-05-04T07:15:00-04:00",
+-    "lastPublished": "2026-05-04T07:15:00-04:00",
++    "lastGenerated": "2026-05-05T08:10:00-04:00",
++    "lastPublished": "2026-05-05T08:10:00-04:00",
+     "categories": {
+       "foundational": {
+         "label": "Foundational Learning",
+@@ -42,6 +42,17 @@
+   },
+   "drafts": [],
+   "published": [
++    {
++      "category": "tips",
++      "content": "The Week 5 challenge asks for a v2. Your teammate has read the build and told you what broke. The move is iteration. The trap is regeneration: a fresh prompt, a fresh draft, no record of what you decided to change. Two prompts do the work.\n\nPrompt one is the diff. Open a new chat. Paste your v1 and the teammate notes. Ask: \"Compare this output to the feedback. Produce a three-column changelist: KEEP (what worked and why), FIX (what needs revision and what specifically to change), CUT (what should be removed and why). Be concrete on the FIX column: name the sentence or section.\" The prompt does no rewriting. It produces a list you can scan in a minute and decide on.\n\nPrompt two is the rewrite. In the same chat: \"Apply only the FIX items to produce a v2. Leave the KEEP sections untouched. Show me what changed and why.\" The constraint is what keeps the v2 honest. Without it, the model rewrites everything and your iteration loop collapses into a regenerate loop.\n\nThe split exposes your judgment. The teammate told you what broke. The first prompt makes the model show you what to do about it. You decide the FIX list before any new prose gets written. That is the move Week 5 asks for: cut what's thin, sharpen what's vague, name the human checkpoint that stays. The capstone seed lives in the FIX column you signed off on. The v2 chat is downstream of that decision.",
++      "date": "2026-05-05",
++      "resource": "https://dccapinnovation.org/pilot_hub.html",
++      "sourceNotes": "Claim: Week 5 of the AI governance pilot is Iterate & Inherit and asks participants to give the build to a teammate, watch where it breaks, and produce a v2 | Source: GROUNDED (pilot_hub.html Week 5 section, header: \"Week 4 was build. Week 5 is iterate. Take what you built, give it to a teammate, watch where it breaks, fix it.\")\nClaim: Week 5 Challenge instruction \"cut what's thin, sharpen what's vague, name the human checkpoint that has to stay\" | Source: GROUNDED (pilot_hub.html Week 5 Challenge box: \"Take the teammate's feedback from Week 4. Cut what's thin, sharpen what's vague, name the human checkpoint that has to stay.\")\nClaim: The capstone door opens Week 5 with the Week 4 build as the seed | Source: GROUNDED (pilot_hub.html Week 5 lead paragraph: \"The capstone door opens this week — your Week 4 build is the seed.\")\nClaim: AI Friday is the pilot's weekly group session where participants bring iteration work | Source: GROUNDED (pilot_hub.html — recurring AI Friday cadence starting Week 2)\nEditorial: The two-prompt Diff-Then-Decide loop (KEEP / FIX / CUT changelist, then constrained rewrite that touches only FIX items) is Preston's tactical move for Week 5 iteration. It mirrors the iterative-refinement pattern Anthropic recommends across prompt engineering documentation but the specific two-prompt structure and column labels are Preston's pedagogical framing.\nEditorial: Framing \"regeneration\" as the trap of one-shot iteration (a fresh prompt with no record of what changed) is Preston's diagnostic.\nEditorial: \"The capstone seed lives in the FIX column you signed off on. The v2 chat is downstream of that decision.\" is Preston's pedagogical close, tying the tactical loop back to the Week 5 capstone-scoping move.\nEditorial: Resource URL points to the pilot hub root; Week 5 block is currently display:none in pilot_hub.html as of 2026-05-05 morning. Pilot administrator will unhide the block on the cadence schedule. The Week 5 Challenge text cited above is in the source HTML and will surface when the block reveals.\nAdversarial review 20260505: Em-dash count: 0 (well under the 2-per-piece limit). Banned phrases scanned and absent: leverage, utilize, delve, navigate (metaphorical), landscape (metaphorical), ecosystem, synergy, robust, holistic, stakeholders, foster, enhance, align, transformative, empower, myriad, multifaceted, pivotal, spearhead, showcase, underscore, doing the heavy lifting, the real question is, what most people miss, this is where it gets interesting, it's not about, deep dive, unpack, move the needle, at the end of the day, however, moreover, furthermore, additionally, serves as, stands as, represents, functions as, operates as, groundbreaking, game-changing, revolutionary, passionate about, excited to share, the real story, here's the thing. Contrastive constructions (\"X, not Y\" / \"not X but Y\" / \"isn't X — it's Y\"): zero. Rhetorical questions in body: zero. Opens with concrete fact (Week 5 challenge asks for a v2). Closes with declarative landing (\"The v2 chat is downstream of that decision.\"). Word count main body: 261 (inside 240–280 band). Try This: 52 (inside 40–80 band). Each Editorial framing is tagged. Each external claim traces to pilot_hub.html or the AI Fluency framework, no invented statistics. Tip register: addresses participants directly via \"your\" and \"you\" without descending into TED-talk language.",
++      "status": "published",
++      "title": "Two Prompts That Turn Teammate Feedback Into a v2",
++      "tryThis": "Take the build you sent to a teammate this week. Open Claude. Run prompt one. Paste v1 and the feedback. Print the three-column changelist. Mark up the FIX column with what you will actually change. Run prompt two against your edited list. Bring both versions and the changelist to AI Friday.",
++      "validationStatus": "PASSED"
++    },
+     {
+       "category": "foundational",
+       "content": "A 2023 field experiment from Harvard Business School, MIT, Wharton, and BCG ran 758 consultants through 18 realistic business tasks. Half had access to GPT-4. Inside what the researchers called the AI frontier (the tasks the model could handle), consultants with GPT-4 finished 12% more tasks, 25% faster, and produced work judged 40% higher in quality. Outside the frontier, where the model gave plausible but wrong answers, AI users did worse than the control group.\n\nThe finding worth carrying into Week 5: the productivity lift came from how people used the model. Pure access captured only a fraction of the available gain. The rest came from iteration. The researchers labeled two working patterns. Centaurs split work cleanly, handing whole pieces to the model. Cyborgs wove iteration through every step: draft, critique, redraft, hand to a colleague, fix what broke. Both patterns produced gains. Both required the user to know where the frontier sat and stop trusting the model past the edge.\n\nThat is the Week 5 inheritance test in research form. Week 4 asked you to build something worth keeping. Week 5 asks you to hand the build to a teammate and watch where it breaks. The Dell'Acqua paper says the same thing the pilot says. A build earns its keep through iteration. The first version is a guess about where the frontier sits. The second version, written after a teammate hits the edge, is the one that knows.\n\nThe trap is treating the first output as the final answer. The Cyborgs in the study did not.",
+@@ -254,4 +265,4 @@
+       "archivedReason": "Superseded by Glasswing news entry for April 10"
+     }
+   ]
+-}
++}
+\ No newline at end of file
+-- 
+2.34.1
+
