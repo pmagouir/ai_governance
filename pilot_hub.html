@@ -1827,6 +1827,21 @@
                 grid-template-columns: 1fr !important;
             }
         }
+
+        /* ── Pilot complete (May 2026): user tracking and sign-in disabled. Site is publicly accessible. ── */
+        .identity-gate-overlay,
+        .session-restore-overlay,
+        .participant-greeting,
+        .pre-gate-banner,
+        #completionBanner { display: none !important; }
+        .pre-gate-locked {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            filter: none !important;
+        }
+        .pre-gate-locked .card-link,
+        .pre-gate-locked a { pointer-events: auto !important; cursor: pointer !important; }
+        .pre-gate-locked-label { display: none !important; }
     </style>
 </head>
 <body>
@@ -4254,8 +4269,12 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        initIdentityGate();
-        initPreAssessmentGate();
+        // Pilot complete (May 2026): no gate, no sign-in. Force-unlock any gated UI.
+        document.querySelectorAll('.pre-gate-locked').forEach(el => {
+            el.classList.remove('pre-gate-locked');
+            const label = el.querySelector('.pre-gate-locked-label');
+            if (label) label.remove();
+        });
         initializeNewsletter();
         setupNavigation();
         setupAnimations();
