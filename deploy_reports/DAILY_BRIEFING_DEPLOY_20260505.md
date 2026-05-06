@@ -87,3 +87,14 @@ The scheduled task cannot update itself from inside a scheduled-task session —
 - May 4 entry shipped with Week 5 frame while pilot_hub.html still showed Week 4 visible. Same defect, prior run.
 - The post-commit `.git/HEAD.lock` is the recurring sandbox quirk and was cleared inline after each commit.
 - Older `.stale.*` files in `.git/` are safe to leave or delete at Preston's discretion.
+
+## Folder cleanup (added this run)
+
+- **What:** New `daily_briefing/cleanup.py` sorts loose root files into `deploy_reports/`, `working_docs/{frameworks,correspondence,synthesis,pilot_design}/`, `conference_materials/`, `audits/`, `scripts/`, and `_quarantine/`. Idempotent. Pinned files (live HTML, CNAME, `briefings.json`, `UserGuide_Claude_DCCAP_V1_20260313.docx`, `apps_script_doGet_addition.js`, `package.json`) stay at root.
+- **First run today:** 25 files moved out of root. Re-run produced zero moves and zero unrouted — idempotence verified.
+- **Logs:** `daily_briefing/cleanup_logs/cleanup_<YYYYMMDD>.log` per run.
+- **Wired into the scheduled task:** PROPOSED_SKILL.md adds Step 10 (`python3 daily_briefing/cleanup.py`) and changes the commit to `git add -A` so cleanup moves, the cleanup log, and any consumed queue file ship in one commit. Apply via `daily_briefing/APPLY_FIX_README.md`.
+
+## Queued topic for tomorrow (2026-05-06, governance slot)
+
+Per Preston's request, staged a draft brief at `daily_briefing/queued/2026-05-06.md` with verified facts from Ethan Mollick, "Management as AI superpower," One Useful Thing, January 27, 2026. The article argues that the people who thrive with agentic AI are those with management discipline — clear instructions, evaluation criteria, feedback loops — which maps directly to the framework's Section 7.2 and 7.3 staff-accountability requirements. PROPOSED_SKILL.md adds a queued-topic check (Step 4) so tomorrow's run picks the file up, drafts from it, then moves it to `daily_briefing/queued/_used/`.

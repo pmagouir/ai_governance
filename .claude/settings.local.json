@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc:*)",
+      "Bash(xargs ls:*)",
+      "Bash(cp -r /Users/prestonmagouirk/Desktop/BRAIN/projects/ai_governance/pilot_task_skills_v3/pilot-task-1-guided-pipeline /Users/prestonmagouirk/Desktop/BRAIN/projects/ai_governance/pilot_task_skills_v3/_archive/)",
+      "Bash(cp -r /Users/prestonmagouirk/Desktop/BRAIN/projects/ai_governance/pilot_task_skills_v3/pilot-task-2-supported-pipeline /Users/prestonmagouirk/Desktop/BRAIN/projects/ai_governance/pilot_task_skills_v3/_archive/)",
+      "Bash(cp -r /Users/prestonmagouirk/Desktop/BRAIN/projects/ai_governance/pilot_task_skills_v3/pilot-task-3-independent-pipeline /Users/prestonmagouirk/Desktop/BRAIN/projects/ai_governance/pilot_task_skills_v3/_archive/)",
+      "Bash(~/Desktop/Preston/scripts/sync_state.sh:*)",
+      "mcp__brain-context__get_identity",
+      "mcp__brain-context__get_project_context",
+      "Bash(git rm:*)",
+      "mcp__brain-context__get_strategic_context",
+      "mcp__brain-context__get_org_context",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(find /Users/prestonmagouirk/Desktop/BRAIN/projects/ai_governance -type f \\\\\\( -name \"*.md\" -o -name \"*.html\" \\\\\\) ! -path \"*/node_modules/*\" -exec grep -l \"prompt practice\\\\|Good → Better\\\\|Prompt Practice\\\\|prompting guide\" {} \\\\;)",
+      "mcp__scheduled-tasks__create_scheduled_task"
+    ]
+  }
+}

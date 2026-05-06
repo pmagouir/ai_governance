@@ -69,19 +69,28 @@ Hard rule for the drafted entry:
 - The deploy report's `Pilot alignment` field echoes `Week $ACTIVE_WEEK — <competency from HTML>`.
 - Suggested first-line anchor: "The Week $ACTIVE_WEEK challenge..." or a comparable opener that names the visible week. This is a check on yourself. If the line you wrote does not match `$ACTIVE_WEEK`, the entry is wrong.
 
+## Queued-topic check (use Preston's pre-staged topic if present)
+
+Before drafting, check `daily_briefing/queued/<today>.md` (e.g. `daily_briefing/queued/2026-05-06.md`). If it exists, that file contains the topic, source, and key facts Preston has chosen for today's briefing. Use it as the foundation for the draft. The file format is open: a short markdown brief with a Source URL, headline claims, and any framing notes. After successfully publishing, move the consumed queue file to `daily_briefing/queued/_used/` so it doesn't trigger again.
+
+If no queued file exists for today, proceed to topic selection from the rotation slot below.
+
 ## Run workflow
 
 1. Load: `preston.md`, `handoff.md`, `strategy.md`, `skills/preston-writing/SKILL.md`.
 2. Run the ground-truth check above. Capture `$ACTIVE_WEEK`. Read the visible Week block in `pilot_hub.html` end-to-end so you have the verbatim challenge text, governance pulse, and competency framing for that week.
 3. Identify today's rotation slot in `briefings.json` (Mon=foundational, Tue=tips, Wed=governance, Thu=trends, Fri=news/rotating).
-4. Check `briefings.json` for an entry at today's date. If present and `validationStatus: PASSED` AND the entry's body references `Week $ACTIVE_WEEK`, skip generation and proceed to the deploy check. If present and the entry references a week other than `$ACTIVE_WEEK`, treat it as defective: rewrite, do not skip.
-5. Draft today's entry: 240–280 words on body, 40–80 words on Try This. Audit against Preston's anti-AI rules (banned words, contrastive constructions, em-dash limit ≤ 2, no TED-talk closes, declarative opens, zero rhetorical questions in body). Verify every factual claim in `sourceNotes` with VERIFIED / GROUNDED / Editorial tags. Cross-check the body for the active-week reference before saving.
-6. Insert at the top of `published[]` in `briefings.json`. Update `meta.lastGenerated` and `meta.lastPublished`.
-7. JSON-validate with Python before commit.
-8. Run the self-check block below. All three checks must pass.
-9. `git add briefings.json && git commit` with message: `Publish YYYY-MM-DD daily briefing: <short topic> (<category>)`.
-10. `git push origin main`. If auth fails, save the patch to `daily_briefing_patches/` and note in the deploy report.
-11. Write `DAILY_BRIEFING_DEPLOY_YYYYMMDD.md` capturing: topic, `$ACTIVE_WEEK`, audit findings, commit hash, push status, and any anomalies (gaps in prior days, lock files cleared, prior-day deploy reports that referenced a different week than ground truth, etc.).
+4. Run the queued-topic check above. If `daily_briefing/queued/<today>.md` exists, use it as the topic source.
+5. Check `briefings.json` for an entry at today's date. If present and `validationStatus: PASSED` AND the entry's body references `Week $ACTIVE_WEEK`, skip generation and proceed to the deploy check. If present and the entry references a week other than `$ACTIVE_WEEK`, treat it as defective: rewrite, do not skip.
+6. Draft today's entry: 240–280 words on body, 40–80 words on Try This. Audit against Preston's anti-AI rules (banned words, contrastive constructions, em-dash limit ≤ 2, no TED-talk closes, declarative opens, zero rhetorical questions in body). Verify every factual claim in `sourceNotes` with VERIFIED / GROUNDED / Editorial tags. Cross-check the body for the active-week reference before saving.
+7. Insert at the top of `published[]` in `briefings.json`. Update `meta.lastGenerated` and `meta.lastPublished`.
+8. JSON-validate with Python before commit.
+9. Run the self-check block below. All three checks must pass.
+10. **Run the daily folder cleanup:** `python3 daily_briefing/cleanup.py`. The script is idempotent and safe. It sorts loose root files into `deploy_reports/`, `working_docs/{frameworks,correspondence,synthesis,pilot_design}/`, `conference_materials/`, `audits/`, `scripts/`, and `_quarantine/`. It writes a daily log to `daily_briefing/cleanup_logs/cleanup_<YYYYMMDD>.log`. If it reports any unrouted files, surface them in the deploy report under Anomalies.
+11. If a queued topic was used, move `daily_briefing/queued/<today>.md` to `daily_briefing/queued/_used/<today>.md`.
+12. `git add -A && git commit` with message: `Publish YYYY-MM-DD daily briefing: <short topic> (<category>)`. Use `git add -A` (not `git add briefings.json`) so the cleanup moves, the cleanup log, and any consumed queue file all land in the same commit.
+13. `git push origin main`. If auth fails, save the patch to `daily_briefing_patches/` and note in the deploy report.
+14. Write `deploy_reports/DAILY_BRIEFING_DEPLOY_YYYYMMDD.md` capturing: topic, `$ACTIVE_WEEK`, audit findings, commit hash, push status, cleanup summary (files moved + any unrouted), and any anomalies.
 
 ## Self-check before commit
 
@@ -137,3 +146,4 @@ print('CHECK 3 PASS')
 ## Changelog
 
 - 2026-05-05: Added mandatory ground-truth pilot-week detection step after two consecutive runs (May 4 foundational, May 5 tips draft) inherited a Week 5 frame while pilot_hub.html still showed Week 4 as the highest visible block. Replaced hardcoded session path with dynamic discovery so future runs work regardless of session name. Added pre-commit self-check block that fails the commit if the body does not reference the active week or references a future week.
+- 2026-05-05 (later): Folded daily folder cleanup into the workflow as Step 10. Added queued-topic mechanism so Preston can pre-stage a topic at `daily_briefing/queued/<date>.md` for any future run. Deploy reports now write to `deploy_reports/` per the new folder organization.

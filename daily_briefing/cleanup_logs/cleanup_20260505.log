@@ -1,0 +1,55 @@
+# Cleanup run — 2026-05-05T21:08:02
+# Workspace: /sessions/wizardly-stoic-bardeen/mnt/BRAIN/projects/ai_governance
+
+## Moved (0)
+(none)
+
+## Left at root (45)
+- .DS_Store
+- .fuse_hidden0000000d0000000c
+- .fuse_hidden0000000e00000009
+- .fuse_hidden0000001600000004
+- .fuse_hidden0000001700000006
+- .fuse_hidden0000001800000001
+- .fuse_hidden0000001900000002
+- .fuse_hidden0000001a0000000a
+- .fuse_hidden0000001b00000005
+- .fuse_hidden0000001c00000003
+- .fuse_hidden000004020000000b
+- .fuse_hidden0000040300000007
+- .fuse_hidden0000055200000008
+- .gitignore
+- CLAUDE.md
+- CNAME
+- README.md
+- UserGuide_Claude_DCCAP_V1_20260313.docx
+- ai_fluency_framework.html
+- ai_fluency_prelaunch_survey.html
+- ai_glossary.html
+- ai_governance_framework.html
+- ai_key_terminology.html
+- apps_script_doGet_addition.js
+- briefings.json
+- capstone_template.html
+- conference_deck_governance_as_enabler.html
+- conference_deck_governance_growth.html
+- container_decision_worksheet.html
+- data_tier_practice.html
+- dev_office_h1_to_h3.html
+- index.html
+- kickoff_deck.html
+- kpi_framework.html
+- package-lock.json
+- package.json
+- pilot_hub.html
+- preston_analytics.html
+- site.css
+- start_here.html
+- week2_three_horizons_deck.html
+- week3_containers_deck.html
+- week4_build_filter.html
+- week4_build_worth_keeping_deck.html
+- week4_three_builds.html
+
+## Unrouted — review manually (0)
+(none)
