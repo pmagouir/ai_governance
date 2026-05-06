@@ -1,0 +1,668 @@
+From 9ca464e3709d9a1c4c90f9b8f28b51f207eae35b Mon Sep 17 00:00:00 2001
+From: Preston Magouirk <preston.magouirk@dccap.org>
+Date: Tue, 5 May 2026 21:11:52 -0400
+Subject: [PATCH] Reorganize project folder + wire daily cleanup into scheduled
+ task
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Sort 25 loose root files into deploy_reports/, working_docs/{frameworks,
+correspondence,synthesis,pilot_design}/, conference_materials/, audits/,
+scripts/, and _quarantine/. Pinned at root: all live HTML, CNAME, site.css,
+package.json, briefings.json, README.md, CLAUDE.md, UserGuide_Claude (linked
+from pilot_hub.html), apps_script_doGet_addition.js (referenced from
+preston_analytics.html).
+
+Add daily_briefing/cleanup.py — idempotent sorter that the scheduled task
+runs every morning. Verified: first run moved 25 files; second run moved 0.
+
+Stage PROPOSED_SKILL.md updates: cleanup as Step 10, queued-topic check as
+Step 4 (reads daily_briefing/queued/<date>.md if Preston pre-staged a topic),
+git add -A so cleanup + queue moves + cleanup log all ship in one commit.
+
+Queue tomorrow's briefing topic: Mollick "Management as AI superpower"
+(One Useful Thing, 2026-01-27) staged at daily_briefing/queued/2026-05-06.md.
+---
+ .claude/settings.local.json                   |  20 ++
+ DAILY_BRIEFING_DEPLOY_20260430.md             |  47 ----
+ photos.zip => _quarantine/photos.zip          | Bin
+ .../test_unlink_10092                         |   0
+ .../QA_VERIFICATION_REPORT_20260403.txt       |   0
+ .../conference_deck_governance_as_enabler.pdf | Bin
+ .../magouirk_cio4good_slides_20260407.pdf     | Bin
+ .../magouirk_cio4good_slides_20260408.pdf     | Bin
+ daily_briefing/PROPOSED_SKILL.md              |  26 ++-
+ daily_briefing/cleanup.py                     | 204 ++++++++++++++++++
+ .../cleanup_logs/cleanup_20260505.log         |  55 +++++
+ daily_briefing/queued/2026-05-06.md           |  43 ++++
+ .../DAILY_BRIEFING_DEPLOY_20260504.md         |   0
+ .../DAILY_BRIEFING_DEPLOY_20260505.md         |  11 +
+ .../google_apps_script_complete.js            |   0
+ .../Brian_CareerIntel_Response_20260420.docx  | Bin
+ .../CTO_Peer_Review_dccapinnovation.docx      | Bin
+ .../correspondence/sample_portfolio.docx      | Bin
+ .../frameworks/AI_Fluency_Key_Terminology.md  |   0
+ ...DCCAP_AI_Data_Governance_Framework_v1.docx | Bin
+ .../Framework_for_AI_Fluency_V_1.5.pdf        | Bin
+ .../Framework_for_AI_Fluency_v1.5.md          |   0
+ .../frameworks/ai_governance_goals_framework  |   0
+ .../frameworks/dccap-brand.md                 |   0
+ .../pilot_design/ai-governance-site-qa.skill  | Bin
+ .../pilot_design/frontend-slides.skill        | Bin
+ .../pilot_design/pilot_task_designs_v3.md     |   0
+ .../pilot_task_designs_v3_audit.md            |   0
+ .../skill_per_task_master_architecture.md     |   0
+ .../AI_Onboarding_Implementation_Plan.md      |   0
+ .../WEEK3_THURSDAY_SYNTHESIS_20260430.md      |   0
+ .../ai_nonprofit_onboarding_strategy          |   0
+ .../synthesis/blog_nonprofit_ai_stakes.md     |   0
+ 33 files changed, 351 insertions(+), 55 deletions(-)
+ create mode 100644 .claude/settings.local.json
+ delete mode 100644 DAILY_BRIEFING_DEPLOY_20260430.md
+ rename photos.zip => _quarantine/photos.zip (100%)
+ rename test_unlink_10092 => _quarantine/test_unlink_10092 (100%)
+ rename QA_VERIFICATION_REPORT_20260403.txt => audits/QA_VERIFICATION_REPORT_20260403.txt (100%)
+ rename conference_deck_governance_as_enabler.pdf => conference_materials/conference_deck_governance_as_enabler.pdf (100%)
+ rename magouirk_cio4good_slides_20260407.pdf => conference_materials/magouirk_cio4good_slides_20260407.pdf (100%)
+ rename magouirk_cio4good_slides_20260408.pdf => conference_materials/magouirk_cio4good_slides_20260408.pdf (100%)
+ create mode 100644 daily_briefing/cleanup.py
+ create mode 100644 daily_briefing/cleanup_logs/cleanup_20260505.log
+ create mode 100644 daily_briefing/queued/2026-05-06.md
+ rename DAILY_BRIEFING_DEPLOY_20260504.md => deploy_reports/DAILY_BRIEFING_DEPLOY_20260504.md (100%)
+ rename DAILY_BRIEFING_DEPLOY_20260505.md => deploy_reports/DAILY_BRIEFING_DEPLOY_20260505.md (79%)
+ rename google_apps_script_complete.js => scripts/google_apps_script_complete.js (100%)
+ rename Brian_CareerIntel_Response_20260420.docx => working_docs/correspondence/Brian_CareerIntel_Response_20260420.docx (100%)
+ rename CTO_Peer_Review_dccapinnovation.docx => working_docs/correspondence/CTO_Peer_Review_dccapinnovation.docx (100%)
+ rename sample_portfolio.docx => working_docs/correspondence/sample_portfolio.docx (100%)
+ rename AI_Fluency_Key_Terminology.md => working_docs/frameworks/AI_Fluency_Key_Terminology.md (100%)
+ rename DCCAP_AI_Data_Governance_Framework_v1.docx => working_docs/frameworks/DCCAP_AI_Data_Governance_Framework_v1.docx (100%)
+ rename Framework_for_AI_Fluency_V_1.5.pdf => working_docs/frameworks/Framework_for_AI_Fluency_V_1.5.pdf (100%)
+ rename Framework_for_AI_Fluency_v1.5.md => working_docs/frameworks/Framework_for_AI_Fluency_v1.5.md (100%)
+ rename ai_governance_goals_framework => working_docs/frameworks/ai_governance_goals_framework (100%)
+ rename dccap-brand.md => working_docs/frameworks/dccap-brand.md (100%)
+ rename ai-governance-site-qa.skill => working_docs/pilot_design/ai-governance-site-qa.skill (100%)
+ rename frontend-slides.skill => working_docs/pilot_design/frontend-slides.skill (100%)
+ rename pilot_task_designs_v3.md => working_docs/pilot_design/pilot_task_designs_v3.md (100%)
+ rename pilot_task_designs_v3_audit.md => working_docs/pilot_design/pilot_task_designs_v3_audit.md (100%)
+ rename skill_per_task_master_architecture.md => working_docs/pilot_design/skill_per_task_master_architecture.md (100%)
+ rename AI_Onboarding_Implementation_Plan.md => working_docs/synthesis/AI_Onboarding_Implementation_Plan.md (100%)
+ rename WEEK3_THURSDAY_SYNTHESIS_20260430.md => working_docs/synthesis/WEEK3_THURSDAY_SYNTHESIS_20260430.md (100%)
+ rename ai_nonprofit_onboarding_strategy => working_docs/synthesis/ai_nonprofit_onboarding_strategy (100%)
+ rename blog_nonprofit_ai_stakes.md => working_docs/synthesis/blog_nonprofit_ai_stakes.md (100%)
+
+diff --git a/.claude/settings.local.json b/.claude/settings.local.json
+new file mode 100644
+index 0000000..9f495b0
+--- /dev/null
++++ b/.claude/settings.local.json
+@@ -0,0 +1,20 @@
++{
++  "permissions": {
++    "allow": [
++      "Bash(wc:*)",
++      "Bash(xargs ls:*)",
++      "Bash(cp -r /Users/prestonmagouirk/Desktop/BRAIN/projects/ai_governance/pilot_task_skills_v3/pilot-task-1-guided-pipeline /Users/prestonmagouirk/Desktop/BRAIN/projects/ai_governance/pilot_task_skills_v3/_archive/)",
++      "Bash(cp -r /Users/prestonmagouirk/Desktop/BRAIN/projects/ai_governance/pilot_task_skills_v3/pilot-task-2-supported-pipeline /Users/prestonmagouirk/Desktop/BRAIN/projects/ai_governance/pilot_task_skills_v3/_archive/)",
++      "Bash(cp -r /Users/prestonmagouirk/Desktop/BRAIN/projects/ai_governance/pilot_task_skills_v3/pilot-task-3-independent-pipeline /Users/prestonmagouirk/Desktop/BRAIN/projects/ai_governance/pilot_task_skills_v3/_archive/)",
++      "Bash(~/Desktop/Preston/scripts/sync_state.sh:*)",
++      "mcp__brain-context__get_identity",
++      "mcp__brain-context__get_project_context",
++      "Bash(git rm:*)",
++      "mcp__brain-context__get_strategic_context",
++      "mcp__brain-context__get_org_context",
++      "mcp__Claude_Preview__preview_start",
++      "Bash(find /Users/prestonmagouirk/Desktop/BRAIN/projects/ai_governance -type f \\\\\\( -name \"*.md\" -o -name \"*.html\" \\\\\\) ! -path \"*/node_modules/*\" -exec grep -l \"prompt practice\\\\|Good → Better\\\\|Prompt Practice\\\\|prompting guide\" {} \\\\;)",
++      "mcp__scheduled-tasks__create_scheduled_task"
++    ]
++  }
++}
+diff --git a/DAILY_BRIEFING_DEPLOY_20260430.md b/DAILY_BRIEFING_DEPLOY_20260430.md
+deleted file mode 100644
+index 2fd2a69..0000000
+--- a/DAILY_BRIEFING_DEPLOY_20260430.md
++++ /dev/null
+@@ -1,47 +0,0 @@
+-# Daily Briefing Deploy Report — 2026-04-30 (Thursday)
+-
+-## Topic
+-
+-**Title:** 9 to 13: Educational Instruction Is Claude's Fastest-Growing Use Case
+-**Category:** trends (Thursday rotation slot)
+-**Resource:** https://www.anthropic.com/research/economic-index-march-2026-report
+-
+-The briefing anchors on Anthropic's March 2026 Economic Index. Three verified findings carry the entry: educational instruction tasks rose from 9% to 13% of all Claude conversations (the fastest-growing category), Claude.ai-specific educational instruction sits at 16% versus 4% on the API, and the augmentation/automation split moved to 57/43 from a prior 52/45. Strategic frame ties the data to the pilot's Week 4 Discernment competency and asks each participant to compare their personal modality split to the Index average.
+-
+-## Audit Findings
+-
+-| Check | Result |
+-|---|---|
+-| Body word count | 253 (target 240–280) |
+-| Try This word count | 51 (target 40–80) |
+-| Em-dash count | 0 (limit ≤2) |
+-| Banned vocabulary | 0 hits across full banned list (leverage, utilize, delve, navigate, landscape, ecosystem, synergy, robust, holistic, stakeholders, foster, enhance, align, transformative, empower, spearhead, myriad, multifaceted, nuanced, pivotal, unpack, deep dive, however, moreover, furthermore, additionally, serves as, stands as, represents, functions as, at the end of the day, move the needle, to be clear, make no mistake, doing the heavy lifting, the real question, what most people miss, groundbreaking, game-changing, revolutionary, showcase, underscore) |
+-| Contrastive negations ("not X, but Y") | 0 |
+-| Rhetorical questions in body | 0 |
+-| Declarative open | Yes ("Anthropic released its March 2026 Economic Index report this spring…") |
+-| Source citations | All four numeric claims VERIFIED via Anthropic Economic Index releases; Week 4 Discernment claim GROUNDED in pilot_hub.html |
+-| Editorial tags | 5 editorial framings flagged in sourceNotes |
+-
+-## Commit
+-
+-- **Hash:** 243d1a124236c807d61d515c1fd3e7ef645ff76f
+-- **Message:** `Publish 2026-04-30 daily briefing: Educational Instruction Is Claude's Fastest-Growing Use Case (trends)`
+-- **Files changed:** briefings.json (1 file, 13 insertions, 2 deletions)
+-- **JSON validation:** Passed (`python3 -c "import json; json.load(open('briefings.json'))"`)
+-
+-## Push Status
+-
+-`git push origin main` failed with: `fatal: could not read Username for 'https://github.com': No such device or address`. Sandbox lacks credential helper or SSH deploy key. Commit is local at HEAD. Patch saved to `daily_briefing_patches/0001-Publish-2026-04-30-daily-briefing-Educational-Instru.patch`. Preston pushes manually via GitHub Desktop.
+-
+-## Anomalies
+-
+-- **Stuck git locks:** None present at start of run. Pre-run cleanup script returned empty.
+-- **Post-commit warnings:** Three `unable to unlink` warnings on tmp objects and `.git/HEAD.lock` during commit. Commit succeeded despite warnings. Sandbox `rm` restriction on `.git/*` is the underlying cause; warnings are cosmetic and do not affect the commit.
+-- **Prior briefing gaps:** 4-25 (Sat) and 4-26 (Sun) absent from `published[]` as expected (no weekend posts). Mon 4-27 → Tue 4-28 → Wed 4-29 chain intact. Today's entry continues the chain.
+-- **Week framing:** Wed 4-29 governance entry referenced "Week 4 you trade work with a colleague" as the Discernment week. Today's trends entry follows that framing and points the closing question at Week 4. If pilot week numbering treats the Spring Break as a non-counted gap, today (4-30) sits in Week 3 and Week 4 begins May 4. Either reading works for the closing copy. No correction needed.
+-
+-## Files Touched
+-
+-- `/sessions/funny-sweet-edison/mnt/BRAIN/projects/ai_governance/briefings.json` (entry inserted at top of `published[]`; meta timestamps updated)
+-- `/sessions/funny-sweet-edison/mnt/BRAIN/projects/ai_governance/daily_briefing_patches/0001-Publish-2026-04-30-daily-briefing-Educational-Instru.patch`
+-- `/sessions/funny-sweet-edison/mnt/BRAIN/projects/ai_governance/DAILY_BRIEFING_DEPLOY_20260430.md` (this report)
+diff --git a/photos.zip b/_quarantine/photos.zip
+similarity index 100%
+rename from photos.zip
+rename to _quarantine/photos.zip
+diff --git a/test_unlink_10092 b/_quarantine/test_unlink_10092
+similarity index 100%
+rename from test_unlink_10092
+rename to _quarantine/test_unlink_10092
+diff --git a/QA_VERIFICATION_REPORT_20260403.txt b/audits/QA_VERIFICATION_REPORT_20260403.txt
+similarity index 100%
+rename from QA_VERIFICATION_REPORT_20260403.txt
+rename to audits/QA_VERIFICATION_REPORT_20260403.txt
+diff --git a/conference_deck_governance_as_enabler.pdf b/conference_materials/conference_deck_governance_as_enabler.pdf
+similarity index 100%
+rename from conference_deck_governance_as_enabler.pdf
+rename to conference_materials/conference_deck_governance_as_enabler.pdf
+diff --git a/magouirk_cio4good_slides_20260407.pdf b/conference_materials/magouirk_cio4good_slides_20260407.pdf
+similarity index 100%
+rename from magouirk_cio4good_slides_20260407.pdf
+rename to conference_materials/magouirk_cio4good_slides_20260407.pdf
+diff --git a/magouirk_cio4good_slides_20260408.pdf b/conference_materials/magouirk_cio4good_slides_20260408.pdf
+similarity index 100%
+rename from magouirk_cio4good_slides_20260408.pdf
+rename to conference_materials/magouirk_cio4good_slides_20260408.pdf
+diff --git a/daily_briefing/PROPOSED_SKILL.md b/daily_briefing/PROPOSED_SKILL.md
+index f6e022e..3977d93 100644
+--- a/daily_briefing/PROPOSED_SKILL.md
++++ b/daily_briefing/PROPOSED_SKILL.md
+@@ -69,19 +69,28 @@ Hard rule for the drafted entry:
+ - The deploy report's `Pilot alignment` field echoes `Week $ACTIVE_WEEK — <competency from HTML>`.
+ - Suggested first-line anchor: "The Week $ACTIVE_WEEK challenge..." or a comparable opener that names the visible week. This is a check on yourself. If the line you wrote does not match `$ACTIVE_WEEK`, the entry is wrong.
+ 
++## Queued-topic check (use Preston's pre-staged topic if present)
++
++Before drafting, check `daily_briefing/queued/<today>.md` (e.g. `daily_briefing/queued/2026-05-06.md`). If it exists, that file contains the topic, source, and key facts Preston has chosen for today's briefing. Use it as the foundation for the draft. The file format is open: a short markdown brief with a Source URL, headline claims, and any framing notes. After successfully publishing, move the consumed queue file to `daily_briefing/queued/_used/` so it doesn't trigger again.
++
++If no queued file exists for today, proceed to topic selection from the rotation slot below.
++
+ ## Run workflow
+ 
+ 1. Load: `preston.md`, `handoff.md`, `strategy.md`, `skills/preston-writing/SKILL.md`.
+ 2. Run the ground-truth check above. Capture `$ACTIVE_WEEK`. Read the visible Week block in `pilot_hub.html` end-to-end so you have the verbatim challenge text, governance pulse, and competency framing for that week.
+ 3. Identify today's rotation slot in `briefings.json` (Mon=foundational, Tue=tips, Wed=governance, Thu=trends, Fri=news/rotating).
+-4. Check `briefings.json` for an entry at today's date. If present and `validationStatus: PASSED` AND the entry's body references `Week $ACTIVE_WEEK`, skip generation and proceed to the deploy check. If present and the entry references a week other than `$ACTIVE_WEEK`, treat it as defective: rewrite, do not skip.
+-5. Draft today's entry: 240–280 words on body, 40–80 words on Try This. Audit against Preston's anti-AI rules (banned words, contrastive constructions, em-dash limit ≤ 2, no TED-talk closes, declarative opens, zero rhetorical questions in body). Verify every factual claim in `sourceNotes` with VERIFIED / GROUNDED / Editorial tags. Cross-check the body for the active-week reference before saving.
+-6. Insert at the top of `published[]` in `briefings.json`. Update `meta.lastGenerated` and `meta.lastPublished`.
+-7. JSON-validate with Python before commit.
+-8. Run the self-check block below. All three checks must pass.
+-9. `git add briefings.json && git commit` with message: `Publish YYYY-MM-DD daily briefing: <short topic> (<category>)`.
+-10. `git push origin main`. If auth fails, save the patch to `daily_briefing_patches/` and note in the deploy report.
+-11. Write `DAILY_BRIEFING_DEPLOY_YYYYMMDD.md` capturing: topic, `$ACTIVE_WEEK`, audit findings, commit hash, push status, and any anomalies (gaps in prior days, lock files cleared, prior-day deploy reports that referenced a different week than ground truth, etc.).
++4. Run the queued-topic check above. If `daily_briefing/queued/<today>.md` exists, use it as the topic source.
++5. Check `briefings.json` for an entry at today's date. If present and `validationStatus: PASSED` AND the entry's body references `Week $ACTIVE_WEEK`, skip generation and proceed to the deploy check. If present and the entry references a week other than `$ACTIVE_WEEK`, treat it as defective: rewrite, do not skip.
++6. Draft today's entry: 240–280 words on body, 40–80 words on Try This. Audit against Preston's anti-AI rules (banned words, contrastive constructions, em-dash limit ≤ 2, no TED-talk closes, declarative opens, zero rhetorical questions in body). Verify every factual claim in `sourceNotes` with VERIFIED / GROUNDED / Editorial tags. Cross-check the body for the active-week reference before saving.
++7. Insert at the top of `published[]` in `briefings.json`. Update `meta.lastGenerated` and `meta.lastPublished`.
++8. JSON-validate with Python before commit.
++9. Run the self-check block below. All three checks must pass.
++10. **Run the daily folder cleanup:** `python3 daily_briefing/cleanup.py`. The script is idempotent and safe. It sorts loose root files into `deploy_reports/`, `working_docs/{frameworks,correspondence,synthesis,pilot_design}/`, `conference_materials/`, `audits/`, `scripts/`, and `_quarantine/`. It writes a daily log to `daily_briefing/cleanup_logs/cleanup_<YYYYMMDD>.log`. If it reports any unrouted files, surface them in the deploy report under Anomalies.
++11. If a queued topic was used, move `daily_briefing/queued/<today>.md` to `daily_briefing/queued/_used/<today>.md`.
++12. `git add -A && git commit` with message: `Publish YYYY-MM-DD daily briefing: <short topic> (<category>)`. Use `git add -A` (not `git add briefings.json`) so the cleanup moves, the cleanup log, and any consumed queue file all land in the same commit.
++13. `git push origin main`. If auth fails, save the patch to `daily_briefing_patches/` and note in the deploy report.
++14. Write `deploy_reports/DAILY_BRIEFING_DEPLOY_YYYYMMDD.md` capturing: topic, `$ACTIVE_WEEK`, audit findings, commit hash, push status, cleanup summary (files moved + any unrouted), and any anomalies.
+ 
+ ## Self-check before commit
+ 
+@@ -137,3 +146,4 @@ print('CHECK 3 PASS')
+ ## Changelog
+ 
+ - 2026-05-05: Added mandatory ground-truth pilot-week detection step after two consecutive runs (May 4 foundational, May 5 tips draft) inherited a Week 5 frame while pilot_hub.html still showed Week 4 as the highest visible block. Replaced hardcoded session path with dynamic discovery so future runs work regardless of session name. Added pre-commit self-check block that fails the commit if the body does not reference the active week or references a future week.
++- 2026-05-05 (later): Folded daily folder cleanup into the workflow as Step 10. Added queued-topic mechanism so Preston can pre-stage a topic at `daily_briefing/queued/<date>.md` for any future run. Deploy reports now write to `deploy_reports/` per the new folder organization.
+diff --git a/daily_briefing/cleanup.py b/daily_briefing/cleanup.py
+new file mode 100644
+index 0000000..96cd542
+--- /dev/null
++++ b/daily_briefing/cleanup.py
+@@ -0,0 +1,204 @@
++#!/usr/bin/env python3
++"""
++Daily folder cleanup for projects/ai_governance.
++
++Idempotent. Safe to run every day. Never touches:
++- the live GitHub Pages site at root (HTML, CNAME, package.json, site.css,
++  node_modules/, assets/, charts/, photos/, briefings.json, README, CLAUDE.md)
++- any file referenced from a live HTML page (verified via the PINNED_AT_ROOT list)
++- .git/, .claude/, .fuse_hidden*, .DS_Store
++
++Sorts loose root files into:
++  deploy_reports/        DAILY_BRIEFING_DEPLOY_*.md
++  working_docs/frameworks/      AI Fluency, data governance, key terminology, brand
++  working_docs/correspondence/  Letters, peer reviews, sample portfolio
++  working_docs/synthesis/       Weekly synthesis, blog drafts, onboarding plan
++  working_docs/pilot_design/    Pilot task designs, skill architecture
++  conference_materials/  Conference slide PDFs
++  audits/                QA reports
++  scripts/               Apps Script JS files
++  _quarantine/           Empty test files, redundant zips
++
++Run: python3 daily_briefing/cleanup.py
++"""
++import os
++import re
++import shutil
++import sys
++from datetime import datetime
++from pathlib import Path
++
++# Workspace = parent of this script's parent (script lives in daily_briefing/)
++WORKSPACE = Path(__file__).resolve().parent.parent
++os.chdir(WORKSPACE)
++
++# Files that must NEVER move from root (live site + things HTML references).
++PINNED_AT_ROOT = {
++    "index.html",
++    "CNAME",
++    "site.css",
++    "package.json",
++    "package-lock.json",
++    "briefings.json",
++    "README.md",
++    "CLAUDE.md",
++    ".gitignore",
++    # Linked from pilot_hub.html (line ~2378):
++    "UserGuide_Claude_DCCAP_V1_20260313.docx",
++    # Referenced in preston_analytics.html error messages (lines 293, 561):
++    "apps_script_doGet_addition.js",
++    # This script's own infrastructure:
++    "cleanup.py",
++}
++
++# Folders that stay at root (live site or already-organized).
++PINNED_DIRS = {
++    "assets", "charts", "photos", "node_modules",
++    "_archived_pilot_task_skills_v1", "_archived_pilot_task_skills_v3",
++    "_internal", "daily_briefing", "daily_briefing_patches",
++    "financial_modeling", "remotion",
++    ".git", ".claude",
++    # Targets we manage:
++    "deploy_reports", "working_docs", "conference_materials",
++    "audits", "scripts", "_quarantine",
++}
++
++# Sort rules: (regex matched against filename) -> destination folder.
++# First matching rule wins. Order matters.
++RULES = [
++    # Deploy reports
++    (re.compile(r"^DAILY_BRIEFING_DEPLOY_\d{8}\.md$"), "deploy_reports"),
++
++    # Frameworks (canonical / governance materials)
++    (re.compile(r"^Framework_for_AI_Fluency.*\.(md|pdf)$", re.IGNORECASE), "working_docs/frameworks"),
++    (re.compile(r"^AI_Fluency_Key_Terminology\.md$"), "working_docs/frameworks"),
++    (re.compile(r"^DCCAP_AI_Data_Governance_Framework.*\.docx$"), "working_docs/frameworks"),
++    (re.compile(r"^dccap-brand\.md$"), "working_docs/frameworks"),
++    # Extension-less synthesis files left at root early in the project
++    (re.compile(r"^ai_governance_goals_framework$"), "working_docs/frameworks"),
++    (re.compile(r"^ai_nonprofit_onboarding_strategy$"), "working_docs/synthesis"),
++
++    # Correspondence (letters, reviews, samples)
++    (re.compile(r"^Brian_CareerIntel_Response.*\.docx$"), "working_docs/correspondence"),
++    (re.compile(r"^CTO_Peer_Review.*\.docx$"), "working_docs/correspondence"),
++    (re.compile(r"^sample_portfolio\.docx$"), "working_docs/correspondence"),
++
++    # Synthesis & narrative drafts
++    (re.compile(r"^WEEK\d+_.*_SYNTHESIS_\d{8}\.md$"), "working_docs/synthesis"),
++    (re.compile(r"^blog_.*\.md$"), "working_docs/synthesis"),
++    (re.compile(r"^AI_Onboarding_Implementation_Plan\.md$"), "working_docs/synthesis"),
++
++    # Pilot design and architecture
++    (re.compile(r"^pilot_task_designs.*\.md$"), "working_docs/pilot_design"),
++    (re.compile(r"^skill_per_task_master_architecture\.md$"), "working_docs/pilot_design"),
++
++    # Conference slide PDFs (standalone delivery artifacts)
++    (re.compile(r"^magouirk_cio4good_slides_\d{8}\.pdf$"), "conference_materials"),
++    (re.compile(r"^conference_deck_.*\.pdf$"), "conference_materials"),
++
++    # Audits
++    (re.compile(r"^QA_VERIFICATION_REPORT_\d{8}\.txt$"), "audits"),
++
++    # Scripts (the standalone Apps Script reference; the doGet partial stays at root)
++    (re.compile(r"^google_apps_script_complete\.js$"), "scripts"),
++
++    # Skill manifest files
++    (re.compile(r"^.*\.skill$"), "working_docs/pilot_design"),
++
++    # Quarantine: empty test files and redundant archives
++    (re.compile(r"^test_unlink_\d+$"), "_quarantine"),
++    (re.compile(r"^photos\.zip$"), "_quarantine"),
++]
++
++# Patterns to leave alone at root regardless (HTML, hidden files, etc.)
++DO_NOT_TOUCH = [
++    re.compile(r"^.*\.html$"),
++    re.compile(r"^\.fuse_hidden.*$"),
++    re.compile(r"^\.DS_Store$"),
++    re.compile(r"^\..*$"),  # any other dotfile not in PINNED_AT_ROOT
++]
++
++
++def is_pinned(name: str) -> bool:
++    if name in PINNED_AT_ROOT:
++        return True
++    for pat in DO_NOT_TOUCH:
++        if pat.match(name):
++            return True
++    return False
++
++
++def find_destination(name: str):
++    for pat, dest in RULES:
++        if pat.match(name):
++            return dest
++    return None
++
++
++def main():
++    log_lines = []
++    log_lines.append(f"# Cleanup run — {datetime.now().isoformat(timespec='seconds')}")
++    log_lines.append(f"# Workspace: {WORKSPACE}")
++    log_lines.append("")
++
++    moved = []
++    left_alone = []
++    unrouted = []
++
++    # Walk only the top-level files, not recursive
++    for entry in sorted(os.listdir(WORKSPACE)):
++        full = WORKSPACE / entry
++
++        # Skip directories (they're either pinned or already organized)
++        if full.is_dir():
++            continue
++
++        if is_pinned(entry):
++            left_alone.append(entry)
++            continue
++
++        dest_rel = find_destination(entry)
++        if dest_rel is None:
++            unrouted.append(entry)
++            continue
++
++        dest_dir = WORKSPACE / dest_rel
++        dest_dir.mkdir(parents=True, exist_ok=True)
++        dest_path = dest_dir / entry
++
++        # If target already exists with same name, leave the root file alone
++        # (likely a prior run already moved it; the duplicate at root may be an
++        # accidental re-export — surface it under unrouted instead of overwriting).
++        if dest_path.exists():
++            unrouted.append(f"{entry} (target exists at {dest_rel}/{entry} — manual review)")
++            continue
++
++        shutil.move(str(full), str(dest_path))
++        moved.append(f"{entry} -> {dest_rel}/")
++
++    log_lines.append(f"## Moved ({len(moved)})")
++    log_lines.extend(f"- {m}" for m in moved) if moved else log_lines.append("(none)")
++    log_lines.append("")
++    log_lines.append(f"## Left at root ({len(left_alone)})")
++    log_lines.extend(f"- {f}" for f in left_alone)
++    log_lines.append("")
++    log_lines.append(f"## Unrouted — review manually ({len(unrouted)})")
++    log_lines.extend(f"- {u}" for u in unrouted) if unrouted else log_lines.append("(none)")
++
++    log_dir = WORKSPACE / "daily_briefing" / "cleanup_logs"
++    log_dir.mkdir(parents=True, exist_ok=True)
++    log_path = log_dir / f"cleanup_{datetime.now().strftime('%Y%m%d')}.log"
++    log_path.write_text("\n".join(log_lines))
++
++    print("\n".join(log_lines))
++    print(f"\nLog written to: {log_path.relative_to(WORKSPACE)}")
++
++    # Exit non-zero if there are unrouted files so the scheduled task notices.
++    # The scheduled-task wrapper can decide how to surface; for now, just warn.
++    if unrouted:
++        sys.stderr.write(f"\nWARN: {len(unrouted)} unrouted file(s) at root. Review the log.\n")
++    return 0
++
++
++if __name__ == "__main__":
++    sys.exit(main())
+diff --git a/daily_briefing/cleanup_logs/cleanup_20260505.log b/daily_briefing/cleanup_logs/cleanup_20260505.log
+new file mode 100644
+index 0000000..fd2a1e6
+--- /dev/null
++++ b/daily_briefing/cleanup_logs/cleanup_20260505.log
+@@ -0,0 +1,55 @@
++# Cleanup run — 2026-05-05T21:08:02
++# Workspace: /sessions/wizardly-stoic-bardeen/mnt/BRAIN/projects/ai_governance
++
++## Moved (0)
++(none)
++
++## Left at root (45)
++- .DS_Store
++- .fuse_hidden0000000d0000000c
++- .fuse_hidden0000000e00000009
++- .fuse_hidden0000001600000004
++- .fuse_hidden0000001700000006
++- .fuse_hidden0000001800000001
++- .fuse_hidden0000001900000002
++- .fuse_hidden0000001a0000000a
++- .fuse_hidden0000001b00000005
++- .fuse_hidden0000001c00000003
++- .fuse_hidden000004020000000b
++- .fuse_hidden0000040300000007
++- .fuse_hidden0000055200000008
++- .gitignore
++- CLAUDE.md
++- CNAME
++- README.md
++- UserGuide_Claude_DCCAP_V1_20260313.docx
++- ai_fluency_framework.html
++- ai_fluency_prelaunch_survey.html
++- ai_glossary.html
++- ai_governance_framework.html
++- ai_key_terminology.html
++- apps_script_doGet_addition.js
++- briefings.json
++- capstone_template.html
++- conference_deck_governance_as_enabler.html
++- conference_deck_governance_growth.html
++- container_decision_worksheet.html
++- data_tier_practice.html
++- dev_office_h1_to_h3.html
++- index.html
++- kickoff_deck.html
++- kpi_framework.html
++- package-lock.json
++- package.json
++- pilot_hub.html
++- preston_analytics.html
++- site.css
++- start_here.html
++- week2_three_horizons_deck.html
++- week3_containers_deck.html
++- week4_build_filter.html
++- week4_build_worth_keeping_deck.html
++- week4_three_builds.html
++
++## Unrouted — review manually (0)
++(none)
+\ No newline at end of file
+diff --git a/daily_briefing/queued/2026-05-06.md b/daily_briefing/queued/2026-05-06.md
+new file mode 100644
+index 0000000..91c8346
+--- /dev/null
++++ b/daily_briefing/queued/2026-05-06.md
+@@ -0,0 +1,43 @@
++# Queued topic — 2026-05-06 (Wednesday, governance slot)
++
++**Source (verified):** Ethan Mollick, "Management as AI superpower: Thriving in a world of agentic AI," One Useful Thing, January 27, 2026.
++URL: https://www.oneusefulthing.org/p/management-as-ai-superpower
++
++## Why this fits Wednesday governance
++
++Section 7.2 of DC CAP's framework holds staff accountable for the quality and accuracy of any AI-assisted work product. Section 7.3 requires staff authorship on all external communications. Mollick's argument supplies the empirical backing: the people who get useful work out of AI are the ones who can specify the goal, evaluate the output, and give feedback when it's wrong — the same management discipline DC CAP's framework expects. Frame this as the empirical case behind the framework's accountability rules.
++
++## Headline claims (all VERIFIED from the article)
++
++- Mollick taught a 4-day Wharton EMBA class where students built startup prototypes using Claude Code, Google Antigravity, ChatGPT, Claude, and Gemini. Output was an order of magnitude beyond what a full pre-AI semester used to produce.
++- Three variables drive the delegate-or-do-it-yourself decision: Human Baseline Time, Probability of Success, AI Process Time. ("Equation of Agentic Work.")
++- OpenAI's GDPval study: experts took ~7 hours per task; AI took minutes; expert checking took ~1 hour. GPT-5.2 Thinking and Pro models tied or beat human experts 72% of the time.
++- Three management moves raise probability of success and lower process time: clearer instructions, better evaluation/feedback, easier success-checking.
++- "If you can explain what you need, give effective feedback, and design ways of evaluating work, you are going to be able to work with agents."
++- "What's scarce is knowing what to ask for."
++- "The skills that are so often dismissed as 'soft' turned out to be the hard ones."
++- "The people who thrive will be the ones who know what good looks like — and can explain it clearly enough that even an AI can deliver it."
++
++## Pilot week alignment
++
++Tomorrow's run will detect Week 4 (Build Worth Keeping / Discernment) as `$ACTIVE_WEEK` unless the unhide flips overnight. The article maps cleanly to Week 4: a build that earns its keep is one whose creator can specify what good looks like and can evaluate when the AI got it wrong. The "five questions for delegation documentation" Mollick lists (what are we accomplishing, where are the limits of authority, what does done look like, what specific outputs, what interim outputs, what to check before finishing) overlap directly with the Week 4 Build Filter.
++
++If Week 5 unhides overnight, the article still works — Mollick's frame applies equally to iteration and inheritance.
++
++## Suggested title options
++
++- The Management Skills Are the AI Skills
++- Knowing What to Ask For Is the Scarce Resource
++- Mollick: The Soft Skills Turned Out to Be the Hard Ones
++- 7 Hours, 72%: When Delegating to AI Pays Off
++
++## Editorial framing notes
++
++- Open declaratively with the Wharton class outcome (4 days, MBA students, prototypes that beat semester-long pre-AI work).
++- Keep the math digestible: don't dump the equation; name the three variables and let the reader connect.
++- Tie the closing back to DC CAP's framework: 7.2 + 7.3 are management 101 dressed as a governance policy, and Mollick's evidence is why the framework was right to write it that way.
++- Editorial tag: any framing that pulls this article toward DC CAP's framework is Preston's synthesis, not Mollick's claim. Tag accordingly in sourceNotes.
++
++## Reminder for the agent that runs tomorrow
++
++After publishing, move this file to `daily_briefing/queued/_used/2026-05-06.md` so it does not trigger again.
+diff --git a/DAILY_BRIEFING_DEPLOY_20260504.md b/deploy_reports/DAILY_BRIEFING_DEPLOY_20260504.md
+similarity index 100%
+rename from DAILY_BRIEFING_DEPLOY_20260504.md
+rename to deploy_reports/DAILY_BRIEFING_DEPLOY_20260504.md
+diff --git a/DAILY_BRIEFING_DEPLOY_20260505.md b/deploy_reports/DAILY_BRIEFING_DEPLOY_20260505.md
+similarity index 79%
+rename from DAILY_BRIEFING_DEPLOY_20260505.md
+rename to deploy_reports/DAILY_BRIEFING_DEPLOY_20260505.md
+index 1015d73..5503f1d 100644
+--- a/DAILY_BRIEFING_DEPLOY_20260505.md
++++ b/deploy_reports/DAILY_BRIEFING_DEPLOY_20260505.md
+@@ -87,3 +87,14 @@ The scheduled task cannot update itself from inside a scheduled-task session —
+ - May 4 entry shipped with Week 5 frame while pilot_hub.html still showed Week 4 visible. Same defect, prior run.
+ - The post-commit `.git/HEAD.lock` is the recurring sandbox quirk and was cleared inline after each commit.
+ - Older `.stale.*` files in `.git/` are safe to leave or delete at Preston's discretion.
++
++## Folder cleanup (added this run)
++
++- **What:** New `daily_briefing/cleanup.py` sorts loose root files into `deploy_reports/`, `working_docs/{frameworks,correspondence,synthesis,pilot_design}/`, `conference_materials/`, `audits/`, `scripts/`, and `_quarantine/`. Idempotent. Pinned files (live HTML, CNAME, `briefings.json`, `UserGuide_Claude_DCCAP_V1_20260313.docx`, `apps_script_doGet_addition.js`, `package.json`) stay at root.
++- **First run today:** 25 files moved out of root. Re-run produced zero moves and zero unrouted — idempotence verified.
++- **Logs:** `daily_briefing/cleanup_logs/cleanup_<YYYYMMDD>.log` per run.
++- **Wired into the scheduled task:** PROPOSED_SKILL.md adds Step 10 (`python3 daily_briefing/cleanup.py`) and changes the commit to `git add -A` so cleanup moves, the cleanup log, and any consumed queue file ship in one commit. Apply via `daily_briefing/APPLY_FIX_README.md`.
++
++## Queued topic for tomorrow (2026-05-06, governance slot)
++
++Per Preston's request, staged a draft brief at `daily_briefing/queued/2026-05-06.md` with verified facts from Ethan Mollick, "Management as AI superpower," One Useful Thing, January 27, 2026. The article argues that the people who thrive with agentic AI are those with management discipline — clear instructions, evaluation criteria, feedback loops — which maps directly to the framework's Section 7.2 and 7.3 staff-accountability requirements. PROPOSED_SKILL.md adds a queued-topic check (Step 4) so tomorrow's run picks the file up, drafts from it, then moves it to `daily_briefing/queued/_used/`.
+diff --git a/google_apps_script_complete.js b/scripts/google_apps_script_complete.js
+similarity index 100%
+rename from google_apps_script_complete.js
+rename to scripts/google_apps_script_complete.js
+diff --git a/Brian_CareerIntel_Response_20260420.docx b/working_docs/correspondence/Brian_CareerIntel_Response_20260420.docx
+similarity index 100%
+rename from Brian_CareerIntel_Response_20260420.docx
+rename to working_docs/correspondence/Brian_CareerIntel_Response_20260420.docx
+diff --git a/CTO_Peer_Review_dccapinnovation.docx b/working_docs/correspondence/CTO_Peer_Review_dccapinnovation.docx
+similarity index 100%
+rename from CTO_Peer_Review_dccapinnovation.docx
+rename to working_docs/correspondence/CTO_Peer_Review_dccapinnovation.docx
+diff --git a/sample_portfolio.docx b/working_docs/correspondence/sample_portfolio.docx
+similarity index 100%
+rename from sample_portfolio.docx
+rename to working_docs/correspondence/sample_portfolio.docx
+diff --git a/AI_Fluency_Key_Terminology.md b/working_docs/frameworks/AI_Fluency_Key_Terminology.md
+similarity index 100%
+rename from AI_Fluency_Key_Terminology.md
+rename to working_docs/frameworks/AI_Fluency_Key_Terminology.md
+diff --git a/DCCAP_AI_Data_Governance_Framework_v1.docx b/working_docs/frameworks/DCCAP_AI_Data_Governance_Framework_v1.docx
+similarity index 100%
+rename from DCCAP_AI_Data_Governance_Framework_v1.docx
+rename to working_docs/frameworks/DCCAP_AI_Data_Governance_Framework_v1.docx
+diff --git a/Framework_for_AI_Fluency_V_1.5.pdf b/working_docs/frameworks/Framework_for_AI_Fluency_V_1.5.pdf
+similarity index 100%
+rename from Framework_for_AI_Fluency_V_1.5.pdf
+rename to working_docs/frameworks/Framework_for_AI_Fluency_V_1.5.pdf
+diff --git a/Framework_for_AI_Fluency_v1.5.md b/working_docs/frameworks/Framework_for_AI_Fluency_v1.5.md
+similarity index 100%
+rename from Framework_for_AI_Fluency_v1.5.md
+rename to working_docs/frameworks/Framework_for_AI_Fluency_v1.5.md
+diff --git a/ai_governance_goals_framework b/working_docs/frameworks/ai_governance_goals_framework
+similarity index 100%
+rename from ai_governance_goals_framework
+rename to working_docs/frameworks/ai_governance_goals_framework
+diff --git a/dccap-brand.md b/working_docs/frameworks/dccap-brand.md
+similarity index 100%
+rename from dccap-brand.md
+rename to working_docs/frameworks/dccap-brand.md
+diff --git a/ai-governance-site-qa.skill b/working_docs/pilot_design/ai-governance-site-qa.skill
+similarity index 100%
+rename from ai-governance-site-qa.skill
+rename to working_docs/pilot_design/ai-governance-site-qa.skill
+diff --git a/frontend-slides.skill b/working_docs/pilot_design/frontend-slides.skill
+similarity index 100%
+rename from frontend-slides.skill
+rename to working_docs/pilot_design/frontend-slides.skill
+diff --git a/pilot_task_designs_v3.md b/working_docs/pilot_design/pilot_task_designs_v3.md
+similarity index 100%
+rename from pilot_task_designs_v3.md
+rename to working_docs/pilot_design/pilot_task_designs_v3.md
+diff --git a/pilot_task_designs_v3_audit.md b/working_docs/pilot_design/pilot_task_designs_v3_audit.md
+similarity index 100%
+rename from pilot_task_designs_v3_audit.md
+rename to working_docs/pilot_design/pilot_task_designs_v3_audit.md
+diff --git a/skill_per_task_master_architecture.md b/working_docs/pilot_design/skill_per_task_master_architecture.md
+similarity index 100%
+rename from skill_per_task_master_architecture.md
+rename to working_docs/pilot_design/skill_per_task_master_architecture.md
+diff --git a/AI_Onboarding_Implementation_Plan.md b/working_docs/synthesis/AI_Onboarding_Implementation_Plan.md
+similarity index 100%
+rename from AI_Onboarding_Implementation_Plan.md
+rename to working_docs/synthesis/AI_Onboarding_Implementation_Plan.md
+diff --git a/WEEK3_THURSDAY_SYNTHESIS_20260430.md b/working_docs/synthesis/WEEK3_THURSDAY_SYNTHESIS_20260430.md
+similarity index 100%
+rename from WEEK3_THURSDAY_SYNTHESIS_20260430.md
+rename to working_docs/synthesis/WEEK3_THURSDAY_SYNTHESIS_20260430.md
+diff --git a/ai_nonprofit_onboarding_strategy b/working_docs/synthesis/ai_nonprofit_onboarding_strategy
+similarity index 100%
+rename from ai_nonprofit_onboarding_strategy
+rename to working_docs/synthesis/ai_nonprofit_onboarding_strategy
+diff --git a/blog_nonprofit_ai_stakes.md b/working_docs/synthesis/blog_nonprofit_ai_stakes.md
+similarity index 100%
+rename from blog_nonprofit_ai_stakes.md
+rename to working_docs/synthesis/blog_nonprofit_ai_stakes.md
+-- 
+2.34.1
+
