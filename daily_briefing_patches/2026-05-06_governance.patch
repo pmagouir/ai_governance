@@ -1,0 +1,53 @@
+From 0a36e09f7bac166c6977ea120c905a2651bfefa6 Mon Sep 17 00:00:00 2001
+From: Preston Magouirk <preston.magouirk@dccap.org>
+Date: Wed, 6 May 2026 08:22:45 -0400
+Subject: [PATCH] Publish 2026-05-06 daily briefing: Inheritance Changes the
+ Tier on Every File You Bundled (governance)
+
+---
+ briefings.json | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/briefings.json b/briefings.json
+index 38ebfcc..e1e4398 100644
+--- a/briefings.json
++++ b/briefings.json
+@@ -1,8 +1,8 @@
+ {
+   "meta": {
+     "version": "2.0",
+-    "lastGenerated": "2026-05-05T08:25:00-04:00",
+-    "lastPublished": "2026-05-05T08:25:00-04:00",
++    "lastGenerated": "2026-05-06T08:25:00-04:00",
++    "lastPublished": "2026-05-06T08:25:00-04:00",
+     "categories": {
+       "foundational": {
+         "label": "Foundational Learning",
+@@ -42,6 +42,17 @@
+   },
+   "drafts": [],
+   "published": [
++    {
++      "category": "governance",
++      "title": "Inheritance Changes the Tier on Every File You Bundled",
++      "content": "Week 5 of the AI governance pilot is iterate and scope. The Week 4 build goes to a teammate, breaks somewhere, and gets fixed. The pilot hub flags a governance question most builders miss in that handoff: iteration changes who can use what. If your v2 expands the audience, the data tier of every reference file inside the build expands with it.\n\nThe framework is unambiguous on what each tier permits. Tier 4 public materials carry no restriction. Tier 3 internal documents like strategic plans, program models, and de-identified aggregate outcomes sit under open access for DC CAP licensed users. Tier 2 sensitive content covers budget models, MOU terms, and small-cell aggregates with N below 10, all requiring role-specific access and de-identification verification before upload. Tier 1 PII and FERPA-protected records stay prohibited from Claude in any form.\n\nA Project that worked for one author with a tight reference pack assumes the author's trust permissions. The moment a teammate inherits it, those permissions stop being implicit. A budget model loaded for a Director's planning use becomes a Tier 2 file in a coaching team's hands. A partner MOU referenced for a single email becomes a re-disclosure when the Project ships to four colleagues.\n\nThe discipline is mechanical. Before broadening access, list every file in the Project's reference panel, tag each one to a tier, and decide whether the new audience is authorized for the highest tier on the list. If anything is Tier 2, role-restrict access. If anything is Tier 1, remove it and rebuild the reference around aggregated or public substitutes.",
++      "tryThis": "Open the Project you'll hand to a teammate this week. List every file in the reference panel. Tag each one Tier 1, 2, 3, or 4 against Section 6 of the framework. If the highest-tier file in the pack outranks the audience you're expanding to, role-restrict access or rebuild the reference around aggregated or public substitutes before you ship the v2.",
++      "date": "2026-05-06",
++      "resource": "https://dccapinnovation.org/ai_governance_framework.html#data-classification",
++      "sourceNotes": "Claim: Week 5 of the AI governance pilot is iterate and scope; the Week 4 build goes to a teammate and gets fixed | Source: GROUNDED (pilot_hub.html Week 5 section: \"Week 4 was build. Week 5 is iterate. Take what you built, give it to a teammate, watch where it breaks, fix it.\")\nClaim: \"Iteration changes who can use what. If your v2 expands the audience, the data tier of every reference file expands with it.\" | Source: GROUNDED (pilot_hub.html Week 5 \"Governance Pulse\" callout, verbatim)\nClaim: Tier 4 is unrestricted; covers public materials | Source: GROUNDED (ai_governance_framework.html Section 6 data-classification table, Tier 4 row: \"UNRESTRICTED — All users. Standard retention.\")\nClaim: Tier 3 internal includes strategic plans, program models, de-identified aggregate outcomes; open access for DC CAP licensed users | Source: GROUNDED (ai_governance_framework.html Section 6, Tier 3 row examples and \"OPEN ACCESS — All licensed users within DC CAP\")\nClaim: Tier 2 covers budget models, MOU terms, small-cell aggregates N<10; requires role-specific access and de-identification verification before upload | Source: GROUNDED (ai_governance_framework.html Section 6, Tier 2 row examples and access rule: \"RESTRICTED ACCESS — Role-specific access with least access default ... Requires de-identification verification before upload.\")\nClaim: Tier 1 PII and FERPA-protected records are prohibited from Claude in any form | Source: GROUNDED (ai_governance_framework.html Section 6, Tier 1 row: \"PROHIBITED — Never upload to Claude in any form. No exceptions without legal review and explicit board authorization.\")\nClaim: A Project's reference files carry the data tier of whatever you load | Source: GROUNDED (pilot_hub.html Week 3 framework card description: \"Containers bake governance in. A Project's reference files carry the data tier of whatever you load.\")\nClaim: Inheritance scenario examples (budget model in coaching team's hands, MOU re-disclosure when Project ships to colleagues) | Source: Editorial (illustrative scenarios applying Section 6 tier rules to Week 5 inheritance dynamics named in the Governance Pulse)",
++      "status": "published",
++      "validationStatus": "PASSED"
++    },
+     {
+       "category": "tips",
+       "content": "Week 4 asks every participant to build something worth keeping. The challenge requires loading at least one outside source (a research doc, a peer playbook, a verified data table, the brand guide, an Anthropic skill) and writing it into the procedure. The trap is pasting the source into a reference file and assuming Claude will read it. Outputs sound the same as before. The build does not earn its keep.\n\nExtraction is the move. A source changes output when you pull the specific rules, numbers, and anti-patterns out of it and write them into the custom-instructions block or SKILL.md procedure. Three lines of doing.\n\nStep one: open Claude with the source loaded. Ask: \"Read this document. Extract every concrete instruction, threshold, or anti-pattern that should change how a draft on [your task] gets written. List them as bullets, with the page or section number for each.\" This produces a list you can audit. Numbers, named patterns, prohibitions: the parts of the source that have an opinion.\n\nStep two: filter. Strike anything generic. Keep what is specific to your task and verifiable against the source.\n\nStep three: write the kept items into the procedure. In a Project, add them under the custom-instructions block as standards the draft must meet. In a Skill, write them into the SKILL.md as named rules. Cite the source so the next reader can trace any rule back to where it came from.\n\nThe build now carries the source's authority. A teammate inheriting it gets the rules and the citation in one move. That is what Week 4 means by a build that earns its keep.",
+@@ -265,4 +276,4 @@
+       "archivedReason": "Superseded by Glasswing news entry for April 10"
+     }
+   ]
+-}
+\ No newline at end of file
++}
+-- 
+2.34.1
+
