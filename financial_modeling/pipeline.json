@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "sourceUrl": "https://dccapemail.sharepoint.com/sites/Development/Shared%20Documents/Operations/Finance/Budget/FY27/FY27%20DC%20CAP%20Revenue%20Goals%20V5.1.26%20.xlsx",
+    "fileLastModified": "",
+    "syncedAt": "",
+    "schemaVersion": 1,
+    "rowCounts": { "Foundation": 0, "Corporate": 0, "Individual": 0 },
+    "verified": false,
+    "verificationNote": "Awaiting first verified import."
+  },
+  "rows": [],
+  "baselines": {
+    "Foundation": { "fy27": 0, "fy28": 0, "fy29": 0 },
+    "Corporate": { "fy27": 0, "fy28": 0, "fy29": 0 },
+    "Individual": { "fy27": 0, "fy28": 0, "fy29": 0 }
+  },
+  "goals": {
+    "Foundation": { "fy27NewAor": 1000000, "fy28NewAor": 1400000, "fy29NewAor": 1550000 },
+    "Corporate": { "fy27NewAor": 1100000, "fy28NewAor": 1450000, "fy29NewAor": 1600000 },
+    "Individual": { "fy27NewAor": 400000, "fy28NewAor": 650000, "fy29NewAor": 850000 }
+  }
+}
