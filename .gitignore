@@ -16,3 +16,6 @@ dist-tmp/
 
 # Local session scratch
 *.log
+
+# Don't track giant repo-cleanup patches (those are local artifacts; use git push)
+*_repo_cleanup.patch
