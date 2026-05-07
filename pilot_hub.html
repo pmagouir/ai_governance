@@ -1847,7 +1847,7 @@
 <body>
 
 <!-- Identity Gate Overlay -->
-<div class="identity-gate-overlay" id="identityGate">
+<div class="identity-gate-overlay hidden" id="identityGate" style="display: none;">
     <div class="identity-gate-card">
         <div class="identity-gate-logo">
             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23101A4C'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-weight='bold' font-size='18' fill='white'%3EDC%3C/text%3E%3C/svg%3E" alt="DC CAP">
@@ -4275,6 +4275,17 @@
             const label = el.querySelector('.pre-gate-locked-label');
             if (label) label.remove();
         });
+        // Force-hide the identity-gate overlay (initIdentityGate is intentionally
+        // not called post-pilot; without this, the overlay defaults to visible
+        // CSS opacity 1 and covers the entire viewport for any visitor whose
+        // browser cache doesn't carry the old gate-dismissal logic).
+        const idGate = document.getElementById('identityGate');
+        if (idGate) {
+            idGate.classList.add('hidden');
+            idGate.style.display = 'none';
+        }
+        const greeting = document.getElementById('participantGreeting');
+        if (greeting) greeting.style.display = 'none';
         initializeNewsletter();
         setupNavigation();
         setupAnimations();
