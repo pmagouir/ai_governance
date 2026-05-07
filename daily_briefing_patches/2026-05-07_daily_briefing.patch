@@ -1,0 +1,46 @@
+From 612172774f6307730281236938331cd58ff80322 Mon Sep 17 00:00:00 2001
+From: Preston Magouirk <preston.magouirk@dccap.org>
+Date: Thu, 7 May 2026 08:11:25 -0400
+Subject: [PATCH] Publish 2026-05-07 daily briefing: McKinsey 1% AI maturity
+ finding (trends)
+
+---
+ briefings.json | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/briefings.json b/briefings.json
+index e1e4398..3f5b876 100644
+--- a/briefings.json
++++ b/briefings.json
+@@ -1,8 +1,8 @@
+ {
+   "meta": {
+     "version": "2.0",
+-    "lastGenerated": "2026-05-06T08:25:00-04:00",
+-    "lastPublished": "2026-05-06T08:25:00-04:00",
++    "lastGenerated": "2026-05-07T08:30:00-04:00",
++    "lastPublished": "2026-05-07T08:30:00-04:00",
+     "categories": {
+       "foundational": {
+         "label": "Foundational Learning",
+@@ -42,6 +42,17 @@
+   },
+   "drafts": [],
+   "published": [
++    {
++      "category": "trends",
++      "title": "1% of Companies Reach AI Maturity. The Wall Is Organizational Adoption.",
++      "content": "McKinsey's January 2025 Superagency in the Workplace report polled U.S. employees who use AI at work weekly and C-suite executives at the same companies. The finding that pulled focus: only 1% of leaders call their company's AI deployment 'mature,' McKinsey's label for the stage where AI is fully integrated into workflows and driving substantial business outcomes across the enterprise. The other 99% sit somewhere on the pilot-to-stall spectrum.\n\nAccess is broadly available. More than 9 in 10 companies plan to increase AI investment over the next three years. Half already report some operational gains. The wall sits at organizational adoption: leadership without a clear direction, governance lagging deployment, frontline workers using tools their leaders do not understand, and individual productivity gains failing to compound into team-level capability.\n\nWeek 5 of the AI governance pilot is the move built against that wall. The Week 4 build sat with one author who knew where it worked and where it broke. Week 5 hands the build to a teammate and watches what happens. Iteration is the test. The artifact that survives a teammate, a fix, and a documented checkpoint becomes the team-level asset McKinsey describes only 1% of companies as producing.\n\nThe trend implication for DC CAP: every individual using Claude well builds toward AI maturity. Maturity arrives the moment a build leaves its author, gets fixed by someone else, and produces work the team relies on. The pilot's design assumes that handoff is the harder problem.",
++      "tryThis": "Pick the build you handed to a teammate this week. Sit with the teammate for ten minutes. Note one place the build worked, one place it broke, and one fix you both agree on. That note is the artifact McKinsey calls AI maturity. The build is the seed. The handoff is what makes it real for the team.",
++      "date": "2026-05-07",
++      "resource": "https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/superagency-in-the-workplace-empowering-people-to-unlock-ais-full-potential",
++      "sourceNotes": "Claim: McKinsey's January 2025 Superagency in the Workplace report polled U.S. employees who use AI at work weekly and C-suite executives | Source: VERIFIED (Mayer, H., Yee, L., Chui, M., Roberts, R., \"Superagency in the workplace: Empowering people to unlock AI's full potential,\" McKinsey & Company, January 28, 2025 — survey methodology covers U.S. employees who use generative AI at work weekly plus C-suite executives at the same firms)\nClaim: Only 1% of leaders call their company's AI deployment 'mature' | Source: VERIFIED (Superagency report, January 2025: \"Just 1 percent of leaders call their companies 'mature' on the deployment spectrum\")\nClaim: 'Mature' = AI fully integrated into workflows and driving substantial business outcomes | Source: VERIFIED (Superagency report — McKinsey's deployment-spectrum framework defines 'mature' as the stage where AI is fully integrated into workflows and is generating substantial business value across multiple use cases)\nClaim: More than 9 in 10 companies plan to increase AI investment over the next three years | Source: VERIFIED (Superagency report: \"Ninety-two percent of companies plan to increase their AI investments over the next three years\")\nClaim: Half of companies report some operational gains from AI | Source: VERIFIED (Superagency report — survey-based finding that roughly half of companies surveyed report operational gains, but most have not reached enterprise-level transformation)\nClaim: Bottleneck named in the survey is leadership and organizational adoption rather than technology access | Source: VERIFIED (Superagency report headline framing: employees are ready to embrace AI faster than leadership and the bottleneck is C-suite direction-setting, governance, and adoption discipline)\nClaim: Week 5 of the AI governance pilot is iterate and inherit (Week 4 build hands to a teammate, watch where it breaks, fix it) | Source: GROUNDED (pilot_hub.html Week 5 section: \"Week 4 was build. Week 5 is iterate. Take what you built, give it to a teammate, watch where it breaks, fix it. The capstone door opens this week — your Week 4 build is the seed.\")\nClaim: Week 4 was build something worth keeping | Source: GROUNDED (pilot_hub.html Week 4 challenge: \"Build Worth Keeping\")\nEditorial: Framing McKinsey's 1% maturity finding as \"the wall is organizational adoption\" is Preston's synthesis of the Superagency findings tied to Week 5's inheritance test.\nEditorial: \"The artifact that survives a teammate, a fix, and a documented checkpoint becomes the team-level asset McKinsey describes only 1% of companies as producing\" is Preston's pedagogical bridge between the macro trend and the pilot move.\nEditorial: The closing landing — \"every individual using Claude well builds toward AI maturity. Maturity arrives the moment a build leaves its author...\" — is Preston's framing of the pilot's working theory.\nAdversarial review 20260507: Em-dash count: 0. Banned phrases scanned and absent: leverage, utilize, delve, navigate, landscape, ecosystem, synergy, robust, holistic, stakeholders, foster, enhance, align, transformative, empower, spearhead, myriad, multifaceted, nuanced, pivotal, unpack, deep dive, however, moreover, furthermore, additionally, serves as, stands as, represents, functions as, operates as, at the end of the day, move the needle, to be clear, make no mistake, doing the heavy lifting, the real question, what most people miss, this is where it gets interesting, groundbreaking, game-changing, revolutionary, showcase, underscore, passionate about, excited to share, tapestry. Contrastive constructions (\"X, not Y\" / \"not X but Y\" / \"isn't X — it's Y\"): zero. Earlier draft title \"Inheritance, Not Access\" was contrastive — rewritten to declarative \"The Wall Is Organizational Adoption.\" Earlier draft phrase \"is a precondition for AI maturity, not a substitute for it\" was contrastive — rewritten to \"every individual using Claude well builds toward AI maturity.\" Rhetorical questions in body: 0. Declarative open: yes (cites McKinsey January 2025 Superagency report and the survey scope). Word count main body: 252 (within 240–280 band). Try This: 60 (within 40–80 band). Each paragraph carries a concrete numeric anchor (1% / 92% / Week 5 inheritance / pilot design assumption). Closing returns to pilot-as-designed-against-the-trend implication.",
++      "status": "published",
++      "validationStatus": "PASSED"
++    },
+     {
+       "category": "governance",
+       "title": "Inheritance Changes the Tier on Every File You Bundled",
+-- 
+2.34.1
+
