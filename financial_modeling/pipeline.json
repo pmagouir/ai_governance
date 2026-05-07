@@ -1,22 +1,3036 @@
 {
   "meta": {
     "sourceUrl": "https://dccapemail.sharepoint.com/sites/Development/Shared%20Documents/Operations/Finance/Budget/FY27/FY27%20DC%20CAP%20Revenue%20Goals%20V5.1.26%20.xlsx",
-    "fileLastModified": "",
-    "syncedAt": "",
+    "fileLastModified": "2026-05-07T01:48:37.851918+00:00",
+    "syncedAt": "2026-05-07T02:08:52.818828+00:00",
     "schemaVersion": 1,
-    "rowCounts": { "Foundation": 0, "Corporate": 0, "Individual": 0 },
-    "verified": false,
-    "verificationNote": "Awaiting first verified import."
+    "rowCounts": {
+      "Foundation": 54,
+      "Corporate": 79,
+      "Individual": 66
+    },
+    "verified": true,
+    "verificationNote": "Foundation Tier 1 AOR cross-foot \u2014 parsed $130,000 \u00b7 file $205,000 \u00b7 \u0394 $75,000. Prospect rows are canonical; reconcile file rollup at next sync."
   },
-  "rows": [],
+  "rows": [
+    {
+      "id": "f-r21-arcadia-family-foundation",
+      "funder": "Arcadia Family Foundation",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 100000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3089",
+      "owner": "",
+      "notes": "Introduction offered by Michael O'Neill. said \" it\u2019s a unicorn company that will make this person a Billionaire and we should meet them\"",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 21
+      }
+    },
+    {
+      "id": "f-r22-ascendium-education-group",
+      "funder": "Ascendium Education Group",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 100000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3312",
+      "owner": "",
+      "notes": "GFE Member",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 22
+      }
+    },
+    {
+      "id": "f-r23-bedford-falls-foundation",
+      "funder": "Bedford Falls Foundation",
+      "segment": "Foundation",
+      "tier": 3,
+      "aorAmount": 10000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3106",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 23
+      }
+    },
+    {
+      "id": "f-r24-betty-and-wes-foster-family-foundation--the",
+      "funder": "Betty and Wes Foster Family Foundation, The",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 10000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "49",
+      "owner": "",
+      "notes": "Need warm introduction",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 24
+      }
+    },
+    {
+      "id": "f-r25-bezos-family-foundation",
+      "funder": "Bezos Family Foundation",
+      "segment": "Foundation",
+      "tier": 3,
+      "aorAmount": 50000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2924",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 25
+      }
+    },
+    {
+      "id": "f-r26-bloomberg-philanthropies",
+      "funder": "Bloomberg Philanthropies",
+      "segment": "Foundation",
+      "tier": 3,
+      "aorAmount": 100000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2682",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 26
+      }
+    },
+    {
+      "id": "f-r27-britebound",
+      "funder": "Britebound",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 100000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3313",
+      "owner": "",
+      "notes": "GFE Member; Anna has former colleague connection here",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 27
+      }
+    },
+    {
+      "id": "f-r28-carl-m--freeman-foundation",
+      "funder": "Carl M. Freeman Foundation",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 10000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "1987",
+      "owner": "",
+      "notes": "Need warm introduction",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 28
+      }
+    },
+    {
+      "id": "f-r29-carnegie-corporation-of-new-york",
+      "funder": "Carnegie Corporation of New York",
+      "segment": "Foundation",
+      "tier": 3,
+      "aorAmount": 50000.0,
+      "restrictedAddOn": 50000.0,
+      "constituentId": "100",
+      "owner": "",
+      "notes": "Warm relationship",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 29
+      }
+    },
+    {
+      "id": "f-r30-catherine-b--reynolds-foundation",
+      "funder": "Catherine B. Reynolds Foundation",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 100000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "33",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 30
+      }
+    },
+    {
+      "id": "f-r31-event---citybridge",
+      "funder": "Event - CityBridge",
+      "segment": "Foundation",
+      "tier": 1,
+      "aorAmount": 10000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "1755",
+      "owner": "",
+      "notes": "Pledged $500k through semi-annual giving beginning in March 2026",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 31
+      }
+    },
+    {
+      "id": "f-r32-clark-winchole-foundation",
+      "funder": "Clark-Winchole Foundation",
+      "segment": "Foundation",
+      "tier": 3,
+      "aorAmount": 50000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "38",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 32
+      }
+    },
+    {
+      "id": "f-r33-crimsonbridge-foundation",
+      "funder": "Crimsonbridge Foundation",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 50000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2844",
+      "owner": "",
+      "notes": "GFE Member",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 33
+      }
+    },
+    {
+      "id": "f-r34-daniel-d-aniello",
+      "funder": "Daniel D'Aniello",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 25000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3096",
+      "owner": "",
+      "notes": "Board Member Prospect (Joe)",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 34
+      }
+    },
+    {
+      "id": "f-r35-diane---norman-bernstein-foundation",
+      "funder": "Diane & Norman Bernstein Foundation",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 15000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3314",
+      "owner": "",
+      "notes": "Claude recommendation",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 35
+      }
+    },
+    {
+      "id": "f-r36-ecmc-foundation",
+      "funder": "ECMC Foundation",
+      "segment": "Foundation",
+      "tier": 3,
+      "aorAmount": 250000.0,
+      "restrictedAddOn": 250000.0,
+      "constituentId": "2692",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 36
+      }
+    },
+    {
+      "id": "f-r37-england-family-foundation",
+      "funder": "England Family Foundation",
+      "segment": "Foundation",
+      "tier": 2,
+      "aorAmount": 100000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2661",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 37
+      }
+    },
+    {
+      "id": "f-r38-eugene-and-agnes-e--meyer-foundation",
+      "funder": "Eugene and Agnes E. Meyer Foundation",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 75000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "44",
+      "owner": "",
+      "notes": "Related to Don Graham (Parents of Katherine Graham)",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 38
+      }
+    },
+    {
+      "id": "f-r39-fidelity-foundation-invest-in-my-education",
+      "funder": "Fidelity Foundation Invest in My Education",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 25000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3315",
+      "owner": "",
+      "notes": "GFE Member. About: These grants are directed toward top nonprofits focused on improving graduation rates for under-resourced high school and college students. Funding helps organizations continue to support quality pathways to higher education.",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 39
+      }
+    },
+    {
+      "id": "f-r40-events---gates-foundation",
+      "funder": "Events - Gates Foundation",
+      "segment": "Foundation",
+      "tier": 1,
+      "aorAmount": 10000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "43",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 40
+      }
+    },
+    {
+      "id": "f-r41-gates-foundation",
+      "funder": "Gates Foundation",
+      "segment": "Foundation",
+      "tier": 3,
+      "aorAmount": 25000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "43",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 41
+      }
+    },
+    {
+      "id": "f-r42-hearst-foundation",
+      "funder": "Hearst Foundation",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 100000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "54",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 42
+      }
+    },
+    {
+      "id": "f-r43-horning-family-foundation",
+      "funder": "Horning Family Foundation",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 10000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "Catharine Bellinger-Rowan asked if we were connected",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 43
+      }
+    },
+    {
+      "id": "f-r44-event---j--willard---alice-s--marriott-foundation",
+      "funder": "Event - J. Willard & Alice S. Marriott Foundation",
+      "segment": "Foundation",
+      "tier": 1,
+      "aorAmount": 5000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "71",
+      "owner": "",
+      "notes": "next $500,000 released in FY27",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 44
+      }
+    },
+    {
+      "id": "f-r45-jack-kent-cooke-foundation",
+      "funder": "Jack Kent Cooke Foundation",
+      "segment": "Foundation",
+      "tier": 3,
+      "aorAmount": 10000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "1994",
+      "owner": "",
+      "notes": "990 is all their individual scholarships",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 45
+      }
+    },
+    {
+      "id": "f-r46-event--lumina",
+      "funder": "Event -Lumina",
+      "segment": "Foundation",
+      "tier": 2,
+      "aorAmount": 5000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "861",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 46
+      }
+    },
+    {
+      "id": "f-r47-lumina-foundation",
+      "funder": "Lumina Foundation",
+      "segment": "Foundation",
+      "tier": 3,
+      "aorAmount": 75000.0,
+      "restrictedAddOn": 75000.0,
+      "constituentId": "861",
+      "owner": "",
+      "notes": "Ernest said the average grant is $150,000. Funding on 2 year cycle. January 2027 start.",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 47
+      }
+    },
+    {
+      "id": "f-r48-marilyn---michael-glosserman-community-foundation",
+      "funder": "Marilyn & Michael Glosserman Community Foundation",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 25000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3132",
+      "owner": "",
+      "notes": "Board Member Prospect (Joe). Venture Capitalist",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 48
+      }
+    },
+    {
+      "id": "f-r49-mars-foundation",
+      "funder": "Mars Foundation",
+      "segment": "Foundation",
+      "tier": 2,
+      "aorAmount": 15000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2023",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 49
+      }
+    },
+    {
+      "id": "f-r50-michael---susan-dell-foundation",
+      "funder": "Michael & Susan Dell Foundation",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 100000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "81",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 50
+      }
+    },
+    {
+      "id": "f-r51-morris---gwendolyn-cafritz-foundation",
+      "funder": "Morris & Gwendolyn Cafritz Foundation",
+      "segment": "Foundation",
+      "tier": 3,
+      "aorAmount": 100000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "26",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 51
+      }
+    },
+    {
+      "id": "f-r52-new-profit-inc",
+      "funder": "New Profit Inc",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "GFE Member",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 52
+      }
+    },
+    {
+      "id": "f-r53-overdeck-family-foundation",
+      "funder": "Overdeck Family Foundation",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "GFE Member",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 53
+      }
+    },
+    {
+      "id": "f-r54-event-panasonic",
+      "funder": "Event-Panasonic",
+      "segment": "Foundation",
+      "tier": 2,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 54
+      }
+    },
+    {
+      "id": "f-r55-panasonic",
+      "funder": "Panasonic",
+      "segment": "Foundation",
+      "tier": 3,
+      "aorAmount": 15000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2643",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 55
+      }
+    },
+    {
+      "id": "f-r56-peterson-family-foundation",
+      "funder": "Peterson Family Foundation",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2146",
+      "owner": "",
+      "notes": "Board Member Prospect (Tom Davis). Development empire.",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 56
+      }
+    },
+    {
+      "id": "f-r57-philip-l--graham-fund",
+      "funder": "Philip L. Graham Fund",
+      "segment": "Foundation",
+      "tier": 1,
+      "aorAmount": 100000.0,
+      "restrictedAddOn": 100000.0,
+      "constituentId": "76",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 57
+      }
+    },
+    {
+      "id": "f-r58-robert--rob--stewart",
+      "funder": "Robert \"Rob\" Stewart",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3133",
+      "owner": "",
+      "notes": "Board Member Prospect (Joe). Venture Capitalist",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 58
+      }
+    },
+    {
+      "id": "f-r59-schultz-family-foundation",
+      "funder": "Schultz Family Foundation",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 50000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2860",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 59
+      }
+    },
+    {
+      "id": "f-r60-siegel-family-endowment",
+      "funder": "Siegel Family Endowment",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 50000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3278",
+      "owner": "",
+      "notes": "GFE Member; at SXSW EDU; friend said would make intro",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 60
+      }
+    },
+    {
+      "id": "f-r61-strada-education-foundation",
+      "funder": "Strada Education Foundation",
+      "segment": "Foundation",
+      "tier": 3,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2644",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 61
+      }
+    },
+    {
+      "id": "f-r62-the-kresge-foundation",
+      "funder": "The Kresge Foundation",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3203",
+      "owner": "",
+      "notes": "GFE Member",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 62
+      }
+    },
+    {
+      "id": "f-r63-the-monarch-foundation",
+      "funder": "The Monarch Foundation",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3088",
+      "owner": "",
+      "notes": "Introduction offered by Michael O'Neill",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 63
+      }
+    },
+    {
+      "id": "f-r64-the-richard-e--and-nancy-p--marriott-foundation",
+      "funder": "The Richard E. and Nancy P. Marriott Foundation",
+      "segment": "Foundation",
+      "tier": 2,
+      "aorAmount": 50000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "72",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 64
+      }
+    },
+    {
+      "id": "f-r65-tom-wilner-cafritz-family",
+      "funder": "Tom Wilner/Cafritz Family",
+      "segment": "Foundation",
+      "tier": 3,
+      "aorAmount": 1000000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "Tom is HS classmates of Don Graham",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 65
+      }
+    },
+    {
+      "id": "f-r66-w-k--kellogg-foundation",
+      "funder": "W.K. Kellogg Foundation",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 50000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 66
+      }
+    },
+    {
+      "id": "f-r67-webber-family-foundation",
+      "funder": "Webber Family Foundation",
+      "segment": "Foundation",
+      "tier": 2,
+      "aorAmount": 20000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3284",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 67
+      }
+    },
+    {
+      "id": "f-r69-mellon-foundation",
+      "funder": "Mellon Foundation",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 69
+      }
+    },
+    {
+      "id": "f-r70-ballmer-group",
+      "funder": "Ballmer Group",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 70
+      }
+    },
+    {
+      "id": "f-r71-events---flamboyan-foundation",
+      "funder": "Events - Flamboyan Foundation",
+      "segment": "Foundation",
+      "tier": 1,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 71
+      }
+    },
+    {
+      "id": "f-r72-rockefeller-foundation",
+      "funder": "Rockefeller Foundation",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 72
+      }
+    },
+    {
+      "id": "f-r73-renaissance-philanthropy",
+      "funder": "Renaissance Philanthropy",
+      "segment": "Foundation",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 73
+      }
+    },
+    {
+      "id": "f-r74-bookey-baker-foundation",
+      "funder": "Bookey-Baker Foundation",
+      "segment": "Foundation",
+      "tier": 3,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 74
+      }
+    },
+    {
+      "id": "f-r75-consortium-of-universities-of-the-washington-metro",
+      "funder": "Consortium of Universities of the Washington Metropolitan Area",
+      "segment": "Foundation",
+      "tier": 1,
+      "aorAmount": 5000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Foundation",
+        "rowIndex": 75
+      }
+    },
+    {
+      "id": "c-r21-allbritton-communications-company",
+      "funder": "Allbritton Communications Company",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "143",
+      "owner": "",
+      "notes": "need a new approach",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 21
+      }
+    },
+    {
+      "id": "c-r22-amazon",
+      "funder": "Amazon",
+      "segment": "Corporate",
+      "tier": 3,
+      "aorAmount": 50000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2653",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 22
+      }
+    },
+    {
+      "id": "c-r23-event---amazon",
+      "funder": "Event - Amazon",
+      "segment": "Corporate",
+      "tier": 1,
+      "aorAmount": 25000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 23
+      }
+    },
+    {
+      "id": "c-r24-apple",
+      "funder": "Apple",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3243",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 24
+      }
+    },
+    {
+      "id": "c-r25-bank-of-america",
+      "funder": "Bank of America",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 25000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "25",
+      "owner": "",
+      "notes": "Should look into DAF's for fy27",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 25
+      }
+    },
+    {
+      "id": "c-r26-event---boeing",
+      "funder": "Event - Boeing",
+      "segment": "Corporate",
+      "tier": 2,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 26
+      }
+    },
+    {
+      "id": "c-r27-boeing-company",
+      "funder": "Boeing Company",
+      "segment": "Corporate",
+      "tier": 1,
+      "aorAmount": 50000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "1523",
+      "owner": "",
+      "notes": "Workforce focus well-documented",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 27
+      }
+    },
+    {
+      "id": "c-r28-business-roundtable",
+      "funder": "Business Roundtable",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "486",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 28
+      }
+    },
+    {
+      "id": "c-r29-capital-one-foundation---and--id--456",
+      "funder": "Capital One Foundation  (and  ID: 456)",
+      "segment": "Corporate",
+      "tier": 1,
+      "aorAmount": 100000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "456",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 29
+      }
+    },
+    {
+      "id": "c-r30-chevron",
+      "funder": "Chevron",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 5000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "487",
+      "owner": "",
+      "notes": "10-year lapse, need a clear contact to re-engage",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 30
+      }
+    },
+    {
+      "id": "c-r31-comcast",
+      "funder": "Comcast",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 1000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "62",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 31
+      }
+    },
+    {
+      "id": "c-r32-comcast-cable-communications--inc",
+      "funder": "Comcast Cable Communications, Inc.",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "106",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 32
+      }
+    },
+    {
+      "id": "c-r33-comcast-foundation",
+      "funder": "Comcast Foundation",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "40",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 33
+      }
+    },
+    {
+      "id": "c-r34-comcast-sportsnet",
+      "funder": "Comcast SportsNet",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2120",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 34
+      }
+    },
+    {
+      "id": "c-r35-constellation-enterprises",
+      "funder": "Constellation Enterprises",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 35
+      }
+    },
+    {
+      "id": "c-r36-costco",
+      "funder": "Costco",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 10000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "1974",
+      "owner": "",
+      "notes": "Approach is a local store, does not support events",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 36
+      }
+    },
+    {
+      "id": "c-r37-covington---burlington",
+      "funder": "Covington & Burlington",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 37
+      }
+    },
+    {
+      "id": "c-r38-david-canada",
+      "funder": "David Canada",
+      "segment": "Corporate",
+      "tier": 1,
+      "aorAmount": 1500.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2723",
+      "owner": "",
+      "notes": "Any matched gift opportunities?",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 38
+      }
+    },
+    {
+      "id": "c-r39-dc-food-and-beverage-collective",
+      "funder": "DC Food and Beverage Collective",
+      "segment": "Corporate",
+      "tier": 3,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3306",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 39
+      }
+    },
+    {
+      "id": "c-r40-deloitte",
+      "funder": "Deloitte",
+      "segment": "Corporate",
+      "tier": 1,
+      "aorAmount": 50000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "685",
+      "owner": "",
+      "notes": "Explicitly funds career-pathway orgs and college scholarships at intersection of equity and business/STEM",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 40
+      }
+    },
+    {
+      "id": "c-r41-event---deloitte",
+      "funder": "Event - Deloitte",
+      "segment": "Corporate",
+      "tier": 1,
+      "aorAmount": 5000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 41
+      }
+    },
+    {
+      "id": "c-r42-dr--scholl-foundation",
+      "funder": "Dr. Scholl Foundation",
+      "segment": "Corporate",
+      "tier": 3,
+      "aorAmount": 50000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3196",
+      "owner": "",
+      "notes": "Applied for grant in FY26, new prospect",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 42
+      }
+    },
+    {
+      "id": "c-r43-ernst---young--llp",
+      "funder": "Ernst & Young, LLP",
+      "segment": "Corporate",
+      "tier": 1,
+      "aorAmount": 60000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "756",
+      "owner": "",
+      "notes": "Gave $60k in FY26, increase ask for FY27. Engage through workforce development program",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 43
+      }
+    },
+    {
+      "id": "c-r44-exelon-corporation",
+      "funder": "Exelon Corporation",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 5000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2054",
+      "owner": "",
+      "notes": "Need clear contact to re-engage",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 44
+      }
+    },
+    {
+      "id": "c-r45-exxonmobil-foundation",
+      "funder": "ExxonMobil Foundation",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "116",
+      "owner": "",
+      "notes": "Does not support in DC Area, can still engage",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 45
+      }
+    },
+    {
+      "id": "c-r46-fannie-mae-foundation",
+      "funder": "Fannie Mae Foundation",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "45",
+      "owner": "",
+      "notes": "Disqualify",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 46
+      }
+    },
+    {
+      "id": "c-r47-fifa",
+      "funder": "FIFA",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2690",
+      "owner": "",
+      "notes": "Disqualify",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 47
+      }
+    },
+    {
+      "id": "c-r48-ford-philanthropy",
+      "funder": "Ford Philanthropy",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3010",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 48
+      }
+    },
+    {
+      "id": "c-r49-geico-philanthropic-foundation",
+      "funder": "Geico Philanthropic Foundation",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 10000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "51",
+      "owner": "",
+      "notes": "Pillar: promoting equity",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 49
+      }
+    },
+    {
+      "id": "c-r50-general-dynamics",
+      "funder": "General Dynamics",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 15000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "118",
+      "owner": "",
+      "notes": "Very STEM focused, could engage through CCL; need clear contact",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 50
+      }
+    },
+    {
+      "id": "c-r51-giant-food-foundation",
+      "funder": "Giant Food Foundation",
+      "segment": "Corporate",
+      "tier": 3,
+      "aorAmount": 20000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "52",
+      "owner": "",
+      "notes": "declined 2026 Grad Event support, continue to engage (Social Equity pillar may work, mostly hunger)",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 51
+      }
+    },
+    {
+      "id": "c-r52-goldman--sachs---co",
+      "funder": "Goldman, Sachs & Co.",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 20000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "1697",
+      "owner": "",
+      "notes": "Goldman Sachs Foundation (invite only), Goldman Sachs Gives (employee led)",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 52
+      }
+    },
+    {
+      "id": "c-r53-google",
+      "funder": "Google",
+      "segment": "Corporate",
+      "tier": 3,
+      "aorAmount": 75000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2345",
+      "owner": "",
+      "notes": "Need clear strategy, work with EW",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 53
+      }
+    },
+    {
+      "id": "c-r54-event---google",
+      "funder": "Event - Google",
+      "segment": "Corporate",
+      "tier": 2,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 54
+      }
+    },
+    {
+      "id": "c-r55-hks--rfk-construction-company",
+      "funder": "HKS (RFK Construction Company)",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 55
+      }
+    },
+    {
+      "id": "c-r56-jpmorgan-chase",
+      "funder": "JPMorgan Chase",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2907",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 56
+      }
+    },
+    {
+      "id": "c-r57-jpmorgan-chase-foundation",
+      "funder": "JPMorgan Chase Foundation",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "1878",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 57
+      }
+    },
+    {
+      "id": "c-r58-kpmg--llp",
+      "funder": "KPMG, LLP",
+      "segment": "Corporate",
+      "tier": 1,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "130",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 58
+      }
+    },
+    {
+      "id": "c-r59-latham---watkins",
+      "funder": "Latham & Watkins",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 59
+      }
+    },
+    {
+      "id": "c-r60-livenation-ticketmaster--llc",
+      "funder": "LiveNation/Ticketmaster, LLC",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2219",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 60
+      }
+    },
+    {
+      "id": "c-r61-lockheed-martin-corporation",
+      "funder": "Lockheed Martin Corporation",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "131",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 61
+      }
+    },
+    {
+      "id": "c-r62-mcdonalds",
+      "funder": "McDonalds",
+      "segment": "Corporate",
+      "tier": 3,
+      "aorAmount": 50000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2689",
+      "owner": "",
+      "notes": "Local Restaurant approach",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 62
+      }
+    },
+    {
+      "id": "c-r63-medstar-health",
+      "funder": "MedStar Health",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "876",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 63
+      }
+    },
+    {
+      "id": "c-r64-mgm-resorts-international",
+      "funder": "MGM Resorts International",
+      "segment": "Corporate",
+      "tier": 3,
+      "aorAmount": 30000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3291",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 64
+      }
+    },
+    {
+      "id": "c-r65-morgan-stanley",
+      "funder": "Morgan Stanley",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2648",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 65
+      }
+    },
+    {
+      "id": "c-r66-navient-solutions-incorporated",
+      "funder": "Navient Solutions Incorporated",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2069",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 66
+      }
+    },
+    {
+      "id": "c-r67-nba-foundation",
+      "funder": "NBA Foundation",
+      "segment": "Corporate",
+      "tier": 2,
+      "aorAmount": 125000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "applied in March 2026 (FY26)",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 67
+      }
+    },
+    {
+      "id": "c-r68-new-balance",
+      "funder": "New Balance",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 68
+      }
+    },
+    {
+      "id": "c-r69-newscorp",
+      "funder": "NewsCorp",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2029",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 69
+      }
+    },
+    {
+      "id": "c-r70-nfl",
+      "funder": "NFL",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "929",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 70
+      }
+    },
+    {
+      "id": "c-r71-northrop-grumman",
+      "funder": "Northrop Grumman",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 5000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "933",
+      "owner": "",
+      "notes": "heavy focus on STEM, should invite to events",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 71
+      }
+    },
+    {
+      "id": "c-r72-nucor",
+      "funder": "Nucor",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "Continue to engage",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 72
+      }
+    },
+    {
+      "id": "c-r74-pepco",
+      "funder": "Pepco",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 74
+      }
+    },
+    {
+      "id": "c-r75-pricewaterhousecoopers",
+      "funder": "PricewaterhouseCoopers",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "139",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 75
+      }
+    },
+    {
+      "id": "c-r76-sallie-mae-fund",
+      "funder": "Sallie Mae Fund",
+      "segment": "Corporate",
+      "tier": 1,
+      "aorAmount": 50000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "480",
+      "owner": "",
+      "notes": "Unlikely to support events next FY, Need to engage through CCL",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 76
+      }
+    },
+    {
+      "id": "c-r77-schwab-charitable",
+      "funder": "Schwab Charitable",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2370",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 77
+      }
+    },
+    {
+      "id": "c-r79-sheehy-auto-stores",
+      "funder": "Sheehy Auto Stores",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 5000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "Prioritizes DMV community support",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 79
+      }
+    },
+    {
+      "id": "c-r80-stephen-c--orr",
+      "funder": "Stephen C. Orr",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 5000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2936",
+      "owner": "",
+      "notes": "Send updated materials to re-engage",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 80
+      }
+    },
+    {
+      "id": "c-r81-susan-fox",
+      "funder": "Susan Fox",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3083",
+      "owner": "",
+      "notes": "Pat Butler connections? Bump to EW?",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 81
+      }
+    },
+    {
+      "id": "c-r82-textron",
+      "funder": "Textron",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3018",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 82
+      }
+    },
+    {
+      "id": "c-r83-event---the-leonsis-foundation",
+      "funder": "Event - The Leonsis Foundation",
+      "segment": "Corporate",
+      "tier": 1,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2071",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 83
+      }
+    },
+    {
+      "id": "c-r84-the-tjx-companies-incorporated",
+      "funder": "The TJX Companies Incorporated",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2231",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 84
+      }
+    },
+    {
+      "id": "c-r85-uber",
+      "funder": "Uber",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2675",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 85
+      }
+    },
+    {
+      "id": "c-r86-us-bank",
+      "funder": "US Bank",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 86
+      }
+    },
+    {
+      "id": "c-r87-venture-global-incorporated",
+      "funder": "Venture Global Incorporated",
+      "segment": "Corporate",
+      "tier": 2,
+      "aorAmount": 50000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2975",
+      "owner": "",
+      "notes": "Continue to cultivate",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 87
+      }
+    },
+    {
+      "id": "c-r88-verizon-foundation",
+      "funder": "Verizon Foundation",
+      "segment": "Corporate",
+      "tier": 2,
+      "aorAmount": 30000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "83",
+      "owner": "",
+      "notes": "Continue to cultivate, have not heard much (new approach)",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 88
+      }
+    },
+    {
+      "id": "c-r89-vermont-associates-c-o--axent-realty-group",
+      "funder": "Vermont Associates c/o: Axent Realty Group",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "1819",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 89
+      }
+    },
+    {
+      "id": "c-r90-vida-fitness",
+      "funder": "Vida Fitness",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 10000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "Event Specific",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 90
+      }
+    },
+    {
+      "id": "c-r91-vista-equity-partners",
+      "funder": "Vista Equity Partners",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2984",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 91
+      }
+    },
+    {
+      "id": "c-r92-vulcan-materials",
+      "funder": "Vulcan Materials",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 92
+      }
+    },
+    {
+      "id": "c-r93-washington-commanders",
+      "funder": "Washington Commanders",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 93
+      }
+    },
+    {
+      "id": "c-r94-wells-fargo",
+      "funder": "Wells Fargo",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2676",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 94
+      }
+    },
+    {
+      "id": "c-r95-wilmerhale",
+      "funder": "Wilmerhale",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 95
+      }
+    },
+    {
+      "id": "c-r96-anthropic",
+      "funder": "Anthropic",
+      "segment": "Corporate",
+      "tier": 3,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 96
+      }
+    },
+    {
+      "id": "c-r97-ben-s-chili-bowl",
+      "funder": "Ben's Chili Bowl",
+      "segment": "Corporate",
+      "tier": 3,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 97
+      }
+    },
+    {
+      "id": "c-r98-openai",
+      "funder": "OpenAI",
+      "segment": "Corporate",
+      "tier": 3,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 98
+      }
+    },
+    {
+      "id": "c-r100-brian-forde",
+      "funder": "Brian Forde",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 100
+      }
+    },
+    {
+      "id": "c-r101-netflix",
+      "funder": "Netflix",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 101
+      }
+    },
+    {
+      "id": "c-r102-total-wine",
+      "funder": "Total Wine",
+      "segment": "Corporate",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Corporate",
+        "rowIndex": 102
+      }
+    },
+    {
+      "id": "i-r21-ronald-abramson",
+      "funder": "Ronald Abramson",
+      "segment": "Individual",
+      "tier": 1,
+      "aorAmount": 10000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2368",
+      "owner": "Eric Portfolio - Board Member",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 21
+      }
+    },
+    {
+      "id": "i-r22-roy-austin",
+      "funder": "Roy Austin",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "1410",
+      "owner": "Eric Portflio",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 22
+      }
+    },
+    {
+      "id": "i-r24-thomas-baltimore--jr",
+      "funder": "Thomas Baltimore, Jr.",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 5000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2976",
+      "owner": "Annual Fund",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 24
+      }
+    },
+    {
+      "id": "i-r25-afsaneh-beschloss",
+      "funder": "Afsaneh Beschloss",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2949",
+      "owner": "Eric Portflio - Referred by Ted Leonsis",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 25
+      }
+    },
+    {
+      "id": "i-r26-jeremy-blank",
+      "funder": "Jeremy Blank",
+      "segment": "Individual",
+      "tier": 1,
+      "aorAmount": 1000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2372",
+      "owner": "Eric Portfolio - Board Member",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 26
+      }
+    },
+    {
+      "id": "i-r27-scott-bowman",
+      "funder": "Scott Bowman",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2953",
+      "owner": "Annual Fund",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 27
+      }
+    },
+    {
+      "id": "i-r28-muriel-bowser",
+      "funder": "Muriel Bowser",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2374",
+      "owner": "Eric Portflio",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 28
+      }
+    },
+    {
+      "id": "i-r30-amy-brandwein",
+      "funder": "Amy Brandwein",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2947",
+      "owner": "Eric Portflio - Referred by Ted Leonsis",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 30
+      }
+    },
+    {
+      "id": "i-r31-candice-bryant",
+      "funder": "Candice Bryant",
+      "segment": "Individual",
+      "tier": 1,
+      "aorAmount": 6000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "223",
+      "owner": "Annual Fund",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 31
+      }
+    },
+    {
+      "id": "i-r32-sylvia-burwell",
+      "funder": "Sylvia Burwell",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "Board Member Individual Prospect - Patrick Butler",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 32
+      }
+    },
+    {
+      "id": "i-r33-david-canada",
+      "funder": "David Canada",
+      "segment": "Individual",
+      "tier": 1,
+      "aorAmount": 1000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2723",
+      "owner": "Eric Portfolio - Board Member",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 33
+      }
+    },
+    {
+      "id": "i-r34-jeff-cole",
+      "funder": "Jeff Cole",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2945",
+      "owner": "Eric Portflio - Referred by Ted Leonsis",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 34
+      }
+    },
+    {
+      "id": "i-r35-tom-davis",
+      "funder": "Tom Davis",
+      "segment": "Individual",
+      "tier": 1,
+      "aorAmount": 10000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2268",
+      "owner": "Eric Portfolio - Board Member",
+      "notes": "Minimum Personal Gift",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 35
+      }
+    },
+    {
+      "id": "i-r36-joe-del-guercio",
+      "funder": "Joe Del Guercio",
+      "segment": "Individual",
+      "tier": 1,
+      "aorAmount": 5000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2628",
+      "owner": "Eric Portfolio - Board Member",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 36
+      }
+    },
+    {
+      "id": "i-r37-monica-dixon",
+      "funder": "Monica Dixon",
+      "segment": "Individual",
+      "tier": 1,
+      "aorAmount": 5000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2977",
+      "owner": "Annual Fund",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 37
+      }
+    },
+    {
+      "id": "i-r38-arne-duncan",
+      "funder": "Arne Duncan",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2958",
+      "owner": "Eric Portflio",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 38
+      }
+    },
+    {
+      "id": "i-r39-mark-ein",
+      "funder": "Mark Ein",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 5000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2001",
+      "owner": "Eric Portflio - Former Board Member",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 39
+      }
+    },
+    {
+      "id": "i-r40-julie-elise",
+      "funder": "Julie Elise",
+      "segment": "Individual",
+      "tier": 2,
+      "aorAmount": 1000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2937",
+      "owner": "Annual Fund",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 40
+      }
+    },
+    {
+      "id": "i-r41-bruce-evans",
+      "funder": "Bruce Evans",
+      "segment": "Individual",
+      "tier": 1,
+      "aorAmount": 1000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3292",
+      "owner": "Eric Portfolio - Board Member",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 41
+      }
+    },
+    {
+      "id": "i-r42-jos\u00e9-feliciano",
+      "funder": "Jos\u00e9 Feliciano",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "Board Member Individual Prospect - Katherine Bradley",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 42
+      }
+    },
+    {
+      "id": "i-r43-lewis-ferebee",
+      "funder": "Lewis Ferebee",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2627",
+      "owner": "Eric Portfolio - Board Member",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 43
+      }
+    },
+    {
+      "id": "i-r44-raul-fernandez",
+      "funder": "Raul Fernandez",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 10000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "454",
+      "owner": "Eric Portfolio - Former Board Member",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 44
+      }
+    },
+    {
+      "id": "i-r45-andrew-flagel",
+      "funder": "Andrew Flagel",
+      "segment": "Individual",
+      "tier": 1,
+      "aorAmount": 1000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2269",
+      "owner": "Eric Portfolio - Board Member",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 45
+      }
+    },
+    {
+      "id": "i-r46-donald-graham",
+      "funder": "Donald Graham",
+      "segment": "Individual",
+      "tier": 1,
+      "aorAmount": 10000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "281",
+      "owner": "Eric Portfolio - Board Member",
+      "notes": "Minimum Personal Gift - Paid off last pledg",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 46
+      }
+    },
+    {
+      "id": "i-r47-eric-grossman",
+      "funder": "Eric Grossman",
+      "segment": "Individual",
+      "tier": 3,
+      "aorAmount": 5000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2957",
+      "owner": "Annual Fund",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 47
+      }
+    },
+    {
+      "id": "i-r49-reed-hastings",
+      "funder": "Reed Hastings",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2965",
+      "owner": "Eric Portflio - Referred by Ted Leonsis",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 49
+      }
+    },
+    {
+      "id": "i-r50-adam-heintz",
+      "funder": "Adam Heintz",
+      "segment": "Individual",
+      "tier": 3,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2711",
+      "owner": "Annual Fund",
+      "notes": "Lapsed Donor",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 50
+      }
+    },
+    {
+      "id": "i-r51-robert-hisaoka",
+      "funder": "Robert Hisaoka",
+      "segment": "Individual",
+      "tier": 3,
+      "aorAmount": 5000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "Board Member Individual Prospect - Russ Ramsey",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 51
+      }
+    },
+    {
+      "id": "i-r52-mellody-hobson",
+      "funder": "Mellody Hobson",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2961",
+      "owner": "Eric Portflio - Referred by Ted Leonsis",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 52
+      }
+    },
+    {
+      "id": "i-r53-reid-hoffman",
+      "funder": "Reid Hoffman",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2971",
+      "owner": "Eric Portflio - Referred by Ted Leonsis",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 53
+      }
+    },
+    {
+      "id": "i-r54-julie-jones",
+      "funder": "Julie Jones",
+      "segment": "Individual",
+      "tier": 2,
+      "aorAmount": 1000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3308",
+      "owner": "Annual Fund",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 54
+      }
+    },
+    {
+      "id": "i-r55-hal-s--jones",
+      "funder": "Hal S. Jones",
+      "segment": "Individual",
+      "tier": 2,
+      "aorAmount": 7000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3155",
+      "owner": "Annual Fund",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 55
+      }
+    },
+    {
+      "id": "i-r56-amry-junaideen",
+      "funder": "Amry Junaideen",
+      "segment": "Individual",
+      "tier": 1,
+      "aorAmount": 5000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2884",
+      "owner": "Eric Portfolio - Board Member",
+      "notes": "Minimum Personal Gift",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 56
+      }
+    },
+    {
+      "id": "i-r57-jordan-kaplan",
+      "funder": "Jordan Kaplan",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2912",
+      "owner": "Eric Portflio - Referred by Ted Leonsis",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 57
+      }
+    },
+    {
+      "id": "i-r58-paul-kihn",
+      "funder": "Paul Kihn",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2742",
+      "owner": "Eric Portfolio - Board Member",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 58
+      }
+    },
+    {
+      "id": "i-r59-robert-kogod",
+      "funder": "Robert Kogod",
+      "segment": "Individual",
+      "tier": 3,
+      "aorAmount": 15000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "455",
+      "owner": "Eric Portfolio - Former Board Member",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 59
+      }
+    },
+    {
+      "id": "i-r60-nick-kotz",
+      "funder": "Nick Kotz",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "1572",
+      "owner": "Annual Fund",
+      "notes": "Lapsed Donor",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 60
+      }
+    },
+    {
+      "id": "i-r61-marc-lasry",
+      "funder": "Marc Lasry",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "Board Member Individual Prospect - Russ Ramsey",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 61
+      }
+    },
+    {
+      "id": "i-r62-robert-lees",
+      "funder": "Robert Lees",
+      "segment": "Individual",
+      "tier": 2,
+      "aorAmount": 2000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2284",
+      "owner": "Annual Fund",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 62
+      }
+    },
+    {
+      "id": "i-r64-george-lucas",
+      "funder": "George Lucas",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2960",
+      "owner": "Eric Portflio - Referred by Ted Leonsis",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 64
+      }
+    },
+    {
+      "id": "i-r65-pinkie-mayfield",
+      "funder": "Pinkie Mayfield",
+      "segment": "Individual",
+      "tier": 1,
+      "aorAmount": 1000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "1294",
+      "owner": "Eric Portfolio - Board Member",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 65
+      }
+    },
+    {
+      "id": "i-r66-jonathan-mcbride",
+      "funder": "Jonathan McBride",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2941",
+      "owner": "Eric Portflio - Referred by Ted Leonsis",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 66
+      }
+    },
+    {
+      "id": "i-r67-antoinette-mitchell",
+      "funder": "Antoinette Mitchell",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "3180",
+      "owner": "Eric Portfolio - Board Member",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 67
+      }
+    },
+    {
+      "id": "i-r68-melanie-nussdorf",
+      "funder": "Melanie Nussdorf",
+      "segment": "Individual",
+      "tier": 3,
+      "aorAmount": 15000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2964",
+      "owner": "Eric Portfolio",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 68
+      }
+    },
+    {
+      "id": "i-r70-russell-ramsey",
+      "funder": "Russell Ramsey",
+      "segment": "Individual",
+      "tier": 1,
+      "aorAmount": 10000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2070",
+      "owner": "Eric Portfolio - Board Member",
+      "notes": "Minimum Personal Gift",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 70
+      }
+    },
+    {
+      "id": "i-r71-nikki-reid",
+      "funder": "Nikki Reid",
+      "segment": "Individual",
+      "tier": 1,
+      "aorAmount": 1000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2631",
+      "owner": "Eric Portfolio - Board Member",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 71
+      }
+    },
+    {
+      "id": "i-r72-john-rogers",
+      "funder": "John Rogers",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2963",
+      "owner": "Eric Portflio - Referred by Ted Leonsis",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 72
+      }
+    },
+    {
+      "id": "i-r73-david-rubinstein",
+      "funder": "David Rubinstein",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "Board Member Individual Prospect",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 73
+      }
+    },
+    {
+      "id": "i-r74-james-sarakatsannis",
+      "funder": "James Sarakatsannis",
+      "segment": "Individual",
+      "tier": 3,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2974",
+      "owner": "Annual Fund",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 74
+      }
+    },
+    {
+      "id": "i-r75-james-shelton",
+      "funder": "James Shelton",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2829",
+      "owner": "Eric Portflio - Former Board Member",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 75
+      }
+    },
+    {
+      "id": "i-r76-richard-simmons",
+      "funder": "Richard Simmons",
+      "segment": "Individual",
+      "tier": 3,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "Annual Fund",
+      "notes": "Lapsed Donor",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 76
+      }
+    },
+    {
+      "id": "i-r77-jeffrey-skoll",
+      "funder": "Jeffrey Skoll",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2942",
+      "owner": "Eric Portflio - Referred by Ted Leonsis",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 77
+      }
+    },
+    {
+      "id": "i-r78-robert--rob--stewart",
+      "funder": "Robert \"Rob\" Stewart",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "Board Member Individual Prospect - Russ Ramsey",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 78
+      }
+    },
+    {
+      "id": "i-r79-sandy-stonesifer",
+      "funder": "Sandy Stonesifer",
+      "segment": "Individual",
+      "tier": 3,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2905",
+      "owner": "Eric Portflio - Referred by Ted Leonsis",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 79
+      }
+    },
+    {
+      "id": "i-r80-tamika-tremaglio",
+      "funder": "Tamika Tremaglio",
+      "segment": "Individual",
+      "tier": 3,
+      "aorAmount": 1000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2630",
+      "owner": "Eric Portflio - Advisory Board Member",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 80
+      }
+    },
+    {
+      "id": "i-r81-toni-verstandig",
+      "funder": "Toni Verstandig",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2833",
+      "owner": "Eric Portflio - Referred by Katherine Bradley",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 81
+      }
+    },
+    {
+      "id": "i-r82-nadja-west",
+      "funder": "Nadja West",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2943",
+      "owner": "Eric Portflio - Referred by Ted Leonsis",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 82
+      }
+    },
+    {
+      "id": "i-r83-michael-winger",
+      "funder": "Michael Winger",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 5000.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2955",
+      "owner": "Annual Fund",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 83
+      }
+    },
+    {
+      "id": "i-r84-ted-xenohristos",
+      "funder": "Ted Xenohristos",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2946",
+      "owner": "Eric Portflio - Referred by Ted Leonsis",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 84
+      }
+    },
+    {
+      "id": "i-r85-pamela-yee",
+      "funder": "Pamela Yee",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2948",
+      "owner": "Eric Portflio - Referred by Ted Leonsis",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 85
+      }
+    },
+    {
+      "id": "i-r86-charles-zaloudek",
+      "funder": "Charles Zaloudek",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2981",
+      "owner": "Annual Fund",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 86
+      }
+    },
+    {
+      "id": "i-r87-mary-zients",
+      "funder": "Mary Zients",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "2915",
+      "owner": "Eric Portflio - Referred by Ted Leonsis",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 87
+      }
+    },
+    {
+      "id": "i-r88-cecila-munoz",
+      "funder": "Cecila Munoz",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 88
+      }
+    },
+    {
+      "id": "i-r89-grant-verstandig",
+      "funder": "Grant Verstandig",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 89
+      }
+    },
+    {
+      "id": "i-r90-lawrence-durito",
+      "funder": "Lawrence Durito",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 90
+      }
+    },
+    {
+      "id": "i-r91-james-cole",
+      "funder": "James Cole",
+      "segment": "Individual",
+      "tier": 4,
+      "aorAmount": 0.0,
+      "restrictedAddOn": 0.0,
+      "constituentId": "",
+      "owner": "",
+      "notes": "",
+      "_source": {
+        "tab": "Individual",
+        "rowIndex": 91
+      }
+    }
+  ],
   "baselines": {
-    "Foundation": { "fy27": 0, "fy28": 0, "fy29": 0 },
-    "Corporate": { "fy27": 0, "fy28": 0, "fy29": 0 },
-    "Individual": { "fy27": 0, "fy28": 0, "fy29": 0 }
+    "Foundation": {
+      "fy27": 630000.0,
+      "fy28": 0.0,
+      "fy29": 0.0
+    },
+    "Corporate": {
+      "fy27": 641000.0,
+      "fy28": 0.0,
+      "fy29": 0.0
+    },
+    "Individual": {
+      "fy27": 226600.0,
+      "fy28": 0.0,
+      "fy29": 0.0
+    }
   },
   "goals": {
-    "Foundation": { "fy27NewAor": 1000000, "fy28NewAor": 1400000, "fy29NewAor": 1550000 },
-    "Corporate": { "fy27NewAor": 1100000, "fy28NewAor": 1450000, "fy29NewAor": 1600000 },
-    "Individual": { "fy27NewAor": 400000, "fy28NewAor": 650000, "fy29NewAor": 850000 }
+    "Foundation": {
+      "fy27NewAor": 1100000.0,
+      "fy28NewAor": 1450000.0,
+      "fy29NewAor": 1600000.0
+    },
+    "Corporate": {
+      "fy27NewAor": 1000000.0,
+      "fy28NewAor": 1400000.0,
+      "fy29NewAor": 1550000.0
+    },
+    "Individual": {
+      "fy27NewAor": 400000.0,
+      "fy28NewAor": 650000.0,
+      "fy29NewAor": 850000.0
+    }
   }
 }
