@@ -4268,6 +4268,34 @@
         });
     }
 
+    // Reveal-animation failsafe (registered FIRST, outside the main DOMContentLoaded
+    // handler, so it survives any JS error in setupNavigation/setupAnimations/etc.).
+    // 1.2s after DOMContentLoaded fires, force .visible onto every element the
+    // IntersectionObserver in setupAnimations() should have observed. If the
+    // observer ran correctly, this is a no-op. If anything failed silently,
+    // content appears with the same transition. Catches the 2026-05-07 report
+    // where Chrome trapped the weekly resources at opacity:0 while Comet did not.
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(function() {
+            document.querySelectorAll('section, .card-grid, .quick-stats, .timeline-track, .office-hours-callout, .executive-brief, .prerequisite-card').forEach(function(el) {
+                if (!el.classList.contains('visible')) {
+                    el.classList.add('visible');
+                }
+            });
+        }, 1200);
+    });
+    // Belt-and-suspenders: window load fires after all subresources finish.
+    // Even if DOMContentLoaded never fires for some pathological reason, this will.
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            document.querySelectorAll('section, .card-grid, .quick-stats, .timeline-track, .office-hours-callout, .executive-brief, .prerequisite-card').forEach(function(el) {
+                if (!el.classList.contains('visible')) {
+                    el.classList.add('visible');
+                }
+            });
+        }, 200);
+    });
+
     document.addEventListener('DOMContentLoaded', () => {
         // Pilot complete (May 2026): no gate, no sign-in. Force-unlock any gated UI.
         document.querySelectorAll('.pre-gate-locked').forEach(el => {
