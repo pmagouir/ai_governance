@@ -1,1 +1,18 @@
-DAILY_BRIEFING_DEPLOY_20260430.md
+# Dependencies
+node_modules/
+**/node_modules/
+
+# OS / editor cruft
+.DS_Store
+**/.DS_Store
+.fuse_hidden*
+**/.fuse_hidden*
+*.swp
+*~
+
+# Build / temp
+.cache/
+dist-tmp/
+
+# Local session scratch
+*.log
