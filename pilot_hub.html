@@ -3884,14 +3884,18 @@ em-dashes &gt;2 per piece.
 
         const storedName = getParticipantName();
 
-        if (storedName) {
-            // Already identified: hide gate, show greeting
+        // Identity Gate DISABLED 2026-05-08: hub launched, name overlay no longer blocks entry.
+        // Participants can still self-identify via the Change Identity link, which restores
+        // cloud-synced progress; no name = no greeting and no cloud sync, but page is open.
+        if (overlay) {
             overlay.classList.add('hidden');
-            setTimeout(() => { overlay.style.display = 'none'; }, 400);
-            greeting.style.display = 'block';
-            greetingName.textContent = storedName;
+            overlay.style.display = 'none';
+        }
 
-            // Sync progress from cloud on every page load (handles device switches)
+        if (storedName) {
+            // Returning identified user: show greeting + sync progress from cloud
+            if (greeting) greeting.style.display = 'block';
+            if (greetingName) greetingName.textContent = storedName;
             resumeSessionWithUI(storedName);
         }
 
