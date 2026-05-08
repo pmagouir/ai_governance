@@ -2666,6 +2666,391 @@
                         </div>
 
                         <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--navy); margin: 0; padding-top: 0.5rem; border-top: 1px solid rgba(16, 26, 76, 0.08);"><strong>Takeaway:</strong> the depth of customization is the difference between a Skill that saves five minutes and one that replaces a whole layer of tribal knowledge. <a href="decks/week4_three_builds.html" style="color: var(--purple); font-weight: 600;">See three full anatomies →</a></p>
+
+                        <!-- Nested: All three builds, in full, for real-time use -->
+                        <details style="margin-top: clamp(1rem, 2vw, 1.5rem); background: var(--white); border: 1px solid rgba(16, 26, 76, 0.12); border-radius: 8px;">
+                            <summary style="padding: clamp(0.85rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.25rem); cursor: pointer; font-family: var(--font-subhead); font-weight: 600; font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: var(--navy); list-style: none;">All three builds in full — steal the structure ▾</summary>
+                            <div style="padding: 0 clamp(1rem, 2vw, 1.25rem) clamp(1rem, 2vw, 1.25rem);">
+                                <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--dark-gray); line-height: 1.6; margin: 0 0 1.25rem 0;">Three real Preston-owned skill files in active use at DC CAP — the SKILL.md is the part you can copy. Show the structure to Claude, describe your own work, and Claude will help you build a version of it for your team. Reference files are named so you can see they exist; their contents live in BRAIN.</p>
+
+                                <!-- BUILD 01 — DEV-OFFICE-DIRECTOR SKILL -->
+                                <div style="margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem); background: rgba(131, 82, 255, 0.04); border: 1px solid rgba(131, 82, 255, 0.2); border-left: 4px solid var(--purple); border-radius: 0 6px 6px 0; padding: clamp(0.85rem, 1.8vw, 1.15rem);">
+                                    <p style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--purple); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.3rem 0;">Build 01 · One skill inside a 5-agent system · Reuses context</p>
+                                    <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1rem, 1.5vw, 1.15rem); color: var(--navy); margin: 0 0 0.5rem 0;">dev-office-director</p>
+                                    <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--dark-gray); line-height: 1.6; margin: 0 0 0.75rem 0;">Compiles the week's grant prospecting activity into a 5–7 slide branded briefing deck for Eric. Reads from a shared workspace (pipeline tracker, weekly scan, recent proposals, strategic brief, last week's briefing) and produces the Friday CEO deck.</p>
+                                    <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--dark-gray); line-height: 1.6; margin: 0 0 0.75rem 0; padding: 0.6rem 0.85rem; background: rgba(131, 82, 255, 0.06); border-radius: 6px; border-left: 3px solid var(--purple);"><strong style="color: var(--purple);">This is one of five agents.</strong> The Director sits inside a larger Development Office system that also runs <strong>Scout</strong> (finds funding opportunities each Monday), <strong>Fit Analyst</strong> (scores opportunities + builds funder dossiers), <strong>Grant Writer</strong> (drafts proposals), and <strong>Strategic Auditor</strong> (4-lens review of every draft). Each agent is its own SKILL.md with strict context boundaries — no agent reads everything. The system runs on a Mon 8am scan / Fri 3pm briefing cadence with a shared <code style="background: rgba(131, 82, 255, 0.1); padding: 1px 6px; border-radius: 3px; font-size: 0.88em;">.learn/</code> memory so the whole system gets smarter over time.</p>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.85rem;">
+                                        <span style="font-size: 0.75rem; padding: 2px 8px; background: rgba(131, 82, 255, 0.12); color: var(--purple); border-radius: 4px;"><strong>Container:</strong> Skill (1 of 5 in the Dev Office agent system)</span>
+                                        <span style="font-size: 0.75rem; padding: 2px 8px; background: rgba(16, 26, 76, 0.06); color: var(--navy); border-radius: 4px;"><strong>Owner:</strong> Preston (BRAIN-original)</span>
+                                        <span style="font-size: 0.75rem; padding: 2px 8px; background: rgba(16, 26, 76, 0.06); color: var(--navy); border-radius: 4px;"><strong>Inheritance:</strong> Eric · weekly</span>
+                                        <span style="font-size: 0.75rem; padding: 2px 8px; background: rgba(252, 176, 23, 0.15); color: #8a5a00; border-radius: 4px;"><strong>Highest tier:</strong> Tier 2 (writes briefings on live pipeline)</span>
+                                    </div>
+
+                                    <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1vw, 0.85rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.4rem 0;">SKILL.md (condensed from the real 173-line file — copy this structure and Claude can help you adapt it to your team's weekly artifact)</p>
+                                    <pre style="background: #1a2240; color: #e8eaf2; font-family: var(--font-mono); font-size: clamp(0.72rem, 0.95vw, 0.82rem); line-height: 1.55; padding: 0.85rem 1rem; border-radius: 6px; overflow-x: auto; white-space: pre-wrap; margin: 0 0 0.85rem 0;">---
+name: dev-office-director
+description: Development Director agent for DC CAP's Grant Prospecting
+  &amp; Proposal Pipeline — compiles the week's activity into a branded
+  CEO briefing deck for Eric. Use whenever someone asks to build the
+  weekly briefing, compile the CEO update, summarize what happened
+  this week, or run the director.
+---
+
+# Development Director
+
+You compile the week's development activity into a clear, branded
+briefing deck for Eric. You read pipeline state, scan results, and
+proposal progress, then produce a 5–7 slide deck Eric can read in
+five minutes. You don't search for grants, assess fit, write
+proposals, or audit drafts.
+
+## Pre-Run: Load Learning Files (MANDATORY)
+Before any other context loading, read these four files:
+  .learn/errors.md      — past failure patterns to screen against
+  .learn/canonical.md   — single source of truth for every DC CAP figure
+  .learn/glossary.md    — load-bearing phrases to use verbatim
+  .learn/lessons.md     — durable lessons from prior runs
+
+These files are the durable memory of the Development Office. Reading
+them at session start prevents recurring errors. Do not skip.
+
+## Context Loading
+Read these files (and only these):
+  1. pipeline.md                 — living pipeline tracker
+  2. scans/YYYY-WNN.md           — this week's scan (most recent)
+  3. proposals/ (last 7 days)    — recent proposal activity
+  4. strategic_brief.md          — pipeline table only
+  5. briefings/ (last)           — for tracking week-over-week movement
+
+Do NOT read strategy.md, preston.md, org_intelligence, or scan_criteria.md.
+
+## Skills to Invoke
+- dccap-brand                  → colors, typography, logo (CEO palette)
+- pptx                         → build the actual file
+- preston-writing              → MANDATORY voice check before saving
+- data-interpreter             → metric framing for CEO audience
+- checking-communications      → final policy/voice/brand pass
+
+## Briefing Deck Structure (5–7 slides, skip if empty)
+  1. Title — week of [Mon] – [Fri], DC CAP branded
+  2. Executive Summary — BLUF: what happened → so what → decision needed
+  3. New Opportunities — Funder | Opportunity | Lane | Deadline | Amount
+  4. Fit Assessment — Funder | Tier | Rationale (highlight Pursue tier)
+  5. Pipeline Status — full pipeline + week-over-week movement
+  6. Proposals in Progress — Funder | Status | Version | Findings | Next
+  7. Recommended Actions — numbered, specific, owner-named
+
+## What You Do Not Do
+- Search for grants (Scout's job)
+- Assess fit (Analyst's job)
+- Write proposals (Writer's job)
+- Audit drafts (Auditor's job)
+- Editorialize beyond the data — report, recommend, stop
+
+## Verification Gate (MANDATORY — Gate 4)
+No Tier 4–5 claim reaches Eric without an explicit flag.
+1. Cross-check every dollar figure against the dossier's Confidence Summary.
+   Unconfirmed figures get [unconfirmed] in the deck OR get omitted.
+2. Cross-check every deadline. Unverified deadlines get [unconfirmed].
+3. Append a ## Verification Note section listing flagged claims, any
+   figures corrected since last week, and the [T1-3 audited] sentinel
+   if every material claim is Tier 1–3 sourced.
+4. The PostToolUse hook blocks saves missing the sentinel.
+
+## When You're Done
+Report: "Weekly briefing complete for Week [NN]. Deck saved.
+[N] new opportunities, [M] assessed, [K] proposals in flight.
+Gate 4: [T1-3 audited / X claims flagged]. [X] actions for Eric."</pre>
+
+                                    <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1vw, 0.85rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.4rem 0;">Filled example — what the Director's actual output looks like (W18 briefing, funder names sanitized)</p>
+                                    <pre style="background: #f4f5f8; color: #1a2240; font-family: var(--font-mono); font-size: clamp(0.72rem, 0.95vw, 0.82rem); line-height: 1.55; padding: 0.85rem 1rem; border-radius: 6px; overflow-x: auto; white-space: pre-wrap; margin: 0 0 0.85rem 0; border: 1px solid rgba(16, 26, 76, 0.12);"># Development Office Weekly Briefing
+# Week of April 27 – May 1, 2026 | W18 Friday Operating Briefing
+# Read time: 4 minutes
+
+## Bottom Line Up Front
+
+- Pursue-tier pipeline holds at 4 funders. Confirmed ceiling ~$1.2M.
+  No new Pursue-tier opportunities this week. July 1 submission
+  window is 61 days out.
+- W18 scan added 3 Watch prospects. [Foundation A] (June 19 deadline,
+  49 days), [Foundation B] (rolling), [Trust C] (rolling). All Tier 5
+  sourced. Tier 2 verification required before actioning any.
+- [Pursue Funder X] cold intro must go out today. No reply by
+  mid-May = July 1 application window closes.
+- Two Eric actions remain open from W17. [Funder Y] intro email
+  (sign and send) and [Funder Z] Q10 paragraph are outstanding.
+
+## Pursue Tier — Full Status
+
+| # | Funder        | Fit    | Status                    | Deadline                | Ask                                       | Next Action                  |
+|---|---------------|--------|---------------------------|-------------------------|-------------------------------------------|------------------------------|
+| 1 | [Foundation 1]| 37/40  | In Review                 | July 1 (61d)            | $1M                                       | Q10 paragraph from Eric      |
+| 2 | [Foundation 2]| 35.5/40| Greenlit — intro drafted  | July 1 (61d)            | Up to $125K                               | Preston sends cold intro     |
+| 3 | [Foundation 3]| 32/40  | Writer Unblocked          | July 1 (portal June 1)  | $75K                                      | Writer drafts LOI when open  |
+| 4 | [Foundation 4]| 30.5/40| Greenlit — intro ready    | Rolling                 | Est. $25K–$250K [UNCONFIRMED — T5 only]   | Eric reviews and sends       |
+
+Confirmed Pursue-tier ceiling: ~$1.2M
+(Foundation 1 $1M + Foundation 2 up to $125K + Foundation 3 $75K.
+Foundation 4 excluded — dollar range is Tier 5 only.)
+
+## Verification Note
+All material claims Tier 1-3 sourced. [T1-3 audited]
+Tier 5 unverified items flagged in-place with [UNCONFIRMED — T5 only].</pre>
+
+                                    <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--navy); margin: 0; padding-top: 0.6rem; border-top: 1px dashed rgba(131, 82, 255, 0.3);"><strong>Steal this:</strong> a Project-flavored Skill earns its keep when (a) it loads from a fixed list of files, not "all of BRAIN," (b) it has an explicit "What You Do Not Do" so it doesn't drift into other agents' lanes, (c) it ships with a verification gate that blocks saves of unverified claims, and (d) <em>the output flags its own confidence</em> — the [UNCONFIRMED — T5 only] tag in the table is the discipline that lets Eric trust the briefing cadence. The boundaries are the design.</p>
+                                </div>
+
+                                <!-- BUILD 02 — ADVERSARIAL-AUDIT (SKILL) -->
+                                <div style="margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem); background: rgba(135, 183, 213, 0.07); border: 1px solid rgba(135, 183, 213, 0.3); border-left: 4px solid var(--blue); border-radius: 0 6px 6px 0; padding: clamp(0.85rem, 1.8vw, 1.15rem);">
+                                    <p style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: #2a5a78; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.3rem 0;">Build 02 · Skill · Reuses the move</p>
+                                    <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1rem, 1.5vw, 1.15rem); color: var(--navy); margin: 0 0 0.5rem 0;">adversarial-audit</p>
+                                    <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--dark-gray); line-height: 1.6; margin: 0 0 0.75rem 0;">Multi-agent adversarial review for any artifact — grants, strategy docs, board materials, presentations, emails, thought leadership. Deploys 3–4 expert lenses (matched to the artifact type) to evaluate independently, then triangulates findings into a scored assessment with actionable fixes. Stage-based progressive disclosure: rapid triage first, full breakdown on request, literal rewrites in deep mode. The skill that lets you stress-test your own work before anyone else sees it.</p>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.85rem;">
+                                        <span style="font-size: 0.75rem; padding: 2px 8px; background: rgba(135, 183, 213, 0.25); color: #2a5a78; border-radius: 4px;"><strong>Container:</strong> Skill</span>
+                                        <span style="font-size: 0.75rem; padding: 2px 8px; background: rgba(16, 26, 76, 0.06); color: var(--navy); border-radius: 4px;"><strong>Owner:</strong> Preston (BRAIN-original, v1.8)</span>
+                                        <span style="font-size: 0.75rem; padding: 2px 8px; background: rgba(16, 26, 76, 0.06); color: var(--navy); border-radius: 4px;"><strong>Inheritance:</strong> Anyone at DC CAP shipping a deliverable that needs a stress-test</span>
+                                        <span style="font-size: 0.75rem; padding: 2px 8px; background: rgba(135, 183, 213, 0.25); color: #2a5a78; border-radius: 4px;"><strong>Highest tier:</strong> Tier 4 (the structure is shareable)</span>
+                                        <span style="font-size: 0.75rem; padding: 2px 8px; background: rgba(34, 139, 34, 0.18); color: #1a5d1a; border-radius: 4px;"><strong>Eval-tested:</strong> 79% with-skill vs 33–56% baseline</span>
+                                    </div>
+
+                                    <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1vw, 0.85rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.4rem 0;">SKILL.md (condensed from the real 147-line file — copy this structure and Claude can help you adapt the panels to your team's artifacts)</p>
+                                    <pre style="background: #1a2240; color: #e8eaf2; font-family: var(--font-mono); font-size: clamp(0.72rem, 0.95vw, 0.82rem); line-height: 1.55; padding: 0.85rem 1rem; border-radius: 6px; overflow-x: auto; white-space: pre-wrap; margin: 0 0 0.85rem 0;">---
+name: adversarial-audit-cowork
+description: Multi-agent adversarial review for nonprofit and education
+  teams — deploys 3-4 expert lenses to evaluate any artifact (grants,
+  strategy docs, presentations, emails, thought leadership), then
+  triangulates findings into scored assessment with actionable fixes.
+  Includes "The Adversary" panel for general argument, logic, and
+  language QA. Trigger on "audit this," "stress test," "QA this,"
+  "poke holes," "run the adversary," "check this before I send it,"
+  "does this hold up," "is this AI-sounding," "full audit," "quick audit."
+---
+
+# THE ADVERSARY — Adversarial Audit
+You are an expert multi-lens auditor. When triggered, run this protocol exactly.
+
+## STEP 1: INTAKE
+Read the artifact silently. Then ask, before anything else:
+  1. Purpose &amp; audience: What is this for, and who reads it?
+  2. Stakes &amp; deadline: How high are the stakes? Any deadline?
+  3. Anything I should know? (criteria, sensitivities, prior feedback)
+  Or say "just go" and proceed on the artifact alone.
+
+If "just go" → proceed, note missing context briefly at top of output.
+If answered → use answers to select panel and mode. Then go. No follow-ups.
+
+## STEP 2: SELECT MODE
+| Mode      | When                                          | Agents | Output                             |
+|-----------|-----------------------------------------------|--------|------------------------------------|
+| Light     | "quick audit," low stakes, short content      | 3      | Stage 1 triage only — 600–900 wds  |
+| Standard  | Default. Reports, applications, strategy.     | 3–4    | Stage 1 → ask → Stage 2            |
+| Full      | "full audit," high stakes (&gt;$100K, board)     | 4      | Stage 1 → Stage 2 → offer Stage 3  |
+
+## STEP 3: SELECT PANEL (match artifact to panel)
+
+Grant / LOI / Funding Proposal:
+  - Program Officer        → "Would I advance this or decline it?"
+  - Evidence Reviewer      → "Can I verify every claim?"
+  - Budget Analyst         → "Does the budget prove they can do this?"
+  - Persuasion Editor      → "Does this read like a winner or a compliance exercise?"
+
+Strategy Document:
+  - Logic Auditor          → "If I challenge every 'why this not that,' do answers hold?"
+  - Evidence Checker       → "What's the evidence this strategy will work?"
+  - Operator               → "Can they actually pull this off with what they have?"
+  - Stakeholder Reader     → "When partners and funders read this, do they see themselves in it?"
+
+Board / Executive / Funder Presentation:
+  - Board Veteran          → "Can I make a decision from this?"
+  - Data Integrity Auditor → "Is every number traceable to a source I could check?"
+  - Strategy Translator    → "Does this tell a coherent story?"
+  - Ask Evaluator          → "Am I ready to say yes, or do I need more?"
+
+Written Content / Thought Leadership:
+  - Editor                 → "Is there an argument here, or just observations?"
+  - Fact-Checker           → "Which claims survive a challenge?"
+  - Audience Proxy         → "Did I learn something, or did I read someone thinking out loud?"
+  - Originality Critic     → "Have I read this before under a different byline?"
+
+THE ADVERSARY — works on any artifact:
+  - Logician               → "If I challenge every 'therefore,' which survive?"
+  - Claim Auditor          → "Which claims is the author hoping I won't check?"
+  - Language Critic        → "If I removed every AI or committee-written sentence, what's left?"
+  - Devil's Advocate       → "If I were trying to discredit this publicly, where would I start?"
+
+(Full skill includes panels for Application, Data Analysis, and a custom-agent path.)
+
+## STEP 4: RUN AGENTS (sequentially, in strict character discipline)
+For each agent: write the header, commit fully to the lens, complete the
+evaluation, close before opening the next. Agents do NOT see each other's
+outputs. Each produces:
+  - Verdict (one sentence answering the driving question)
+  - Score (X/10 with one-sentence justification)
+  - Top 3 strengths + top 3 weaknesses (each with direct quote + specific fix)
+  - Critical flags — anything that would cause rejection or embarrassment
+
+## STEP 5: PRESENT — PROGRESSIVE DISCLOSURE
+
+Stage 1 — Rapid Triage (always first):
+  Verdict: [safe to send / needs work / do not send yet]
+  Score: [X/10 composite]
+  Critical flags: [bulleted; "None" if clean]
+
+  Light mode + no critical flags → end here. Two specific fixes. Done.
+  Standard mode → ask: "Want the full breakdown, or is this enough?"
+  Full mode → proceed to Stage 2.
+
+Stage 2 — Full Synthesis:
+  1. Scorecard table (Agent | Score | Rationale | Critical flag Y/N)
+  2. Where agents agreed (label "Convergent (N agents)")
+  3. Where agents disagreed (each position + your read)
+  4. Action items ranked: Critical → Recommended → Polish
+  5. Residual risk — what this audit can't catch
+
+Stage 3 — Deep Dive (Full mode, on request only):
+  Per-agent full evaluations + literal rewrites for requested weaknesses.
+  Show the improved version. Don't describe it.
+
+## OPERATING RULES
+1. Quote the artifact — every finding needs a direct quote, not a paraphrase
+2. No cheerleading — if it scores 9/10, justify it rigorously
+3. No scaffolding in output — output reads as expert human panel, not AI process
+4. Verify before citing — never fabricate org facts; flag uncertainty
+5. External research — when the artifact names a funder/program, search their
+   current priorities before running agents. Surface contradictions as critical flags
+6. Full mode = literal rewrites, not "this could be stronger"
+7. One intake, then go — make reasonable assumptions, note them, proceed</pre>
+
+                                    <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1vw, 0.85rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.4rem 0;">Filled example — what Stage 1 Rapid Triage actually looks like (sample run on a hypothetical Q3 strategy memo, Standard mode)</p>
+                                    <pre style="background: #f4f5f8; color: #1a2240; font-family: var(--font-mono); font-size: clamp(0.72rem, 0.95vw, 0.82rem); line-height: 1.55; padding: 0.85rem 1rem; border-radius: 6px; overflow-x: auto; white-space: pre-wrap; margin: 0 0 0.85rem 0; border: 1px solid rgba(16, 26, 76, 0.12);">Audit run: "Q3 Strategy Update" memo
+Mode: Standard | Panel: Strategy Document (4 agents)
+Intake: Audience = senior leadership; stakes = mid; deadline = Friday.
+
+────────────────────────────────────────────────────────
+Stage 1 — Rapid Triage
+────────────────────────────────────────────────────────
+
+Verdict: Needs work — convergent flag on the central growth claim.
+Score: 6.5/10 composite
+       (Logic Auditor 7 · Evidence Checker 5 · Operator 6 · Stakeholder Reader 8)
+
+Critical flags:
+• CONVERGENT (2 agents): Logic Auditor + Evidence Checker independently
+  challenged "we expect 30% growth in Q4." Logic Auditor: "the 'therefore'
+  doesn't follow from Q1–Q2 trend." Evidence Checker: "no source, no
+  precedent, no model." When two lenses flag the same sentence cold, the
+  sentence is the problem.
+
+• Operator: the August timeline assumes hiring two roles. No hiring plan
+  attached. The strategy is downstream of a capacity assumption that
+  hasn't been made. Not fatal — but the dependency needs to be named.
+
+• Stakeholder Reader: borderline. Liked the framing for the leadership
+  audience; questioned whether the partner section reads as collaborative
+  or transactional. Flag for tone review, not a blocker.
+
+Two specific fixes before going further:
+  1. Source the 30% Q4 growth claim, OR downgrade to "we are aiming for"
+     and name the assumptions.
+  2. Add a one-line capacity dependency under the August milestone.
+
+Want the full breakdown, or is this enough to work from?</pre>
+
+                                    <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--navy); margin: 0; padding-top: 0.6rem; border-top: 1px dashed rgba(135, 183, 213, 0.4);"><strong>Steal this:</strong> a review Skill earns its keep when it (a) matches the panel to the artifact (a grant gets a Program Officer + Budget Analyst, a strategy doc gets a Logic Auditor + Operator), (b) runs each lens in <em>character discipline</em> — agents don't see each other's outputs, so disagreement becomes a signal, not a wash, and (c) presents in stages — triage first, full breakdown on request, rewrites only in deep mode. The convergence math is the magic: when 2+ independent agents flag the same line cold, the line is the problem.</p>
+                                </div>
+
+                                <!-- BUILD 03 — PRESTON-WRITING (DEEPLY CUSTOMIZED SKILL) -->
+                                <div style="margin-bottom: clamp(0.5rem, 1vw, 0.75rem); background: rgba(16, 26, 76, 0.04); border: 1px solid rgba(16, 26, 76, 0.18); border-left: 4px solid var(--navy); border-radius: 0 6px 6px 0; padding: clamp(0.85rem, 1.8vw, 1.15rem);">
+                                    <p style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.3rem 0;">Build 03 · Deeply customized Skill · Reuses the move with depth</p>
+                                    <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1rem, 1.5vw, 1.15rem); color: var(--navy); margin: 0 0 0.5rem 0;">preston-writing</p>
+                                    <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--dark-gray); line-height: 1.6; margin: 0 0 0.75rem 0;">The voice engine for everything Preston signs — board memos, LinkedIn posts, donor briefs, policy comments, conference remarks. Voice DNA extracted from his actual published writing, an explicit anti-AI rules file, three voice registers, and a curated archive of fifty published paragraphs as outside reference. Encodes the layer of judgment that used to live only in re-reading every draft three times.</p>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.85rem;">
+                                        <span style="font-size: 0.75rem; padding: 2px 8px; background: rgba(16, 26, 76, 0.1); color: var(--navy); border-radius: 4px;"><strong>Container:</strong> Skill (273 lines)</span>
+                                        <span style="font-size: 0.75rem; padding: 2px 8px; background: rgba(16, 26, 76, 0.06); color: var(--navy); border-radius: 4px;"><strong>Owner:</strong> Preston (BRAIN-original, v2.4)</span>
+                                        <span style="font-size: 0.75rem; padding: 2px 8px; background: rgba(16, 26, 76, 0.06); color: var(--navy); border-radius: 4px;"><strong>Inheritance:</strong> Pattern usable by any DC CAP author</span>
+                                        <span style="font-size: 0.75rem; padding: 2px 8px; background: rgba(252, 176, 23, 0.18); color: #8a5a00; border-radius: 4px;"><strong>Highest tier:</strong> Tier 3 (sample drafts)</span>
+                                    </div>
+
+                                    <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1vw, 0.85rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.4rem 0;">SKILL.md — frontmatter + Voice DNA spine (condensed from the real 273-line file)</p>
+                                    <pre style="background: #1a2240; color: #e8eaf2; font-family: var(--font-mono); font-size: clamp(0.72rem, 0.95vw, 0.82rem); line-height: 1.55; padding: 0.85rem 1rem; border-radius: 6px; overflow-x: auto; white-space: pre-wrap; margin: 0 0 0.85rem 0;">---
+name: preston-writing
+description: >
+  Preston Magouirk's writing voice, style, and anti-AI rules for all
+  content creation. Use whenever drafting, editing, or reviewing any
+  written content — LinkedIn posts, grant narratives, board materials,
+  thought leadership, policy briefs, blog posts, conference remarks,
+  donor communications, emails, or any deliverable that will carry
+  Preston's name or voice. Trigger on any content creation task.
+---
+
+# Preston Writing
+Two jobs: (1) Match Preston's voice. (2) Eliminate AI-generated patterns.
+
+## Voice DNA (extracted from Preston's actual published writing)
+
+### How Preston Opens
+Lead with a concrete fact, outcome, or situation. Never a question,
+never a sweeping claim, never throat-clearing.
+✓ "DC CAP had a breakthrough year in 2025."
+✗ "In today's rapidly changing education landscape..."
+
+### How Preston Closes
+Conditional invitation that positions the writer as a learner.
+Pattern: "If you [share this context], I'd [welcome/love to hear]..."
+
+### Pronouns
+"We" is the default for actions and outcomes. "I" is reserved for
+personal reflection or learning. Roughly 4:1 we-to-I ratio in org content.
+
+### How Preston Handles Data
+Numbers bare, no adjectives. Signature phrase: "For context."
+✓ "75-95% earned degrees. For context, ~37% of D.C. students do."
+✗ "An impressive 75-95% — a staggering improvement..."
+
+### The Deflation Principle
+Where AI inflates, Preston deflates. Where AI declares, Preston invites.
+Diagnostic: if a sentence would sound good in a TED talk, rewrite it.
+
+### Transitions
+Zero explicit transition words. No However, Moreover, Furthermore,
+Additionally, That said. Transition by starting a new paragraph with
+a new concrete fact.
+
+## Anti-AI Rules (the short version)
+Read reference/anti_ai_rules.md for the complete list. Quick scan:
+
+Forbidden phrases: "doing the heavy lifting," "the real question is,"
+"here's the thing nobody is talking about," "it's not about X, it's
+about Y," "load-bearing" (metaphorical).
+
+Vocabulary red flags: leverage, utilize, delve, navigate (metaphorical),
+landscape (metaphorical), ecosystem, synergy, innovative, groundbreaking,
+transformative, game-changing, revolutionary, robust, holistic, unpack,
+deep dive.
+
+Structure red flags: question openers, "In today's..." openers,
+"As someone who..." credibility claims, triple parallel constructions,
+em-dashes &gt;2 per piece.
+
+## Three Voice Registers
+1. External Research — policy briefs, research reports, partner evals
+2. Internal Strategy — strategic plans, board materials, vision docs
+3. Leadership Reflection — LinkedIn, thought leadership, conference remarks
+
+## Forbidden Content
+- No partner or system disparagement (use "preparation gaps" not "fails")
+- No emergency/crisis language (DC CAP is academic support, not crisis services)
+- No equity framing — frame as accessibility and impact instead</pre>
+
+                                    <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1vw, 0.85rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.4rem 0;">Reference files (the SKILL.md points to these; team copies the structure, builds their own)</p>
+                                    <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0 0 0.75rem 0;">Lives at <code style="background: rgba(16, 26, 76, 0.06); padding: 1px 6px; border-radius: 3px; font-size: 0.88em;">BRAIN/skills/skills/preston-writing/reference/</code> — four guide files (<code style="background: rgba(16, 26, 76, 0.06); padding: 1px 6px; border-radius: 3px; font-size: 0.88em;">voice_style_guide.md</code>, <code style="background: rgba(16, 26, 76, 0.06); padding: 1px 6px; border-radius: 3px; font-size: 0.88em;">anti_ai_rules.md</code>, <code style="background: rgba(16, 26, 76, 0.06); padding: 1px 6px; border-radius: 3px; font-size: 0.88em;">email_style_guide.md</code>, <code style="background: rgba(16, 26, 76, 0.06); padding: 1px 6px; border-radius: 3px; font-size: 0.88em;">source_paths.yml</code>) plus eight sample files (LinkedIn drafts and finals, blog posts, policy briefs, research papers, reports). The SKILL.md routes to whichever sample matches the deliverable type. <span style="font-size: 0.7rem; padding: 1px 6px; background: rgba(135, 183, 213, 0.25); color: #2a5a78; border-radius: 3px; font-weight: 600; margin-right: 0.25rem;">Mostly Tier 4</span><span style="font-size: 0.7rem; padding: 1px 6px; background: rgba(252, 176, 23, 0.18); color: #8a5a00; border-radius: 3px; font-weight: 600;">Drafts in progress: Tier 3</span></p>
+
+                                    <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--navy); margin: 0; padding-top: 0.6rem; border-top: 1px dashed rgba(16, 26, 76, 0.18);"><strong>Steal this:</strong> depth means every failure mode you have ever fixed by hand has a named home in the file. Voice rules go in their own list. Anti-AI rules go in <em>their own file</em>. Forbidden content patterns (partner disparagement, crisis language, equity framing) get their own section because they fail differently. Walk through your last ten edits to AI drafts and ask: which corrections are in the file, and which are still in your head? The corrections still in your head are the next layer to encode.</p>
+                                </div>
+
+                                <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--dark-gray); line-height: 1.6; margin: 1rem 0 0 0; text-align: center; font-style: italic;">Want the full side-by-side comparison and the cost/value table? <a href="decks/week4_three_builds.html" style="color: var(--purple); font-weight: 600; font-style: normal;">Open the gallery →</a></p>
+                            </div>
+                        </details>
                     </div>
                 </details>
 
@@ -4136,13 +4521,10 @@
     }
 
     // Initialize on load
-    // ── Pre-Assessment Gate ──
+    // ── Pre-Assessment Gate ── DISABLED 2026-05-08: hub launched, all sections open
     function initPreAssessmentGate() {
-        const surveyDone = localStorage.getItem('dccap_survey_completed') === 'true';
-        const allPrereqsDone = surveyDone
-            && localStorage.getItem('dccap_starthere_completed') === 'true'
-            && localStorage.getItem('dccap_claude101_completed') === 'true'
-            && localStorage.getItem('dccap_fluency_completed') === 'true';
+        const surveyDone = true;
+        const allPrereqsDone = true;
 
         const banner = document.getElementById('preGateBanner');
         const gateSections = document.querySelectorAll('[data-pre-gate="lock"]');

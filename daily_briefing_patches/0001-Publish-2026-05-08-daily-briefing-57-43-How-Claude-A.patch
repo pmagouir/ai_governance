@@ -1,0 +1,57 @@
+From 27afbcc173a0570624ad24bbb462bcfc8ddc78da Mon Sep 17 00:00:00 2001
+From: Preston Magouirk <preston.magouirk@dccap.org>
+Date: Fri, 8 May 2026 09:02:58 -0400
+Subject: [PATCH] =?UTF-8?q?Publish=202026-05-08=20daily=20briefing:=2057/4?=
+ =?UTF-8?q?3=20=E2=80=94=20How=20Claude=20Actually=20Gets=20Used=20at=20Wo?=
+ =?UTF-8?q?rk=20(news)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ briefings.json | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/briefings.json b/briefings.json
+index 3f5b876..4d4052a 100644
+--- a/briefings.json
++++ b/briefings.json
+@@ -1,8 +1,8 @@
+ {
+   "meta": {
+     "version": "2.0",
+-    "lastGenerated": "2026-05-07T08:30:00-04:00",
+-    "lastPublished": "2026-05-07T08:30:00-04:00",
++    "lastGenerated": "2026-05-08T08:30:00-04:00",
++    "lastPublished": "2026-05-08T08:30:00-04:00",
+     "categories": {
+       "foundational": {
+         "label": "Foundational Learning",
+@@ -42,6 +42,17 @@
+   },
+   "drafts": [],
+   "published": [
++    {
++      "date": "2026-05-08",
++      "category": "news",
++      "title": "57/43: How Claude Actually Gets Used at Work",
++      "content": "Anthropic's Economic Index, released February 10, 2025, analyzed millions of anonymized conversations on Claude.ai using Anthropic's Clio analysis system and the Department of Labor's O*NET task taxonomy. The report mapped what people actually use Claude for at work. The headline finding was the split between augmentation and automation. Fifty-seven percent of conversations involved Claude assisting a human through a task. Forty-three percent involved Claude completing a task on the user's behalf.\n\nThe breakdown matters more than the headline. Within augmentation, Anthropic identified three patterns: task iteration, where the user shapes Claude's output across multiple turns; learning, where the user works with Claude to understand a problem; and validation, where the user checks their own work against Claude's read. Within automation, Anthropic identified two patterns: directive use, where a single prompt produces a finished output, and feedback-loop use, where Claude completes a task with environmental feedback inside a tool.\n\nTwo implications for the pilot. First, augmentation through iteration is one of the dominant patterns Anthropic identified in real-world use. The pattern shows up across the kinds of work where users get useful output from Claude. Second, the Week 5 challenge in the pilot lives in exactly that pattern. Hand the build to a teammate, watch what breaks, fix it. The Economic Index gives the move an empirical home.\n\nThe Iterate and Inherit week asks DC CAP staff to do at the team level what the rest of the working economy is already doing at the individual level.",
++      "tryThis": "Pull up your last AI conversation with Claude. Count the turns. One turn means you used directive mode, where a single prompt produced finished output. Multiple turns of refinement mean you used iteration mode. If your work this week was mostly directive, pick one task next week and force at least three iteration turns on it. Bring the before-and-after to AI Friday.",
++      "resource": "https://www.anthropic.com/news/the-anthropic-economic-index",
++      "sourceNotes": "Claim: Anthropic Economic Index released February 10, 2025 | Source: VERIFIED (Anthropic, \"Introducing the Anthropic Economic Index,\" published February 10, 2025, anthropic.com/news/the-anthropic-economic-index)\nClaim: Index analyzed millions of anonymized conversations on Claude.ai | Source: VERIFIED (Anthropic Economic Index methodology — anonymized aggregate analysis of Claude.ai conversation data, with privacy preservation as a stated design constraint)\nClaim: Methodology used Anthropic's Clio system and the Department of Labor's O*NET task taxonomy | Source: VERIFIED (Anthropic Economic Index paper — methodology section describes Clio (Anthropic's privacy-preserving conversation clustering and analysis system, originally introduced in the Clio paper, December 2024) and the U.S. Department of Labor's O*NET occupational task taxonomy as the analytical foundation)\nClaim: 57% augmentation / 43% automation split | Source: VERIFIED (Anthropic Economic Index report, February 2025: approximately 57% of conversations exhibited patterns of augmentation where AI assists human capability, and 43% exhibited patterns of automation where AI directly performs tasks)\nClaim: Augmentation patterns include task iteration, learning, and validation | Source: VERIFIED (Anthropic Economic Index taxonomy of usage patterns within the augmentation category)\nClaim: Automation patterns include directive use and feedback-loop use | Source: VERIFIED (Anthropic Economic Index taxonomy of usage patterns within the automation category)\nClaim: Week 5 of the pilot is Iterate and Inherit | Source: GROUNDED (pilot_hub.html Week 5 block: \"WEEK 5 — ITERATE & INHERIT,\" with the challenge prompt to hand a Week 4 build to a teammate, watch where it breaks, fix it, and decide whether the build is the seed of the capstone)\nEditorial: Framing iteration as \"where the Week 5 challenge lives\" is Preston's pedagogical move tying Anthropic's empirical taxonomy to the pilot's Week 5 challenge.\nEditorial: \"The Economic Index gives the move an empirical home\" is Preston's synthesis applying Anthropic's research to the pilot's iteration norm.\nEditorial: Closing line tying Iterate and Inherit to \"what the rest of the working economy is already doing at the individual level\" is Preston's pedagogical close, scaling the individual-level pattern to the team-level ask of the pilot.\nAdversarial review 20260508: Em-dash count: 0. Banned phrases scanned and absent: leverage, utilize, delve, navigate, landscape, ecosystem, synergy, robust, holistic, stakeholders, foster, enhance, transformative, empower, spearhead, myriad, multifaceted, nuanced, pivotal, unpack, deep dive, however, moreover, furthermore, additionally, serves as, stands as, represents, functions as, at the end of the day, move the needle, to be clear, make no mistake, doing the heavy lifting, the real question, what most people miss, groundbreaking, game-changing, revolutionary, showcase, underscore, passionate about, excited to share. Contrastive \"not X, but Y\" constructions: 0. Rhetorical questions in body: 0. Declarative open: yes (\"Anthropic's Economic Index, released February 10, 2025, analyzed millions of anonymized conversations on Claude.ai...\"). Word count main body: 246 (within 240-280 band). Try This word count: 62 (within 40-80 band). Each paragraph carries a concrete numeric anchor or pilot reference (millions / 57 / 43, three augmentation patterns + two automation patterns, Week 5 challenge, individual-to-team scaling). Closing returns to pilot policy.",
++      "validationStatus": "PASSED",
++      "status": "published"
++    },
+     {
+       "category": "trends",
+       "title": "1% of Companies Reach AI Maturity. The Wall Is Organizational Adoption.",
+@@ -287,4 +298,4 @@
+       "archivedReason": "Superseded by Glasswing news entry for April 10"
+     }
+   ]
+-}
++}
+\ No newline at end of file
+-- 
+2.34.1
+
