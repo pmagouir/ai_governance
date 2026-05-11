@@ -3097,38 +3097,285 @@ em-dashes &gt;2 per piece.
                 </details>
             </div>
 
-            <!-- WEEK 5: ITERATE & INHERIT — HIDDEN (unhide when ready) -->
-            <div class="reveal" style="display:none; margin-bottom: clamp(1.5rem, 3vw, 2.5rem);">
+            <!-- WEEK 5: UNDER THE HOOD -->
+            <div class="reveal" style="margin-bottom: clamp(1.5rem, 3vw, 2.5rem);">
                 <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: clamp(0.5rem, 1vw, 0.75rem);">
-                    <div style="background: var(--blue); color: var(--navy); font-family: var(--font-mono); font-size: clamp(0.7rem, 1vw, 0.8rem); padding: 4px 12px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap;">Week 5</div>
-                    <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--blue); font-size: clamp(1.1rem, 2vw, 1.3rem);">Iterate &amp; Inherit</div>
-                    <div style="flex: 1; height: 2px; background: rgba(135, 183, 213, 0.25);"></div>
+                    <div style="background: var(--gold); color: var(--navy); font-family: var(--font-mono); font-size: clamp(0.7rem, 1vw, 0.8rem); padding: 4px 12px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap;">Week 5</div>
+                    <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1.1rem, 2vw, 1.3rem);">Under the Hood</div>
+                    <div style="flex: 1; height: 2px; background: rgba(252, 176, 23, 0.35);"></div>
                 </div>
-                <p style="font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: var(--dark-gray); line-height: 1.6; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem); max-width: 800px;">Week 4 was build. Week 5 is iterate. Take what you built, give it to a teammate, watch where it breaks, fix it. The capstone door opens this week — your Week 4 build is the seed.</p>
+                <p style="font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: var(--dark-gray); line-height: 1.6; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem); max-width: 820px;">Four weeks of reps. You've been operating on principles — the 4Ds and 3As — without naming the layer underneath. Week 5 is that layer. Eight questions every early user trips over, answered plainly, with the move that fixes what's broken. Same principles, sturdier reasons. Better chats. Better tasks. Better Projects. Better Skills. Better outcomes.</p>
 
-                <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-                    <div class="card blue-accent reveal-scale">
-                        <span class="status-badge status-coming">Opens Week 5</span>
-                        <h4 class="card-title">Capstone Template</h4>
-                        <p class="card-description">Begin scoping your capstone — the team-level build you'll iterate, peer review, and ship across Weeks 5-8.</p>
-                        <a href="practice/capstone_template.html" class="card-link">Open Template →</a>
+                <!-- Hook line -->
+                <p style="font-family: var(--font-subhead); font-weight: 600; font-style: italic; color: var(--navy); font-size: clamp(0.95rem, 1.5vw, 1.1rem); line-height: 1.6; margin-bottom: clamp(1rem, 2vw, 1.5rem); padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.25rem); background: linear-gradient(135deg, rgba(252, 176, 23, 0.08) 0%, rgba(131, 82, 255, 0.05) 100%); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; max-width: 820px;">Grounding our efforts in the principles for AI use and the background for how AI works.</p>
+
+                <!-- Principles Strip -->
+                <div style="margin-bottom: clamp(1.25rem, 2.5vw, 2rem); background: var(--white); border: 1px solid rgba(16, 26, 76, 0.12); border-radius: 8px; padding: clamp(1rem, 2vw, 1.5rem);">
+                    <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1.1vw, 0.88rem); color: var(--navy); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">The Principles You've Been Operating</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: clamp(0.4rem, 0.8vw, 0.6rem); margin-bottom: 0.85rem;">
+                        <div style="padding: 0.55rem 0.7rem; background: rgba(16, 26, 76, 0.05); border-radius: 6px; border-left: 3px solid var(--navy);"><strong style="color: var(--navy); font-family: var(--font-subhead); font-size: 0.9rem;">Delegation</strong><br><span style="font-size: 0.8rem; color: var(--dark-gray);">Choosing the modality.</span></div>
+                        <div style="padding: 0.55rem 0.7rem; background: rgba(131, 82, 255, 0.06); border-radius: 6px; border-left: 3px solid var(--purple);"><strong style="color: var(--purple); font-family: var(--font-subhead); font-size: 0.9rem;">Description</strong><br><span style="font-size: 0.8rem; color: var(--dark-gray);">Naming the work precisely.</span></div>
+                        <div style="padding: 0.55rem 0.7rem; background: rgba(135, 183, 213, 0.12); border-radius: 6px; border-left: 3px solid var(--blue);"><strong style="color: var(--blue); font-family: var(--font-subhead); font-size: 0.9rem;">Discernment</strong><br><span style="font-size: 0.8rem; color: var(--dark-gray);">Judging what's worth building.</span></div>
+                        <div style="padding: 0.55rem 0.7rem; background: rgba(252, 176, 23, 0.1); border-radius: 6px; border-left: 3px solid var(--gold);"><strong style="color: #8a5a00; font-family: var(--font-subhead); font-size: 0.9rem;">Diligence</strong><br><span style="font-size: 0.8rem; color: var(--dark-gray);">Verifying before it ships.</span></div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: clamp(0.4rem, 0.8vw, 0.6rem); margin-bottom: 0.6rem;">
+                        <div style="padding: 0.5rem 0.7rem; background: rgba(16, 26, 76, 0.03); border-radius: 6px;"><strong style="font-family: var(--font-subhead); font-size: 0.85rem; color: var(--navy);">Automation</strong> <span style="font-size: 0.8rem; color: var(--dark-gray);">— Claude runs, you review.</span></div>
+                        <div style="padding: 0.5rem 0.7rem; background: rgba(131, 82, 255, 0.04); border-radius: 6px;"><strong style="font-family: var(--font-subhead); font-size: 0.85rem; color: var(--purple);">Augmentation</strong> <span style="font-size: 0.8rem; color: var(--dark-gray);">— you and Claude think together.</span></div>
+                        <div style="padding: 0.5rem 0.7rem; background: rgba(252, 176, 23, 0.06); border-radius: 6px;"><strong style="font-family: var(--font-subhead); font-size: 0.85rem; color: #8a5a00;">Agency</strong> <span style="font-size: 0.8rem; color: var(--dark-gray);">— Claude operates inside your guardrails.</span></div>
+                    </div>
+                    <p style="font-size: clamp(0.82rem, 1.15vw, 0.9rem); color: var(--dark-gray); margin: 0.5rem 0 0 0; font-style: italic; padding-top: 0.6rem; border-top: 1px dashed rgba(16, 26, 76, 0.1);">The 4Ds are how we operate. The 3As are the shape your delegation takes. The eight questions below are why those moves work — or fail.</p>
+                </div>
+
+                <!-- Subgroup Header: Context & Memory -->
+                <div style="display: flex; align-items: baseline; gap: 0.75rem; margin: clamp(1.25rem, 2.5vw, 1.75rem) 0 clamp(0.5rem, 1vw, 0.75rem) 0;">
+                    <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.95vw, 0.8rem); color: var(--purple); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Part 1 of 3</span>
+                    <h3 style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1rem, 1.7vw, 1.2rem); margin: 0;">Context &amp; Memory</h3>
+                    <div style="flex: 1; height: 1px; background: rgba(131, 82, 255, 0.2);"></div>
+                </div>
+
+                <!-- Q1: Context Window -->
+                <div style="margin-bottom: clamp(0.85rem, 1.5vw, 1.15rem); background: rgba(131, 82, 255, 0.04); border: 1px solid rgba(131, 82, 255, 0.18); border-left: 4px solid var(--purple); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.4rem);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--white); background: var(--purple); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Q1</span>
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Description</span>
+                    </div>
+                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">What is a context window?</h4>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> The context window is Claude's working memory for one conversation. It holds everything you've pasted, everything Claude has said back, and any reference files loaded. It has a ceiling — not a target.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> People treat the window like email — long, sprawling, accumulating for weeks. Past a certain point, things on page three get missed.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The move.</strong> Treat each chat like a focused work session. One task, clean window. When the task ends, the chat ends. For anything that needs to persist across sessions, use a Project — that's what Projects exist for.</p>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: var(--purple); margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(131, 82, 255, 0.3); font-style: italic;">Description quality is bounded by what sits in this window.</p>
+                </div>
+
+                <!-- Q2: Why context matters -->
+                <div style="margin-bottom: clamp(0.85rem, 1.5vw, 1.15rem); background: rgba(131, 82, 255, 0.04); border: 1px solid rgba(131, 82, 255, 0.18); border-left: 4px solid var(--purple); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.4rem);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--white); background: var(--purple); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Q2</span>
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Description</span>
+                    </div>
+                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">Why does context matter?</h4>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Context is everything you load into the window before you ask. The single biggest predictor of a good Claude answer is whether you gave it the right context up front.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> "Write me an email to a parent" gets the average of the internet. "Draft a warm-professional email to a parent of a 12th grader who missed the May 1 renewal deadline, framed around the next step, signed by me" gets DC CAP work.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The move.</strong> Load names, numbers, dates, voice rules, audience, and format every time. Or load it once into a Project and stop retyping. Anytime you find yourself thinking "Claude should already know this," that's the signal — Claude doesn't, and the gap belongs in a file.</p>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: var(--purple); margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(131, 82, 255, 0.3); font-style: italic;">Empty context, generic answer. Rich context, sharp answer.</p>
+                </div>
+
+                <!-- Q3: Why memory matters -->
+                <div style="margin-bottom: clamp(0.85rem, 1.5vw, 1.15rem); background: rgba(131, 82, 255, 0.04); border: 1px solid rgba(131, 82, 255, 0.18); border-left: 4px solid var(--purple); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.4rem);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--white); background: var(--purple); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Q3</span>
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Description carried forward</span>
+                    </div>
+                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">Why does memory matter?</h4>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Claude doesn't remember you across chats. Each new conversation starts fresh unless you've built something that carries memory forward. Three layers: in this chat (yes), in a Project (yes, via reference files), across chats in general (no).</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> The months-long chat. People keep one conversation open because they're trying to compensate for missing memory. The chat degrades long before the month is up. Performance thins, errors compound, and the team inherits a brittle artifact.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The move.</strong> Stop making one chat remember everything. Memory belongs in files. A Project carries context across tasks. A Skill carries a procedure across runs. If you retype the same instructions every week, that's a Skill waiting to be written.</p>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: var(--purple); margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(131, 82, 255, 0.3); font-style: italic;">Every Skill you write is Description carried forward.</p>
+                </div>
+
+                <!-- Subgroup Header: Model Behavior -->
+                <div style="display: flex; align-items: baseline; gap: 0.75rem; margin: clamp(1.5rem, 3vw, 2rem) 0 clamp(0.5rem, 1vw, 0.75rem) 0;">
+                    <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.95vw, 0.8rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Part 2 of 3</span>
+                    <h3 style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1rem, 1.7vw, 1.2rem); margin: 0;">Model Behavior</h3>
+                    <div style="flex: 1; height: 1px; background: rgba(16, 26, 76, 0.15);"></div>
+                </div>
+
+                <!-- Q4: Model drift -->
+                <div style="margin-bottom: clamp(0.85rem, 1.5vw, 1.15rem); background: rgba(252, 176, 23, 0.06); border: 1px solid rgba(252, 176, 23, 0.22); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.4rem);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--white); background: #8a5a00; padding: 2px 8px; border-radius: 4px; font-weight: 600;">Q4</span>
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Diligence signal</span>
+                    </div>
+                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">What is model drift?</h4>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Two meanings. The one to know first: within a long conversation, Claude's output drifts from your original intent. Early instructions get diluted. Tone shifts. Errors compound. <em>(The second meaning — model behavior changes across versions — matters at the org level. DC CAP pins Opus 4.6 and Sonnet 4.6 as current defaults.)</em></p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> You correct Claude on something at message 5. By message 30, the same error is back. Newer signals in the window crowd out older ones.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The move.</strong> When the trail feels off, start fresh. Re-anchor inside long chats with an explicit reminder: <em>"remember — audience is counselors, voice is warm-professional, deadline is May 1."</em> A Project loads the foundational context fresh every time you open a new chat inside it.</p>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: #8a5a00; margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(252, 176, 23, 0.4); font-style: italic;">When the answer thins, that's a Diligence signal — not a Claude failure.</p>
+                </div>
+
+                <!-- Q5: What model -->
+                <div style="margin-bottom: clamp(0.85rem, 1.5vw, 1.15rem); background: rgba(16, 26, 76, 0.04); border: 1px solid rgba(16, 26, 76, 0.18); border-left: 4px solid var(--navy); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.4rem);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--white); background: var(--navy); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Q5</span>
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Delegation</span>
+                    </div>
+                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">What model should I use?</h4>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Claude comes in three sizes. Each handles a different kind of job: fast, balanced, careful.</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(0.5rem, 1vw, 0.75rem); margin: 0.5rem 0 0.85rem 0;">
+                        <div style="padding: 0.7rem 0.85rem; background: rgba(16, 26, 76, 0.06); border-radius: 6px; border-top: 3px solid var(--navy);"><strong style="color: var(--navy); font-family: var(--font-subhead); font-size: 0.95rem;">Opus 4.6 — careful</strong><br><span style="font-size: 0.85rem; color: var(--dark-gray);">Highest-stakes drafting. Deep multi-step reasoning. Board and funder work where being wrong is costly.</span></div>
+                        <div style="padding: 0.7rem 0.85rem; background: rgba(131, 82, 255, 0.06); border-radius: 6px; border-top: 3px solid var(--purple);"><strong style="color: var(--purple); font-family: var(--font-subhead); font-size: 0.95rem;">Sonnet 4.6 — balanced</strong><br><span style="font-size: 0.85rem; color: var(--dark-gray);">The DC CAP default. Strong reasoning, fast enough for everyday work. Handles roughly 80% of what you do.</span></div>
+                        <div style="padding: 0.7rem 0.85rem; background: rgba(135, 183, 213, 0.15); border-radius: 6px; border-top: 3px solid var(--blue);"><strong style="color: #2a5a78; font-family: var(--font-subhead); font-size: 0.95rem;">Haiku 4.5 — fast</strong><br><span style="font-size: 0.85rem; color: var(--dark-gray);">Quick lookups. Classifications. Light summaries. The wrong tool for anything judgment-heavy.</span></div>
+                    </div>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> Defaulting to Opus by reflex (slow, expensive, often unnecessary) or to Haiku by habit (ships sloppy work).</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The move.</strong> Start with Sonnet. Upgrade to Opus when stakes warrant the depth. Drop to Haiku when speed matters more than judgment. Counselor email → Sonnet. Gates LOI → Opus. Summarize a 10-page PDF → Haiku or Sonnet. Voice scan on a board memo → Sonnet with thinking on. <a href="practice/model_picker.html" style="color: var(--purple); font-weight: 600;">Open the Model Picker →</a></p>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: var(--navy); margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(16, 26, 76, 0.18); font-style: italic;">Model selection is a Delegation decision, not a vanity choice.</p>
+                </div>
+
+                <!-- Subgroup Header: Output Quality -->
+                <div style="display: flex; align-items: baseline; gap: 0.75rem; margin: clamp(1.5rem, 3vw, 2rem) 0 clamp(0.5rem, 1vw, 0.75rem) 0;">
+                    <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.95vw, 0.8rem); color: #8a5a00; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Part 3 of 3</span>
+                    <h3 style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1rem, 1.7vw, 1.2rem); margin: 0;">Trust &amp; Output Quality</h3>
+                    <div style="flex: 1; height: 1px; background: rgba(252, 176, 23, 0.3);"></div>
+                </div>
+
+                <!-- Q6: Hallucination -->
+                <div style="margin-bottom: clamp(0.85rem, 1.5vw, 1.15rem); background: rgba(252, 176, 23, 0.06); border: 1px solid rgba(252, 176, 23, 0.22); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.4rem);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--white); background: #8a5a00; padding: 2px 8px; border-radius: 4px; font-weight: 600;">Q6</span>
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Diligence</span>
+                    </div>
+                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">What is hallucination, and how can I mitigate it?</h4>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Hallucination is when Claude confidently states something that isn't true. A fabricated quote. A made-up statistic. A paper that doesn't exist. A person who never said the thing.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Why it happens.</strong> Large language models are pattern completers. When they don't know, they generate text that sounds like the right kind of answer. Without grounding, they invent.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.4rem;"><strong>The move — four-part discipline:</strong></p>
+                    <ol style="font-size: clamp(0.88rem, 1.25vw, 0.98rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 0.6rem 0; padding-left: 1.4rem;">
+                        <li><strong>Load the source.</strong> If you ask about a partner, paste the partner's actual website, bio, or past emails. Don't ask Claude to recall.</li>
+                        <li><strong>Ask for citations.</strong> "For each claim, name the source." Hallucinated sources are easier to spot than hallucinated facts.</li>
+                        <li><strong>Treat names, numbers, and dates as highest-risk.</strong> These are where hallucination hides.</li>
+                        <li><strong>Cross-check anything that lands in front of a funder, board, or partner.</strong></li>
+                    </ol>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: #8a5a00; margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(252, 176, 23, 0.4); font-style: italic;">This is the discipline behind the dev-office-director's <code style="background: rgba(252, 176, 23, 0.12); padding: 1px 5px; border-radius: 3px; font-size: 0.88em;">[T1-3 audited]</code> sentinel from Week 4.</p>
+                </div>
+
+                <!-- Q7: Verify and validate -->
+                <div style="margin-bottom: clamp(0.85rem, 1.5vw, 1.15rem); background: rgba(252, 176, 23, 0.06); border: 1px solid rgba(252, 176, 23, 0.22); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.4rem);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--white); background: #8a5a00; padding: 2px 8px; border-radius: 4px; font-weight: 600;">Q7</span>
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Diligence</span>
+                    </div>
+                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">How can I verify and validate?</h4>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Two different checks. Both required before anything ships.</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.5rem, 1vw, 0.75rem); margin: 0.5rem 0 0.85rem 0;">
+                        <div style="padding: 0.7rem 0.85rem; background: rgba(252, 176, 23, 0.08); border-radius: 6px; border-left: 3px solid var(--gold);"><strong style="color: #8a5a00; font-family: var(--font-subhead); font-size: 0.92rem;">Verify</strong> — are the facts true? Names, numbers, dates, citations, claims.</div>
+                        <div style="padding: 0.7rem 0.85rem; background: rgba(252, 176, 23, 0.08); border-radius: 6px; border-left: 3px solid var(--gold);"><strong style="color: #8a5a00; font-family: var(--font-subhead); font-size: 0.92rem;">Validate</strong> — does it fit the work? Right audience, right format, right tone, right move.</div>
+                    </div>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> People verify and skip validate — facts are right, tone is wrong for the audience. Or validate and skip verify — it reads great, the numbers are made up.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The move.</strong> Design verification into the workflow, not bolted on at the end. Pull at least one external check for any high-stakes claim. Read the output as the audience before you send. For the highest-stakes work, run it through the <em>adversarial-audit</em> Skill from Week 4's gallery — or hand it to a teammate.</p>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: #8a5a00; margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(252, 176, 23, 0.4); font-style: italic;">Diligence is two moves, not one.</p>
+                </div>
+
+                <!-- Q8: Better prompts -->
+                <div style="margin-bottom: clamp(0.85rem, 1.5vw, 1.15rem); background: rgba(131, 82, 255, 0.04); border: 1px solid rgba(131, 82, 255, 0.18); border-left: 4px solid var(--purple); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.4rem);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--white); background: var(--purple); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Q8</span>
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Description</span>
+                    </div>
+                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">How can I have better prompts, outcomes, and deliverables?</h4>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.5rem;"><strong>The plain answer.</strong> A great prompt has five parts.</p>
+                    <ol style="font-size: clamp(0.88rem, 1.25vw, 0.98rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 0.7rem 0; padding-left: 1.4rem;">
+                        <li><strong>State the work, not the task.</strong> <em>(Description)</em></li>
+                        <li><strong>Anchor in concrete facts</strong> — named partners, real numbers, real dates. <em>(Description + Diligence)</em></li>
+                        <li><strong>Tell Claude the audience and the format.</strong> <em>(Description)</em></li>
+                        <li><strong>Iterate in dialogue.</strong> Show Claude what's wrong; don't start over. <em>(Augmentation)</em></li>
+                        <li><strong>Save what works.</strong> <em>(Description carried forward — Project or Skill)</em></li>
+                    </ol>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.5rem;"><strong>Where it breaks.</strong> "Write me an email" gets nothing useful. "Make a deck about our pilot" gets nothing useful. Vague in, vague out.</p>
+
+                    <!-- Before / After -->
+                    <div style="margin: 0.75rem 0; background: var(--white); border: 1px solid rgba(16, 26, 76, 0.12); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1.05vw, 0.85rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.6rem 0;">Before / After — same task, different prompt</p>
+                        <div style="background: rgba(230, 57, 70, 0.06); border-left: 3px solid #c44; border-radius: 0 6px 6px 0; padding: 0.6rem 0.85rem; margin-bottom: 0.5rem;">
+                            <p style="font-family: var(--font-mono); font-size: clamp(0.78rem, 1.05vw, 0.85rem); color: #777; margin: 0 0 0.25rem 0;">VAGUE</p>
+                            <p style="font-size: clamp(0.85rem, 1.2vw, 0.94rem); line-height: 1.5; color: var(--dark-gray); margin: 0; font-style: italic;">"Write a follow-up email to a counselor."</p>
+                        </div>
+                        <div style="background: rgba(34, 139, 34, 0.06); border-left: 3px solid #2a7a2a; border-radius: 0 6px 6px 0; padding: 0.6rem 0.85rem;">
+                            <p style="font-family: var(--font-mono); font-size: clamp(0.78rem, 1.05vw, 0.85rem); color: #777; margin: 0 0 0.25rem 0;">SHARP</p>
+                            <p style="font-size: clamp(0.85rem, 1.2vw, 0.94rem); line-height: 1.55; color: var(--dark-gray); margin: 0;">"Draft a warm-professional follow-up to Ms. Reyes at McKinley Tech HS. We met last Friday about a Class of 2026 applicant who missed the May 1 renewal deadline. Audience: counselor with a heavy caseload, mid-stress. Format: 3 short paragraphs, signed Preston. Facts: renewal window reopens 7/15, our office hours M–F 9–5, my direct line is on file. Goal: confirm the next step without blame, invite her to forward to the family."</p>
+                        </div>
+                    </div>
+
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The move.</strong> Every great prompt is a SKILL.md waiting to be written. The more reps you put in on the five-part structure, the less you have to rewrite it the next time.</p>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: var(--purple); margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(131, 82, 255, 0.3); font-style: italic;">Description is the most valuable move in this whole pilot.</p>
+                </div>
+
+                <!-- Resource Cards -->
+                <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: clamp(1.5rem, 2.5vw, 2rem);">
+                    <div class="card gold-accent reveal-scale">
+                        <span class="status-badge status-available">New</span>
+                        <h4 class="card-title">Model Picker (Nonprofit Tier)</h4>
+                        <p class="card-description">Opus, Sonnet, Haiku — with named DC CAP example tasks for each. Printable one-pager.</p>
+                        <a href="practice/model_picker.html" class="card-link">Open Picker →</a>
+                    </div>
+                    <div class="card purple-accent reveal-scale">
+                        <span class="status-badge status-available">Available</span>
+                        <h4 class="card-title">AI Fluency Framework</h4>
+                        <p class="card-description">The 4Ds matrix anchor. How Delegation, Description, Discernment, and Diligence interact across Automation, Augmentation, and Agency.</p>
+                        <a href="ai_fluency_framework.html" class="card-link">View Framework →</a>
                     </div>
                     <div class="card blue-accent reveal-scale">
                         <span class="status-badge status-available">Available</span>
-                        <h4 class="card-title">KPI Framework</h4>
-                        <p class="card-description">How we'll measure whether the build worked. Three-tier measurement (Engagement, Proficiency, Impact) and the Scale/Pause/Pivot gates.</p>
-                        <a href="kpi_framework.html" class="card-link">View Framework →</a>
+                        <h4 class="card-title">AI Glossary</h4>
+                        <p class="card-description">Plain-language definitions for context window, tokens, model, memory, and the rest of the terminology in this week.</p>
+                        <a href="ai_glossary.html" class="card-link">View Glossary →</a>
+                    </div>
+                    <div class="card navy-accent reveal-scale">
+                        <span class="status-badge status-coming">Opens Week 5</span>
+                        <h4 class="card-title">Capstone Template</h4>
+                        <p class="card-description">The capstone door opens this week. Use the mechanics above to scope Section 1 of your team's build.</p>
+                        <a href="practice/capstone_template.html" class="card-link">Open Template →</a>
                     </div>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.75rem, 1.5vw, 1rem); margin-top: clamp(1rem, 2vw, 1.5rem);">
-                    <div style="background: rgba(135, 183, 213, 0.08); border: 1px solid rgba(135, 183, 213, 0.25); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
-                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--blue); margin-bottom: 0.4rem;">Week 5 Challenge — Iterate &amp; Scope</p>
-                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Take the teammate's feedback from Week 4. Cut what's thin, sharpen what's vague, name the human checkpoint that has to stay. Then decide: is this the seed of your capstone, or is the capstone something bigger that this build is a piece of? Open the Capstone Template and scope Section 1.</p>
+                <!-- Worked Example (accordion) -->
+                <details style="margin-top: clamp(1rem, 2vw, 1.5rem); background: rgba(252, 176, 23, 0.06); border: 1px solid rgba(252, 176, 23, 0.2); border-left: 4px solid var(--gold); border-radius: 8px;">
+                    <summary style="padding: clamp(1rem, 2vw, 1.25rem); cursor: pointer; font-family: var(--font-subhead); font-weight: 600; font-size: clamp(0.95rem, 1.5vw, 1.1rem); color: var(--navy); list-style: none;">Worked Example — One Task, All Eight Questions Answered ▾</summary>
+                    <div style="padding: 0 clamp(1rem, 2vw, 1.25rem) clamp(1rem, 2vw, 1.25rem);">
+                        <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 1rem 0;"><strong>The task:</strong> draft the quarterly counselor partnership update for DC CAP's 28 high school counselor partners.</p>
+
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(0.6rem, 1.2vw, 0.85rem);">
+                            <div style="background: rgba(131, 82, 255, 0.05); border-left: 3px solid var(--purple); border-radius: 0 6px 6px 0; padding: clamp(0.7rem, 1.3vw, 0.9rem);">
+                                <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.82rem, 1.15vw, 0.9rem); color: var(--purple); margin: 0 0 0.3rem 0;">Q1–Q2 · Context window + Context</p>
+                                <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">A fresh chat, not a six-week running thread. Loaded into the window: the partner list (28 names + schools), DC CAP voice rules, this cycle's calendar, the prior quarter's update for tone reference.</p>
+                            </div>
+                            <div style="background: rgba(131, 82, 255, 0.05); border-left: 3px solid var(--purple); border-radius: 0 6px 6px 0; padding: clamp(0.7rem, 1.3vw, 0.9rem);">
+                                <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.82rem, 1.15vw, 0.9rem); color: var(--purple); margin: 0 0 0.3rem 0;">Q3 · Memory</p>
+                                <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">This sits inside a Project — "Counselor Partnerships" — so the next twelve quarterly updates inherit the partner list, voice rules, and cycle context. No retyping.</p>
+                            </div>
+                            <div style="background: rgba(252, 176, 23, 0.07); border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0; padding: clamp(0.7rem, 1.3vw, 0.9rem);">
+                                <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.82rem, 1.15vw, 0.9rem); color: #8a5a00; margin: 0 0 0.3rem 0;">Q4 · Drift watch</p>
+                                <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Fresh chat inside the Project. Re-anchor mid-conversation: "remember — counselors with heavy caseloads, warm-professional tone, signed by Preston."</p>
+                            </div>
+                            <div style="background: rgba(16, 26, 76, 0.05); border-left: 3px solid var(--navy); border-radius: 0 6px 6px 0; padding: clamp(0.7rem, 1.3vw, 0.9rem);">
+                                <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.82rem, 1.15vw, 0.9rem); color: var(--navy); margin: 0 0 0.3rem 0;">Q5 · Model</p>
+                                <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Sonnet 4.6. Stakes don't earn Opus — this is recurring partnership comms, not a board memo. Haiku won't hold the voice.</p>
+                            </div>
+                            <div style="background: rgba(252, 176, 23, 0.07); border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0; padding: clamp(0.7rem, 1.3vw, 0.9rem);">
+                                <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.82rem, 1.15vw, 0.9rem); color: #8a5a00; margin: 0 0 0.3rem 0;">Q6 · Hallucination check</p>
+                                <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Every partner name verified against the live partner list. Any quoted counselor reply pasted in directly so Claude doesn't fabricate. Cycle dates checked against the cycle calendar.</p>
+                            </div>
+                            <div style="background: rgba(252, 176, 23, 0.07); border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0; padding: clamp(0.7rem, 1.3vw, 0.9rem);">
+                                <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.82rem, 1.15vw, 0.9rem); color: #8a5a00; margin: 0 0 0.3rem 0;">Q7 · Verify + validate</p>
+                                <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Verify: names, dates, claims. Validate: tone reads warm-professional, format matches prior updates, the ask at the end is actionable.</p>
+                            </div>
+                            <div style="background: rgba(131, 82, 255, 0.05); border-left: 3px solid var(--purple); border-radius: 0 6px 6px 0; padding: clamp(0.7rem, 1.3vw, 0.9rem); grid-column: 1 / -1;">
+                                <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.82rem, 1.15vw, 0.9rem); color: var(--purple); margin: 0 0 0.3rem 0;">Q8 · Prompt</p>
+                                <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0; font-style: italic;">"Draft the quarterly partnership update to our 28 high school counselors. Audience: counselors with heavy caseloads, mid-cycle. Format: 4 short paragraphs + a bulleted action list of three asks. Facts: the data table I pasted above, the cycle calendar in this Project, the prior quarter's update at the bottom for tone reference. Voice: warm-professional, signed Preston. Iterate with me on the opening before drafting the full thing."</p>
+                            </div>
+                        </div>
+                        <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--navy); margin: 1rem 0 0 0; padding-top: 0.75rem; border-top: 1px solid rgba(16, 26, 76, 0.08);"><strong>Takeaway:</strong> the same partnership update you might have written in Week 2 with a one-shot prompt now has a back-end stack underneath. Same output, sturdier reasons. And the next time this update needs to go out, the Project does most of the work — because the answers to Q1, Q2, and Q3 are already in files.</p>
                     </div>
-                    <div style="background: rgba(252, 176, 23, 0.05); border: 1px solid rgba(252, 176, 23, 0.2); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
-                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--gold); margin-bottom: 0.4rem;">Governance Pulse</p>
-                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Iteration changes who can use what. If your v2 expands the audience, the data tier of every reference file expands with it. Decide who's in the inheritance circle before you broaden access.</p>
+                </details>
+
+                <!-- Challenge + Governance Pulse -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.75rem, 1.5vw, 1rem); margin-top: clamp(1rem, 2vw, 1.5rem);">
+                    <div style="background: rgba(252, 176, 23, 0.06); border: 1px solid rgba(252, 176, 23, 0.22); border-radius: 8px; padding: clamp(0.85rem, 1.5vw, 1.1rem);">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: #8a5a00; margin-bottom: 0.5rem;">This Week's Challenge — Audit One of Your Chats</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0 0 0.5rem 0;">Pick a real chat from the last two weeks — ideally one that produced something disappointing. Walk it through the eight questions:</p>
+                        <ol style="font-size: clamp(0.82rem, 1.25vw, 0.92rem); line-height: 1.6; color: var(--dark-gray); margin: 0 0 0.5rem 0; padding-left: 1.2rem;">
+                            <li>Was the context window cluttered, or focused?</li>
+                            <li>What was loaded? What was missing?</li>
+                            <li>Did the chat try to be its own memory? Should it have been a Project?</li>
+                            <li>Did the chat drift? Where?</li>
+                            <li>Was it the right model?</li>
+                            <li>Any hallucinations slip through? How would you have caught them?</li>
+                            <li>What's your verify + validate gate?</li>
+                            <li>Rewrite the original prompt using the 5-part structure.</li>
+                        </ol>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Bring the diagnosis to Friday. Friday's question: <em>which of the eight is your team weakest on — and what's the cheapest fix?</em></p>
+                    </div>
+                    <div style="background: rgba(252, 176, 23, 0.05); border: 1px solid rgba(252, 176, 23, 0.2); border-radius: 8px; padding: clamp(0.85rem, 1.5vw, 1.1rem);">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--gold); margin-bottom: 0.5rem;">Governance Pulse — Model Selection IS a Governance Decision</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0 0 0.5rem 0;">Defaulting everything to Opus burns nonprofit-tier compute and slows the team. Defaulting to Haiku ships AI-flavored slop. Sonnet is the responsible default; Opus is reserved for the highest-stakes drafting; Haiku is for lookups and classifications.</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;"><strong>Leader scope:</strong> as your team builds Projects and Skills, you're picking the model for everyone who runs them. Pick on purpose.</p>
                     </div>
                 </div>
 
@@ -3138,8 +3385,8 @@ em-dashes &gt;2 per piece.
                     <div style="padding: 0 clamp(0.75rem, 1.5vw, 1rem) clamp(0.75rem, 1.5vw, 1rem);">
                         <form class="weekly-reflection-form" data-week="5" style="display: flex; flex-direction: column; gap: 0.75rem;">
                             <div>
-                                <label for="" style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">What did the teammate's hand-off reveal that you couldn't see yourself? What's now in your capstone scope, and what stays out?</label>
-                                <textarea aria-label="Hand-off learnings and capstone scope" style="width: 100%; min-height: 60px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; font-family: var(--font-body); font-size: 0.9rem; resize: vertical;" placeholder="What broke, what stays, what scopes up..."></textarea>
+                                <label for="" style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">Which of the eight questions changed how you'll run your next chat? What's now in a file that used to live in your head?</label>
+                                <textarea aria-label="Mechanics that changed your approach" style="width: 100%; min-height: 60px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; font-family: var(--font-body); font-size: 0.9rem; resize: vertical;" placeholder="The question that landed, the file you wrote..."></textarea>
                             </div>
                             <fieldset style="border: none; padding: 0;">
                                 <legend style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">Confidence level (1-5)</legend>
@@ -3172,6 +3419,12 @@ em-dashes &gt;2 per piece.
                         <h4 class="card-title">AI Governance Framework</h4>
                         <p class="card-description">Reference back: incident response protocols, attribution norms, and data handling responsibilities</p>
                         <a href="ai_governance_framework.html" class="card-link">View Framework →</a>
+                    </div>
+                    <div class="card blue-accent reveal-scale">
+                        <span class="status-badge status-available">Available</span>
+                        <h4 class="card-title">KPI Framework</h4>
+                        <p class="card-description">How we measure whether the build worked. Three-tier measurement (Engagement, Proficiency, Impact) and the Scale/Pause/Pivot gates.</p>
+                        <a href="kpi_framework.html" class="card-link">View Framework →</a>
                     </div>
                     <div class="card purple-accent reveal-scale">
                         <span class="status-badge status-coming">Opens Week 6</span>

@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Picker (Nonprofit Tier) — DC CAP AI Pilot Week 5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #101A4C;
+            --purple: #8352FF;
+            --blue: #87B7D5;
+            --gold: #FCB017;
+            --tan: #FFF4ED;
+            --white: #FFFFFF;
+            --dark-gray: #333333;
+            --gold-deep: #8a5a00;
+            --font-display: 'Noto Serif SemiCondensed', Georgia, serif;
+            --font-body: 'Noto Serif', Georgia, serif;
+            --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--dark-gray);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .mp-header {
+            background: linear-gradient(135deg, var(--navy) 0%, #1a2666 100%);
+            color: var(--white);
+            padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3rem);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mp-header::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .mp-header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.02em;
+        }
+
+        .mp-header p {
+            font-size: clamp(1rem, 1.6vw, 1.15rem);
+            opacity: 0.92;
+            position: relative;
+            z-index: 1;
+            max-width: 760px;
+            margin: 0 auto;
+            line-height: 1.55;
+        }
+
+        .mp-header .week-tag {
+            display: inline-block;
+            background: rgba(252, 176, 23, 0.25);
+            color: #ffe0a3;
+            font-family: var(--font-mono);
+            font-size: clamp(0.7rem, 1vw, 0.8rem);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Back link */
+        .back-link {
+            position: absolute;
+            top: clamp(1rem, 2vw, 1.5rem);
+            left: clamp(1rem, 2vw, 1.5rem);
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-size: clamp(0.75rem, 1vw, 0.85rem);
+            z-index: 2;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.25);
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .back-link:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        /* Main */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 4vw, 2rem);
+        }
+
+        section {
+            margin-bottom: clamp(2rem, 4vw, 3rem);
+        }
+
+        h2 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+            color: var(--navy);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            line-height: 1.25;
+        }
+
+        h2 .section-num {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            font-family: var(--font-mono);
+            font-size: clamp(0.7rem, 1vw, 0.78rem);
+            padding: 3px 9px;
+            border-radius: 4px;
+            margin-right: 0.6rem;
+            vertical-align: middle;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 600;
+        }
+
+        .lede {
+            font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+            color: var(--dark-gray);
+            line-height: 1.7;
+            max-width: 820px;
+            margin-bottom: 1rem;
+        }
+
+        /* TL;DR card */
+        .tldr {
+            background: linear-gradient(135deg, rgba(252, 176, 23, 0.1) 0%, rgba(131, 82, 255, 0.05) 100%);
+            border: 1px solid rgba(252, 176, 23, 0.3);
+            border-left: 4px solid var(--gold);
+            border-radius: 0 8px 8px 0;
+            padding: clamp(1rem, 2vw, 1.4rem);
+            margin-bottom: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .tldr-label {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: clamp(0.78rem, 1.1vw, 0.88rem);
+            color: var(--gold-deep);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.5rem;
+        }
+
+        .tldr p {
+            font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+            line-height: 1.7;
+            color: var(--navy);
+            margin: 0;
+        }
+
+        /* Model cards */
+        .model-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: clamp(1rem, 2vw, 1.5rem);
+            margin-bottom: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .model-card {
+            background: var(--white);
+            border: 1px solid rgba(16, 26, 76, 0.12);
+            border-top: 5px solid var(--accent);
+            border-radius: 8px;
+            padding: clamp(1.1rem, 2vw, 1.5rem);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .model-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(16, 26, 76, 0.08);
+        }
+
+        .model-card.opus { --accent: var(--navy); }
+        .model-card.sonnet { --accent: var(--purple); }
+        .model-card.haiku { --accent: var(--blue); }
+
+        .model-card .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            font-family: var(--font-mono);
+            font-size: clamp(0.68rem, 0.95vw, 0.78rem);
+            padding: 3px 9px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+        }
+        .model-card.haiku .badge { color: var(--navy); }
+
+        .model-card h3 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+            color: var(--navy);
+            margin-bottom: 0.3rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .model-card .descriptor {
+            font-family: var(--font-mono);
+            font-size: clamp(0.78rem, 1.1vw, 0.88rem);
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.85rem;
+            font-weight: 600;
+        }
+
+        .model-card .summary {
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+            line-height: 1.65;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+            padding-bottom: 0.85rem;
+            border-bottom: 1px dashed rgba(16, 26, 76, 0.15);
+        }
+
+        .model-card .label {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: clamp(0.75rem, 1.05vw, 0.82rem);
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.4rem;
+            margin-top: 0.75rem;
+        }
+        .model-card .label:first-of-type { margin-top: 0; }
+
+        .model-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 0.75rem 0;
+        }
+
+        .model-card li {
+            font-size: clamp(0.85rem, 1.2vw, 0.93rem);
+            line-height: 1.55;
+            color: var(--dark-gray);
+            padding-left: 1.1rem;
+            position: relative;
+            margin-bottom: 0.4rem;
+        }
+        .model-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .model-card .footer-note {
+            font-size: clamp(0.82rem, 1.15vw, 0.9rem);
+            color: var(--accent);
+            font-style: italic;
+            margin-top: 0.85rem;
+            padding-top: 0.6rem;
+            border-top: 1px solid rgba(16, 26, 76, 0.08);
+        }
+
+        /* Decision flow */
+        .decision-flow {
+            background: var(--white);
+            border: 1px solid rgba(16, 26, 76, 0.12);
+            border-radius: 8px;
+            padding: clamp(1.1rem, 2vw, 1.5rem);
+            margin-bottom: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            gap: clamp(0.6rem, 1.2vw, 0.85rem);
+            margin-bottom: 0.85rem;
+            padding-bottom: 0.85rem;
+            border-bottom: 1px dashed rgba(16, 26, 76, 0.1);
+        }
+        .flow-step:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+        .flow-step .num {
+            background: var(--gold);
+            color: var(--navy);
+            font-family: var(--font-mono);
+            font-weight: 700;
+            min-width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .flow-step .body {
+            flex: 1;
+        }
+
+        .flow-step .q {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+            color: var(--navy);
+            margin-bottom: 0.2rem;
+            line-height: 1.35;
+        }
+
+        .flow-step .a {
+            font-size: clamp(0.88rem, 1.25vw, 0.95rem);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Tradeoff table */
+        .tradeoff-wrap {
+            overflow-x: auto;
+            margin-bottom: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        table.tradeoff {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(16, 26, 76, 0.06);
+            font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+        }
+
+        table.tradeoff th {
+            background: var(--navy);
+            color: var(--white);
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            padding: 0.75rem 0.85rem;
+            text-align: left;
+            font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+        }
+        table.tradeoff th.opus-h { background: var(--navy); }
+        table.tradeoff th.sonnet-h { background: var(--purple); }
+        table.tradeoff th.haiku-h { background: var(--blue); color: var(--navy); }
+
+        table.tradeoff td {
+            padding: 0.7rem 0.85rem;
+            border-bottom: 1px solid rgba(16, 26, 76, 0.08);
+            line-height: 1.5;
+            vertical-align: top;
+        }
+
+        table.tradeoff td.row-label {
+            font-family: var(--font-subhead);
+            font-weight: 700;
+            color: var(--navy);
+            background: rgba(16, 26, 76, 0.04);
+            white-space: nowrap;
+        }
+
+        table.tradeoff tr:last-child td { border-bottom: none; }
+
+        /* Anti-pattern callout */
+        .anti-pattern {
+            background: rgba(230, 57, 70, 0.05);
+            border: 1px solid rgba(230, 57, 70, 0.2);
+            border-left: 4px solid #c44;
+            border-radius: 0 8px 8px 0;
+            padding: clamp(1rem, 2vw, 1.4rem);
+            margin-bottom: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .anti-pattern h3 {
+            font-family: var(--font-subhead);
+            font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+            color: #c44;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .anti-pattern p {
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+            line-height: 1.65;
+            color: var(--dark-gray);
+            margin: 0 0 0.5rem 0;
+        }
+
+        .anti-pattern p:last-child { margin-bottom: 0; }
+
+        /* Footer nav */
+        footer {
+            background: rgba(16, 26, 76, 0.04);
+            padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 5vw, 3rem);
+            text-align: center;
+            border-top: 1px solid rgba(16, 26, 76, 0.08);
+        }
+
+        footer a {
+            color: var(--purple);
+            text-decoration: none;
+            font-family: var(--font-subhead);
+            font-weight: 600;
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+        }
+        footer a:hover { text-decoration: underline; }
+
+        footer p {
+            font-size: clamp(0.82rem, 1.15vw, 0.9rem);
+            color: #777;
+            margin-top: 0.5rem;
+        }
+
+        /* Print */
+        @media print {
+            .mp-header { background: var(--navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .back-link, footer a { display: none; }
+            .model-card:hover { transform: none; box-shadow: none; }
+            section { page-break-inside: avoid; margin-bottom: 1.5rem; }
+            body { font-size: 11pt; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="mp-header">
+    <a href="../pilot_hub.html#resources" class="back-link">← Pilot Hub</a>
+    <div class="week-tag">Week 5 · Under the Hood</div>
+    <h1>MODEL PICKER</h1>
+    <p>Three Claude models, three jobs. Picked on purpose, not by reflex — for the nonprofit-tier reality every DC CAP team operates inside.</p>
+</header>
+
+<main>
+
+    <!-- TL;DR -->
+    <div class="tldr">
+        <p class="tldr-label">TL;DR — the one rule</p>
+        <p><strong>Start with Sonnet.</strong> Upgrade to Opus when the stakes warrant the depth. Drop to Haiku when speed matters more than judgment. That's the whole picker. The rest of this page tells you when each rule applies.</p>
+    </div>
+
+    <!-- Section 1: The Three Models -->
+    <section>
+        <h2><span class="section-num">01</span>The Three Models</h2>
+        <p class="lede">Claude isn't one tool. It's a family of three, designed for three different jobs. The names sort by speed and depth — not by quality. A Haiku answer to a Haiku-shaped question is not a worse answer than an Opus answer. It's the right answer.</p>
+
+        <div class="model-grid">
+            <div class="model-card opus">
+                <span class="badge">Careful</span>
+                <h3>Opus 4.6</h3>
+                <p class="descriptor">The careful one</p>
+                <p class="summary">Deep multi-step reasoning. The slowest of the three. The most expensive. Reserved for work where being wrong is costly — board memos, funder LOIs, complex analyses, anything where the reasoning trail matters.</p>
+
+                <p class="label">Use for</p>
+                <ul>
+                    <li>Drafting a Gates LOI or large federal proposal</li>
+                    <li>Board-facing strategy memos with multiple competing arguments</li>
+                    <li>Cross-document audits where logic has to hold</li>
+                    <li>The Adversarial Audit Skill on a high-stakes draft</li>
+                    <li>Anything signed by Preston or Eric that names a funder</li>
+                </ul>
+
+                <p class="label">Don't use for</p>
+                <ul>
+                    <li>Routine emails to counselors or families</li>
+                    <li>Summarizing a single document</li>
+                    <li>Classifying or tagging items</li>
+                    <li>"Just because I want the best one"</li>
+                </ul>
+
+                <p class="footer-note">Stakes earn Opus. Reflex doesn't.</p>
+            </div>
+
+            <div class="model-card sonnet">
+                <span class="badge">Balanced</span>
+                <h3>Sonnet 4.6</h3>
+                <p class="descriptor">The DC CAP default</p>
+                <p class="summary">Strong reasoning. Fast enough for everyday work. The model that should run most of your Projects, most of your Skills, and most of your one-off chats. Handles roughly 80% of DC CAP work well.</p>
+
+                <p class="label">Use for</p>
+                <ul>
+                    <li>Counselor and partner emails</li>
+                    <li>Quarterly partnership updates</li>
+                    <li>Briefing decks and weekly status writeups</li>
+                    <li>First drafts of grant narratives</li>
+                    <li>Voice scans on board memos (with thinking on)</li>
+                    <li>Most Projects and most Skills, by default</li>
+                </ul>
+
+                <p class="label">Don't use for</p>
+                <ul>
+                    <li>The single biggest funder proposal of the year (upgrade to Opus)</li>
+                    <li>A 10-second classification task (downgrade to Haiku)</li>
+                </ul>
+
+                <p class="footer-note">If you don't know which to pick, this is the answer.</p>
+            </div>
+
+            <div class="model-card haiku">
+                <span class="badge">Fast</span>
+                <h3>Haiku 4.5</h3>
+                <p class="descriptor">The fast one</p>
+                <p class="summary">Built for speed and volume. The right tool when you have many small tasks and the cost of being slightly less polished is low. The wrong tool for anything that requires judgment, voice, or multi-step reasoning.</p>
+
+                <p class="label">Use for</p>
+                <ul>
+                    <li>Summarizing a long PDF down to bullet points</li>
+                    <li>Classifying a list of items (e.g., tagging emails by topic)</li>
+                    <li>Quick lookups and definitions</li>
+                    <li>Light copyediting where voice is already in place</li>
+                    <li>Pulling structured data out of unstructured text</li>
+                </ul>
+
+                <p class="label">Don't use for</p>
+                <ul>
+                    <li>Anything signed by a person</li>
+                    <li>Drafting in DC CAP voice from scratch</li>
+                    <li>Multi-step analysis</li>
+                    <li>Verification of facts (it's faster, not more careful)</li>
+                </ul>
+
+                <p class="footer-note">Fast is a feature when the work is small. It's a liability when the work needs judgment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Decision flow -->
+    <section>
+        <h2><span class="section-num">02</span>How to Decide in 30 Seconds</h2>
+        <p class="lede">Five questions, asked in order. The first "yes" gives you your model. If you reach the end without a yes, pick Sonnet.</p>
+
+        <div class="decision-flow">
+            <div class="flow-step">
+                <span class="num">1</span>
+                <div class="body">
+                    <p class="q">Is this a quick lookup, classification, or summary?</p>
+                    <p class="a">If yes → <strong style="color: #2a5a78;">Haiku 4.5</strong>. Examples: tag these 50 emails by topic. Pull every dollar figure out of this PDF. Summarize this 12-page brief in five bullets.</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <span class="num">2</span>
+                <div class="body">
+                    <p class="q">Is this a board-, funder-, or executive-facing artifact where being wrong is costly?</p>
+                    <p class="a">If yes → <strong style="color: var(--navy);">Opus 4.6</strong>. Examples: the Gates LOI. The Q3 strategy memo. The capstone audit. The board deck narrative.</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <span class="num">3</span>
+                <div class="body">
+                    <p class="q">Does this require multi-step reasoning across multiple documents or arguments?</p>
+                    <p class="a">If yes → <strong style="color: var(--navy);">Opus 4.6</strong>. Examples: comparing three peer organizations' theories of change. Reconciling conflicting data points across reports. Building a strategic argument that has to hold under cross-examination.</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <span class="num">4</span>
+                <div class="body">
+                    <p class="q">Is this everyday work — emails, drafts, briefings, partner comms, voice-aware writing?</p>
+                    <p class="a">If yes → <strong style="color: var(--purple);">Sonnet 4.6</strong>. This is most of what you do. Sonnet is the right answer roughly 80% of the time.</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <span class="num">5</span>
+                <div class="body">
+                    <p class="q">Still not sure?</p>
+                    <p class="a"><strong style="color: var(--purple);">Pick Sonnet.</strong> Then watch the answer. If it falls short on depth, upgrade to Opus and rerun. If it's overkill for the task, drop to Haiku next time. The picker improves with reps.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Side-by-side -->
+    <section>
+        <h2><span class="section-num">03</span>Side-by-Side Tradeoffs</h2>
+        <p class="lede">The same dimensions across all three models. Read the row, not the column — that's how you spot the right tradeoff for the task in front of you.</p>
+
+        <div class="tradeoff-wrap">
+            <table class="tradeoff">
+                <thead>
+                    <tr>
+                        <th style="width: 18%;">Dimension</th>
+                        <th class="opus-h">Opus 4.6</th>
+                        <th class="sonnet-h">Sonnet 4.6</th>
+                        <th class="haiku-h">Haiku 4.5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Strength</td>
+                        <td>Deepest reasoning, longest planning horizon</td>
+                        <td>Strong reasoning at everyday speed</td>
+                        <td>Fastest response, lowest cost per task</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Speed</td>
+                        <td>Slowest</td>
+                        <td>Balanced</td>
+                        <td>Fastest</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Voice fidelity</td>
+                        <td>Highest with rich context</td>
+                        <td>Strong with a Project loaded</td>
+                        <td>Weak; not a voice model</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Multi-step reasoning</td>
+                        <td>Excellent</td>
+                        <td>Good</td>
+                        <td>Limited — use only for one-step tasks</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Best with thinking on</td>
+                        <td>Yes — that's the whole point</td>
+                        <td>Yes, for high-stakes work</td>
+                        <td>Rarely worth it</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Cost relative to Sonnet</td>
+                        <td>Notably higher</td>
+                        <td>1× (baseline)</td>
+                        <td>Notably lower</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">When you're wrong</td>
+                        <td>You over-spent on a simple task</td>
+                        <td>You probably got it right</td>
+                        <td>You under-served a task that needed judgment</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Section 4: Anti-patterns -->
+    <section>
+        <h2><span class="section-num">04</span>Two Anti-Patterns to Avoid</h2>
+
+        <div class="anti-pattern">
+            <h3>Anti-pattern 1 — Defaulting to Opus by reflex</h3>
+            <p>"I want the smartest one." Opus is slower and more expensive than Sonnet. Running every chat on Opus burns nonprofit-tier compute on tasks Sonnet would handle just as well. The cost shows up in two ways: slower responses for your team, and faster monthly burn rate on the org's compute budget.</p>
+            <p><strong>The fix:</strong> Sonnet first. Upgrade only when you can name <em>why</em> the stakes earn the depth.</p>
+        </div>
+
+        <div class="anti-pattern">
+            <h3>Anti-pattern 2 — Defaulting to Haiku because it's fast</h3>
+            <p>Speed is the wrong variable when the work needs judgment. A Haiku-drafted donor letter or counselor email reads sloppy because Haiku isn't built for voice or nuance. Saving 20 seconds isn't worth shipping work that looks like AI-flavored slop.</p>
+            <p><strong>The fix:</strong> Haiku only when the task is genuinely small and the output is genuinely structured (a list, a tag, a summary). For anything a human will read carefully, use Sonnet.</p>
+        </div>
+    </section>
+
+    <!-- Section 5: How model picks show up in Projects and Skills -->
+    <section>
+        <h2><span class="section-num">05</span>Model Selection in Projects and Skills</h2>
+        <p class="lede">Every Project has a default model. Every Skill runs under whatever model the chat is using when it triggers. As your team builds Projects and Skills this pilot, you're picking models for everyone who runs them — pick on purpose.</p>
+
+        <div style="background: var(--white); border: 1px solid rgba(16, 26, 76, 0.12); border-radius: 8px; padding: clamp(1.1rem, 2vw, 1.5rem);">
+            <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--navy); margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 0.05em;">Quick guide</p>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="padding: 0.6rem 0; border-bottom: 1px dashed rgba(16, 26, 76, 0.1); font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6;"><strong style="color: var(--purple);">Most Projects → Sonnet.</strong> The Project loads rich context, so Sonnet has what it needs to perform well. Upgrade the Project to Opus only if the work running through it is consistently high-stakes (a board-brief Project; an audit Project).</li>
+                <li style="padding: 0.6rem 0; border-bottom: 1px dashed rgba(16, 26, 76, 0.1); font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6;"><strong style="color: var(--navy);">Audit and verification Skills → Opus with thinking on.</strong> When the Skill exists to catch errors, depth and reasoning quality matter more than speed.</li>
+                <li style="padding: 0.6rem 0; border-bottom: 1px dashed rgba(16, 26, 76, 0.1); font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6;"><strong style="color: var(--purple);">Drafting and voice Skills → Sonnet.</strong> Voice rules in the SKILL.md give Sonnet enough scaffolding to perform at near-Opus quality on a fraction of the cost.</li>
+                <li style="padding: 0.6rem 0; font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.6;"><strong style="color: #2a5a78;">Classification and summary Skills → Haiku.</strong> If the Skill exists to pull structure out of text, Haiku does it faster and cheaper than Sonnet.</li>
+            </ul>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <a href="../pilot_hub.html#resources">← Back to Pilot Hub</a>
+    <p>Week 5 · Under the Hood · DC CAP Enterprise AI Leadership Pilot · 2026</p>
+</footer>
+
+</body>
+</html>
