@@ -1,0 +1,53 @@
+From ff160fce7bd71f271bd7fe413ea2446646a4efa6 Mon Sep 17 00:00:00 2001
+From: Preston Magouirk <preston.magouirk@dccap.org>
+Date: Tue, 12 May 2026 08:09:43 -0400
+Subject: [PATCH] Publish 2026-05-12 daily briefing: self-audit prompt for the
+ Diligence trace (tips)
+
+---
+ briefings.json | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/briefings.json b/briefings.json
+index 22ac191..8900f47 100644
+--- a/briefings.json
++++ b/briefings.json
+@@ -1,8 +1,8 @@
+ {
+   "meta": {
+     "version": "2.0",
+-    "lastGenerated": "2026-05-11T09:15:00-04:00",
+-    "lastPublished": "2026-05-11T09:15:00-04:00",
++    "lastGenerated": "2026-05-12T09:00:00-04:00",
++    "lastPublished": "2026-05-12T09:00:00-04:00",
+     "categories": {
+       "foundational": {
+         "label": "Foundational Learning",
+@@ -42,6 +42,17 @@
+   },
+   "drafts": [],
+   "published": [
++    {
++      "category": "tips",
++      "content": "Diligence is the easiest of the 4Ds to skip. The draft reads cleanly, the deadline is sticky, and you send. The cost shows up later when a partner flags a number that does not match your records or a colleague asks where a recommendation came from. Anthropic's own prompt engineering guidance points at a fix. The documented practice for outputs that involve reasoning: ask Claude to walk through its thinking step by step before delivering a conclusion. That trace lets you spot the moves the model made, surface the assumptions baked into the draft, and verify the claims that matter.\n\nThe tactical move on a Tuesday morning is small. Before you treat any Claude output as ready to send, run one follow-up prompt: \"Walk me through the choices you made in this draft. For each factual claim, tell me whether it came from the context I gave you, from your training data, or from a judgment call you made. Quote the source passage when applicable.\" Claude returns a short audit of its own output. The audit becomes the trace for Week 6 with no extra work. You spot the claims you most need to verify. You see the places where the model filled a gap that should have been filled by your knowledge of the partner, the program, or the specific number.\n\nThis is Diligence as a workflow. The model produces the draft. You produce the verification step. The chat history becomes your audit log and the artifact your team brings to Friday's discussion.",
++      "date": "2026-05-12",
++      "resource": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/chain-of-thought",
++      "sourceNotes": "Claim: Anthropic's prompt engineering guidance recommends asking the model to walk through its reasoning step by step before producing a final answer | Source: VERIFIED (Anthropic, \"Let Claude think (chain of thought prompting)\" / Prompting best practices, docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/chain-of-thought)\nClaim: Step-by-step reasoning surfaces the model's choices and improves accuracy on tasks that involve judgment | Source: VERIFIED (same Anthropic chain-of-thought guidance — explicit recommendation that letting Claude think before answering increases accuracy and gives users a transparent trace)\nClaim: Week 6 of the pilot focuses on Diligence and asks participants to trace one external output — what Claude produced, what they changed, and why | Source: GROUNDED (pilot_hub.html, Week 6 Challenge: \"Find one output you sent externally this week. Trace it like the example above: what did Claude produce, what did you change, and why? Bring the trace to Friday.\")\nClaim: Diligence is one of the four fluency dimensions in the pilot's 4D model (Delegation, Description, Discernment, Diligence) | Source: GROUNDED (pilot_hub.html, AI Fluency Framework references and Week 6 section)\nClaim: The recommended self-audit prompt (asking Claude to categorize each claim as context-grounded, training-based, or a judgment call) is a workflow-level instantiation of the documented chain-of-thought practice | Source: Editorial (author recommendation; the prompt structure follows the documented chain-of-thought pattern applied to factual provenance)",
++      "status": "published",
++      "title": "Make Claude Show Its Work Before You Send",
++      "tryThis": "Pick one Claude-assisted output you plan to send this week: an email, a memo, a partnership note. Run the audit prompt above on it before you hit send. Save Claude's response in the same chat thread. That single thread is your Week 6 trace. Bring it to Friday.",
++      "validationStatus": "PASSED"
++    },
+     {
+       "category": "foundational",
+       "content": "You probably used Claude for a piece of writing last week. Maybe an email, a memo, a partnership note, a draft for someone else to react to. You were not alone. Anthropic published its first Economic Index in February 2025 and looked at roughly four million anonymized Claude.ai conversations. The team mapped each conversation to the U.S. Bureau of Labor Statistics task framework that describes what jobs actually involve. Three job families showed up most often. Software and tech work led at about 37% of all conversations. Writing and creative work came next at roughly 10%. Education and training rounded out the top three at about 9%.\n\nAI use clusters in some job families and barely registers in others. The shape of that distribution matters more than the total. Claude use clusters where the unit of work is a piece of text or a piece of code someone has to draft, sharpen, and send. Roughly 36% of US occupations now have measurable Claude use, and the deepest use is concentrated in those three families. If your day involves writing things other people read, you are in one of the heaviest-use slices of the labor market.\n\nWeek 6 starts from that fact and asks the next question. The Week 6 challenge is to find one piece you sent externally and trace it: what did Claude produce, what did you change, and why. Treat the trace as the answer to a question Anthropic could not see from outside. Their data showed where the writing happened. Your trace shows whether the writing got better.",
+@@ -309,4 +320,4 @@
+       "archivedReason": "Superseded by Glasswing news entry for April 10"
+     }
+   ]
+-}
+\ No newline at end of file
++}
+-- 
+2.34.1
+
