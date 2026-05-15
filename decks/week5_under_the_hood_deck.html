@@ -582,7 +582,7 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
         <h2 class="reveal">Why does context matter?</h2>
         <div class="qa-layout">
             <div class="qa-col qa-col-real reveal-scale">
-                <div class="qa-col-eyebrow">From the real world</div>
+                <div class="qa-col-eyebrow">A real work scenario</div>
                 <h3>A doctor without your history.</h3>
                 <p>A patient walks in with chest pain. With no medical history, that symptom could be heartburn, anxiety, a heart attack, or a dozen other things. The doctor guesses.</p>
                 <p>Add history — cardiac stent six months ago. Add family — father died of MI at 52. Add behavior — ran six miles before symptoms started. Each piece of context narrows the diagnosis to the one that fits.</p>
@@ -608,17 +608,17 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
             <div class="qa-col qa-col-real reveal-scale">
                 <div class="qa-col-eyebrow">A real work scenario</div>
                 <h3>An attorney joining a new case.</h3>
-                <p>An attorney operates from two memory stores at once. <strong>External memory:</strong> law school, the bar exam, fifteen years of practice in the area. Fixed. They bring it to every case.</p>
-                <p><strong>Internal memory:</strong> the case file itself — complaint, depositions, discovery, prior motions. Variable. Different in every matter.</p>
-                <p>Both are required. Strong external + empty case file = malpractice. Strong case file + empty external training = rookie. Real lawyers run both at once.</p>
-                <div class="source">Standard legal practice. The distinction is explicit in continuing legal education curricula on case preparation.</div>
+                <p><strong>External memory:</strong> law school, the bar exam, fifteen years of practice. Fixed. Brought to every case.</p>
+                <p><strong>Internal memory:</strong> the case file — complaint, depositions, discovery, prior motions. Variable. Different in every matter.</p>
+                <p>Strong external + empty case file = malpractice. Empty external + full file = rookie. Real lawyers run both.</p>
+                <div class="source">Standard legal practice. Explicit in CLE curricula on case preparation.</div>
             </div>
             <div class="qa-col qa-col-claude reveal-scale">
                 <div class="qa-col-eyebrow">In your Claude work</div>
                 <h3>Same two-layer architecture.</h3>
-                <p><strong>Training data</strong> is Claude's external memory. What the model learned reading the public internet through its training cutoff. Geography, science, frameworks, common knowledge. Fixed. You can't change it inside a chat.</p>
-                <p><strong>Context</strong> is Claude's internal memory. What's loaded in this conversation right now. Your data, your voice rules, your files. Variable. You decide what goes in.</p>
-                <p>Empty context = Claude guessing from generic training. Asking about events after the training cutoff = Claude inventing.</p>
+                <p><strong>Training data</strong> is Claude's external memory. What the model learned from the public internet through its training cutoff. Fixed.</p>
+                <p><strong>Context</strong> is Claude's internal memory. What's loaded in this chat right now. Your data, voice rules, files. You decide what goes in.</p>
+                <p>Empty context = Claude guessing from generic training. Asking about events after the cutoff = Claude inventing.</p>
             </div>
         </div>
         <p class="qa-tag reveal"><strong>The takeaway:</strong> External memory is what the model knows about the world. Internal memory is what you've told it about your work. Both layers, every time.</p>
@@ -634,18 +634,17 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
             <div class="qa-col qa-col-real reveal-scale">
                 <div class="qa-col-eyebrow">A real work scenario</div>
                 <h3>The spam filter in your inbox.</h3>
-                <p>Every spam filter lives and dies on two metrics.</p>
-                <p><strong>Precision:</strong> of the emails the filter marks as spam, what percent <em>are</em> actually spam? Low precision = important emails sent to the spam folder. False positives.</p>
+                <p><strong>Precision:</strong> of the emails marked as spam, what percent <em>are</em> spam? Low precision = important emails in the spam folder. False positives.</p>
                 <p><strong>Recall:</strong> of all the spam coming in, what percent does the filter catch? Low recall = spam piling up in the inbox. False negatives.</p>
-                <p>Push for higher precision and recall drops. Push for higher recall and precision drops. Every filter trades them off.</p>
-                <div class="source">Standard information retrieval metrics. Defined in Salton &amp; McGill, <em>Introduction to Modern Information Retrieval</em> (1983). Used across search, recommendation, classification, and screening systems.</div>
+                <p>Push precision up, recall drops. Push recall up, precision drops. Every filter trades them off.</p>
+                <div class="source">Standard information retrieval metrics. Salton &amp; McGill, <em>Introduction to Modern Information Retrieval</em> (1983).</div>
             </div>
             <div class="qa-col qa-col-claude reveal-scale">
                 <div class="qa-col-eyebrow">In your Claude work</div>
                 <h3>Two failure modes, two fixes.</h3>
-                <p><strong>Precision failure</strong> = hallucination. The model confidently "remembers" something and is wrong. The <em>Mata v. Avianca</em> cases were a precision failure — six fake citations asserted as real.</p>
-                <p><strong>Recall failure</strong> = forgetting what you told it earlier. The model should have used something from earlier in the chat but didn't. This is what drift is, mechanically.</p>
-                <p>Verify catches precision failures. Re-anchoring catches recall failures. Naming the failure mode is the first step to fixing it.</p>
+                <p><strong>Precision failure</strong> = hallucination. The model confidently "remembers" something and is wrong. The <em>Mata</em> case was a precision failure — six fake citations asserted as real.</p>
+                <p><strong>Recall failure</strong> = forgetting what you told it earlier. The model should have used something from earlier and didn't. Drift, mechanically.</p>
+                <p>Verify catches precision failures. Re-anchoring catches recall failures.</p>
             </div>
         </div>
         <p class="qa-tag reveal"><strong>The takeaway:</strong> Precision and recall are the two ways memory lets you down. Both have fixes — once you can name which one you're seeing.</p>
@@ -659,7 +658,7 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
         <h2 class="reveal">What is model drift?</h2>
         <div class="qa-layout">
             <div class="qa-col qa-col-real reveal-scale">
-                <div class="qa-col-eyebrow">From the real world</div>
+                <div class="qa-col-eyebrow">A real work scenario</div>
                 <h3>Tay, 2016.</h3>
                 <p>Microsoft launched a chatbot named Tay on Twitter on March 23, 2016. Tay was designed to learn from conversation. Within 16 hours, trolls had steered her into producing racist and offensive content. Microsoft pulled her offline.</p>
                 <p>The mechanism is the same one that happens in every long chat — quieter, slower. The longer a conversation runs, the more recent inputs dominate the original instructions. Newer signals crowd out older ones.</p>
@@ -713,17 +712,17 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
         <h2 class="reveal">What is hallucination?</h2>
         <div class="qa-layout">
             <div class="qa-col qa-col-real reveal-scale">
-                <div class="qa-col-eyebrow">From the real world</div>
+                <div class="qa-col-eyebrow">A real work scenario</div>
                 <h3>Mata v. Avianca, 2023.</h3>
-                <p>Two New York lawyers used ChatGPT to write a personal injury brief against Avianca Airlines. ChatGPT cited six prior cases — including <em>Varghese v. China Southern Airlines</em> — with fabricated judge names, fabricated quotes, fabricated citation numbers.</p>
-                <p>When the lawyers asked ChatGPT if the cases were real, ChatGPT said yes and pointed to "Westlaw and LexisNexis." None of them existed. Judge P. Kevin Castel sanctioned the lawyers $5,000 in May 2023. He called the analysis "gibberish."</p>
-                <div class="source">Mata v. Avianca, Inc., No. 1:22-cv-01461 (S.D.N.Y. 2023). Judge P. Kevin Castel, sanctions order June 22, 2023.</div>
+                <p>Two New York lawyers used ChatGPT to write a personal injury brief. ChatGPT cited six prior cases — including <em>Varghese v. China Southern Airlines</em> — with fabricated judge names, quotes, and citation numbers.</p>
+                <p>Asked if the cases were real, ChatGPT said yes and pointed to "Westlaw and LexisNexis." None existed. Judge Castel sanctioned the lawyers $5,000. He called the analysis "gibberish."</p>
+                <div class="source">Mata v. Avianca, Inc., No. 1:22-cv-01461 (S.D.N.Y. 2023).</div>
             </div>
             <div class="qa-col qa-col-claude reveal-scale">
                 <div class="qa-col-eyebrow">In your Claude work</div>
                 <h3>Pattern completion, not knowledge.</h3>
-                <p>Hallucination is when a model confidently states something untrue. A fabricated quote. A made-up statistic. A paper that doesn't exist. A person who never said the thing.</p>
-                <p>It happens because LLMs are pattern completers. When they don't know, they generate text that <em>sounds</em> like the right kind of answer. Names, numbers, dates, citations are highest-risk. Load the source. Ask for citations. Cross-check anything that lands in front of a funder, board, or partner.</p>
+                <p>Hallucination is when a model confidently states something untrue. A fabricated quote. A made-up statistic. A paper that doesn't exist.</p>
+                <p>It happens because LLMs are pattern completers. When they don't know, they generate text that <em>sounds</em> like the right kind of answer. Names, numbers, dates, citations are highest-risk.</p>
             </div>
         </div>
         <p class="qa-tag reveal"><strong>The takeaway:</strong> The lawyers asked ChatGPT to verify itself. ChatGPT said yes. Don't ask the model to grade its own homework.</p>
@@ -739,18 +738,18 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
             <div class="twin-case reveal-scale">
                 <div class="tc-label">Google · February 2023</div>
                 <h3>Bard's first demo.</h3>
-                <p class="tc-body">In its public launch ad, Google's Bard chatbot was asked what new discoveries to tell a 9-year-old about the James Webb Space Telescope. Bard said JWST "took the very first pictures" of a planet outside our solar system.</p>
-                <p class="tc-body">Wrong. The first exoplanet image came from the European Southern Observatory's Very Large Telescope in 2004. Reuters caught it. The story broke on the day of Google's Paris AI event.</p>
+                <p class="tc-body">In its public launch ad, Bard was asked what JWST discoveries to tell a 9-year-old. Bard said JWST "took the very first pictures" of a planet outside our solar system.</p>
+                <p class="tc-body">Wrong. The first exoplanet image came from the European Southern Observatory's VLT in 2004. Reuters caught it the day of Google's Paris AI event.</p>
                 <div class="tc-cost">Alphabet stock dropped 7.7%. ~$100 billion in market cap erased in 24 hours.</div>
-                <div class="source">CNN Business, NPR, Reuters (Feb 8–9, 2023). Confirmed by NASA records and ESO archive.</div>
+                <div class="source">CNN Business, NPR, Reuters (Feb 8–9, 2023).</div>
             </div>
             <div class="twin-case reveal-scale">
                 <div class="tc-label">Air Canada · February 2024</div>
                 <h3>The bereavement-fare chatbot.</h3>
-                <p class="tc-body">Jake Moffatt asked Air Canada's chatbot about bereavement fares after his grandmother died. The chatbot told him he could apply for a refund within 90 days of booking. Air Canada's actual policy required pre-booking with the discount applied.</p>
-                <p class="tc-body">Air Canada refused the refund. The British Columbia Civil Resolution Tribunal sided with Moffatt: a company is liable for negligent misrepresentation made by its chatbot. "Air Canada is responsible for all the information on its website."</p>
+                <p class="tc-body">Jake Moffatt asked Air Canada's chatbot about bereavement fares after his grandmother died. The chatbot told him he could apply for a refund within 90 days. The actual policy required pre-booking.</p>
+                <p class="tc-body">The BC Civil Resolution Tribunal sided with Moffatt: a company is liable for what its chatbot says. "Air Canada is responsible for all the information on its website."</p>
                 <div class="tc-cost">Air Canada ordered to pay $812.02. Precedent set across Canadian jurisdictions.</div>
-                <div class="source">Moffatt v. Air Canada, 2024 BCCRT 149 (Feb 14, 2024).</div>
+                <div class="source">Moffatt v. Air Canada, 2024 BCCRT 149.</div>
             </div>
         </div>
         <p class="qa-tag reveal"><strong>The takeaway:</strong> Hallucination has a market price, a legal price, and a reputational price. Verify before you let it ship.</p>
@@ -764,21 +763,21 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
         <h2 class="reveal">How do I verify and validate?</h2>
         <div class="qa-layout">
             <div class="qa-col qa-col-real reveal-scale">
-                <div class="qa-col-eyebrow">From the real world</div>
+                <div class="qa-col-eyebrow">A real work scenario</div>
                 <h3>The pre-flight checklist + the flight plan.</h3>
-                <p>A commercial pilot does two things before takeoff. The <strong>pre-flight checklist</strong> — verify every part works. Engines, controls, fuel, instruments. The <strong>flight plan</strong> — validate the route fits the mission. Weather, weight, alternate airports, fuel reserves.</p>
-                <p>Both are mandatory under FAA regulations. A plane in perfect mechanical condition flying into a thunderstorm is verified, not validated. A flawless flight plan in a plane with a broken altimeter is validated, not verified.</p>
-                <div class="source">14 CFR § 91.103 (Preflight action) and 14 CFR § 91.213 (Inoperative instruments). FAA Aeronautical Information Manual, current edition.</div>
+                <p>Before every takeoff, a commercial pilot runs two checks. The <strong>pre-flight checklist</strong> verifies every part works — engines, controls, fuel, instruments. The <strong>flight plan</strong> validates the route fits the mission — weather, weight, fuel reserves.</p>
+                <p>A plane in perfect condition flying into a thunderstorm is verified, not validated. A flawless plan in a plane with a broken altimeter is validated, not verified. Both mandatory under FAA rules.</p>
+                <div class="source">14 CFR § 91.103 (Preflight action); 14 CFR § 91.213 (Inoperative instruments).</div>
             </div>
             <div class="qa-col qa-col-claude reveal-scale">
                 <div class="qa-col-eyebrow">In your Claude work</div>
                 <h3>Two gates. Both required.</h3>
-                <p><strong>Verify</strong> — are the facts true? Names, numbers, dates, citations, claims. Cross-check anything material. Don't ask the model to grade itself.</p>
-                <p><strong>Validate</strong> — does it fit the work? Right audience, right format, right tone, right move. Read it as the audience before you send.</p>
-                <p>For the highest-stakes work, run it through the <em>adversarial-audit</em> Skill from Week 4 — or hand it to a teammate. Design the gates into the workflow, not bolted on at the end.</p>
+                <p><strong>Verify</strong> — are the facts true? Names, numbers, dates, citations. Cross-check anything material. Don't ask the model to grade itself.</p>
+                <p><strong>Validate</strong> — does it fit the work? Right audience, right format, right tone. Read it as the audience before you send.</p>
+                <p>For high-stakes work, run the <em>adversarial-audit</em> Skill from Week 4 — or hand it to a teammate.</p>
             </div>
         </div>
-        <p class="qa-tag reveal"><strong>The takeaway:</strong> Diligence is two moves, not one.</p>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Diligence is two moves, not one. Design the gates into the workflow.</p>
     </div>
 </section>
 
