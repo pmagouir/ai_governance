@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Under the Hood — DC CAP AI Pilot Week 5</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+
+.slide {
+    width: 100vw; height: 100vh; height: 100dvh;
+    overflow: hidden; scroll-snap-align: start;
+    display: flex; flex-direction: column; position: relative;
+}
+.slide-content {
+    flex: 1; display: flex; flex-direction: column;
+    justify-content: flex-start;
+    max-height: 100%; overflow: hidden;
+    padding: clamp(2.5rem, 7vh, 5rem) var(--slide-padding) clamp(1.5rem, 3vh, 2.5rem);
+}
+.slide-hero .slide-content {
+    justify-content: flex-end;
+    padding-bottom: clamp(2.5rem, 8vh, 5rem);
+    padding-top: var(--slide-padding);
+}
+
+:root {
+    --navy: #101A4C;
+    --navy-deep: #0B1236;
+    --navy-mid: #162060;
+    --purple: #8352FF;
+    --purple-glow: rgba(131, 82, 255, 0.15);
+    --blue: #87B7D5;
+    --blue-glow: rgba(135, 183, 213, 0.12);
+    --gold: #FCB017;
+    --gold-glow: rgba(252, 176, 23, 0.12);
+    --tan: #FFF4ED;
+    --white: #FFFFFF;
+    --text-main: rgba(255, 255, 255, 0.92);
+    --text-secondary: rgba(255, 255, 255, 0.65);
+    --text-dim: rgba(255, 255, 255, 0.38);
+    --card-bg: rgba(255, 255, 255, 0.045);
+    --card-border: rgba(255, 255, 255, 0.09);
+
+    --font-display: 'Noto Serif SemiCondensed', Georgia, serif;
+    --font-body: 'Noto Serif', Georgia, serif;
+    --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --title-size: clamp(2.2rem, 6vw, 4.5rem);
+    --h2-size: clamp(1.7rem, 4.2vw, 3rem);
+    --h3-size: clamp(1.2rem, 2.6vw, 1.8rem);
+    --body-size: clamp(1rem, 1.55vw, 1.25rem);
+    --body-lg: clamp(1.1rem, 2vw, 1.5rem);
+    --small-size: clamp(0.85rem, 1.25vw, 1.05rem);
+    --mono-size: clamp(0.72rem, 1.05vw, 0.88rem);
+
+    --slide-padding: clamp(2rem, 6vw, 6rem);
+    --content-gap: clamp(1rem, 2.5vw, 2.5rem);
+    --card-padding: clamp(1.1rem, 2.2vw, 1.75rem);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --duration-normal: 0.6s;
+}
+
+@media (max-height: 700px) {
+    :root { --title-size: clamp(1.6rem, 5vw, 3rem); --h2-size: clamp(1.3rem, 3.5vw, 2.2rem); --body-size: clamp(0.85rem, 1.35vw, 1.05rem); --body-lg: clamp(0.95rem, 1.75vw, 1.25rem); --h3-size: clamp(1rem, 2.2vw, 1.45rem); }
+    .slide-content { padding-top: clamp(1.5rem, 4vh, 3rem); }
+}
+@media (max-height: 600px) {
+    :root { --title-size: clamp(1.3rem, 4vw, 2.2rem); --h2-size: clamp(1.05rem, 2.8vw, 1.6rem); --body-size: clamp(0.78rem, 1.2vw, 0.95rem); --h3-size: clamp(0.9rem, 1.8vw, 1.2rem); }
+    .slide-content { padding-top: clamp(1rem, 3vh, 2rem); }
+    .nav-dots { display: none; }
+}
+@media (max-height: 500px) {
+    :root { --title-size: clamp(1.1rem, 3.5vw, 1.8rem); --body-size: clamp(0.7rem, 1vw, 0.85rem); }
+}
+@media (max-width: 780px) {
+    .qa-layout, .principles-row, .compound-row, .twin-cases, .knife-row { flex-direction: column !important; grid-template-columns: 1fr !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+    html { scroll-behavior: auto; }
+    .reveal, .reveal-scale { opacity: 1 !important; transform: none !important; }
+}
+@media print {
+    html { scroll-snap-type: none; }
+    .slide { page-break-after: always; page-break-inside: avoid; scroll-snap-align: unset; height: 100vh; }
+    .slide:last-child { page-break-after: auto; }
+    .nav-dots, .progress-bar { display: none !important; }
+    .reveal, .reveal-scale { opacity: 1 !important; transform: none !important; }
+}
+
+/* === TYPOGRAPHY === */
+body { font-family: var(--font-body); font-size: var(--body-size); line-height: 1.6; color: var(--text-main); background: var(--navy-deep); }
+h1 { font-family: var(--font-display); font-size: var(--title-size); font-weight: 900; line-height: 1.04; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); }
+h2 { font-family: var(--font-display); font-size: var(--h2-size); font-weight: 900; line-height: 1.08; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); }
+h3 { font-family: var(--font-subhead); font-size: var(--h3-size); font-weight: 700; line-height: 1.25; color: var(--white); }
+p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
+.eyebrow { font-family: var(--font-mono); font-size: var(--mono-size); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: clamp(0.5rem, 1vh, 0.9rem); }
+.accent-bar { width: clamp(3rem, 8vw, 6rem); height: 4px; background: var(--gold); margin-bottom: clamp(0.5rem, 1vh, 1rem); }
+
+/* === REVEALS === */
+.reveal { opacity: 0; transform: translateY(clamp(15px, 3vh, 30px)); transition: opacity var(--duration-normal) var(--ease-out-expo), transform var(--duration-normal) var(--ease-out-expo); }
+.reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity var(--duration-normal) var(--ease-out-expo), transform var(--duration-normal) var(--ease-spring); }
+.visible .reveal, .visible .reveal-scale { opacity: 1; transform: translateY(0) translateX(0) scale(1); }
+.reveal:nth-child(1) { transition-delay: 0s; }
+.reveal:nth-child(2) { transition-delay: 0.08s; }
+.reveal:nth-child(3) { transition-delay: 0.16s; }
+.reveal:nth-child(4) { transition-delay: 0.24s; }
+.reveal:nth-child(5) { transition-delay: 0.32s; }
+.reveal:nth-child(6) { transition-delay: 0.4s; }
+.reveal-scale:nth-child(1) { transition-delay: 0s; }
+.reveal-scale:nth-child(2) { transition-delay: 0.08s; }
+.reveal-scale:nth-child(3) { transition-delay: 0.16s; }
+.reveal-scale:nth-child(4) { transition-delay: 0.24s; }
+.reveal-scale:nth-child(5) { transition-delay: 0.32s; }
+
+/* === NAV === */
+.progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); z-index: 200; transition: width 0.3s ease; width: 0; }
+.nav-dots { position: fixed; right: clamp(0.75rem, 2vw, 1.5rem); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: clamp(6px, 1vh, 10px); z-index: 100; }
+.nav-dot { width: clamp(8px, 0.8vw, 10px); height: clamp(8px, 0.8vw, 10px); border-radius: 50%; background: rgba(255,255,255,0.15); border: none; cursor: pointer; padding: 0; transition: all 0.3s ease; }
+.nav-dot.active { background: var(--gold); transform: scale(1.5); }
+
+/* === SLIDE BACKGROUNDS === */
+.slide-hero {
+    background: radial-gradient(ellipse at 20% 80%, var(--gold-glow) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 20%, var(--purple-glow) 0%, transparent 55%),
+                var(--navy);
+}
+.slide-setup { background: radial-gradient(ellipse at 70% 50%, var(--purple-glow) 0%, transparent 60%), var(--navy-deep); }
+.slide-principles { background: radial-gradient(ellipse at 50% 40%, var(--blue-glow) 0%, transparent 55%), var(--navy-deep); }
+.slide-q-description { background: radial-gradient(ellipse at 30% 70%, var(--purple-glow) 0%, transparent 55%), var(--navy-deep); }
+.slide-q-diligence { background: radial-gradient(ellipse at 70% 30%, var(--gold-glow) 0%, transparent 55%), var(--navy-deep); }
+.slide-q-delegation { background: radial-gradient(ellipse at 30% 30%, var(--blue-glow) 0%, transparent 55%), var(--navy); }
+.slide-compound { background: radial-gradient(ellipse at 50% 50%, var(--gold-glow) 0%, transparent 60%), var(--navy-deep); }
+.slide-close { background: radial-gradient(ellipse at 80% 80%, var(--gold-glow) 0%, transparent 50%), radial-gradient(ellipse at 20% 30%, var(--purple-glow) 0%, transparent 50%), var(--navy-deep); }
+
+/* === HERO === */
+.slide-hero .subtitle { font-family: var(--font-subhead); font-size: var(--body-lg); font-weight: 300; color: var(--gold); line-height: 1.4; max-width: 36em; }
+.slide-hero .panel-info { font-family: var(--font-body); font-size: var(--small-size); color: var(--text-dim); line-height: 1.6; margin-top: clamp(1.5rem, 3vh, 3rem); }
+.slide-hero .panel-info strong { color: var(--text-main); }
+
+/* === Q&A SLIDE LAYOUT === */
+.qa-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(1.25rem, 2.5vw, 2.5rem);
+    margin-top: clamp(0.75rem, 2vh, 1.5rem);
+    flex: 1; align-items: stretch;
+}
+.qa-col {
+    display: flex; flex-direction: column;
+    padding: clamp(1rem, 2vw, 1.5rem);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-top: 4px solid;
+    border-radius: clamp(8px, 1.2vw, 12px);
+}
+.qa-col-real { border-top-color: var(--gold); }
+.qa-col-claude { border-top-color: var(--purple); }
+.qa-col-eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+}
+.qa-col-real .qa-col-eyebrow { color: var(--gold); }
+.qa-col-claude .qa-col-eyebrow { color: var(--purple); }
+.qa-col h3 {
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+    margin-bottom: clamp(0.5rem, 1vh, 0.8rem);
+    line-height: 1.2;
+}
+.qa-col p {
+    font-size: var(--small-size);
+    line-height: 1.6;
+    color: var(--text-main);
+    margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+}
+.qa-col p:last-child { margin-bottom: 0; }
+.qa-col .source {
+    font-family: var(--font-mono);
+    font-size: clamp(0.65rem, 0.95vw, 0.78rem);
+    color: var(--text-dim);
+    margin-top: auto;
+    padding-top: clamp(0.5rem, 1vh, 0.75rem);
+    border-top: 1px dashed rgba(255,255,255,0.1);
+    line-height: 1.4;
+}
+.qa-tag {
+    font-family: var(--font-subhead);
+    font-size: var(--small-size);
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-top: clamp(0.75rem, 1.5vh, 1.2rem);
+    padding-top: clamp(0.5rem, 1vh, 0.8rem);
+    border-top: 1px dashed rgba(255,255,255,0.12);
+    max-width: 50em;
+}
+.qa-tag strong { color: var(--gold); font-weight: 600; font-style: normal; }
+
+/* === PRINCIPLES RECAP === */
+.principles-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.6rem, 1.2vw, 1rem);
+    margin-top: clamp(0.9rem, 2vh, 1.6rem);
+}
+.principle-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-top: 3px solid;
+    border-radius: clamp(6px, 1vw, 10px);
+    padding: clamp(0.8rem, 1.5vw, 1.2rem);
+}
+.principle-card .pc-label {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+    margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
+}
+.principle-card .pc-line {
+    font-size: clamp(0.8rem, 1.15vw, 0.95rem);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.pc-delegation { border-color: var(--blue); } .pc-delegation .pc-label { color: var(--blue); }
+.pc-description { border-color: var(--purple); } .pc-description .pc-label { color: var(--purple); }
+.pc-discernment { border-color: var(--blue); } .pc-discernment .pc-label { color: var(--blue); }
+.pc-diligence { border-color: var(--gold); } .pc-diligence .pc-label { color: var(--gold); }
+
+.three-as {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: clamp(0.5rem, 1vw, 0.85rem);
+    margin-top: clamp(0.75rem, 1.5vh, 1.2rem);
+}
+.three-as .a-card {
+    padding: clamp(0.65rem, 1.3vw, 1rem);
+    border-left: 3px solid;
+    background: rgba(255,255,255,0.03);
+    border-radius: 0 6px 6px 0;
+}
+.three-as .a-card strong {
+    font-family: var(--font-subhead);
+    font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.2rem;
+}
+.three-as .a-card .a-desc {
+    font-size: clamp(0.78rem, 1.1vw, 0.9rem);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.a-automation { border-color: var(--blue); } .a-automation strong { color: var(--blue); }
+.a-augmentation { border-color: var(--purple); } .a-augmentation strong { color: var(--purple); }
+.a-agency { border-color: var(--gold); } .a-agency strong { color: var(--gold); }
+
+.principles-caption {
+    font-family: var(--font-subhead);
+    font-size: var(--small-size);
+    color: var(--text-secondary);
+    margin-top: clamp(0.9rem, 1.8vh, 1.4rem);
+    font-style: italic;
+    max-width: 48em;
+}
+
+/* === SETUP slide === */
+.setup-lead {
+    font-family: var(--font-subhead);
+    font-size: var(--body-lg);
+    font-weight: 300;
+    color: var(--text-main);
+    line-height: 1.55;
+    max-width: 38em;
+    margin-top: clamp(0.5rem, 1vh, 1rem);
+}
+.setup-questions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: clamp(0.5rem, 1vw, 0.8rem);
+    margin-top: clamp(1.25rem, 2.5vh, 1.8rem);
+}
+.setup-q {
+    font-family: var(--font-mono);
+    font-size: clamp(0.78rem, 1.15vw, 0.95rem);
+    color: var(--gold);
+    background: rgba(252, 176, 23, 0.06);
+    border: 1px solid rgba(252, 176, 23, 0.2);
+    border-radius: 6px;
+    padding: clamp(0.5rem, 1vw, 0.75rem) clamp(0.6rem, 1.2vw, 0.9rem);
+    letter-spacing: 0.02em;
+}
+
+/* === MODEL KNIFE ROW (Q5) === */
+.knife-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: clamp(0.6rem, 1.2vw, 1rem);
+    margin-top: clamp(0.9rem, 2vh, 1.5rem);
+    flex: 1; align-items: stretch;
+}
+.knife-card {
+    padding: clamp(1rem, 2vw, 1.5rem);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-top: 4px solid;
+    border-radius: clamp(8px, 1.2vw, 12px);
+    display: flex; flex-direction: column;
+}
+.knife-card .kc-label {
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+}
+.knife-card h3 {
+    font-size: clamp(1.15rem, 2.1vw, 1.5rem);
+    margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
+    line-height: 1.2;
+}
+.knife-card .kc-tagline {
+    font-family: var(--font-subhead);
+    font-size: clamp(0.85rem, 1.25vw, 1rem);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: clamp(0.6rem, 1.2vh, 0.9rem);
+    font-style: italic;
+}
+.knife-card .kc-body {
+    font-size: var(--small-size);
+    color: var(--text-main);
+    line-height: 1.55;
+    flex: 1;
+}
+.kc-opus { border-color: var(--blue); } .kc-opus .kc-label, .kc-opus h3 { color: var(--blue); }
+.kc-sonnet { border-color: var(--purple); background: rgba(131, 82, 255, 0.05); } .kc-sonnet .kc-label, .kc-sonnet h3 { color: var(--purple); }
+.kc-haiku { border-color: var(--gold); } .kc-haiku .kc-label, .kc-haiku h3 { color: var(--gold); }
+
+/* === TWIN CASE COLUMNS (Q6 cost slide) === */
+.twin-cases {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    margin-top: clamp(0.9rem, 2vh, 1.5rem);
+    flex: 1;
+}
+.twin-case {
+    padding: clamp(1rem, 2vw, 1.5rem);
+    background: rgba(252, 176, 23, 0.05);
+    border: 1px solid rgba(252, 176, 23, 0.2);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 clamp(8px, 1.2vw, 12px) clamp(8px, 1.2vw, 12px) 0;
+    display: flex; flex-direction: column;
+}
+.twin-case .tc-label {
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
+}
+.twin-case h3 {
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+    margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+    line-height: 1.2;
+}
+.twin-case .tc-body {
+    font-size: var(--small-size);
+    line-height: 1.6;
+    color: var(--text-main);
+    margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+}
+.twin-case .tc-cost {
+    font-family: var(--font-subhead);
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    color: var(--gold);
+    font-weight: 700;
+    margin-top: clamp(0.5rem, 1vh, 0.75rem);
+    padding-top: clamp(0.4rem, 0.8vh, 0.6rem);
+    border-top: 1px dashed rgba(252, 176, 23, 0.3);
+}
+.twin-case .source {
+    font-family: var(--font-mono);
+    font-size: clamp(0.65rem, 0.95vw, 0.78rem);
+    color: var(--text-dim);
+    margin-top: auto;
+    padding-top: clamp(0.5rem, 1vh, 0.75rem);
+    line-height: 1.4;
+}
+
+/* === COMPOUND row === */
+.compound-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.6rem, 1.2vw, 1rem);
+    margin-top: clamp(0.9rem, 2vh, 1.5rem);
+}
+.compound-card {
+    padding: clamp(0.9rem, 1.7vw, 1.25rem);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-top: 3px solid var(--gold);
+    border-radius: clamp(6px, 1vw, 10px);
+}
+.compound-card .cc-num {
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: clamp(0.3rem, 0.6vh, 0.4rem);
+}
+.compound-card .cc-title {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    color: var(--white);
+    margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
+    line-height: 1.2;
+}
+.compound-card .cc-body {
+    font-size: clamp(0.82rem, 1.2vw, 0.95rem);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.compound-caption {
+    font-family: var(--font-subhead);
+    font-size: var(--small-size);
+    color: var(--text-secondary);
+    margin-top: clamp(0.9rem, 1.8vh, 1.4rem);
+    font-style: italic;
+    max-width: 48em;
+}
+
+/* === CLOSE / FRIDAY PROMPT === */
+.friday-prompt {
+    display: flex; flex-direction: column;
+    gap: clamp(0.75rem, 1.5vh, 1.2rem);
+    margin-top: clamp(1rem, 2.5vh, 2rem);
+}
+.fp-item { display: flex; gap: clamp(0.75rem, 1.5vw, 1.25rem); align-items: flex-start; }
+.fp-num {
+    font-family: var(--font-mono); font-size: clamp(1.3rem, 2.5vw, 2rem);
+    color: var(--gold); flex-shrink: 0; line-height: 1; min-width: 3ch;
+    font-weight: 500;
+}
+.fp-text { flex: 1; }
+.fp-label {
+    font-family: var(--font-subhead); font-weight: 700;
+    font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+    color: var(--white); margin-bottom: clamp(0.2rem, 0.4vh, 0.3rem);
+    line-height: 1.2;
+}
+.fp-text p { font-size: var(--small-size); color: var(--text-secondary); line-height: 1.55; max-width: 36em; }
+
+.contact-bar {
+    display: flex; gap: clamp(1rem, 2vw, 1.5rem); flex-wrap: wrap;
+    font-family: var(--font-mono); font-size: var(--mono-size);
+    padding-top: clamp(1.5rem, 3vh, 2.5rem); margin-top: clamp(1rem, 2vh, 1.5rem);
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+.contact-bar .cn { color: var(--white); font-weight: 500; }
+.contact-bar .ci { color: var(--text-secondary); }
+.contact-bar a { color: var(--gold); text-decoration: none; }
+
+/* === Generic prose === */
+.lead {
+    font-family: var(--font-subhead);
+    font-size: var(--body-lg);
+    font-weight: 300;
+    color: var(--text-main);
+    line-height: 1.5;
+    max-width: 36em;
+    margin-top: clamp(0.5rem, 1vh, 1rem);
+}
+.section-number { font-family: var(--font-mono); font-size: clamp(0.85rem, 1.3vw, 1.05rem); letter-spacing: 0.15em; color: var(--gold); margin-bottom: clamp(0.5rem, 1vh, 0.8rem); }
+
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<nav class="nav-dots" id="navDots" aria-label="Slide navigation"></nav>
+
+<!-- S1: HERO -->
+<section class="slide slide-hero" id="slide-0">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">WEEK 5 · AI FRIDAY · MAY 15, 2026</div>
+        <h1 class="reveal">Under<br>the Hood.</h1>
+        <div class="accent-bar reveal"></div>
+        <p class="subtitle reveal">Grounding our efforts in the principles for AI use and the background for how AI works.</p>
+        <p class="panel-info reveal">
+            <strong>Preston Magouirk</strong> · DC CAP Enterprise AI Leadership Pilot · The mechanics behind four weeks of reps.
+        </p>
+    </div>
+</section>
+
+<!-- S2: SETUP -->
+<section class="slide slide-setup" id="slide-1">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">The setup</div>
+        <h2 class="reveal">Terms thrown around in the<br>AI conversation. Mostly nowhere else.</h2>
+        <p class="setup-lead reveal">Context. Tokens. Memory. Models. Effort. None of these show up in a comparable way anywhere outside this room. So they feel mysterious, even when you have been using them daily for four weeks.</p>
+        <div class="setup-questions">
+            <div class="setup-q reveal">What is context?</div>
+            <div class="setup-q reveal">What are tokens?</div>
+            <div class="setup-q reveal">What is memory?</div>
+            <div class="setup-q reveal">What's model drift?</div>
+            <div class="setup-q reveal">Which model do I use?</div>
+            <div class="setup-q reveal">What is hallucination?</div>
+            <div class="setup-q reveal">How do I verify?</div>
+            <div class="setup-q reveal">What's effort?</div>
+        </div>
+        <p class="lead reveal" style="margin-top: clamp(1.25rem, 2.5vh, 1.8rem);">These are not theoretical anymore. You have been experiencing them. Today we put names on what you have already lived.</p>
+    </div>
+</section>
+
+<!-- S3: PRINCIPLES RECAP -->
+<section class="slide slide-principles" id="slide-2">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--blue);">The principles you've been operating</div>
+        <h2 class="reveal">Four weeks of reps.<br>Same scaffold.</h2>
+        <p class="lead reveal">The 4Ds are how we operate. The 3As are the shape your delegation takes. The mechanics underneath them are why those moves work — or fail.</p>
+        <div class="principles-row">
+            <div class="principle-card pc-delegation reveal-scale">
+                <div class="pc-label">Delegation</div>
+                <div class="pc-line">Choosing the modality.</div>
+            </div>
+            <div class="principle-card pc-description reveal-scale">
+                <div class="pc-label">Description</div>
+                <div class="pc-line">Naming the work precisely.</div>
+            </div>
+            <div class="principle-card pc-discernment reveal-scale">
+                <div class="pc-label">Discernment</div>
+                <div class="pc-line">Judging what's worth building.</div>
+            </div>
+            <div class="principle-card pc-diligence reveal-scale">
+                <div class="pc-label">Diligence</div>
+                <div class="pc-line">Verifying before it ships.</div>
+            </div>
+        </div>
+        <div class="three-as">
+            <div class="a-card a-automation reveal"><strong>Automation</strong><span class="a-desc">Claude runs, you review.</span></div>
+            <div class="a-card a-augmentation reveal"><strong>Augmentation</strong><span class="a-desc">You and Claude think together.</span></div>
+            <div class="a-card a-agency reveal"><strong>Agency</strong><span class="a-desc">Claude operates inside your guardrails.</span></div>
+        </div>
+        <p class="principles-caption reveal">You have done the reps. The next eight slides put a real-world parallel beside each mechanic so the names stick.</p>
+    </div>
+</section>
+
+<!-- S4: Q1 - CONTEXT WINDOW -->
+<section class="slide slide-q-description" id="slide-3">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">Q1 · Description</div>
+        <h2 class="reveal">What is a context window?</h2>
+        <div class="qa-layout">
+            <div class="qa-col qa-col-real reveal-scale">
+                <div class="qa-col-eyebrow">From the real world</div>
+                <h3>A chef's mise en place.</h3>
+                <p>Walk into a professional kitchen 30 minutes before service. Every station has its prep laid out — oils, salts, garnishes, sauces, proteins portioned and ready.</p>
+                <p>What's on the station is what can go into the dish in the next 90 seconds. Whatever wasn't prepped doesn't exist for that ticket.</p>
+                <div class="source">Standard professional kitchen practice. Documented in every culinary textbook from Escoffier forward.</div>
+            </div>
+            <div class="qa-col qa-col-claude reveal-scale">
+                <div class="qa-col-eyebrow">In your Claude work</div>
+                <h3>The window is the station.</h3>
+                <p>The context window holds everything you've pasted, everything Claude has said back, and any reference files loaded. Whatever's not in the window can't shape the answer.</p>
+                <p>Load names, dates, voice rules, audience, format. Treat each chat like a focused service. When the task ends, close the chat.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Description quality is bounded by what sits in the window.</p>
+    </div>
+</section>
+
+<!-- S5: Q2 - WHY CONTEXT MATTERS -->
+<section class="slide slide-q-description" id="slide-4">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">Q2 · Description</div>
+        <h2 class="reveal">Why does context matter?</h2>
+        <div class="qa-layout">
+            <div class="qa-col qa-col-real reveal-scale">
+                <div class="qa-col-eyebrow">From the real world</div>
+                <h3>A doctor without your history.</h3>
+                <p>A patient walks in with chest pain. With no medical history, that symptom could be heartburn, anxiety, a heart attack, or a dozen other things. The doctor guesses.</p>
+                <p>Add history — cardiac stent six months ago. Add family — father died of MI at 52. Add behavior — ran six miles before symptoms started. Each piece of context narrows the diagnosis to the one that fits.</p>
+                <div class="source">Diagnostic accuracy correlates more strongly with quality of patient history than with imaging or labs. (Hampton et al., BMJ 1975; replicated repeatedly since.)</div>
+            </div>
+            <div class="qa-col qa-col-claude reveal-scale">
+                <div class="qa-col-eyebrow">In your Claude work</div>
+                <h3>Claude is the doctor.</h3>
+                <p>"Write me an email to a parent" gets you the average of the internet. Add the named family, the specific deadline, the cycle date, the voice rules — and Claude narrows to the answer that fits DC CAP.</p>
+                <p>If you keep retyping the same context every week, that context belongs in a Project. The doctor doesn't ask for your history every time. They have the chart.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Empty context, generic answer. Rich context, sharp answer.</p>
+    </div>
+</section>
+
+<!-- S6: Q3 - MEMORY -->
+<section class="slide slide-q-description" id="slide-5">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">Q3 · Description carried forward</div>
+        <h2 class="reveal">Why does memory matter?</h2>
+        <div class="qa-layout">
+            <div class="qa-col qa-col-real reveal-scale">
+                <div class="qa-col-eyebrow">From the real world</div>
+                <h3>The B-17 and the checklist.</h3>
+                <p>In 1935, Boeing's Model 299 prototype — the plane that became the B-17 — crashed on its first test flight. The most experienced pilot in the Army Air Corps had forgotten to release the elevator lock.</p>
+                <p>The Army called it "too much airplane for one man to fly." Boeing's answer wasn't to retrain pilots. They built a pre-flight checklist. The Model 299 went on to fly 1.8 million miles without an accident.</p>
+                <div class="source">Boeing Model 299 first flight: Oct 30, 1935. Pilot: Maj. Ployer Hill. Story documented in Atul Gawande's <em>The Checklist Manifesto</em> (2009).</div>
+            </div>
+            <div class="qa-col qa-col-claude reveal-scale">
+                <div class="qa-col-eyebrow">In your Claude work</div>
+                <h3>A Project is the checklist.</h3>
+                <p>Claude doesn't remember you across chats. Each new conversation starts fresh. Trying to make one chat remember everything is being the pilot who forgot the lock.</p>
+                <p>Memory belongs in files. A Project carries context across tasks. A Skill carries a procedure across runs. The retyping you keep doing is the procedure waiting to be written down.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Every Skill you write is Description carried forward.</p>
+    </div>
+</section>
+
+<!-- S7: Q4 - MODEL DRIFT -->
+<section class="slide slide-q-diligence" id="slide-6">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">Q4 · Diligence signal</div>
+        <h2 class="reveal">What is model drift?</h2>
+        <div class="qa-layout">
+            <div class="qa-col qa-col-real reveal-scale">
+                <div class="qa-col-eyebrow">From the real world</div>
+                <h3>Tay, 2016.</h3>
+                <p>Microsoft launched a chatbot named Tay on Twitter on March 23, 2016. Tay was designed to learn from conversation. Within 16 hours, trolls had steered her into producing racist and offensive content. Microsoft pulled her offline.</p>
+                <p>The mechanism is the same one that happens in every long chat — quieter, slower. The longer a conversation runs, the more recent inputs dominate the original instructions. Newer signals crowd out older ones.</p>
+                <div class="source">Microsoft Tay launch and shutdown, March 23–24, 2016. Widely covered; case study in every responsible-AI curriculum since.</div>
+            </div>
+            <div class="qa-col qa-col-claude reveal-scale">
+                <div class="qa-col-eyebrow">In your Claude work</div>
+                <h3>The chat that quietly drifted.</h3>
+                <p>You correct Claude on something at message 5. By message 30, the same error is back. Tone shifts. Earlier rules dilute. That's drift.</p>
+                <p>The fix: start fresh when the trail feels off. Re-anchor inside long chats with a reminder. A Project loads the foundational context fresh every time you open a new conversation inside it.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> When the answer thins, that's a Diligence signal — not a Claude failure.</p>
+    </div>
+</section>
+
+<!-- S8: Q5 - MODEL SELECTION -->
+<section class="slide slide-q-delegation" id="slide-7">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--blue);">Q5 · Delegation</div>
+        <h2 class="reveal">What model should I use?</h2>
+        <p class="lead reveal" style="max-width: 44em;">A chef's knife rack tells you the answer. A paring knife for delicate prep. A chef's knife for the workhorse cuts. A cleaver for breaking down bone. Same family, different jobs. Claude works the same way.</p>
+        <div class="knife-row">
+            <div class="knife-card kc-opus reveal-scale">
+                <div class="kc-label">Cleaver · careful</div>
+                <h3>Opus 4.6</h3>
+                <p class="kc-tagline">Deep multi-step reasoning. Slowest. Most expensive.</p>
+                <p class="kc-body">Highest-stakes drafting. Board memos. Funder LOIs. Anything where being wrong is costly. <em>Don't</em> use it for routine emails or simple summaries.</p>
+            </div>
+            <div class="knife-card kc-sonnet reveal-scale">
+                <div class="kc-label">Chef's knife · balanced</div>
+                <h3>Sonnet 4.6</h3>
+                <p class="kc-tagline">The DC CAP default. Strong reasoning, everyday speed.</p>
+                <p class="kc-body">Counselor emails. Partnership updates. Briefings. First drafts of grant narratives. Most Projects and most Skills. If you don't know which to pick, this is the answer.</p>
+            </div>
+            <div class="knife-card kc-haiku reveal-scale">
+                <div class="kc-label">Paring knife · fast</div>
+                <h3>Haiku 4.5</h3>
+                <p class="kc-tagline">Built for speed and volume.</p>
+                <p class="kc-body">Quick lookups. Classifications. Pulling structured data out of unstructured text. <em>Don't</em> use it for anything signed by a person or anything that needs voice.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Model selection is a Delegation decision. The right tool for the work — not the most expensive one in the rack.</p>
+    </div>
+</section>
+
+<!-- S9: Q6 - HALLUCINATION CASE -->
+<section class="slide slide-q-diligence" id="slide-8">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">Q6 · Diligence</div>
+        <h2 class="reveal">What is hallucination?</h2>
+        <div class="qa-layout">
+            <div class="qa-col qa-col-real reveal-scale">
+                <div class="qa-col-eyebrow">From the real world</div>
+                <h3>Mata v. Avianca, 2023.</h3>
+                <p>Two New York lawyers used ChatGPT to write a personal injury brief against Avianca Airlines. ChatGPT cited six prior cases — including <em>Varghese v. China Southern Airlines</em> — with fabricated judge names, fabricated quotes, fabricated citation numbers.</p>
+                <p>When the lawyers asked ChatGPT if the cases were real, ChatGPT said yes and pointed to "Westlaw and LexisNexis." None of them existed. Judge P. Kevin Castel sanctioned the lawyers $5,000 in May 2023. He called the analysis "gibberish."</p>
+                <div class="source">Mata v. Avianca, Inc., No. 1:22-cv-01461 (S.D.N.Y. 2023). Judge P. Kevin Castel, sanctions order June 22, 2023.</div>
+            </div>
+            <div class="qa-col qa-col-claude reveal-scale">
+                <div class="qa-col-eyebrow">In your Claude work</div>
+                <h3>Pattern completion, not knowledge.</h3>
+                <p>Hallucination is when a model confidently states something untrue. A fabricated quote. A made-up statistic. A paper that doesn't exist. A person who never said the thing.</p>
+                <p>It happens because LLMs are pattern completers. When they don't know, they generate text that <em>sounds</em> like the right kind of answer. Names, numbers, dates, citations are highest-risk. Load the source. Ask for citations. Cross-check anything that lands in front of a funder, board, or partner.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> The lawyers asked ChatGPT to verify itself. ChatGPT said yes. Don't ask the model to grade its own homework.</p>
+    </div>
+</section>
+
+<!-- S10: Q6 - HALLUCINATION COST -->
+<section class="slide slide-q-diligence" id="slide-9">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">Q6 · Diligence — what it costs</div>
+        <h2 class="reveal">Two more, with the bill attached.</h2>
+        <div class="twin-cases">
+            <div class="twin-case reveal-scale">
+                <div class="tc-label">Google · February 2023</div>
+                <h3>Bard's first demo.</h3>
+                <p class="tc-body">In its public launch ad, Google's Bard chatbot was asked what new discoveries to tell a 9-year-old about the James Webb Space Telescope. Bard said JWST "took the very first pictures" of a planet outside our solar system.</p>
+                <p class="tc-body">Wrong. The first exoplanet image came from the European Southern Observatory's Very Large Telescope in 2004. Reuters caught it. The story broke on the day of Google's Paris AI event.</p>
+                <div class="tc-cost">Alphabet stock dropped 7.7%. ~$100 billion in market cap erased in 24 hours.</div>
+                <div class="source">CNN Business, NPR, Reuters (Feb 8–9, 2023). Confirmed by NASA records and ESO archive.</div>
+            </div>
+            <div class="twin-case reveal-scale">
+                <div class="tc-label">Air Canada · February 2024</div>
+                <h3>The bereavement-fare chatbot.</h3>
+                <p class="tc-body">Jake Moffatt asked Air Canada's chatbot about bereavement fares after his grandmother died. The chatbot told him he could apply for a refund within 90 days of booking. Air Canada's actual policy required pre-booking with the discount applied.</p>
+                <p class="tc-body">Air Canada refused the refund. The British Columbia Civil Resolution Tribunal sided with Moffatt: a company is liable for negligent misrepresentation made by its chatbot. "Air Canada is responsible for all the information on its website."</p>
+                <div class="tc-cost">Air Canada ordered to pay $812.02. Precedent set across Canadian jurisdictions.</div>
+                <div class="source">Moffatt v. Air Canada, 2024 BCCRT 149 (Feb 14, 2024).</div>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Hallucination has a market price, a legal price, and a reputational price. Verify before you let it ship.</p>
+    </div>
+</section>
+
+<!-- S11: Q7 - VERIFY AND VALIDATE -->
+<section class="slide slide-q-diligence" id="slide-10">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">Q7 · Diligence</div>
+        <h2 class="reveal">How do I verify and validate?</h2>
+        <div class="qa-layout">
+            <div class="qa-col qa-col-real reveal-scale">
+                <div class="qa-col-eyebrow">From the real world</div>
+                <h3>The pre-flight checklist + the flight plan.</h3>
+                <p>A commercial pilot does two things before takeoff. The <strong>pre-flight checklist</strong> — verify every part works. Engines, controls, fuel, instruments. The <strong>flight plan</strong> — validate the route fits the mission. Weather, weight, alternate airports, fuel reserves.</p>
+                <p>Both are mandatory under FAA regulations. A plane in perfect mechanical condition flying into a thunderstorm is verified, not validated. A flawless flight plan in a plane with a broken altimeter is validated, not verified.</p>
+                <div class="source">14 CFR § 91.103 (Preflight action) and 14 CFR § 91.213 (Inoperative instruments). FAA Aeronautical Information Manual, current edition.</div>
+            </div>
+            <div class="qa-col qa-col-claude reveal-scale">
+                <div class="qa-col-eyebrow">In your Claude work</div>
+                <h3>Two gates. Both required.</h3>
+                <p><strong>Verify</strong> — are the facts true? Names, numbers, dates, citations, claims. Cross-check anything material. Don't ask the model to grade itself.</p>
+                <p><strong>Validate</strong> — does it fit the work? Right audience, right format, right tone, right move. Read it as the audience before you send.</p>
+                <p>For the highest-stakes work, run it through the <em>adversarial-audit</em> Skill from Week 4 — or hand it to a teammate. Design the gates into the workflow, not bolted on at the end.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Diligence is two moves, not one.</p>
+    </div>
+</section>
+
+<!-- S12: Q8 - BETTER PROMPTS -->
+<section class="slide slide-q-description" id="slide-11">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">Q8 · Description</div>
+        <h2 class="reveal">How do I write a better prompt?</h2>
+        <div class="qa-layout">
+            <div class="qa-col qa-col-real reveal-scale">
+                <div class="qa-col-eyebrow">From the real world</div>
+                <h3>Ordering at a restaurant.</h3>
+                <p><strong>Vague:</strong> "I'd like food." The server stares at you.</p>
+                <p><strong>Sharp:</strong> "The grilled salmon, medium, with the seasonal vegetables instead of the potatoes, dressing on the side. And the sparkling water, no lemon."</p>
+                <p>Same kitchen. Same ingredients. The order decides what arrives at the table. Specificity is not rude in a restaurant. It's the only thing that gets you what you want.</p>
+                <div class="source">If you have ever asked a contractor to "fix the kitchen" and gotten a quote you couldn't use, you have lived this principle.</div>
+            </div>
+            <div class="qa-col qa-col-claude reveal-scale">
+                <div class="qa-col-eyebrow">In your Claude work</div>
+                <h3>Five parts.</h3>
+                <p><strong>1.</strong> State the work, not the task.<br>
+                <strong>2.</strong> Anchor in concrete facts — named partners, real numbers, real dates.<br>
+                <strong>3.</strong> Tell Claude the audience and the format.<br>
+                <strong>4.</strong> Iterate in dialogue. Show Claude what's wrong; don't start over.<br>
+                <strong>5.</strong> Save what works.</p>
+                <p>Every great prompt is a SKILL.md waiting to be written. The more reps you put in on the five-part structure, the less you have to rewrite it.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Description is the most valuable move in this whole pilot.</p>
+    </div>
+</section>
+
+<!-- S13: THE COMPOUND -->
+<section class="slide slide-compound" id="slide-12">
+    <div class="slide-content">
+        <div class="section-number reveal">The compound</div>
+        <h2 class="reveal">Eight mechanics. Two effects.</h2>
+        <p class="lead reveal">When we get these right, two things happen at once. Work quality goes up. The error surface drops. Every new tool we pick up from here — Skills, automations, agents — amplifies both effects.</p>
+        <div class="compound-row">
+            <div class="compound-card reveal-scale">
+                <div class="cc-num">01</div>
+                <div class="cc-title">Better chats</div>
+                <div class="cc-body">Focused windows. The right model. Drift caught early. Verification before send.</div>
+            </div>
+            <div class="compound-card reveal-scale">
+                <div class="cc-num">02</div>
+                <div class="cc-title">Better tasks</div>
+                <div class="cc-body">Five-part prompts. Anchored in facts. Named audience. Iteration replaces restart.</div>
+            </div>
+            <div class="compound-card reveal-scale">
+                <div class="cc-num">03</div>
+                <div class="cc-title">Better Projects</div>
+                <div class="cc-body">Reference files do the memory. Voice carries. Twelve runs inherit what you built once.</div>
+            </div>
+            <div class="compound-card reveal-scale">
+                <div class="cc-num">04</div>
+                <div class="cc-title">Better Skills</div>
+                <div class="cc-body">Procedures with verify-and-validate gates inside them. Anyone on the team runs the same move.</div>
+            </div>
+        </div>
+        <p class="compound-caption reveal">The new tools scale the quality when the basics are solid. They scale the errors when they're not. Same mechanism, two directions.</p>
+    </div>
+</section>
+
+<!-- S14: FRIDAY CLOSE -->
+<section class="slide slide-close" id="slide-13">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">Your turn</div>
+        <h2 class="reveal">Bring an example.</h2>
+        <p class="lead reveal" style="max-width: 38em;">Walk us through a moment from this week. Pick one of the eight. The reasoning matters more than the polish.</p>
+        <div class="friday-prompt">
+            <div class="fp-item reveal">
+                <div class="fp-num">01</div>
+                <div class="fp-text">
+                    <div class="fp-label">Name the mechanic.</div>
+                    <p>Which of the eight did you wrestle with this week — context, memory, drift, model choice, hallucination, verify, validate, or the prompt itself?</p>
+                </div>
+            </div>
+            <div class="fp-item reveal">
+                <div class="fp-num">02</div>
+                <div class="fp-text">
+                    <div class="fp-label">Show the move.</div>
+                    <p>What did you do? What changed when you got it right — or what showed up when you didn't?</p>
+                </div>
+            </div>
+            <div class="fp-item reveal">
+                <div class="fp-num">03</div>
+                <div class="fp-text">
+                    <div class="fp-label">Pass it forward.</div>
+                    <p>What's in your capstone scope now? Where is a Skill or Project you're building this week — and what would a teammate need from it to run it cold?</p>
+                </div>
+            </div>
+        </div>
+        <div class="contact-bar reveal" style="margin-top: auto;">
+            <span class="cn">Preston Magouirk</span>
+            <span class="ci">preston.magouirk@dccap.org</span>
+            <span class="ci"><a href="https://dccapinnovation.org">dccapinnovation.org</a></span>
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    const progressBar = document.getElementById('progressBar');
+    const navContainer = document.getElementById('navDots');
+    slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+        dot.addEventListener('click', () => slides[i].scrollIntoView({ behavior: 'smooth' }));
+        navContainer.appendChild(dot);
+    });
+    const dots = navContainer.querySelectorAll('.nav-dot');
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                const idx = Array.from(slides).indexOf(entry.target);
+                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+                progressBar.style.width = ((idx + 1) / totalSlides * 100) + '%';
+            }
+        });
+    }, { threshold: 0.4 });
+    slides.forEach(s => obs.observe(s));
+    document.addEventListener('keydown', (e) => {
+        const ci = Array.from(dots).findIndex(d => d.classList.contains('active'));
+        if (['ArrowDown','ArrowRight',' ','PageDown'].includes(e.key) && ci < totalSlides - 1) {
+            e.preventDefault(); slides[ci + 1].scrollIntoView({ behavior: 'smooth' });
+        } else if (['ArrowUp','ArrowLeft','PageUp'].includes(e.key) && ci > 0) {
+            e.preventDefault(); slides[ci - 1].scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+})();
+</script>
+</body>
+</html>
