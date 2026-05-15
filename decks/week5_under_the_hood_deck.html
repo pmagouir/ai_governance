@@ -558,17 +558,17 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
         <h2 class="reveal">What is a context window?</h2>
         <div class="qa-layout">
             <div class="qa-col qa-col-real reveal-scale">
-                <div class="qa-col-eyebrow">From the real world</div>
-                <h3>A chef's mise en place.</h3>
-                <p>Walk into a professional kitchen 30 minutes before service. Every station has its prep laid out — oils, salts, garnishes, sauces, proteins portioned and ready.</p>
-                <p>What's on the station is what can go into the dish in the next 90 seconds. Whatever wasn't prepped doesn't exist for that ticket.</p>
-                <div class="source">Standard professional kitchen practice. Documented in every culinary textbook from Escoffier forward.</div>
+                <div class="qa-col-eyebrow">A real work scenario</div>
+                <h3>An executive prepping for a board meeting.</h3>
+                <p>An executive walks into a board meeting with whatever they reviewed before the door closed. The financials they pulled. The director questions from last quarter. The funder dossiers their team sent over. Whatever they didn't open isn't available when a board member asks a curveball.</p>
+                <p>What's loaded into the prep window decides what they can answer in the room. Everything else is a best guess.</p>
+                <div class="source">Universal across executive practice. Studied directly in decision research on information constraints (Kahneman, Klein, and others).</div>
             </div>
             <div class="qa-col qa-col-claude reveal-scale">
                 <div class="qa-col-eyebrow">In your Claude work</div>
-                <h3>The window is the station.</h3>
-                <p>The context window holds everything you've pasted, everything Claude has said back, and any reference files loaded. Whatever's not in the window can't shape the answer.</p>
-                <p>Load names, dates, voice rules, audience, format. Treat each chat like a focused service. When the task ends, close the chat.</p>
+                <h3>The context window is the same constraint.</h3>
+                <p>The window holds what you've pasted, what Claude has said back, and any reference files loaded. Whatever's not in the window can't shape the answer.</p>
+                <p>Treat each chat like the prep window for one decision. Load names, dates, voice rules, audience, format. When the task ends, close the chat. For knowledge that should persist across meetings, use a Project.</p>
             </div>
         </div>
         <p class="qa-tag reveal"><strong>The takeaway:</strong> Description quality is bounded by what sits in the window.</p>
@@ -599,27 +599,56 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
     </div>
 </section>
 
-<!-- S6: Q3 - MEMORY -->
+<!-- S6: Q3a - EXTERNAL VS INTERNAL MEMORY -->
 <section class="slide slide-q-description" id="slide-5">
     <div class="slide-content">
-        <div class="eyebrow reveal" style="color: var(--purple);">Q3 · Description carried forward</div>
-        <h2 class="reveal">Why does memory matter?</h2>
+        <div class="eyebrow reveal" style="color: var(--purple);">Q3 · Internal &amp; external memory</div>
+        <h2 class="reveal">Memory comes in two layers.</h2>
         <div class="qa-layout">
             <div class="qa-col qa-col-real reveal-scale">
-                <div class="qa-col-eyebrow">From the real world</div>
-                <h3>The B-17 and the checklist.</h3>
-                <p>In 1935, Boeing's Model 299 prototype — the plane that became the B-17 — crashed on its first test flight. The most experienced pilot in the Army Air Corps had forgotten to release the elevator lock.</p>
-                <p>The Army called it "too much airplane for one man to fly." Boeing's answer wasn't to retrain pilots. They built a pre-flight checklist. The Model 299 went on to fly 1.8 million miles without an accident.</p>
-                <div class="source">Boeing Model 299 first flight: Oct 30, 1935. Pilot: Maj. Ployer Hill. Story documented in Atul Gawande's <em>The Checklist Manifesto</em> (2009).</div>
+                <div class="qa-col-eyebrow">A real work scenario</div>
+                <h3>An attorney joining a new case.</h3>
+                <p>An attorney operates from two memory stores at once. <strong>External memory:</strong> law school, the bar exam, fifteen years of practice in the area. Fixed. They bring it to every case.</p>
+                <p><strong>Internal memory:</strong> the case file itself — complaint, depositions, discovery, prior motions. Variable. Different in every matter.</p>
+                <p>Both are required. Strong external + empty case file = malpractice. Strong case file + empty external training = rookie. Real lawyers run both at once.</p>
+                <div class="source">Standard legal practice. The distinction is explicit in continuing legal education curricula on case preparation.</div>
             </div>
             <div class="qa-col qa-col-claude reveal-scale">
                 <div class="qa-col-eyebrow">In your Claude work</div>
-                <h3>A Project is the checklist.</h3>
-                <p>Claude doesn't remember you across chats. Each new conversation starts fresh. Trying to make one chat remember everything is being the pilot who forgot the lock.</p>
-                <p>Memory belongs in files. A Project carries context across tasks. A Skill carries a procedure across runs. The retyping you keep doing is the procedure waiting to be written down.</p>
+                <h3>Same two-layer architecture.</h3>
+                <p><strong>Training data</strong> is Claude's external memory. What the model learned reading the public internet through its training cutoff. Geography, science, frameworks, common knowledge. Fixed. You can't change it inside a chat.</p>
+                <p><strong>Context</strong> is Claude's internal memory. What's loaded in this conversation right now. Your data, your voice rules, your files. Variable. You decide what goes in.</p>
+                <p>Empty context = Claude guessing from generic training. Asking about events after the training cutoff = Claude inventing.</p>
             </div>
         </div>
-        <p class="qa-tag reveal"><strong>The takeaway:</strong> Every Skill you write is Description carried forward.</p>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> External memory is what the model knows about the world. Internal memory is what you've told it about your work. Both layers, every time.</p>
+    </div>
+</section>
+
+<!-- S7: Q3b - PRECISION AND RECALL -->
+<section class="slide slide-q-description" id="slide-5b">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">Q3 · Precision &amp; recall</div>
+        <h2 class="reveal">Two ways memory can fail.</h2>
+        <div class="qa-layout">
+            <div class="qa-col qa-col-real reveal-scale">
+                <div class="qa-col-eyebrow">A real work scenario</div>
+                <h3>The spam filter in your inbox.</h3>
+                <p>Every spam filter lives and dies on two metrics.</p>
+                <p><strong>Precision:</strong> of the emails the filter marks as spam, what percent <em>are</em> actually spam? Low precision = important emails sent to the spam folder. False positives.</p>
+                <p><strong>Recall:</strong> of all the spam coming in, what percent does the filter catch? Low recall = spam piling up in the inbox. False negatives.</p>
+                <p>Push for higher precision and recall drops. Push for higher recall and precision drops. Every filter trades them off.</p>
+                <div class="source">Standard information retrieval metrics. Defined in Salton &amp; McGill, <em>Introduction to Modern Information Retrieval</em> (1983). Used across search, recommendation, classification, and screening systems.</div>
+            </div>
+            <div class="qa-col qa-col-claude reveal-scale">
+                <div class="qa-col-eyebrow">In your Claude work</div>
+                <h3>Two failure modes, two fixes.</h3>
+                <p><strong>Precision failure</strong> = hallucination. The model confidently "remembers" something and is wrong. The <em>Mata v. Avianca</em> cases were a precision failure — six fake citations asserted as real.</p>
+                <p><strong>Recall failure</strong> = forgetting what you told it earlier. The model should have used something from earlier in the chat but didn't. This is what drift is, mechanically.</p>
+                <p>Verify catches precision failures. Re-anchoring catches recall failures. Naming the failure mode is the first step to fixing it.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Precision and recall are the two ways memory lets you down. Both have fixes — once you can name which one you're seeing.</p>
     </div>
 </section>
 
@@ -647,33 +676,33 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
     </div>
 </section>
 
-<!-- S8: Q5 - MODEL SELECTION -->
+<!-- S9: Q5 - MODEL SELECTION -->
 <section class="slide slide-q-delegation" id="slide-7">
     <div class="slide-content">
         <div class="eyebrow reveal" style="color: var(--blue);">Q5 · Delegation</div>
         <h2 class="reveal">What model should I use?</h2>
-        <p class="lead reveal" style="max-width: 44em;">A chef's knife rack tells you the answer. A paring knife for delicate prep. A chef's knife for the workhorse cuts. A cleaver for breaking down bone. Same family, different jobs. Claude works the same way.</p>
+        <p class="lead reveal" style="max-width: 46em;">A hospital matches case to clinician. A specialist for the complex procedure. A general practitioner for the routine visit. A triage nurse for the initial intake. Same building. Different jobs. Claude works the same way.</p>
         <div class="knife-row">
             <div class="knife-card kc-opus reveal-scale">
-                <div class="kc-label">Cleaver · careful</div>
+                <div class="kc-label">Specialist · careful</div>
                 <h3>Opus 4.6</h3>
                 <p class="kc-tagline">Deep multi-step reasoning. Slowest. Most expensive.</p>
-                <p class="kc-body">Highest-stakes drafting. Board memos. Funder LOIs. Anything where being wrong is costly. <em>Don't</em> use it for routine emails or simple summaries.</p>
+                <p class="kc-body">Highest-stakes drafting. Board memos. Funder LOIs. Cross-document audits. Anything where being wrong is costly. <em>Don't</em> use it for routine emails or simple summaries.</p>
             </div>
             <div class="knife-card kc-sonnet reveal-scale">
-                <div class="kc-label">Chef's knife · balanced</div>
+                <div class="kc-label">General practitioner · balanced</div>
                 <h3>Sonnet 4.6</h3>
                 <p class="kc-tagline">The DC CAP default. Strong reasoning, everyday speed.</p>
                 <p class="kc-body">Counselor emails. Partnership updates. Briefings. First drafts of grant narratives. Most Projects and most Skills. If you don't know which to pick, this is the answer.</p>
             </div>
             <div class="knife-card kc-haiku reveal-scale">
-                <div class="kc-label">Paring knife · fast</div>
+                <div class="kc-label">Triage nurse · fast</div>
                 <h3>Haiku 4.5</h3>
                 <p class="kc-tagline">Built for speed and volume.</p>
                 <p class="kc-body">Quick lookups. Classifications. Pulling structured data out of unstructured text. <em>Don't</em> use it for anything signed by a person or anything that needs voice.</p>
             </div>
         </div>
-        <p class="qa-tag reveal"><strong>The takeaway:</strong> Model selection is a Delegation decision. The right tool for the work — not the most expensive one in the rack.</p>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Model selection is a Delegation decision. The right level of care for the case — not the most expensive option in the building.</p>
     </div>
 </section>
 
@@ -753,19 +782,19 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
     </div>
 </section>
 
-<!-- S12: Q8 - BETTER PROMPTS -->
+<!-- S13: Q8 - BETTER PROMPTS -->
 <section class="slide slide-q-description" id="slide-11">
     <div class="slide-content">
         <div class="eyebrow reveal" style="color: var(--purple);">Q8 · Description</div>
         <h2 class="reveal">How do I write a better prompt?</h2>
         <div class="qa-layout">
             <div class="qa-col qa-col-real reveal-scale">
-                <div class="qa-col-eyebrow">From the real world</div>
-                <h3>Ordering at a restaurant.</h3>
-                <p><strong>Vague:</strong> "I'd like food." The server stares at you.</p>
-                <p><strong>Sharp:</strong> "The grilled salmon, medium, with the seasonal vegetables instead of the potatoes, dressing on the side. And the sparkling water, no lemon."</p>
-                <p>Same kitchen. Same ingredients. The order decides what arrives at the table. Specificity is not rude in a restaurant. It's the only thing that gets you what you want.</p>
-                <div class="source">If you have ever asked a contractor to "fix the kitchen" and gotten a quote you couldn't use, you have lived this principle.</div>
+                <div class="qa-col-eyebrow">A real work scenario</div>
+                <h3>Briefing a designer to build a brochure.</h3>
+                <p><strong>Vague:</strong> "Make us a brochure." Designer makes the choices you didn't make. Revisions take six rounds. The project misses deadline.</p>
+                <p><strong>Sharp:</strong> "Trifold brochure, 8.5×11 folded to three panels. Audience: high school juniors. Reading level: grade 9. Logo at 1″ minimum. Five program features bulleted. A CTA at the bottom. Photos from our approved set. First draft Friday, two revision rounds, final by the 28th."</p>
+                <p>One round. The vendor delivers what was needed.</p>
+                <div class="source">Universal across knowledge work involving creative or specialist vendors. The first hour of a project decides whether the next hundred go to plan.</div>
             </div>
             <div class="qa-col qa-col-claude reveal-scale">
                 <div class="qa-col-eyebrow">In your Claude work</div>
@@ -775,7 +804,7 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
                 <strong>3.</strong> Tell Claude the audience and the format.<br>
                 <strong>4.</strong> Iterate in dialogue. Show Claude what's wrong; don't start over.<br>
                 <strong>5.</strong> Save what works.</p>
-                <p>Every great prompt is a SKILL.md waiting to be written. The more reps you put in on the five-part structure, the less you have to rewrite it.</p>
+                <p>Every great prompt is a SKILL.md waiting to be written. The more reps you put in on the five-part structure, the less you have to rewrite it next time.</p>
             </div>
         </div>
         <p class="qa-tag reveal"><strong>The takeaway:</strong> Description is the most valuable move in this whole pilot.</p>
