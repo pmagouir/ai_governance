@@ -1,0 +1,54 @@
+From 3e5346c74f797ce8aee74a7504eeda10546e433f Mon Sep 17 00:00:00 2001
+From: Preston Magouirk <preston.magouirk@dccap.org>
+Date: Fri, 15 May 2026 08:53:10 -0400
+Subject: [PATCH] Publish 2026-05-15 daily briefing: Apple/BBC AI summary
+ recall (news)
+
+---
+ briefings.json | 18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
+
+diff --git a/briefings.json b/briefings.json
+index bf3d91b..afc7f02 100644
+--- a/briefings.json
++++ b/briefings.json
+@@ -1,8 +1,8 @@
+ {
+   "meta": {
+     "version": "2.0",
+-    "lastGenerated": "2026-05-14T07:30:00-04:00",
+-    "lastPublished": "2026-05-14T07:30:00-04:00",
++    "lastGenerated": "2026-05-15T07:30:00-04:00",
++    "lastPublished": "2026-05-15T07:30:00-04:00",
+     "categories": {
+       "foundational": {
+         "label": "Foundational Learning",
+@@ -42,6 +42,18 @@
+   },
+   "drafts": [],
+   "published": [
++    {
++      "date": "2026-05-15",
++      "publishedDate": "2026-05-15",
++      "category": "news",
++      "title": "When the BBC Forced Apple to Pause Its AI News Summaries",
++      "content": "Apple Intelligence launched in iOS 18.1 in October 2024 with a feature that summarized stacked notifications into one-line briefs. By December, the BBC had filed a formal complaint. Apple's summary of a BBC News alert about Luigi Mangione, the suspect in the UnitedHealthcare CEO killing, read \"Luigi Mangione shoots himself.\" He had not. The original BBC reporting said nothing of the kind. The summary appeared under the BBC News brand on iPhone lock screens worldwide.\n\nThe BBC's complaint was specific. Apple was not labeling its summaries as AI-generated in any way users would notice. Readers saw what looked like BBC headlines that contradicted actual BBC reporting. Reporters Without Borders called the feature dangerous and urged Apple to withdraw it. Other outlets documented further cases where the summaries inverted the meaning of headlines from credible sources.\n\nApple released iOS 18.3 in January 2025. The update paused news summarization for news and entertainment apps and added a per-app opt-in. The fix sat at the policy layer; the summarizer itself was unchanged. The model that misquoted the BBC is still running on every Apple Intelligence device. Apple just decided not to point it at news headlines without permission.\n\nFor DC CAP, this is the Week 6 lesson at scale. A polished AI summary read as authoritative because of the brand wrapper around it. The error rate did not need to be high. One wrong summary under the BBC banner, on a million phones, forced a product retreat. Diligence is the work of building the audit layer Apple skipped.",
++      "tryThis": "Pick one Claude output you forwarded externally this week to a scholar, partner, funder, or board member. Re-read it from the recipient's vantage point. Find one claim that arrives under your name without a verification step behind it. Build that step into the workflow before the next send. Apple's recall says the audit layer is not optional.",
++      "resource": "https://www.bbc.com/news/articles/cge93de21n0o",
++      "sourceNotes": "Claim: Apple Intelligence launched in iOS 18.1 in October 2024 with notification summarization | Source: VERIFIED (Apple Newsroom announcement of iOS 18.1 GA on October 28, 2024; feature set includes notification summaries via Apple Intelligence)\nClaim: BBC filed a formal complaint with Apple about Apple Intelligence misrepresenting BBC News notifications | Source: VERIFIED (BBC News, \"Apple urged to withdraw 'out of control' AI news alerts,\" December 13, 2024, bbc.com/news/articles/cge93de21n0o; BBC confirmed it had \"contacted Apple to raise this concern and fix the problem\")\nClaim: Apple Intelligence summary read \"Luigi Mangione shoots himself\" under the BBC News brand | Source: VERIFIED (BBC News December 13, 2024 article, with screenshot of the iPhone lock-screen summary attributed to BBC News under the Apple Intelligence summarization feature; Mangione was in custody, had not shot himself)\nClaim: Reporters Without Borders called the feature dangerous and urged Apple to withdraw it | Source: VERIFIED (Reporters Without Borders statement, December 18, 2024, calling Apple Intelligence summaries a danger to media credibility and urging Apple to remove the function)\nClaim: Other outlets documented further cases where Apple Intelligence inverted the meaning of credible-source headlines | Source: VERIFIED (multiple documented cases — including a New York Times push summary that falsely stated Israeli PM Netanyahu had been arrested when the underlying reporting referenced the ICC arrest warrant; ProPublica and the Washington Post documented additional inversions of source headlines during December 2024)\nClaim: Apple released iOS 18.3 in January 2025 with news summarization paused for news and entertainment apps and a per-app opt-in added | Source: VERIFIED (Apple iOS 18.3 release notes, January 27, 2025: notification summaries for News & Entertainment categories temporarily unavailable while Apple refines the feature; users can opt back in per-app in Settings → Notifications → Summarize Previews)\nClaim: Week 6 of the DC CAP pilot focuses on Diligence (verifying AI output before it ships externally) | Source: GROUNDED (pilot_hub.html Week 6 Challenge block; Diligence is the fourth fluency dimension in the 4D framework — Delegation, Description, Discernment, Diligence)\nEditorial: Framing the iOS 18.3 fix as governance rather than a model change is Preston's pedagogical move — Apple's mitigation lived at the policy layer, with the summarizer model itself unchanged.\nEditorial: The closing line \"Diligence is the work of building the audit layer Apple skipped\" is Preston's synthesis tying the Apple recall to the Week 6 pilot lesson on verification.\nEditorial: The Try This framing (\"Apple's recall says the audit layer is not optional\") is Preston's pedagogical bridge from a vendor-scale governance failure to an individual-level verification habit.\nAdversarial review 20260515: Em-dash count: 0 (under 2-per-piece limit). Banned words scanned and absent: leverage, utilize, delve, navigate (metaphorical), landscape, ecosystem, synergy, robust, holistic, stakeholders, foster, enhance, align with, transformative, empower, myriad, multifaceted, nuanced (filler), pivotal, spearhead, showcase, underscore, deep dive, unpack, move the needle, at the end of the day, groundbreaking, game-changing, revolutionary, passionate about, excited to share, tapestry, doing the heavy lifting, the real question, what most people miss, this is where it gets interesting. Contrastive constructions (\"X, not Y\" / \"not X, but Y\" / \"isn't X — it's Y\"): absent. Rhetorical questions in body: 0. However/Moreover/Furthermore/Additionally: 0. Opens with concrete fact (iOS 18.1 launch + October 2024). Closes with operating instruction tied to the Week 6 Diligence challenge. Word count main body: 255 (inside 240-280 band, verified via str.split()). Try This: 57 (inside 40-80 band). Source published December 13, 2024 (BBC News, primary reporting); Apple iOS 18.3 release January 27, 2025 (release notes). Distinguished from prior news entries: May 8 (Anthropic Economic Index — augmentation vs automation split), May 1 (Stanford RegLab legal-tool hallucination study — 17-33%), April 24 (Microsoft/LinkedIn Work Trend Index — 75/78), April 10 (Anthropic Project Glasswing).\nSynthesis differentiator: prior pilot news entries center on AI usage patterns and hallucination rates in specialized tools. This entry centers on the brand-wrapper failure mode at consumer scale — the audit layer Apple skipped before shipping to hundreds of millions of devices.",
++      "status": "published",
++      "validationStatus": "PASSED"
++    },
+     {
+       "category": "trends",
+       "title": "When Trust in AI Goes Up, Verification Goes Down",
+@@ -344,4 +356,4 @@
+       "archivedReason": "Superseded by Glasswing news entry for April 10"
+     }
+   ]
+-}
++}
+\ No newline at end of file
+-- 
+2.34.1
+
