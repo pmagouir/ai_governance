@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Run an Audit — DC CAP AI Pilot Week 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+
+.slide {
+    width: 100vw; height: 100vh; height: 100dvh;
+    overflow: hidden; scroll-snap-align: start;
+    display: flex; flex-direction: column; position: relative;
+}
+.slide-content {
+    flex: 1; display: flex; flex-direction: column;
+    justify-content: flex-start;
+    max-height: 100%; overflow: hidden;
+    padding: clamp(2.5rem, 7vh, 5rem) var(--slide-padding) clamp(1.5rem, 3vh, 2.5rem);
+}
+.slide-hero .slide-content {
+    justify-content: flex-end;
+    padding-bottom: clamp(2.5rem, 8vh, 5rem);
+    padding-top: var(--slide-padding);
+}
+
+:root {
+    --navy: #101A4C;
+    --navy-deep: #0B1236;
+    --navy-mid: #162060;
+    --purple: #8352FF;
+    --purple-glow: rgba(131, 82, 255, 0.15);
+    --blue: #87B7D5;
+    --blue-deep: #2a5a78;
+    --blue-glow: rgba(135, 183, 213, 0.12);
+    --gold: #FCB017;
+    --gold-deep: #8a5a00;
+    --gold-glow: rgba(252, 176, 23, 0.12);
+    --green-flag: #2a7a2a;
+    --green-glow: rgba(34, 139, 34, 0.12);
+    --tan: #FFF4ED;
+    --white: #FFFFFF;
+    --text-main: rgba(255, 255, 255, 0.92);
+    --text-secondary: rgba(255, 255, 255, 0.65);
+    --text-dim: rgba(255, 255, 255, 0.38);
+    --card-bg: rgba(255, 255, 255, 0.045);
+    --card-border: rgba(255, 255, 255, 0.09);
+
+    --font-display: 'Noto Serif SemiCondensed', Georgia, serif;
+    --font-body: 'Noto Serif', Georgia, serif;
+    --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --title-size: clamp(2.2rem, 6vw, 4.5rem);
+    --h2-size: clamp(1.7rem, 4.2vw, 3rem);
+    --h3-size: clamp(1.2rem, 2.6vw, 1.8rem);
+    --body-size: clamp(1rem, 1.55vw, 1.25rem);
+    --body-lg: clamp(1.1rem, 2vw, 1.5rem);
+    --small-size: clamp(0.85rem, 1.25vw, 1.05rem);
+    --mono-size: clamp(0.72rem, 1.05vw, 0.88rem);
+
+    --slide-padding: clamp(2rem, 6vw, 6rem);
+    --content-gap: clamp(1rem, 2.5vw, 2.5rem);
+    --card-padding: clamp(1.1rem, 2.2vw, 1.75rem);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --duration-normal: 0.6s;
+}
+
+@media (max-height: 700px) {
+    :root { --title-size: clamp(1.6rem, 5vw, 3rem); --h2-size: clamp(1.3rem, 3.5vw, 2.2rem); --body-size: clamp(0.85rem, 1.35vw, 1.05rem); --body-lg: clamp(0.95rem, 1.75vw, 1.25rem); --h3-size: clamp(1rem, 2.2vw, 1.45rem); }
+    .slide-content { padding-top: clamp(1.5rem, 4vh, 3rem); }
+}
+@media (max-height: 600px) {
+    :root { --title-size: clamp(1.3rem, 4vw, 2.2rem); --h2-size: clamp(1.05rem, 2.8vw, 1.6rem); --body-size: clamp(0.78rem, 1.2vw, 0.95rem); --h3-size: clamp(0.9rem, 1.8vw, 1.2rem); }
+    .slide-content { padding-top: clamp(1rem, 3vh, 2rem); }
+    .nav-dots { display: none; }
+}
+@media (max-height: 500px) {
+    :root { --title-size: clamp(1.1rem, 3.5vw, 1.8rem); --body-size: clamp(0.7rem, 1vw, 0.85rem); }
+}
+@media (max-width: 780px) {
+    .qa-layout, .principles-row, .compound-row, .twin-cases, .lens-row, .ba-pair, .convergence-stack { flex-direction: column !important; grid-template-columns: 1fr !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+    html { scroll-behavior: auto; }
+    .reveal, .reveal-scale { opacity: 1 !important; transform: none !important; }
+}
+@media print {
+    html { scroll-snap-type: none; }
+    .slide { page-break-after: always; page-break-inside: avoid; scroll-snap-align: unset; height: 100vh; }
+    .slide:last-child { page-break-after: auto; }
+    .nav-dots, .progress-bar { display: none !important; }
+    .reveal, .reveal-scale { opacity: 1 !important; transform: none !important; }
+}
+
+/* === TYPOGRAPHY === */
+body { font-family: var(--font-body); font-size: var(--body-size); line-height: 1.6; color: var(--text-main); background: var(--navy-deep); }
+h1 { font-family: var(--font-display); font-size: var(--title-size); font-weight: 900; line-height: 1.04; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); }
+h2 { font-family: var(--font-display); font-size: var(--h2-size); font-weight: 900; line-height: 1.08; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); }
+h3 { font-family: var(--font-subhead); font-size: var(--h3-size); font-weight: 700; line-height: 1.25; color: var(--white); }
+p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
+.eyebrow { font-family: var(--font-mono); font-size: var(--mono-size); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: clamp(0.5rem, 1vh, 0.9rem); }
+.accent-bar { width: clamp(3rem, 8vw, 6rem); height: 4px; background: var(--gold); margin-bottom: clamp(0.5rem, 1vh, 1rem); }
+
+/* === REVEALS === */
+.reveal { opacity: 0; transform: translateY(clamp(15px, 3vh, 30px)); transition: opacity var(--duration-normal) var(--ease-out-expo), transform var(--duration-normal) var(--ease-out-expo); }
+.reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity var(--duration-normal) var(--ease-out-expo), transform var(--duration-normal) var(--ease-spring); }
+.visible .reveal, .visible .reveal-scale { opacity: 1; transform: translateY(0) translateX(0) scale(1); }
+.reveal:nth-child(1) { transition-delay: 0s; }
+.reveal:nth-child(2) { transition-delay: 0.08s; }
+.reveal:nth-child(3) { transition-delay: 0.16s; }
+.reveal:nth-child(4) { transition-delay: 0.24s; }
+.reveal:nth-child(5) { transition-delay: 0.32s; }
+.reveal:nth-child(6) { transition-delay: 0.4s; }
+.reveal-scale:nth-child(1) { transition-delay: 0s; }
+.reveal-scale:nth-child(2) { transition-delay: 0.08s; }
+.reveal-scale:nth-child(3) { transition-delay: 0.16s; }
+.reveal-scale:nth-child(4) { transition-delay: 0.24s; }
+.reveal-scale:nth-child(5) { transition-delay: 0.32s; }
+
+/* === NAV === */
+.progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); z-index: 200; transition: width 0.3s ease; width: 0; }
+.nav-dots { position: fixed; right: clamp(0.75rem, 2vw, 1.5rem); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: clamp(6px, 1vh, 10px); z-index: 100; }
+.nav-dot { width: clamp(8px, 0.8vw, 10px); height: clamp(8px, 0.8vw, 10px); border-radius: 50%; background: rgba(255,255,255,0.15); border: none; cursor: pointer; padding: 0; transition: all 0.3s ease; }
+.nav-dot.active { background: var(--gold); transform: scale(1.5); }
+
+/* === SLIDE BACKGROUNDS === */
+.slide-hero {
+    background: radial-gradient(ellipse at 20% 80%, var(--gold-glow) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 20%, var(--blue-glow) 0%, transparent 55%),
+                var(--navy);
+}
+.slide-setup { background: radial-gradient(ellipse at 70% 50%, var(--gold-glow) 0%, transparent 60%), var(--navy-deep); }
+.slide-principles { background: radial-gradient(ellipse at 50% 40%, var(--blue-glow) 0%, transparent 55%), var(--navy-deep); }
+.slide-q-gold { background: radial-gradient(ellipse at 30% 70%, var(--gold-glow) 0%, transparent 55%), var(--navy-deep); }
+.slide-q-blue { background: radial-gradient(ellipse at 70% 30%, var(--blue-glow) 0%, transparent 55%), var(--navy-deep); }
+.slide-q-navy { background: radial-gradient(ellipse at 50% 50%, var(--purple-glow) 0%, transparent 55%), var(--navy); }
+.slide-q-purple { background: radial-gradient(ellipse at 30% 30%, var(--purple-glow) 0%, transparent 55%), var(--navy-deep); }
+.slide-worked { background: radial-gradient(ellipse at 50% 50%, var(--gold-glow) 0%, transparent 60%), var(--navy-deep); }
+.slide-compound { background: radial-gradient(ellipse at 50% 50%, var(--gold-glow) 0%, transparent 60%), var(--navy-deep); }
+.slide-close { background: radial-gradient(ellipse at 80% 80%, var(--gold-glow) 0%, transparent 50%), radial-gradient(ellipse at 20% 30%, var(--blue-glow) 0%, transparent 50%), var(--navy-deep); }
+
+/* === HERO === */
+.slide-hero .subtitle { font-family: var(--font-subhead); font-size: var(--body-lg); font-weight: 300; color: var(--gold); line-height: 1.4; max-width: 36em; }
+.slide-hero .panel-info { font-family: var(--font-body); font-size: var(--small-size); color: var(--text-dim); line-height: 1.6; margin-top: clamp(1.5rem, 3vh, 3rem); }
+.slide-hero .panel-info strong { color: var(--text-main); }
+
+/* === Q&A SLIDE LAYOUT === */
+.qa-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(1.25rem, 2.5vw, 2.5rem);
+    margin-top: clamp(0.75rem, 2vh, 1.5rem);
+    flex: 1; align-items: stretch;
+}
+.qa-col {
+    display: flex; flex-direction: column;
+    padding: clamp(1rem, 2vw, 1.5rem);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-top: 4px solid;
+    border-radius: clamp(8px, 1.2vw, 12px);
+}
+.qa-col-plain { border-top-color: var(--gold); }
+.qa-col-move { border-top-color: var(--blue); }
+.qa-col-eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+}
+.qa-col-plain .qa-col-eyebrow { color: var(--gold); }
+.qa-col-move .qa-col-eyebrow { color: var(--blue); }
+.qa-col h3 {
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+    margin-bottom: clamp(0.5rem, 1vh, 0.8rem);
+    line-height: 1.2;
+}
+.qa-col p {
+    font-size: var(--small-size);
+    line-height: 1.6;
+    color: var(--text-main);
+    margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+}
+.qa-col p:last-child { margin-bottom: 0; }
+.qa-tag {
+    font-family: var(--font-subhead);
+    font-size: var(--small-size);
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-top: clamp(0.75rem, 1.5vh, 1.2rem);
+    padding-top: clamp(0.5rem, 1vh, 0.8rem);
+    border-top: 1px dashed rgba(255,255,255,0.12);
+    max-width: 50em;
+}
+.qa-tag strong { color: var(--gold); font-weight: 600; font-style: normal; }
+
+/* === PRINCIPLES RECAP === */
+.principles-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.6rem, 1.2vw, 1rem);
+    margin-top: clamp(0.9rem, 2vh, 1.6rem);
+}
+.principle-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-top: 3px solid;
+    border-radius: clamp(6px, 1vw, 10px);
+    padding: clamp(0.8rem, 1.5vw, 1.2rem);
+}
+.principle-card .pc-label {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+    margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
+}
+.principle-card .pc-line {
+    font-size: clamp(0.8rem, 1.15vw, 0.95rem);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.pc-delegation { border-color: var(--blue); } .pc-delegation .pc-label { color: var(--blue); }
+.pc-description { border-color: var(--purple); } .pc-description .pc-label { color: var(--purple); }
+.pc-discernment { border-color: var(--blue); } .pc-discernment .pc-label { color: var(--blue); }
+.pc-diligence { border-color: var(--gold); } .pc-diligence .pc-label { color: var(--gold); }
+
+.principles-caption {
+    font-family: var(--font-subhead);
+    font-size: var(--small-size);
+    color: var(--text-secondary);
+    margin-top: clamp(0.9rem, 1.8vh, 1.4rem);
+    font-style: italic;
+    max-width: 48em;
+}
+
+/* === SETUP === */
+.setup-lead {
+    font-family: var(--font-subhead);
+    font-size: var(--body-lg);
+    font-weight: 300;
+    color: var(--text-main);
+    line-height: 1.55;
+    max-width: 38em;
+    margin-top: clamp(0.5rem, 1vh, 1rem);
+}
+.setup-questions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: clamp(0.5rem, 1vw, 0.8rem);
+    margin-top: clamp(1.25rem, 2.5vh, 1.8rem);
+}
+.setup-q {
+    font-family: var(--font-mono);
+    font-size: clamp(0.78rem, 1.15vw, 0.95rem);
+    color: var(--gold);
+    background: rgba(252, 176, 23, 0.06);
+    border: 1px solid rgba(252, 176, 23, 0.2);
+    border-radius: 6px;
+    padding: clamp(0.5rem, 1vw, 0.75rem) clamp(0.6rem, 1.2vw, 0.9rem);
+    letter-spacing: 0.02em;
+}
+
+/* === MODE CARDS (the three modes) === */
+.mode-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: clamp(0.6rem, 1.2vw, 1rem);
+    margin-top: clamp(0.9rem, 2vh, 1.5rem);
+    flex: 1; align-items: stretch;
+}
+.mode-card {
+    padding: clamp(1rem, 2vw, 1.5rem);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-top: 4px solid;
+    border-radius: clamp(8px, 1.2vw, 12px);
+    display: flex; flex-direction: column;
+}
+.mode-card .mc-label {
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+}
+.mode-card h3 {
+    font-size: clamp(1.15rem, 2.1vw, 1.5rem);
+    margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
+    line-height: 1.2;
+}
+.mode-card .mc-tag {
+    font-family: var(--font-subhead);
+    font-size: clamp(0.85rem, 1.25vw, 1rem);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: clamp(0.6rem, 1.2vh, 0.9rem);
+    font-style: italic;
+}
+.mode-card .mc-body {
+    font-size: var(--small-size);
+    color: var(--text-main);
+    line-height: 1.55;
+    flex: 1;
+}
+.mc-light { border-color: var(--gold); } .mc-light .mc-label, .mc-light h3 { color: var(--gold); }
+.mc-standard { border-color: var(--purple); background: rgba(131, 82, 255, 0.05); } .mc-standard .mc-label, .mc-standard h3 { color: var(--purple); }
+.mc-full { border-color: var(--blue); } .mc-full .mc-label, .mc-full h3 { color: var(--blue); }
+
+/* === LENS GRID (Q2 four lenses) === */
+.lens-row {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: clamp(0.7rem, 1.4vw, 1.1rem);
+    margin-top: clamp(0.9rem, 2vh, 1.5rem);
+}
+.lens-card {
+    padding: clamp(0.9rem, 1.7vw, 1.3rem);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-left: 4px solid var(--blue);
+    border-radius: 0 8px 8px 0;
+}
+.lens-card .lens-name {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    color: var(--blue);
+    margin-bottom: 0.3rem;
+}
+.lens-card .lens-q {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: clamp(0.85rem, 1.25vw, 1rem);
+    color: var(--text-main);
+    line-height: 1.55;
+}
+
+/* === CONVERGENCE STACK (Q3 visual) === */
+.convergence-stack {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
+    margin-top: clamp(0.9rem, 2vh, 1.5rem);
+}
+.conv-card {
+    padding: clamp(0.9rem, 1.7vw, 1.3rem);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-left: 4px solid var(--blue);
+    border-radius: 0 8px 8px 0;
+}
+.conv-card .cv-lens {
+    font-family: var(--font-mono);
+    font-size: clamp(0.72rem, 1vw, 0.82rem);
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+}
+.conv-card .cv-flag {
+    font-family: var(--font-body);
+    font-size: clamp(0.85rem, 1.25vw, 1rem);
+    color: var(--text-main);
+    line-height: 1.55;
+    font-style: italic;
+}
+.conv-flag-callout {
+    margin-top: clamp(1rem, 2vh, 1.5rem);
+    padding: clamp(0.9rem, 1.8vw, 1.3rem);
+    background: rgba(252, 176, 23, 0.1);
+    border: 1px solid rgba(252, 176, 23, 0.3);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+}
+.conv-flag-callout .ccf-label {
+    font-family: var(--font-mono);
+    font-size: clamp(0.72rem, 1vw, 0.82rem);
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+}
+.conv-flag-callout .ccf-line {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    color: var(--white);
+    line-height: 1.35;
+}
+
+/* === BEFORE / AFTER PAIR === */
+.ba-pair {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
+    margin-top: clamp(0.9rem, 2vh, 1.5rem);
+    flex: 1;
+}
+.ba-col {
+    padding: clamp(0.9rem, 1.7vw, 1.3rem);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-top: 4px solid;
+    border-radius: clamp(8px, 1.2vw, 12px);
+    display: flex; flex-direction: column;
+    overflow-y: auto;
+}
+.ba-col-v1 { border-top-color: #c44; }
+.ba-col-v2 { border-top-color: var(--green-flag); }
+.ba-col .ba-label {
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+    font-weight: 600;
+}
+.ba-col-v1 .ba-label { color: #ff8a8a; }
+.ba-col-v2 .ba-label { color: #6dc46d; }
+.ba-col .ba-body {
+    font-family: var(--font-body);
+    font-size: clamp(0.78rem, 1.15vw, 0.92rem);
+    line-height: 1.55;
+    color: var(--text-main);
+    white-space: pre-wrap;
+    flex: 1;
+}
+
+/* === COMPOUND row === */
+.compound-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.6rem, 1.2vw, 1rem);
+    margin-top: clamp(0.9rem, 2vh, 1.5rem);
+}
+.compound-card {
+    padding: clamp(0.9rem, 1.7vw, 1.25rem);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-top: 3px solid var(--gold);
+    border-radius: clamp(6px, 1vw, 10px);
+}
+.compound-card .cc-num {
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: clamp(0.3rem, 0.6vh, 0.4rem);
+}
+.compound-card .cc-title {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    color: var(--white);
+    margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
+    line-height: 1.2;
+}
+.compound-card .cc-body {
+    font-size: clamp(0.82rem, 1.2vw, 0.95rem);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.compound-caption {
+    font-family: var(--font-subhead);
+    font-size: var(--small-size);
+    color: var(--text-secondary);
+    margin-top: clamp(0.9rem, 1.8vh, 1.4rem);
+    font-style: italic;
+    max-width: 48em;
+}
+
+/* === FIVE-STEP FLOW (Q4) === */
+.five-step {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: clamp(0.5rem, 1vw, 0.85rem);
+    margin-top: clamp(0.9rem, 2vh, 1.5rem);
+}
+.fs-card {
+    padding: clamp(0.7rem, 1.4vw, 1rem);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-top: 3px solid var(--purple);
+    border-radius: 6px;
+    display: flex; flex-direction: column;
+}
+.fs-card .fs-num {
+    font-family: var(--font-mono);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    color: var(--purple);
+    line-height: 1;
+    margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
+}
+.fs-card .fs-title {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: clamp(0.85rem, 1.3vw, 1rem);
+    color: var(--white);
+    margin-bottom: clamp(0.25rem, 0.5vh, 0.4rem);
+    line-height: 1.2;
+}
+.fs-card .fs-body {
+    font-size: clamp(0.72rem, 1.05vw, 0.85rem);
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+@media (max-width: 980px) {
+    .five-step { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* === CLOSE / FRIDAY PROMPT === */
+.friday-prompt {
+    display: flex; flex-direction: column;
+    gap: clamp(0.75rem, 1.5vh, 1.2rem);
+    margin-top: clamp(1rem, 2.5vh, 2rem);
+}
+.fp-item { display: flex; gap: clamp(0.75rem, 1.5vw, 1.25rem); align-items: flex-start; }
+.fp-num {
+    font-family: var(--font-mono); font-size: clamp(1.3rem, 2.5vw, 2rem);
+    color: var(--gold); flex-shrink: 0; line-height: 1; min-width: 3ch;
+    font-weight: 500;
+}
+.fp-text { flex: 1; }
+.fp-label {
+    font-family: var(--font-subhead); font-weight: 700;
+    font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+    color: var(--white); margin-bottom: clamp(0.2rem, 0.4vh, 0.3rem);
+    line-height: 1.2;
+}
+.fp-text p { font-size: var(--small-size); color: var(--text-secondary); line-height: 1.55; max-width: 36em; }
+
+.contact-bar {
+    display: flex; gap: clamp(1rem, 2vw, 1.5rem); flex-wrap: wrap;
+    font-family: var(--font-mono); font-size: var(--mono-size);
+    padding-top: clamp(1.5rem, 3vh, 2.5rem); margin-top: clamp(1rem, 2vh, 1.5rem);
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+.contact-bar .cn { color: var(--white); font-weight: 500; }
+.contact-bar .ci { color: var(--text-secondary); }
+.contact-bar a { color: var(--gold); text-decoration: none; }
+
+/* === Generic === */
+.lead {
+    font-family: var(--font-subhead);
+    font-size: var(--body-lg);
+    font-weight: 300;
+    color: var(--text-main);
+    line-height: 1.5;
+    max-width: 36em;
+    margin-top: clamp(0.5rem, 1vh, 1rem);
+}
+.section-number { font-family: var(--font-mono); font-size: clamp(0.85rem, 1.3vw, 1.05rem); letter-spacing: 0.15em; color: var(--gold); margin-bottom: clamp(0.5rem, 1vh, 0.8rem); }
+.q-eyebrow { font-family: var(--font-mono); font-size: var(--mono-size); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: clamp(0.5rem, 1vh, 0.9rem); }
+.q-gold { color: var(--gold); }
+.q-blue { color: var(--blue); }
+.q-navy { color: #b8c4ff; }
+.q-purple { color: var(--purple); }
+
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<nav class="nav-dots" id="navDots" aria-label="Slide navigation"></nav>
+
+<!-- S1: HERO -->
+<section class="slide slide-hero" id="slide-0">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">WEEK 6 · AI FRIDAY · MAY 22, 2026</div>
+        <h1 class="reveal">Run<br>an Audit.</h1>
+        <div class="accent-bar reveal"></div>
+        <p class="subtitle reveal">How you know it works, before anyone else sees it.</p>
+        <p class="panel-info reveal">
+            <strong>Preston Magouirk</strong> · DC CAP Enterprise AI Leadership Pilot · The discipline that turns verify and validate into a workflow.
+        </p>
+    </div>
+</section>
+
+<!-- S2: SETUP -->
+<section class="slide slide-setup" id="slide-1">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">The setup</div>
+        <h2 class="reveal">Week 5 named verify and validate.<br>Week 6 makes them a discipline.</h2>
+        <p class="setup-lead reveal">You catch some things in your own draft. You miss others. Tone calibrated for you, not the reader. A claim sourced to memory. A soft close that doesn't actually invite anything. An AI-flavored line you stopped seeing three drafts ago.</p>
+        <div class="setup-questions">
+            <div class="setup-q reveal">What does "good" mean?</div>
+            <div class="setup-q reveal">Why four lenses?</div>
+            <div class="setup-q reveal">What is convergence?</div>
+            <div class="setup-q reveal">How do I run it?</div>
+        </div>
+        <p class="lead reveal" style="margin-top: clamp(1.25rem, 2.5vh, 1.8rem);">Four questions today. One Skill underneath them — adversarial-audit-cowork. One worked example. One thing to bring next Friday.</p>
+    </div>
+</section>
+
+<!-- S3: PRINCIPLES BRIDGE -->
+<section class="slide slide-principles" id="slide-2">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--blue);">Where this sits in the 4Ds</div>
+        <h2 class="reveal">Discernment and Diligence,<br>made shareable.</h2>
+        <p class="lead reveal">Last week, Diligence was a personal habit — you verify, you validate, you ship. This week, the same moves become a team-shareable Skill. Discernment names what "good" means at the stakes. Diligence is how a build earns the right to leave the building.</p>
+        <div class="principles-row">
+            <div class="principle-card pc-delegation reveal-scale">
+                <div class="pc-label">Delegation</div>
+                <div class="pc-line">Choosing the modality.</div>
+            </div>
+            <div class="principle-card pc-description reveal-scale">
+                <div class="pc-label">Description</div>
+                <div class="pc-line">Naming the work precisely.</div>
+            </div>
+            <div class="principle-card pc-discernment reveal-scale" style="background: rgba(135, 183, 213, 0.12); border-top-width: 4px;">
+                <div class="pc-label">Discernment</div>
+                <div class="pc-line"><strong style="color: var(--white);">Today's first lens.</strong> What's good for this audience?</div>
+            </div>
+            <div class="principle-card pc-diligence reveal-scale" style="background: rgba(252, 176, 23, 0.1); border-top-width: 4px;">
+                <div class="pc-label">Diligence</div>
+                <div class="pc-line"><strong style="color: var(--white);">Today's payload.</strong> Audit built into the workflow.</div>
+            </div>
+        </div>
+        <p class="principles-caption reveal">One reviewer averages. Four lenses converge. That's the move.</p>
+    </div>
+</section>
+
+<!-- S4: Q1 - WHAT DOES "GOOD" MEAN -->
+<section class="slide slide-q-gold" id="slide-3">
+    <div class="slide-content">
+        <div class="q-eyebrow reveal q-gold">Q1 · Discernment</div>
+        <h2 class="reveal">What does "good" mean<br>for the stakes I'm working at?</h2>
+        <div class="qa-layout">
+            <div class="qa-col qa-col-plain reveal-scale">
+                <div class="qa-col-eyebrow">The plain answer</div>
+                <h3>The bar moves with the audience.</h3>
+                <p>A note to a teammate clears at one bar. A note to a funder clears at a different one. A board memo clears at a third. The same draft can be ready, almost-ready, and not-ready depending on who reads it.</p>
+                <p>People use one mental bar — their own. The result: tone calibrated for the writer rather than the reader. Claims sourced to memory rather than the source. An ask buried because the writer already knows what they want.</p>
+            </div>
+            <div class="qa-col qa-col-move reveal-scale">
+                <div class="qa-col-eyebrow">The move</div>
+                <h3>Name the audience and the stakes before you grade it.</h3>
+                <p>Adversarial-audit's intake makes this explicit: <em>purpose, audience, stakes, deadline</em>. Four questions, asked once, answered honestly.</p>
+                <p>Skip the intake and the audit averages — generic feedback for a generic audience. Answer the intake honestly and the audit sharpens to the one bar that matters.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The kicker.</strong> "Good" is a function of audience. Name it before you grade it.</p>
+    </div>
+</section>
+
+<!-- S5: Q2 - PANEL + FOUR LENSES -->
+<section class="slide slide-q-blue" id="slide-4">
+    <div class="slide-content">
+        <div class="q-eyebrow reveal q-blue">Q2 · Discernment</div>
+        <h2 class="reveal">What's a panel, and<br>why four lenses instead of one?</h2>
+        <p class="lead reveal" style="margin-top: clamp(0.4rem, 1vh, 0.75rem); max-width: 44em;">A panel is a set of expert lenses, each in strict character discipline. They don't see each other's notes — that's the design. Disagreement becomes data. Agreement becomes the verdict.</p>
+        <div class="lens-row">
+            <div class="lens-card reveal-scale">
+                <div class="lens-name">Editor</div>
+                <div class="lens-q">"Is there an argument here, or just observations?"</div>
+            </div>
+            <div class="lens-card reveal-scale">
+                <div class="lens-name">Fact-Checker</div>
+                <div class="lens-q">"Which claims survive a challenge?"</div>
+            </div>
+            <div class="lens-card reveal-scale">
+                <div class="lens-name">Audience Proxy</div>
+                <div class="lens-q">"Did I learn something, or did I read someone thinking out loud?"</div>
+            </div>
+            <div class="lens-card reveal-scale">
+                <div class="lens-name">Originality Critic</div>
+                <div class="lens-q">"Have I read this under a different byline?"</div>
+            </div>
+        </div>
+        <p class="qa-tag reveal" style="margin-top: clamp(0.6rem, 1.3vh, 1rem);"><strong>The kicker.</strong> One reviewer averages — strengths cover for weaknesses. Four lenses converge — disagreement becomes signal.</p>
+    </div>
+</section>
+
+<!-- S6: Q3 - CONVERGENCE -->
+<section class="slide slide-q-navy" id="slide-5">
+    <div class="slide-content">
+        <div class="q-eyebrow reveal q-navy">Q3 · Discernment</div>
+        <h2 class="reveal">What is convergence,<br>and why is it the signal?</h2>
+        <p class="lead reveal" style="margin-top: clamp(0.4rem, 1vh, 0.75rem); max-width: 44em;">Convergence is the moment two or more independent lenses, running blind, flag the same line for different reasons.</p>
+        <div class="convergence-stack">
+            <div class="conv-card reveal-scale">
+                <div class="cv-lens">Fact-Checker</div>
+                <div class="cv-flag">"No source. No citation. The 73% number doesn't appear in any of the three sector reports I'd expect to source this. Cut or source."</div>
+            </div>
+            <div class="conv-card reveal-scale">
+                <div class="cv-lens">Originality Critic</div>
+                <div class="cv-flag">"Opening with a manufactured stat is the most common AI-thought-leadership template I see. The post announces itself as AI-generated before the second paragraph."</div>
+            </div>
+        </div>
+        <div class="conv-flag-callout reveal">
+            <div class="ccf-label">↑ Convergent flag — 2 agents, 2 reasons, 1 sentence</div>
+            <div class="ccf-line">"Studies show 73% of nonprofit AI implementations fail in the first year."</div>
+        </div>
+        <p class="qa-tag reveal" style="margin-top: clamp(0.6rem, 1.3vh, 1rem);"><strong>The kicker.</strong> One lens flags a line and the writer negotiates. Two lenses flag it cold and negotiation stops. Convergence is the math. Trust it over the vibe.</p>
+    </div>
+</section>
+
+<!-- S7: Q4 - RUNNING IT YOURSELF -->
+<section class="slide slide-q-purple" id="slide-6">
+    <div class="slide-content">
+        <div class="q-eyebrow reveal q-purple">Q4 · Diligence</div>
+        <h2 class="reveal">What does this look like<br>on my own work?</h2>
+        <p class="lead reveal" style="margin-top: clamp(0.4rem, 1vh, 0.75rem); max-width: 44em;">Five steps. Three modes. The cadence is the build.</p>
+        <div class="five-step">
+            <div class="fs-card reveal-scale">
+                <div class="fs-num">1</div>
+                <div class="fs-title">Intake</div>
+                <div class="fs-body">Purpose. Audience. Stakes. Deadline.</div>
+            </div>
+            <div class="fs-card reveal-scale">
+                <div class="fs-num">2</div>
+                <div class="fs-title">Mode</div>
+                <div class="fs-body">Light, Standard, or Full.</div>
+            </div>
+            <div class="fs-card reveal-scale">
+                <div class="fs-num">3</div>
+                <div class="fs-title">Panel</div>
+                <div class="fs-body">Matched to the artifact type.</div>
+            </div>
+            <div class="fs-card reveal-scale">
+                <div class="fs-num">4</div>
+                <div class="fs-title">Triage</div>
+                <div class="fs-body">Verdict + score + critical flags.</div>
+            </div>
+            <div class="fs-card reveal-scale">
+                <div class="fs-num">5</div>
+                <div class="fs-title">Decision</div>
+                <div class="fs-body">Safe to send · needs work · do not send yet.</div>
+            </div>
+        </div>
+        <div class="mode-row" style="margin-top: clamp(1rem, 2vh, 1.5rem);">
+            <div class="mode-card mc-light reveal-scale">
+                <div class="mc-label">Light</div>
+                <h3>3 agents</h3>
+                <p class="mc-tag">Stage 1 triage only · 90 seconds.</p>
+                <p class="mc-body">Runs every time. Catches the obvious convergent flags. The team that skips light mode ships the obvious flags every time.</p>
+            </div>
+            <div class="mode-card mc-standard reveal-scale">
+                <div class="mc-label">Standard</div>
+                <h3>3–4 agents</h3>
+                <p class="mc-tag">Stage 1, then Stage 2 on request.</p>
+                <p class="mc-body">Default for anything about to leave the building. Counselor emails, partner updates, briefing paragraphs.</p>
+            </div>
+            <div class="mode-card mc-full reveal-scale">
+                <div class="mc-label">Full</div>
+                <h3>4 agents</h3>
+                <p class="mc-tag">All three stages · literal rewrites.</p>
+                <p class="mc-body">Reserved for board, funder, external publication. Ten minutes per artifact. Worth it at the stakes; pointless at lower ones.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal" style="margin-top: clamp(0.6rem, 1.3vh, 1rem);"><strong>The kicker.</strong> Audit belongs in the workflow. Build it into the cadence, not as a one-time gate at the end.</p>
+    </div>
+</section>
+
+<!-- S8: WORKED EXAMPLE — v1 + TRIAGE -->
+<section class="slide slide-worked" id="slide-7">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">Worked example · One draft, one audit</div>
+        <h2 class="reveal">What the audit catches<br>that you can't see.</h2>
+        <p class="lead reveal" style="margin-top: clamp(0.4rem, 1vh, 0.75rem); max-width: 50em;">Synthesized example. A LinkedIn post about Week 5's reception. Mid-stakes. Standard mode. Thought-leadership panel.</p>
+        <div class="ba-pair">
+            <div class="ba-col ba-col-v1 reveal-scale">
+                <div class="ba-label">Draft v1 — into the audit</div>
+                <div class="ba-body">Studies show 73% of nonprofit AI implementations fail in the first year.
+
+At DC CAP, we've been working hard to navigate the AI landscape together with our leaders. Week 5 of our pilot focused on the mechanics underneath what we've been practicing — context, memory, hallucination, verification. The team has been incredible.
+
+We're learning that fluency isn't about prompts. It's about the discipline of knowing what you're actually building.
+
+Excited to share more as the pilot continues!</div>
+            </div>
+            <div class="ba-col reveal-scale" style="border-top-color: var(--gold); background: rgba(252, 176, 23, 0.04);">
+                <div class="ba-label" style="color: #ffd175;">Stage 1 triage</div>
+                <div class="ba-body" style="font-family: var(--font-mono); font-size: clamp(0.7rem, 1.05vw, 0.82rem); line-height: 1.55;"><strong style="color: var(--gold);">Verdict:</strong> Needs work — convergent flag on the opening line.
+<strong style="color: var(--gold);">Score:</strong> 5.5/10 composite
+(Editor 6 · Fact-Checker 3 · Audience Proxy 6 · Originality Critic 4)
+
+<strong style="color: var(--gold);">Critical flags:</strong>
+
+<span style="color: #ffd175;">• CONVERGENT (2 agents):</span> Fact-Checker + Originality Critic
+  independently flagged the opening: "Studies show 73%
+  of nonprofit AI implementations fail in the first year."
+
+• Editor: "navigate the AI landscape" — generic. Replace
+  with one concrete observation.
+
+• Audience Proxy: borderline. Soft close ("Excited to share!")
+  doesn't actually invite anything. Flag for tone.
+
+<strong style="color: var(--gold);">Two fixes before going further:</strong>
+  1. Cut or source the 73% stat.
+  2. Replace "navigate the AI landscape" with one concrete
+     thing that happened on Friday.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S9: WORKED EXAMPLE — v2 + WHAT CHANGED -->
+<section class="slide slide-worked" id="slide-8">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">Worked example · Same draft, sharper post</div>
+        <h2 class="reveal">Three fixes, three minutes,<br>one different post.</h2>
+        <div class="ba-pair">
+            <div class="ba-col ba-col-v2 reveal-scale">
+                <div class="ba-label">Draft v2 — what shipped</div>
+                <div class="ba-body">On Friday, the strongest reception of the pilot so far came from naming the mechanics underneath what people had been doing on principle.
+
+Week 5 walked through eight questions — context window, memory, model drift, hallucination, verify and validate. Each paired with a real work scenario outside DC CAP. The room got quiet at the Air Canada case. It got quieter at the one where attorneys filed a brief with fabricated citations.
+
+The lesson: verification belongs in the workflow, not bolted on at the end.
+
+If your organization is rolling out AI tools to leaders, the move I'd push for is to spend a week on the mechanics. Skip the prompt tricks.</div>
+            </div>
+            <div class="ba-col reveal-scale" style="border-top-color: var(--blue); background: rgba(135, 183, 213, 0.04);">
+                <div class="ba-label" style="color: #b8d4e8;">What changed</div>
+                <div class="ba-body"><strong style="color: var(--blue);">Convergent flag fixed.</strong> Manufactured stat replaced with a concrete observation Preston actually saw on Friday.
+
+<strong style="color: var(--blue);">Editor flag fixed.</strong> "Navigate the AI landscape" replaced with the Air Canada and Mata v. Avianca cases — specific, citable, scene-setting.
+
+<strong style="color: var(--blue);">Audience Proxy flag fixed.</strong> Soft "Excited to share!" close replaced with a real invitation that names the move ("spend a week on the mechanics").
+
+<strong style="color: var(--gold);">Total time in audit:</strong> under three minutes for Stage 1 triage. Same draft, sharper post. The discipline scales — every external piece next quarter clears the same bar.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S10: COMPOUND PAYLOAD -->
+<section class="slide slide-compound" id="slide-9">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">What you walk out with</div>
+        <h2 class="reveal">Four questions.<br>One shareable discipline.</h2>
+        <div class="compound-row">
+            <div class="compound-card reveal-scale">
+                <div class="cc-num">01</div>
+                <div class="cc-title">A named bar</div>
+                <div class="cc-body">"Good" is now a function of audience and stakes, not a feeling. The intake forces the question.</div>
+            </div>
+            <div class="compound-card reveal-scale">
+                <div class="cc-num">02</div>
+                <div class="cc-title">A panel that disagrees</div>
+                <div class="cc-body">Four lenses in character discipline catch what one reviewer averages out. Disagreement becomes data.</div>
+            </div>
+            <div class="compound-card reveal-scale">
+                <div class="cc-num">03</div>
+                <div class="cc-title">A convergence rule</div>
+                <div class="cc-body">When two agents flag the same line cold, the line is the problem. Trust the math. Top of the fix list.</div>
+            </div>
+            <div class="compound-card reveal-scale">
+                <div class="cc-num">04</div>
+                <div class="cc-title">A cadence that scales</div>
+                <div class="cc-body">Light every time. Standard before anything leaves the building. Full for board, funder, external publication.</div>
+            </div>
+        </div>
+        <p class="compound-caption reveal">The audit doesn't replace your judgment. It catches what you stopped seeing three drafts ago.</p>
+    </div>
+</section>
+
+<!-- S11: FRIDAY CLOSE -->
+<section class="slide slide-close" id="slide-10">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">For Friday · May 29</div>
+        <h2 class="reveal">Bring the audit<br>that surprised you.</h2>
+        <p class="lead reveal">Three things to bring. Each one builds the next week's peer review.</p>
+        <div class="friday-prompt">
+            <div class="fp-item reveal">
+                <div class="fp-num">01</div>
+                <div class="fp-text">
+                    <div class="fp-label">Light mode on something real</div>
+                    <p>Pick one thing you sent externally this week — a counselor email, a partner update, a board paragraph, a LinkedIn draft. Run the light-mode audit. Bring the verdict and the one flag you'd act on.</p>
+                </div>
+            </div>
+            <div class="fp-item reveal">
+                <div class="fp-num">02</div>
+                <div class="fp-text">
+                    <div class="fp-label">Where the audit landed on something you didn't see</div>
+                    <p>The convergent flag is the teaching moment. Tell us where the audit caught something you'd stopped noticing — and what you'd change next time.</p>
+                </div>
+            </div>
+            <div class="fp-item reveal">
+                <div class="fp-num">03</div>
+                <div class="fp-text">
+                    <div class="fp-label">Your audit cadence sentence</div>
+                    <p>One sentence for your capstone scope: <em>"The audit cadence for this build is _____ mode, run by _____, before _____ ships."</em> Week 7's peer review pulls from it directly.</p>
+                </div>
+            </div>
+        </div>
+        <div class="contact-bar reveal">
+            <div><span class="cn">Preston Magouirk</span> <span class="ci">· Senior Director, AI · DC CAP</span></div>
+            <div><a href="../pilot_hub.html">← Back to the Pilot Hub</a></div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Progress bar + nav dots
+const slides = document.querySelectorAll('.slide');
+const navDots = document.getElementById('navDots');
+const progressBar = document.getElementById('progressBar');
+
+slides.forEach((slide, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot';
+    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+    dot.addEventListener('click', () => slide.scrollIntoView({ behavior: 'smooth' }));
+    navDots.appendChild(dot);
+});
+
+const dots = document.querySelectorAll('.nav-dot');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+            entry.target.classList.add('visible');
+            const idx = Array.from(slides).indexOf(entry.target);
+            dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+            const progress = ((idx + 1) / slides.length) * 100;
+            progressBar.style.width = progress + '%';
+        }
+    });
+}, { threshold: [0.5] });
+
+slides.forEach(slide => observer.observe(slide));
+
+// Keyboard nav
+document.addEventListener('keydown', (e) => {
+    const current = Array.from(slides).findIndex(s => s.classList.contains('visible') && Array.from(dots).find(d => d.classList.contains('active')) === dots[Array.from(slides).indexOf(s)]);
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        const next = slides[Math.min(slides.length - 1, current + 1)];
+        if (next) next.scrollIntoView({ behavior: 'smooth' });
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const prev = slides[Math.max(0, current - 1)];
+        if (prev) prev.scrollIntoView({ behavior: 'smooth' });
+    }
+});
+</script>
+
+</body>
+</html>
