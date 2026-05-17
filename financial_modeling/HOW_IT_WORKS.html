@@ -538,7 +538,7 @@ footer.site-footer .footer-bottom {
     <h1>How the <span class="accent">financial</span><br>scenarios tool <span class="accent-2">works</span></h1>
     <p class="lede">
       A board-facing, browser-based projection of DC CAP's operating budget and endowment trajectory through FY35.
-      Live numbers from the May 2026 Board-approved budget and the Development Office's weekly pipeline workbook.
+      Live numbers from Finance's May 2026 DRAFT FY27 budget (pending Board approval) and the Development Office's weekly pipeline workbook.
       No backend, no accounts, no data leaves the browser.
     </p>
     <div class="meta-row">
@@ -631,7 +631,7 @@ actualRate = endowmentDraw / beginningEndowment        <span class="comment">// 
 
     <h3>Why residual, not rate-driven</h3>
     <p>
-      The May 2026 Board-approved budget shows a <span class="mono">10.34%</span> implied policy rate (against the 3-year rolling average) for FY27. That number emerges from the budget identity, not a Finance policy choice. $12.08M total expenses minus $4.66M operating revenue = $7.43M draw; divide by the $71.8M rolling-average balance and you get 10.34%. For context: NACUBO surveys ~700 endowments annually and reports a median spending rate of ~4.7%. DC CAP's FY27 10.34% reflects a trough year in scholarship commitments rather than a structural overdraw — the trajectory below shows the rate bending into the NACUBO yellow band (~5.8%) by FY29 and settling near ~6.4% by FY35.
+      Finance's May 2026 DRAFT FY27 budget (pending Board approval) shows a <span class="mono">10.84%</span> implied policy rate (against the 3-year rolling average) for FY27. That number emerges from the budget identity, not a Finance policy choice. $12.24M total expenses minus $4.70M operating revenue = $7.54M draw; divide by the $71.8M rolling-average balance and you get 10.49%. For context: NACUBO surveys ~700 endowments annually and reports a median spending rate of ~4.7%. DC CAP's FY27 trough rate reflects scholarship commitments at peak rather than a structural overdraw — the trajectory below shows the rate bending into the NACUBO yellow band by FY29 and settling near ~6.4% by FY35.
     </p>
     <p>
       As scholarships step down (FY27 $5.44M → FY28 $4.5M → FY29 $4.0M) and operating expenses creep ~3% per year, the needed draw bends with them. Under Base assumptions:
@@ -674,10 +674,11 @@ actualRate = endowmentDraw / beginningEndowment        <span class="comment">// 
 
     <div class="card-grid two">
       <div class="card purple">
-        <h4>Source A · Board-approved budget</h4>
-        <p><strong>File:</strong> <span class="mono">DCCAP 2027-00 Budget Overview by Department Comparative.xlsx</span></p>
+        <h4>Source A · DRAFT FY27 budget (pending Board approval)</h4>
+        <p><strong>File:</strong> <span class="mono">DCCAP 2027-00 Budget DRAFT Preview.xlsx</span></p>
         <p><strong>Owner:</strong> Finance (Tracy)</p>
-        <p><strong>Updates:</strong> Approved by Board, typically May before the fiscal year. One sheet ("Departments Summary"), two panels (with and without GEAR UP). The tool uses the <strong>without-GEAR-UP</strong> panel.</p>
+        <p><strong>Status:</strong> DRAFT — pending formal Board approval. Numbers may revise before adoption. Current snapshot saved May 15, 2026.</p>
+        <p><strong>Updates:</strong> Refreshed by Finance as DRAFT iterates through review. Four tabs (Departments Summary, Roll up by Program, Revenue Detail, Future Revenue View). The tool uses the <strong>without-GEAR-UP</strong> view.</p>
         <p><strong>Lives in:</strong> <span class="mono">source_workbook/</span> (gitignored, never committed)</p>
       </div>
       <div class="card blue">
@@ -691,7 +692,7 @@ actualRate = endowmentDraw / beginningEndowment        <span class="comment">// 
 
     <h3>How the two reconcile</h3>
     <p>
-      The Board-approved budget speaks in <strong>P&amp;L recognition</strong> — what hits the books in FY27. The Pipeline Tool speaks in <strong>AOR booking</strong> — what gets recorded as "Additions to Operating Revenue" when a pledge is signed (even if it releases to a future year's P&amp;L).
+      Finance's DRAFT FY27 budget speaks in <strong>P&amp;L recognition</strong> — what hits the books in FY27. The Pipeline Tool speaks in <strong>AOR booking</strong> — what gets recorded as "Additions to Operating Revenue" when a pledge is signed (even if it releases to a future year's P&amp;L).
     </p>
 
     <table class="data">
@@ -815,7 +816,7 @@ actualRate = endowmentDraw / beginningEndowment        <span class="comment">// 
       <div class="card blue">
         <h4>D2 · 3-year rolling average (not 5)</h4>
         <p>
-          <strong>Decision:</strong> The diagnostic policy rate is computed against a 3-year rolling average of prior ending balances. The 5-year basis (which the Board-approved budget uses) shows up only as a reconciliation comparator.
+          <strong>Decision:</strong> The diagnostic policy rate is computed against a 3-year rolling average of prior ending balances. The 5-year basis (which Finance's DRAFT FY27 budget uses) shows up only as a reconciliation comparator.
         </p>
         <p>
           <strong>Why:</strong> DC CAP's endowment is young — it grew from ~$60M to ~$100M with the FY26 major gift. A 5-year average suppresses the denominator by ~$32M of pre-major-gift years. 3-year better reflects the new capacity, per NACUBO best practice for young endowments.

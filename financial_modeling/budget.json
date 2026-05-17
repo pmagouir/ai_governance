@@ -1,0 +1,3787 @@
+{
+  "meta": {
+    "sourceFile": "DCCAP 2027-00 Budget DRAFT Preview.xlsx",
+    "sourceUrl": "https://dccapemail.sharepoint.com/sites/Development/Shared%20Documents/Operations/Finance/Budget/FY27/DCCAP%202027-00%20Budget%20DRAFT%20Preview.xlsx",
+    "fileLastModified": "2026-05-15T19:34:59.599506+00:00",
+    "syncedAt": "2026-05-16T00:07:42.571767+00:00",
+    "schemaVersion": 1,
+    "view": "without-GEAR-UP",
+    "leaseEndsAnnotation": "",
+    "additionsToEndowmentNote": "2,000,000*",
+    "verified": true,
+    "verificationNote": "All checks passed."
+  },
+  "departments": {
+    "lineItems": {
+      "foundationRevenue": {
+        "operations": 0.0,
+        "fundraisingDevelopment": 1100000.0,
+        "researchInnovation": 0.0,
+        "studentSuccess": 0.0,
+        "total": 1100000.0
+      },
+      "corporateRevenue": {
+        "operations": 0.0,
+        "fundraisingDevelopment": 650000.0,
+        "researchInnovation": 0.0,
+        "studentSuccess": 0.0,
+        "total": 650000.0
+      },
+      "individualRevenue": {
+        "operations": 0.0,
+        "fundraisingDevelopment": 200000.0,
+        "researchInnovation": 0.0,
+        "studentSuccess": 0.0,
+        "total": 200000.0
+      },
+      "governmentGrantIncome": {
+        "operations": 0.0,
+        "fundraisingDevelopment": 0.0,
+        "researchInnovation": 0.0,
+        "studentSuccess": 0.0,
+        "total": 0.0
+      },
+      "specialEventsIncome": {
+        "operations": 0.0,
+        "fundraisingDevelopment": 550000.0,
+        "researchInnovation": 0.0,
+        "studentSuccess": 0.0,
+        "total": 550000.0
+      },
+      "contributedServices": {
+        "operations": 285000.0,
+        "fundraisingDevelopment": 0.0,
+        "researchInnovation": 0.0,
+        "studentSuccess": 0.0,
+        "total": 285000.0
+      },
+      "releasesFromAor": {
+        "operations": 775000.0,
+        "fundraisingDevelopment": 0.0,
+        "researchInnovation": 200000.0,
+        "studentSuccess": 942500.0,
+        "total": 1917500.0
+      },
+      "endowmentDraw": {
+        "operations": 7535194.526766928,
+        "fundraisingDevelopment": 0.0,
+        "researchInnovation": 0.0,
+        "studentSuccess": 0.0,
+        "total": 7535194.526766928
+      },
+      "totalRevenue": {
+        "operations": 8595194.526766928,
+        "fundraisingDevelopment": 2500000.0,
+        "researchInnovation": 200000.0,
+        "studentSuccess": 942500.0,
+        "total": 12237694.526766928
+      },
+      "payroll": {
+        "operations": 1374146.8583987707,
+        "fundraisingDevelopment": 634935.9200338905,
+        "researchInnovation": 343896.17543275194,
+        "studentSuccess": 1072748.7129015138,
+        "total": 3425727.6667669266
+      },
+      "professionalFees": {
+        "operations": 1044690.0,
+        "fundraisingDevelopment": 208275.0,
+        "researchInnovation": 0.0,
+        "studentSuccess": 90800.0,
+        "total": 1343765.0
+      },
+      "programExpenses": {
+        "operations": 0.0,
+        "fundraisingDevelopment": 0.0,
+        "researchInnovation": 0.0,
+        "studentSuccess": 107500.0,
+        "total": 107500.0
+      },
+      "scholarships": {
+        "operations": 0.0,
+        "fundraisingDevelopment": 0.0,
+        "researchInnovation": 0.0,
+        "studentSuccess": 5440000.0,
+        "total": 5440000.0
+      },
+      "travelEvents": {
+        "operations": 36000.0,
+        "fundraisingDevelopment": 134500.0,
+        "researchInnovation": 0.0,
+        "studentSuccess": 17500.0,
+        "total": 188000.0
+      },
+      "rentOccupancy": {
+        "operations": 534643.0,
+        "fundraisingDevelopment": 0.0,
+        "researchInnovation": 0.0,
+        "studentSuccess": 0.0,
+        "total": 534643.0
+      },
+      "informationTechnology": {
+        "operations": 298050.0,
+        "fundraisingDevelopment": 12534.86,
+        "researchInnovation": 171800.0,
+        "studentSuccess": 0.0,
+        "total": 482384.86
+      },
+      "generalAdministrative": {
+        "operations": 582760.0,
+        "fundraisingDevelopment": 65414.0,
+        "researchInnovation": 10000.0,
+        "studentSuccess": 57500.0,
+        "total": 715674.0
+      },
+      "totalExpenses": {
+        "operations": 3870289.858398771,
+        "fundraisingDevelopment": 1055659.7800338906,
+        "researchInnovation": 525696.1754327519,
+        "studentSuccess": 6786048.712901514,
+        "total": 12237694.526766926
+      },
+      "netIncome": {
+        "operations": 4724904.668368157,
+        "fundraisingDevelopment": 1444340.2199661094,
+        "researchInnovation": -325696.17543275194,
+        "studentSuccess": -5843548.712901514,
+        "total": 0.0
+      }
+    },
+    "additionsToEndowmentText": "2,000,000*",
+    "additionsToEndowment": 2000000.0
+  },
+  "programRollup": {
+    "foundationRevenue": {
+      "operations": 0.0,
+      "fundraisingGeneral": 1100000.0,
+      "gradEvent": 0.0,
+      "rAndIGeneral": 0.0,
+      "kpmgAI": 0.0,
+      "up": 0.0,
+      "gearUp": 0.0,
+      "legacyPrograms": 0.0,
+      "ward7And8": 0.0,
+      "total": 1100000.0
+    },
+    "corporateRevenue": {
+      "operations": 0.0,
+      "fundraisingGeneral": 650000.0,
+      "gradEvent": 0.0,
+      "rAndIGeneral": 0.0,
+      "kpmgAI": 0.0,
+      "up": 0.0,
+      "gearUp": 0.0,
+      "legacyPrograms": 0.0,
+      "ward7And8": 0.0,
+      "total": 650000.0
+    },
+    "individualRevenue": {
+      "operations": 0.0,
+      "fundraisingGeneral": 200000.0,
+      "gradEvent": 0.0,
+      "rAndIGeneral": 0.0,
+      "kpmgAI": 0.0,
+      "up": 0.0,
+      "gearUp": 0.0,
+      "legacyPrograms": 0.0,
+      "ward7And8": 0.0,
+      "total": 200000.0
+    },
+    "governmentGrantIncome": {
+      "operations": 0.0,
+      "fundraisingGeneral": 0.0,
+      "gradEvent": 0.0,
+      "rAndIGeneral": 0.0,
+      "kpmgAI": 0.0,
+      "up": 0.0,
+      "gearUp": 1422276.7560346597,
+      "legacyPrograms": 0.0,
+      "ward7And8": 0.0,
+      "total": 1422276.7560346597
+    },
+    "specialEventsIncome": {
+      "operations": 0.0,
+      "fundraisingGeneral": 550000.0,
+      "gradEvent": 0.0,
+      "rAndIGeneral": 0.0,
+      "kpmgAI": 0.0,
+      "up": 0.0,
+      "gearUp": 0.0,
+      "legacyPrograms": 0.0,
+      "ward7And8": 0.0,
+      "total": 550000.0
+    },
+    "contributedServices": {
+      "operations": 285000.0,
+      "fundraisingGeneral": 0.0,
+      "gradEvent": 0.0,
+      "rAndIGeneral": 0.0,
+      "kpmgAI": 0.0,
+      "up": 0.0,
+      "gearUp": 0.0,
+      "legacyPrograms": 0.0,
+      "ward7And8": 0.0,
+      "total": 285000.0
+    },
+    "releasesFromAor": {
+      "operations": 775000.0,
+      "fundraisingGeneral": 0.0,
+      "gradEvent": 0.0,
+      "rAndIGeneral": 0.0,
+      "kpmgAI": 200000.0,
+      "up": 244900.0,
+      "gearUp": 0.0,
+      "legacyPrograms": 297600.0,
+      "ward7And8": 400000.0,
+      "total": 1917500.0
+    },
+    "endowmentDraw": {
+      "operations": 7535194.526766928,
+      "fundraisingGeneral": 0.0,
+      "gradEvent": 0.0,
+      "rAndIGeneral": 0.0,
+      "kpmgAI": 0.0,
+      "up": 0.0,
+      "gearUp": 0.0,
+      "legacyPrograms": 0.0,
+      "ward7And8": 0.0,
+      "total": 7535194.526766928
+    },
+    "totalRevenue": {
+      "operations": 8595194.526766928,
+      "fundraisingGeneral": 2500000.0,
+      "gradEvent": 0.0,
+      "rAndIGeneral": 0.0,
+      "kpmgAI": 200000.0,
+      "up": 244900.0,
+      "gearUp": 1422276.7560346597,
+      "legacyPrograms": 297600.0,
+      "ward7And8": 400000.0,
+      "total": 13659971.282801587
+    },
+    "payroll": {
+      "operations": 1374146.8583987707,
+      "fundraisingGeneral": 634935.9200338905,
+      "gradEvent": 0.0,
+      "rAndIGeneral": 0.0,
+      "kpmgAI": 343896.17543275194,
+      "up": 954866.3786630359,
+      "gearUp": 928714.8360346595,
+      "legacyPrograms": 0.0,
+      "ward7And8": 117882.3342384781,
+      "total": 4354442.502801587
+    },
+    "professionalFees": {
+      "operations": 1044690.0,
+      "fundraisingGeneral": 154000.0,
+      "gradEvent": 54275.0,
+      "rAndIGeneral": 0.0,
+      "kpmgAI": 0.0,
+      "up": 90800.0,
+      "gearUp": 0.0,
+      "legacyPrograms": 0.0,
+      "ward7And8": 0.0,
+      "total": 1343765.0
+    },
+    "programExpenses": {
+      "operations": 0.0,
+      "fundraisingGeneral": 0.0,
+      "gradEvent": 0.0,
+      "rAndIGeneral": 0.0,
+      "kpmgAI": 0.0,
+      "up": 97500.0,
+      "gearUp": 432661.92000000004,
+      "legacyPrograms": 0.0,
+      "ward7And8": 10000.0,
+      "total": 540161.92
+    },
+    "scholarships": {
+      "operations": 0.0,
+      "fundraisingGeneral": 0.0,
+      "gradEvent": 0.0,
+      "rAndIGeneral": 0.0,
+      "kpmgAI": 0.0,
+      "up": 2210000.0,
+      "gearUp": 0.0,
+      "legacyPrograms": 925000.0,
+      "ward7And8": 2305000.0,
+      "total": 5440000.0
+    },
+    "travelEvents": {
+      "operations": 36000.0,
+      "fundraisingGeneral": 82000.0,
+      "gradEvent": 52500.0,
+      "rAndIGeneral": 0.0,
+      "kpmgAI": 0.0,
+      "up": 17500.0,
+      "gearUp": 0.0,
+      "legacyPrograms": 0.0,
+      "ward7And8": 0.0,
+      "total": 188000.0
+    },
+    "rentOccupancy": {
+      "operations": 534643.0,
+      "fundraisingGeneral": 0.0,
+      "gradEvent": 0.0,
+      "rAndIGeneral": 0.0,
+      "kpmgAI": 0.0,
+      "up": 0.0,
+      "gearUp": 0.0,
+      "legacyPrograms": 0.0,
+      "ward7And8": 0.0,
+      "total": 534643.0
+    },
+    "informationTechnology": {
+      "operations": 298050.0,
+      "fundraisingGeneral": 12534.86,
+      "gradEvent": 0.0,
+      "rAndIGeneral": 0.0,
+      "kpmgAI": 171800.0,
+      "up": 0.0,
+      "gearUp": 0.0,
+      "legacyPrograms": 0.0,
+      "ward7And8": 0.0,
+      "total": 482384.86
+    },
+    "generalAdministrative": {
+      "operations": 582760.0,
+      "fundraisingGeneral": 50781.0,
+      "gradEvent": 14633.0,
+      "rAndIGeneral": 10000.0,
+      "kpmgAI": 0.0,
+      "up": 52500.0,
+      "gearUp": 60900.0,
+      "legacyPrograms": 0.0,
+      "ward7And8": 5000.0,
+      "total": 776574.0
+    },
+    "totalExpenses": {
+      "operations": 3870289.858398771,
+      "fundraisingGeneral": 934251.7800338905,
+      "gradEvent": 121408.0,
+      "rAndIGeneral": 10000.0,
+      "kpmgAI": 515696.17543275194,
+      "up": 3423166.378663036,
+      "gearUp": 1422276.7560346597,
+      "legacyPrograms": 925000.0,
+      "ward7And8": 2437882.334238478,
+      "total": 13659971.282801587
+    },
+    "netIncome": {
+      "operations": 4724904.668368157,
+      "fundraisingGeneral": 1565748.2199661094,
+      "gradEvent": -121408.0,
+      "rAndIGeneral": -10000.0,
+      "kpmgAI": -315696.17543275194,
+      "up": -3178266.378663036,
+      "gearUp": 0.0,
+      "legacyPrograms": -627400.0,
+      "ward7And8": -2037882.334238478,
+      "total": 0.0
+    }
+  },
+  "outyearPnL": {
+    "fy27": {
+      "foundationRevenue": 1100000.0,
+      "corporateRevenue": 650000.0,
+      "individualRevenue": 200000.0,
+      "governmentGrantIncome": 0.0,
+      "specialEventsIncome": 550000.0,
+      "contributedServices": 285000.0,
+      "releasesFromAor": 1917500.0,
+      "endowmentDraw": 7535194.526766928,
+      "totalRevenue": 12237694.526766928,
+      "payroll": 3425727.6667669276,
+      "professionalFees": 1343765.0,
+      "programExpenses": 107500.0,
+      "scholarships": 5440000.0,
+      "travelEvents": 188000.0,
+      "rentOccupancy": 534643.0,
+      "informationTechnology": 482384.86,
+      "generalAdministrative": 715674.0,
+      "totalExpenses": 12237694.526766926,
+      "netIncome": 0.0
+    },
+    "fy28": {
+      "foundationRevenue": 1450000.0,
+      "corporateRevenue": 1000000.0,
+      "individualRevenue": 400000.0,
+      "governmentGrantIncome": 0.0,
+      "specialEventsIncome": 650000.0,
+      "contributedServices": 285000.0,
+      "releasesFromAor": 575000.0,
+      "endowmentDraw": 6784861.09194152,
+      "totalRevenue": 11144861.09194152,
+      "payroll": 2985804.84594152,
+      "professionalFees": 1478141.5000000002,
+      "programExpenses": 118250.00000000001,
+      "scholarships": 4500000.0,
+      "travelEvents": 206800.00000000003,
+      "rentOccupancy": 538000.0,
+      "informationTechnology": 530623.346,
+      "generalAdministrative": 787241.4,
+      "totalExpenses": 11144861.091941522,
+      "netIncome": 0.0
+    },
+    "fy29": {
+      "foundationRevenue": 1600000.0,
+      "corporateRevenue": 1100000.0,
+      "individualRevenue": 550000.0,
+      "governmentGrantIncome": 0.0,
+      "specialEventsIncome": 750000.0,
+      "contributedServices": 285000.0,
+      "releasesFromAor": 350000.0,
+      "endowmentDraw": 6221005.83309949,
+      "totalRevenue": 10856005.83309949,
+      "payroll": 3386543.9624994844,
+      "professionalFees": 1625955.6500000004,
+      "programExpenses": 130075.00000000003,
+      "scholarships": 4000000.0,
+      "travelEvents": 227480.00000000006,
+      "rentOccupancy": 36300.0,
+      "informationTechnology": 583685.6806000001,
+      "generalAdministrative": 865965.5400000002,
+      "totalExpenses": 10856005.833099486,
+      "netIncome": 0.0
+    }
+  },
+  "operationalRevenue": {
+    "fy27": {
+      "foundation": 1100000.0,
+      "corporate": 650000.0,
+      "individual": 200000.0,
+      "events": 550000.0,
+      "total": 2500000.0
+    },
+    "fy28": {
+      "foundation": 1450000.0,
+      "corporate": 1000000.0,
+      "individual": 400000.0,
+      "events": 650000.0,
+      "total": 3500000.0
+    },
+    "fy29": {
+      "foundation": 1600000.0,
+      "corporate": 1100000.0,
+      "individual": 550000.0,
+      "events": 750000.0,
+      "total": 4000000.0
+    }
+  },
+  "revenueDetail": {
+    "fy27": {
+      "bySegment": {
+        "foundation": 1100000.0,
+        "corporate": 650000.0,
+        "individual": 200000.0,
+        "events": 550000.0
+      },
+      "grandTotal": 2500000.0,
+      "donors": [
+        {
+          "segment": "foundation",
+          "name": "Philip L. Graham Fund (T1)",
+          "amount": 100000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 8
+          }
+        },
+        {
+          "segment": "foundation",
+          "name": "England Family Foundation (t2)",
+          "amount": 100000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 9
+          }
+        },
+        {
+          "segment": "foundation",
+          "name": "The Richard E. and Nancy P. Marriott Fdn (T2)",
+          "amount": 50000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 10
+          }
+        },
+        {
+          "segment": "foundation",
+          "name": "Webber Family Foundation (T2)",
+          "amount": 20000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 11
+          }
+        },
+        {
+          "segment": "foundation",
+          "name": "Mars Foundation (T2)",
+          "amount": 15000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 12
+          }
+        },
+        {
+          "segment": "foundation",
+          "name": "Total Tier 3, 4 & TBD Gap to Goal",
+          "amount": 815000.0,
+          "isGapPlaceholder": true,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 13
+          }
+        },
+        {
+          "segment": "corporate",
+          "name": "Boeing Company (T1)",
+          "amount": 50000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 26
+          }
+        },
+        {
+          "segment": "corporate",
+          "name": "David Canada (T1)",
+          "amount": 1500.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 27
+          }
+        },
+        {
+          "segment": "corporate",
+          "name": "Deloitte (T1)",
+          "amount": 50000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 28
+          }
+        },
+        {
+          "segment": "corporate",
+          "name": "Ernst & Young, LLP (T1)",
+          "amount": 60000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 29
+          }
+        },
+        {
+          "segment": "corporate",
+          "name": "KPMG, LLP (T1)",
+          "amount": 25000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 30
+          }
+        },
+        {
+          "segment": "corporate",
+          "name": "Pathstone (T1)",
+          "amount": 5000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 31
+          }
+        },
+        {
+          "segment": "corporate",
+          "name": "Sallie Mae Fund (T1)",
+          "amount": 50000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 32
+          }
+        },
+        {
+          "segment": "corporate",
+          "name": "NBA Foundation (T2)",
+          "amount": 125000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 33
+          }
+        },
+        {
+          "segment": "corporate",
+          "name": "Venture Global Incorporated (T2)",
+          "amount": 50000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 34
+          }
+        },
+        {
+          "segment": "corporate",
+          "name": "Verizon Foundation (T2)",
+          "amount": 30000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 35
+          }
+        },
+        {
+          "segment": "corporate",
+          "name": "Total Tier 3, 4 & TBD Gap to Goal",
+          "amount": 203500.0,
+          "isGapPlaceholder": true,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 36
+          }
+        },
+        {
+          "segment": "individual",
+          "name": "Bryant (T1)",
+          "amount": 6000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 43
+          }
+        },
+        {
+          "segment": "individual",
+          "name": "Bennett (T1)",
+          "amount": 25000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 44
+          }
+        },
+        {
+          "segment": "individual",
+          "name": "O'Shaugnessy (T1)",
+          "amount": 10000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 45
+          }
+        },
+        {
+          "segment": "individual",
+          "name": "Butler (T1)",
+          "amount": 6000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 46
+          }
+        },
+        {
+          "segment": "individual",
+          "name": "Del Guercio (T1)",
+          "amount": 5000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 47
+          }
+        },
+        {
+          "segment": "individual",
+          "name": "Flagel (T1)",
+          "amount": 1000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 48
+          }
+        },
+        {
+          "segment": "individual",
+          "name": "Graham (T1)",
+          "amount": 10000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 49
+          }
+        },
+        {
+          "segment": "individual",
+          "name": "Junaideen (T1)",
+          "amount": 5000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 50
+          }
+        },
+        {
+          "segment": "individual",
+          "name": "Mayfield (T1)",
+          "amount": 1000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 51
+          }
+        },
+        {
+          "segment": "individual",
+          "name": "Reid (T1)",
+          "amount": 1000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 52
+          }
+        },
+        {
+          "segment": "individual",
+          "name": "Jones (T2)",
+          "amount": 7000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 53
+          }
+        },
+        {
+          "segment": "individual",
+          "name": "Jones (T2)",
+          "amount": 1000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 54
+          }
+        },
+        {
+          "segment": "individual",
+          "name": "Lees (T2)",
+          "amount": 2000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 55
+          }
+        },
+        {
+          "segment": "individual",
+          "name": "Total Tier 3, 4 & TBD Gap to Goal",
+          "amount": 120000.0,
+          "isGapPlaceholder": true,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 56
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Corp - Amazon (T1)",
+          "amount": 25000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 62
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Corp - Capital One Foundation (T1)",
+          "amount": 100000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 63
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Corp - Deloitte (T1)",
+          "amount": 5000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 64
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Corp - The Leonsis Foundation (T1)",
+          "amount": 25000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 65
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Corp - Boeing (T2)",
+          "amount": 10000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 66
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Corp - DC Food & Beverage Collective (T2)",
+          "amount": 10000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 67
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Corp - Ernst & Young, LLP (T1)",
+          "amount": 5000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 68
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Fdn - CityBridge (T1)",
+          "amount": 10000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 69
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Fdn - J. Willard & Alice S. Marriott Fdn (T1)",
+          "amount": 5000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 70
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Fdn - Flamboyan Foundation (T1)",
+          "amount": 5000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 71
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Fdn - Gates Foundation (T1)",
+          "amount": 10000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 72
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Fdn - Consortium of Univ. of the Wash. Metro. Area (T1)",
+          "amount": 5000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 73
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Fdn - Lumina (T2)",
+          "amount": 5000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 74
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Fdn - Panasonic (T2)",
+          "amount": 10000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 75
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Fdn - Trae Young Foundation (T2)",
+          "amount": 50000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 76
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Ind - Dixon (T1)",
+          "amount": 5000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 77
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Ind - Abramson",
+          "amount": 10000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 78
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Ind - Blank",
+          "amount": 1000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 79
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Ind - Canada",
+          "amount": 1000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 80
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Ind - Davis",
+          "amount": 10000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 81
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Ind - Evans",
+          "amount": 1000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 82
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Ind - Ramsey",
+          "amount": 10000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 83
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Ind - Bowen",
+          "amount": 2500.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 84
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Ind - Butler",
+          "amount": 5000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 85
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Event Ind - Davis",
+          "amount": 10000.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 86
+          }
+        },
+        {
+          "segment": "events",
+          "name": "Tiers 3, 4 & TBD Gap to Goal",
+          "amount": 214500.0,
+          "isGapPlaceholder": false,
+          "_source": {
+            "sheet": "Revenue Detail",
+            "row": 87
+          }
+        }
+      ]
+    },
+    "fy28": {
+      "bySegment": {
+        "foundation": 1450000.0,
+        "corporate": 1000000.0,
+        "individual": 400000.0,
+        "events": 650000.0
+      }
+    },
+    "fy29": {
+      "bySegment": {
+        "foundation": 1600000.0,
+        "corporate": 1100000.0,
+        "individual": 550000.0,
+        "events": 750000.0
+      }
+    }
+  },
+  "futureRevenueView": {
+    "timeBasedReleases": [
+      {
+        "name": "KPMG - Moonshot",
+        "_source": {
+          "sheet": "Future Revenue View",
+          "row": 4
+        },
+        "fy26": 25000.0,
+        "fy27": 25000.0,
+        "fy28": 25000.0,
+        "fy29": 0.0,
+        "fy30": 0.0,
+        "future": 0.0,
+        "total": 75000.0
+      },
+      {
+        "name": "Don Graham",
+        "_source": {
+          "sheet": "Future Revenue View",
+          "row": 5
+        },
+        "fy26": 250000.0,
+        "fy27": 250000.0,
+        "fy28": 250000.0,
+        "fy29": 250000.0,
+        "fy30": 250000.0,
+        "future": 250000.0,
+        "total": 1500000.0
+      },
+      {
+        "name": "Marriott Foundation",
+        "_source": {
+          "sheet": "Future Revenue View",
+          "row": 6
+        },
+        "fy26": 500000.0,
+        "fy27": 500000.0,
+        "fy28": 0.0,
+        "fy29": 0.0,
+        "fy30": 0.0,
+        "future": 0.0,
+        "total": 1000000.0
+      }
+    ],
+    "programBasedReleases": [
+      {
+        "name": "KPMG (AI / Innovation)",
+        "_source": {
+          "sheet": "Future Revenue View",
+          "row": 9
+        },
+        "fy26": 200000.0,
+        "fy27": 200000.0,
+        "fy28": 200000.0,
+        "fy29": 0.0,
+        "fy30": 0.0,
+        "future": 0.0,
+        "total": 600000.0
+      },
+      {
+        "name": "City Bridge (Moonshot - University Partners)",
+        "_source": {
+          "sheet": "Future Revenue View",
+          "row": 10
+        },
+        "fy26": 100000.0,
+        "fy27": 100000.0,
+        "fy28": 100000.0,
+        "fy29": 100000.0,
+        "fy30": 100000.0,
+        "future": 0.0,
+        "total": 500000.0
+      },
+      {
+        "name": "City Bridge (Spelman Britain Scholars)",
+        "_source": {
+          "sheet": "Future Revenue View",
+          "row": 11
+        },
+        "fy26": 42500.0,
+        "fy27": 92500.0,
+        "fy28": 0.0,
+        "fy29": 0.0,
+        "fy30": 0.0,
+        "future": 0.0,
+        "total": 135000.0
+      },
+      {
+        "name": "Monumental/Leonsis (University Partners)",
+        "_source": {
+          "sheet": "Future Revenue View",
+          "row": 12
+        },
+        "fy26": 22500.0,
+        "fy27": 100000.0,
+        "fy28": 0.0,
+        "fy29": 0.0,
+        "fy30": 0.0,
+        "future": 0.0,
+        "total": 122500.0
+      },
+      {
+        "name": "Leonsis Foundation (Ward 7&8)",
+        "_source": {
+          "sheet": "Future Revenue View",
+          "row": 13
+        },
+        "fy26": 200000.0,
+        "fy27": 400000.0,
+        "fy28": 0.0,
+        "fy29": 0.0,
+        "fy30": 0.0,
+        "future": 0.0,
+        "total": 600000.0
+      },
+      {
+        "name": "Boeing (STEM)",
+        "_source": {
+          "sheet": "Future Revenue View",
+          "row": 14
+        },
+        "fy26": 85000.0,
+        "fy27": 200000.0,
+        "fy28": 0.0,
+        "fy29": 0.0,
+        "fy30": 0.0,
+        "future": 0.0,
+        "total": 285000.0
+      },
+      {
+        "name": "Gates Foundation (Ward 7&8)",
+        "_source": {
+          "sheet": "Future Revenue View",
+          "row": 15
+        },
+        "fy26": 400000.0,
+        "fy27": 0.0,
+        "fy28": 0.0,
+        "fy29": 0.0,
+        "fy30": 0.0,
+        "future": 0.0,
+        "total": 400000.0
+      },
+      {
+        "name": "Abramson / Galena-Yorktown",
+        "_source": {
+          "sheet": "Future Revenue View",
+          "row": 16
+        },
+        "fy26": 213808.0,
+        "fy27": 25000.0,
+        "fy28": 0.0,
+        "fy29": 0.0,
+        "fy30": 0.0,
+        "future": 0.0,
+        "total": 238808.0
+      },
+      {
+        "name": "Deloitte",
+        "_source": {
+          "sheet": "Future Revenue View",
+          "row": 17
+        },
+        "fy26": 100000.0,
+        "fy27": 0.0,
+        "fy28": 0.0,
+        "fy29": 0.0,
+        "fy30": 0.0,
+        "future": 0.0,
+        "total": 100000.0
+      },
+      {
+        "name": "Other UP (GWCF, Verizon, Boeing)",
+        "_source": {
+          "sheet": "Future Revenue View",
+          "row": 18
+        },
+        "fy26": 105000.0,
+        "fy27": 25000.0,
+        "fy28": 0.0,
+        "fy29": 0.0,
+        "fy30": 0.0,
+        "future": 0.0,
+        "total": 130000.0
+      },
+      {
+        "name": "Graduation Event",
+        "_source": {
+          "sheet": "Future Revenue View",
+          "row": 20
+        },
+        "fy26": 400000.0,
+        "fy27": 0.0,
+        "fy28": 0.0,
+        "fy29": 0.0,
+        "fy30": 0.0,
+        "future": 0.0,
+        "total": 400000.0
+      }
+    ],
+    "releasesSubtotal": {
+      "fy26": 2643808.0,
+      "fy27": 1917500.0,
+      "fy28": 575000.0,
+      "fy29": 350000.0,
+      "fy30": 350000.0,
+      "future": 250000.0,
+      "total": 6086308.0
+    },
+    "endowmentAdditions": [
+      {
+        "name": "Yield Giving",
+        "_source": {
+          "sheet": "Future Revenue View",
+          "row": 24
+        },
+        "fy26": 25000000.0,
+        "fy27": 0.0,
+        "fy28": 0.0,
+        "fy29": 0.0,
+        "fy30": 0.0,
+        "future": 0.0,
+        "total": 25000000.0
+      },
+      {
+        "name": "Monumental Sports & Entertainment",
+        "_source": {
+          "sheet": "Future Revenue View",
+          "row": 25
+        },
+        "fy26": 1000000.0,
+        "fy27": 1000000.0,
+        "fy28": 1000000.0,
+        "fy29": 1000000.0,
+        "fy30": 1000000.0,
+        "future": 0.0,
+        "total": 5000000.0
+      },
+      {
+        "name": "Leonsis Foundation",
+        "_source": {
+          "sheet": "Future Revenue View",
+          "row": 26
+        },
+        "fy26": 1000000.0,
+        "fy27": 1000000.0,
+        "fy28": 1000000.0,
+        "fy29": 1000000.0,
+        "fy30": 1000000.0,
+        "future": 0.0,
+        "total": 5000000.0
+      }
+    ],
+    "endowmentSubtotal": {
+      "fy26": 27000000.0,
+      "fy27": 2000000.0,
+      "fy28": 2000000.0,
+      "fy29": 2000000.0,
+      "fy30": 2000000.0,
+      "future": 0.0,
+      "total": 35000000.0
+    },
+    "grandSubtotal": {
+      "fy26": 29643808.0,
+      "fy27": 3917500.0,
+      "fy28": 2575000.0,
+      "fy29": 2350000.0,
+      "fy30": 2350000.0,
+      "future": 250000.0,
+      "total": 41086308.0
+    }
+  },
+  "provenance": {
+    "departments.lineItems.foundationRevenue.operations": {
+      "sheet": "Departments Summary",
+      "row": 46,
+      "col": 2,
+      "cellAddress": "B46"
+    },
+    "departments.lineItems.foundationRevenue.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 46,
+      "col": 3,
+      "cellAddress": "C46"
+    },
+    "departments.lineItems.foundationRevenue.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 46,
+      "col": 4,
+      "cellAddress": "D46"
+    },
+    "departments.lineItems.foundationRevenue.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 46,
+      "col": 5,
+      "cellAddress": "E46"
+    },
+    "departments.lineItems.foundationRevenue.total": {
+      "sheet": "Departments Summary",
+      "row": 46,
+      "col": 6,
+      "cellAddress": "F46"
+    },
+    "departments.lineItems.corporateRevenue.operations": {
+      "sheet": "Departments Summary",
+      "row": 47,
+      "col": 2,
+      "cellAddress": "B47"
+    },
+    "departments.lineItems.corporateRevenue.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 47,
+      "col": 3,
+      "cellAddress": "C47"
+    },
+    "departments.lineItems.corporateRevenue.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 47,
+      "col": 4,
+      "cellAddress": "D47"
+    },
+    "departments.lineItems.corporateRevenue.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 47,
+      "col": 5,
+      "cellAddress": "E47"
+    },
+    "departments.lineItems.corporateRevenue.total": {
+      "sheet": "Departments Summary",
+      "row": 47,
+      "col": 6,
+      "cellAddress": "F47"
+    },
+    "departments.lineItems.individualRevenue.operations": {
+      "sheet": "Departments Summary",
+      "row": 48,
+      "col": 2,
+      "cellAddress": "B48"
+    },
+    "departments.lineItems.individualRevenue.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 48,
+      "col": 3,
+      "cellAddress": "C48"
+    },
+    "departments.lineItems.individualRevenue.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 48,
+      "col": 4,
+      "cellAddress": "D48"
+    },
+    "departments.lineItems.individualRevenue.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 48,
+      "col": 5,
+      "cellAddress": "E48"
+    },
+    "departments.lineItems.individualRevenue.total": {
+      "sheet": "Departments Summary",
+      "row": 48,
+      "col": 6,
+      "cellAddress": "F48"
+    },
+    "departments.lineItems.governmentGrantIncome.operations": {
+      "sheet": "Departments Summary",
+      "row": 49,
+      "col": 2,
+      "cellAddress": "B49"
+    },
+    "departments.lineItems.governmentGrantIncome.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 49,
+      "col": 3,
+      "cellAddress": "C49"
+    },
+    "departments.lineItems.governmentGrantIncome.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 49,
+      "col": 4,
+      "cellAddress": "D49"
+    },
+    "departments.lineItems.governmentGrantIncome.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 49,
+      "col": 5,
+      "cellAddress": "E49"
+    },
+    "departments.lineItems.governmentGrantIncome.total": {
+      "sheet": "Departments Summary",
+      "row": 49,
+      "col": 6,
+      "cellAddress": "F49"
+    },
+    "departments.lineItems.specialEventsIncome.operations": {
+      "sheet": "Departments Summary",
+      "row": 50,
+      "col": 2,
+      "cellAddress": "B50"
+    },
+    "departments.lineItems.specialEventsIncome.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 50,
+      "col": 3,
+      "cellAddress": "C50"
+    },
+    "departments.lineItems.specialEventsIncome.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 50,
+      "col": 4,
+      "cellAddress": "D50"
+    },
+    "departments.lineItems.specialEventsIncome.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 50,
+      "col": 5,
+      "cellAddress": "E50"
+    },
+    "departments.lineItems.specialEventsIncome.total": {
+      "sheet": "Departments Summary",
+      "row": 50,
+      "col": 6,
+      "cellAddress": "F50"
+    },
+    "departments.lineItems.contributedServices.operations": {
+      "sheet": "Departments Summary",
+      "row": 52,
+      "col": 2,
+      "cellAddress": "B52"
+    },
+    "departments.lineItems.contributedServices.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 52,
+      "col": 3,
+      "cellAddress": "C52"
+    },
+    "departments.lineItems.contributedServices.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 52,
+      "col": 4,
+      "cellAddress": "D52"
+    },
+    "departments.lineItems.contributedServices.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 52,
+      "col": 5,
+      "cellAddress": "E52"
+    },
+    "departments.lineItems.contributedServices.total": {
+      "sheet": "Departments Summary",
+      "row": 52,
+      "col": 6,
+      "cellAddress": "F52"
+    },
+    "departments.lineItems.releasesFromAor.operations": {
+      "sheet": "Departments Summary",
+      "row": 53,
+      "col": 2,
+      "cellAddress": "B53"
+    },
+    "departments.lineItems.releasesFromAor.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 53,
+      "col": 3,
+      "cellAddress": "C53"
+    },
+    "departments.lineItems.releasesFromAor.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 53,
+      "col": 4,
+      "cellAddress": "D53"
+    },
+    "departments.lineItems.releasesFromAor.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 53,
+      "col": 5,
+      "cellAddress": "E53"
+    },
+    "departments.lineItems.releasesFromAor.total": {
+      "sheet": "Departments Summary",
+      "row": 53,
+      "col": 6,
+      "cellAddress": "F53"
+    },
+    "departments.lineItems.endowmentDraw.operations": {
+      "sheet": "Departments Summary",
+      "row": 54,
+      "col": 2,
+      "cellAddress": "B54"
+    },
+    "departments.lineItems.endowmentDraw.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 54,
+      "col": 3,
+      "cellAddress": "C54"
+    },
+    "departments.lineItems.endowmentDraw.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 54,
+      "col": 4,
+      "cellAddress": "D54"
+    },
+    "departments.lineItems.endowmentDraw.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 54,
+      "col": 5,
+      "cellAddress": "E54"
+    },
+    "departments.lineItems.endowmentDraw.total": {
+      "sheet": "Departments Summary",
+      "row": 54,
+      "col": 6,
+      "cellAddress": "F54"
+    },
+    "departments.lineItems.totalRevenue.operations": {
+      "sheet": "Departments Summary",
+      "row": 55,
+      "col": 2,
+      "cellAddress": "B55"
+    },
+    "departments.lineItems.totalRevenue.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 55,
+      "col": 3,
+      "cellAddress": "C55"
+    },
+    "departments.lineItems.totalRevenue.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 55,
+      "col": 4,
+      "cellAddress": "D55"
+    },
+    "departments.lineItems.totalRevenue.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 55,
+      "col": 5,
+      "cellAddress": "E55"
+    },
+    "departments.lineItems.totalRevenue.total": {
+      "sheet": "Departments Summary",
+      "row": 55,
+      "col": 6,
+      "cellAddress": "F55"
+    },
+    "departments.lineItems.payroll.operations": {
+      "sheet": "Departments Summary",
+      "row": 58,
+      "col": 2,
+      "cellAddress": "B58"
+    },
+    "departments.lineItems.payroll.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 58,
+      "col": 3,
+      "cellAddress": "C58"
+    },
+    "departments.lineItems.payroll.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 58,
+      "col": 4,
+      "cellAddress": "D58"
+    },
+    "departments.lineItems.payroll.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 58,
+      "col": 5,
+      "cellAddress": "E58"
+    },
+    "departments.lineItems.payroll.total": {
+      "sheet": "Departments Summary",
+      "row": 58,
+      "col": 6,
+      "cellAddress": "F58"
+    },
+    "departments.lineItems.professionalFees.operations": {
+      "sheet": "Departments Summary",
+      "row": 59,
+      "col": 2,
+      "cellAddress": "B59"
+    },
+    "departments.lineItems.professionalFees.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 59,
+      "col": 3,
+      "cellAddress": "C59"
+    },
+    "departments.lineItems.professionalFees.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 59,
+      "col": 4,
+      "cellAddress": "D59"
+    },
+    "departments.lineItems.professionalFees.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 59,
+      "col": 5,
+      "cellAddress": "E59"
+    },
+    "departments.lineItems.professionalFees.total": {
+      "sheet": "Departments Summary",
+      "row": 59,
+      "col": 6,
+      "cellAddress": "F59"
+    },
+    "departments.lineItems.programExpenses.operations": {
+      "sheet": "Departments Summary",
+      "row": 60,
+      "col": 2,
+      "cellAddress": "B60"
+    },
+    "departments.lineItems.programExpenses.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 60,
+      "col": 3,
+      "cellAddress": "C60"
+    },
+    "departments.lineItems.programExpenses.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 60,
+      "col": 4,
+      "cellAddress": "D60"
+    },
+    "departments.lineItems.programExpenses.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 60,
+      "col": 5,
+      "cellAddress": "E60"
+    },
+    "departments.lineItems.programExpenses.total": {
+      "sheet": "Departments Summary",
+      "row": 60,
+      "col": 6,
+      "cellAddress": "F60"
+    },
+    "departments.lineItems.scholarships.operations": {
+      "sheet": "Departments Summary",
+      "row": 61,
+      "col": 2,
+      "cellAddress": "B61"
+    },
+    "departments.lineItems.scholarships.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 61,
+      "col": 3,
+      "cellAddress": "C61"
+    },
+    "departments.lineItems.scholarships.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 61,
+      "col": 4,
+      "cellAddress": "D61"
+    },
+    "departments.lineItems.scholarships.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 61,
+      "col": 5,
+      "cellAddress": "E61"
+    },
+    "departments.lineItems.scholarships.total": {
+      "sheet": "Departments Summary",
+      "row": 61,
+      "col": 6,
+      "cellAddress": "F61"
+    },
+    "departments.lineItems.travelEvents.operations": {
+      "sheet": "Departments Summary",
+      "row": 62,
+      "col": 2,
+      "cellAddress": "B62"
+    },
+    "departments.lineItems.travelEvents.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 62,
+      "col": 3,
+      "cellAddress": "C62"
+    },
+    "departments.lineItems.travelEvents.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 62,
+      "col": 4,
+      "cellAddress": "D62"
+    },
+    "departments.lineItems.travelEvents.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 62,
+      "col": 5,
+      "cellAddress": "E62"
+    },
+    "departments.lineItems.travelEvents.total": {
+      "sheet": "Departments Summary",
+      "row": 62,
+      "col": 6,
+      "cellAddress": "F62"
+    },
+    "departments.lineItems.rentOccupancy.operations": {
+      "sheet": "Departments Summary",
+      "row": 63,
+      "col": 2,
+      "cellAddress": "B63"
+    },
+    "departments.lineItems.rentOccupancy.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 63,
+      "col": 3,
+      "cellAddress": "C63"
+    },
+    "departments.lineItems.rentOccupancy.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 63,
+      "col": 4,
+      "cellAddress": "D63"
+    },
+    "departments.lineItems.rentOccupancy.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 63,
+      "col": 5,
+      "cellAddress": "E63"
+    },
+    "departments.lineItems.rentOccupancy.total": {
+      "sheet": "Departments Summary",
+      "row": 63,
+      "col": 6,
+      "cellAddress": "F63"
+    },
+    "departments.lineItems.informationTechnology.operations": {
+      "sheet": "Departments Summary",
+      "row": 64,
+      "col": 2,
+      "cellAddress": "B64"
+    },
+    "departments.lineItems.informationTechnology.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 64,
+      "col": 3,
+      "cellAddress": "C64"
+    },
+    "departments.lineItems.informationTechnology.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 64,
+      "col": 4,
+      "cellAddress": "D64"
+    },
+    "departments.lineItems.informationTechnology.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 64,
+      "col": 5,
+      "cellAddress": "E64"
+    },
+    "departments.lineItems.informationTechnology.total": {
+      "sheet": "Departments Summary",
+      "row": 64,
+      "col": 6,
+      "cellAddress": "F64"
+    },
+    "departments.lineItems.generalAdministrative.operations": {
+      "sheet": "Departments Summary",
+      "row": 65,
+      "col": 2,
+      "cellAddress": "B65"
+    },
+    "departments.lineItems.generalAdministrative.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 65,
+      "col": 3,
+      "cellAddress": "C65"
+    },
+    "departments.lineItems.generalAdministrative.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 65,
+      "col": 4,
+      "cellAddress": "D65"
+    },
+    "departments.lineItems.generalAdministrative.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 65,
+      "col": 5,
+      "cellAddress": "E65"
+    },
+    "departments.lineItems.generalAdministrative.total": {
+      "sheet": "Departments Summary",
+      "row": 65,
+      "col": 6,
+      "cellAddress": "F65"
+    },
+    "departments.lineItems.totalExpenses.operations": {
+      "sheet": "Departments Summary",
+      "row": 66,
+      "col": 2,
+      "cellAddress": "B66"
+    },
+    "departments.lineItems.totalExpenses.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 66,
+      "col": 3,
+      "cellAddress": "C66"
+    },
+    "departments.lineItems.totalExpenses.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 66,
+      "col": 4,
+      "cellAddress": "D66"
+    },
+    "departments.lineItems.totalExpenses.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 66,
+      "col": 5,
+      "cellAddress": "E66"
+    },
+    "departments.lineItems.totalExpenses.total": {
+      "sheet": "Departments Summary",
+      "row": 66,
+      "col": 6,
+      "cellAddress": "F66"
+    },
+    "departments.lineItems.netIncome.operations": {
+      "sheet": "Departments Summary",
+      "row": 68,
+      "col": 2,
+      "cellAddress": "B68"
+    },
+    "departments.lineItems.netIncome.fundraisingDevelopment": {
+      "sheet": "Departments Summary",
+      "row": 68,
+      "col": 3,
+      "cellAddress": "C68"
+    },
+    "departments.lineItems.netIncome.researchInnovation": {
+      "sheet": "Departments Summary",
+      "row": 68,
+      "col": 4,
+      "cellAddress": "D68"
+    },
+    "departments.lineItems.netIncome.studentSuccess": {
+      "sheet": "Departments Summary",
+      "row": 68,
+      "col": 5,
+      "cellAddress": "E68"
+    },
+    "departments.lineItems.netIncome.total": {
+      "sheet": "Departments Summary",
+      "row": 68,
+      "col": 6,
+      "cellAddress": "F68"
+    },
+    "departments.additionsToEndowment": {
+      "sheet": "Departments Summary",
+      "row": 71,
+      "col": 2,
+      "cellAddress": "B71"
+    },
+    "programRollup.foundationRevenue.operations": {
+      "sheet": "Roll up by Program",
+      "row": 6,
+      "col": 2,
+      "cellAddress": "B6"
+    },
+    "programRollup.foundationRevenue.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 6,
+      "col": 3,
+      "cellAddress": "C6"
+    },
+    "programRollup.foundationRevenue.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 6,
+      "col": 4,
+      "cellAddress": "D6"
+    },
+    "programRollup.foundationRevenue.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 6,
+      "col": 5,
+      "cellAddress": "E6"
+    },
+    "programRollup.foundationRevenue.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 6,
+      "col": 6,
+      "cellAddress": "F6"
+    },
+    "programRollup.foundationRevenue.up": {
+      "sheet": "Roll up by Program",
+      "row": 6,
+      "col": 7,
+      "cellAddress": "G6"
+    },
+    "programRollup.foundationRevenue.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 6,
+      "col": 8,
+      "cellAddress": "H6"
+    },
+    "programRollup.foundationRevenue.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 6,
+      "col": 9,
+      "cellAddress": "I6"
+    },
+    "programRollup.foundationRevenue.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 6,
+      "col": 10,
+      "cellAddress": "J6"
+    },
+    "programRollup.foundationRevenue.total": {
+      "sheet": "Roll up by Program",
+      "row": 6,
+      "col": 11,
+      "cellAddress": "K6"
+    },
+    "programRollup.corporateRevenue.operations": {
+      "sheet": "Roll up by Program",
+      "row": 7,
+      "col": 2,
+      "cellAddress": "B7"
+    },
+    "programRollup.corporateRevenue.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 7,
+      "col": 3,
+      "cellAddress": "C7"
+    },
+    "programRollup.corporateRevenue.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 7,
+      "col": 4,
+      "cellAddress": "D7"
+    },
+    "programRollup.corporateRevenue.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 7,
+      "col": 5,
+      "cellAddress": "E7"
+    },
+    "programRollup.corporateRevenue.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 7,
+      "col": 6,
+      "cellAddress": "F7"
+    },
+    "programRollup.corporateRevenue.up": {
+      "sheet": "Roll up by Program",
+      "row": 7,
+      "col": 7,
+      "cellAddress": "G7"
+    },
+    "programRollup.corporateRevenue.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 7,
+      "col": 8,
+      "cellAddress": "H7"
+    },
+    "programRollup.corporateRevenue.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 7,
+      "col": 9,
+      "cellAddress": "I7"
+    },
+    "programRollup.corporateRevenue.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 7,
+      "col": 10,
+      "cellAddress": "J7"
+    },
+    "programRollup.corporateRevenue.total": {
+      "sheet": "Roll up by Program",
+      "row": 7,
+      "col": 11,
+      "cellAddress": "K7"
+    },
+    "programRollup.individualRevenue.operations": {
+      "sheet": "Roll up by Program",
+      "row": 8,
+      "col": 2,
+      "cellAddress": "B8"
+    },
+    "programRollup.individualRevenue.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 8,
+      "col": 3,
+      "cellAddress": "C8"
+    },
+    "programRollup.individualRevenue.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 8,
+      "col": 4,
+      "cellAddress": "D8"
+    },
+    "programRollup.individualRevenue.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 8,
+      "col": 5,
+      "cellAddress": "E8"
+    },
+    "programRollup.individualRevenue.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 8,
+      "col": 6,
+      "cellAddress": "F8"
+    },
+    "programRollup.individualRevenue.up": {
+      "sheet": "Roll up by Program",
+      "row": 8,
+      "col": 7,
+      "cellAddress": "G8"
+    },
+    "programRollup.individualRevenue.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 8,
+      "col": 8,
+      "cellAddress": "H8"
+    },
+    "programRollup.individualRevenue.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 8,
+      "col": 9,
+      "cellAddress": "I8"
+    },
+    "programRollup.individualRevenue.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 8,
+      "col": 10,
+      "cellAddress": "J8"
+    },
+    "programRollup.individualRevenue.total": {
+      "sheet": "Roll up by Program",
+      "row": 8,
+      "col": 11,
+      "cellAddress": "K8"
+    },
+    "programRollup.governmentGrantIncome.operations": {
+      "sheet": "Roll up by Program",
+      "row": 9,
+      "col": 2,
+      "cellAddress": "B9"
+    },
+    "programRollup.governmentGrantIncome.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 9,
+      "col": 3,
+      "cellAddress": "C9"
+    },
+    "programRollup.governmentGrantIncome.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 9,
+      "col": 4,
+      "cellAddress": "D9"
+    },
+    "programRollup.governmentGrantIncome.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 9,
+      "col": 5,
+      "cellAddress": "E9"
+    },
+    "programRollup.governmentGrantIncome.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 9,
+      "col": 6,
+      "cellAddress": "F9"
+    },
+    "programRollup.governmentGrantIncome.up": {
+      "sheet": "Roll up by Program",
+      "row": 9,
+      "col": 7,
+      "cellAddress": "G9"
+    },
+    "programRollup.governmentGrantIncome.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 9,
+      "col": 8,
+      "cellAddress": "H9"
+    },
+    "programRollup.governmentGrantIncome.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 9,
+      "col": 9,
+      "cellAddress": "I9"
+    },
+    "programRollup.governmentGrantIncome.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 9,
+      "col": 10,
+      "cellAddress": "J9"
+    },
+    "programRollup.governmentGrantIncome.total": {
+      "sheet": "Roll up by Program",
+      "row": 9,
+      "col": 11,
+      "cellAddress": "K9"
+    },
+    "programRollup.specialEventsIncome.operations": {
+      "sheet": "Roll up by Program",
+      "row": 10,
+      "col": 2,
+      "cellAddress": "B10"
+    },
+    "programRollup.specialEventsIncome.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 10,
+      "col": 3,
+      "cellAddress": "C10"
+    },
+    "programRollup.specialEventsIncome.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 10,
+      "col": 4,
+      "cellAddress": "D10"
+    },
+    "programRollup.specialEventsIncome.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 10,
+      "col": 5,
+      "cellAddress": "E10"
+    },
+    "programRollup.specialEventsIncome.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 10,
+      "col": 6,
+      "cellAddress": "F10"
+    },
+    "programRollup.specialEventsIncome.up": {
+      "sheet": "Roll up by Program",
+      "row": 10,
+      "col": 7,
+      "cellAddress": "G10"
+    },
+    "programRollup.specialEventsIncome.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 10,
+      "col": 8,
+      "cellAddress": "H10"
+    },
+    "programRollup.specialEventsIncome.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 10,
+      "col": 9,
+      "cellAddress": "I10"
+    },
+    "programRollup.specialEventsIncome.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 10,
+      "col": 10,
+      "cellAddress": "J10"
+    },
+    "programRollup.specialEventsIncome.total": {
+      "sheet": "Roll up by Program",
+      "row": 10,
+      "col": 11,
+      "cellAddress": "K10"
+    },
+    "programRollup.contributedServices.operations": {
+      "sheet": "Roll up by Program",
+      "row": 11,
+      "col": 2,
+      "cellAddress": "B11"
+    },
+    "programRollup.contributedServices.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 11,
+      "col": 3,
+      "cellAddress": "C11"
+    },
+    "programRollup.contributedServices.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 11,
+      "col": 4,
+      "cellAddress": "D11"
+    },
+    "programRollup.contributedServices.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 11,
+      "col": 5,
+      "cellAddress": "E11"
+    },
+    "programRollup.contributedServices.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 11,
+      "col": 6,
+      "cellAddress": "F11"
+    },
+    "programRollup.contributedServices.up": {
+      "sheet": "Roll up by Program",
+      "row": 11,
+      "col": 7,
+      "cellAddress": "G11"
+    },
+    "programRollup.contributedServices.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 11,
+      "col": 8,
+      "cellAddress": "H11"
+    },
+    "programRollup.contributedServices.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 11,
+      "col": 9,
+      "cellAddress": "I11"
+    },
+    "programRollup.contributedServices.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 11,
+      "col": 10,
+      "cellAddress": "J11"
+    },
+    "programRollup.contributedServices.total": {
+      "sheet": "Roll up by Program",
+      "row": 11,
+      "col": 11,
+      "cellAddress": "K11"
+    },
+    "programRollup.releasesFromAor.operations": {
+      "sheet": "Roll up by Program",
+      "row": 12,
+      "col": 2,
+      "cellAddress": "B12"
+    },
+    "programRollup.releasesFromAor.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 12,
+      "col": 3,
+      "cellAddress": "C12"
+    },
+    "programRollup.releasesFromAor.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 12,
+      "col": 4,
+      "cellAddress": "D12"
+    },
+    "programRollup.releasesFromAor.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 12,
+      "col": 5,
+      "cellAddress": "E12"
+    },
+    "programRollup.releasesFromAor.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 12,
+      "col": 6,
+      "cellAddress": "F12"
+    },
+    "programRollup.releasesFromAor.up": {
+      "sheet": "Roll up by Program",
+      "row": 12,
+      "col": 7,
+      "cellAddress": "G12"
+    },
+    "programRollup.releasesFromAor.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 12,
+      "col": 8,
+      "cellAddress": "H12"
+    },
+    "programRollup.releasesFromAor.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 12,
+      "col": 9,
+      "cellAddress": "I12"
+    },
+    "programRollup.releasesFromAor.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 12,
+      "col": 10,
+      "cellAddress": "J12"
+    },
+    "programRollup.releasesFromAor.total": {
+      "sheet": "Roll up by Program",
+      "row": 12,
+      "col": 11,
+      "cellAddress": "K12"
+    },
+    "programRollup.endowmentDraw.operations": {
+      "sheet": "Roll up by Program",
+      "row": 13,
+      "col": 2,
+      "cellAddress": "B13"
+    },
+    "programRollup.endowmentDraw.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 13,
+      "col": 3,
+      "cellAddress": "C13"
+    },
+    "programRollup.endowmentDraw.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 13,
+      "col": 4,
+      "cellAddress": "D13"
+    },
+    "programRollup.endowmentDraw.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 13,
+      "col": 5,
+      "cellAddress": "E13"
+    },
+    "programRollup.endowmentDraw.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 13,
+      "col": 6,
+      "cellAddress": "F13"
+    },
+    "programRollup.endowmentDraw.up": {
+      "sheet": "Roll up by Program",
+      "row": 13,
+      "col": 7,
+      "cellAddress": "G13"
+    },
+    "programRollup.endowmentDraw.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 13,
+      "col": 8,
+      "cellAddress": "H13"
+    },
+    "programRollup.endowmentDraw.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 13,
+      "col": 9,
+      "cellAddress": "I13"
+    },
+    "programRollup.endowmentDraw.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 13,
+      "col": 10,
+      "cellAddress": "J13"
+    },
+    "programRollup.endowmentDraw.total": {
+      "sheet": "Roll up by Program",
+      "row": 13,
+      "col": 11,
+      "cellAddress": "K13"
+    },
+    "programRollup.totalRevenue.operations": {
+      "sheet": "Roll up by Program",
+      "row": 14,
+      "col": 2,
+      "cellAddress": "B14"
+    },
+    "programRollup.totalRevenue.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 14,
+      "col": 3,
+      "cellAddress": "C14"
+    },
+    "programRollup.totalRevenue.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 14,
+      "col": 4,
+      "cellAddress": "D14"
+    },
+    "programRollup.totalRevenue.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 14,
+      "col": 5,
+      "cellAddress": "E14"
+    },
+    "programRollup.totalRevenue.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 14,
+      "col": 6,
+      "cellAddress": "F14"
+    },
+    "programRollup.totalRevenue.up": {
+      "sheet": "Roll up by Program",
+      "row": 14,
+      "col": 7,
+      "cellAddress": "G14"
+    },
+    "programRollup.totalRevenue.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 14,
+      "col": 8,
+      "cellAddress": "H14"
+    },
+    "programRollup.totalRevenue.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 14,
+      "col": 9,
+      "cellAddress": "I14"
+    },
+    "programRollup.totalRevenue.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 14,
+      "col": 10,
+      "cellAddress": "J14"
+    },
+    "programRollup.totalRevenue.total": {
+      "sheet": "Roll up by Program",
+      "row": 14,
+      "col": 11,
+      "cellAddress": "K14"
+    },
+    "programRollup.payroll.operations": {
+      "sheet": "Roll up by Program",
+      "row": 16,
+      "col": 2,
+      "cellAddress": "B16"
+    },
+    "programRollup.payroll.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 16,
+      "col": 3,
+      "cellAddress": "C16"
+    },
+    "programRollup.payroll.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 16,
+      "col": 4,
+      "cellAddress": "D16"
+    },
+    "programRollup.payroll.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 16,
+      "col": 5,
+      "cellAddress": "E16"
+    },
+    "programRollup.payroll.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 16,
+      "col": 6,
+      "cellAddress": "F16"
+    },
+    "programRollup.payroll.up": {
+      "sheet": "Roll up by Program",
+      "row": 16,
+      "col": 7,
+      "cellAddress": "G16"
+    },
+    "programRollup.payroll.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 16,
+      "col": 8,
+      "cellAddress": "H16"
+    },
+    "programRollup.payroll.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 16,
+      "col": 9,
+      "cellAddress": "I16"
+    },
+    "programRollup.payroll.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 16,
+      "col": 10,
+      "cellAddress": "J16"
+    },
+    "programRollup.payroll.total": {
+      "sheet": "Roll up by Program",
+      "row": 16,
+      "col": 11,
+      "cellAddress": "K16"
+    },
+    "programRollup.professionalFees.operations": {
+      "sheet": "Roll up by Program",
+      "row": 17,
+      "col": 2,
+      "cellAddress": "B17"
+    },
+    "programRollup.professionalFees.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 17,
+      "col": 3,
+      "cellAddress": "C17"
+    },
+    "programRollup.professionalFees.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 17,
+      "col": 4,
+      "cellAddress": "D17"
+    },
+    "programRollup.professionalFees.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 17,
+      "col": 5,
+      "cellAddress": "E17"
+    },
+    "programRollup.professionalFees.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 17,
+      "col": 6,
+      "cellAddress": "F17"
+    },
+    "programRollup.professionalFees.up": {
+      "sheet": "Roll up by Program",
+      "row": 17,
+      "col": 7,
+      "cellAddress": "G17"
+    },
+    "programRollup.professionalFees.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 17,
+      "col": 8,
+      "cellAddress": "H17"
+    },
+    "programRollup.professionalFees.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 17,
+      "col": 9,
+      "cellAddress": "I17"
+    },
+    "programRollup.professionalFees.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 17,
+      "col": 10,
+      "cellAddress": "J17"
+    },
+    "programRollup.professionalFees.total": {
+      "sheet": "Roll up by Program",
+      "row": 17,
+      "col": 11,
+      "cellAddress": "K17"
+    },
+    "programRollup.programExpenses.operations": {
+      "sheet": "Roll up by Program",
+      "row": 18,
+      "col": 2,
+      "cellAddress": "B18"
+    },
+    "programRollup.programExpenses.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 18,
+      "col": 3,
+      "cellAddress": "C18"
+    },
+    "programRollup.programExpenses.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 18,
+      "col": 4,
+      "cellAddress": "D18"
+    },
+    "programRollup.programExpenses.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 18,
+      "col": 5,
+      "cellAddress": "E18"
+    },
+    "programRollup.programExpenses.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 18,
+      "col": 6,
+      "cellAddress": "F18"
+    },
+    "programRollup.programExpenses.up": {
+      "sheet": "Roll up by Program",
+      "row": 18,
+      "col": 7,
+      "cellAddress": "G18"
+    },
+    "programRollup.programExpenses.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 18,
+      "col": 8,
+      "cellAddress": "H18"
+    },
+    "programRollup.programExpenses.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 18,
+      "col": 9,
+      "cellAddress": "I18"
+    },
+    "programRollup.programExpenses.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 18,
+      "col": 10,
+      "cellAddress": "J18"
+    },
+    "programRollup.programExpenses.total": {
+      "sheet": "Roll up by Program",
+      "row": 18,
+      "col": 11,
+      "cellAddress": "K18"
+    },
+    "programRollup.scholarships.operations": {
+      "sheet": "Roll up by Program",
+      "row": 19,
+      "col": 2,
+      "cellAddress": "B19"
+    },
+    "programRollup.scholarships.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 19,
+      "col": 3,
+      "cellAddress": "C19"
+    },
+    "programRollup.scholarships.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 19,
+      "col": 4,
+      "cellAddress": "D19"
+    },
+    "programRollup.scholarships.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 19,
+      "col": 5,
+      "cellAddress": "E19"
+    },
+    "programRollup.scholarships.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 19,
+      "col": 6,
+      "cellAddress": "F19"
+    },
+    "programRollup.scholarships.up": {
+      "sheet": "Roll up by Program",
+      "row": 19,
+      "col": 7,
+      "cellAddress": "G19"
+    },
+    "programRollup.scholarships.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 19,
+      "col": 8,
+      "cellAddress": "H19"
+    },
+    "programRollup.scholarships.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 19,
+      "col": 9,
+      "cellAddress": "I19"
+    },
+    "programRollup.scholarships.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 19,
+      "col": 10,
+      "cellAddress": "J19"
+    },
+    "programRollup.scholarships.total": {
+      "sheet": "Roll up by Program",
+      "row": 19,
+      "col": 11,
+      "cellAddress": "K19"
+    },
+    "programRollup.travelEvents.operations": {
+      "sheet": "Roll up by Program",
+      "row": 20,
+      "col": 2,
+      "cellAddress": "B20"
+    },
+    "programRollup.travelEvents.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 20,
+      "col": 3,
+      "cellAddress": "C20"
+    },
+    "programRollup.travelEvents.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 20,
+      "col": 4,
+      "cellAddress": "D20"
+    },
+    "programRollup.travelEvents.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 20,
+      "col": 5,
+      "cellAddress": "E20"
+    },
+    "programRollup.travelEvents.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 20,
+      "col": 6,
+      "cellAddress": "F20"
+    },
+    "programRollup.travelEvents.up": {
+      "sheet": "Roll up by Program",
+      "row": 20,
+      "col": 7,
+      "cellAddress": "G20"
+    },
+    "programRollup.travelEvents.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 20,
+      "col": 8,
+      "cellAddress": "H20"
+    },
+    "programRollup.travelEvents.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 20,
+      "col": 9,
+      "cellAddress": "I20"
+    },
+    "programRollup.travelEvents.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 20,
+      "col": 10,
+      "cellAddress": "J20"
+    },
+    "programRollup.travelEvents.total": {
+      "sheet": "Roll up by Program",
+      "row": 20,
+      "col": 11,
+      "cellAddress": "K20"
+    },
+    "programRollup.rentOccupancy.operations": {
+      "sheet": "Roll up by Program",
+      "row": 21,
+      "col": 2,
+      "cellAddress": "B21"
+    },
+    "programRollup.rentOccupancy.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 21,
+      "col": 3,
+      "cellAddress": "C21"
+    },
+    "programRollup.rentOccupancy.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 21,
+      "col": 4,
+      "cellAddress": "D21"
+    },
+    "programRollup.rentOccupancy.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 21,
+      "col": 5,
+      "cellAddress": "E21"
+    },
+    "programRollup.rentOccupancy.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 21,
+      "col": 6,
+      "cellAddress": "F21"
+    },
+    "programRollup.rentOccupancy.up": {
+      "sheet": "Roll up by Program",
+      "row": 21,
+      "col": 7,
+      "cellAddress": "G21"
+    },
+    "programRollup.rentOccupancy.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 21,
+      "col": 8,
+      "cellAddress": "H21"
+    },
+    "programRollup.rentOccupancy.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 21,
+      "col": 9,
+      "cellAddress": "I21"
+    },
+    "programRollup.rentOccupancy.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 21,
+      "col": 10,
+      "cellAddress": "J21"
+    },
+    "programRollup.rentOccupancy.total": {
+      "sheet": "Roll up by Program",
+      "row": 21,
+      "col": 11,
+      "cellAddress": "K21"
+    },
+    "programRollup.informationTechnology.operations": {
+      "sheet": "Roll up by Program",
+      "row": 22,
+      "col": 2,
+      "cellAddress": "B22"
+    },
+    "programRollup.informationTechnology.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 22,
+      "col": 3,
+      "cellAddress": "C22"
+    },
+    "programRollup.informationTechnology.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 22,
+      "col": 4,
+      "cellAddress": "D22"
+    },
+    "programRollup.informationTechnology.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 22,
+      "col": 5,
+      "cellAddress": "E22"
+    },
+    "programRollup.informationTechnology.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 22,
+      "col": 6,
+      "cellAddress": "F22"
+    },
+    "programRollup.informationTechnology.up": {
+      "sheet": "Roll up by Program",
+      "row": 22,
+      "col": 7,
+      "cellAddress": "G22"
+    },
+    "programRollup.informationTechnology.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 22,
+      "col": 8,
+      "cellAddress": "H22"
+    },
+    "programRollup.informationTechnology.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 22,
+      "col": 9,
+      "cellAddress": "I22"
+    },
+    "programRollup.informationTechnology.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 22,
+      "col": 10,
+      "cellAddress": "J22"
+    },
+    "programRollup.informationTechnology.total": {
+      "sheet": "Roll up by Program",
+      "row": 22,
+      "col": 11,
+      "cellAddress": "K22"
+    },
+    "programRollup.generalAdministrative.operations": {
+      "sheet": "Roll up by Program",
+      "row": 23,
+      "col": 2,
+      "cellAddress": "B23"
+    },
+    "programRollup.generalAdministrative.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 23,
+      "col": 3,
+      "cellAddress": "C23"
+    },
+    "programRollup.generalAdministrative.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 23,
+      "col": 4,
+      "cellAddress": "D23"
+    },
+    "programRollup.generalAdministrative.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 23,
+      "col": 5,
+      "cellAddress": "E23"
+    },
+    "programRollup.generalAdministrative.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 23,
+      "col": 6,
+      "cellAddress": "F23"
+    },
+    "programRollup.generalAdministrative.up": {
+      "sheet": "Roll up by Program",
+      "row": 23,
+      "col": 7,
+      "cellAddress": "G23"
+    },
+    "programRollup.generalAdministrative.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 23,
+      "col": 8,
+      "cellAddress": "H23"
+    },
+    "programRollup.generalAdministrative.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 23,
+      "col": 9,
+      "cellAddress": "I23"
+    },
+    "programRollup.generalAdministrative.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 23,
+      "col": 10,
+      "cellAddress": "J23"
+    },
+    "programRollup.generalAdministrative.total": {
+      "sheet": "Roll up by Program",
+      "row": 23,
+      "col": 11,
+      "cellAddress": "K23"
+    },
+    "programRollup.totalExpenses.operations": {
+      "sheet": "Roll up by Program",
+      "row": 25,
+      "col": 2,
+      "cellAddress": "B25"
+    },
+    "programRollup.totalExpenses.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 25,
+      "col": 3,
+      "cellAddress": "C25"
+    },
+    "programRollup.totalExpenses.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 25,
+      "col": 4,
+      "cellAddress": "D25"
+    },
+    "programRollup.totalExpenses.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 25,
+      "col": 5,
+      "cellAddress": "E25"
+    },
+    "programRollup.totalExpenses.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 25,
+      "col": 6,
+      "cellAddress": "F25"
+    },
+    "programRollup.totalExpenses.up": {
+      "sheet": "Roll up by Program",
+      "row": 25,
+      "col": 7,
+      "cellAddress": "G25"
+    },
+    "programRollup.totalExpenses.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 25,
+      "col": 8,
+      "cellAddress": "H25"
+    },
+    "programRollup.totalExpenses.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 25,
+      "col": 9,
+      "cellAddress": "I25"
+    },
+    "programRollup.totalExpenses.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 25,
+      "col": 10,
+      "cellAddress": "J25"
+    },
+    "programRollup.totalExpenses.total": {
+      "sheet": "Roll up by Program",
+      "row": 25,
+      "col": 11,
+      "cellAddress": "K25"
+    },
+    "programRollup.netIncome.operations": {
+      "sheet": "Roll up by Program",
+      "row": 27,
+      "col": 2,
+      "cellAddress": "B27"
+    },
+    "programRollup.netIncome.fundraisingGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 27,
+      "col": 3,
+      "cellAddress": "C27"
+    },
+    "programRollup.netIncome.gradEvent": {
+      "sheet": "Roll up by Program",
+      "row": 27,
+      "col": 4,
+      "cellAddress": "D27"
+    },
+    "programRollup.netIncome.rAndIGeneral": {
+      "sheet": "Roll up by Program",
+      "row": 27,
+      "col": 5,
+      "cellAddress": "E27"
+    },
+    "programRollup.netIncome.kpmgAI": {
+      "sheet": "Roll up by Program",
+      "row": 27,
+      "col": 6,
+      "cellAddress": "F27"
+    },
+    "programRollup.netIncome.up": {
+      "sheet": "Roll up by Program",
+      "row": 27,
+      "col": 7,
+      "cellAddress": "G27"
+    },
+    "programRollup.netIncome.gearUp": {
+      "sheet": "Roll up by Program",
+      "row": 27,
+      "col": 8,
+      "cellAddress": "H27"
+    },
+    "programRollup.netIncome.legacyPrograms": {
+      "sheet": "Roll up by Program",
+      "row": 27,
+      "col": 9,
+      "cellAddress": "I27"
+    },
+    "programRollup.netIncome.ward7And8": {
+      "sheet": "Roll up by Program",
+      "row": 27,
+      "col": 10,
+      "cellAddress": "J27"
+    },
+    "programRollup.netIncome.total": {
+      "sheet": "Roll up by Program",
+      "row": 27,
+      "col": 11,
+      "cellAddress": "K27"
+    },
+    "outyearPnL.fy27.foundationRevenue": {
+      "sheet": "Roll up by Program",
+      "row": 6,
+      "col": 14,
+      "cellAddress": "N6"
+    },
+    "outyearPnL.fy28.foundationRevenue": {
+      "sheet": "Roll up by Program",
+      "row": 6,
+      "col": 15,
+      "cellAddress": "O6"
+    },
+    "outyearPnL.fy29.foundationRevenue": {
+      "sheet": "Roll up by Program",
+      "row": 6,
+      "col": 16,
+      "cellAddress": "P6"
+    },
+    "outyearPnL.fy27.corporateRevenue": {
+      "sheet": "Roll up by Program",
+      "row": 7,
+      "col": 14,
+      "cellAddress": "N7"
+    },
+    "outyearPnL.fy28.corporateRevenue": {
+      "sheet": "Roll up by Program",
+      "row": 7,
+      "col": 15,
+      "cellAddress": "O7"
+    },
+    "outyearPnL.fy29.corporateRevenue": {
+      "sheet": "Roll up by Program",
+      "row": 7,
+      "col": 16,
+      "cellAddress": "P7"
+    },
+    "outyearPnL.fy27.individualRevenue": {
+      "sheet": "Roll up by Program",
+      "row": 8,
+      "col": 14,
+      "cellAddress": "N8"
+    },
+    "outyearPnL.fy28.individualRevenue": {
+      "sheet": "Roll up by Program",
+      "row": 8,
+      "col": 15,
+      "cellAddress": "O8"
+    },
+    "outyearPnL.fy29.individualRevenue": {
+      "sheet": "Roll up by Program",
+      "row": 8,
+      "col": 16,
+      "cellAddress": "P8"
+    },
+    "outyearPnL.fy27.governmentGrantIncome": {
+      "sheet": "Roll up by Program",
+      "row": 9,
+      "col": 14,
+      "cellAddress": "N9"
+    },
+    "outyearPnL.fy28.governmentGrantIncome": {
+      "sheet": "Roll up by Program",
+      "row": 9,
+      "col": 15,
+      "cellAddress": "O9"
+    },
+    "outyearPnL.fy29.governmentGrantIncome": {
+      "sheet": "Roll up by Program",
+      "row": 9,
+      "col": 16,
+      "cellAddress": "P9"
+    },
+    "outyearPnL.fy27.specialEventsIncome": {
+      "sheet": "Roll up by Program",
+      "row": 10,
+      "col": 14,
+      "cellAddress": "N10"
+    },
+    "outyearPnL.fy28.specialEventsIncome": {
+      "sheet": "Roll up by Program",
+      "row": 10,
+      "col": 15,
+      "cellAddress": "O10"
+    },
+    "outyearPnL.fy29.specialEventsIncome": {
+      "sheet": "Roll up by Program",
+      "row": 10,
+      "col": 16,
+      "cellAddress": "P10"
+    },
+    "outyearPnL.fy27.contributedServices": {
+      "sheet": "Roll up by Program",
+      "row": 11,
+      "col": 14,
+      "cellAddress": "N11"
+    },
+    "outyearPnL.fy28.contributedServices": {
+      "sheet": "Roll up by Program",
+      "row": 11,
+      "col": 15,
+      "cellAddress": "O11"
+    },
+    "outyearPnL.fy29.contributedServices": {
+      "sheet": "Roll up by Program",
+      "row": 11,
+      "col": 16,
+      "cellAddress": "P11"
+    },
+    "outyearPnL.fy27.releasesFromAor": {
+      "sheet": "Roll up by Program",
+      "row": 12,
+      "col": 14,
+      "cellAddress": "N12"
+    },
+    "outyearPnL.fy28.releasesFromAor": {
+      "sheet": "Roll up by Program",
+      "row": 12,
+      "col": 15,
+      "cellAddress": "O12"
+    },
+    "outyearPnL.fy29.releasesFromAor": {
+      "sheet": "Roll up by Program",
+      "row": 12,
+      "col": 16,
+      "cellAddress": "P12"
+    },
+    "outyearPnL.fy27.endowmentDraw": {
+      "sheet": "Roll up by Program",
+      "row": 13,
+      "col": 14,
+      "cellAddress": "N13"
+    },
+    "outyearPnL.fy28.endowmentDraw": {
+      "sheet": "Roll up by Program",
+      "row": 13,
+      "col": 15,
+      "cellAddress": "O13"
+    },
+    "outyearPnL.fy29.endowmentDraw": {
+      "sheet": "Roll up by Program",
+      "row": 13,
+      "col": 16,
+      "cellAddress": "P13"
+    },
+    "outyearPnL.fy27.totalRevenue": {
+      "sheet": "Roll up by Program",
+      "row": 14,
+      "col": 14,
+      "cellAddress": "N14"
+    },
+    "outyearPnL.fy28.totalRevenue": {
+      "sheet": "Roll up by Program",
+      "row": 14,
+      "col": 15,
+      "cellAddress": "O14"
+    },
+    "outyearPnL.fy29.totalRevenue": {
+      "sheet": "Roll up by Program",
+      "row": 14,
+      "col": 16,
+      "cellAddress": "P14"
+    },
+    "outyearPnL.fy27.payroll": {
+      "sheet": "Roll up by Program",
+      "row": 16,
+      "col": 14,
+      "cellAddress": "N16"
+    },
+    "outyearPnL.fy28.payroll": {
+      "sheet": "Roll up by Program",
+      "row": 16,
+      "col": 15,
+      "cellAddress": "O16"
+    },
+    "outyearPnL.fy29.payroll": {
+      "sheet": "Roll up by Program",
+      "row": 16,
+      "col": 16,
+      "cellAddress": "P16"
+    },
+    "outyearPnL.fy27.professionalFees": {
+      "sheet": "Roll up by Program",
+      "row": 17,
+      "col": 14,
+      "cellAddress": "N17"
+    },
+    "outyearPnL.fy28.professionalFees": {
+      "sheet": "Roll up by Program",
+      "row": 17,
+      "col": 15,
+      "cellAddress": "O17"
+    },
+    "outyearPnL.fy29.professionalFees": {
+      "sheet": "Roll up by Program",
+      "row": 17,
+      "col": 16,
+      "cellAddress": "P17"
+    },
+    "outyearPnL.fy27.programExpenses": {
+      "sheet": "Roll up by Program",
+      "row": 18,
+      "col": 14,
+      "cellAddress": "N18"
+    },
+    "outyearPnL.fy28.programExpenses": {
+      "sheet": "Roll up by Program",
+      "row": 18,
+      "col": 15,
+      "cellAddress": "O18"
+    },
+    "outyearPnL.fy29.programExpenses": {
+      "sheet": "Roll up by Program",
+      "row": 18,
+      "col": 16,
+      "cellAddress": "P18"
+    },
+    "outyearPnL.fy27.scholarships": {
+      "sheet": "Roll up by Program",
+      "row": 19,
+      "col": 14,
+      "cellAddress": "N19"
+    },
+    "outyearPnL.fy28.scholarships": {
+      "sheet": "Roll up by Program",
+      "row": 19,
+      "col": 15,
+      "cellAddress": "O19"
+    },
+    "outyearPnL.fy29.scholarships": {
+      "sheet": "Roll up by Program",
+      "row": 19,
+      "col": 16,
+      "cellAddress": "P19"
+    },
+    "outyearPnL.fy27.travelEvents": {
+      "sheet": "Roll up by Program",
+      "row": 20,
+      "col": 14,
+      "cellAddress": "N20"
+    },
+    "outyearPnL.fy28.travelEvents": {
+      "sheet": "Roll up by Program",
+      "row": 20,
+      "col": 15,
+      "cellAddress": "O20"
+    },
+    "outyearPnL.fy29.travelEvents": {
+      "sheet": "Roll up by Program",
+      "row": 20,
+      "col": 16,
+      "cellAddress": "P20"
+    },
+    "outyearPnL.fy27.rentOccupancy": {
+      "sheet": "Roll up by Program",
+      "row": 21,
+      "col": 14,
+      "cellAddress": "N21"
+    },
+    "outyearPnL.fy28.rentOccupancy": {
+      "sheet": "Roll up by Program",
+      "row": 21,
+      "col": 15,
+      "cellAddress": "O21"
+    },
+    "outyearPnL.fy29.rentOccupancy": {
+      "sheet": "Roll up by Program",
+      "row": 21,
+      "col": 16,
+      "cellAddress": "P21"
+    },
+    "outyearPnL.fy27.informationTechnology": {
+      "sheet": "Roll up by Program",
+      "row": 22,
+      "col": 14,
+      "cellAddress": "N22"
+    },
+    "outyearPnL.fy28.informationTechnology": {
+      "sheet": "Roll up by Program",
+      "row": 22,
+      "col": 15,
+      "cellAddress": "O22"
+    },
+    "outyearPnL.fy29.informationTechnology": {
+      "sheet": "Roll up by Program",
+      "row": 22,
+      "col": 16,
+      "cellAddress": "P22"
+    },
+    "outyearPnL.fy27.generalAdministrative": {
+      "sheet": "Roll up by Program",
+      "row": 23,
+      "col": 14,
+      "cellAddress": "N23"
+    },
+    "outyearPnL.fy28.generalAdministrative": {
+      "sheet": "Roll up by Program",
+      "row": 23,
+      "col": 15,
+      "cellAddress": "O23"
+    },
+    "outyearPnL.fy29.generalAdministrative": {
+      "sheet": "Roll up by Program",
+      "row": 23,
+      "col": 16,
+      "cellAddress": "P23"
+    },
+    "outyearPnL.fy27.totalExpenses": {
+      "sheet": "Roll up by Program",
+      "row": 25,
+      "col": 14,
+      "cellAddress": "N25"
+    },
+    "outyearPnL.fy28.totalExpenses": {
+      "sheet": "Roll up by Program",
+      "row": 25,
+      "col": 15,
+      "cellAddress": "O25"
+    },
+    "outyearPnL.fy29.totalExpenses": {
+      "sheet": "Roll up by Program",
+      "row": 25,
+      "col": 16,
+      "cellAddress": "P25"
+    },
+    "outyearPnL.fy27.netIncome": {
+      "sheet": "Roll up by Program",
+      "row": 27,
+      "col": 14,
+      "cellAddress": "N27"
+    },
+    "outyearPnL.fy28.netIncome": {
+      "sheet": "Roll up by Program",
+      "row": 27,
+      "col": 15,
+      "cellAddress": "O27"
+    },
+    "outyearPnL.fy29.netIncome": {
+      "sheet": "Roll up by Program",
+      "row": 27,
+      "col": 16,
+      "cellAddress": "P27"
+    },
+    "operationalRevenue.fy27.foundation": {
+      "sheet": "Revenue Detail",
+      "row": 20,
+      "col": 3,
+      "cellAddress": "C20"
+    },
+    "operationalRevenue.fy28.foundation": {
+      "sheet": "Revenue Detail",
+      "row": 20,
+      "col": 8,
+      "cellAddress": "H20"
+    },
+    "operationalRevenue.fy29.foundation": {
+      "sheet": "Revenue Detail",
+      "row": 20,
+      "col": 13,
+      "cellAddress": "M20"
+    },
+    "operationalRevenue.fy27.corporate": {
+      "sheet": "Revenue Detail",
+      "row": 38,
+      "col": 3,
+      "cellAddress": "C38"
+    },
+    "operationalRevenue.fy28.corporate": {
+      "sheet": "Revenue Detail",
+      "row": 38,
+      "col": 8,
+      "cellAddress": "H38"
+    },
+    "operationalRevenue.fy29.corporate": {
+      "sheet": "Revenue Detail",
+      "row": 38,
+      "col": 13,
+      "cellAddress": "M38"
+    },
+    "operationalRevenue.fy27.individual": {
+      "sheet": "Revenue Detail",
+      "row": 58,
+      "col": 3,
+      "cellAddress": "C58"
+    },
+    "operationalRevenue.fy28.individual": {
+      "sheet": "Revenue Detail",
+      "row": 58,
+      "col": 8,
+      "cellAddress": "H58"
+    },
+    "operationalRevenue.fy29.individual": {
+      "sheet": "Revenue Detail",
+      "row": 58,
+      "col": 13,
+      "cellAddress": "M58"
+    },
+    "operationalRevenue.fy27.events": {
+      "sheet": "Revenue Detail",
+      "row": 89,
+      "col": 3,
+      "cellAddress": "C89"
+    },
+    "operationalRevenue.fy28.events": {
+      "sheet": "Revenue Detail",
+      "row": 89,
+      "col": 8,
+      "cellAddress": "H89"
+    },
+    "operationalRevenue.fy29.events": {
+      "sheet": "Revenue Detail",
+      "row": 89,
+      "col": 13,
+      "cellAddress": "M89"
+    },
+    "operationalRevenue.fy27.total": {
+      "sheet": "Revenue Detail",
+      "row": 94,
+      "col": 3,
+      "cellAddress": "C94"
+    },
+    "futureRevenueView.releasesSubtotal.fy26": {
+      "sheet": "Future Revenue View",
+      "row": 21,
+      "col": 2,
+      "cellAddress": "B21"
+    },
+    "futureRevenueView.endowmentSubtotal.fy26": {
+      "sheet": "Future Revenue View",
+      "row": 28,
+      "col": 2,
+      "cellAddress": "B28"
+    },
+    "futureRevenueView.releasesSubtotal.fy27": {
+      "sheet": "Future Revenue View",
+      "row": 21,
+      "col": 3,
+      "cellAddress": "C21"
+    },
+    "futureRevenueView.endowmentSubtotal.fy27": {
+      "sheet": "Future Revenue View",
+      "row": 28,
+      "col": 3,
+      "cellAddress": "C28"
+    },
+    "futureRevenueView.releasesSubtotal.fy28": {
+      "sheet": "Future Revenue View",
+      "row": 21,
+      "col": 4,
+      "cellAddress": "D21"
+    },
+    "futureRevenueView.endowmentSubtotal.fy28": {
+      "sheet": "Future Revenue View",
+      "row": 28,
+      "col": 4,
+      "cellAddress": "D28"
+    },
+    "futureRevenueView.releasesSubtotal.fy29": {
+      "sheet": "Future Revenue View",
+      "row": 21,
+      "col": 5,
+      "cellAddress": "E21"
+    },
+    "futureRevenueView.endowmentSubtotal.fy29": {
+      "sheet": "Future Revenue View",
+      "row": 28,
+      "col": 5,
+      "cellAddress": "E28"
+    },
+    "futureRevenueView.releasesSubtotal.fy30": {
+      "sheet": "Future Revenue View",
+      "row": 21,
+      "col": 6,
+      "cellAddress": "F21"
+    },
+    "futureRevenueView.endowmentSubtotal.fy30": {
+      "sheet": "Future Revenue View",
+      "row": 28,
+      "col": 6,
+      "cellAddress": "F28"
+    },
+    "futureRevenueView.releasesSubtotal.future": {
+      "sheet": "Future Revenue View",
+      "row": 21,
+      "col": 7,
+      "cellAddress": "G21"
+    },
+    "futureRevenueView.endowmentSubtotal.future": {
+      "sheet": "Future Revenue View",
+      "row": 28,
+      "col": 7,
+      "cellAddress": "G28"
+    },
+    "futureRevenueView.releasesSubtotal.total": {
+      "sheet": "Future Revenue View",
+      "row": 21,
+      "col": 8,
+      "cellAddress": "H21"
+    },
+    "futureRevenueView.endowmentSubtotal.total": {
+      "sheet": "Future Revenue View",
+      "row": 28,
+      "col": 8,
+      "cellAddress": "H28"
+    }
+  },
+  "verification": {
+    "passed": true,
+    "advisories": [],
+    "checks": [
+      {
+        "name": "meta.fileLastModified populated",
+        "severity": "hard",
+        "passed": true,
+        "detail": "2026-05-15T19:34:59.599506+00:00"
+      },
+      {
+        "name": "FY27 budget balanced (rev = exp)",
+        "severity": "hard",
+        "passed": true,
+        "detail": "Rev $12,237,695 \u00b7 Exp $12,237,695 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "FY27 operational revenue: total = \u03a3 segments",
+        "severity": "hard",
+        "passed": true,
+        "detail": "Total $2,500,000 \u00b7 \u03a3 $2,500,000 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "Revenue Detail FY27 \u2248 Departments Summary",
+        "severity": "hard",
+        "passed": true,
+        "detail": "Rev Detail $2,500,000 \u00b7 Dept Summary $2,500,000 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "FY28 budget balanced (rev = exp)",
+        "severity": "hard",
+        "passed": true,
+        "detail": "Rev $11,144,861 \u00b7 Exp $11,144,861 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "FY29 budget balanced (rev = exp)",
+        "severity": "hard",
+        "passed": true,
+        "detail": "Rev $10,856,006 \u00b7 Exp $10,856,006 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "FY27 net income = 0 (balanced budget invariant)",
+        "severity": "hard",
+        "passed": true,
+        "detail": "Net income $0"
+      },
+      {
+        "name": "Departments Summary: \u03a3 depts = TOTAL for every line",
+        "severity": "hard",
+        "passed": true,
+        "detail": "All 19 lines reconcile"
+      },
+      {
+        "name": "Program Rollup: \u03a3 programs = TOTAL for every line",
+        "severity": "hard",
+        "passed": true,
+        "detail": "All 19 lines reconcile"
+      },
+      {
+        "name": "FY28 operational revenue: total = \u03a3 segments",
+        "severity": "hard",
+        "passed": true,
+        "detail": "Total $3,500,000 \u00b7 \u03a3 $3,500,000 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "FY29 operational revenue: total = \u03a3 segments",
+        "severity": "hard",
+        "passed": true,
+        "detail": "Total $4,000,000 \u00b7 \u03a3 $4,000,000 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "Future Revenue View FY26: releases + endowment = grand subtotal",
+        "severity": "hard",
+        "passed": true,
+        "detail": "Rel $2,643,808 + End $27,000,000 = $29,643,808 \u00b7 File $29,643,808 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "Future Revenue View FY27: releases + endowment = grand subtotal",
+        "severity": "hard",
+        "passed": true,
+        "detail": "Rel $1,917,500 + End $2,000,000 = $3,917,500 \u00b7 File $3,917,500 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "Future Revenue View FY28: releases + endowment = grand subtotal",
+        "severity": "hard",
+        "passed": true,
+        "detail": "Rel $575,000 + End $2,000,000 = $2,575,000 \u00b7 File $2,575,000 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "Future Revenue View FY29: releases + endowment = grand subtotal",
+        "severity": "hard",
+        "passed": true,
+        "detail": "Rel $350,000 + End $2,000,000 = $2,350,000 \u00b7 File $2,350,000 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "Future Revenue View FY30: releases + endowment = grand subtotal",
+        "severity": "hard",
+        "passed": true,
+        "detail": "Rel $350,000 + End $2,000,000 = $2,350,000 \u00b7 File $2,350,000 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "Future Revenue View FUTURE: releases + endowment = grand subtotal",
+        "severity": "hard",
+        "passed": true,
+        "detail": "Rel $250,000 + End $0 = $250,000 \u00b7 File $250,000 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "Revenue Detail FY27: \u03a3 named donors + gap = segment total",
+        "severity": "hard",
+        "passed": true,
+        "detail": "All 4 segments reconcile"
+      },
+      {
+        "name": "Provenance block covers all emitted paths (sample)",
+        "severity": "hard",
+        "passed": true,
+        "detail": "370 entries; sample paths all present"
+      },
+      {
+        "name": "foundationRevenue program rollup \u2212 GEAR UP \u2248 outyear FY27",
+        "severity": "advisory",
+        "passed": true,
+        "detail": "\u03a3 programs $1,100,000 \u2212 GEAR UP $0 = $1,100,000 \u00b7 outyear $1,100,000 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "corporateRevenue program rollup \u2212 GEAR UP \u2248 outyear FY27",
+        "severity": "advisory",
+        "passed": true,
+        "detail": "\u03a3 programs $650,000 \u2212 GEAR UP $0 = $650,000 \u00b7 outyear $650,000 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "individualRevenue program rollup \u2212 GEAR UP \u2248 outyear FY27",
+        "severity": "advisory",
+        "passed": true,
+        "detail": "\u03a3 programs $200,000 \u2212 GEAR UP $0 = $200,000 \u00b7 outyear $200,000 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "specialEventsIncome program rollup \u2212 GEAR UP \u2248 outyear FY27",
+        "severity": "advisory",
+        "passed": true,
+        "detail": "\u03a3 programs $550,000 \u2212 GEAR UP $0 = $550,000 \u00b7 outyear $550,000 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "contributedServices program rollup \u2212 GEAR UP \u2248 outyear FY27",
+        "severity": "advisory",
+        "passed": true,
+        "detail": "\u03a3 programs $285,000 \u2212 GEAR UP $0 = $285,000 \u00b7 outyear $285,000 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "releasesFromAor program rollup \u2212 GEAR UP \u2248 outyear FY27",
+        "severity": "advisory",
+        "passed": true,
+        "detail": "\u03a3 programs $1,917,500 \u2212 GEAR UP $0 = $1,917,500 \u00b7 outyear $1,917,500 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "endowmentDraw program rollup \u2212 GEAR UP \u2248 outyear FY27",
+        "severity": "advisory",
+        "passed": true,
+        "detail": "\u03a3 programs $7,535,195 \u2212 GEAR UP $0 = $7,535,195 \u00b7 outyear $7,535,195 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "totalRevenue program rollup \u2212 GEAR UP \u2248 outyear FY27",
+        "severity": "advisory",
+        "passed": true,
+        "detail": "\u03a3 programs $13,659,971 \u2212 GEAR UP $1,422,277 = $12,237,695 \u00b7 outyear $12,237,695 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "payroll program rollup \u2212 GEAR UP \u2248 outyear FY27",
+        "severity": "advisory",
+        "passed": true,
+        "detail": "\u03a3 programs $4,354,443 \u2212 GEAR UP $928,715 = $3,425,728 \u00b7 outyear $3,425,728 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "professionalFees program rollup \u2212 GEAR UP \u2248 outyear FY27",
+        "severity": "advisory",
+        "passed": true,
+        "detail": "\u03a3 programs $1,343,765 \u2212 GEAR UP $0 = $1,343,765 \u00b7 outyear $1,343,765 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "programExpenses program rollup \u2212 GEAR UP \u2248 outyear FY27",
+        "severity": "advisory",
+        "passed": true,
+        "detail": "\u03a3 programs $540,162 \u2212 GEAR UP $432,662 = $107,500 \u00b7 outyear $107,500 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "scholarships program rollup \u2212 GEAR UP \u2248 outyear FY27",
+        "severity": "advisory",
+        "passed": true,
+        "detail": "\u03a3 programs $5,440,000 \u2212 GEAR UP $0 = $5,440,000 \u00b7 outyear $5,440,000 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "travelEvents program rollup \u2212 GEAR UP \u2248 outyear FY27",
+        "severity": "advisory",
+        "passed": true,
+        "detail": "\u03a3 programs $188,000 \u2212 GEAR UP $0 = $188,000 \u00b7 outyear $188,000 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "rentOccupancy program rollup \u2212 GEAR UP \u2248 outyear FY27",
+        "severity": "advisory",
+        "passed": true,
+        "detail": "\u03a3 programs $534,643 \u2212 GEAR UP $0 = $534,643 \u00b7 outyear $534,643 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "informationTechnology program rollup \u2212 GEAR UP \u2248 outyear FY27",
+        "severity": "advisory",
+        "passed": true,
+        "detail": "\u03a3 programs $482,385 \u2212 GEAR UP $0 = $482,385 \u00b7 outyear $482,385 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "generalAdministrative program rollup \u2212 GEAR UP \u2248 outyear FY27",
+        "severity": "advisory",
+        "passed": true,
+        "detail": "\u03a3 programs $776,574 \u2212 GEAR UP $60,900 = $715,674 \u00b7 outyear $715,674 \u00b7 \u0394 $0"
+      },
+      {
+        "name": "totalExpenses program rollup \u2212 GEAR UP \u2248 outyear FY27",
+        "severity": "advisory",
+        "passed": true,
+        "detail": "\u03a3 programs $13,659,971 \u2212 GEAR UP $1,422,277 = $12,237,695 \u00b7 outyear $12,237,695 \u00b7 \u0394 $0"
+      }
+    ]
+  }
+}
