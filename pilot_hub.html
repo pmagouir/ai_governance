@@ -3472,245 +3472,331 @@ em-dashes &gt;2 per piece.
                 </details>
             </details>
 
-            <!-- WEEK 6: RUN AN AUDIT (open by default) -->
+            <!-- WEEK 6: GETTING IT RIGHT — DILIGENCE & VERIFICATION (open by default) -->
             <details class="reveal week-block" open style="margin-bottom: clamp(1.5rem, 3vw, 2.5rem);">
                 <summary style="margin-bottom: clamp(0.5rem, 1vw, 0.75rem);">
                     <div style="display: flex; align-items: center; gap: 0.75rem;">
                         <div style="background: var(--gold); color: var(--navy); font-family: var(--font-mono); font-size: clamp(0.7rem, 1vw, 0.8rem); padding: 4px 12px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap;">Week 6</div>
-                        <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1.1rem, 2vw, 1.3rem);">Run an Audit</div>
+                        <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1.1rem, 2vw, 1.3rem);">Getting It Right When Your Assistant Is Often Confidently Wrong</div>
                         <div style="flex: 1; height: 2px; background: rgba(252, 176, 23, 0.35);"></div>
                         <div class="week-chevron" aria-hidden="true">▾</div>
                     </div>
                 </summary>
-                <p style="font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: var(--dark-gray); line-height: 1.6; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem); max-width: 820px;">Week 5 named verify and validate. Week 6 makes them a discipline. Audit is what catches what you can't see from inside your own draft — the missing source, the AI-flavored line, the convergent flag two reviewers land on cold. One reviewer averages. Four lenses converge. That's the move.</p>
+                <p style="font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: var(--dark-gray); line-height: 1.6; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem); max-width: 820px;">Week 5 named the mechanics. Week 6 deepens one of them — Claude getting things <em>confidently wrong</em> — and builds the verification discipline that catches it before it ships. Eight questions every newer user asks once they've watched a hallucination land. Plain-answer structure. Heavier focus on what to do, in what order, with what tools.</p>
 
                 <!-- Hook line -->
-                <p style="font-family: var(--font-subhead); font-weight: 600; font-style: italic; color: var(--navy); font-size: clamp(0.95rem, 1.5vw, 1.1rem); line-height: 1.6; margin-bottom: clamp(1rem, 2vw, 1.5rem); padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.25rem); background: linear-gradient(135deg, rgba(252, 176, 23, 0.08) 0%, rgba(135, 183, 213, 0.05) 100%); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; max-width: 820px;">How you know it works, before anyone else sees it.</p>
+                <p style="font-family: var(--font-subhead); font-weight: 600; font-style: italic; color: var(--navy); font-size: clamp(0.95rem, 1.5vw, 1.1rem); line-height: 1.6; margin-bottom: clamp(1rem, 2vw, 1.5rem); padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.25rem); background: linear-gradient(135deg, rgba(252, 176, 23, 0.08) 0%, rgba(131, 82, 255, 0.05) 100%); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; max-width: 820px;">Hallucination is what the model does by design. Verification is what you do by design.</p>
 
-                <!-- The Reviewer Skill callout -->
-                <div style="margin-bottom: clamp(1.25rem, 2.5vw, 2rem); background: linear-gradient(135deg, rgba(135, 183, 213, 0.08) 0%, rgba(252, 176, 23, 0.06) 100%); border: 1px solid rgba(135, 183, 213, 0.25); border-left: 4px solid var(--blue); border-radius: 8px; padding: clamp(1rem, 2vw, 1.5rem);">
-                    <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: #2a5a78; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.04em;">The Reviewer Skill — adversarial-audit-cowork</p>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.75rem;">One Skill in BRAIN. Four expert lenses that read your artifact without seeing each other's notes. Three modes from light to full. The structure carries through every question this week:</p>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: clamp(0.4rem, 0.8vw, 0.6rem); margin-bottom: 0.5rem;">
-                        <div style="padding: 0.55rem 0.7rem; background: rgba(252, 176, 23, 0.08); border-radius: 6px; border-left: 3px solid var(--gold);"><strong style="color: #8a5a00; font-family: var(--font-subhead); font-size: 0.9rem;">Light</strong><br><span style="font-size: 0.8rem; color: var(--dark-gray);">3 agents · Stage 1 triage only · 600–900 words.</span></div>
-                        <div style="padding: 0.55rem 0.7rem; background: rgba(131, 82, 255, 0.06); border-radius: 6px; border-left: 3px solid var(--purple);"><strong style="color: var(--purple); font-family: var(--font-subhead); font-size: 0.9rem;">Standard</strong><br><span style="font-size: 0.8rem; color: var(--dark-gray);">3–4 agents · Stage 1 then Stage 2 on request.</span></div>
-                        <div style="padding: 0.55rem 0.7rem; background: rgba(16, 26, 76, 0.05); border-radius: 6px; border-left: 3px solid var(--navy);"><strong style="color: var(--navy); font-family: var(--font-subhead); font-size: 0.9rem;">Full</strong><br><span style="font-size: 0.8rem; color: var(--dark-gray);">4 agents · all three stages · literal rewrites on request.</span></div>
+                <!-- Danger Zones strip -->
+                <div style="margin-bottom: clamp(1.25rem, 2.5vw, 2rem); background: var(--white); border: 1px solid rgba(252, 176, 23, 0.3); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.5rem);">
+                    <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1.1vw, 0.88rem); color: #8a5a00; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Where Confident-Wrong Hides — The Five Danger Zones</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: clamp(0.4rem, 0.8vw, 0.6rem); margin-bottom: 0.6rem;">
+                        <div style="padding: 0.55rem 0.7rem; background: rgba(252, 176, 23, 0.08); border-radius: 6px; border-left: 3px solid var(--gold);"><strong style="color: #8a5a00; font-family: var(--font-subhead); font-size: 0.92rem;">Names</strong><br><span style="font-size: 0.78rem; color: var(--dark-gray);">People, programs, partners.</span></div>
+                        <div style="padding: 0.55rem 0.7rem; background: rgba(252, 176, 23, 0.08); border-radius: 6px; border-left: 3px solid var(--gold);"><strong style="color: #8a5a00; font-family: var(--font-subhead); font-size: 0.92rem;">Numbers</strong><br><span style="font-size: 0.78rem; color: var(--dark-gray);">Counts, percentages, dollars.</span></div>
+                        <div style="padding: 0.55rem 0.7rem; background: rgba(252, 176, 23, 0.08); border-radius: 6px; border-left: 3px solid var(--gold);"><strong style="color: #8a5a00; font-family: var(--font-subhead); font-size: 0.92rem;">Dates</strong><br><span style="font-size: 0.78rem; color: var(--dark-gray);">Deadlines, events, history.</span></div>
+                        <div style="padding: 0.55rem 0.7rem; background: rgba(252, 176, 23, 0.08); border-radius: 6px; border-left: 3px solid var(--gold);"><strong style="color: #8a5a00; font-family: var(--font-subhead); font-size: 0.92rem;">Citations</strong><br><span style="font-size: 0.78rem; color: var(--dark-gray);">Papers, quotes, sources.</span></div>
+                        <div style="padding: 0.55rem 0.7rem; background: rgba(252, 176, 23, 0.08); border-radius: 6px; border-left: 3px solid var(--gold);"><strong style="color: #8a5a00; font-family: var(--font-subhead); font-size: 0.92rem;">Your World</strong><br><span style="font-size: 0.78rem; color: var(--dark-gray);">DC CAP partners, scholars, internal facts.</span></div>
                     </div>
-                    <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0.5rem 0 0 0; font-style: italic; padding-top: 0.6rem; border-top: 1px dashed rgba(135, 183, 213, 0.3);">Light covers most work. Standard is the default for anything about to leave the building. Full is reserved for board, funder, and external publication stakes.</p>
+                    <p style="font-size: clamp(0.85rem, 1.2vw, 0.93rem); color: var(--dark-gray); margin: 0; padding-top: 0.55rem; border-top: 1px dashed rgba(252, 176, 23, 0.4); font-style: italic;">External memory is fuzzy on specifics. These five are where you spot-check first — every time, before anything ships.</p>
                 </div>
 
-                <!-- Part 1 of 3 -->
+                <!-- Subgroup Header: Why Claude Gets It Wrong -->
                 <div style="display: flex; align-items: baseline; gap: 0.75rem; margin: clamp(1.25rem, 2.5vw, 1.75rem) 0 clamp(0.5rem, 1vw, 0.75rem) 0;">
-                    <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.95vw, 0.8rem); color: var(--gold); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Part 1 of 3</span>
-                    <h3 style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1rem, 1.7vw, 1.2rem); margin: 0;">Why Audits Exist</h3>
+                    <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.95vw, 0.8rem); color: #8a5a00; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Part 1 of 3</span>
+                    <h3 style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1rem, 1.7vw, 1.2rem); margin: 0;">Why Claude Gets It Wrong</h3>
                     <div style="flex: 1; height: 1px; background: rgba(252, 176, 23, 0.3);"></div>
                 </div>
 
-                <!-- Q1: What does "good" mean at the stakes? -->
+                <!-- Q1: Why does Claude hallucinate? -->
                 <div style="margin-bottom: clamp(0.85rem, 1.5vw, 1.15rem); background: rgba(252, 176, 23, 0.06); border: 1px solid rgba(252, 176, 23, 0.22); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.4rem);">
                     <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
                         <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--white); background: #8a5a00; padding: 2px 8px; border-radius: 4px; font-weight: 600;">Q1</span>
-                        <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Discernment</span>
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Diligence</span>
                     </div>
-                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">What does "good" mean for the stakes I'm working at?</h4>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> The bar moves with the audience. A note to a teammate clears at one bar. A note to a funder clears at a different one. A board memo clears at a third. The same draft can be ready, almost-ready, and not-ready depending on who reads it.</p>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> People use one mental bar — their own. The result: tone calibrated for the writer rather than the reader, claims sourced to memory rather than the source, an ask buried because the writer already knows what they want.</p>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The move.</strong> Name the audience and the stakes in the same breath as you ask "is this good." Adversarial-audit's intake makes this explicit: <em>purpose, audience, stakes, deadline</em>. Skip the intake and the audit averages. Answer the intake honestly and the audit sharpens to the one bar that matters.</p>
-                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: #8a5a00; margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(252, 176, 23, 0.4); font-style: italic;">"Good" is a function of audience. Name it before you grade it.</p>
+                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">Why does Claude hallucinate in the first place?</h4>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Claude isn't looking up facts. It's predicting the next word that fits the pattern of an answer. When the pattern is strong — "the capital of France is" — the prediction is reliable. When the pattern is weak — "the most-cited paper on nonprofit AI adoption is" — the model generates <em>something that looks like an answer</em>. A plausible title. A plausible author. A plausible journal. None of which need to exist.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> People treat Claude like a search engine. Search engines retrieve. Claude generates. A retrieved fact is either there or it isn't. A generated fact is there whether or not it's true.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The move.</strong> Build the felt sense: every Claude answer is a <em>generation</em>, not a retrieval. Hold one question in your head — <em>"is the pattern strong enough here for the answer to be right?"</em> Pattern is strong on broad, well-repeated things (definitions, well-known events, common code). Pattern is weak on specifics, recent events, and anything inside your own organization.</p>
+
+                    <!-- Real-world parallel callout -->
+                    <div style="margin: 0.6rem 0 0.6rem 0; background: var(--white); border: 1px solid rgba(252, 176, 23, 0.3); border-radius: 6px; padding: 0.7rem 0.9rem;">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.75rem, 1vw, 0.82rem); color: #8a5a00; margin: 0 0 0.3rem 0; text-transform: uppercase; letter-spacing: 0.04em;">Real-world parallel — Mata v. Avianca, June 2023</p>
+                        <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Two attorneys filed a federal brief citing six prior cases. None of the six existed. The model had generated the kind of thing the prompt asked for — plausible case names, plausible courts, plausible citation numbers — and the lawyers never opened a single one. The court fined them and the case became the canonical hallucination story. The lesson isn't that AI is bad. It's that <em>the model completed the pattern, and no one checked.</em></p>
+                    </div>
+
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: #8a5a00; margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(252, 176, 23, 0.4); font-style: italic;">The model isn't lying. It's completing.</p>
                 </div>
 
-                <!-- Part 2 of 3 -->
-                <div style="display: flex; align-items: baseline; gap: 0.75rem; margin: clamp(1.5rem, 3vw, 2rem) 0 clamp(0.5rem, 1vw, 0.75rem) 0;">
-                    <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.95vw, 0.8rem); color: #2a5a78; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Part 2 of 3</span>
-                    <h3 style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1rem, 1.7vw, 1.2rem); margin: 0;">The Reviewer Skill</h3>
-                    <div style="flex: 1; height: 1px; background: rgba(135, 183, 213, 0.25);"></div>
-                </div>
-
-                <!-- Q2: Panel + four lenses -->
-                <div style="margin-bottom: clamp(0.85rem, 1.5vw, 1.15rem); background: rgba(135, 183, 213, 0.08); border: 1px solid rgba(135, 183, 213, 0.25); border-left: 4px solid var(--blue); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.4rem);">
+                <!-- Q2: Why does Claude sound confident? -->
+                <div style="margin-bottom: clamp(0.85rem, 1.5vw, 1.15rem); background: rgba(252, 176, 23, 0.06); border: 1px solid rgba(252, 176, 23, 0.22); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.4rem);">
                     <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
-                        <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--white); background: #2a5a78; padding: 2px 8px; border-radius: 4px; font-weight: 600;">Q2</span>
-                        <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Discernment</span>
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--white); background: #8a5a00; padding: 2px 8px; border-radius: 4px; font-weight: 600;">Q2</span>
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Diligence</span>
                     </div>
-                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">What's a panel, and why four lenses instead of one?</h4>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> A panel is a set of expert lenses, each in strict character discipline. The lenses change based on the artifact. A grant gets Program Officer, Evidence Reviewer, Budget Analyst, Persuasion Editor. A thought-leadership piece gets Editor, Fact-Checker, Audience Proxy, Originality Critic. A strategy doc gets Logic Auditor, Evidence Checker, Operator, Stakeholder Reader.</p>
-
-                    <!-- The four lenses callout -->
-                    <div style="margin: 0.6rem 0 0.85rem 0; background: var(--white); border: 1px solid rgba(135, 183, 213, 0.3); border-radius: 8px; padding: clamp(0.85rem, 1.6vw, 1.1rem);">
-                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1.1vw, 0.86rem); color: #2a5a78; margin: 0 0 0.65rem 0; text-transform: uppercase; letter-spacing: 0.05em;">The lenses for thought leadership — your Friday demo panel</p>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(0.45rem, 0.9vw, 0.65rem);">
-                            <div style="padding: 0.6rem 0.75rem; background: rgba(135, 183, 213, 0.1); border-radius: 6px;"><strong style="color: #2a5a78; font-size: 0.92rem;">Editor</strong><br><span style="font-size: 0.85rem; color: var(--dark-gray); font-style: italic;">Is there an argument here, or just observations?</span></div>
-                            <div style="padding: 0.6rem 0.75rem; background: rgba(135, 183, 213, 0.1); border-radius: 6px;"><strong style="color: #2a5a78; font-size: 0.92rem;">Fact-Checker</strong><br><span style="font-size: 0.85rem; color: var(--dark-gray); font-style: italic;">Which claims survive a challenge?</span></div>
-                            <div style="padding: 0.6rem 0.75rem; background: rgba(135, 183, 213, 0.1); border-radius: 6px;"><strong style="color: #2a5a78; font-size: 0.92rem;">Audience Proxy</strong><br><span style="font-size: 0.85rem; color: var(--dark-gray); font-style: italic;">Did I learn something, or read someone thinking out loud?</span></div>
-                            <div style="padding: 0.6rem 0.75rem; background: rgba(135, 183, 213, 0.1); border-radius: 6px;"><strong style="color: #2a5a78; font-size: 0.92rem;">Originality Critic</strong><br><span style="font-size: 0.85rem; color: var(--dark-gray); font-style: italic;">Have I read this under a different byline?</span></div>
-                        </div>
-                    </div>
-
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> One reviewer reads the whole thing through one filter. If their filter is voice, they catch voice problems and miss the missing source. If their filter is facts, they verify the numbers and miss the soft close. One reviewer averages. Strengths cover for weaknesses.</p>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The move.</strong> Four lenses, run sequentially, in strict character discipline. Each lens commits fully and closes before the next opens. The lenses don't see each other's notes — that's the design. Disagreement becomes data. Agreement becomes the verdict.</p>
-                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: #2a5a78; margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(135, 183, 213, 0.4); font-style: italic;">One reviewer averages. Four lenses converge.</p>
+                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">Why does Claude sound so <em>confident</em> when it's wrong?</h4>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Claude has no internal sense of how sure it is. There's no quiet "I'm 30% confident" threaded through every sentence. The training data is mostly written by humans who sound confident, so Claude does too. A fabricated case citation reads the same as a real one because, to the model, <em>both are answers shaped like answers</em>.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> Newer users use tone as a quality signal. A confident answer feels true. An uncertain one feels weak. With Claude, that intuition inverts: the <em>most</em> confident-sounding answer is sometimes the one with the least grounding underneath it.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.4rem;"><strong>The move.</strong> Two reps to rebuild the reflex:</p>
+                    <ol style="font-size: clamp(0.88rem, 1.25vw, 0.98rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 0.6rem 0; padding-left: 1.4rem;">
+                        <li><strong>Ask Claude what it's least sure of.</strong> Drop this into any answer that matters: <em>"For each claim in this draft, mark high / medium / low confidence and tell me why."</em> The hedging the model wouldn't volunteer comes out when you ask.</li>
+                        <li><strong>Trust the shape of the claim, not the tone of the sentence.</strong> A specific name + a specific date + a specific number is the highest-risk shape — and the most confident-sounding. That's the signal to verify, not to nod along.</li>
+                    </ol>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: #8a5a00; margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(252, 176, 23, 0.4); font-style: italic;">Confidence is the model's default register, not its assessment of the truth.</p>
                 </div>
 
-                <!-- Q3: Convergence -->
-                <div style="margin-bottom: clamp(0.85rem, 1.5vw, 1.15rem); background: rgba(16, 26, 76, 0.04); border: 1px solid rgba(16, 26, 76, 0.18); border-left: 4px solid var(--navy); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.4rem);">
+                <!-- Q3: Where is Claude most likely to be wrong? -->
+                <div style="margin-bottom: clamp(0.85rem, 1.5vw, 1.15rem); background: rgba(252, 176, 23, 0.06); border: 1px solid rgba(252, 176, 23, 0.22); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.4rem);">
                     <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
-                        <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--white); background: var(--navy); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Q3</span>
-                        <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Discernment</span>
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--white); background: #8a5a00; padding: 2px 8px; border-radius: 4px; font-weight: 600;">Q3</span>
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Diligence</span>
                     </div>
-                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">What is convergence, and why is it the signal?</h4>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Convergence is the moment two or more independent lenses, running blind to each other, flag the same line for different reasons. The Fact-Checker flags an unsourced stat. The Originality Critic flags the same line for being a template AI opener. Two lenses, two reasons, one sentence. The sentence is the problem.</p>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> A single lens flags a line and the writer negotiates with it. "The Fact-Checker is being picky" — and the line ships. When two lenses land on it cold, negotiation stops. The line is the problem.</p>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The move.</strong> Read the audit triage for convergent flags first. They go to the top of the fix list. Everything else is recommended polish.</p>
-                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: var(--navy); margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(16, 26, 76, 0.2); font-style: italic;">Convergence is the math. Trust it over the vibe.</p>
+                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">Where is Claude most likely to be wrong?</h4>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Week 5 named external memory — the fuzzy, recall-heavy memory of everything in the training data. External memory is strong on patterns and weak on specifics. The five danger zones at the top of this week — names, numbers, dates, citations, your world — are exactly where specifics live. So those are the five places to check first, every time.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Why your world is the highest-risk of all.</strong> Claude wasn't trained on your partner list, your scholar count, your renewal calendar, or your team's voice. When you ask, it pattern-matches to the <em>nearest</em> thing it knows — "education nonprofit in DC" — and invents plausible specifics. Plausible is the dangerous register: not obviously wrong, easy to miss, sometimes embarrassingly close to right.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.4rem;"><strong>The move.</strong> Two halves — one before the question, one after.</p>
+                    <ol style="font-size: clamp(0.88rem, 1.25vw, 0.98rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 0.6rem 0; padding-left: 1.4rem;">
+                        <li><strong>Pre-empt.</strong> Load the source before you ask. If the question is about a DC CAP partner, paste the partner's actual page, the most recent email exchange, or the data row. Don't ask Claude to recall.</li>
+                        <li><strong>Spot-check.</strong> After the answer, scan the riskiest claim shapes. Names, numbers, dates, citations, your-world specifics — those go on a one-line check list every time.</li>
+                    </ol>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: #8a5a00; margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(252, 176, 23, 0.4); font-style: italic;">The closer the question gets to your specific world, the further it lands from Claude's strong patterns.</p>
                 </div>
 
-                <!-- Part 3 of 3 -->
+                <!-- Subgroup Header: Where It Compounds -->
                 <div style="display: flex; align-items: baseline; gap: 0.75rem; margin: clamp(1.5rem, 3vw, 2rem) 0 clamp(0.5rem, 1vw, 0.75rem) 0;">
-                    <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.95vw, 0.8rem); color: var(--purple); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Part 3 of 3</span>
-                    <h3 style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1rem, 1.7vw, 1.2rem); margin: 0;">Running It Yourself</h3>
+                    <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.95vw, 0.8rem); color: var(--purple); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Part 2 of 3</span>
+                    <h3 style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1rem, 1.7vw, 1.2rem); margin: 0;">Where It Compounds</h3>
                     <div style="flex: 1; height: 1px; background: rgba(131, 82, 255, 0.2);"></div>
                 </div>
 
-                <!-- Q4: What this looks like on your own work -->
+                <!-- Q4: Context overload -->
                 <div style="margin-bottom: clamp(0.85rem, 1.5vw, 1.15rem); background: rgba(131, 82, 255, 0.04); border: 1px solid rgba(131, 82, 255, 0.18); border-left: 4px solid var(--purple); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.4rem);">
                     <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
                         <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--white); background: var(--purple); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Q4</span>
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Description</span>
+                    </div>
+                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">What is context overload, and why does loading more sometimes make Claude worse?</h4>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Loading a 50-page PDF doesn't mean Claude reads all 50 pages equally. Attention degrades through long contexts. The first and last pages stay sharp. The middle thins. The "Lost in the Middle" finding (Liu et al., 2023) showed this with strong evidence — models scored highest when the relevant info sat at the start or end of a long document, and noticeably worse when it sat in the middle.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> "I gave Claude the whole report and asked about page 14. The answer was wrong." Right — page 14 is the middle. The model didn't lie. It pattern-completed <em>something that fit the question</em> because the middle was hazy. The fix isn't a better question; it's a better context.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.4rem;"><strong>The move.</strong> Three plays, in order of value:</p>
+                    <ol style="font-size: clamp(0.88rem, 1.25vw, 0.98rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 0.6rem 0; padding-left: 1.4rem;">
+                        <li><strong>Excerpt instead of dumping.</strong> Paste the three pages that matter, not the 50-page PDF. Sharper context, sharper answer.</li>
+                        <li><strong>Surface the key facts twice — at the top and the bottom.</strong> Anchor what matters at the high-attention zones.</li>
+                        <li><strong>Make Claude quote before answering.</strong> <em>"Quote the exact sentence you're basing this on, then answer."</em> If the model can't quote it cleanly, the answer isn't grounded — and you've caught the gap.</li>
+                    </ol>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: var(--purple); margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(131, 82, 255, 0.3); font-style: italic;">More context isn't always better. Sharper context is.</p>
+                </div>
+
+                <!-- Q5: Model drift inside a chat -->
+                <div style="margin-bottom: clamp(0.85rem, 1.5vw, 1.15rem); background: rgba(131, 82, 255, 0.04); border: 1px solid rgba(131, 82, 255, 0.18); border-left: 4px solid var(--purple); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.4rem);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--white); background: var(--purple); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Q5</span>
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Description carried forward</span>
+                    </div>
+                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">Why do my earlier rules fade as the chat goes on?</h4>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Week 5 named the symptom: by message 30, the rule you set at message 2 is gone. Here's the mechanic. Attention weighting tends to favor recent tokens — that's how the architecture works. And the model's own outputs become its future inputs, so any small wobble in message 10 feeds the wobble in message 15. By message 30, the wobbles have compounded into a different voice and a different set of working assumptions.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> A chat that started precise ends generic. A draft that started with three specific constraints ends with two general ones. People notice the result ("Claude got worse") and rarely the cause (the early rules got crowded out by the conversation that followed).</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.4rem;"><strong>The move.</strong> Three plays you can run today:</p>
+                    <ol style="font-size: clamp(0.88rem, 1.25vw, 0.98rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 0.6rem 0; padding-left: 1.4rem;">
+                        <li><strong>Re-anchor every 8–10 messages.</strong> Just paste: <em>"Remember — audience is counselors, voice is warm-professional, deadline is May 1. Confirm."</em> Forces attention back to the original rules.</li>
+                        <li><strong>Start fresh more often.</strong> Long chats aren't a virtue. One task per chat keeps drift from compounding.</li>
+                        <li><strong>Move the rules out of the chat.</strong> Anything you keep re-anchoring belongs in a Project's reference files. Internal memory beats re-anchoring every time.</li>
+                    </ol>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: var(--purple); margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(131, 82, 255, 0.3); font-style: italic;">Drift is design, not laziness. Build the workflow that fights it.</p>
+                </div>
+
+                <!-- Subgroup Header: How to Verify -->
+                <div style="display: flex; align-items: baseline; gap: 0.75rem; margin: clamp(1.5rem, 3vw, 2rem) 0 clamp(0.5rem, 1vw, 0.75rem) 0;">
+                    <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.95vw, 0.8rem); color: #8a5a00; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Part 3 of 3</span>
+                    <h3 style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1rem, 1.7vw, 1.2rem); margin: 0;">How to Verify — The Diligence Stack</h3>
+                    <div style="flex: 1; height: 1px; background: rgba(252, 176, 23, 0.3);"></div>
+                </div>
+
+                <!-- Q6: Manual checks -->
+                <div style="margin-bottom: clamp(0.85rem, 1.5vw, 1.15rem); background: rgba(252, 176, 23, 0.06); border: 1px solid rgba(252, 176, 23, 0.22); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.4rem);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--white); background: #8a5a00; padding: 2px 8px; border-radius: 4px; font-weight: 600;">Q6</span>
                         <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Diligence</span>
                     </div>
-                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">What does this look like on my own work?</h4>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Five steps. Intake (purpose, audience, stakes). Mode (light, standard, full). Panel (matched to artifact). Triage (verdict + score + critical flags). Decision (safe to send / needs work / do not send yet).</p>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.4rem;"><strong>Where it breaks.</strong> Two failure modes:</p>
+                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">What manual checks should I always run?</h4>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.4rem;"><strong>The plain answer.</strong> Three checks. Ninety seconds total. Every time.</p>
                     <ol style="font-size: clamp(0.88rem, 1.25vw, 0.98rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 0.6rem 0; padding-left: 1.4rem;">
-                        <li><strong>Skipping light mode</strong> because it "sounds basic." Light is a 90-second pass that catches the obvious convergent flags. The team that skips light ships the obvious flags every time.</li>
-                        <li><strong>Running full mode on everything</strong> because it feels thorough. Full takes ten minutes per artifact and produces literal rewrites you didn't ask for. The team that runs full on everything stops running it on anything.</li>
+                        <li><strong>Scan for the danger zones.</strong> Names, numbers, dates, citations, your-world specifics. Mark each one for spot-check.</li>
+                        <li><strong>Ask Claude for the claim table.</strong> After the draft: <em>"List every factual claim in the draft above as a table — claim, my confidence (high/medium/low), source. Be honest about confidence."</em> Surfaces what the draft buried.</li>
+                        <li><strong>Open one source.</strong> Just one. If Claude said "according to the May counselor report," open it. The single source you actually check is worth more than the ten you assume.</li>
                     </ol>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The move.</strong> Build the audit into the cadence of the work. Light runs every time. Standard runs before anything leaves the building. Full runs on the highest-stakes work — board, funder, external publication. <a href="practice/audit_picker.html" style="color: var(--purple); font-weight: 600;">Open the Audit Picker →</a></p>
-                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: var(--purple); margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(131, 82, 255, 0.3); font-style: italic;">Audit belongs in the workflow.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> Two failure modes. Most common: skipping all three. The draft looks good and people send it. Less common but counterproductive: running heavy verification on everything. Manual checks are the <em>floor</em>, not the only gate. They run fast on every artifact; heavier gates stack on top for higher stakes.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The move.</strong> Make the ninety seconds a habit, not a project. The three checks always run. Q7 and Q8 are how the discipline scales up from there.</p>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: #8a5a00; margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(252, 176, 23, 0.4); font-style: italic;">Manual verification is the floor, not the ceiling.</p>
+                </div>
+
+                <!-- Q7: Ground in real sources -->
+                <div style="margin-bottom: clamp(0.85rem, 1.5vw, 1.15rem); background: rgba(135, 183, 213, 0.08); border: 1px solid rgba(135, 183, 213, 0.25); border-left: 4px solid var(--blue); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.4rem);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--white); background: #2a5a78; padding: 2px 8px; border-radius: 4px; font-weight: 600;">Q7</span>
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Description</span>
+                    </div>
+                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">How do I ground Claude in real sources instead of recall?</h4>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Most hallucinations happen when Claude is recalling. Loading the source — making the answer <em>retrieve</em> from internal memory instead of <em>generate</em> from external memory — is the single highest-impact move in the verification stack.</p>
+
+                    <!-- The three grounding patterns callout -->
+                    <div style="margin: 0.6rem 0 0.85rem 0; background: var(--white); border: 1px solid rgba(135, 183, 213, 0.3); border-radius: 8px; padding: clamp(0.85rem, 1.6vw, 1.1rem);">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1.1vw, 0.86rem); color: #2a5a78; margin: 0 0 0.65rem 0; text-transform: uppercase; letter-spacing: 0.05em;">Three grounding patterns — easiest to most disciplined</p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: clamp(0.5rem, 1vw, 0.75rem);">
+                            <div style="padding: 0.75rem 0.9rem; background: rgba(135, 183, 213, 0.1); border-radius: 6px; border-left: 3px solid #2a5a78;">
+                                <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.88rem, 1.25vw, 0.98rem); color: #2a5a78; margin: 0 0 0.3rem 0;">1. Paste the source inline</p>
+                                <p style="font-size: clamp(0.82rem, 1.15vw, 0.9rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Before the question, paste the partner email, the policy page, the data row. Twenty seconds. Cuts hallucination on those specifics to near zero.</p>
+                            </div>
+                            <div style="padding: 0.75rem 0.9rem; background: rgba(135, 183, 213, 0.1); border-radius: 6px; border-left: 3px solid #2a5a78;">
+                                <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.88rem, 1.25vw, 0.98rem); color: #2a5a78; margin: 0 0 0.3rem 0;">2. Constrain the answer to the source</p>
+                                <p style="font-size: clamp(0.82rem, 1.15vw, 0.9rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Add a one-line guardrail: <em>"Only use facts from the document above. If a fact isn't there, say 'not in source' instead of guessing."</em> Gives Claude permission to say it doesn't know — without permission, the model fills the gap.</p>
+                            </div>
+                            <div style="padding: 0.75rem 0.9rem; background: rgba(135, 183, 213, 0.1); border-radius: 6px; border-left: 3px solid #2a5a78;">
+                                <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.88rem, 1.25vw, 0.98rem); color: #2a5a78; margin: 0 0 0.3rem 0;">3. Two-pass self-audit</p>
+                                <p style="font-size: clamp(0.82rem, 1.15vw, 0.9rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">First prompt drafts. Second prompt: <em>"For every factual claim in your draft, mark whether you can trace it to a source I gave you, or whether you generated it from training. List the generated ones."</em> The model will surprise you — it knows the difference, but doesn't volunteer it.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> People paste the source and <em>still</em> ask the recall question. <em>("Here's the partnership agreement — what year did we sign with Georgetown?")</em> If the source has the answer, ask Claude to quote it. If it doesn't, paste the source that does.</p>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: #2a5a78; margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(135, 183, 213, 0.4); font-style: italic;">Grounded answers are retrievals dressed as generations.</p>
+                </div>
+
+                <!-- Q8: Verification gates -->
+                <div style="margin-bottom: clamp(0.85rem, 1.5vw, 1.15rem); background: rgba(252, 176, 23, 0.06); border: 1px solid rgba(252, 176, 23, 0.22); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: clamp(1rem, 2vw, 1.4rem);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.7rem, 0.9vw, 0.78rem); color: var(--white); background: #8a5a00; padding: 2px 8px; border-radius: 4px; font-weight: 600;">Q8</span>
+                        <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Diligence carried forward</span>
+                    </div>
+                    <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">How do I build verification gates into the workflow itself?</h4>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Manual checks (Q6) and source grounding (Q7) are moves you make on one draft. Verification <em>gates</em> are the cadence those moves live inside — what your team inherits, not just what you do today. A gate is a checkpoint where work doesn't pass until specific checks have run.</p>
+
+                    <!-- Three gates callout -->
+                    <div style="margin: 0.6rem 0 0.85rem 0; background: var(--white); border: 1px solid rgba(252, 176, 23, 0.3); border-radius: 8px; padding: clamp(0.85rem, 1.6vw, 1.1rem);">
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1.1vw, 0.86rem); color: #8a5a00; margin: 0 0 0.65rem 0; text-transform: uppercase; letter-spacing: 0.05em;">The three gates — light, standard, full</p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(0.45rem, 0.9vw, 0.65rem);">
+                            <div style="padding: 0.65rem 0.8rem; background: rgba(252, 176, 23, 0.08); border-radius: 6px; border-top: 3px solid var(--gold);">
+                                <strong style="color: #8a5a00; font-family: var(--font-subhead); font-size: 0.95rem;">Light — pre-send check</strong><br>
+                                <span style="font-size: 0.82rem; color: var(--dark-gray); line-height: 1.5;">A one-paragraph prompt run <em>before</em> the draft: <em>"List every name, number, date, and citation you intend to use, with the source. Wait for me to confirm before drafting."</em> Forces the danger zones open before the model commits.</span>
+                            </div>
+                            <div style="padding: 0.65rem 0.8rem; background: rgba(131, 82, 255, 0.06); border-radius: 6px; border-top: 3px solid var(--purple);">
+                                <strong style="color: var(--purple); font-family: var(--font-subhead); font-size: 0.95rem;">Standard — two-window method</strong><br>
+                                <span style="font-size: 0.82rem; color: var(--dark-gray); line-height: 1.5;">One chat drafts. A second, fresh chat audits the draft. The audit chat has no investment in the draft and catches what the drafting chat protected. Closest thing to a peer in one person's hands.</span>
+                            </div>
+                            <div style="padding: 0.65rem 0.8rem; background: rgba(16, 26, 76, 0.05); border-radius: 6px; border-top: 3px solid var(--navy);">
+                                <strong style="color: var(--navy); font-family: var(--font-subhead); font-size: 0.95rem;">Full — adversarial-audit Skill</strong><br>
+                                <span style="font-size: 0.82rem; color: var(--dark-gray); line-height: 1.5;">Four lenses, run blind to each other. Convergent flags — two lenses landing on the same line for different reasons — are the verdict. Reserved for board, funder, and external-publication stakes.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> Two failure modes. Skipping the light gate because it "sounds basic" — light is what catches the obvious hallucinations on every draft. Running full on everything because it feels thorough — full takes ten minutes per artifact, and the team that runs full on everything stops running it on anything.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The team move.</strong> A verification gate is a leader decision, not a personal habit. The cadence you pick is what your team's defaults become. Skip the gate on Tier 2 work and you've moved the exposure from one draft to a thousand. <a href="practice/audit_picker.html" style="color: var(--gold); font-weight: 600;">Open the Audit Picker →</a></p>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: #8a5a00; margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(252, 176, 23, 0.4); font-style: italic;">Manual checks are what you do. Gates are what your team inherits.</p>
                 </div>
 
                 <!-- Resource Cards -->
                 <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: clamp(1.5rem, 2.5vw, 2rem);">
                     <div class="card gold-accent reveal-scale">
                         <span class="status-badge status-available">New</span>
-                        <h4 class="card-title">Week 6 Deck — Run an Audit</h4>
-                        <p class="card-description">The AI Friday session deck. Four questions, the adversarial-audit Skill walked through, and a pre-staged audit run with the convergent flag called out by name.</p>
-                        <a href="decks/week6_run_an_audit_deck.html" class="card-link">Open Deck →</a>
+                        <h4 class="card-title">Week 6 Deck — Confident Wrong</h4>
+                        <p class="card-description">The AI Friday session deck. Each mechanic paired with a real-world parallel — eyewitness reconstruction, death by GPS, UN interpreters, jury attention, Bartlett's serial reproduction, the WHO surgical checklist, evidence in the record. Ends with a live stack run that catches five hallucinations in one paragraph.</p>
+                        <a href="decks/week6_confident_wrong_deck.html" class="card-link">Open Deck →</a>
                     </div>
                     <div class="card blue-accent reveal-scale">
-                        <span class="status-badge status-available">New</span>
+                        <span class="status-badge status-available">Available</span>
                         <h4 class="card-title">Audit Picker</h4>
-                        <p class="card-description">Light, Standard, Full — which mode for which artifact, plus the panel-to-artifact map. The Model Picker's sibling. Printable.</p>
+                        <p class="card-description">The full gate — light, standard, full — mapped to artifact type and data tier. The Model Picker's sibling. Printable.</p>
                         <a href="practice/audit_picker.html" class="card-link">Open Picker →</a>
                     </div>
                     <div class="card purple-accent reveal-scale">
                         <span class="status-badge status-available">Available</span>
-                        <h4 class="card-title">AI Fluency Framework</h4>
-                        <p class="card-description">The 4Ds matrix. Audit is the discipline that turns Diligence from a personal habit into a team-shareable move.</p>
-                        <a href="ai_fluency_framework.html" class="card-link">View Framework →</a>
+                        <h4 class="card-title">AI Glossary</h4>
+                        <p class="card-description">Plain-language definitions for hallucination, attention, context window, external memory, and the rest of this week's terms.</p>
+                        <a href="ai_glossary.html" class="card-link">View Glossary →</a>
                     </div>
                     <div class="card gold-accent reveal-scale">
                         <span class="status-badge status-available">Available</span>
                         <h4 class="card-title">Three Builds You Can Steal</h4>
-                        <p class="card-description">Week 4's gallery. The adversarial-audit Skill is Build 02 — the full SKILL.md is there for anyone who wants to clone the structure for their own panel.</p>
+                        <p class="card-description">Week 4's gallery. The adversarial-audit Skill is Build 02 — the full SKILL.md is the structure behind the Full gate in Q8.</p>
                         <a href="decks/week4_three_builds.html" class="card-link">Open Gallery →</a>
                     </div>
                 </div>
 
                 <!-- Worked Example -->
                 <details style="margin-top: clamp(1rem, 2vw, 1.5rem); background: rgba(252, 176, 23, 0.06); border: 1px solid rgba(252, 176, 23, 0.2); border-left: 4px solid var(--gold); border-radius: 8px;">
-                    <summary style="padding: clamp(1rem, 2vw, 1.25rem); cursor: pointer; font-family: var(--font-subhead); font-weight: 600; font-size: clamp(0.95rem, 1.5vw, 1.1rem); color: var(--navy); list-style: none;">Worked Example — One Draft, One Audit, One Convergent Flag ▾</summary>
+                    <summary style="padding: clamp(1rem, 2vw, 1.25rem); cursor: pointer; font-family: var(--font-subhead); font-weight: 600; font-size: clamp(0.95rem, 1.5vw, 1.1rem); color: var(--navy); list-style: none;">Worked Example — One Draft, Three Planted Hallucinations, the Stack Catches All Three ▾</summary>
                     <div style="padding: 0 clamp(1rem, 2vw, 1.25rem) clamp(1rem, 2vw, 1.25rem);">
-                        <p style="font-size: clamp(0.82rem, 1.15vw, 0.92rem); line-height: 1.6; color: #666; margin: 0 0 0.85rem 0; padding: 0.55rem 0.8rem; background: rgba(16, 26, 76, 0.04); border-radius: 4px; border-left: 3px solid rgba(16, 26, 76, 0.25); font-style: italic;">Synthesized example — based on real DC CAP work patterns. Not a published draft.</p>
+                        <p style="font-size: clamp(0.82rem, 1.15vw, 0.92rem); line-height: 1.6; color: #666; margin: 0 0 0.85rem 0; padding: 0.55rem 0.8rem; background: rgba(16, 26, 76, 0.04); border-radius: 4px; border-left: 3px solid rgba(16, 26, 76, 0.25); font-style: italic;">Synthesized example — based on real DC CAP work patterns. Hallucinations planted on purpose so the verification stack has something to catch.</p>
 
-                        <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 1rem 0;"><strong>The artifact:</strong> a LinkedIn post about Week 5's reception. Roughly 180 words. Mid-stakes — public-facing, but not signed by Eric or going to a funder. Standard mode, four lenses, thought-leadership panel.</p>
+                        <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 1rem 0;"><strong>The artifact:</strong> a paragraph for a board memo update on the AI pilot's Week 5 reception. Tier 3 internal strategy — standard gate.</p>
 
-                        <!-- The draft itself (before) -->
-                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1vw, 0.85rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.4rem 0;">Draft v1 — what went into the audit</p>
-                        <pre style="background: #f4f5f8; color: #1a2240; font-family: var(--font-body); font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.65; padding: 0.95rem 1.1rem; border-radius: 6px; white-space: pre-wrap; margin: 0 0 0.85rem 0; border: 1px solid rgba(16, 26, 76, 0.12);">Studies show 73% of nonprofit AI implementations fail in the first year.
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1vw, 0.85rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.4rem 0;">Draft v1 — what Claude generated from recall</p>
+                        <pre style="background: #f4f5f8; color: #1a2240; font-family: var(--font-body); font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.65; padding: 0.95rem 1.1rem; border-radius: 6px; white-space: pre-wrap; margin: 0 0 0.85rem 0; border: 1px solid rgba(16, 26, 76, 0.12);">Week 5 of the pilot drew our strongest response to date. Of the 28 leaders in the cohort, 24 attended Friday's session — the highest attendance we've seen so far. The standout moment came from the Air Canada chatbot case, where attorney David Moffatt successfully argued that the airline was bound by the bereavement-fare policy its chatbot had hallucinated. Several leaders flagged this as the most concrete illustration of AI liability risk they'd seen. Two follow-up questions came in by email by Monday morning.</pre>
 
-At DC CAP, we've been working hard to navigate the AI landscape together with our leaders. Week 5 of our pilot focused on the mechanics underneath what we've been practicing — context, memory, hallucination, verification. The team has been incredible.
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1vw, 0.85rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.4rem 0;">Step 1 — Danger-zone scan (Q3 + Q6)</p>
+                        <div style="background: rgba(252, 176, 23, 0.05); border: 1px solid rgba(252, 176, 23, 0.2); border-radius: 6px; padding: 0.75rem 0.95rem; margin: 0 0 0.85rem 0;">
+                            <p style="font-size: clamp(0.85rem, 1.2vw, 0.94rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Flagged on a 30-second read:</p>
+                            <ul style="font-size: clamp(0.85rem, 1.2vw, 0.94rem); line-height: 1.65; color: var(--dark-gray); margin: 0.4rem 0 0 0; padding-left: 1.3rem;">
+                                <li><strong>Name:</strong> "attorney David Moffatt" — recalled, not pasted. Verify.</li>
+                                <li><strong>Numbers:</strong> "28 leaders... 24 attended... highest attendance to date" — none of these came from a pasted source. Verify.</li>
+                                <li><strong>Number:</strong> "Two follow-up questions by Monday morning" — also unsourced. Verify.</li>
+                                <li><strong>Dates:</strong> none specific enough to flag.</li>
+                                <li><strong>Citations:</strong> Air Canada case is real and public, but the attorney role isn't well-grounded in the draft.</li>
+                            </ul>
+                        </div>
 
-We're learning that fluency isn't about prompts. It's about the discipline of knowing what you're actually building.
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1vw, 0.85rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.4rem 0;">Step 2 — Claim table (Q6)</p>
+                        <pre style="background: #1a2240; color: #e8eaf2; font-family: var(--font-mono); font-size: clamp(0.72rem, 0.95vw, 0.82rem); line-height: 1.55; padding: 0.85rem 1rem; border-radius: 6px; overflow-x: auto; white-space: pre-wrap; margin: 0 0 0.85rem 0;">Prompt: "List every factual claim in the draft above as a table —
+         claim, your confidence (high/medium/low), source. Be honest."
 
-Excited to share more as the pilot continues!</pre>
+Claim                                          | Confidence | Source
+-----------------------------------------------|------------|------------------
+Week 5 drew strongest response to date         | LOW        | Generated
+28 leaders in cohort                           | MEDIUM     | I assumed
+24 attended Friday's session                   | LOW        | Generated
+"Highest attendance to date"                   | LOW        | Generated
+"Attorney David Moffatt"                       | MEDIUM     | Recalled name
+Air Canada bound by chatbot's hallucinated     | HIGH       | Public ruling,
+  bereavement policy                           |            | early 2024
+Two follow-up questions by Monday morning      | LOW        | Generated
 
-                        <!-- The Stage 1 triage output -->
-                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1vw, 0.85rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.4rem 0;">Stage 1 triage — what the four lenses returned</p>
-                        <pre style="background: #1a2240; color: #e8eaf2; font-family: var(--font-mono); font-size: clamp(0.72rem, 0.95vw, 0.82rem); line-height: 1.55; padding: 0.85rem 1rem; border-radius: 6px; overflow-x: auto; white-space: pre-wrap; margin: 0 0 0.85rem 0;">Audit run: LinkedIn draft — Week 5 reception
-Mode: Standard | Panel: Thought Leadership (4 agents)
-Intake: Audience = LinkedIn (peers, funders, education sector);
-        stakes = mid; deadline = today.
+Notes: Of seven claims, only one (the Air Canada ruling itself) is
+HIGH confidence and grounded outside my training. The attorney name
+is recalled — I am not certain it is correct.</pre>
 
-────────────────────────────────────────────────────────
-Stage 1 — Rapid Triage
-────────────────────────────────────────────────────────
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1vw, 0.85rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.4rem 0;">Step 3 — Source-loaded rewrite (Q7)</p>
+                        <p style="font-size: clamp(0.88rem, 1.25vw, 0.95rem); line-height: 1.65; color: var(--dark-gray); margin: 0 0 0.55rem 0;">Pasted into the chat: the actual Week 5 attendance log (22 attended of 27 enrolled; previous high was 23), the Moffatt v. Air Canada Civil Resolution Tribunal decision (passenger Jake Moffatt — not an attorney; he represented himself), and the actual email follow-up count (four, not two).</p>
+                        <p style="font-size: clamp(0.88rem, 1.25vw, 0.95rem); line-height: 1.65; color: var(--dark-gray); margin: 0 0 0.65rem 0;">New prompt: <em>"Rewrite the paragraph using only facts from the three sources I pasted above. If a fact is not in the sources, replace it with [verify] instead of guessing."</em></p>
 
-Verdict: Needs work — convergent flag on the opening line.
-Score: 5.5/10 composite
-       (Editor 6 · Fact-Checker 3 · Audience Proxy 6 · Originality Critic 4)
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1vw, 0.85rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.4rem 0;">Draft v2 — what shipped</p>
+                        <pre style="background: rgba(34, 139, 34, 0.06); color: #1a2240; font-family: var(--font-body); font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.65; padding: 0.95rem 1.1rem; border-radius: 6px; white-space: pre-wrap; margin: 0 0 0.85rem 0; border: 1px solid rgba(34, 139, 34, 0.2); border-left: 4px solid #2a7a2a;">Week 5 of the pilot drew the strongest response to date — 22 of 27 enrolled leaders attended Friday's session, narrowly above our prior high of 23. The standout moment came from the Moffatt v. Air Canada case, in which a passenger represented himself successfully before the Civil Resolution Tribunal after the airline's chatbot fabricated a bereavement-fare policy and the airline refused to honor it. Several leaders flagged this as the most concrete illustration of AI liability they'd seen. Four follow-up questions came in by Monday morning.</pre>
 
-Critical flags:
+                        <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--navy); margin: 1rem 0 0 0; padding-top: 0.75rem; border-top: 1px solid rgba(16, 26, 76, 0.08);"><strong>What the stack caught:</strong> the cohort size (wrong by one), the attendance number (wrong by two), "highest to date" (technically true but unsourced in v1), the attorney's name and role (wrong on both — he was a passenger, not an attorney, and his name was Jake), and the email count (wrong by half). Five fixes from three minutes of verification. Same draft, sourced.</p>
 
-• CONVERGENT (2 agents): Fact-Checker + Originality Critic
-  independently flagged the opening sentence — "Studies show 73%
-  of nonprofit AI implementations fail in the first year."
-    Fact-Checker: "No source. No citation. The number doesn't
-                   appear in any of the three sector reports I'd
-                   expect to source this. Cut or source."
-    Originality Critic: "Opening with a manufactured stat is the
-                         most common AI-thought-leadership template
-                         I see. The post is announcing itself as
-                         AI-generated before the second paragraph."
-
-• Editor: "navigate the AI landscape" — generic. The post claims
-  to be about discipline but the language is the same language
-  every AI post uses. Replace with a concrete observation from
-  this week.
-
-• Audience Proxy: borderline. The "team has been incredible" line
-  reads as internal-comms imported into a public channel. The
-  close ("Excited to share more!") doesn't actually invite anything
-  — no question, no link, no ask. Flag for tone, not a blocker.
-
-Two specific fixes before going further:
-  1. Cut or replace the 73% stat. The opener carries the post.
-  2. Replace "navigate the AI landscape" with one concrete thing
-     that happened on Friday.</pre>
-
-                        <!-- v2 callout -->
-                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.78rem, 1vw, 0.85rem); color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.4rem 0;">Draft v2 — what shipped after the audit</p>
-                        <pre style="background: rgba(34, 139, 34, 0.06); color: #1a2240; font-family: var(--font-body); font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.65; padding: 0.95rem 1.1rem; border-radius: 6px; white-space: pre-wrap; margin: 0 0 0.85rem 0; border: 1px solid rgba(34, 139, 34, 0.2); border-left: 4px solid #2a7a2a;">On Friday, the strongest reception of the pilot so far came from naming the mechanics underneath what people had been doing on principle.
-
-Week 5 walked through eight questions — context window, memory, model drift, hallucination, verify and validate. Each paired with a real work scenario outside DC CAP. The room got quiet at the Air Canada case. It got quieter at the one where attorneys filed a brief with fabricated citations.
-
-The lesson: verification belongs in the workflow, not bolted on at the end.
-
-If your organization is rolling out AI tools to leaders, the move I'd push for is to spend a week on the mechanics. Skip the prompt tricks.</pre>
-
-                        <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--navy); margin: 1rem 0 0 0; padding-top: 0.75rem; border-top: 1px solid rgba(16, 26, 76, 0.08);"><strong>What the audit did:</strong> caught the convergent flag (manufactured stat opener) that two independent lenses landed on cold. Replaced the AI-style "navigate the landscape" with a concrete observation. Replaced the soft close with a real invitation. Total time in audit: under three minutes for Stage 1 triage. Same draft, sharper post.</p>
+                        <p style="font-size: clamp(0.88rem, 1.25vw, 0.95rem); line-height: 1.65; color: var(--dark-gray); margin: 0.65rem 0 0 0; font-style: italic; padding-top: 0.5rem; border-top: 1px dashed rgba(16, 26, 76, 0.1);">For higher-stakes drafts going to a board or funder, Q8's full gate (the adversarial-audit Skill) layers four expert lenses on top of this. The Audit Picker linked above maps the gates to artifact types.</p>
                     </div>
                 </details>
 
                 <!-- Challenge + Capstone Bridge -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.75rem, 1.5vw, 1rem); margin-top: clamp(1rem, 2vw, 1.5rem);">
                     <div style="background: rgba(252, 176, 23, 0.06); border: 1px solid rgba(252, 176, 23, 0.2); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
-                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--gold); margin-bottom: 0.4rem;">This Week's Challenge — Light Mode on Real Work</p>
-                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0 0 0.5rem 0;">Pick one thing you sent externally this week — a counselor email, a partner update, a board paragraph, a LinkedIn draft. Run the light-mode audit on it. Three lenses, Stage 1 triage only.</p>
-                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Bring to Friday: the artifact (sanitized if needed), the verdict, and the one flag you'd act on if you could send it again. Friday's question: <em>where did the audit land on something you didn't see yourself?</em></p>
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--gold); margin-bottom: 0.4rem;">This Week's Challenge — Run the Stack on One Real Draft</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0 0 0.5rem 0;">Pick one draft you wrote with Claude this week — a counselor email, a partner update, a board paragraph, a LinkedIn post. Run the Q6 ninety-second pass: danger-zone scan, claim table, open one source.</p>
+                        <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Bring to Friday: the artifact (sanitized if needed), the claim table Claude produced, and the one fact the stack caught that you didn't see yourself. Friday's question: <em>which of the five danger zones is your blindspot?</em></p>
                     </div>
                     <div style="background: rgba(16, 26, 76, 0.04); border: 1px solid rgba(16, 26, 76, 0.15); border-radius: 8px; padding: clamp(0.75rem, 1.5vw, 1rem);">
-                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--navy); margin-bottom: 0.4rem;">Capstone Bridge — Name Your Audit Cadence</p>
+                        <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--navy); margin-bottom: 0.4rem;">Capstone Bridge — Name Your Verification Cadence</p>
                         <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0 0 0.5rem 0;">One sentence in your capstone scope. Fill the blanks:</p>
-                        <p style="font-size: clamp(0.88rem, 1.3vw, 0.98rem); line-height: 1.6; color: var(--navy); font-family: var(--font-subhead); margin: 0 0 0.5rem 0; padding: 0.55rem 0.8rem; background: rgba(16, 26, 76, 0.05); border-radius: 4px;">"The audit cadence for this build is <em>______ mode</em>, run by <em>______</em>, before <em>______</em> ships."</p>
+                        <p style="font-size: clamp(0.88rem, 1.3vw, 0.98rem); line-height: 1.6; color: var(--navy); font-family: var(--font-subhead); margin: 0 0 0.5rem 0; padding: 0.55rem 0.8rem; background: rgba(16, 26, 76, 0.05); border-radius: 4px;">"The verification cadence for this build is <em>______ gate</em> (light / standard / full), run by <em>______</em>, before <em>______</em> ships."</p>
                         <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">That sentence is the Diligence stub for Section 1. Week 7's peer review pulls from it directly.</p>
                     </div>
                 </div>
 
                 <!-- Governance Pulse -->
                 <div style="background: rgba(252, 176, 23, 0.05); border: 1px solid rgba(252, 176, 23, 0.2); border-radius: 8px; padding: clamp(0.85rem, 1.5vw, 1.1rem); margin-top: clamp(1rem, 2vw, 1.5rem);">
-                    <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--gold); margin-bottom: 0.5rem;">Governance Pulse — Audits are how Tier 2/3 work earns the right to leave the building</p>
-                    <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0 0 0.5rem 0;">Tier 4 (public) work is light mode by default. Tier 3 (internal strategy) is standard mode by default. Tier 2 (sensitive partner or operational) is standard or full, and the audit verdict goes in the record. The data tier sets the audit floor, not the ceiling.</p>
-                    <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;"><strong>Leader scope:</strong> if your team builds something that touches Tier 2 work, the audit cadence is part of the build. Skipping audits on Tier 2 ships exposure.</p>
+                    <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--gold); margin-bottom: 0.5rem;">Governance Pulse — Verification Cadence by Data Tier</p>
+                    <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0 0 0.5rem 0;">Tier 4 (public) work runs Q6 manual checks every time. Tier 3 (internal strategy) layers in Q7 source-grounding by default. Tier 2 (sensitive partner or operational) requires Q8's standard or full gate, with the verdict in the record. Tier 1 (FERPA/PII) doesn't touch Claude at all. The data tier sets the verification floor, not the ceiling.</p>
+                    <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;"><strong>Leader scope:</strong> the cadence you pick for your team's build is the cadence every artifact inherits. Picking <em>"light gate, run by the author"</em> is a real decision with a real shape. Skipping the decision means the team picks for itself, one artifact at a time.</p>
                 </div>
 
                 <!-- Weekly Reflection -->
@@ -3719,8 +3805,8 @@ If your organization is rolling out AI tools to leaders, the move I'd push for i
                     <div style="padding: 0 clamp(0.75rem, 1.5vw, 1rem) clamp(0.75rem, 1.5vw, 1rem);">
                         <form class="weekly-reflection-form" data-week="6" style="display: flex; flex-direction: column; gap: 0.75rem;">
                             <div>
-                                <label for="" style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">What did the audit catch that you didn't see yourself? What's your audit cadence for your capstone build?</label>
-                                <textarea aria-label="What the audit caught and your capstone audit cadence" style="width: 100%; min-height: 60px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; font-family: var(--font-body); font-size: 0.9rem; resize: vertical;" placeholder="The flag, the cadence, the change..."></textarea>
+                                <label for="" style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">Which of the five danger zones is your blindspot? What gate are you adding to your capstone build?</label>
+                                <textarea aria-label="Your danger-zone blindspot and capstone verification cadence" style="width: 100%; min-height: 60px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; font-family: var(--font-body); font-size: 0.9rem; resize: vertical;" placeholder="The zone, the gate, what shifted..."></textarea>
                             </div>
                             <fieldset style="border: none; padding: 0;">
                                 <legend style="display: block; font-size: clamp(0.85rem, 1.2vw, 0.95rem); font-weight: 600; color: var(--dark-gray); margin-bottom: 0.3rem;">Confidence level (1-5)</legend>
@@ -3745,7 +3831,7 @@ If your organization is rolling out AI tools to leaders, the move I'd push for i
                     <div style="font-family: var(--font-subhead); font-weight: 700; color: var(--navy); font-size: clamp(1.1rem, 2vw, 1.3rem);">Peer Review</div>
                     <div style="flex: 1; height: 2px; background: rgba(135, 183, 213, 0.3);"></div>
                 </div>
-                <p style="font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: var(--dark-gray); line-height: 1.6; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem); max-width: 800px;">Bring your capstone draft. Pair with a teammate. Run the audit panel on each other's builds. The cadence you named in Week 6 becomes the move. The peer is the lens you can't be for your own work.</p>
+                <p style="font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: var(--dark-gray); line-height: 1.6; margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem); max-width: 800px;">Bring your capstone draft. Pair with a teammate. Run the verification stack on each other's builds — danger-zone scan, claim table, source-loaded rewrite. The cadence you named in Week 6 becomes the move. The peer is the lens you can't be for your own work.</p>
 
                 <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
                     <div class="card purple-accent reveal-scale">
@@ -3757,7 +3843,7 @@ If your organization is rolling out AI tools to leaders, the move I'd push for i
                     <div class="card blue-accent reveal-scale">
                         <span class="status-badge status-available">Available</span>
                         <h4 class="card-title">Audit Picker</h4>
-                        <p class="card-description">The mode + panel map your peer reviewer will use on your draft.</p>
+                        <p class="card-description">The gate + panel map your peer reviewer will use on your draft.</p>
                         <a href="practice/audit_picker.html" class="card-link">Open Picker →</a>
                     </div>
                     <div class="card gold-accent reveal-scale">

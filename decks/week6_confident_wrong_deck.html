@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confident Wrong — DC CAP AI Pilot Week 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Serif+SemiCondensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+
+.slide {
+    width: 100vw; height: 100vh; height: 100dvh;
+    overflow: hidden; scroll-snap-align: start;
+    display: flex; flex-direction: column; position: relative;
+}
+.slide-content {
+    flex: 1; display: flex; flex-direction: column;
+    justify-content: flex-start;
+    max-height: 100%; overflow: hidden;
+    padding: clamp(2.5rem, 7vh, 5rem) var(--slide-padding) clamp(1.5rem, 3vh, 2.5rem);
+}
+.slide-hero .slide-content {
+    justify-content: flex-end;
+    padding-bottom: clamp(2.5rem, 8vh, 5rem);
+    padding-top: var(--slide-padding);
+}
+
+:root {
+    --navy: #101A4C;
+    --navy-deep: #0B1236;
+    --navy-mid: #162060;
+    --purple: #8352FF;
+    --purple-glow: rgba(131, 82, 255, 0.15);
+    --blue: #87B7D5;
+    --blue-glow: rgba(135, 183, 213, 0.12);
+    --gold: #FCB017;
+    --gold-glow: rgba(252, 176, 23, 0.12);
+    --tan: #FFF4ED;
+    --white: #FFFFFF;
+    --text-main: rgba(255, 255, 255, 0.92);
+    --text-secondary: rgba(255, 255, 255, 0.65);
+    --text-dim: rgba(255, 255, 255, 0.38);
+    --card-bg: rgba(255, 255, 255, 0.045);
+    --card-border: rgba(255, 255, 255, 0.09);
+
+    --font-display: 'Noto Serif SemiCondensed', Georgia, serif;
+    --font-body: 'Noto Serif', Georgia, serif;
+    --font-subhead: 'Noto Serif SemiCondensed', 'Noto Serif', Georgia, serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --title-size: clamp(2.2rem, 6vw, 4.5rem);
+    --h2-size: clamp(1.7rem, 4.2vw, 3rem);
+    --h3-size: clamp(1.2rem, 2.6vw, 1.8rem);
+    --body-size: clamp(1rem, 1.55vw, 1.25rem);
+    --body-lg: clamp(1.1rem, 2vw, 1.5rem);
+    --small-size: clamp(0.85rem, 1.25vw, 1.05rem);
+    --mono-size: clamp(0.72rem, 1.05vw, 0.88rem);
+
+    --slide-padding: clamp(2rem, 6vw, 6rem);
+    --content-gap: clamp(1rem, 2.5vw, 2.5rem);
+    --card-padding: clamp(1.1rem, 2.2vw, 1.75rem);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --duration-normal: 0.6s;
+}
+
+@media (max-height: 700px) {
+    :root { --title-size: clamp(1.6rem, 5vw, 3rem); --h2-size: clamp(1.3rem, 3.5vw, 2.2rem); --body-size: clamp(0.85rem, 1.35vw, 1.05rem); --body-lg: clamp(0.95rem, 1.75vw, 1.25rem); --h3-size: clamp(1rem, 2.2vw, 1.45rem); }
+    .slide-content { padding-top: clamp(1.5rem, 4vh, 3rem); }
+}
+@media (max-height: 600px) {
+    :root { --title-size: clamp(1.3rem, 4vw, 2.2rem); --h2-size: clamp(1.05rem, 2.8vw, 1.6rem); --body-size: clamp(0.78rem, 1.2vw, 0.95rem); --h3-size: clamp(0.9rem, 1.8vw, 1.2rem); }
+    .slide-content { padding-top: clamp(1rem, 3vh, 2rem); }
+    .nav-dots { display: none; }
+}
+@media (max-height: 500px) {
+    :root { --title-size: clamp(1.1rem, 3.5vw, 1.8rem); --body-size: clamp(0.7rem, 1vw, 0.85rem); }
+}
+@media (max-width: 780px) {
+    .qa-layout, .danger-row, .compound-row, .twin-cases, .knife-row { flex-direction: column !important; grid-template-columns: 1fr !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+    html { scroll-behavior: auto; }
+    .reveal, .reveal-scale { opacity: 1 !important; transform: none !important; }
+}
+@media print {
+    html { scroll-snap-type: none; }
+    .slide { page-break-after: always; page-break-inside: avoid; scroll-snap-align: unset; height: 100vh; }
+    .slide:last-child { page-break-after: auto; }
+    .nav-dots, .progress-bar { display: none !important; }
+    .reveal, .reveal-scale { opacity: 1 !important; transform: none !important; }
+}
+
+/* === TYPOGRAPHY === */
+body { font-family: var(--font-body); font-size: var(--body-size); line-height: 1.6; color: var(--text-main); background: var(--navy-deep); }
+h1 { font-family: var(--font-display); font-size: var(--title-size); font-weight: 900; line-height: 1.04; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); }
+h2 { font-family: var(--font-display); font-size: var(--h2-size); font-weight: 900; line-height: 1.08; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); }
+h3 { font-family: var(--font-subhead); font-size: var(--h3-size); font-weight: 700; line-height: 1.25; color: var(--white); }
+p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
+.eyebrow { font-family: var(--font-mono); font-size: var(--mono-size); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: clamp(0.5rem, 1vh, 0.9rem); }
+.accent-bar { width: clamp(3rem, 8vw, 6rem); height: 4px; background: var(--gold); margin-bottom: clamp(0.5rem, 1vh, 1rem); }
+
+/* === REVEALS === */
+.reveal { opacity: 0; transform: translateY(clamp(15px, 3vh, 30px)); transition: opacity var(--duration-normal) var(--ease-out-expo), transform var(--duration-normal) var(--ease-out-expo); }
+.reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity var(--duration-normal) var(--ease-out-expo), transform var(--duration-normal) var(--ease-spring); }
+.visible .reveal, .visible .reveal-scale { opacity: 1; transform: translateY(0) translateX(0) scale(1); }
+.reveal:nth-child(1) { transition-delay: 0s; }
+.reveal:nth-child(2) { transition-delay: 0.08s; }
+.reveal:nth-child(3) { transition-delay: 0.16s; }
+.reveal:nth-child(4) { transition-delay: 0.24s; }
+.reveal:nth-child(5) { transition-delay: 0.32s; }
+.reveal:nth-child(6) { transition-delay: 0.4s; }
+.reveal-scale:nth-child(1) { transition-delay: 0s; }
+.reveal-scale:nth-child(2) { transition-delay: 0.08s; }
+.reveal-scale:nth-child(3) { transition-delay: 0.16s; }
+.reveal-scale:nth-child(4) { transition-delay: 0.24s; }
+.reveal-scale:nth-child(5) { transition-delay: 0.32s; }
+
+/* === NAV === */
+.progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); z-index: 200; transition: width 0.3s ease; width: 0; }
+.nav-dots { position: fixed; right: clamp(0.75rem, 2vw, 1.5rem); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: clamp(6px, 1vh, 10px); z-index: 100; }
+.nav-dot { width: clamp(8px, 0.8vw, 10px); height: clamp(8px, 0.8vw, 10px); border-radius: 50%; background: rgba(255,255,255,0.15); border: none; cursor: pointer; padding: 0; transition: all 0.3s ease; }
+.nav-dot.active { background: var(--gold); transform: scale(1.5); }
+
+/* === SLIDE BACKGROUNDS === */
+.slide-hero {
+    background: radial-gradient(ellipse at 20% 80%, var(--gold-glow) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 20%, var(--purple-glow) 0%, transparent 55%),
+                var(--navy);
+}
+.slide-setup { background: radial-gradient(ellipse at 70% 50%, var(--gold-glow) 0%, transparent 60%), var(--navy-deep); }
+.slide-principles { background: radial-gradient(ellipse at 50% 40%, var(--gold-glow) 0%, transparent 55%), var(--navy-deep); }
+.slide-q-description { background: radial-gradient(ellipse at 30% 70%, var(--purple-glow) 0%, transparent 55%), var(--navy-deep); }
+.slide-q-diligence { background: radial-gradient(ellipse at 70% 30%, var(--gold-glow) 0%, transparent 55%), var(--navy-deep); }
+.slide-compound { background: radial-gradient(ellipse at 50% 50%, var(--gold-glow) 0%, transparent 60%), var(--navy-deep); }
+.slide-close { background: radial-gradient(ellipse at 80% 80%, var(--gold-glow) 0%, transparent 50%), radial-gradient(ellipse at 20% 30%, var(--purple-glow) 0%, transparent 50%), var(--navy-deep); }
+
+/* === HERO === */
+.slide-hero .subtitle { font-family: var(--font-subhead); font-size: var(--body-lg); font-weight: 300; color: var(--gold); line-height: 1.4; max-width: 36em; }
+.slide-hero .panel-info { font-family: var(--font-body); font-size: var(--small-size); color: var(--text-dim); line-height: 1.6; margin-top: clamp(1.5rem, 3vh, 3rem); }
+.slide-hero .panel-info strong { color: var(--text-main); }
+
+/* === Q&A SLIDE LAYOUT === */
+.qa-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(1.25rem, 2.5vw, 2.5rem);
+    margin-top: clamp(0.75rem, 2vh, 1.5rem);
+    flex: 1; align-items: stretch;
+}
+.qa-col {
+    display: flex; flex-direction: column;
+    padding: clamp(1rem, 2vw, 1.5rem);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-top: 4px solid;
+    border-radius: clamp(8px, 1.2vw, 12px);
+}
+.qa-col-real { border-top-color: var(--gold); }
+.qa-col-claude { border-top-color: var(--purple); }
+.qa-col-eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+}
+.qa-col-real .qa-col-eyebrow { color: var(--gold); }
+.qa-col-claude .qa-col-eyebrow { color: var(--purple); }
+.qa-col h3 {
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+    margin-bottom: clamp(0.5rem, 1vh, 0.8rem);
+    line-height: 1.2;
+}
+.qa-col p {
+    font-size: var(--small-size);
+    line-height: 1.6;
+    color: var(--text-main);
+    margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+}
+.qa-col p:last-child { margin-bottom: 0; }
+.qa-col .source {
+    font-family: var(--font-mono);
+    font-size: clamp(0.65rem, 0.95vw, 0.78rem);
+    color: var(--text-dim);
+    margin-top: auto;
+    padding-top: clamp(0.5rem, 1vh, 0.75rem);
+    border-top: 1px dashed rgba(255,255,255,0.1);
+    line-height: 1.4;
+}
+.qa-tag {
+    font-family: var(--font-subhead);
+    font-size: var(--small-size);
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-top: clamp(0.75rem, 1.5vh, 1.2rem);
+    padding-top: clamp(0.5rem, 1vh, 0.8rem);
+    border-top: 1px dashed rgba(255,255,255,0.12);
+    max-width: 50em;
+}
+.qa-tag strong { color: var(--gold); font-weight: 600; font-style: normal; }
+
+/* === DANGER ZONES (5-card row) === */
+.danger-row {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: clamp(0.5rem, 1vw, 0.9rem);
+    margin-top: clamp(0.9rem, 2vh, 1.6rem);
+}
+.danger-card {
+    background: rgba(252, 176, 23, 0.06);
+    border: 1px solid rgba(252, 176, 23, 0.22);
+    border-top: 3px solid var(--gold);
+    border-radius: clamp(6px, 1vw, 10px);
+    padding: clamp(0.8rem, 1.5vw, 1.2rem);
+}
+.danger-card .dc-label {
+    font-family: var(--font-subhead);
+    font-weight: 700;
+    font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+    color: var(--gold);
+    margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
+}
+.danger-card .dc-line {
+    font-size: clamp(0.78rem, 1.1vw, 0.92rem);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.danger-caption {
+    font-family: var(--font-subhead);
+    font-size: var(--small-size);
+    color: var(--text-secondary);
+    margin-top: clamp(0.9rem, 1.8vh, 1.4rem);
+    font-style: italic;
+    max-width: 52em;
+}
+
+/* === SETUP slide === */
+.setup-lead {
+    font-family: var(--font-subhead);
+    font-size: var(--body-lg);
+    font-weight: 300;
+    color: var(--text-main);
+    line-height: 1.55;
+    max-width: 42em;
+    margin-top: clamp(0.5rem, 1vh, 1rem);
+}
+.setup-questions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: clamp(0.5rem, 1vw, 0.8rem);
+    margin-top: clamp(1.25rem, 2.5vh, 1.8rem);
+}
+.setup-q {
+    font-family: var(--font-mono);
+    font-size: clamp(0.78rem, 1.15vw, 0.95rem);
+    color: var(--gold);
+    background: rgba(252, 176, 23, 0.06);
+    border: 1px solid rgba(252, 176, 23, 0.2);
+    border-radius: 6px;
+    padding: clamp(0.5rem, 1vw, 0.75rem) clamp(0.6rem, 1.2vw, 0.9rem);
+    letter-spacing: 0.02em;
+}
+
+/* === GATE ROW (Q8 — three gates) === */
+.knife-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: clamp(0.6rem, 1.2vw, 1rem);
+    margin-top: clamp(0.9rem, 2vh, 1.5rem);
+    flex: 1; align-items: stretch;
+}
+.knife-card {
+    padding: clamp(1rem, 2vw, 1.5rem);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-top: 4px solid;
+    border-radius: clamp(8px, 1.2vw, 12px);
+    display: flex; flex-direction: column;
+}
+.knife-card .kc-label {
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+}
+.knife-card h3 {
+    font-size: clamp(1.15rem, 2.1vw, 1.5rem);
+    margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
+    line-height: 1.2;
+}
+.knife-card .kc-tagline {
+    font-family: var(--font-subhead);
+    font-size: clamp(0.85rem, 1.25vw, 1rem);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: clamp(0.6rem, 1.2vh, 0.9rem);
+    font-style: italic;
+}
+.knife-card .kc-body {
+    font-size: var(--small-size);
+    color: var(--text-main);
+    line-height: 1.55;
+    flex: 1;
+}
+.kc-light { border-color: var(--gold); } .kc-light .kc-label, .kc-light h3 { color: var(--gold); }
+.kc-standard { border-color: var(--purple); background: rgba(131, 82, 255, 0.05); } .kc-standard .kc-label, .kc-standard h3 { color: var(--purple); }
+.kc-full { border-color: var(--blue); } .kc-full .kc-label, .kc-full h3 { color: var(--blue); }
+
+/* === TWIN CASE COLUMNS (slide 12, v1 vs v2) === */
+.twin-cases {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    margin-top: clamp(0.9rem, 2vh, 1.5rem);
+    flex: 1;
+}
+.twin-case {
+    padding: clamp(1rem, 2vw, 1.5rem);
+    background: rgba(252, 176, 23, 0.05);
+    border: 1px solid rgba(252, 176, 23, 0.2);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 clamp(8px, 1.2vw, 12px) clamp(8px, 1.2vw, 12px) 0;
+    display: flex; flex-direction: column;
+}
+.twin-case.tc-good {
+    background: rgba(34, 139, 34, 0.05);
+    border-color: rgba(34, 139, 34, 0.25);
+    border-left-color: #6fc56f;
+}
+.twin-case .tc-label {
+    font-family: var(--font-mono);
+    font-size: var(--mono-size);
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
+}
+.twin-case.tc-good .tc-label { color: #6fc56f; }
+.twin-case h3 {
+    font-size: clamp(1.05rem, 1.9vw, 1.35rem);
+    margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+    line-height: 1.2;
+}
+.twin-case .tc-body {
+    font-size: var(--small-size);
+    line-height: 1.6;
+    color: var(--text-main);
+    margin-bottom: clamp(0.4rem, 0.8vh, 0.6rem);
+}
+.twin-case .tc-quote {
+    font-family: var(--font-body);
+    font-size: clamp(0.82rem, 1.2vw, 0.95rem);
+    line-height: 1.55;
+    color: var(--text-main);
+    background: rgba(0, 0, 0, 0.18);
+    padding: clamp(0.65rem, 1.2vw, 0.95rem);
+    border-radius: 6px;
+    margin: clamp(0.4rem, 0.8vh, 0.6rem) 0;
+}
+.twin-case .tc-quote .flag {
+    background: rgba(252, 176, 23, 0.25);
+    padding: 0 3px;
+    border-radius: 2px;
+}
+.twin-case.tc-good .tc-quote .flag {
+    background: rgba(111, 197, 111, 0.25);
+}
+.twin-case .source {
+    font-family: var(--font-mono);
+    font-size: clamp(0.65rem, 0.95vw, 0.78rem);
+    color: var(--text-dim);
+    margin-top: auto;
+    padding-top: clamp(0.5rem, 1vh, 0.75rem);
+    line-height: 1.4;
+}
+
+/* === CLOSE / FRIDAY PROMPT === */
+.friday-prompt {
+    display: flex; flex-direction: column;
+    gap: clamp(0.75rem, 1.5vh, 1.2rem);
+    margin-top: clamp(1rem, 2.5vh, 2rem);
+}
+.fp-item { display: flex; gap: clamp(0.75rem, 1.5vw, 1.25rem); align-items: flex-start; }
+.fp-num {
+    font-family: var(--font-mono); font-size: clamp(1.3rem, 2.5vw, 2rem);
+    color: var(--gold); flex-shrink: 0; line-height: 1; min-width: 3ch;
+    font-weight: 500;
+}
+.fp-text { flex: 1; }
+.fp-label {
+    font-family: var(--font-subhead); font-weight: 700;
+    font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+    color: var(--white); margin-bottom: clamp(0.2rem, 0.4vh, 0.3rem);
+    line-height: 1.2;
+}
+.fp-text p { font-size: var(--small-size); color: var(--text-secondary); line-height: 1.55; max-width: 38em; }
+
+.contact-bar {
+    display: flex; gap: clamp(1rem, 2vw, 1.5rem); flex-wrap: wrap;
+    font-family: var(--font-mono); font-size: var(--mono-size);
+    padding-top: clamp(1.5rem, 3vh, 2.5rem); margin-top: clamp(1rem, 2vh, 1.5rem);
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+.contact-bar .cn { color: var(--white); font-weight: 500; }
+.contact-bar .ci { color: var(--text-secondary); }
+.contact-bar a { color: var(--gold); text-decoration: none; }
+
+/* === Generic prose === */
+.lead {
+    font-family: var(--font-subhead);
+    font-size: var(--body-lg);
+    font-weight: 300;
+    color: var(--text-main);
+    line-height: 1.5;
+    max-width: 38em;
+    margin-top: clamp(0.5rem, 1vh, 1rem);
+}
+.section-number { font-family: var(--font-mono); font-size: clamp(0.85rem, 1.3vw, 1.05rem); letter-spacing: 0.15em; color: var(--gold); margin-bottom: clamp(0.5rem, 1vh, 0.8rem); }
+
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<nav class="nav-dots" id="navDots" aria-label="Slide navigation"></nav>
+
+<!-- S1: HERO -->
+<section class="slide slide-hero" id="slide-0">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">WEEK 6 · AI FRIDAY · MAY 22, 2026</div>
+        <h1 class="reveal">Confident<br>Wrong.</h1>
+        <div class="accent-bar reveal"></div>
+        <p class="subtitle reveal">Why your assistant gets it wrong with a straight face — and the verification discipline that catches it before it ships.</p>
+        <p class="panel-info reveal">
+            <strong>Preston Magouirk</strong> · DC CAP Enterprise AI Leadership Pilot · Diligence in depth.
+        </p>
+    </div>
+</section>
+
+<!-- S2: SETUP -->
+<section class="slide slide-setup" id="slide-1">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">The setup</div>
+        <h2 class="reveal">Hallucination is what the model does by design.<br>Verification is what you do by design.</h2>
+        <p class="setup-lead reveal">Week 5 named the mechanics. Today we go deeper on one — Claude getting things <em>confidently wrong</em> — and build the stack newer users can run on every draft. Eight questions you've all asked once you've watched a hallucination land.</p>
+        <div class="setup-questions">
+            <div class="setup-q reveal">Why does Claude hallucinate?</div>
+            <div class="setup-q reveal">Why does it sound so confident?</div>
+            <div class="setup-q reveal">Where is it most likely wrong?</div>
+            <div class="setup-q reveal">What is context overload?</div>
+            <div class="setup-q reveal">Why do my early rules fade?</div>
+            <div class="setup-q reveal">What manual checks should I run?</div>
+            <div class="setup-q reveal">How do I ground in real sources?</div>
+            <div class="setup-q reveal">How do I build verification gates?</div>
+        </div>
+        <p class="lead reveal" style="margin-top: clamp(1.25rem, 2.5vh, 1.8rem);">You have all seen a confident wrong answer. Today we put names on what to do about it.</p>
+    </div>
+</section>
+
+<!-- S3: DANGER ZONES -->
+<section class="slide slide-principles" id="slide-2">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">Where confident-wrong hides</div>
+        <h2 class="reveal">Five danger zones.<br>Check first. Every time.</h2>
+        <p class="lead reveal">External memory — what the model absorbed in training — is strong on patterns and weak on specifics. These five are where the pattern fails most reliably. They are also where the verification stack lives.</p>
+        <div class="danger-row">
+            <div class="danger-card reveal-scale">
+                <div class="dc-label">Names</div>
+                <div class="dc-line">People, programs, partners.</div>
+            </div>
+            <div class="danger-card reveal-scale">
+                <div class="dc-label">Numbers</div>
+                <div class="dc-line">Counts, percentages, dollars.</div>
+            </div>
+            <div class="danger-card reveal-scale">
+                <div class="dc-label">Dates</div>
+                <div class="dc-line">Deadlines, events, history.</div>
+            </div>
+            <div class="danger-card reveal-scale">
+                <div class="dc-label">Citations</div>
+                <div class="dc-line">Papers, quotes, sources.</div>
+            </div>
+            <div class="danger-card reveal-scale">
+                <div class="dc-label">Your World</div>
+                <div class="dc-line">DC CAP partners, scholars, internal facts.</div>
+            </div>
+        </div>
+        <p class="danger-caption reveal">The closer the question gets to your specific world, the further it lands from Claude's strong patterns. Your world is the highest-risk zone of all — it never appeared in training data.</p>
+    </div>
+</section>
+
+<!-- S4: Q1 — WHY HALLUCINATE -->
+<section class="slide slide-q-diligence" id="slide-3">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">Q1 · Diligence</div>
+        <h2 class="reveal">Why does Claude hallucinate?</h2>
+        <div class="qa-layout">
+            <div class="qa-col qa-col-real reveal-scale">
+                <div class="qa-col-eyebrow">A real work scenario</div>
+                <h3>Eyewitness reconstruction.</h3>
+                <p>When eyewitnesses describe a crime, they don't replay a recording. They reconstruct what likely happened from fragments and patterns. Elizabeth Loftus's classic work showed witnesses inserting details — a yield sign that wasn't there, a "stop" sign that was — because the pattern of a traffic accident filled the gaps.</p>
+                <p>The witnesses weren't lying. They were generating. And the gaps filled in the most plausible-sounding way, with full subjective confidence.</p>
+                <div class="source">Loftus &amp; Palmer, "Reconstruction of automobile destruction" (1974). Replicated for fifty years across forensic and lab settings.</div>
+            </div>
+            <div class="qa-col qa-col-claude reveal-scale">
+                <div class="qa-col-eyebrow">In your Claude work</div>
+                <h3>Pattern completion, not retrieval.</h3>
+                <p>Claude isn't looking up facts. It's predicting the next word that fits the pattern of an answer. When the pattern is strong — "the capital of France is" — the prediction is reliable. When the pattern is weak — "the most-cited paper on nonprofit AI adoption is" — the model generates <em>something that looks like an answer</em>.</p>
+                <p>A plausible title. A plausible author. A plausible journal. None of which need to exist.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> The model isn't lying. It's completing. Same mechanism the witness uses — at machine speed and machine scale.</p>
+    </div>
+</section>
+
+<!-- S5: Q2 — WHY CONFIDENT -->
+<section class="slide slide-q-diligence" id="slide-4">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">Q2 · Diligence</div>
+        <h2 class="reveal">Why does Claude sound confident when it's wrong?</h2>
+        <div class="qa-layout">
+            <div class="qa-col qa-col-real reveal-scale">
+                <div class="qa-col-eyebrow">A real work scenario</div>
+                <h3>Death by GPS.</h3>
+                <p>Between 2009 and 2011, Death Valley National Park logged a cluster of incidents — drivers following GPS routes onto closed roads, dry lakebeds, and dead-end canyons. People died. Park rangers started calling it "death by GPS." The National Park Service eventually posted warning signs at the boundaries.</p>
+                <p>The GPS didn't say "I'm 30% sure this turn is right." It said "Turn right in 200 feet" in the same confident tone whether the road existed or not. The interface had one register — certain — regardless of what was actually underneath.</p>
+                <div class="source">Death Valley NPS incident reports, 2009–2011; New York Times, "Death by GPS in the Desert" (2011).</div>
+            </div>
+            <div class="qa-col qa-col-claude reveal-scale">
+                <div class="qa-col-eyebrow">In your Claude work</div>
+                <h3>Confidence is the default register.</h3>
+                <p>Claude has no internal sense of how sure it is. There's no quiet "I'm 30% confident" threaded through every sentence. Training data is mostly written by humans who sound confident, so the model does too. A fabricated case citation reads the same as a real one — to the model, both are answers shaped like answers.</p>
+                <p>The fix is to ask: <em>"For each claim in this draft, mark high / medium / low confidence and tell me why."</em> The hedging the model wouldn't volunteer comes out when you ask.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Confidence is the model's default register, not its assessment of the truth. Calibration is something you have to request.</p>
+    </div>
+</section>
+
+<!-- S6: Q3 — WHERE WRONG -->
+<section class="slide slide-q-diligence" id="slide-5">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">Q3 · Diligence</div>
+        <h2 class="reveal">Where is Claude most likely to be wrong?</h2>
+        <div class="qa-layout">
+            <div class="qa-col qa-col-real reveal-scale">
+                <div class="qa-col-eyebrow">A real work scenario</div>
+                <h3>Simultaneous interpreters at the UN.</h3>
+                <p>A simultaneous interpreter carries roughly 95% of general meaning across a fast speech. But the 5% loss isn't even. Studies of UN-level interpreters — Gerver in the 1970s, Christoffels and others since — show the failure mode is specific. Names, numbers, and dates are where interpreters trip. Even at the highest level, those three categories produce the most errors and the most "I'll come back to that" pauses.</p>
+                <p>Why those three? They carry no surrounding pattern. A name is itself or it isn't. A number has no synonym. Specifics have nothing to recover from.</p>
+                <div class="source">Gerver, <em>Empirical Studies of Simultaneous Interpretation</em> (1976). Christoffels, <em>Simultaneous Interpreting: A Cognitive Perspective</em> (2004).</div>
+            </div>
+            <div class="qa-col qa-col-claude reveal-scale">
+                <div class="qa-col-eyebrow">In your Claude work</div>
+                <h3>Five danger zones. Same logic.</h3>
+                <p>Names, numbers, dates, citations, your world — that's where Claude's pattern-matching fails most reliably. The interpreter's three weak spots are three of yours. Citations sit alongside as a related risk: a paper title and citation number is just another specific.</p>
+                <p>Your world is the deepest weakness. Claude wasn't trained on your partner list, scholar count, or renewal calendar. It pattern-matches to the nearest thing — "education nonprofit in DC" — and invents plausible specifics.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Specifics carry no pattern to recover from. That's why the five danger zones are where every verification pass starts.</p>
+    </div>
+</section>
+
+<!-- S7: Q4 — CONTEXT OVERLOAD -->
+<section class="slide slide-q-description" id="slide-6">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">Q4 · Description</div>
+        <h2 class="reveal">What is context overload?</h2>
+        <div class="qa-layout">
+            <div class="qa-col qa-col-real reveal-scale">
+                <div class="qa-col-eyebrow">A real work scenario</div>
+                <h3>The middle of a long trial.</h3>
+                <p>Mock-jury research has shown a stable pattern for decades. Jurors recall opening arguments and closing arguments at high fidelity. Middle testimony — even when it carries the decisive evidence — fades. Reid Hastie's mock-jury studies found jurors' final verdicts correlated more strongly with opening framing than with witness specifics, in part because the decisive witnesses landed in the attention-weakest part of the trial.</p>
+                <p>The mechanism isn't laziness. It's serial position. The first and last items in any sequence get more attention than the middle. Bennet Murdock named the effect in 1962 and it has replicated under hundreds of conditions since.</p>
+                <div class="source">Hastie, <em>Inside the Juror</em> (1991). Murdock, "The Serial Position Effect of Free Recall," J. Experimental Psychology (1962).</div>
+            </div>
+            <div class="qa-col qa-col-claude reveal-scale">
+                <div class="qa-col-eyebrow">In your Claude work</div>
+                <h3>Lost in the middle.</h3>
+                <p>Loading a 50-page PDF doesn't mean Claude reads it evenly. Attention degrades through long contexts. The "Lost in the Middle" finding (Liu et al., 2023) showed models score highest on questions answered at the start or end of a long document — and noticeably worse on questions answered by the middle.</p>
+                <p>Three plays: <strong>excerpt</strong> the three pages that matter rather than dumping the PDF; <strong>surface key facts twice</strong> (top and bottom of long context); <strong>make Claude quote</strong> before answering. If it can't quote it cleanly, the answer isn't grounded.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> More context isn't always better. Sharper context is. The middle is where errors hide.</p>
+    </div>
+</section>
+
+<!-- S8: Q5 — DRIFT -->
+<section class="slide slide-q-description" id="slide-7">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">Q5 · Description carried forward</div>
+        <h2 class="reveal">Why do my earlier rules fade?</h2>
+        <div class="qa-layout">
+            <div class="qa-col qa-col-real reveal-scale">
+                <div class="qa-col-eyebrow">A real work scenario</div>
+                <h3>Bartlett's War of the Ghosts, 1932.</h3>
+                <p>Frederic Bartlett gave English subjects a Native American folktale — "The War of the Ghosts" — and asked each to retell it from memory after a delay, then to retell their retelling. Each pass drifted further from the original. Specifics dropped out. Concepts that didn't fit European cultural patterns — canoes, ghosts, hunting magic — got smoothed into "boats," "phantoms," "fishing."</p>
+                <p>Bartlett called this serial reproduction. Each retelling pulled the story toward the listener's prior expectations. Drift wasn't error. It was pattern completion running on people.</p>
+                <div class="source">Bartlett, <em>Remembering: A Study in Experimental and Social Psychology</em> (1932). Foundational text in cognitive psychology, replicated continuously since.</div>
+            </div>
+            <div class="qa-col qa-col-claude reveal-scale">
+                <div class="qa-col-eyebrow">In your Claude work</div>
+                <h3>Same mechanism, faster.</h3>
+                <p>By message 30, the rule you set at message 2 is gone. Attention weighting tends to favor recent tokens — that's the architecture. And the model's own outputs become its future inputs, so a small wobble in message 10 feeds the wobble in message 15. By message 30, the wobbles have compounded into a different voice and a different set of working assumptions.</p>
+                <p>Three plays: <strong>re-anchor</strong> every 8–10 messages; <strong>start fresh</strong> more often (one task per chat); <strong>move durable rules</strong> into a Project's reference files — internal memory beats re-anchoring every time.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Drift is design, not laziness. Build the workflow that fights it.</p>
+    </div>
+</section>
+
+<!-- S9: Q6 — MANUAL CHECKS -->
+<section class="slide slide-q-diligence" id="slide-8">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">Q6 · Diligence</div>
+        <h2 class="reveal">What manual checks should I always run?</h2>
+        <div class="qa-layout">
+            <div class="qa-col qa-col-real reveal-scale">
+                <div class="qa-col-eyebrow">A real work scenario</div>
+                <h3>The WHO Surgical Safety Checklist.</h3>
+                <p>In 2008, Atul Gawande led the development of a 19-item checklist for surgical teams. Three pause-points: before anesthesia, before incision, before the patient leaves. The checks themselves were obvious — verify the patient, confirm the procedure, count the instruments.</p>
+                <p>The result, published in the New England Journal of Medicine: a 36% drop in major complications and a 47% drop in deaths across eight hospitals from Tanzania to Toronto. The discipline was the small fast check that catches the obvious mistake.</p>
+                <div class="source">Haynes et al., "A Surgical Safety Checklist to Reduce Morbidity and Mortality" (NEJM, 2009). Gawande, <em>The Checklist Manifesto</em> (2009).</div>
+            </div>
+            <div class="qa-col qa-col-claude reveal-scale">
+                <div class="qa-col-eyebrow">In your Claude work</div>
+                <h3>Ninety seconds. Every time.</h3>
+                <p>Three checks. <strong>Scan</strong> for the danger zones — names, numbers, dates, citations, your-world specifics. <strong>Ask Claude for the claim table</strong> — "list every factual claim, your confidence, the source." <strong>Open one source.</strong> Just one. The one you check is worth more than the ten you assume.</p>
+                <p>Manual verification is the floor, not the ceiling. The checks always run; heavier gates stack on top for higher stakes.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> The discipline of a checklist isn't that the items are clever. It's that you run them.</p>
+    </div>
+</section>
+
+<!-- S10: Q7 — SOURCE GROUNDING -->
+<section class="slide slide-q-description" id="slide-9">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--purple);">Q7 · Description</div>
+        <h2 class="reveal">How do I ground Claude in real sources?</h2>
+        <div class="qa-layout">
+            <div class="qa-col qa-col-real reveal-scale">
+                <div class="qa-col-eyebrow">A real work scenario</div>
+                <h3>Evidence in the record.</h3>
+                <p>A judge cannot rule on a fact that isn't entered into evidence. A witness who testifies but isn't sworn doesn't count. A document referenced but not introduced is invisible. The record is what the court can use. Everything outside the record is hearsay.</p>
+                <p>This isn't a rule about truth. It's a rule about what's available for use. The same fact — out of the record, useless; in the record, decisive.</p>
+                <div class="source">Federal Rules of Evidence, esp. Rule 802 (hearsay). Foundational principle across common-law systems for over a century.</div>
+            </div>
+            <div class="qa-col qa-col-claude reveal-scale">
+                <div class="qa-col-eyebrow">In your Claude work</div>
+                <h3>Internal memory is your record.</h3>
+                <p>Most hallucinations happen when Claude is recalling. Loading the source — making the answer <em>retrieve</em> from internal memory instead of <em>generate</em> from external memory — is the single highest-impact move in the stack.</p>
+                <p>Three patterns: <strong>paste the source inline</strong>; <strong>constrain the answer to the source</strong> ("if a fact isn't in the document, say 'not in source' instead of guessing"); <strong>two-pass self-audit</strong> ("for every claim, mark whether you traced it to a source I gave you or generated it from training").</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Grounded answers are retrievals dressed as generations. Move the fact from training to context, and the model can find it.</p>
+    </div>
+</section>
+
+<!-- S11: Q8 — VERIFICATION GATES -->
+<section class="slide slide-q-diligence" id="slide-10">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">Q8 · Diligence carried forward</div>
+        <h2 class="reveal">How do I build verification gates into the workflow?</h2>
+        <p class="lead reveal" style="max-width: 48em;">A gate is a checkpoint where work doesn't pass until specific checks have run. Three gates, light to heavy. The cadence you pick is what your team's defaults become — for every artifact, every week.</p>
+        <div class="knife-row">
+            <div class="knife-card kc-light reveal-scale">
+                <div class="kc-label">Light · pre-send check</div>
+                <h3>Run before drafting.</h3>
+                <p class="kc-tagline">"List every name, number, date, and citation you intend to use, with the source. Wait for me to confirm before drafting."</p>
+                <p class="kc-body">Forces the danger zones open before the model commits to a draft. Runs in about a minute. Default for every Tier 4 (public) artifact.</p>
+            </div>
+            <div class="knife-card kc-standard reveal-scale">
+                <div class="kc-label">Standard · two-window method</div>
+                <h3>Drafting chat + audit chat.</h3>
+                <p class="kc-tagline">One chat drafts. A second, fresh chat audits the draft cold.</p>
+                <p class="kc-body">The audit chat has no investment in the draft and catches what the drafting chat protected. Closest thing to a peer in one person's hands. Default for Tier 3 internal strategy.</p>
+            </div>
+            <div class="knife-card kc-full reveal-scale">
+                <div class="kc-label">Full · adversarial audit</div>
+                <h3>Four lenses, blind to each other.</h3>
+                <p class="kc-tagline">The adversarial-audit Skill from Week 4. Convergent flags are the verdict.</p>
+                <p class="kc-body">Two lenses landing on the same line for different reasons = the line is the problem. Reserved for board, funder, external publication. Tier 2 sensitive partner work earns this gate.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Manual checks are what you do. Gates are what your team inherits.</p>
+    </div>
+</section>
+
+<!-- S12: THE STACK IN ACTION -->
+<section class="slide slide-compound" id="slide-11">
+    <div class="slide-content">
+        <div class="section-number reveal">The stack in action</div>
+        <h2 class="reveal">Five hallucinations in one paragraph.<br>Three minutes catches all five.</h2>
+        <p class="lead reveal" style="max-width: 46em;">A board-memo paragraph on Week 5's reception. Generated from recall on the left. The same paragraph after the danger-zone scan, claim table, and source-loaded rewrite on the right.</p>
+        <div class="twin-cases">
+            <div class="twin-case reveal-scale">
+                <div class="tc-label">Draft v1 — generated from recall</div>
+                <h3>What Claude returned with no source loaded.</h3>
+                <div class="tc-quote">Week 5 of the pilot drew our strongest response to date. Of the <span class="flag">28 leaders in the cohort</span>, <span class="flag">24 attended</span> Friday's session — the <span class="flag">highest attendance to date</span>. The standout moment came from the Air Canada chatbot case, where <span class="flag">attorney David Moffatt</span> successfully argued that the airline was bound by the bereavement-fare policy its chatbot had hallucinated. <span class="flag">Two follow-up questions</span> came in by Monday morning.</div>
+                <p class="tc-body" style="font-style: italic; font-size: clamp(0.78rem, 1.1vw, 0.9rem); color: var(--text-secondary);">Five highlighted spans — cohort size, attendance, "highest to date," attorney name and role, email count — all flagged by the danger-zone scan and confessed as low confidence in the claim table.</p>
+            </div>
+            <div class="twin-case tc-good reveal-scale">
+                <div class="tc-label">Draft v2 — source-loaded rewrite</div>
+                <h3>Same paragraph after the stack.</h3>
+                <div class="tc-quote">Week 5 of the pilot drew the strongest response to date — <span class="flag">22 of 27</span> enrolled leaders attended Friday's session, narrowly above our <span class="flag">prior high of 23</span>. The standout moment came from the Moffatt v. Air Canada case, in which <span class="flag">a passenger represented himself</span> successfully before the Civil Resolution Tribunal after the airline's chatbot fabricated a bereavement-fare policy and the airline refused to honor it. <span class="flag">Four follow-up questions</span> came in by Monday morning.</div>
+                <p class="tc-body" style="font-style: italic; font-size: clamp(0.78rem, 1.1vw, 0.9rem); color: var(--text-secondary);">Sources loaded: the actual Week 5 attendance log, the Moffatt v. Air Canada decision, and the email follow-up count. Five fixes in three minutes. Same draft, sourced.</p>
+            </div>
+        </div>
+        <p class="qa-tag reveal" style="margin-top: clamp(0.75rem, 1.5vh, 1rem);"><strong>The compound:</strong> The diligence stack — danger-zone scan, claim table, source-loaded rewrite — is what every leader at this table can run on every draft, every week. Q8's heavier gates stack on top for higher stakes.</p>
+    </div>
+</section>
+
+<!-- S13: FRIDAY CLOSE -->
+<section class="slide slide-close" id="slide-12">
+    <div class="slide-content">
+        <div class="eyebrow reveal" style="color: var(--gold);">Your turn</div>
+        <h2 class="reveal">Bring a draft. Run the stack.</h2>
+        <p class="lead reveal" style="max-width: 40em;">One artifact you wrote with Claude this week — counselor email, partner update, board paragraph, LinkedIn post. The simpler the better. We walk through one together.</p>
+        <div class="friday-prompt">
+            <div class="fp-item reveal">
+                <div class="fp-num">01</div>
+                <div class="fp-text">
+                    <div class="fp-label">Name the zone.</div>
+                    <p>Which of the five danger zones — names, numbers, dates, citations, your world — did the stack catch on your draft? Which one is your blindspot?</p>
+                </div>
+            </div>
+            <div class="fp-item reveal">
+                <div class="fp-num">02</div>
+                <div class="fp-text">
+                    <div class="fp-label">Show the catch.</div>
+                    <p>What did the claim table reveal that the draft hid? What was different about the prompt that produced the sourced rewrite?</p>
+                </div>
+            </div>
+            <div class="fp-item reveal">
+                <div class="fp-num">03</div>
+                <div class="fp-text">
+                    <div class="fp-label">Pass it forward.</div>
+                    <p>The verification cadence for your capstone build is <em>______ gate</em>, run by <em>______</em>, before <em>______</em> ships. Where does it sit in your scope?</p>
+                </div>
+            </div>
+        </div>
+        <div class="contact-bar reveal" style="margin-top: auto;">
+            <span class="cn">Preston Magouirk</span>
+            <span class="ci">preston.magouirk@dccap.org</span>
+            <span class="ci"><a href="https://dccapinnovation.org">dccapinnovation.org</a></span>
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    const progressBar = document.getElementById('progressBar');
+    const navContainer = document.getElementById('navDots');
+    slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+        dot.addEventListener('click', () => slides[i].scrollIntoView({ behavior: 'smooth' }));
+        navContainer.appendChild(dot);
+    });
+    const dots = navContainer.querySelectorAll('.nav-dot');
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                const idx = Array.from(slides).indexOf(entry.target);
+                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+                progressBar.style.width = ((idx + 1) / totalSlides * 100) + '%';
+            }
+        });
+    }, { threshold: 0.4 });
+    slides.forEach(s => obs.observe(s));
+    document.addEventListener('keydown', (e) => {
+        const ci = Array.from(dots).findIndex(d => d.classList.contains('active'));
+        if (['ArrowDown','ArrowRight',' ','PageDown'].includes(e.key) && ci < totalSlides - 1) {
+            e.preventDefault(); slides[ci + 1].scrollIntoView({ behavior: 'smooth' });
+        } else if (['ArrowUp','ArrowLeft','PageUp'].includes(e.key) && ci > 0) {
+            e.preventDefault(); slides[ci - 1].scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+})();
+</script>
+</body>
+</html>
