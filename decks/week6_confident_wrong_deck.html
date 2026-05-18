@@ -505,12 +505,12 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
             </div>
             <div class="qa-col qa-col-claude reveal-scale">
                 <div class="qa-col-eyebrow">In your Claude work</div>
-                <h3>Pattern completion, not retrieval.</h3>
-                <p>Claude isn't looking up facts. It's predicting the next word that fits the pattern of an answer. When the pattern is strong — "the capital of France is" — the prediction is reliable. When the pattern is weak — "the most-cited paper on nonprofit AI adoption is" — the model generates <em>something that looks like an answer</em>.</p>
+                <h3>Every answer is a completion.</h3>
+                <p>Claude predicts the next word that fits the pattern of an answer. There's no database query happening underneath. When the pattern is strong — "the capital of France is" — the prediction is reliable. When the pattern is weak — "the most-cited paper on nonprofit AI adoption is" — the model generates <em>something that looks like an answer</em>.</p>
                 <p>A plausible title. A plausible author. A plausible journal. None of which need to exist.</p>
             </div>
         </div>
-        <p class="qa-tag reveal"><strong>The takeaway:</strong> The model isn't lying. It's completing. Same mechanism the witness uses — at machine speed and machine scale.</p>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Every confident answer is a completion. Same mechanism the witness uses — at machine speed and machine scale.</p>
     </div>
 </section>
 
@@ -534,7 +534,7 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
                 <p>The fix is to ask: <em>"For each claim in this draft, mark high / medium / low confidence and tell me why."</em> The hedging the model wouldn't volunteer comes out when you ask.</p>
             </div>
         </div>
-        <p class="qa-tag reveal"><strong>The takeaway:</strong> Confidence is the model's default register, not its assessment of the truth. Calibration is something you have to request.</p>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Confidence is the model's default register. Calibration is something you have to request.</p>
     </div>
 </section>
 
@@ -572,7 +572,7 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
                 <div class="qa-col-eyebrow">A real work scenario</div>
                 <h3>The middle of a long trial.</h3>
                 <p>Mock-jury research has shown a stable pattern for decades. Jurors recall opening arguments and closing arguments at high fidelity. Middle testimony — even when it carries the decisive evidence — fades. Reid Hastie's mock-jury studies found jurors' final verdicts correlated more strongly with opening framing than with witness specifics, in part because the decisive witnesses landed in the attention-weakest part of the trial.</p>
-                <p>The mechanism isn't laziness. It's serial position. The first and last items in any sequence get more attention than the middle. Bennet Murdock named the effect in 1962 and it has replicated under hundreds of conditions since.</p>
+                <p>The mechanism is serial position. The first and last items in any sequence get more attention than the middle — Bennet Murdock named the effect in 1962 and it has replicated under hundreds of conditions since.</p>
                 <div class="source">Hastie, <em>Inside the Juror</em> (1991). Murdock, "The Serial Position Effect of Free Recall," J. Experimental Psychology (1962).</div>
             </div>
             <div class="qa-col qa-col-claude reveal-scale">
@@ -582,7 +582,7 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
                 <p>Three plays: <strong>excerpt</strong> the three pages that matter rather than dumping the PDF; <strong>surface key facts twice</strong> (top and bottom of long context); <strong>make Claude quote</strong> before answering. If it can't quote it cleanly, the answer isn't grounded.</p>
             </div>
         </div>
-        <p class="qa-tag reveal"><strong>The takeaway:</strong> More context isn't always better. Sharper context is. The middle is where errors hide.</p>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Sharper context produces sharper answers. The middle is where errors hide.</p>
     </div>
 </section>
 
@@ -606,7 +606,7 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
                 <p>Three plays: <strong>re-anchor</strong> every 8–10 messages; <strong>start fresh</strong> more often (one task per chat); <strong>move durable rules</strong> into a Project's reference files — internal memory beats re-anchoring every time.</p>
             </div>
         </div>
-        <p class="qa-tag reveal"><strong>The takeaway:</strong> Drift is design, not laziness. Build the workflow that fights it.</p>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> Drift is built into the architecture. Build the workflow that fights it.</p>
     </div>
 </section>
 
@@ -627,10 +627,10 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
                 <div class="qa-col-eyebrow">In your Claude work</div>
                 <h3>Ninety seconds. Every time.</h3>
                 <p>Three checks. <strong>Scan</strong> for the danger zones — names, numbers, dates, citations, your-world specifics. <strong>Ask Claude for the claim table</strong> — "list every factual claim, your confidence, the source." <strong>Open one source.</strong> Just one. The one you check is worth more than the ten you assume.</p>
-                <p>Manual verification is the floor, not the ceiling. The checks always run; heavier gates stack on top for higher stakes.</p>
+                <p>Manual verification is the floor. The checks always run; heavier gates stack on top for higher stakes.</p>
             </div>
         </div>
-        <p class="qa-tag reveal"><strong>The takeaway:</strong> The discipline of a checklist isn't that the items are clever. It's that you run them.</p>
+        <p class="qa-tag reveal"><strong>The takeaway:</strong> A checklist works because you run it every time.</p>
     </div>
 </section>
 
@@ -644,7 +644,7 @@ p { font-size: var(--body-size); line-height: 1.6; color: var(--text-main); }
                 <div class="qa-col-eyebrow">A real work scenario</div>
                 <h3>Evidence in the record.</h3>
                 <p>A judge cannot rule on a fact that isn't entered into evidence. A witness who testifies but isn't sworn doesn't count. A document referenced but not introduced is invisible. The record is what the court can use. Everything outside the record is hearsay.</p>
-                <p>This isn't a rule about truth. It's a rule about what's available for use. The same fact — out of the record, useless; in the record, decisive.</p>
+                <p>The rule governs what's available for use. The same fact — out of the record, useless; in the record, decisive.</p>
                 <div class="source">Federal Rules of Evidence, esp. Rule 802 (hearsay). Foundational principle across common-law systems for over a century.</div>
             </div>
             <div class="qa-col qa-col-claude reveal-scale">

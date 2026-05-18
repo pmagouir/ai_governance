@@ -3514,17 +3514,17 @@ em-dashes &gt;2 per piece.
                         <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Diligence</span>
                     </div>
                     <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">Why does Claude hallucinate in the first place?</h4>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Claude isn't looking up facts. It's predicting the next word that fits the pattern of an answer. When the pattern is strong — "the capital of France is" — the prediction is reliable. When the pattern is weak — "the most-cited paper on nonprofit AI adoption is" — the model generates <em>something that looks like an answer</em>. A plausible title. A plausible author. A plausible journal. None of which need to exist.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Claude predicts the next word that fits the pattern of an answer. There's no database query happening underneath. When the pattern is strong — "the capital of France is" — the prediction is reliable. When the pattern is weak — "the most-cited paper on nonprofit AI adoption is" — the model generates <em>something that looks like an answer</em>. A plausible title. A plausible author. A plausible journal. None of which need to exist.</p>
                     <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> People treat Claude like a search engine. Search engines retrieve. Claude generates. A retrieved fact is either there or it isn't. A generated fact is there whether or not it's true.</p>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The move.</strong> Build the felt sense: every Claude answer is a <em>generation</em>, not a retrieval. Hold one question in your head — <em>"is the pattern strong enough here for the answer to be right?"</em> Pattern is strong on broad, well-repeated things (definitions, well-known events, common code). Pattern is weak on specifics, recent events, and anything inside your own organization.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The move.</strong> Build the felt sense: every Claude answer is a <em>generation</em>. Hold one question in your head — <em>"is the pattern strong enough here for the answer to be right?"</em> Pattern is strong on broad, well-repeated things (definitions, well-known events, common code). Pattern is weak on specifics, recent events, and anything inside your own organization.</p>
 
                     <!-- Real-world parallel callout -->
                     <div style="margin: 0.6rem 0 0.6rem 0; background: var(--white); border: 1px solid rgba(252, 176, 23, 0.3); border-radius: 6px; padding: 0.7rem 0.9rem;">
                         <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.75rem, 1vw, 0.82rem); color: #8a5a00; margin: 0 0 0.3rem 0; text-transform: uppercase; letter-spacing: 0.04em;">Real-world parallel — Mata v. Avianca, June 2023</p>
-                        <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Two attorneys filed a federal brief citing six prior cases. None of the six existed. The model had generated the kind of thing the prompt asked for — plausible case names, plausible courts, plausible citation numbers — and the lawyers never opened a single one. The court fined them and the case became the canonical hallucination story. The lesson isn't that AI is bad. It's that <em>the model completed the pattern, and no one checked.</em></p>
+                        <p style="font-size: clamp(0.85rem, 1.2vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;">Two attorneys filed a federal brief citing six prior cases. None of the six existed. The model had generated the kind of thing the prompt asked for — plausible case names, plausible courts, plausible citation numbers — and the lawyers never opened a single one. The court fined them and the case became the canonical hallucination story. The lesson is simpler than "AI is bad": <em>the model completed the pattern, and no one checked.</em></p>
                     </div>
 
-                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: #8a5a00; margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(252, 176, 23, 0.4); font-style: italic;">The model isn't lying. It's completing.</p>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: #8a5a00; margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(252, 176, 23, 0.4); font-style: italic;">Every confident answer is a completion.</p>
                 </div>
 
                 <!-- Q2: Why does Claude sound confident? -->
@@ -3539,9 +3539,9 @@ em-dashes &gt;2 per piece.
                     <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.4rem;"><strong>The move.</strong> Two reps to rebuild the reflex:</p>
                     <ol style="font-size: clamp(0.88rem, 1.25vw, 0.98rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 0.6rem 0; padding-left: 1.4rem;">
                         <li><strong>Ask Claude what it's least sure of.</strong> Drop this into any answer that matters: <em>"For each claim in this draft, mark high / medium / low confidence and tell me why."</em> The hedging the model wouldn't volunteer comes out when you ask.</li>
-                        <li><strong>Trust the shape of the claim, not the tone of the sentence.</strong> A specific name + a specific date + a specific number is the highest-risk shape — and the most confident-sounding. That's the signal to verify, not to nod along.</li>
+                        <li><strong>Trust the shape of the claim over the tone of the sentence.</strong> A specific name + a specific date + a specific number is the highest-risk shape — and the most confident-sounding. Treat that shape as the signal to verify.</li>
                     </ol>
-                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: #8a5a00; margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(252, 176, 23, 0.4); font-style: italic;">Confidence is the model's default register, not its assessment of the truth.</p>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: #8a5a00; margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(252, 176, 23, 0.4); font-style: italic;">Confidence is the model's default register. Calibration is something you ask for.</p>
                 </div>
 
                 <!-- Q3: Where is Claude most likely to be wrong? -->
@@ -3576,14 +3576,14 @@ em-dashes &gt;2 per piece.
                     </div>
                     <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">What is context overload, and why does loading more sometimes make Claude worse?</h4>
                     <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Loading a 50-page PDF doesn't mean Claude reads all 50 pages equally. Attention degrades through long contexts. The first and last pages stay sharp. The middle thins. The "Lost in the Middle" finding (Liu et al., 2023) showed this with strong evidence — models scored highest when the relevant info sat at the start or end of a long document, and noticeably worse when it sat in the middle.</p>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> "I gave Claude the whole report and asked about page 14. The answer was wrong." Right — page 14 is the middle. The model didn't lie. It pattern-completed <em>something that fit the question</em> because the middle was hazy. The fix isn't a better question; it's a better context.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> "I gave Claude the whole report and asked about page 14. The answer was wrong." Right — page 14 is the middle. The model pattern-completed <em>something that fit the question</em> because the middle was hazy. The fix lives in the context.</p>
                     <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.4rem;"><strong>The move.</strong> Three plays, in order of value:</p>
                     <ol style="font-size: clamp(0.88rem, 1.25vw, 0.98rem); line-height: 1.7; color: var(--dark-gray); margin: 0 0 0.6rem 0; padding-left: 1.4rem;">
-                        <li><strong>Excerpt instead of dumping.</strong> Paste the three pages that matter, not the 50-page PDF. Sharper context, sharper answer.</li>
+                        <li><strong>Excerpt instead of dumping.</strong> Paste the three pages that matter. Drop the rest. Sharper context, sharper answer.</li>
                         <li><strong>Surface the key facts twice — at the top and the bottom.</strong> Anchor what matters at the high-attention zones.</li>
                         <li><strong>Make Claude quote before answering.</strong> <em>"Quote the exact sentence you're basing this on, then answer."</em> If the model can't quote it cleanly, the answer isn't grounded — and you've caught the gap.</li>
                     </ol>
-                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: var(--purple); margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(131, 82, 255, 0.3); font-style: italic;">More context isn't always better. Sharper context is.</p>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: var(--purple); margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(131, 82, 255, 0.3); font-style: italic;">Sharper context produces sharper answers.</p>
                 </div>
 
                 <!-- Q5: Model drift inside a chat -->
@@ -3601,7 +3601,7 @@ em-dashes &gt;2 per piece.
                         <li><strong>Start fresh more often.</strong> Long chats aren't a virtue. One task per chat keeps drift from compounding.</li>
                         <li><strong>Move the rules out of the chat.</strong> Anything you keep re-anchoring belongs in a Project's reference files. Internal memory beats re-anchoring every time.</li>
                     </ol>
-                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: var(--purple); margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(131, 82, 255, 0.3); font-style: italic;">Drift is design, not laziness. Build the workflow that fights it.</p>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: var(--purple); margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(131, 82, 255, 0.3); font-style: italic;">Drift is built into the architecture. Build the workflow that fights it.</p>
                 </div>
 
                 <!-- Subgroup Header: How to Verify -->
@@ -3624,9 +3624,9 @@ em-dashes &gt;2 per piece.
                         <li><strong>Ask Claude for the claim table.</strong> After the draft: <em>"List every factual claim in the draft above as a table — claim, my confidence (high/medium/low), source. Be honest about confidence."</em> Surfaces what the draft buried.</li>
                         <li><strong>Open one source.</strong> Just one. If Claude said "according to the May counselor report," open it. The single source you actually check is worth more than the ten you assume.</li>
                     </ol>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> Two failure modes. Most common: skipping all three. The draft looks good and people send it. Less common but counterproductive: running heavy verification on everything. Manual checks are the <em>floor</em>, not the only gate. They run fast on every artifact; heavier gates stack on top for higher stakes.</p>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The move.</strong> Make the ninety seconds a habit, not a project. The three checks always run. Q7 and Q8 are how the discipline scales up from there.</p>
-                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: #8a5a00; margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(252, 176, 23, 0.4); font-style: italic;">Manual verification is the floor, not the ceiling.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> Two failure modes. Most common: skipping all three. The draft looks good and people send it. Less common but counterproductive: running heavy verification on everything. Manual checks are the <em>floor</em>. They run fast on every artifact; heavier gates stack on top for higher stakes.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The move.</strong> Make the ninety seconds a habit — small enough to run every time. The three checks always run. Q7 and Q8 are how the discipline scales up from there.</p>
+                    <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: #8a5a00; margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(252, 176, 23, 0.4); font-style: italic;">Manual verification is the floor. Heavier gates stack from there.</p>
                 </div>
 
                 <!-- Q7: Ground in real sources -->
@@ -3668,7 +3668,7 @@ em-dashes &gt;2 per piece.
                         <span style="font-family: var(--font-mono); font-size: clamp(0.65rem, 0.85vw, 0.72rem); color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Diligence carried forward</span>
                     </div>
                     <h4 style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--navy); margin-bottom: 0.7rem; line-height: 1.3;">How do I build verification gates into the workflow itself?</h4>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Manual checks (Q6) and source grounding (Q7) are moves you make on one draft. Verification <em>gates</em> are the cadence those moves live inside — what your team inherits, not just what you do today. A gate is a checkpoint where work doesn't pass until specific checks have run.</p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The plain answer.</strong> Manual checks (Q6) and source grounding (Q7) are moves you make on one draft. Verification <em>gates</em> are the cadence those moves live inside — what your team inherits every time, every artifact. A gate is a checkpoint where work doesn't pass until specific checks have run.</p>
 
                     <!-- Three gates callout -->
                     <div style="margin: 0.6rem 0 0.85rem 0; background: var(--white); border: 1px solid rgba(252, 176, 23, 0.3); border-radius: 8px; padding: clamp(0.85rem, 1.6vw, 1.1rem);">
@@ -3690,7 +3690,7 @@ em-dashes &gt;2 per piece.
                     </div>
 
                     <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>Where it breaks.</strong> Two failure modes. Skipping the light gate because it "sounds basic" — light is what catches the obvious hallucinations on every draft. Running full on everything because it feels thorough — full takes ten minutes per artifact, and the team that runs full on everything stops running it on anything.</p>
-                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The team move.</strong> A verification gate is a leader decision, not a personal habit. The cadence you pick is what your team's defaults become. Skip the gate on Tier 2 work and you've moved the exposure from one draft to a thousand. <a href="practice/audit_picker.html" style="color: var(--gold); font-weight: 600;">Open the Audit Picker →</a></p>
+                    <p style="font-size: clamp(0.9rem, 1.3vw, 1rem); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0.6rem;"><strong>The team move.</strong> A verification gate is a leader decision. The cadence you pick is what your team's defaults become. Skip the gate on Tier 2 work and you've moved the exposure from one draft to a thousand. <a href="practice/audit_picker.html" style="color: var(--gold); font-weight: 600;">Open the Audit Picker →</a></p>
                     <p style="font-size: clamp(0.85rem, 1.15vw, 0.92rem); color: #8a5a00; margin: 0; padding-top: 0.5rem; border-top: 1px dashed rgba(252, 176, 23, 0.4); font-style: italic;">Manual checks are what you do. Gates are what your team inherits.</p>
                 </div>
 
@@ -3795,7 +3795,7 @@ is recalled — I am not certain it is correct.</pre>
                 <!-- Governance Pulse -->
                 <div style="background: rgba(252, 176, 23, 0.05); border: 1px solid rgba(252, 176, 23, 0.2); border-radius: 8px; padding: clamp(0.85rem, 1.5vw, 1.1rem); margin-top: clamp(1rem, 2vw, 1.5rem);">
                     <p style="font-family: var(--font-subhead); font-weight: 700; font-size: clamp(0.8rem, 1.2vw, 0.9rem); color: var(--gold); margin-bottom: 0.5rem;">Governance Pulse — Verification Cadence by Data Tier</p>
-                    <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0 0 0.5rem 0;">Tier 4 (public) work runs Q6 manual checks every time. Tier 3 (internal strategy) layers in Q7 source-grounding by default. Tier 2 (sensitive partner or operational) requires Q8's standard or full gate, with the verdict in the record. Tier 1 (FERPA/PII) doesn't touch Claude at all. The data tier sets the verification floor, not the ceiling.</p>
+                    <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0 0 0.5rem 0;">Tier 4 (public) work runs Q6 manual checks every time. Tier 3 (internal strategy) layers in Q7 source-grounding by default. Tier 2 (sensitive partner or operational) requires Q8's standard or full gate, with the verdict in the record. Tier 1 (FERPA/PII) doesn't touch Claude at all. The data tier sets the verification floor; heavier gates can stack on top.</p>
                     <p style="font-size: clamp(0.85rem, 1.3vw, 0.95rem); line-height: 1.6; color: var(--dark-gray); margin: 0;"><strong>Leader scope:</strong> the cadence you pick for your team's build is the cadence every artifact inherits. Picking <em>"light gate, run by the author"</em> is a real decision with a real shape. Skipping the decision means the team picks for itself, one artifact at a time.</p>
                 </div>
 
